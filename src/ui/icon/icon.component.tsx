@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import dynamic from 'next/dynamic';
-import { IconName } from 'ui/icon/icon.types';
+
+import { IconName } from './icon.types';
 
 interface Props extends React.SVGAttributes<SVGElement> {
   name: IconName;

@@ -9,7 +9,7 @@
     "import/resolver": {
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"],
-        "paths": ["src"]
+        "paths": [".", "src"]
       }
     }
   },
@@ -43,12 +43,27 @@
       }
     ],
     "import/prefer-default-export": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never",
+        "js": "never",
+        "jsx": "never"
+      }
+   ],
     "@typescript-eslint/no-unused-vars": [
       "error",
       { "ignoreRestSiblings": true }
     ],
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": "error",
-    "no-undef": "off"
+    "no-undef": "off",
+    "import/order": ["error", {
+      "groups": [["builtin", "external"], "sibling", "internal"],
+      "newlines-between": "always"
+    }],
+    "no-nested-ternary": "off"
   }
 }

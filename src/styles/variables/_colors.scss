@@ -3,6 +3,7 @@
 
   --color-primary-h: 220;
   --color-primary-s: 85%;
+  --color-primary-l: 60%;
 
   --color-grey-h: var(--color-primary-h);
   --color-grey-s: 10%;
@@ -17,6 +18,12 @@
       #{$lightness * 1%}
     );
   }
+
+  --color-primary: hsl(
+    var(--color-primary-h),
+    var(--color-primary-s),
+    var(--color-primary-l)
+  );
 
   // --color-primary-10: hsl(var(--color-primary-h), var(--color-primary-s), 10%);
   // --color-primary-20: hsl(var(--color-primary-h), var(--color-primary-s), 20%);

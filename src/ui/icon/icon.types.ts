@@ -1,4 +1,4 @@
 export enum IconName {
   Path = 'path',
-  World = 'world',
+  Globe = 'globe',
 }
