@@ -1,6 +1,8 @@
 {
   "extends": "stylelint-config-sass-guidelines",
   "rules": {
-    "order/properties-alphabetical-order": null
+    "order/properties-alphabetical-order": null,
+    "selector-class-pattern": null,
+    "function-parentheses-space-inside": "never-single-line"
   }
 }
