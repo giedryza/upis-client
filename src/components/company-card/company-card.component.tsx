@@ -49,7 +49,7 @@ const CompanyCard = () => {
         <ul className={styles.social}>
           <li>
             <Button
-              iconRight={IconName.Facebook}
+              iconLeft={IconName.Facebook}
               ariaLabel="Facebook"
               title="Facebook"
               styleType="secondary"
@@ -58,7 +58,7 @@ const CompanyCard = () => {
           </li>
           <li>
             <Button
-              iconRight={IconName.Instagram}
+              iconLeft={IconName.Instagram}
               ariaLabel="Instagram"
               title="Instagram"
               styleType="secondary"
@@ -67,7 +67,7 @@ const CompanyCard = () => {
           </li>
           <li>
             <Button
-              iconRight={IconName.Youtube}
+              iconLeft={IconName.Youtube}
               ariaLabel="Youtube"
               title="Youtube"
               styleType="secondary"
@@ -76,7 +76,7 @@ const CompanyCard = () => {
           </li>
           <li>
             <Button
-              iconRight={IconName.Linkedin}
+              iconLeft={IconName.Linkedin}
               ariaLabel="Linkedin"
               title="Linkedin"
               styleType="secondary"
@@ -85,7 +85,7 @@ const CompanyCard = () => {
           </li>
           <li>
             <Button
-              iconRight={IconName.Twitter}
+              iconLeft={IconName.Twitter}
               ariaLabel="Twitter"
               title="Twitter"
               styleType="secondary"
