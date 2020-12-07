@@ -2,6 +2,7 @@ node_modules/
 build/
 raw/
 .next/
+.vscode/
 
 .env.development
 .env.production
