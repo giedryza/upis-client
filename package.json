@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "next build",
     "start": "next start",
     "start:dev": "next dev",
+    "build": "next build",
     "compile": "tsc",
     "browserslist": "npx browserslist",
     "test:lint": "yarn lint:code && yarn lint:prettier && yarn lint:styles && yarn lint:filenames && yarn compile",
