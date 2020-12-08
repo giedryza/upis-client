@@ -23,7 +23,7 @@
   );
 
   text-decoration: none;
-  border: none;
+  border: 0;
   background-color: transparent;
   font-family: inherit;
   cursor: pointer;
@@ -142,7 +142,7 @@
   overflow: hidden;
   transform: translate3d(0, 0, 0);
 
-  &:after {
+  &::after {
     content: '';
     display: block;
     position: absolute;
@@ -163,7 +163,7 @@
     transition: transform 0.4s, opacity 0.35s;
   }
 
-  &:active:after {
+  &:active::after {
     transform: scale(0, 0);
     opacity: 0.3;
     transition: 0s;

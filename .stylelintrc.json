@@ -3,6 +3,8 @@
   "rules": {
     "order/properties-alphabetical-order": null,
     "selector-class-pattern": null,
-    "function-parentheses-space-inside": "never-single-line"
+    "function-parentheses-space-inside": "never-single-line",
+    "order/order": null,
+    "max-nesting-depth": [2, {"ignore": ["pseudo-classes"]}]
   }
 }

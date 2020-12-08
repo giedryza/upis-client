@@ -7,10 +7,13 @@
     "start": "next start",
     "start:dev": "next dev",
     "browserslist": "npx browserslist",
-    "lint:script": "eslint src --ext .ts,.tsx",
-    "lint:script:fix": "yarn lint --fix",
-    "lint:style": "npx stylelint \"**/*.scss\"",
-    "style:fix": "prettier --write \"src/**\""
+    "lint:code": "npx eslint src --ext .ts,.tsx",
+    "lint:code:fix": "yarn lint:code --fix",
+    "lint:styles": "npx stylelint \"**/*.scss\"",
+    "lint:styles:fix": "yarn lint:styles --fix",
+    "lint:filenames": "npx @ls-lint/ls-lint",
+    "lint:prettier": "npx prettier --check \"src/**\"",
+    "lint:prettier:fix": "npx prettier --write \"src/**\""
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -19,6 +22,7 @@
     "react-dom": "17.0.1"
   },
   "devDependencies": {
+    "@ls-lint/ls-lint": "^1.9.2",
     "@svgr/webpack": "^5.5.0",
     "@types/classnames": "^2.2.11",
     "@types/node": "^14.14.10",
