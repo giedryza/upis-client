@@ -1,0 +1,19 @@
+:root {
+  --button-primary-background: var(--color-primary-60);
+  --button-primary-background-hover: var(--color-primary-50);
+  --button-primary-text: var(--color-grey-95);
+
+  --button-secondary-background: var(--color-grey-90);
+  --button-secondary-background-hover: var(--color-grey-80);
+  --button-secondary-text: var(--color-grey-10);
+
+  --button-ghost-background: transparent;
+  --button-ghost-background-hover: var(--color-grey-95);
+  --button-ghost-text: var(--color-grey-10);
+
+  --button-text-background: transparent;
+  --button-text-background-hover: var(--color-grey-95);
+  --button-text-text: var(--color-grey-10);
+
+  --button-outline: var(--color-primary-30);
+}
