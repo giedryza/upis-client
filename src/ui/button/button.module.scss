@@ -2,24 +2,26 @@
   --button-color-bg-h: var(--color-primary-h);
   --button-color-bg-s: var(--color-primary-s);
   --button-color-bg-l: var(--color-primary-l);
-  --button-color-bg-l-hover: calc(var(--button-color-bg-l) - 10%);
-  --button-color-outline-l: calc(var(--button-color-bg-l) - 30%);
+  --button-color-bg-a: var(--color-primary-a);
 
   --button-color-text: var(--color-white);
-  --button-color-bg: hsl(
+  --button-color-bg: hsla(
     var(--button-color-bg-h),
     var(--button-color-bg-s),
-    var(--button-color-bg-l)
+    var(--button-color-bg-l),
+    var(--button-color-bg-a)
   );
-  --button-color-bg-hover: hsl(
+  --button-color-bg-hover: hsla(
     var(--button-color-bg-h),
     var(--button-color-bg-s),
-    var(--button-color-bg-l-hover)
+    calc(var(--button-color-bg-l) - 10%),
+    var(--button-color-bg-a)
   );
   --button-color-outline: hsl(
     var(--button-color-bg-h),
     var(--button-color-bg-s),
-    var(--button-color-outline-l)
+    calc(var(--button-color-bg-l) - 30%),
+    var(--button-color-bg-a)
   );
 
   text-decoration: none;
@@ -76,13 +78,13 @@
 
   &.ghost {
     --button-color-text: var(--color-text);
-    --button-color-bg: transparent;
+    --button-color-bg-a: 0%;
     --button-color-bg-hover: var(--color-grey-95);
   }
 
   &.text {
     --button-color-text: var(--color-text);
-    --button-color-bg: transparent;
+    --button-color-bg-a: 0%;
     --button-color-bg-hover: var(--color-grey-95);
 
     min-width: auto;
