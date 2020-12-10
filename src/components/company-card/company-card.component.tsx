@@ -1,27 +1,60 @@
+import { FC } from 'react';
 import Link from 'next/link';
 
 import styles from './company-card.module.scss';
 
 import { Button } from 'ui/button/button.component';
 import { Icon, IconName } from 'ui/icon/icon.component';
+import { Social, SocialType } from 'domain/companies/companies.types';
+import { AnchorLink } from 'ui/anchor-link/anchor-link.component';
 
-const CompanyCard = () => {
+const socialNameByType: Record<SocialType, string> = {
+  [SocialType.Facebook]: 'Facebook',
+  [SocialType.Instagram]: 'Instagram',
+  [SocialType.Youtube]: 'Youtube',
+  [SocialType.Linkedin]: 'Linkedin',
+  [SocialType.Twitter]: 'Twitter',
+};
+
+const socialIconByType: Record<SocialType, IconName> = {
+  [SocialType.Facebook]: IconName.Facebook,
+  [SocialType.Instagram]: IconName.Instagram,
+  [SocialType.Youtube]: IconName.Youtube,
+  [SocialType.Linkedin]: IconName.Linkedin,
+  [SocialType.Twitter]: IconName.Twitter,
+};
+
+interface Props {
+  logo: string;
+  name: string;
+  toursTotal: number;
+  website: string;
+  socials: Social[];
+  slug: string;
+}
+
+const CompanyCard: FC<Props> = ({
+  logo,
+  name,
+  toursTotal,
+  website,
+  socials,
+  slug,
+}) => {
+  const companyUrl = `/companies/${encodeURIComponent(slug)}`;
+
   return (
     <article className={styles.container}>
       <header className={styles.header}>
-        <Link href="/tours">
+        <Link href={companyUrl}>
           <a className={styles.logoContainer} tabIndex={-1}>
-            <img
-              className={styles.logo}
-              src="https://www.pipirobaidares.lt/wp-content/uploads/2018/06/pipiro-baidares.png"
-              alt=""
-            />
+            <img className={styles.logo} src={logo} alt={name} />
           </a>
         </Link>
 
         <h3 className={styles.title}>
-          <Link href="/tours">
-            <a>Pipiro baidarės</a>
+          <Link href={companyUrl}>
+            <a>{name}</a>
           </Link>
         </h3>
       </header>
@@ -30,73 +63,36 @@ const CompanyCard = () => {
         <li className={styles.metaItem}>
           <Icon name={IconName.Path} className={styles.icon} />
           <Link href="/tours">
-            <a>8 maršrutai</a>
+            <a>{toursTotal} maršrutai</a>
           </Link>
         </li>
-        <li className={styles.metaItem}>
-          <Icon name={IconName.Globe} className={styles.icon} />
-          <a
-            href="https://www.pipirobaidares.lt"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            www.pipirobaidares.lt
-          </a>
-        </li>
+        {website && (
+          <li className={styles.metaItem}>
+            <Icon name={IconName.Globe} className={styles.icon} />
+            <AnchorLink href={website} label={website} target="_blank" />
+          </li>
+        )}
       </ul>
 
       <footer className={styles.footer}>
         <ul className={styles.social}>
-          <li>
-            <Button
-              iconLeft={IconName.Facebook}
-              ariaLabel="Facebook"
-              title="Facebook"
-              styleType="secondary"
-              size="xs"
-            />
-          </li>
-          <li>
-            <Button
-              iconLeft={IconName.Instagram}
-              ariaLabel="Instagram"
-              title="Instagram"
-              styleType="secondary"
-              size="xs"
-            />
-          </li>
-          <li>
-            <Button
-              iconLeft={IconName.Youtube}
-              ariaLabel="Youtube"
-              title="Youtube"
-              styleType="secondary"
-              size="xs"
-            />
-          </li>
-          <li>
-            <Button
-              iconLeft={IconName.Linkedin}
-              ariaLabel="Linkedin"
-              title="Linkedin"
-              styleType="secondary"
-              size="xs"
-            />
-          </li>
-          <li>
-            <Button
-              iconLeft={IconName.Twitter}
-              ariaLabel="Twitter"
-              title="Twitter"
-              styleType="secondary"
-              size="xs"
-            />
-          </li>
+          {socials.map((social) => (
+            <li key={social._id}>
+              <Button
+                iconLeft={socialIconByType[social.type]}
+                ariaLabel={socialNameByType[social.type]}
+                title={socialNameByType[social.type]}
+                styleType="secondary"
+                size="xs"
+              />
+            </li>
+          ))}
         </ul>
 
         <Button
           iconRight={IconName.ChevronRight}
-          label="More"
+          label="Plačiau"
+          url={companyUrl}
           styleType="text"
           size="sm"
         />
