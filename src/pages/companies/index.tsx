@@ -1,10 +1,11 @@
-import { CompanyCard } from 'components/company-card/company-card.component';
+import { MainLayout } from 'layouts/main/main.layout';
+import { CompaniesContainer } from 'containers/companies/companies.container';
 
 const Companies = () => {
   return (
-    <div>
-      <CompanyCard />
-    </div>
+    <MainLayout>
+      <CompaniesContainer />;
+    </MainLayout>
   );
 };
 

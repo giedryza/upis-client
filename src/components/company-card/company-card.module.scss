@@ -1,15 +1,17 @@
 .container {
-  margin: 25px;
-  width: 350px;
   padding: 1.5rem;
   background: var(--color-white);
   border-radius: var(--border-radius-md);
+
+  display: flex;
+  flex-direction: column;
 
   > header {
     margin-bottom: 1rem;
   }
 
   > ul {
+    flex-grow: 1;
     margin-bottom: 4rem;
   }
 }

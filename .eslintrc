@@ -34,6 +34,7 @@
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
     "react/jsx-props-no-spreading": "off",
+    "react/jsx-one-expression-per-line": "off",
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
@@ -64,6 +65,7 @@
       "groups": [["builtin", "external"], "sibling", "internal"],
       "newlines-between": "always"
     }],
+    "no-underscore-dangle": "off",
     "no-nested-ternary": "off"
   }
 }
