@@ -79,9 +79,12 @@ const CompanyCard: FC<Props> = ({
           {socials.map((social) => (
             <li key={social._id}>
               <Button
-                iconLeft={socialIconByType[social.type]}
+                icon={socialIconByType[social.type]}
+                iconPlacement="left"
                 ariaLabel={socialNameByType[social.type]}
                 title={socialNameByType[social.type]}
+                url={social.link}
+                target="_blank"
                 styleType="secondary"
                 size="xs"
               />
@@ -90,7 +93,8 @@ const CompanyCard: FC<Props> = ({
         </ul>
 
         <Button
-          iconRight={IconName.ChevronRight}
+          icon={IconName.ChevronRight}
+          iconPlacement="right"
           label="Plačiau"
           url={companyUrl}
           styleType="text"

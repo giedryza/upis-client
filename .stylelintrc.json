@@ -5,6 +5,7 @@
     "selector-class-pattern": null,
     "function-parentheses-space-inside": "never-single-line",
     "order/order": null,
-    "max-nesting-depth": [2, {"ignore": ["pseudo-classes"]}]
+    "max-nesting-depth": [4, {"ignore": ["pseudo-classes"]}],
+    "selector-no-qualifying-type": [true, {"ignore": ["attribute"]}]
   }
 }
