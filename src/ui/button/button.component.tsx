@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import { FC, useMemo } from 'react';
+import { FC, AllHTMLAttributes, useMemo } from 'react';
 import Link from 'next/link';
 import classnames from 'classnames';
 
@@ -14,11 +14,12 @@ interface Props {
   url?: string;
   type?: JSX.IntrinsicElements['button']['type'];
   target?: '_self' | '_blank' | '_parent' | '_top';
-  block?: boolean;
-  iconLeft?: IconName;
-  iconRight?: IconName;
+  icon?: IconName;
+  iconPlacement?: 'top' | 'right' | 'bottom' | 'left';
   styleType?: 'primary' | 'secondary' | 'ghost' | 'text';
   size?: 'xs' | 'sm' | 'md' | 'lg';
+  block?: boolean;
+  disabled?: boolean;
 }
 
 const Button: FC<Props> = ({
@@ -29,17 +30,20 @@ const Button: FC<Props> = ({
   target,
   type = 'button',
   block,
-  iconLeft,
-  iconRight,
+  icon,
+  iconPlacement = 'left',
   styleType = 'primary',
   size = 'md',
+  disabled,
 }) => {
+  const parsedUrl = `${url.startsWith('http') ? '' : '//'}${url}`;
+
   const content = useMemo(
     () => (
       <>
-        {iconLeft && (
+        {icon && ['left', 'top'].includes(iconPlacement) && (
           <Icon
-            name={iconLeft}
+            name={icon}
             className={styles.icon}
             focusable={false}
             aria-hidden
@@ -48,9 +52,9 @@ const Button: FC<Props> = ({
 
         {label && <span>{label}</span>}
 
-        {iconRight && (
+        {icon && ['right', 'bottom'].includes(iconPlacement) && (
           <Icon
-            name={iconRight}
+            name={icon}
             className={styles.icon}
             focusable={false}
             aria-hidden
@@ -58,17 +62,18 @@ const Button: FC<Props> = ({
         )}
       </>
     ),
-    [label, iconLeft, iconRight]
+    [label, icon, iconPlacement]
   );
 
-  const attributes = {
+  const attributes: AllHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> = {
     className: classnames(
       styles.button,
       styles.ripple,
       styles[styleType],
       styles[size],
+      styles[`icon-${iconPlacement}`],
       {
-        [styles.iconButton]: (iconLeft || iconRight) && !label,
+        [styles.iconButton]: icon && !label,
         [styles.block]: block,
       }
     ),
@@ -77,15 +82,20 @@ const Button: FC<Props> = ({
   };
 
   return target ? (
-    <a {...attributes} href={url} target={target} rel="noopener noreferrer">
+    <a
+      {...attributes}
+      href={parsedUrl}
+      target={target}
+      rel="noopener noreferrer"
+    >
       {content}
     </a>
   ) : url ? (
-    <Link href={url}>
+    <Link href={parsedUrl}>
       <a {...attributes}>{content}</a>
     </Link>
   ) : (
-    <button {...attributes} type={type}>
+    <button {...attributes} type={type} disabled={disabled}>
       {content}
     </button>
   );

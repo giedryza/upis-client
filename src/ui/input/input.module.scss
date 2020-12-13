@@ -1,0 +1,50 @@
+.input {
+  > input,
+  > textarea {
+    display: block;
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 0.25em 0.5em;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-grey-60);
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition-duration-md) box-shadow;
+
+    &:not(textarea) {
+      line-height: 1;
+      height: 2.25em;
+    }
+
+    &[readonly] {
+      border-style: dotted;
+      cursor: initial;
+      color: var(--color-grey-40);
+    }
+
+    &[disabled] {
+      border-color: var(--color-grey-75);
+      background-color: var(--color-grey-95);
+      cursor: not-allowed;
+    }
+
+    &:focus {
+      outline: 3px solid transparent;
+      border-color: var(--color-primary-60);
+      box-shadow: 0 0 0 2px
+        hsla(
+          var(--color-primary-h),
+          var(--color-primary-s),
+          calc(var(--color-primary-l) + 30%),
+          0.75
+        );
+    }
+  }
+
+  > textarea {
+    resize: vertical;
+  }
+
+  > label {
+    display: block;
+  }
+}
