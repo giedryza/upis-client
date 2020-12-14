@@ -1,0 +1,42 @@
+@import 'styles/mixins';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 1rem;
+  padding: 0.5em;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-default);
+}
+
+.logo {
+  border-radius: var(--border-radius-sm);
+  padding: 0.25em;
+
+  @include focus-button;
+
+  &:hover {
+    background-color: var(--button-ghost-background-hover);
+  }
+
+  svg {
+    height: 3em;
+    fill: var(--button-ghost-text);
+  }
+}
+
+.nav {
+  > ul {
+    display: flex;
+    align-items: center;
+
+    @include spacing(x, 1em);
+  }
+}

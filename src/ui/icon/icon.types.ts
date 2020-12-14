@@ -8,6 +8,7 @@ export enum IconName {
   Instagram = 'instagram',
   Linkedin = 'linkedin',
   Path = 'path',
+  Profile = 'profile',
   Twitter = 'twitter',
   Youtube = 'youtube',
 }
