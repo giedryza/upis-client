@@ -26,15 +26,7 @@
   transition-duration: var(--transition-duration-md);
   word-break: normal;
 
-  &:focus {
-    outline-style: solid;
-    outline-color: transparent;
-    box-shadow: 0 0 0 2px var(--button-outline);
-
-    &:hover {
-      box-shadow: none;
-    }
-  }
+  @include focus-button;
 
   &.primary {
     color: var(--button-primary-text);
@@ -119,7 +111,7 @@
       padding: 0.5em;
       min-width: auto;
 
-      @include spacing(y, 0.52em);
+      @include spacing(y, 0.25em);
 
       .icon {
         width: 2em;

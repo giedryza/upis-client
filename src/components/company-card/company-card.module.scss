@@ -1,3 +1,5 @@
+@import 'styles/mixins';
+
 .container {
   padding: 1.5rem;
   background: var(--color-white);
@@ -17,15 +19,11 @@
 }
 
 .header {
-  > *:not(:last-child) {
-    margin-bottom: 3rem;
-  }
+  @include spacing(y, 3rem);
 }
 
 .meta {
-  > *:not(:last-child) {
-    margin-bottom: 0.6rem;
-  }
+  @include spacing(y, 0.6rem);
 }
 
 .metaItem {
@@ -34,9 +32,7 @@
   font-size: var(--font-size-12);
   color: var(--color-grey-55);
 
-  > *:not(:last-child) {
-    margin-right: 1rem;
-  }
+  @include spacing(x, 1rem);
 
   > a {
     &:link,
@@ -101,7 +97,5 @@
   align-items: center;
   flex-wrap: wrap;
 
-  > *:not(:last-child) {
-    margin-right: 0.5rem;
-  }
+  @include spacing(x, 0.5rem);
 }

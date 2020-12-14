@@ -1,5 +1,5 @@
 import { MainLayout } from 'layouts/main/main.layout';
-import { CompaniesContainer } from 'containers/companies/companies.container';
+import { CompaniesContainer } from 'components/companies/companies.container';
 
 const Companies = () => {
   return (
