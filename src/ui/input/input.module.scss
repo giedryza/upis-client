@@ -1,9 +1,14 @@
+@import 'styles/mixins';
+
 .input {
+  font-size: 1.6rem;
+
+  @include spacing(y, 0.25em);
+
   > input,
   > textarea {
     display: block;
     width: 100%;
-    font-size: 1.6rem;
     padding: 0.25em 0.5em;
     background-color: var(--color-white);
     border: 2px solid var(--color-grey-60);
@@ -27,6 +32,15 @@
       cursor: not-allowed;
     }
 
+    &[aria-invalid='true'] {
+      border-color: var(--color-danger-60);
+      background-color: var(--color-danger-90);
+
+      + small {
+        color: var(--color-danger-60);
+      }
+    }
+
     &:focus {
       outline: 3px solid transparent;
       border-color: var(--color-primary-60);
@@ -46,5 +60,13 @@
 
   > label {
     display: block;
+    font-size: 0.9em;
+    color: var(--color-grey-40);
+    font-weight: 600;
+  }
+
+  > small {
+    font-size: 0.8em;
+    font-weight: 400;
   }
 }

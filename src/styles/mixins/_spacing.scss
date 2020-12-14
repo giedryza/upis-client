@@ -1,0 +1,11 @@
+@mixin spacing($axis, $size) {
+  @if ($axis == 'x') {
+    > *:not(:last-child) {
+      margin-right: $size;
+    }
+  } @else if ($axis == 'y') {
+    > *:not(:last-child) {
+      margin-bottom: $size;
+    }
+  }
+}

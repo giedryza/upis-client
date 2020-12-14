@@ -1,3 +1,5 @@
+@import 'styles/mixins';
+
 .button {
   text-decoration: none;
   border: 0;
@@ -60,7 +62,6 @@
 
   &.ghost {
     color: var(--button-ghost-text);
-    background-color: var(--button-ghost-background);
 
     &:hover,
     &:active {
@@ -72,7 +73,7 @@
 
   &.text {
     color: var(--button-text-text);
-    background-color: var(--button-text-background);
+    padding: 0.2em;
 
     &:hover,
     &:active {
@@ -80,10 +81,24 @@
         background-color: var(--button-text-background-hover);
       }
     }
+  }
 
+  &.link {
+    color: var(--button-link-text);
+    padding: 0;
+
+    &:hover,
+    &:active {
+      &:not([disabled]) {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &.text,
+  &.link {
     min-width: auto;
     min-height: auto;
-    padding: 0.2em;
 
     .icon {
       width: 0.75em;
@@ -94,9 +109,7 @@
   &.icon {
     &-left,
     &-right {
-      > *:not(:last-child) {
-        margin-right: 0.5em;
-      }
+      @include spacing(x, 0.5em);
     }
 
     &-top,
@@ -106,9 +119,7 @@
       padding: 0.5em;
       min-width: auto;
 
-      > *:not(:last-child) {
-        margin-bottom: 0.25em;
-      }
+      @include spacing(y, 0.52em);
 
       .icon {
         width: 2em;
