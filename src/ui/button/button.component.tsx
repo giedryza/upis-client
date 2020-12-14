@@ -16,7 +16,7 @@ interface Props {
   target?: '_self' | '_blank' | '_parent' | '_top';
   icon?: IconName;
   iconPlacement?: 'top' | 'right' | 'bottom' | 'left';
-  styleType?: 'primary' | 'secondary' | 'ghost' | 'text';
+  styleType?: 'primary' | 'secondary' | 'ghost' | 'text' | 'link';
   size?: 'xs' | 'sm' | 'md' | 'lg';
   block?: boolean;
   disabled?: boolean;
@@ -36,7 +36,7 @@ const Button: FC<Props> = ({
   size = 'md',
   disabled,
 }) => {
-  const parsedUrl = `${url.startsWith('http') ? '' : '//'}${url}`;
+  const parsedUrl = url ? `${url.startsWith('http') ? '' : '//'}${url}` : '';
 
   const content = useMemo(
     () => (

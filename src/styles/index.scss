@@ -1,9 +1,6 @@
-@import 'variables/borders';
-@import 'variables/buttons';
-@import 'variables/colors';
-@import 'variables/shadows';
-@import 'variables/typography';
-@import 'variables/utils';
+@import 'variables';
+
+@import 'mixins';
 
 @import 'global/reset';
 @import 'global/base';
