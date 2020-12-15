@@ -53,18 +53,24 @@
         "js": "never",
         "jsx": "never"
       }
-   ],
+    ],
     "@typescript-eslint/no-unused-vars": [
       "error",
       { "ignoreRestSiblings": true }
     ],
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": "error",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
     "no-undef": "off",
-    "import/order": ["error", {
-      "groups": [["builtin", "external"], "sibling", "internal"],
-      "newlines-between": "always"
-    }],
+    "import/order": [
+      "error",
+      {
+        "groups": [["builtin", "external"], "sibling", "internal"],
+        "newlines-between": "always"
+      }
+    ],
+    "class-methods-use-this": "off",
     "no-underscore-dangle": "off",
     "no-nested-ternary": "off"
   }

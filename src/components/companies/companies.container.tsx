@@ -14,17 +14,17 @@ const COMPANIES = [
     slug: 'pipiro-baidares',
     socials: [
       {
-        _id: '5fb57180a097c90ba84f4b3f',
+        _id: '5fb57180a0s97c90ba84f4b3f',
         type: SocialType.Facebook,
         link: 'www.aa.lt',
       },
       {
-        _id: '5fb57180a097c90ba84f4b3f',
+        _id: '5fb5718ff0a097c90ba84f4b3f',
         type: SocialType.Youtube,
         link: 'www.aa.lt',
       },
       {
-        _id: '5fb57180a097c90ba84f4b40',
+        _id: '5fb5fsd7180a097c90ba84f4b40',
         type: SocialType.Twitter,
         link: 'bbbb.com',
       },
@@ -49,7 +49,7 @@ const COMPANIES = [
     slug: 'pipiro-baidares',
     socials: [
       {
-        _id: '5fb57180a097c90ba84f4b3f',
+        _id: '5fb57fsa180a097c90ba84f4b3f',
         type: SocialType.Youtube,
         link: 'www.aa.lt',
       },
@@ -65,12 +65,12 @@ const COMPANIES = [
     slug: 'pipiro-baidares',
     socials: [
       {
-        _id: '5fb57180a097c90ba84f4b3f',
+        _id: '5fb57180a097c90ba84fdgsda4b3f',
         type: SocialType.Youtube,
         link: 'www.aa.lt',
       },
       {
-        _id: '5fb57180a097c90ba84f4b40',
+        _id: '5fb571sd80a097c90ba84f4b40',
         type: SocialType.Twitter,
         link: 'bbbb.com',
       },
@@ -85,7 +85,7 @@ const COMPANIES = [
     slug: 'pipiro-baidares',
     socials: [
       {
-        _id: '5fb57180a097c90ba84f4b3f',
+        _id: '5fb57180a097c90ba84f4b3gdff',
         type: SocialType.Facebook,
         link: 'www.aa.lt',
       },
