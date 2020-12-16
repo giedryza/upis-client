@@ -1,10 +1,9 @@
 @import 'styles/mixins';
 
 .button {
-  text-decoration: none;
   border: 0;
   background-color: transparent;
-  font-family: inherit;
+  text-decoration: none;
   cursor: pointer;
 
   @media screen and (-ms-high-contrast: active) {
