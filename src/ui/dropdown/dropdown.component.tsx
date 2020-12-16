@@ -40,16 +40,23 @@ const Dropdown: FC<Props> = ({
 
   const onMenuClick = () => setIsOpen((prevIsOpen) => !prevIsOpen);
 
+  const menuButtonId = menuButton.label || menuButton.ariaLabel;
+
   return (
     <div className={styles.container}>
       <Button
         onClick={onMenuClick}
         ariaHasPopup={!!items.length}
         ariaExpanded={isOpen}
+        id={menuButtonId}
         {...menuButton}
       />
       {!!items.length && (
-        <ul role="menu" className={classnames(styles[position])}>
+        <ul
+          className={classnames(styles[position])}
+          role="menu"
+          aria-labelledby={menuButtonId}
+        >
           {items.map((item) => (
             <li role="none" key={item.label}>
               <Button

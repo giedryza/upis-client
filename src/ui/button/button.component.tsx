@@ -8,6 +8,7 @@ import styles from './button.module.scss';
 import { Icon, IconName } from 'ui/icon/icon.component';
 
 export interface Props {
+  id?: string;
   label?: string;
   title?: string;
   onClick?: () => void;
@@ -28,6 +29,7 @@ export interface Props {
 }
 
 const Button: FC<Props> = ({
+  id,
   label,
   title,
   onClick,
@@ -90,6 +92,7 @@ const Button: FC<Props> = ({
         [styles.block]: block,
       }
     ),
+    id,
     title,
     role,
     'aria-label': ariaLabel,
