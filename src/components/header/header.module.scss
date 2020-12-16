@@ -37,6 +37,6 @@
     display: flex;
     align-items: center;
 
-    @include spacing(x, 1em);
+    @include spacing(x, 0.5em);
   }
 }

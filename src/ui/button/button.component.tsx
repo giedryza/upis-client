@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import { FC, AllHTMLAttributes, useMemo } from 'react';
+import { FC, AllHTMLAttributes, useMemo, AriaAttributes } from 'react';
 import Link from 'next/link';
 import classnames from 'classnames';
 
@@ -7,10 +7,10 @@ import styles from './button.module.scss';
 
 import { Icon, IconName } from 'ui/icon/icon.component';
 
-interface Props {
+export interface Props {
   label?: string;
-  ariaLabel?: string;
   title?: string;
+  onClick?: () => void;
   url?: string;
   type?: JSX.IntrinsicElements['button']['type'];
   target?: '_self' | '_blank' | '_parent' | '_top';
@@ -18,14 +18,19 @@ interface Props {
   iconPlacement?: 'top' | 'right' | 'bottom' | 'left';
   styleType?: 'primary' | 'secondary' | 'ghost' | 'text' | 'link';
   size?: 'xs' | 'sm' | 'md' | 'lg';
+  textAlign?: 'left' | 'right' | 'center';
   block?: boolean;
   disabled?: boolean;
+  ariaLabel?: AriaAttributes['aria-label'];
+  ariaHasPopup?: AriaAttributes['aria-haspopup'];
+  ariaExpanded?: AriaAttributes['aria-expanded'];
+  role?: string;
 }
 
 const Button: FC<Props> = ({
   label,
-  ariaLabel,
   title,
+  onClick,
   url,
   target,
   type = 'button',
@@ -34,9 +39,16 @@ const Button: FC<Props> = ({
   iconPlacement = 'left',
   styleType = 'primary',
   size = 'md',
+  textAlign = 'center',
   disabled,
+  role,
+  ariaLabel,
+  ariaHasPopup,
+  ariaExpanded,
 }) => {
-  const parsedUrl = url ? `${url.startsWith('http') ? '' : '//'}${url}` : '';
+  const parsedUrl = url
+    ? `${url.startsWith('http') || url.startsWith('/') ? '' : '//'}${url}`
+    : '';
 
   const content = useMemo(
     () => (
@@ -72,13 +84,17 @@ const Button: FC<Props> = ({
       styles[styleType],
       styles[size],
       styles[`icon-${iconPlacement}`],
+      styles[`text-${textAlign}`],
       {
         [styles.iconButton]: icon && !label,
         [styles.block]: block,
       }
     ),
     title,
+    role,
     'aria-label': ariaLabel,
+    'aria-haspopup': ariaHasPopup,
+    'aria-expanded': ariaExpanded,
   };
 
   return target ? (
@@ -95,7 +111,7 @@ const Button: FC<Props> = ({
       <a {...attributes}>{content}</a>
     </Link>
   ) : (
-    <button {...attributes} type={type} disabled={disabled}>
+    <button {...attributes} type={type} disabled={disabled} onClick={onClick}>
       {content}
     </button>
   );
