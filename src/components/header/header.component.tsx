@@ -4,8 +4,8 @@ import Link from 'next/link';
 import styles from './header.module.scss';
 
 import Logo from 'components/logo/logo.vector.svg';
-import { Button } from 'ui/button/button.component';
 import { IconName } from 'ui/icon/icon.component';
+import { Dropdown } from 'ui/dropdown/dropdown.component';
 
 interface Props {}
 
@@ -20,21 +20,49 @@ const Header: FC<Props> = () => {
       <nav className={styles.nav}>
         <ul>
           <li>
-            <Button
-              icon={IconName.Globe}
-              iconPlacement="top"
-              size="xs"
-              styleType="ghost"
-              label="English"
+            <Dropdown
+              position="bottom-right"
+              menuButton={{
+                ariaLabel: 'Language menu',
+                icon: IconName.Globe,
+                styleType: 'ghost',
+                size: 'lg',
+              }}
+              items={[
+                {
+                  label: 'English',
+                  icon: IconName.FlagEn,
+                  url: '/en',
+                },
+                {
+                  label: 'Lietuvių',
+                  icon: IconName.FlagLt,
+                  url: '/lt',
+                },
+              ]}
             />
           </li>
           <li>
-            <Button
-              icon={IconName.Profile}
-              iconPlacement="top"
-              size="xs"
-              styleType="ghost"
-              label="Account"
+            <Dropdown
+              position="bottom-right"
+              menuButton={{
+                ariaLabel: 'Account menu',
+                icon: IconName.Account,
+                styleType: 'ghost',
+                size: 'lg',
+              }}
+              items={[
+                {
+                  label: 'View profile',
+                  icon: IconName.User,
+                  url: '/profile',
+                },
+                {
+                  label: 'Sign out',
+                  icon: IconName.Exit,
+                  onClick: () => {},
+                },
+              ]}
             />
           </li>
         </ul>

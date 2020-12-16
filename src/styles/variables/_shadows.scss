@@ -1,4 +1,4 @@
 :root {
-  --shadow-default: 0 0 1px 0 hsla(var(--color-primary-h), 15%, 80%, 0.06),
-    0 7px 12px -1px hsla(var(--color-primary-h), 15%, 80%, 0.2);
+  --shadow-default: hsla(var(--color-primary-h), 15%, 70%, 0.1) 0 0 16px 8px,
+    hsla(var(--color-primary-h), 15%, 70%, 0.1) 0 8px 32px;
 }

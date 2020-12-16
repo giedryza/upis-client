@@ -12,13 +12,11 @@
 
   display: inline-flex;
   align-items: center;
-  justify-content: center;
 
   font-weight: 500;
   padding: 0.25em 0.75em;
   min-width: 10ch;
   min-height: 2.75em;
-  text-align: center;
   line-height: 1.1;
   border-radius: var(--border-radius-sm);
   transition-property: background-color, box-shadow;
@@ -135,6 +133,21 @@
     font-size: 2rem;
   }
 
+  &.text-left {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  &.text-right {
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  &.text-center {
+    justify-content: center;
+    text-align: center;
+  }
+
   &.block {
     width: 100%;
   }
@@ -153,6 +166,7 @@
   fill: currentcolor;
   width: 1em;
   height: 1em;
+  flex-shrink: 0;
 }
 
 .iconButton {
