@@ -3,8 +3,12 @@
     outline: 2px solid transparent;
     box-shadow: 0 0 0 2px var(--button-outline);
 
-    &:hover {
+    &:not(:focus-visible) {
       box-shadow: none;
     }
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--button-outline);
   }
 }

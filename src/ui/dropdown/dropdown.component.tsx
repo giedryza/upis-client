@@ -1,9 +1,10 @@
-import { FC, useState } from 'react';
+import { FC, useCallback, useRef, useState } from 'react';
 import classnames from 'classnames';
 
 import styles from './dropdown.module.scss';
 
 import { Button, Props as ButtonProps } from 'ui/button/button.component';
+import { useOnClickOutside } from 'utils/hooks/useOnClickOutside';
 
 type MenuButton = Pick<
   ButtonProps,
@@ -36,14 +37,20 @@ const Dropdown: FC<Props> = ({
   position = 'bottom-left',
   items = [],
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const onMenuClick = () => setIsOpen((prevIsOpen) => !prevIsOpen);
+  const [isOpen, setIsOpen] = useState(false);
 
   const menuButtonId = menuButton.label || menuButton.ariaLabel;
 
+  const onMenuClick = () => setIsOpen((prevIsOpen) => !prevIsOpen);
+
+  const onClickOutside = useCallback(() => setIsOpen(false), []);
+
+  useOnClickOutside(containerRef, onClickOutside);
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={containerRef}>
       <Button
         onClick={onMenuClick}
         ariaHasPopup={!!items.length}
