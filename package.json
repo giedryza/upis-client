@@ -8,14 +8,14 @@
     "build": "next build",
     "compile": "tsc",
     "browserslist": "npx browserslist",
-    "test:lint": "yarn lint:code && yarn lint:prettier && yarn lint:styles && yarn lint:filenames && yarn compile",
+    "test:lint": "yarn lint:code && yarn lint:code-style && yarn lint:styles && yarn lint:filenames && yarn compile",
     "lint:code": "npx eslint src --ext .ts,.tsx",
     "lint:code:fix": "yarn lint:code --fix",
     "lint:styles": "npx stylelint \"**/*.scss\"",
     "lint:styles:fix": "yarn lint:styles --fix",
     "lint:filenames": "npx @ls-lint/ls-lint",
-    "lint:prettier": "npx prettier --check \"src/**\"",
-    "lint:prettier:fix": "npx prettier --write \"src/**\""
+    "lint:code-style": "npx prettier --check \"src/**\"",
+    "lint:code-style:fix": "npx prettier --write \"src/**\""
   },
   "dependencies": {
     "classnames": "^2.2.6",
