@@ -1,11 +1,17 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { FC, ChangeEvent, AllHTMLAttributes } from 'react';
 
 import styles from './input.module.scss';
 
 interface Props {
   name: string;
-  type?: 'text' | 'textarea' | 'email' | 'number' | 'date' | 'file';
+  type?:
+    | 'text'
+    | 'textarea'
+    | 'number'
+    | 'email'
+    | 'password'
+    | 'date'
+    | 'file';
   inputmode?: JSX.IntrinsicElements['input']['inputMode'];
   disabled?: boolean;
   readonly?: boolean;
@@ -34,6 +40,7 @@ const Input: FC<Props> = ({
     HTMLInputElement | HTMLTextAreaElement
   > = {
     name,
+    id: name,
     placeholder,
     disabled,
     readOnly: readonly,

@@ -1,0 +1,33 @@
+@use 'styles/mixins' as *;
+
+.container {
+  margin: 5rem auto;
+
+  width: 40rem;
+  max-width: 95%;
+  padding: 3.5rem;
+  background: var(--color-white);
+  border-radius: var(--border-radius-md);
+
+  > h1 {
+    font-size: var(--font-size-30);
+
+    > span {
+      font-weight: 700;
+    }
+  }
+
+  @include spacing(y, 2.5rem);
+}
+
+.form {
+  @include spacing(y, 1rem);
+}
+
+.inputs {
+  @include spacing(y, 1.5rem);
+}
+
+.actions {
+  text-align: right;
+}
