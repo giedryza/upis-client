@@ -1,12 +1,12 @@
 import { MainLayout } from 'layouts/main/main.layout';
-import { CompaniesContainer } from 'components/companies/companies.component';
+import { Companies } from 'components/companies/companies.component';
 
-const Companies = () => {
+const CompaniesPage = () => {
   return (
     <MainLayout>
-      <CompaniesContainer />;
+      <Companies />;
     </MainLayout>
   );
 };
 
-export default Companies;
+export default CompaniesPage;

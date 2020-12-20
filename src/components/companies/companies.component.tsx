@@ -93,7 +93,7 @@ const COMPANIES = [
   },
 ];
 
-const CompaniesContainer = () => {
+const Companies = () => {
   return (
     <section className={styles.container}>
       {COMPANIES.map((company) => (
@@ -111,4 +111,4 @@ const CompaniesContainer = () => {
   );
 };
 
-export { CompaniesContainer };
+export { Companies };
