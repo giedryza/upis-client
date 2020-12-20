@@ -4,7 +4,7 @@ import { Companies } from 'components/companies/companies.component';
 const CompaniesPage = () => {
   return (
     <MainLayout>
-      <Companies />;
+      <Companies />
     </MainLayout>
   );
 };
