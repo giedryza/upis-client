@@ -1,10 +1,10 @@
-import { FC, useCallback, useRef, useState } from 'react';
+import { FC, KeyboardEvent, useCallback, useRef, useState } from 'react';
 import classnames from 'classnames';
 
 import styles from './dropdown.module.scss';
 
 import { Button, Props as ButtonProps } from 'ui/button/button.component';
-import { useOnClickOutside } from 'utils/hooks/useOnClickOutside';
+import { useOnClickOutside } from 'utils/hooks/use-on-click-outside';
 
 type MenuButton = Pick<
   ButtonProps,
@@ -45,12 +45,19 @@ const Dropdown: FC<Props> = ({
 
   const onMenuClick = () => setIsOpen((prevIsOpen) => !prevIsOpen);
 
+  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Escape' && isOpen) {
+      setIsOpen(false);
+    }
+  };
+
   const onClickOutside = useCallback(() => setIsOpen(false), []);
 
   useOnClickOutside(containerRef, onClickOutside);
 
   return (
-    <div className={styles.container} ref={containerRef}>
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div onKeyDown={onKeyDown} className={styles.container} ref={containerRef}>
       <Button
         onClick={onMenuClick}
         ariaHasPopup={!!items.length}
