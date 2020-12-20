@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import styles from './dropdown.module.scss';
 
 import { Button, Props as ButtonProps } from 'ui/button/button.component';
-import { useOnClickOutside } from 'utils/hooks/use-on-click-outside';
+import { useOnClickOutside } from 'utils/hooks/use-on-click-outside.hook';
 
 type MenuButton = Pick<
   ButtonProps,
