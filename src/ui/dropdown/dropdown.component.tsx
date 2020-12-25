@@ -1,5 +1,5 @@
 import { FC, KeyboardEvent, useCallback, useRef, useState } from 'react';
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import styles from './dropdown.module.scss';
 
@@ -67,7 +67,7 @@ const Dropdown: FC<Props> = ({
       />
       {!!items.length && (
         <ul
-          className={classnames(styles[position])}
+          className={clsx(styles[position])}
           role="menu"
           aria-labelledby={menuButtonId}
         >

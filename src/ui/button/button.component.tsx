@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
 import { FC, AllHTMLAttributes, useMemo, AriaAttributes } from 'react';
 import Link from 'next/link';
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import styles from './button.module.scss';
 
@@ -80,7 +80,7 @@ const Button: FC<Props> = ({
   );
 
   const attributes: AllHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> = {
-    className: classnames(
+    className: clsx(
       styles.button,
       styles.ripple,
       styles[styleType],
