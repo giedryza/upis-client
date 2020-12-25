@@ -1,17 +1,20 @@
 import { endpoints } from './http.constants';
 
 interface Config {
-  method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+  method?: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
   headers?: Record<string, string>;
   body?: Record<string, any>;
 }
 
 export const http = async (endpoint: string, config: Config = {}) => {
   const { method = 'GET', headers = {}, body = null } = config;
+  const { 'Content-Type': contentType = 'application/json' } = headers;
 
   const defaults = {
     headers: {
-      'Content-Type': 'application/json',
+      ...(['POST', 'PATCH', 'PUT'].includes(method)
+        ? { 'Content-Type': contentType }
+        : {}),
     },
   };
 
