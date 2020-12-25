@@ -4,7 +4,7 @@ import { ModalPayloads, ModalActionTypes, ModalKey } from './modal.types';
 
 import { Action } from 'utils/context/types';
 
-export const modalActions = {
+const modalActions = {
   setActiveModal: (key: ModalKey | null) => ({
     type: ModalActionTypes.SetActiveModal,
     payload: key,
