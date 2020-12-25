@@ -1,7 +1,8 @@
-import { FC, useReducer, useMemo, useCallback } from 'react';
+import { FC, useReducer, useMemo } from 'react';
 
 import { reducer, INITIAL_STATE } from './modal.reducer';
-import { ModalContext, ModalKey, ModalActionTypes } from './modal.types';
+import { ModalContext } from './modal.types';
+import { useModalActions } from './modal.actions';
 
 import { makeContext } from 'utils/context/make-context';
 
@@ -13,18 +14,14 @@ export const [
 export const ModalProvider: FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
-  const setActiveModal = useCallback((key: ModalKey | null) => {
-    dispatch({ type: ModalActionTypes.SetActiveModal, payload: key });
-  }, []);
+  const actions = useModalActions(dispatch);
 
   const value = useMemo(
     () => ({
       modalState: state,
-      modalActions: {
-        setActiveModal,
-      },
+      modalActions: actions,
     }),
-    [state, setActiveModal]
+    [state, actions]
   );
 
   return <ModalContextProvider value={value}>{children}</ModalContextProvider>;

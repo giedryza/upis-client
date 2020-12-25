@@ -1,12 +1,10 @@
-import { ModalState, ModalActions, ModalActionTypes } from './modal.types';
-
-import { Reducer } from 'utils/context/types';
+import { ModalState, ModalActionTypes, ModalReducer } from './modal.types';
 
 export const INITIAL_STATE: ModalState = {
   activeModal: null,
 };
 
-export const reducer: Reducer<ModalState, ModalActions> = (state, action) => {
+export const reducer: ModalReducer = (state, action) => {
   switch (action.type) {
     case ModalActionTypes.SetActiveModal:
       return {

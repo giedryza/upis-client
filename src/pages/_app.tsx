@@ -5,17 +5,17 @@ import 'styles/index.scss';
 
 import { axe } from 'utils/tools/axe';
 import { AppLayout } from 'layouts/app/app.layout';
-import { ModalProvider } from 'context/modal/modal.context';
+import { GlobalContext } from 'context/global.context';
 
 axe.init();
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <ModalProvider>
+    <GlobalContext>
       <AppLayout>
         <Component {...pageProps} />
       </AppLayout>
-    </ModalProvider>
+    </GlobalContext>
   );
 };
 

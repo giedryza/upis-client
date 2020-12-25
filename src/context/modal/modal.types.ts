@@ -1,3 +1,5 @@
+import { Action, Reducer } from 'utils/context/types';
+
 export enum ModalKey {
   TestModal = 'test-modal',
 }
@@ -10,9 +12,13 @@ export enum ModalActionTypes {
   SetActiveModal,
 }
 
-export type ModalActions = {
+export type ModalPayloads = {
   [ModalActionTypes.SetActiveModal]: ModalKey | null;
 };
+
+export type ModalActions = Action<ModalPayloads>;
+
+export type ModalReducer = Reducer<ModalState, ModalPayloads>;
 
 export interface ModalContext {
   modalState: ModalState;
