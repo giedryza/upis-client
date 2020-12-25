@@ -1,6 +1,6 @@
 import { Portal } from 'ui/portal/portal.component';
-import { useModalContext } from 'context/modal/modal.context';
-import { ModalKey } from 'context/modal/modal.types';
+import { useModalContext } from 'state/modal/modal.context';
+import { ModalKey } from 'state/modal/modal.types';
 
 const Modal = () => {
   const { modalState, modalActions } = useModalContext();
