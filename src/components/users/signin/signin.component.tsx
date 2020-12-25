@@ -5,8 +5,8 @@ import styles from './signin.module.scss';
 
 import { Input } from 'ui/input/input.component';
 import { Button } from 'ui/button/button.component';
-import { http } from 'utils/lib/http/http.lib';
-import { uri } from 'utils/lib/http/http.constants';
+import { http } from 'utils/libs/http/http.lib';
+import { uri } from 'utils/libs/http/http.constants';
 
 const Signin: FC = () => {
   const [email, setEmail] = useState('');

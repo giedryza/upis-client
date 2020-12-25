@@ -1,6 +1,6 @@
 import { isServer } from 'utils/common/is-server';
 
-export class Axe {
+class Axe {
   get isAvailable() {
     return !isServer() && process.env.NODE_ENV === 'development';
   }

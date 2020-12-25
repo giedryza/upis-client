@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 
 import 'styles/index.scss';
 
-import { axe } from 'utils/dev-tools/axe';
+import { axe } from 'utils/tools/axe';
 import { AppLayout } from 'layouts/app/app.layout';
 
 axe.init();
