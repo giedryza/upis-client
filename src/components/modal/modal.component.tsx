@@ -1,21 +1,28 @@
-import { useState } from 'react';
-
 import { Portal } from 'ui/portal/portal.component';
+import { useModalContext } from 'context/modal/modal.context';
+import { ModalKey } from 'context/modal/modal.types';
 
 const Modal = () => {
-  const [open, setOpen] = useState(false);
+  const { modalState, modalActions } = useModalContext();
 
   return (
     <>
-      <button type="button" onClick={() => setOpen(true)}>
+      <h1>active modal: {modalState.activeModal}</h1>
+      <button
+        type="button"
+        onClick={() => modalActions.setActiveModal(ModalKey.TestModal)}
+      >
         Open Modal
       </button>
-      {open && (
+      {modalState.activeModal === ModalKey.TestModal && (
         <Portal selector="#modal">
           <div className="backdrop">
             <div className="modal">
               <p>This modal is rendered using portals</p>
-              <button type="button" onClick={() => setOpen(false)}>
+              <button
+                type="button"
+                onClick={() => modalActions.setActiveModal(null)}
+              >
                 Close Modal
               </button>
             </div>

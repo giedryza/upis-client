@@ -1,7 +1,7 @@
-import { useEffect, MutableRefObject } from 'react';
+import { useEffect, RefObject } from 'react';
 
 export const useOnClickOutside = <T extends HTMLElement>(
-  ref: MutableRefObject<T>,
+  ref: RefObject<T>,
   handler: () => void
 ) => {
   useEffect(() => {

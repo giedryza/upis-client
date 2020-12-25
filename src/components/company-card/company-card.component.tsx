@@ -28,9 +28,9 @@ interface Props {
   logo: string;
   name: string;
   toursTotal: number;
-  website: string;
-  socials: Social[];
   slug: string;
+  website?: string;
+  socials?: Social[];
 }
 
 const CompanyCard: FC<Props> = ({
@@ -38,7 +38,7 @@ const CompanyCard: FC<Props> = ({
   name,
   toursTotal,
   website,
-  socials,
+  socials = [],
   slug,
 }) => {
   const companyUrl = `/companies/${encodeURIComponent(slug)}`;

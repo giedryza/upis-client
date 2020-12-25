@@ -4,6 +4,11 @@ const Home = () => {
   return (
     <div>
       <h1>next</h1>
+      <h1>next</h1>
+      <h1>next</h1>
+      <h1>next</h1>
+      <h1>next</h1>
+      <h1>next</h1>
       <Modal />
     </div>
   );

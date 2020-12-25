@@ -13,7 +13,7 @@ const AnchorLink: FC<Props> = ({ href, label, target = '_self' }) => {
     <a
       href={`${prefix}${href}`}
       target={target}
-      rel={target === '_blank' && 'noopener noreferrer'}
+      rel={target === '_blank' ? 'noopener noreferrer' : undefined}
     >
       {label}
     </a>
