@@ -43,6 +43,7 @@
         "aspects": ["invalidHref", "preferButton"]
       }
     ],
+    "no-console": ["warn", { "allow": ["info", "error"] }],
     "import/prefer-default-export": "off",
     "import/extensions": [
       "error",
@@ -70,6 +71,7 @@
         "newlines-between": "always"
       }
     ],
+    "consistent-return": "off",
     "class-methods-use-this": "off",
     "no-underscore-dangle": "off",
     "no-nested-ternary": "off"
