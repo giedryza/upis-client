@@ -1,4 +1,4 @@
-import { baseUrl } from './http.constants';
+import { endpoints } from './http.constants';
 
 interface Config {
   method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
@@ -24,7 +24,7 @@ export const http = async (endpoint: string, config: Config = {}) => {
     body: body ? JSON.stringify(body) : undefined,
   };
 
-  const response = await fetch(`${baseUrl}/${endpoint}`, init);
+  const response = await fetch(`${endpoints.baseUrl}/${endpoint}`, init);
 
   const json = await response.json();
 
