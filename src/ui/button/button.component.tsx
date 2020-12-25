@@ -88,8 +88,8 @@ const Button: FC<Props> = ({
       styles[`icon-${iconPlacement}`],
       styles[`text-${textAlign}`],
       {
-        [styles.iconButton]: icon && !label,
-        [styles.block]: block,
+        [styles.iconButton as string]: icon && !label,
+        [styles.block as string]: block,
       }
     ),
     id,
