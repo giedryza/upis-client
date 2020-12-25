@@ -1,5 +1,5 @@
 const config = {
-  domain: 'http://localhost:4000',
+  root: 'http://localhost:4000',
   version: 'api/v1',
   paths: {
     users: 'users',
@@ -8,7 +8,7 @@ const config = {
 };
 
 export const uri = {
-  baseUrl: `${config.domain}/${config.version}`,
+  baseUrl: `${config.root}/${config.version}`,
   endpoints: {
     users: {
       signup: `${config.paths.users}/signup`,
