@@ -7,7 +7,7 @@ const config = {
   },
 };
 
-export const endpoints = {
+export const uri = {
   baseUrl: `${config.domain}/${config.version}`,
   endpoints: {
     users: {
