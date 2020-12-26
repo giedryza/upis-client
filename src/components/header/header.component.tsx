@@ -6,6 +6,9 @@ import styles from './header.module.scss';
 import Logo from 'components/logo/logo.vector.svg';
 import { IconName } from 'ui/icon/icon.component';
 import { Dropdown } from 'ui/dropdown/dropdown.component';
+import { List } from 'ui/dropdown/parts/list/list.component';
+import { Layout } from 'ui/dropdown/parts/layout/layout.component';
+import { DropdownKey } from 'state/dropdown/dropdown.types';
 
 interface Props {}
 
@@ -21,6 +24,42 @@ const Header: FC<Props> = () => {
         <ul>
           <li>
             <Dropdown
+              id={DropdownKey.Test}
+              position="bottom-right"
+              menuButton={{
+                ariaLabel: 'Account menu',
+                icon: IconName.ChevronDown,
+                styleType: 'ghost',
+                size: 'lg',
+              }}
+            >
+              <Layout id={DropdownKey.Test} onSubmit={() => {}}>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo
+                  laudantium aut, pariatur esse corporis architecto voluptates
+                  vero eveniet ducimus neque.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo
+                  laudantium aut, pariatur esse corporis architecto voluptates
+                  vero eveniet ducimus neque.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo
+                  laudantium aut, pariatur esse corporis architecto voluptates
+                  vero eveniet ducimus neque.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo
+                  laudantium aut, pariatur esse corporis architecto voluptates
+                  vero eveniet ducimus neque.
+                </p>
+              </Layout>
+            </Dropdown>
+          </li>
+          <li>
+            <Dropdown
+              id={DropdownKey.LanguageSelect}
               position="bottom-right"
               menuButton={{
                 ariaLabel: 'Language menu',
@@ -28,22 +67,27 @@ const Header: FC<Props> = () => {
                 styleType: 'ghost',
                 size: 'lg',
               }}
-              items={[
-                {
-                  label: 'English',
-                  icon: IconName.FlagEn,
-                  url: '/en',
-                },
-                {
-                  label: 'Lietuvių',
-                  icon: IconName.FlagLt,
-                  url: '/lt',
-                },
-              ]}
-            />
+            >
+              <List
+                id={DropdownKey.LanguageSelect}
+                items={[
+                  {
+                    label: 'English',
+                    icon: IconName.FlagEn,
+                    url: '/en',
+                  },
+                  {
+                    label: 'Lietuvių',
+                    icon: IconName.FlagLt,
+                    url: '/lt',
+                  },
+                ]}
+              />
+            </Dropdown>
           </li>
           <li>
             <Dropdown
+              id={DropdownKey.AccountMenu}
               position="bottom-right"
               menuButton={{
                 ariaLabel: 'Account menu',
@@ -51,19 +95,23 @@ const Header: FC<Props> = () => {
                 styleType: 'ghost',
                 size: 'lg',
               }}
-              items={[
-                {
-                  label: 'View profile',
-                  icon: IconName.User,
-                  url: '/profile',
-                },
-                {
-                  label: 'Sign out',
-                  icon: IconName.Exit,
-                  onClick: () => {},
-                },
-              ]}
-            />
+            >
+              <List
+                id={DropdownKey.AccountMenu}
+                items={[
+                  {
+                    label: 'View profile',
+                    icon: IconName.User,
+                    url: '/profile',
+                  },
+                  {
+                    label: 'Sign out',
+                    icon: IconName.Exit,
+                    onClick: () => {},
+                  },
+                ]}
+              />
+            </Dropdown>
           </li>
         </ul>
       </nav>

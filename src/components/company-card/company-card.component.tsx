@@ -80,7 +80,6 @@ const CompanyCard: FC<Props> = ({
             <li key={social._id}>
               <Button
                 icon={socialIconByType[social.type]}
-                iconPlacement="left"
                 ariaLabel={socialNameByType[social.type]}
                 title={socialNameByType[social.type]}
                 url={social.link}

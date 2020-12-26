@@ -6,12 +6,9 @@ import { useModalActions } from './modal.actions';
 
 import { makeContext } from 'utils/context/make-context';
 
-export const [
-  useModalContext,
-  ModalContextProvider,
-] = makeContext<ModalContext>();
+const [useModalContext, ModalContextProvider] = makeContext<ModalContext>();
 
-export const ModalProvider: FC = ({ children }) => {
+const ModalProvider: FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   const actions = useModalActions(dispatch);
@@ -26,3 +23,5 @@ export const ModalProvider: FC = ({ children }) => {
 
   return <ModalContextProvider value={value}>{children}</ModalContextProvider>;
 };
+
+export { ModalProvider, useModalContext };

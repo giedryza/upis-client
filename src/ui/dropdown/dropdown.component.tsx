@@ -1,10 +1,13 @@
-import { FC, KeyboardEvent, useCallback, useRef, useState } from 'react';
+import { FC, KeyboardEvent, useRef } from 'react';
 import clsx from 'clsx';
 
 import styles from './dropdown.module.scss';
 
 import { Button, Props as ButtonProps } from 'ui/button/button.component';
 import { useOnClickOutside } from 'utils/hooks/use-on-click-outside.hook';
+import { DropdownKey } from 'state/dropdown/dropdown.types';
+import { useDropdownContext } from 'state/dropdown/dropdown.context';
+import { isDropdownActive } from 'state/dropdown/dropdown.selectors';
 
 type MenuButton = Pick<
   ButtonProps,
@@ -18,40 +21,39 @@ type MenuButton = Pick<
   | 'ariaLabel'
 >;
 
-type MenuItem = {
-  label: string;
-  icon?: ButtonProps['icon'];
-  url?: ButtonProps['url'];
-  target?: ButtonProps['target'];
-  onClick?: ButtonProps['onClick'];
-};
-
 interface Props {
+  id: DropdownKey;
   menuButton: MenuButton;
-  items?: MenuItem[];
   position?: `${'top' | 'bottom'}-${'left' | 'right'}`;
 }
 
 const Dropdown: FC<Props> = ({
+  id,
   menuButton,
   position = 'bottom-left',
-  items = [],
+  children,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const { dropdownState, dropdownActions } = useDropdownContext();
 
-  const menuButtonId = menuButton.label || menuButton.ariaLabel;
+  const onButtonClick = () => {
+    const payload = isDropdownActive(dropdownState, id) ? null : id;
 
-  const onMenuClick = () => setIsOpen((prevIsOpen) => !prevIsOpen);
+    dropdownActions.setActiveDropdown(payload);
+  };
 
   const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Escape' && isOpen) {
-      setIsOpen(false);
+    if (e.key === 'Escape' && isDropdownActive(dropdownState, id)) {
+      dropdownActions.setActiveDropdown(null);
     }
   };
 
-  const onClickOutside = useCallback(() => setIsOpen(false), []);
+  const onClickOutside = () => {
+    if (isDropdownActive(dropdownState, id)) {
+      dropdownActions.setActiveDropdown(null);
+    }
+  };
 
   useOnClickOutside(containerRef, onClickOutside);
 
@@ -59,36 +61,13 @@ const Dropdown: FC<Props> = ({
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div onKeyDown={onKeyDown} className={styles.container} ref={containerRef}>
       <Button
-        onClick={onMenuClick}
-        ariaHasPopup={!!items.length}
-        ariaExpanded={isOpen}
-        id={menuButtonId}
+        onClick={onButtonClick}
+        ariaHasPopup
+        ariaExpanded={isDropdownActive(dropdownState, id)}
+        id={id}
         {...menuButton}
       />
-      {!!items.length && (
-        <ul
-          className={clsx(styles[position])}
-          role="menu"
-          aria-labelledby={menuButtonId}
-        >
-          {items.map((item) => (
-            <li role="none" key={item.label}>
-              <Button
-                icon={item.icon}
-                label={item.label}
-                onClick={item.onClick}
-                url={item.url}
-                target={item.target}
-                styleType="ghost"
-                textAlign="left"
-                size="sm"
-                block
-                role="menuitem"
-              />
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className={clsx(styles.dropdown, styles[position])}>{children}</div>
     </div>
   );
 };

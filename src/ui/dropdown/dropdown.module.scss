@@ -1,19 +1,17 @@
 .container {
   position: relative;
 
-  button[aria-expanded='false'] + ul[role='menu'] {
+  button[aria-expanded='false'] + .dropdown {
     display: none;
   }
 
-  button[aria-expanded='true'] + ul[role='menu'] {
+  button[aria-expanded='true'] + .dropdown {
     display: block;
   }
 
-  ul[role='menu'] {
+  > .dropdown {
     position: absolute;
 
-    min-width: 17.5rem;
-    padding: 0.5rem 0;
     background-color: var(--color-white);
     border-radius: var(--border-radius-sm);
     box-shadow: var(--shadow-default);
@@ -37,9 +35,5 @@
     &.bottom-right {
       right: 0;
     }
-  }
-
-  li[role='none'] {
-    display: block;
   }
 }
