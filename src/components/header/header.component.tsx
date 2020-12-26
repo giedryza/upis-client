@@ -33,7 +33,11 @@ const Header: FC<Props> = () => {
                 size: 'lg',
               }}
             >
-              <Layout id={DropdownKey.Test} onSubmit={() => {}}>
+              <Layout
+                id={DropdownKey.Test}
+                title="Testing dropdown"
+                onSubmit={() => {}}
+              >
                 <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo
                   laudantium aut, pariatur esse corporis architecto voluptates

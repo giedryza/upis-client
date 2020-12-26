@@ -10,11 +10,18 @@ import { useDropdownContext } from 'state/dropdown/dropdown.context';
 
 interface Props {
   id: DropdownKey;
+  title?: string;
   onSubmit: () => void;
   onCancel?: () => void;
 }
 
-const Layout: FC<Props> = ({ id, onSubmit, onCancel, children }) => {
+const Layout: FC<Props> = ({
+  id,
+  title = '',
+  onSubmit,
+  onCancel,
+  children,
+}) => {
   const { dropdownState, dropdownActions } = useDropdownContext();
 
   const handleCancel = () => {
@@ -30,7 +37,7 @@ const Layout: FC<Props> = ({ id, onSubmit, onCancel, children }) => {
   return (
     <div className={styles.container} aria-labelledby={id}>
       <header>
-        <h2>Dialog title</h2>
+        <h2>{title}</h2>
         <ul>
           <li>
             <Button
