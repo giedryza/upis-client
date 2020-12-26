@@ -5,9 +5,9 @@ import styles from './header.module.scss';
 
 import Logo from 'components/logo/logo.vector.svg';
 import { IconName } from 'ui/icon/icon.component';
-import { Dropdown } from 'ui/dropdown/dropdown.component';
+import { Dropdown } from 'components/dropdown/dropdown.container';
+import { Layout } from 'components/dropdown/parts/layout/layout.container';
 import { List } from 'ui/dropdown/parts/list/list.component';
-import { Layout } from 'ui/dropdown/parts/layout/layout.component';
 import { DropdownKey } from 'state/dropdown/dropdown.types';
 
 interface Props {}

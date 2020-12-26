@@ -1,13 +1,10 @@
-import { FC, KeyboardEvent, useRef } from 'react';
+import { FC, useRef, KeyboardEvent } from 'react';
 import clsx from 'clsx';
 
 import styles from './dropdown.module.scss';
 
 import { Button, Props as ButtonProps } from 'ui/button/button.component';
 import { useOnClickOutside } from 'utils/hooks/use-on-click-outside.hook';
-import { DropdownKey } from 'state/dropdown/dropdown.types';
-import { useDropdownContext } from 'state/dropdown/dropdown.context';
-import { isDropdownActive } from 'state/dropdown/dropdown.selectors';
 
 type MenuButton = Pick<
   ButtonProps,
@@ -22,48 +19,50 @@ type MenuButton = Pick<
 >;
 
 interface Props {
-  id: DropdownKey;
+  id: string;
   menuButton: MenuButton;
   position?: `${'top' | 'bottom'}-${'left' | 'right'}`;
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
 }
 
 const Dropdown: FC<Props> = ({
   id,
   menuButton,
   position = 'bottom-left',
+  isOpen,
+  onOpen,
+  onClose,
   children,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const { dropdownState, dropdownActions } = useDropdownContext();
+  const handleToggle = () => {
+    isOpen ? onClose() : onOpen();
+  };
 
-  const onButtonClick = () => {
-    const payload = isDropdownActive(dropdownState, id) ? null : id;
-
-    dropdownActions.setActiveDropdown(payload);
+  const handleClose = () => {
+    if (isOpen) {
+      onClose();
+    }
   };
 
   const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Escape' && isDropdownActive(dropdownState, id)) {
-      dropdownActions.setActiveDropdown(null);
+    if (e.key === 'Escape') {
+      handleClose();
     }
   };
 
-  const onClickOutside = () => {
-    if (isDropdownActive(dropdownState, id)) {
-      dropdownActions.setActiveDropdown(null);
-    }
-  };
-
-  useOnClickOutside(containerRef, onClickOutside);
+  useOnClickOutside(containerRef, handleClose);
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div onKeyDown={onKeyDown} className={styles.container} ref={containerRef}>
       <Button
-        onClick={onButtonClick}
+        onClick={handleToggle}
         ariaHasPopup
-        ariaExpanded={isDropdownActive(dropdownState, id)}
+        ariaExpanded={isOpen}
         id={id}
         {...menuButton}
       />

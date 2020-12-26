@@ -4,15 +4,12 @@ import styles from './layout.module.scss';
 
 import { Button } from 'ui/button/button.component';
 import { IconName } from 'ui/icon/icon.types';
-import { DropdownKey } from 'state/dropdown/dropdown.types';
-import { isDropdownActive } from 'state/dropdown/dropdown.selectors';
-import { useDropdownContext } from 'state/dropdown/dropdown.context';
 
 interface Props {
-  id: DropdownKey;
+  id: string;
   title?: string;
   onSubmit: () => void;
-  onCancel?: () => void;
+  onCancel: () => void;
 }
 
 const Layout: FC<Props> = ({
@@ -22,18 +19,6 @@ const Layout: FC<Props> = ({
   onCancel,
   children,
 }) => {
-  const { dropdownState, dropdownActions } = useDropdownContext();
-
-  const handleCancel = () => {
-    if (onCancel) {
-      onCancel();
-    }
-
-    if (isDropdownActive(dropdownState, id)) {
-      dropdownActions.setActiveDropdown(null);
-    }
-  };
-
   return (
     <div className={styles.container} aria-labelledby={id}>
       <header>
@@ -44,7 +29,7 @@ const Layout: FC<Props> = ({
               icon={IconName.Close}
               ariaLabel="close"
               title="close"
-              onClick={handleCancel}
+              onClick={onCancel}
               styleType="ghost"
               size="xs"
             />
@@ -57,7 +42,7 @@ const Layout: FC<Props> = ({
           <li>
             <Button
               label="Close"
-              onClick={handleCancel}
+              onClick={onCancel}
               styleType="ghost"
               size="sm"
             />
