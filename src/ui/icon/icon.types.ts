@@ -3,6 +3,7 @@ export enum IconName {
   ChevronLeft = 'chevron-left',
   ChevronRight = 'chevron-right',
   ChevronUp = 'chevron-up',
+  Close = 'close',
   Exit = 'exit',
   Facebook = 'facebook',
   FlagEn = 'flag-en',
