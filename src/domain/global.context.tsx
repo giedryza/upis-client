@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import { ModalProvider } from 'state/modal/modal.context';
-import { DropdownProvider } from 'state/dropdown/dropdown.context';
+import { ModalProvider } from 'domain/modal/modal.context';
+import { DropdownProvider } from 'domain/dropdown/dropdown.context';
 
 export const GlobalContext: FC = ({ children }) => {
   return (

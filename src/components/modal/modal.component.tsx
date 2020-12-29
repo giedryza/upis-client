@@ -1,8 +1,10 @@
-import { Portal } from 'ui/portal/portal.component';
-import { useModalContext } from 'state/modal/modal.context';
-import { ModalKey } from 'state/modal/modal.types';
+import { FC } from 'react';
 
-const Modal = () => {
+import { Portal } from 'ui/portal/portal.component';
+import { useModalContext } from 'domain/modal/modal.context';
+import { ModalKey } from 'domain/modal/modal.types';
+
+const Modal: FC = () => {
   const { modalState, modalActions } = useModalContext();
 
   return (

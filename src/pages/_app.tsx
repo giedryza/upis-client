@@ -4,7 +4,7 @@ import 'styles/index.scss';
 
 import { axe } from 'utils/tools/axe';
 import { AppLayout } from 'layouts/app/app.layout';
-import { GlobalContext } from 'state/global.context';
+import { GlobalContext } from 'domain/global.context';
 
 axe.init();
 

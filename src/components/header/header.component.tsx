@@ -8,7 +8,7 @@ import { IconName } from 'ui/icon/icon.component';
 import { Dropdown } from 'components/dropdown/dropdown.container';
 import { Layout } from 'components/dropdown/parts/layout/layout.container';
 import { List } from 'ui/dropdown/parts/list/list.component';
-import { DropdownKey } from 'state/dropdown/dropdown.types';
+import { DropdownKey } from 'domain/dropdown/dropdown.types';
 
 interface Props {}
 

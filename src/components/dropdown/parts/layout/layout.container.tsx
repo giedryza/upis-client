@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import { DropdownKey } from 'state/dropdown/dropdown.types';
-import { isDropdownActive } from 'state/dropdown/dropdown.selectors';
-import { useDropdownContext } from 'state/dropdown/dropdown.context';
+import { DropdownKey } from 'domain/dropdown/dropdown.types';
+import { isDropdownActive } from 'domain/dropdown/dropdown.selectors';
+import { useDropdownContext } from 'domain/dropdown/dropdown.context';
 import { Layout as LayoutComponent } from 'ui/dropdown/parts/layout/layout.component';
 
 interface Props {

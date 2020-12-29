@@ -3,7 +3,7 @@ import { FC } from 'react';
 import styles from './list.module.scss';
 
 import { Button, Props as ButtonProps } from 'ui/button/button.component';
-import { DropdownKey } from 'state/dropdown/dropdown.types';
+import { DropdownKey } from 'domain/dropdown/dropdown.types';
 
 interface MenuItem {
   label: string;

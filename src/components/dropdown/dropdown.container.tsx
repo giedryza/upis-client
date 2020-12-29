@@ -1,9 +1,9 @@
 import { FC, useMemo } from 'react';
 
 import { Props as ButtonProps } from 'ui/button/button.component';
-import { DropdownKey } from 'state/dropdown/dropdown.types';
-import { useDropdownContext } from 'state/dropdown/dropdown.context';
-import { isDropdownActive } from 'state/dropdown/dropdown.selectors';
+import { DropdownKey } from 'domain/dropdown/dropdown.types';
+import { useDropdownContext } from 'domain/dropdown/dropdown.context';
+import { isDropdownActive } from 'domain/dropdown/dropdown.selectors';
 import { Dropdown as DropdownComponent } from 'ui/dropdown/dropdown.component';
 
 type MenuButton = Pick<
