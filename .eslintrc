@@ -59,6 +59,9 @@
       "error",
       { "ignoreRestSiblings": true }
     ],
+    "no-useless-constructor": "off",
+    "@typescript-eslint/no-useless-constructor": "error",
+    "no-empty-function": ["error", { "allow": ["constructors"] }],
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": "error",
     "no-use-before-define": "off",
