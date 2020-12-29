@@ -1,6 +1,6 @@
 /* eslint-disable react/button-has-type */
 import { FC, AllHTMLAttributes, useMemo, AriaAttributes } from 'react';
-import Link from 'next/link';
+import Link, { LinkProps } from 'next/link';
 import clsx from 'clsx';
 
 import styles from './button.module.scss';
@@ -12,7 +12,7 @@ export interface Props {
   label?: string;
   title?: string;
   onClick?: () => void;
-  url?: string;
+  url?: string | LinkProps;
   type?: JSX.IntrinsicElements['button']['type'];
   target?: '_self' | '_blank' | '_parent' | '_top';
   icon?: IconName;
@@ -48,9 +48,13 @@ const Button: FC<Props> = ({
   ariaHasPopup,
   ariaExpanded,
 }) => {
-  const parsedUrl = url
-    ? `${url.startsWith('http') || url.startsWith('/') ? '' : '//'}${url}`
-    : '';
+  const parsedUrl =
+    url && typeof url === 'string'
+      ? `${url.startsWith('http') || url.startsWith('/') ? '' : '//'}${url}`
+      : '';
+
+  const getLinkProps = (link: string | LinkProps) =>
+    typeof link === 'string' ? { href: link } : link;
 
   const content = useMemo(
     () => (
@@ -110,7 +114,7 @@ const Button: FC<Props> = ({
       {content}
     </a>
   ) : url ? (
-    <Link href={parsedUrl}>
+    <Link {...getLinkProps(url)}>
       <a {...attributes}>{content}</a>
     </Link>
   ) : (

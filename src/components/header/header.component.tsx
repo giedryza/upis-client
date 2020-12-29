@@ -9,6 +9,7 @@ import { Dropdown } from 'components/dropdown/dropdown.container';
 import { Layout } from 'components/dropdown/parts/layout/layout.container';
 import { List } from 'ui/dropdown/parts/list/list.component';
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
+import { LanguageSelect } from 'components/header/parts/language-select/language-select.component';
 
 interface Props {}
 
@@ -62,32 +63,7 @@ const Header: FC<Props> = () => {
             </Dropdown>
           </li>
           <li>
-            <Dropdown
-              id={DropdownKey.LanguageSelect}
-              position="bottom-right"
-              menuButton={{
-                ariaLabel: 'Language menu',
-                icon: IconName.Globe,
-                styleType: 'ghost',
-                size: 'lg',
-              }}
-            >
-              <List
-                id={DropdownKey.LanguageSelect}
-                items={[
-                  {
-                    label: 'English',
-                    icon: IconName.FlagEn,
-                    url: '/en',
-                  },
-                  {
-                    label: 'Lietuvių',
-                    icon: IconName.FlagLt,
-                    url: '/lt',
-                  },
-                ]}
-              />
-            </Dropdown>
+            <LanguageSelect />
           </li>
           <li>
             <Dropdown
