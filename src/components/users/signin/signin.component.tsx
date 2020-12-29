@@ -5,7 +5,7 @@ import styles from './signin.module.scss';
 
 import { Input } from 'ui/input/input.component';
 import { Button } from 'ui/button/button.component';
-import { http } from 'utils/libs/http/http.lib';
+import { Http } from 'utils/libs/http/http.lib';
 import { uri } from 'utils/libs/http/http.constants';
 
 const Signin: FC = () => {
@@ -16,10 +16,9 @@ const Signin: FC = () => {
     e.preventDefault();
 
     try {
-      await http(uri.endpoints.users.signin, {
-        method: 'POST',
+      await new Http(uri.endpoints.users.signin, {
         body: { email, password },
-      });
+      }).post();
 
       Router.push('/');
     } catch (error) {

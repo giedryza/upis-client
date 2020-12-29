@@ -4,47 +4,96 @@ import { uri } from './http.constants';
 
 import { isServer } from 'utils/common/is-server';
 
+type Method = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
+
 interface Config {
-  method?: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
   headers?: Record<string, string>;
   body?: Record<string, any>;
   req?: IncomingMessage;
 }
 
-const getServerHeaders = (req?: IncomingMessage) => {
-  const headers = req && isServer() ? req.headers : {};
+export class Http<T = any> {
+  #method: Method = 'GET';
 
-  return headers as Record<string, string>;
-};
+  #baseUrl: string = uri.baseUrl;
 
-export const http = async (endpoint: string, config: Config = {}) => {
-  const { method = 'GET', headers = {}, body = null, req } = config;
-  const { 'Content-Type': contentType = 'application/json' } = headers;
+  constructor(private endpoint: string, private config: Config = {}) {}
 
-  const serverHeaders = getServerHeaders(req);
+  private get url(): string {
+    return `${this.#baseUrl}/${this.endpoint}`;
+  }
 
-  const defaultHeaders = {
-    ...(['POST', 'PATCH', 'PUT'].includes(method)
-      ? { 'Content-Type': contentType }
-      : {}),
+  private get defaultHeaders(): Record<string, string> {
+    const { headers = {} } = this.config;
+    const { 'Content-Type': contentType = 'application/json' } = headers;
+
+    return {
+      ...(['POST', 'PATCH', 'PUT'].includes(this.#method)
+        ? { 'Content-Type': contentType }
+        : {}),
+    };
+  }
+
+  private get serverHeaders(): Record<string, string> {
+    const { req } = this.config;
+
+    const headers = req && isServer() ? req.headers : {};
+
+    return headers as Record<string, string>;
+  }
+
+  private get init(): RequestInit {
+    const { headers = {}, body } = this.config;
+
+    return {
+      method: this.#method,
+      headers: new Headers({
+        ...this.defaultHeaders,
+        ...this.serverHeaders,
+        ...headers,
+      }),
+      body: body ? JSON.stringify(body) : body,
+      credentials: 'include',
+    };
+  }
+
+  #request = async (): Promise<T> => {
+    const response = await fetch(this.url, this.init);
+
+    const json = await response.json();
+
+    if (!response.ok) return Promise.reject(json);
+
+    return json;
   };
 
-  const init: RequestInit = {
-    method,
-    headers: new Headers({
-      ...defaultHeaders,
-      ...serverHeaders,
-      ...headers,
-    }),
-    body: body ? JSON.stringify(body) : undefined,
-    credentials: 'include',
+  get = () => {
+    this.#method = 'GET';
+
+    return this.#request();
   };
 
-  const response = await fetch(`${uri.baseUrl}/${endpoint}`, init);
+  post = () => {
+    this.#method = 'POST';
 
-  const json = await response.json();
+    return this.#request();
+  };
 
-  if (!response.ok) return Promise.reject(json);
+  patch = () => {
+    this.#method = 'PATCH';
 
-  return json;
-};
+    return this.#request();
+  };
+
+  put = () => {
+    this.#method = 'PUT';
+
+    return this.#request();
+  };
+
+  delete = () => {
+    this.#method = 'DELETE';
+
+    return this.#request();
+  };
+}
