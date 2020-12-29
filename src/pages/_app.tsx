@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { AppProps } from 'next/app';
 
 import 'styles/index.scss';
@@ -9,7 +8,7 @@ import { GlobalContext } from 'state/global.context';
 
 axe.init();
 
-const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <GlobalContext>
       <AppLayout>
@@ -18,5 +17,20 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
     </GlobalContext>
   );
 };
+
+// MyApp.getInitialProps = async ({ Component, ctx }: AppContext) => {
+//   const { data } = await http(uri.endpoints.users.me, {
+//     req: ctx.req,
+//   });
+
+//   const pageProps = Component.getInitialProps
+//     ? await Component.getInitialProps(ctx)
+//     : {};
+
+//   return {
+//     pageProps,
+//     user: data.user,
+//   };
+// };
 
 export default MyApp;

@@ -14,6 +14,7 @@ export const uri = {
       signup: `${config.paths.users}/signup`,
       signin: `${config.paths.users}/signin`,
       signout: `${config.paths.users}/signout`,
+      me: `${config.paths.users}/me`,
     },
     companies: {
       collection: config.paths.companies,

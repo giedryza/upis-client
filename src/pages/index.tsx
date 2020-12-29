@@ -1,6 +1,8 @@
+import { NextPage } from 'next';
+
 import { Modal } from 'components/modal/modal.component';
 
-const Home = () => {
+const Home: NextPage = () => {
   return (
     <div>
       <h1>next</h1>
