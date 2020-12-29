@@ -4,5 +4,6 @@ raw/
 .next/
 .vscode/
 
+.env.local
 .env.development
 .env.production

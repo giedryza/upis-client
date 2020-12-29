@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 
 import styles from './header.module.scss';
+import { LanguageSelect } from './parts/language-select/language-select.component';
 
 import Logo from 'components/logo/logo.vector.svg';
 import { IconName } from 'ui/icon/icon.component';
@@ -9,7 +10,6 @@ import { Dropdown } from 'components/dropdown/dropdown.container';
 import { Layout } from 'components/dropdown/parts/layout/layout.container';
 import { List } from 'ui/dropdown/parts/list/list.component';
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
-import { LanguageSelect } from 'components/header/parts/language-select/language-select.component';
 
 interface Props {}
 

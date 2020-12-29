@@ -1,5 +1,5 @@
 const config = {
-  root: 'http://localhost:4000',
+  root: process.env.NEXT_PUBLIC_HOST_API,
   version: 'api/v1',
   paths: {
     users: 'users',
