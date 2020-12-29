@@ -106,7 +106,7 @@ const Header: FC<Props> = () => {
                   {
                     label: 'View profile',
                     icon: IconName.User,
-                    url: '/profile',
+                    url: '/users/signin',
                   },
                   {
                     label: 'Sign out',
