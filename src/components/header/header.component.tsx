@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 
 import styles from './header.module.scss';
+import { LanguageSelect } from './parts/language-select/language-select.component';
 
 import Logo from 'components/logo/logo.vector.svg';
 import { IconName } from 'ui/icon/icon.component';
@@ -62,32 +63,7 @@ const Header: FC<Props> = () => {
             </Dropdown>
           </li>
           <li>
-            <Dropdown
-              id={DropdownKey.LanguageSelect}
-              position="bottom-right"
-              menuButton={{
-                ariaLabel: 'Language menu',
-                icon: IconName.Globe,
-                styleType: 'ghost',
-                size: 'lg',
-              }}
-            >
-              <List
-                id={DropdownKey.LanguageSelect}
-                items={[
-                  {
-                    label: 'English',
-                    icon: IconName.FlagEn,
-                    url: '/en',
-                  },
-                  {
-                    label: 'Lietuvių',
-                    icon: IconName.FlagLt,
-                    url: '/lt',
-                  },
-                ]}
-              />
-            </Dropdown>
+            <LanguageSelect />
           </li>
           <li>
             <Dropdown
