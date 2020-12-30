@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
+import useTranslation from 'next-translate/useTranslation';
 
 import { Locale } from 'types/common/locales';
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
@@ -14,9 +15,10 @@ const iconByLocale: Record<Locale, IconName> = {
 
 const LanguageSelect: FC = () => {
   const { locale: currentLocale, asPath } = useRouter();
+  const { t } = useTranslation();
 
   const items = Object.values(Locale).map((locale) => ({
-    label: `translate.${locale}`,
+    label: t(`common:language.${locale}`),
     icon: iconByLocale[locale],
     url: {
       href: asPath,
@@ -29,7 +31,7 @@ const LanguageSelect: FC = () => {
       id={DropdownKey.LanguageSelect}
       position="bottom-right"
       menuButton={{
-        ariaLabel: 'Language menu',
+        ariaLabel: t('common:language.menu'),
         icon: iconByLocale[currentLocale as Locale],
         styleType: 'ghost',
         size: 'lg',
