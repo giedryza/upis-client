@@ -5,7 +5,7 @@ import styles from './list.module.scss';
 import { Button, Props as ButtonProps } from 'ui/button/button.component';
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
 
-interface MenuItem {
+export interface MenuItem {
   label: string;
   icon?: ButtonProps['icon'];
   url?: ButtonProps['url'];
