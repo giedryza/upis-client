@@ -96,6 +96,7 @@ const Button: FC<Props> = ({
         [styles.block as string]: block,
       }
     ),
+    onClick,
     id,
     title,
     role,
@@ -118,7 +119,7 @@ const Button: FC<Props> = ({
       <a {...attributes}>{content}</a>
     </Link>
   ) : (
-    <button {...attributes} type={type} disabled={disabled} onClick={onClick}>
+    <button {...attributes} type={type} disabled={disabled}>
       {content}
     </button>
   );

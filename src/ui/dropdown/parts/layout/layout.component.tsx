@@ -5,18 +5,26 @@ import styles from './layout.module.scss';
 import { Button } from 'ui/button/button.component';
 import { IconName } from 'ui/icon/icon.types';
 
+export type Labels = {
+  [K in 'submit' | 'cancel' | 'close']: string;
+};
+
 interface Props {
   id: string;
   title?: string;
+  labels: Labels;
   onSubmit: () => void;
+  onClose: () => void;
   onCancel: () => void;
 }
 
 const Layout: FC<Props> = ({
   id,
   title = '',
+  labels,
   onSubmit,
   onCancel,
+  onClose,
   children,
 }) => {
   return (
@@ -27,9 +35,9 @@ const Layout: FC<Props> = ({
           <li>
             <Button
               icon={IconName.Close}
-              ariaLabel="close"
-              title="close"
-              onClick={onCancel}
+              ariaLabel={labels.close}
+              title={labels.close}
+              onClick={onClose}
               styleType="ghost"
               size="xs"
             />
@@ -41,7 +49,7 @@ const Layout: FC<Props> = ({
         <ul>
           <li>
             <Button
-              label="Close"
+              label={labels.cancel}
               onClick={onCancel}
               styleType="ghost"
               size="sm"
@@ -49,7 +57,7 @@ const Layout: FC<Props> = ({
           </li>
           <li>
             <Button
-              label="Save"
+              label={labels.submit}
               onClick={onSubmit}
               styleType="primary"
               size="sm"

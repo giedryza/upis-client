@@ -1,6 +1,12 @@
 {
   "app": {
-    "slogan": "Baidarių nuoma ir maršrutai Lietuvoje"
+    "description": "Baidarių nuoma ir maršrutai Lietuvoje"
+  },
+  "actions": {
+    "close": "Uždaryti",
+    "cancel": "Atšaukti",
+    "submit": "Patvirtinti",
+    "save": "Išsaugoti"
   },
   "language": {
     "lt": "Lietuvių",

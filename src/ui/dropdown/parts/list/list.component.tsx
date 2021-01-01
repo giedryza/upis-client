@@ -5,7 +5,7 @@ import styles from './list.module.scss';
 import { Button, Props as ButtonProps } from 'ui/button/button.component';
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
 
-interface MenuItem {
+export interface MenuItem {
   label: string;
   icon?: ButtonProps['icon'];
   url?: ButtonProps['url'];
@@ -15,10 +15,10 @@ interface MenuItem {
 
 interface Props {
   id: DropdownKey;
-  items?: MenuItem[];
+  items: MenuItem[];
 }
 
-const List: FC<Props> = ({ id, items = [] }) => {
+const List: FC<Props> = ({ id, items }) => {
   return items.length ? (
     <ul className={styles.list} role="menu" aria-labelledby={id}>
       {items.map((item) => (
