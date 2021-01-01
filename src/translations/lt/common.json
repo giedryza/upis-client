@@ -1,6 +1,6 @@
 {
   "app": {
-    "slogan": "Baidarių nuoma ir maršrutai Lietuvoje"
+    "description": "Baidarių nuoma ir maršrutai Lietuvoje"
   },
   "actions": {
     "close": "Uždaryti",

@@ -25,9 +25,9 @@ const AppHead: FC<Props> = ({ title }) => {
     />
   ));
 
-  const slogan = t('common:app.slogan');
+  const description = t('common:app.description');
 
-  const appTitle = [APP_NAME, title, slogan].filter(isDefined).join(' | ');
+  const appTitle = [APP_NAME, title, description].filter(isDefined).join(' | ');
 
   return (
     <Head>

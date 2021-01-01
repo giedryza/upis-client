@@ -1,6 +1,6 @@
 {
   "app": {
-    "slogan": "Kayak rentals and tours in Lithuania"
+    "description": "Kayak rentals and tours in Lithuania"
   },
   "actions": {
     "close": "Close",
