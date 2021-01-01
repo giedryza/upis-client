@@ -2,6 +2,12 @@
   "app": {
     "slogan": "Kayak rentals and tours in Lithuania"
   },
+  "actions": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "save": "Save"
+  },
   "language": {
     "lt": "Lietuvių",
     "en": "English",
