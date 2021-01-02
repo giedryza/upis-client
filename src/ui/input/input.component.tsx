@@ -1,8 +1,16 @@
-import { FC, ChangeEvent, AllHTMLAttributes } from 'react';
+import {
+  forwardRef,
+  ChangeEvent,
+  FocusEvent,
+  AllHTMLAttributes,
+  RefObject,
+} from 'react';
 
 import styles from './input.module.scss';
 
-interface Props {
+type InputElement = HTMLInputElement | HTMLTextAreaElement;
+
+export interface Props {
   name: string;
   type?:
     | 'text'
@@ -16,52 +24,72 @@ interface Props {
   disabled?: boolean;
   readonly?: boolean;
   value?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange?: (e: ChangeEvent<InputElement>) => void;
+  onFocus?: (e: FocusEvent<InputElement>) => void;
+  onBlur?: (e: FocusEvent<InputElement>) => void;
   error?: string;
   info?: string;
   label?: string;
   placeholder?: string;
 }
 
-const Input: FC<Props> = ({
-  name,
-  type = 'text',
-  inputmode = 'text',
-  disabled,
-  readonly,
-  value,
-  onChange,
-  error,
-  info,
-  label,
-  placeholder,
-}) => {
-  const attributes: AllHTMLAttributes<
-    HTMLInputElement | HTMLTextAreaElement
-  > = {
-    name,
-    id: name,
-    placeholder,
-    disabled,
-    readOnly: readonly,
-    inputMode: inputmode,
-    value,
-    onChange,
-    'aria-describedby': 'info',
-    'aria-invalid': !!error,
-  };
+const Input = forwardRef<InputElement, Props>(
+  (
+    {
+      name,
+      type = 'text',
+      inputmode = 'text',
+      disabled,
+      readonly,
+      value,
+      onChange,
+      onFocus,
+      onBlur,
+      error,
+      info,
+      label,
+      placeholder,
+    },
+    ref
+  ) => {
+    const withInfo = !!(error || info);
 
-  return (
-    <div className={styles.input}>
-      {label && <label htmlFor={name}>{label}</label>}
-      {type === 'textarea' ? (
-        <textarea {...attributes} />
-      ) : (
-        <input type={type} {...attributes} />
-      )}
-      {(error || info) && <small id="info">{error || info}</small>}
-    </div>
-  );
-};
+    const attributes: AllHTMLAttributes<InputElement> = {
+      name,
+      id: name,
+      placeholder,
+      disabled,
+      readOnly: readonly,
+      inputMode: inputmode,
+      value,
+      onChange,
+      onFocus,
+      onBlur,
+      'aria-invalid': !!error,
+      ...(withInfo ? { 'aria-describedby': 'info' } : {}),
+    };
+
+    return (
+      <div className={styles.input}>
+        {label && <label htmlFor={name}>{label}</label>}
+
+        {type === 'textarea' ? (
+          <textarea
+            {...attributes}
+            ref={ref as RefObject<HTMLTextAreaElement>}
+          />
+        ) : (
+          <input
+            type={type}
+            {...attributes}
+            ref={ref as RefObject<HTMLInputElement>}
+          />
+        )}
+
+        {withInfo && <small id="info">{error || info}</small>}
+      </div>
+    );
+  }
+);
 
 export { Input };
