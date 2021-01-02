@@ -27,11 +27,12 @@ const AppHead: FC<Props> = ({ title }) => {
 
   const description = t('common:app.description');
 
-  const appTitle = [APP_NAME, title, description].filter(isDefined).join(' | ');
+  const appTitle = [APP_NAME, title].filter(isDefined).join(' | ');
 
   return (
     <Head>
       <title>{appTitle}</title>
+      <meta name="description" content={description} />
       {hreflangTags}
       <link rel="alternate" hrefLang="x-default" href={`${HOST}${pathname}`} />
     </Head>

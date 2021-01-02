@@ -2,6 +2,7 @@ import { IncomingMessage } from 'http';
 
 import { uri } from './http.constants';
 
+import { ApiError } from 'utils/libs/errors/api.error';
 import { isServer } from 'utils/common/is-server';
 
 type Method = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
@@ -62,7 +63,12 @@ export class Http<T = any> {
 
     const json = await response.json();
 
-    if (!response.ok) return Promise.reject(json);
+    if (!response.ok) {
+      const { statusText, status } = response;
+      const { data } = json;
+
+      throw new ApiError(statusText, status, data);
+    }
 
     return json;
   };
