@@ -6,10 +6,10 @@ import { LanguageSelect } from './parts/language-select/language-select.componen
 import { AccountMenu } from './parts/account-menu/account-menu.component';
 
 import Logo from 'components/logo/logo.vector.svg';
-import { IconName } from 'ui/icon/icon.component';
-import { Dropdown } from 'components/dropdown/dropdown.container';
-import { Layout } from 'components/dropdown/parts/layout/layout.container';
-import { DropdownKey } from 'domain/dropdown/dropdown.types';
+// import { IconName } from 'ui/icon/icon.component';
+// import { Dropdown } from 'components/dropdown/dropdown.container';
+// import { Layout } from 'components/dropdown/parts/layout/layout.container';
+// import { DropdownKey } from 'domain/dropdown/dropdown.types';
 
 const Header: FC = () => {
   return (
@@ -21,7 +21,7 @@ const Header: FC = () => {
       </Link>
       <nav className={styles.nav}>
         <ul>
-          <li>
+          {/* <li>
             <Dropdown
               id={DropdownKey.Test}
               position="bottom-right"
@@ -59,7 +59,7 @@ const Header: FC = () => {
                 </p>
               </Layout>
             </Dropdown>
-          </li>
+          </li> */}
           <li>
             <LanguageSelect />
           </li>
