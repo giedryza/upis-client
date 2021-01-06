@@ -1,12 +1,12 @@
 import { createContext, useContext } from 'react';
 
-export const makeContext = <ContextType>() => {
+export const contextFactory = <ContextType>() => {
   const context = createContext<ContextType | undefined>(undefined);
 
   const useCreatedContext = () => {
-    const c = useContext(context);
-    if (!c) throw new Error('Context is not within scope');
-    return c;
+    const ctx = useContext(context);
+    if (!ctx) throw new Error('Context is not within scope');
+    return ctx;
   };
 
   return [useCreatedContext, context.Provider] as const;

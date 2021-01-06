@@ -76,6 +76,7 @@
     ],
     "consistent-return": "off",
     "class-methods-use-this": "off",
+    "no-case-declarations": "off",
     "no-underscore-dangle": "off",
     "no-nested-ternary": "off",
     "no-unused-expressions": ["error", { "allowTernary": true }]

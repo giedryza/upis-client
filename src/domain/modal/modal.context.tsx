@@ -4,9 +4,9 @@ import { reducer, INITIAL_STATE } from './modal.reducer';
 import { ModalContext } from './modal.types';
 import { useModalActions } from './modal.actions';
 
-import { makeContext } from 'utils/context/make-context';
+import { contextFactory } from 'utils/context/context-factory';
 
-const [useModalContext, ModalContextProvider] = makeContext<ModalContext>();
+const [useModalContext, ModalContextProvider] = contextFactory<ModalContext>();
 
 const ModalProvider: FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
