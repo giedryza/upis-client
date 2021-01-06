@@ -12,6 +12,8 @@ import { uri } from 'utils/libs/http/http.constants';
 import { Errors } from 'utils/libs/errors/errors.lib';
 import { Input } from 'ui/input/input.component';
 import { ValidationRules } from 'types/common/forms';
+import { useAuthContext } from 'domain/auth/auth.context';
+import { Session } from 'domain/auth/auth.types';
 
 interface Values {
   email: string;
@@ -25,6 +27,9 @@ const INITIAL_VALUES: Values = {
 
 const Signin: FC = () => {
   const { t } = useTranslation();
+
+  const { authActions } = useAuthContext();
+
   const {
     register,
     handleSubmit,
@@ -50,10 +55,6 @@ const Signin: FC = () => {
         value: true,
         message: t('users:errors.password.empty'),
       },
-      minLength: {
-        value: 8,
-        message: t('users:errors.password.length'),
-      },
       maxLength: {
         value: 50,
         message: t('users:errors.password.length'),
@@ -63,9 +64,11 @@ const Signin: FC = () => {
 
   const onSubmit = async ({ email, password }: Values) => {
     try {
-      await new Http(uri.endpoints.users.signin, {
+      const { data } = await new Http<Session>(uri.endpoints.users.signin, {
         body: { email, password },
       }).post();
+
+      authActions.setSession(data);
 
       Router.push('/');
     } catch (error: unknown) {

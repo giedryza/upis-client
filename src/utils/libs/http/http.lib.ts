@@ -5,7 +5,7 @@ import { uri } from './http.constants';
 import { ApiError } from 'utils/libs/errors/api.error';
 import { isServer } from 'utils/common/is-server';
 
-export interface HttpResponse<D> {
+interface HttpResponse<D> {
   data: D;
 }
 
