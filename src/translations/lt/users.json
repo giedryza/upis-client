@@ -2,8 +2,7 @@
   "layout": {
     "signup": "Registruotis",
     "signin": "Prisijungti",
-    "signout": "Atsijungti",
-    "title": "<0>Prisi</0> jungti"
+    "signout": "Atsijungti"
   },
   "form": {
     "email": "El. paštas",

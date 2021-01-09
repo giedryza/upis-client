@@ -1,7 +1,5 @@
 import { Dispatch } from 'react';
 
-import { useAuthActions } from './auth.actions';
-
 import { Action, Reducer } from 'utils/context/types';
 
 export enum Role {
@@ -18,11 +16,11 @@ export interface User {
 
 export interface Timestamp {
   iat: number;
-  exp: number;
+  exp: number | null;
 }
 
 export interface Session {
-  user: User;
+  user: User | null;
   timestamp: Timestamp;
 }
 
@@ -32,11 +30,13 @@ export interface AuthState {
 }
 
 export enum AuthActionTypes {
-  SetSession = 'SET_SESSION',
+  SetUser,
+  SetSession,
 }
 
 export type AuthPayloads = {
-  [AuthActionTypes.SetSession]: Session | null;
+  [AuthActionTypes.SetUser]: User | null;
+  [AuthActionTypes.SetSession]: Session;
 };
 
 export type AuthActions = Action<AuthPayloads>;
@@ -44,8 +44,3 @@ export type AuthActions = Action<AuthPayloads>;
 export type AuthReducer = Reducer<AuthState, AuthPayloads>;
 
 export type AuthDispatch = Dispatch<AuthActions>;
-
-export interface AuthContext {
-  authState: AuthState;
-  authActions: ReturnType<typeof useAuthActions>;
-}

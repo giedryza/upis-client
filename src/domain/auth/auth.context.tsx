@@ -1,27 +1,26 @@
-import { FC, useReducer, useMemo } from 'react';
+import { FC, useReducer } from 'react';
 
 import { reducer, INITIAL_STATE } from './auth.reducer';
-import { AuthContext } from './auth.types';
-import { useAuthActions } from './auth.actions';
+import { AuthDispatch, AuthState } from './auth.types';
 
 import { contextFactory } from 'utils/context/context-factory';
 
-const [useAuthContext, AuthContextProvider] = contextFactory<AuthContext>();
+const [useAuthState, AuthStateProvider] = contextFactory<AuthState>();
+const [useAuthDispatch, AuthDispatchProvider] = contextFactory<AuthDispatch>();
+
+const useAuthContext = () => ({
+  authState: useAuthState(),
+  authDispatch: useAuthDispatch(),
+});
 
 const AuthProvider: FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
-  const actions = useAuthActions(dispatch);
-
-  const value = useMemo(
-    () => ({
-      authState: state,
-      authActions: actions,
-    }),
-    [state, actions]
+  return (
+    <AuthStateProvider value={state}>
+      <AuthDispatchProvider value={dispatch}>{children}</AuthDispatchProvider>
+    </AuthStateProvider>
   );
-
-  return <AuthContextProvider value={value}>{children}</AuthContextProvider>;
 };
 
 export { AuthProvider, useAuthContext };

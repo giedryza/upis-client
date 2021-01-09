@@ -2,7 +2,6 @@ import { FC } from 'react';
 import Router from 'next/router';
 import { useForm } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
-import Trans from 'next-translate/Trans';
 
 import styles from './signin.module.scss';
 
@@ -14,6 +13,8 @@ import { Input } from 'ui/input/input.component';
 import { ValidationRules } from 'types/common/forms';
 import { useAuthContext } from 'domain/auth/auth.context';
 import { Session } from 'domain/auth/auth.types';
+import { authActions } from 'domain/auth/auth.actions';
+import { Response } from 'utils/libs/http/http.types';
 
 interface Values {
   email: string;
@@ -28,7 +29,7 @@ const INITIAL_VALUES: Values = {
 const Signin: FC = () => {
   const { t } = useTranslation();
 
-  const { authActions } = useAuthContext();
+  const { authDispatch } = useAuthContext();
 
   const {
     register,
@@ -64,11 +65,14 @@ const Signin: FC = () => {
 
   const onSubmit = async ({ email, password }: Values) => {
     try {
-      const { data } = await new Http<Session>(uri.endpoints.users.signin, {
-        body: { email, password },
-      }).post();
+      const { data } = await new Http<Response<Session>>(
+        uri.endpoints.users.signin,
+        {
+          body: { email, password },
+        }
+      ).post();
 
-      authActions.setSession(data);
+      authDispatch(authActions.setSession(data));
 
       Router.push('/');
     } catch (error: unknown) {
@@ -78,9 +82,7 @@ const Signin: FC = () => {
 
   return (
     <div className={styles.container}>
-      <h1>
-        <Trans i18nKey="users:layout.title" components={[<span />]} />
-      </h1>
+      <h1>{t('users:layout.signin')}</h1>
 
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.inputs}>

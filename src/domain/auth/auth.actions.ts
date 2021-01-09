@@ -1,11 +1,12 @@
-import { Session, AuthActionTypes, AuthDispatch } from './auth.types';
+import { AuthActionTypes, Session, User } from './auth.types';
 
-export const useAuthActions = (dispatch: AuthDispatch) => {
-  const setSession = (session: Session | null) =>
-    dispatch({
-      type: AuthActionTypes.SetSession,
-      payload: session,
-    });
-
-  return { setSession };
+export const authActions = {
+  setSession: (session: Session) => ({
+    type: AuthActionTypes.SetSession as const,
+    payload: session,
+  }),
+  setUser: (user: User | null) => ({
+    type: AuthActionTypes.SetUser as const,
+    payload: user,
+  }),
 };

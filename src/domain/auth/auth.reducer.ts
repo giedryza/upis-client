@@ -7,21 +7,17 @@ export const INITIAL_STATE: AuthState = {
 
 export const reducer: AuthReducer = (state, action): AuthState => {
   switch (action.type) {
-    case AuthActionTypes.SetSession:
-      if (!action.payload) {
-        return {
-          ...state,
-          user: null,
-          timestamp: null,
-        };
-      }
-
-      const { user, timestamp } = action.payload;
-
+    case AuthActionTypes.SetUser:
       return {
         ...state,
-        user,
-        timestamp,
+        user: action.payload,
+      };
+
+    case AuthActionTypes.SetSession:
+      return {
+        ...state,
+        user: action.payload.user,
+        timestamp: action.payload.timestamp,
       };
     default:
       return state;
