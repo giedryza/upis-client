@@ -1,8 +1,9 @@
-import { FC, useMemo } from 'react';
+import { FC } from 'react';
 
 import { Props as ButtonProps } from 'ui/button/button.component';
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
 import { useDropdownContext } from 'domain/dropdown/dropdown.context';
+import { dropdownActions } from 'domain/dropdown/dropdown.actions';
 import { isDropdownActive } from 'domain/dropdown/dropdown.selectors';
 import { Dropdown as DropdownComponent } from 'ui/dropdown/dropdown.component';
 
@@ -25,19 +26,16 @@ interface Props {
 }
 
 const Dropdown: FC<Props> = ({ id, menuButton, position, children }) => {
-  const { dropdownState, dropdownActions } = useDropdownContext();
+  const { dropdownState, dropdownDispatch } = useDropdownContext();
 
-  const isOpen = useMemo(() => isDropdownActive(dropdownState, id), [
-    dropdownState,
-    id,
-  ]);
+  const isOpen = isDropdownActive(dropdownState, id);
 
   const onOpen = () => {
-    dropdownActions.setActiveDropdown(id);
+    dropdownDispatch(dropdownActions.setActiveDropdown(id));
   };
 
   const onClose = () => {
-    dropdownActions.setActiveDropdown(null);
+    dropdownDispatch(dropdownActions.setActiveDropdown(null));
   };
 
   return (

@@ -3,16 +3,19 @@ import { FC } from 'react';
 import { Portal } from 'ui/portal/portal.component';
 import { useModalContext } from 'domain/modal/modal.context';
 import { ModalKey } from 'domain/modal/modal.types';
+import { modalActions } from 'domain/modal/modal.actions';
 
 const Modal: FC = () => {
-  const { modalState, modalActions } = useModalContext();
+  const { modalState, modalDispatch } = useModalContext();
 
   return (
     <>
       <h1>active modal: {modalState.activeModal}</h1>
       <button
         type="button"
-        onClick={() => modalActions.setActiveModal(ModalKey.TestModal)}
+        onClick={() => {
+          modalDispatch(modalActions.setActiveModal(ModalKey.TestModal));
+        }}
       >
         Open Modal
       </button>
@@ -23,7 +26,9 @@ const Modal: FC = () => {
               <p>This modal is rendered using portals</p>
               <button
                 type="button"
-                onClick={() => modalActions.setActiveModal(null)}
+                onClick={() => {
+                  modalDispatch(modalActions.setActiveModal(null));
+                }}
               >
                 Close Modal
               </button>

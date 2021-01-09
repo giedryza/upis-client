@@ -4,6 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
 import { isDropdownActive } from 'domain/dropdown/dropdown.selectors';
 import { useDropdownContext } from 'domain/dropdown/dropdown.context';
+import { dropdownActions } from 'domain/dropdown/dropdown.actions';
 import {
   Layout as LayoutComponent,
   Labels,
@@ -25,7 +26,7 @@ const Layout: FC<Props> = ({
   onCancel,
   children,
 }) => {
-  const { dropdownState, dropdownActions } = useDropdownContext();
+  const { dropdownState, dropdownDispatch } = useDropdownContext();
   const { t } = useTranslation();
 
   const {
@@ -36,7 +37,7 @@ const Layout: FC<Props> = ({
 
   const handleClose = () => {
     if (isDropdownActive(dropdownState, id)) {
-      dropdownActions.setActiveDropdown(null);
+      dropdownDispatch(dropdownActions.setActiveDropdown(null));
     }
   };
 

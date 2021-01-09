@@ -1,27 +1,29 @@
-import { FC, useReducer, useMemo } from 'react';
+import { FC, useReducer } from 'react';
 
 import { reducer, INITIAL_STATE } from './modal.reducer';
-import { ModalContext } from './modal.types';
-import { useModalActions } from './modal.actions';
+import { ModalState, ModalDispatch } from './modal.types';
 
 import { contextFactory } from 'utils/context/context-factory';
 
-const [useModalContext, ModalContextProvider] = contextFactory<ModalContext>();
+const [useModalState, ModalStateProvider] = contextFactory<ModalState>();
+const [
+  useModalDispatch,
+  ModalDispatchProvider,
+] = contextFactory<ModalDispatch>();
+
+const useModalContext = () => ({
+  modalState: useModalState(),
+  modalDispatch: useModalDispatch(),
+});
 
 const ModalProvider: FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
-  const actions = useModalActions(dispatch);
-
-  const value = useMemo(
-    () => ({
-      modalState: state,
-      modalActions: actions,
-    }),
-    [state, actions]
+  return (
+    <ModalStateProvider value={state}>
+      <ModalDispatchProvider value={dispatch}>{children}</ModalDispatchProvider>
+    </ModalStateProvider>
   );
-
-  return <ModalContextProvider value={value}>{children}</ModalContextProvider>;
 };
 
 export { ModalProvider, useModalContext };

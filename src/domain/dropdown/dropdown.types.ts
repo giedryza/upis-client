@@ -1,7 +1,5 @@
 import { Dispatch } from 'react';
 
-import { useDropdownActions } from './dropdown.actions';
-
 import { Action, Reducer } from 'utils/context/types';
 
 export enum DropdownKey {
@@ -27,8 +25,3 @@ export type DropdownActions = Action<DropdownPayloads>;
 export type DropdownReducer = Reducer<DropdownState, DropdownPayloads>;
 
 export type DropdownDispatch = Dispatch<Action<DropdownPayloads>>;
-
-export interface DropdownContext {
-  dropdownState: DropdownState;
-  dropdownActions: ReturnType<typeof useDropdownActions>;
-}
