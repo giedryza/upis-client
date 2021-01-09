@@ -2,8 +2,7 @@
   "layout": {
     "signup": "Sign up",
     "signin": "Sign in",
-    "signout": "Sign out",
-    "title": "<0>Sign</0> in"
+    "signout": "Sign out"
   },
   "form": {
     "email": "Email",

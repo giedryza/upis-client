@@ -2,7 +2,6 @@ import { FC } from 'react';
 import Router from 'next/router';
 import { useForm } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
-import Trans from 'next-translate/Trans';
 
 import styles from './signin.module.scss';
 
@@ -12,6 +11,10 @@ import { uri } from 'utils/libs/http/http.constants';
 import { Errors } from 'utils/libs/errors/errors.lib';
 import { Input } from 'ui/input/input.component';
 import { ValidationRules } from 'types/common/forms';
+import { useAuthContext } from 'domain/auth/auth.context';
+import { Session } from 'domain/auth/auth.types';
+import { authActions } from 'domain/auth/auth.actions';
+import { Response } from 'utils/libs/http/http.types';
 
 interface Values {
   email: string;
@@ -25,6 +28,9 @@ const INITIAL_VALUES: Values = {
 
 const Signin: FC = () => {
   const { t } = useTranslation();
+
+  const { authDispatch } = useAuthContext();
+
   const {
     register,
     handleSubmit,
@@ -50,10 +56,6 @@ const Signin: FC = () => {
         value: true,
         message: t('users:errors.password.empty'),
       },
-      minLength: {
-        value: 8,
-        message: t('users:errors.password.length'),
-      },
       maxLength: {
         value: 50,
         message: t('users:errors.password.length'),
@@ -63,9 +65,14 @@ const Signin: FC = () => {
 
   const onSubmit = async ({ email, password }: Values) => {
     try {
-      await new Http(uri.endpoints.users.signin, {
-        body: { email, password },
-      }).post();
+      const { data } = await new Http<Response<Session>>(
+        uri.endpoints.users.signin,
+        {
+          body: { email, password },
+        }
+      ).post();
+
+      authDispatch(authActions.setSession(data));
 
       Router.push('/');
     } catch (error: unknown) {
@@ -75,9 +82,7 @@ const Signin: FC = () => {
 
   return (
     <div className={styles.container}>
-      <h1>
-        <Trans i18nKey="users:layout.title" components={[<span />]} />
-      </h1>
+      <h1>{t('users:layout.signin')}</h1>
 
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.inputs}>

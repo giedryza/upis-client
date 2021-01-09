@@ -5,15 +5,18 @@ import 'styles/index.scss';
 import { axe } from 'utils/tools/axe';
 import { AppLayout } from 'layouts/app/app.layout';
 import { GlobalContext } from 'domain/global.context';
+import { Auth } from 'components/auth/auth.container';
 
 axe.init();
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <GlobalContext>
-      <AppLayout>
-        <Component {...pageProps} />
-      </AppLayout>
+      <Auth>
+        <AppLayout>
+          <Component {...pageProps} />
+        </AppLayout>
+      </Auth>
     </GlobalContext>
   );
 };

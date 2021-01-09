@@ -1,21 +1,8 @@
-import { IncomingMessage } from 'http';
-
 import { uri } from './http.constants';
+import { Config, Method } from './http.types';
 
 import { ApiError } from 'utils/libs/errors/api.error';
 import { isServer } from 'utils/common/is-server';
-
-export interface HttpResponse<D> {
-  data: D;
-}
-
-type Method = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
-
-interface Config {
-  headers?: Record<string, string>;
-  body?: Record<string, any>;
-  req?: IncomingMessage;
-}
 
 export class Http<T = any> {
   #method: Method = 'GET';
@@ -62,7 +49,7 @@ export class Http<T = any> {
     };
   }
 
-  #request = async (): Promise<HttpResponse<T>> => {
+  #request = async (): Promise<T> => {
     const response = await fetch(this.url, this.init);
 
     const json = await response.json();
