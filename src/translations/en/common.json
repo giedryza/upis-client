@@ -11,6 +11,13 @@
   "language": {
     "lt": "Lietuvių",
     "en": "English",
+    "lt-short": "LT",
+    "en-short": "EN",
     "menu": "Language menu"
+  },
+  "account": {
+    "profile": "Profile",
+    "signin": "Sign in",
+    "signout": "Sign out"
   }
 }

@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import 'styles/index.scss';
 
 import { axe } from 'utils/tools/axe';
-import { AppLayout } from 'layouts/app/app.layout';
+import { AppLayout } from 'components/layouts/app/app.layout';
 import { GlobalContext } from 'domain/global.context';
 import { Auth } from 'components/auth/auth.container';
 

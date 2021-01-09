@@ -19,6 +19,13 @@ export const reducer: AuthReducer = (state, action): AuthState => {
         user: action.payload.user,
         timestamp: action.payload.timestamp,
       };
+
+    case AuthActionTypes.ClearSession:
+      return {
+        ...state,
+        user: null,
+        timestamp: null,
+      };
     default:
       return state;
   }

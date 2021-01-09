@@ -11,6 +11,13 @@
   "language": {
     "lt": "Lietuvių",
     "en": "English",
+    "lt-short": "LT",
+    "en-short": "EN",
     "menu": "Kalbos pasirinkimas"
+  },
+  "account": {
+    "profile": "Profilis",
+    "signin": "Prisijungti",
+    "signout": "Atsijungti"
   }
 }

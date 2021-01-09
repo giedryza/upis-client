@@ -1,13 +1,13 @@
-import { uri } from './http.constants';
 import { Config, Method } from './http.types';
 
+import { endpoints } from 'uri/endpoints';
 import { ApiError } from 'utils/libs/errors/api.error';
 import { isServer } from 'utils/common/is-server';
 
 export class Http<T = any> {
   #method: Method = 'GET';
 
-  #baseUrl: string = uri.baseUrl;
+  #baseUrl: string = endpoints.baseUrl;
 
   constructor(private endpoint: string, private config: Config = {}) {}
 
@@ -52,6 +52,10 @@ export class Http<T = any> {
   #request = async (): Promise<T> => {
     const response = await fetch(this.url, this.init);
 
+    if (response.status === 204) {
+      return {} as T;
+    }
+
     const json = await response.json();
 
     if (!response.ok) {
@@ -61,7 +65,7 @@ export class Http<T = any> {
       throw new ApiError(statusText, status, data);
     }
 
-    return json;
+    return json as T;
   };
 
   get = () => {

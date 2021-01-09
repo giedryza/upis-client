@@ -8,7 +8,7 @@ import { dropdownActions } from 'domain/dropdown/dropdown.actions';
 import {
   Layout as LayoutComponent,
   Labels,
-} from 'ui/dropdown/parts/layout/layout.component';
+} from 'ui/dropdown/layout/layout.component';
 
 interface Props {
   id: DropdownKey;

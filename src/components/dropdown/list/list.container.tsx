@@ -7,7 +7,7 @@ import { dropdownActions } from 'domain/dropdown/dropdown.actions';
 import {
   List as ListComponent,
   MenuItem,
-} from 'ui/dropdown/parts/list/list.component';
+} from 'ui/dropdown/list/list.component';
 
 interface Props {
   id: DropdownKey;

@@ -7,7 +7,7 @@ import styles from './signin.module.scss';
 
 import { Button } from 'ui/button/button.component';
 import { Http } from 'utils/libs/http/http.lib';
-import { uri } from 'utils/libs/http/http.constants';
+import { endpoints } from 'uri/endpoints';
 import { Errors } from 'utils/libs/errors/errors.lib';
 import { Input } from 'ui/input/input.component';
 import { ValidationRules } from 'types/common/forms';
@@ -15,6 +15,7 @@ import { useAuthContext } from 'domain/auth/auth.context';
 import { Session } from 'domain/auth/auth.types';
 import { authActions } from 'domain/auth/auth.actions';
 import { Response } from 'utils/libs/http/http.types';
+import { routes } from 'uri/routes';
 
 interface Values {
   email: string;
@@ -66,7 +67,7 @@ const Signin: FC = () => {
   const onSubmit = async ({ email, password }: Values) => {
     try {
       const { data } = await new Http<Response<Session>>(
-        uri.endpoints.users.signin,
+        endpoints.users.signin,
         {
           body: { email, password },
         }
@@ -74,7 +75,7 @@ const Signin: FC = () => {
 
       authDispatch(authActions.setSession(data));
 
-      Router.push('/');
+      Router.push(routes.home);
     } catch (error: unknown) {
       new Errors(error).handleForm(setError);
     }
