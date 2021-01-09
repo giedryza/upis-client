@@ -1,31 +1,33 @@
-import { FC, useReducer, useMemo } from 'react';
+import { FC, useReducer } from 'react';
 
 import { reducer, INITIAL_STATE } from './dropdown.reducer';
-import { DropdownContext } from './dropdown.types';
-import { useDropdownActions } from './dropdown.actions';
+import { DropdownState, DropdownDispatch } from './dropdown.types';
 
 import { contextFactory } from 'utils/context/context-factory';
 
 const [
-  useDropdownContext,
-  DropdownContextProvider,
-] = contextFactory<DropdownContext>();
+  useDropdownState,
+  DropdownStateProvider,
+] = contextFactory<DropdownState>();
+const [
+  useDropdownDispatch,
+  DropdownDispatchProvider,
+] = contextFactory<DropdownDispatch>();
+
+const useDropdownContext = () => ({
+  dropdownState: useDropdownState(),
+  dropdownDispatch: useDropdownDispatch(),
+});
 
 const DropdownProvider: FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
-  const actions = useDropdownActions(dispatch);
-
-  const value = useMemo(
-    () => ({
-      dropdownState: state,
-      dropdownActions: actions,
-    }),
-    [state, actions]
-  );
-
   return (
-    <DropdownContextProvider value={value}>{children}</DropdownContextProvider>
+    <DropdownStateProvider value={state}>
+      <DropdownDispatchProvider value={dispatch}>
+        {children}
+      </DropdownDispatchProvider>
+    </DropdownStateProvider>
   );
 };
 

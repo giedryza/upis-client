@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
 import { isDropdownActive } from 'domain/dropdown/dropdown.selectors';
 import { useDropdownContext } from 'domain/dropdown/dropdown.context';
+import { dropdownActions } from 'domain/dropdown/dropdown.actions';
 import {
   List as ListComponent,
   MenuItem,
@@ -14,11 +15,11 @@ interface Props {
 }
 
 const List: FC<Props> = ({ id, items }) => {
-  const { dropdownState, dropdownActions } = useDropdownContext();
+  const { dropdownState, dropdownDispatch } = useDropdownContext();
 
   const handleClose = () => {
     if (isDropdownActive(dropdownState, id)) {
-      dropdownActions.setActiveDropdown(null);
+      dropdownDispatch(dropdownActions.setActiveDropdown(null));
     }
   };
 

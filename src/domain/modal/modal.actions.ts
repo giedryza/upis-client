@@ -1,16 +1,8 @@
-import { useCallback } from 'react';
+import { ModalActionTypes, ModalKey } from './modal.types';
 
-import { ModalDispatch, ModalActionTypes, ModalKey } from './modal.types';
-
-export const useModalActions = (dispatch: ModalDispatch) => {
-  const setActiveModal = useCallback(
-    (key: ModalKey | null) =>
-      dispatch({
-        type: ModalActionTypes.SetActiveModal,
-        payload: key,
-      }),
-    [dispatch]
-  );
-
-  return { setActiveModal };
+export const modalActions = {
+  setActiveModal: (key: ModalKey | null) => ({
+    type: ModalActionTypes.SetActiveModal as const,
+    payload: key,
+  }),
 };
