@@ -9,16 +9,16 @@ export class Errors {
     console.error(message);
   };
 
-  handleAll = () => {
+  #handleAll = () => {
     this.#showError(this.#defaultMessage);
   };
 
-  handleGeneric = () => {
+  #handleGeneric = () => {
     if (this.error instanceof Error) {
       this.#showError(this.error.message);
     }
 
-    this.handleAll();
+    this.#handleAll();
   };
 
   handleApi = () => {
@@ -28,7 +28,7 @@ export class Errors {
       return;
     }
 
-    this.handleGeneric();
+    this.#handleGeneric();
   };
 
   handleForm = <T>(
@@ -54,6 +54,6 @@ export class Errors {
       return;
     }
 
-    this.handleGeneric();
+    this.#handleGeneric();
   };
 }

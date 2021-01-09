@@ -32,11 +32,13 @@ export interface AuthState {
 export enum AuthActionTypes {
   SetUser,
   SetSession,
+  ClearSession,
 }
 
 export type AuthPayloads = {
   [AuthActionTypes.SetUser]: User | null;
   [AuthActionTypes.SetSession]: Session;
+  [AuthActionTypes.ClearSession]: undefined;
 };
 
 export type AuthActions = Action<AuthPayloads>;

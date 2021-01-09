@@ -6,7 +6,7 @@ import { Locale } from 'types/common/locales';
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
 import { IconName } from 'ui/icon/icon.types';
 import { Dropdown } from 'components/dropdown/dropdown.container';
-import { List } from 'components/dropdown/parts/list/list.container';
+import { List } from 'components/dropdown/list/list.container';
 
 const iconByLocale: Record<Locale, IconName> = {
   [Locale.Lt]: IconName.FlagLt,
@@ -31,10 +31,9 @@ const LanguageSelect: FC = () => {
       id={DropdownKey.LanguageSelect}
       position="bottom-right"
       menuButton={{
-        ariaLabel: t('common:language.menu'),
+        label: t(`common:language.${currentLocale}-short`),
         icon: iconByLocale[currentLocale as Locale],
         styleType: 'ghost',
-        size: 'lg',
       }}
     >
       <List id={DropdownKey.LanguageSelect} items={items} />
