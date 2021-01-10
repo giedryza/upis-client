@@ -2,22 +2,20 @@ import { AppProps } from 'next/app';
 
 import 'styles/index.scss';
 
+import { store } from 'utils/libs/store/store.lib';
 import { axe } from 'utils/tools/axe';
 import { AppLayout } from 'components/layouts/app/app.layout';
-import { GlobalContext } from 'domain/global.context';
 import { Auth } from 'components/auth/auth.container';
 
 axe.init();
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <GlobalContext>
-      <Auth>
-        <AppLayout>
-          <Component {...pageProps} />
-        </AppLayout>
-      </Auth>
-    </GlobalContext>
+    <Auth>
+      <AppLayout>
+        <Component {...pageProps} />
+      </AppLayout>
+    </Auth>
   );
 };
 
@@ -36,4 +34,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 //   };
 // };
 
-export default MyApp;
+export default store.wrapper.withRedux(MyApp);

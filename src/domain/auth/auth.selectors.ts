@@ -1,8 +1,12 @@
-import { AuthState } from 'domain/auth/auth.types';
+import { State } from 'utils/libs/store/store.types';
 import { nowInSeconds } from 'utils/common/date-time';
 
-export const isSessionExpired = (state: AuthState) => {
-  if (!state.timestamp?.exp) return false;
+export const isSessionExpired = (state: State) => {
+  const { timestamp } = state.auth;
 
-  return nowInSeconds() > state.timestamp.exp;
+  if (!timestamp?.exp) return false;
+
+  return nowInSeconds() > timestamp.exp;
 };
+
+export const getUser = (state: State) => state.auth.user;

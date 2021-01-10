@@ -1,4 +1,6 @@
-import { DropdownKey, DropdownState } from './dropdown.types';
+import { DropdownKey } from './dropdown.types';
 
-export const isDropdownActive = (state: DropdownState, key: DropdownKey) =>
-  state.activeDropdown === key;
+import { State } from 'utils/libs/store/store.types';
+
+export const isDropdownActive = (state: State, key: DropdownKey) =>
+  state.dropdown.activeDropdown === key;

@@ -1,6 +1,6 @@
-import { Dispatch } from 'react';
+import { Reducer } from 'redux';
 
-import { Action, Reducer } from 'utils/context/types';
+import { Actions } from 'utils/libs/store/store.types';
 
 export enum Role {
   User = 'user',
@@ -30,9 +30,9 @@ export interface AuthState {
 }
 
 export enum AuthActionTypes {
-  SetUser,
-  SetSession,
-  ClearSession,
+  SetUser = 'auth/SET_USER',
+  SetSession = 'auth/SET_SESSION',
+  ClearSession = 'auth/CLEAR_SESSION',
 }
 
 export type AuthPayloads = {
@@ -41,8 +41,6 @@ export type AuthPayloads = {
   [AuthActionTypes.ClearSession]: undefined;
 };
 
-export type AuthActions = Action<AuthPayloads>;
+export type AuthActions = Actions<AuthPayloads>;
 
-export type AuthReducer = Reducer<AuthState, AuthPayloads>;
-
-export type AuthDispatch = Dispatch<AuthActions>;
+export type AuthReducer = Reducer<AuthState, AuthActions>;

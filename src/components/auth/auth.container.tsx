@@ -1,18 +1,19 @@
 import { FC, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Http } from 'utils/libs/http/http.lib';
 import { Response } from 'utils/libs/http/http.types';
-import { useAuthContext } from 'domain/auth/auth.context';
 import { endpoints } from 'uri/endpoints';
 import { Session } from 'domain/auth/auth.types';
 import { authActions } from 'domain/auth/auth.actions';
 import { isSessionExpired } from 'domain/auth/auth.selectors';
+import { State } from 'utils/libs/store/store.types';
 
 const Auth: FC = ({ children }) => {
-  const { authDispatch, authState } = useAuthContext();
-  const { timestamp } = authState;
+  const dispatch = useDispatch();
 
-  const isExpired = isSessionExpired(authState);
+  const timestamp = useSelector((state: State) => state.auth.timestamp);
+  const isExpired = useSelector(isSessionExpired);
 
   useEffect(() => {
     const getMe = async () => {
@@ -20,13 +21,13 @@ const Auth: FC = ({ children }) => {
         endpoints.users.me
       ).get();
 
-      authDispatch(authActions.setSession(data));
+      dispatch(authActions.setSession(data));
     };
 
     if (!timestamp || isExpired) {
       getMe();
     }
-  }, [authDispatch, timestamp, isExpired]);
+  }, [dispatch, timestamp, isExpired]);
 
   return <>{children}</>;
 };

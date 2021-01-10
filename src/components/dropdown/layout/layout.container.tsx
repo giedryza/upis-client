@@ -1,14 +1,15 @@
 import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
 import { isDropdownActive } from 'domain/dropdown/dropdown.selectors';
-import { useDropdownContext } from 'domain/dropdown/dropdown.context';
 import { dropdownActions } from 'domain/dropdown/dropdown.actions';
 import {
   Layout as LayoutComponent,
   Labels,
 } from 'ui/dropdown/layout/layout.component';
+import { State } from 'utils/libs/store/store.types';
 
 interface Props {
   id: DropdownKey;
@@ -26,8 +27,11 @@ const Layout: FC<Props> = ({
   onCancel,
   children,
 }) => {
-  const { dropdownState, dropdownDispatch } = useDropdownContext();
   const { t } = useTranslation();
+
+  const dispatch = useDispatch();
+
+  const isOpen = useSelector((state: State) => isDropdownActive(state, id));
 
   const {
     submit = t('common:actions.submit'),
@@ -36,8 +40,8 @@ const Layout: FC<Props> = ({
   } = labels;
 
   const handleClose = () => {
-    if (isDropdownActive(dropdownState, id)) {
-      dropdownDispatch(dropdownActions.setActiveDropdown(null));
+    if (isOpen) {
+      dispatch(dropdownActions.setActiveDropdown(null));
     }
   };
 

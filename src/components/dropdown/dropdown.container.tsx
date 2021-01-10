@@ -1,11 +1,12 @@
 import { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Props as ButtonProps } from 'ui/button/button.component';
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
-import { useDropdownContext } from 'domain/dropdown/dropdown.context';
 import { dropdownActions } from 'domain/dropdown/dropdown.actions';
 import { isDropdownActive } from 'domain/dropdown/dropdown.selectors';
 import { Dropdown as DropdownComponent } from 'ui/dropdown/dropdown.component';
+import { State } from 'utils/libs/store/store.types';
 
 type MenuButton = Pick<
   ButtonProps,
@@ -26,16 +27,16 @@ interface Props {
 }
 
 const Dropdown: FC<Props> = ({ id, menuButton, position, children }) => {
-  const { dropdownState, dropdownDispatch } = useDropdownContext();
+  const dispatch = useDispatch();
 
-  const isOpen = isDropdownActive(dropdownState, id);
+  const isOpen = useSelector((state: State) => isDropdownActive(state, id));
 
   const onOpen = () => {
-    dropdownDispatch(dropdownActions.setActiveDropdown(id));
+    dispatch(dropdownActions.setActiveDropdown(id));
   };
 
   const onClose = () => {
-    dropdownDispatch(dropdownActions.setActiveDropdown(null));
+    dispatch(dropdownActions.setActiveDropdown(null));
   };
 
   return (

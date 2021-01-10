@@ -1,10 +1,10 @@
 import { ModalState, ModalActionTypes, ModalReducer } from './modal.types';
 
-export const INITIAL_STATE: ModalState = {
+const INITIAL_STATE: ModalState = {
   activeModal: null,
 };
 
-export const reducer: ModalReducer = (state, action) => {
+const reducer: ModalReducer = (state = INITIAL_STATE, action): ModalState => {
   switch (action.type) {
     case ModalActionTypes.SetActiveModal:
       return {
@@ -15,3 +15,5 @@ export const reducer: ModalReducer = (state, action) => {
       return state;
   }
 };
+
+export default reducer;

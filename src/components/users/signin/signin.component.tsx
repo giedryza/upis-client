@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Router from 'next/router';
 import { useForm } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
+import { useDispatch } from 'react-redux';
 
 import styles from './signin.module.scss';
 
@@ -11,7 +12,6 @@ import { endpoints } from 'uri/endpoints';
 import { Errors } from 'utils/libs/errors/errors.lib';
 import { Input } from 'ui/input/input.component';
 import { ValidationRules } from 'types/common/forms';
-import { useAuthContext } from 'domain/auth/auth.context';
 import { Session } from 'domain/auth/auth.types';
 import { authActions } from 'domain/auth/auth.actions';
 import { Response } from 'utils/libs/http/http.types';
@@ -30,7 +30,7 @@ const INITIAL_VALUES: Values = {
 const Signin: FC = () => {
   const { t } = useTranslation();
 
-  const { authDispatch } = useAuthContext();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -73,7 +73,7 @@ const Signin: FC = () => {
         }
       ).post();
 
-      authDispatch(authActions.setSession(data));
+      dispatch(authActions.setSession(data));
 
       Router.push(routes.home);
     } catch (error: unknown) {
