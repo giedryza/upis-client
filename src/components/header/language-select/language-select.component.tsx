@@ -7,6 +7,8 @@ import { DropdownKey } from 'domain/dropdown/dropdown.types';
 import { IconName } from 'ui/icon/icon.types';
 import { Dropdown } from 'components/dropdown/dropdown.container';
 import { List } from 'components/dropdown/list/list.container';
+import { cookies } from 'uri/cookies.lib';
+import { CookieName } from 'utils/libs/cookies/cookies';
 
 const iconByLocale: Record<Locale, IconName> = {
   [Locale.Lt]: IconName.FlagLt,
@@ -20,6 +22,7 @@ const LanguageSelect: FC = () => {
   const items = Object.values(Locale).map((locale) => ({
     label: t(`common:language.${locale}`),
     icon: iconByLocale[locale],
+    onClick: () => cookies.set(CookieName.Language, locale),
     url: {
       href: asPath,
       locale,
