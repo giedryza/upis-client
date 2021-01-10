@@ -1,6 +1,6 @@
-import { Dispatch } from 'react';
+import { Reducer } from 'redux';
 
-import { Action, Reducer } from 'utils/context/types';
+import { Actions } from 'utils/libs/store/store.types';
 
 export enum DropdownKey {
   Test = 'test',
@@ -13,15 +13,13 @@ export interface DropdownState {
 }
 
 export enum DropdownActionTypes {
-  SetActiveDropdown,
+  SetActiveDropdown = 'dropdown/SET_ACTIVE_DROPDOWN',
 }
 
 export type DropdownPayloads = {
   [DropdownActionTypes.SetActiveDropdown]: DropdownKey | null;
 };
 
-export type DropdownActions = Action<DropdownPayloads>;
+export type DropdownActions = Actions<DropdownPayloads>;
 
-export type DropdownReducer = Reducer<DropdownState, DropdownPayloads>;
-
-export type DropdownDispatch = Dispatch<Action<DropdownPayloads>>;
+export type DropdownReducer = Reducer<DropdownState, DropdownActions>;

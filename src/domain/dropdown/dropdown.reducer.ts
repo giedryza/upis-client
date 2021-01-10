@@ -4,11 +4,14 @@ import {
   DropdownReducer,
 } from './dropdown.types';
 
-export const INITIAL_STATE: DropdownState = {
+const INITIAL_STATE: DropdownState = {
   activeDropdown: null,
 };
 
-export const reducer: DropdownReducer = (state, action) => {
+const reducer: DropdownReducer = (
+  state = INITIAL_STATE,
+  action
+): DropdownState => {
   switch (action.type) {
     case DropdownActionTypes.SetActiveDropdown:
       return {
@@ -19,3 +22,5 @@ export const reducer: DropdownReducer = (state, action) => {
       return state;
   }
 };
+
+export default reducer;

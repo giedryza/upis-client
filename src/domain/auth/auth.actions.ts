@@ -2,14 +2,14 @@ import { AuthActionTypes, Session, User } from './auth.types';
 
 export const authActions = {
   setUser: (user: User | null) => ({
-    type: AuthActionTypes.SetUser as const,
+    type: AuthActionTypes.SetUser,
     payload: user,
   }),
   setSession: (session: Session) => ({
-    type: AuthActionTypes.SetSession as const,
+    type: AuthActionTypes.SetSession,
     payload: session,
   }),
   clearSession: () => ({
-    type: AuthActionTypes.ClearSession as const,
+    type: AuthActionTypes.ClearSession,
   }),
 };

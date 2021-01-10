@@ -1,11 +1,11 @@
-import { AuthActionTypes, AuthReducer, AuthState } from './auth.types';
+import { AuthState, AuthActionTypes, AuthReducer } from './auth.types';
 
-export const INITIAL_STATE: AuthState = {
+const INITIAL_STATE: AuthState = {
   user: null,
   timestamp: null,
 };
 
-export const reducer: AuthReducer = (state, action): AuthState => {
+const reducer: AuthReducer = (state = INITIAL_STATE, action): AuthState => {
   switch (action.type) {
     case AuthActionTypes.SetUser:
       return {
@@ -30,3 +30,5 @@ export const reducer: AuthReducer = (state, action): AuthState => {
       return state;
   }
 };
+
+export default reducer;

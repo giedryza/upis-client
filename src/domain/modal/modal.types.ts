@@ -1,6 +1,6 @@
-import { Dispatch } from 'react';
+import { Reducer } from 'redux';
 
-import { Action, Reducer } from 'utils/context/types';
+import { Actions } from 'utils/libs/store/store.types';
 
 export enum ModalKey {
   TestModal = 'test-modal',
@@ -11,15 +11,13 @@ export interface ModalState {
 }
 
 export enum ModalActionTypes {
-  SetActiveModal,
+  SetActiveModal = 'modal/SET_ACTIVE_MODAL',
 }
 
 export type ModalPayloads = {
   [ModalActionTypes.SetActiveModal]: ModalKey | null;
 };
 
-export type ModalActions = Action<ModalPayloads>;
+export type ModalActions = Actions<ModalPayloads>;
 
-export type ModalReducer = Reducer<ModalState, ModalPayloads>;
-
-export type ModalDispatch = Dispatch<Action<ModalPayloads>>;
+export type ModalReducer = Reducer<ModalState, ModalActions>;

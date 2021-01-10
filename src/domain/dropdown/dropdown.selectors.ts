@@ -1,4 +1,14 @@
-import { DropdownKey, DropdownState } from './dropdown.types';
+import { createSelector } from 'reselect';
 
-export const isDropdownActive = (state: DropdownState, key: DropdownKey) =>
-  state.activeDropdown === key;
+import { DropdownKey } from './dropdown.types';
+
+import { State } from 'utils/libs/store/store.types';
+
+export const isDropdownActive = (state: State, key: DropdownKey) =>
+  state.dropdown.activeDropdown === key;
+
+export const makeIsDropdownActiveSelector = () =>
+  createSelector(
+    (state: State, key: DropdownKey) => state.dropdown.activeDropdown === key,
+    (isActive) => isActive
+  );

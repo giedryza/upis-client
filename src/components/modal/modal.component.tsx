@@ -1,25 +1,28 @@
 import { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Portal } from 'ui/portal/portal.component';
-import { useModalContext } from 'domain/modal/modal.context';
 import { ModalKey } from 'domain/modal/modal.types';
 import { modalActions } from 'domain/modal/modal.actions';
+import { State } from 'utils/libs/store/store.types';
 
 const Modal: FC = () => {
-  const { modalState, modalDispatch } = useModalContext();
+  const dispatch = useDispatch();
+
+  const activeModal = useSelector((state: State) => state.modal.activeModal);
 
   return (
     <>
-      <h1>active modal: {modalState.activeModal}</h1>
+      <h1>active modal: {activeModal}</h1>
       <button
         type="button"
         onClick={() => {
-          modalDispatch(modalActions.setActiveModal(ModalKey.TestModal));
+          dispatch(modalActions.setActiveModal(ModalKey.TestModal));
         }}
       >
         Open Modal
       </button>
-      {modalState.activeModal === ModalKey.TestModal && (
+      {activeModal === ModalKey.TestModal && (
         <Portal selector="#modal">
           <div className="backdrop">
             <div className="modal">
@@ -27,7 +30,7 @@ const Modal: FC = () => {
               <button
                 type="button"
                 onClick={() => {
-                  modalDispatch(modalActions.setActiveModal(null));
+                  dispatch(modalActions.setActiveModal(null));
                 }}
               >
                 Close Modal
