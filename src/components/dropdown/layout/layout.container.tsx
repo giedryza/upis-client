@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
-import { isDropdownActive } from 'domain/dropdown/dropdown.selectors';
+import { makeIsDropdownActiveSelector } from 'domain/dropdown/dropdown.selectors';
 import { dropdownActions } from 'domain/dropdown/dropdown.actions';
 import {
   Layout as LayoutComponent,
@@ -27,18 +27,24 @@ const Layout: FC<Props> = ({
   onCancel,
   children,
 }) => {
+  // utils
   const { t } = useTranslation();
-
   const dispatch = useDispatch();
 
-  const isOpen = useSelector((state: State) => isDropdownActive(state, id));
+  // state
+  const isDropdownActiveSelector = useMemo(makeIsDropdownActiveSelector, []);
+  const isOpen = useSelector((state: State) =>
+    isDropdownActiveSelector(state, id)
+  );
 
+  // props
   const {
     submit = t('common:actions.submit'),
     cancel = t('common:actions.cancel'),
     close = t('common:actions.close'),
   } = labels;
 
+  // methods
   const handleClose = () => {
     if (isOpen) {
       dispatch(dropdownActions.setActiveDropdown(null));
