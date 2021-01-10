@@ -7,8 +7,8 @@ import { DropdownKey } from 'domain/dropdown/dropdown.types';
 import { IconName } from 'ui/icon/icon.types';
 import { Dropdown } from 'components/dropdown/dropdown.container';
 import { List } from 'components/dropdown/list/list.container';
-import { cookies } from 'uri/cookies.lib';
-import { CookieName } from 'utils/libs/cookies/cookies';
+import { cookies } from 'utils/libs/cookies/cookies.lib';
+import { CookieName } from 'uri/cookies';
 
 const iconByLocale: Record<Locale, IconName> = {
   [Locale.Lt]: IconName.FlagLt,
