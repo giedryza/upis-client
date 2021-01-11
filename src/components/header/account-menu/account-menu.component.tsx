@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
-import { IconName } from 'ui/icon/icon.types';
+import { IconName } from 'ui/icon/icon.component';
 import { Dropdown } from 'components/dropdown/dropdown.container';
 import { List } from 'components/dropdown/list/list.container';
 import { authActions } from 'domain/auth/auth.actions';
@@ -39,9 +39,11 @@ const AccountMenu: FC = () => {
       id={DropdownKey.AccountMenu}
       position="bottom-right"
       menuButton={{
-        label: user.email,
+        label: t('common:account.account'),
         icon: IconName.Account,
         styleType: 'ghost',
+        size: 'sm',
+        withDropdown: true,
       }}
     >
       <List
@@ -65,6 +67,7 @@ const AccountMenu: FC = () => {
       label={t('common:account.signin')}
       icon={IconName.Account}
       styleType="ghost"
+      size="sm"
       url={routes.users.signin}
     />
   );

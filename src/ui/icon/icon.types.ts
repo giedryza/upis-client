@@ -1,4 +1,4 @@
-export enum IconName {
+export enum Name {
   ChevronDown = 'chevron-down',
   ChevronLeft = 'chevron-left',
   ChevronRight = 'chevron-right',
@@ -10,6 +10,7 @@ export enum IconName {
   FlagLt = 'flag-lt',
   Globe = 'globe',
   Instagram = 'instagram',
+  Kayak = 'kayak',
   Linkedin = 'linkedin',
   Path = 'path',
   Account = 'account',

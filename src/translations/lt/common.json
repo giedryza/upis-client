@@ -16,6 +16,7 @@
     "menu": "Kalbos pasirinkimas"
   },
   "account": {
+    "account": "Mano paskyra",
     "profile": "Profilis",
     "signin": "Prisijungti",
     "signout": "Atsijungti"

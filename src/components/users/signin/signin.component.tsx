@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import styles from './signin.module.scss';
 
 import { Button } from 'ui/button/button.component';
+import { Card } from 'ui/card/card.component';
 import { Http } from 'utils/libs/http/http.lib';
 import { endpoints } from 'uri/endpoints';
 import { Errors } from 'utils/libs/errors/errors.lib';
@@ -57,6 +58,10 @@ const Signin: FC = () => {
         value: true,
         message: t('users:errors.password.empty'),
       },
+      minLength: {
+        value: 8,
+        message: t('users:errors.password.length'),
+      },
       maxLength: {
         value: 50,
         message: t('users:errors.password.length'),
@@ -83,41 +88,47 @@ const Signin: FC = () => {
 
   return (
     <div className={styles.container}>
-      <h1>{t('users:layout.signin')}</h1>
+      <Card>
+        <div className={styles.content}>
+          <h1>{t('users:layout.signin')}</h1>
 
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <div className={styles.inputs}>
-          <Input
-            name="email"
-            label={t('users:form.email')}
-            ref={register(validation.email)}
-            error={errors.email?.message}
-          />
+          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+            <div className={styles.inputs}>
+              <Input
+                name="email"
+                label={t('users:form.email')}
+                ref={register(validation.email)}
+                error={isSubmitted ? errors.email?.message : ''}
+              />
 
-          <Input
-            name="password"
-            label={t('users:form.password')}
-            type="password"
-            error={errors.password?.message}
-            ref={register(validation.password)}
-          />
+              <Input
+                name="password"
+                label={t('users:form.password')}
+                type="password"
+                ref={register(validation.password)}
+                error={isSubmitted ? errors.password?.message : ''}
+              />
+            </div>
+
+            <Button
+              label={t('users:actions.forgot-pass')}
+              styleType="link"
+              size="xs"
+            />
+
+            <div className={styles.actions}>
+              <Button
+                label={t('users:actions.signin')}
+                styleType="primary"
+                type="submit"
+                disabled={
+                  isSubmitting || isValidating || (isSubmitted && !isValid)
+                }
+              />
+            </div>
+          </form>
         </div>
-
-        <Button
-          label={t('users:actions.forgot-pass')}
-          styleType="link"
-          size="xs"
-        />
-
-        <div className={styles.actions}>
-          <Button
-            label={t('users:actions.signin')}
-            styleType="primary"
-            type="submit"
-            disabled={isSubmitting || isValidating || (isSubmitted && !isValid)}
-          />
-        </div>
-      </form>
+      </Card>
     </div>
   );
 };

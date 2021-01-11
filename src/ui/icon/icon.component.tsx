@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import dynamic from 'next/dynamic';
 
-import { IconName } from './icon.types';
+import { Name } from './icon.types';
 
 interface Props extends React.SVGAttributes<SVGElement> {
-  name: IconName;
+  name: Name;
 }
 
 const Icon: FC<Props> = ({ name, ...svgProps }) => {
@@ -15,4 +15,4 @@ const Icon: FC<Props> = ({ name, ...svgProps }) => {
   return <DynamicIcon {...svgProps} />;
 };
 
-export { Icon, IconName };
+export { Icon, Name as IconName };

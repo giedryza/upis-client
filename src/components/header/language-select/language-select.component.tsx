@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { Locale } from 'types/common/locales';
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
-import { IconName } from 'ui/icon/icon.types';
+import { IconName } from 'ui/icon/icon.component';
 import { Dropdown } from 'components/dropdown/dropdown.container';
 import { List } from 'components/dropdown/list/list.container';
 import { cookies } from 'utils/libs/cookies/cookies.lib';
@@ -37,6 +37,7 @@ const LanguageSelect: FC = () => {
         label: t(`common:language.${currentLocale}-short`),
         icon: iconByLocale[currentLocale as Locale],
         styleType: 'ghost',
+        size: 'sm',
       }}
     >
       <List id={DropdownKey.LanguageSelect} items={items} />
