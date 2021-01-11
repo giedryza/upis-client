@@ -1,0 +1,10 @@
+@use 'styles/mixins' as *;
+
+.content {
+  h1 {
+    font-size: var(--font-size-24);
+    font-weight: 600;
+  }
+
+  @include spacing(y, 2.5rem);
+}

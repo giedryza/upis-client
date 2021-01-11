@@ -19,7 +19,7 @@
   min-height: 2.75em;
   line-height: 1.2;
   border-radius: var(--border-radius-sm);
-  transition-property: background-color, box-shadow;
+  transition-property: color, background-color, box-shadow;
   transition-duration: var(--transition-duration-md);
   word-break: normal;
 
@@ -56,6 +56,29 @@
     &:active {
       &:not([disabled]) {
         background-color: var(--button-ghost-background-hover);
+      }
+    }
+  }
+
+  &.ghost-dark {
+    color: var(--button-ghost-dark-text);
+
+    &:hover,
+    &:active {
+      &:not([disabled]) {
+        background-color: var(--button-ghost-dark-background-hover);
+      }
+    }
+  }
+
+  &.ghost-primary {
+    color: var(--button-ghost-primary-text);
+
+    &:hover,
+    &:active {
+      &:not([disabled]) {
+        color: var(--button-ghost-primary-text-hover);
+        background-color: var(--button-ghost-primary-background-hover);
       }
     }
   }
@@ -182,6 +205,10 @@
     width: 65%;
     height: 65%;
   }
+}
+
+.arrow {
+  font-size: 0.75em;
 }
 
 .ripple {

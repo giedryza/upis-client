@@ -2,14 +2,12 @@
 
 .container {
   margin: 5rem auto;
-
   width: 40rem;
   max-width: 95%;
-  padding: 3.5rem;
-  background: var(--color-white);
-  border-radius: var(--border-radius-md);
+}
 
-  > h1 {
+.content {
+  h1 {
     font-size: var(--font-size-30);
     font-weight: 600;
   }

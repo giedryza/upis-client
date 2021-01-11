@@ -6,7 +6,7 @@ import styles from './dropdown.module.scss';
 import { Button, Props as ButtonProps } from 'ui/button/button.component';
 import { useOnClickOutside } from 'utils/hooks/use-on-click-outside.hook';
 
-type MenuButton = Pick<
+export type MenuButton = Pick<
   ButtonProps,
   | 'label'
   | 'title'
@@ -15,6 +15,7 @@ type MenuButton = Pick<
   | 'styleType'
   | 'size'
   | 'block'
+  | 'withDropdown'
   | 'ariaLabel'
 >;
 

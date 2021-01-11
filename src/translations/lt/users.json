@@ -2,7 +2,17 @@
   "layout": {
     "signup": "Registruotis",
     "signin": "Prisijungti",
-    "signout": "Atsijungti"
+    "signout": "Atsijungti",
+    "account-nav": "Paskyros navigacija"
+  },
+  "profile": {
+    "title": "Profilis"
+  },
+  "company": {
+    "title": "Mano įmonė"
+  },
+  "tours": {
+    "title": "Mano maršrutai"
   },
   "form": {
     "email": "El. paštas",

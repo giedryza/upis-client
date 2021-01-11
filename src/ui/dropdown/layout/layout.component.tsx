@@ -3,7 +3,7 @@ import { FC } from 'react';
 import styles from './layout.module.scss';
 
 import { Button } from 'ui/button/button.component';
-import { IconName } from 'ui/icon/icon.types';
+import { IconName } from 'ui/icon/icon.component';
 
 export type Labels = {
   [K in 'submit' | 'cancel' | 'close']: string;

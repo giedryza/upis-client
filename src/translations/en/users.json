@@ -2,7 +2,17 @@
   "layout": {
     "signup": "Sign up",
     "signin": "Sign in",
-    "signout": "Sign out"
+    "signout": "Sign out",
+    "account-nav": "Account navigation"
+  },
+  "profile": {
+    "title": "Profile"
+  },
+  "company": {
+    "title": "My company"
+  },
+  "tours": {
+    "title": "My tours"
   },
   "form": {
     "email": "Email",

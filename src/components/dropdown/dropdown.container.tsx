@@ -1,24 +1,14 @@
 import { FC, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Props as ButtonProps } from 'ui/button/button.component';
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
 import { dropdownActions } from 'domain/dropdown/dropdown.actions';
 import { makeIsDropdownActiveSelector } from 'domain/dropdown/dropdown.selectors';
-import { Dropdown as DropdownComponent } from 'ui/dropdown/dropdown.component';
+import {
+  Dropdown as DropdownComponent,
+  MenuButton,
+} from 'ui/dropdown/dropdown.component';
 import { State } from 'utils/libs/store/store.types';
-
-type MenuButton = Pick<
-  ButtonProps,
-  | 'label'
-  | 'title'
-  | 'icon'
-  | 'iconPlacement'
-  | 'styleType'
-  | 'size'
-  | 'block'
-  | 'ariaLabel'
->;
 
 interface Props {
   id: DropdownKey;
