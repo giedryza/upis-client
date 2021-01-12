@@ -1,4 +1,4 @@
-import { State } from 'utils/libs/store/store.types';
+import { State } from 'types/common/redux';
 import { nowInSeconds } from 'utils/common/date-time';
 
 export const isSessionExpired = (state: State) => {

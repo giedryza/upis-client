@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Portal } from 'ui/portal/portal.component';
 import { ModalKey } from 'domain/modal/modal.types';
 import { modalActions } from 'domain/modal/modal.actions';
-import { State } from 'utils/libs/store/store.types';
+import { State } from 'types/common/redux';
 
 const Modal: FC = () => {
   const dispatch = useDispatch();

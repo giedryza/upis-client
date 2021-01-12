@@ -1,15 +1,18 @@
 import {
   createStore,
   applyMiddleware,
+  Store as ReduxStore,
   Middleware,
   Reducer,
   StoreEnhancer,
 } from 'redux';
 import thunk from 'redux-thunk';
-import { createWrapper, HYDRATE, MakeStore, Context } from 'next-redux-wrapper';
+import { createWrapper, HYDRATE, Context } from 'next-redux-wrapper';
 
-import { State } from './store.types';
 import { rootReducer } from './store.reducer';
+import { hydrateAuth } from './store.hydration';
+
+import { State } from 'types/common/redux';
 
 class Store {
   private middlewares: Middleware[] = [thunk];
@@ -25,11 +28,13 @@ class Store {
     return applyMiddleware(...this.middlewares);
   }
 
-  private reducer: Reducer<State> = (state, action): State => {
+  private reducer: Reducer = (state: State, action): State => {
     if (action.type === HYDRATE) {
-      const nextState = {
-        ...state, // use previous state
-        ...action.payload, // apply delta from hydration
+      const serverState: State = { ...action.payload };
+
+      const nextState: State = {
+        ...state,
+        auth: hydrateAuth(state, serverState),
       };
 
       return nextState;
@@ -38,10 +43,10 @@ class Store {
     return rootReducer(state, action);
   };
 
-  private makeStore: MakeStore<State> = (_context: Context) =>
+  private makeStore = (_context: Context) =>
     createStore(this.reducer, this.enhancer);
 
-  wrapper = createWrapper<State>(this.makeStore);
+  wrapper = createWrapper<ReduxStore<State>>(this.makeStore);
 }
 
-export const store = new Store();
+export const reduxStore = new Store();

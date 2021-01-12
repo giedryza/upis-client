@@ -9,7 +9,7 @@ import {
   Layout as LayoutComponent,
   Labels,
 } from 'ui/dropdown/layout/layout.component';
-import { State } from 'utils/libs/store/store.types';
+import { State } from 'types/common/redux';
 
 interface Props {
   id: DropdownKey;

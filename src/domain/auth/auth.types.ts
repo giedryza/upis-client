@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 
-import { Actions } from 'utils/libs/store/store.types';
+import { Actions } from 'types/common/redux';
 
 export enum Role {
   User = 'user',
@@ -27,18 +27,21 @@ export interface Session {
 export interface AuthState {
   user: User | null;
   timestamp: Timestamp | null;
+  loading: boolean;
 }
 
 export enum AuthActionTypes {
   SetUser = 'auth/SET_USER',
   SetSession = 'auth/SET_SESSION',
   ClearSession = 'auth/CLEAR_SESSION',
+  SetLoading = 'auth/SET_LOADING',
 }
 
 export type AuthPayloads = {
   [AuthActionTypes.SetUser]: User | null;
   [AuthActionTypes.SetSession]: Session;
   [AuthActionTypes.ClearSession]: undefined;
+  [AuthActionTypes.SetLoading]: boolean;
 };
 
 export type AuthActions = Actions<AuthPayloads>;

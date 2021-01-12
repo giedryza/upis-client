@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { DropdownKey } from './dropdown.types';
 
-import { State } from 'utils/libs/store/store.types';
+import { State } from 'types/common/redux';
 
 export const isDropdownActive = (state: State, key: DropdownKey) =>
   state.dropdown.activeDropdown === key;

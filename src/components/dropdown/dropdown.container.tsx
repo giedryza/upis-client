@@ -8,7 +8,7 @@ import {
   Dropdown as DropdownComponent,
   MenuButton,
 } from 'ui/dropdown/dropdown.component';
-import { State } from 'utils/libs/store/store.types';
+import { State } from 'types/common/redux';
 
 interface Props {
   id: DropdownKey;

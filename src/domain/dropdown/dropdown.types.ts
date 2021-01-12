@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 
-import { Actions } from 'utils/libs/store/store.types';
+import { Actions } from 'types/common/redux';
 
 export enum DropdownKey {
   Test = 'test',
