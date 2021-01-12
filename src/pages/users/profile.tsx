@@ -5,6 +5,9 @@ import { MainLayout } from 'components/layouts/main/main.layout';
 import { Profile } from 'components/users/profile/profile.component';
 import { AppHead } from 'ui/app-head/app-head.component';
 import { AccountContainer } from 'components/users/account-container/account-container.component';
+import { reduxStore } from 'utils/libs/store/store.lib';
+import { authThunks } from 'domain/auth/auth.thunks';
+import { Dispatch } from 'types/common/redux';
 
 const ProfilePage: NextPage = () => {
   const { t } = useTranslation();
@@ -19,5 +22,13 @@ const ProfilePage: NextPage = () => {
     </MainLayout>
   );
 };
+
+export const getServerSideProps = reduxStore.wrapper.getServerSideProps(
+  async (context) => {
+    const dispatch = context.store.dispatch as Dispatch;
+
+    await dispatch(authThunks.getSession(context.req));
+  }
+);
 
 export default ProfilePage;

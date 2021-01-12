@@ -12,4 +12,8 @@ export const authActions = {
   clearSession: () => ({
     type: AuthActionTypes.ClearSession,
   }),
+  setLoading: (flag: boolean) => ({
+    type: AuthActionTypes.SetLoading,
+    payload: flag,
+  }),
 };

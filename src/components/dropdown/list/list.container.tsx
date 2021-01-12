@@ -8,7 +8,7 @@ import {
   List as ListComponent,
   MenuItem,
 } from 'ui/dropdown/list/list.component';
-import { State } from 'utils/libs/store/store.types';
+import { State } from 'types/common/redux';
 
 interface Props {
   id: DropdownKey;
