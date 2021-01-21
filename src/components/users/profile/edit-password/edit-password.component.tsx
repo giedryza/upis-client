@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import styles from './edit-password.module.scss';
 
-import { EditableInfo } from 'components/editable-info/editable-info.component';
+import { EditInfo } from 'components/editable-info/edit-info.component';
 import { Input } from 'ui/input/input.component';
 import { ValidationRules } from 'types/common/forms';
 import { Errors } from 'utils/libs/errors/errors.lib';
@@ -99,7 +99,7 @@ const EditPassword: FC<Props> = ({ id }) => {
   const passwordPlaceholder = Array.from({ length: 8 }).fill('\u2217').join('');
 
   return (
-    <EditableInfo
+    <EditInfo
       id={id}
       label={t('users:form.password')}
       value={passwordPlaceholder}
