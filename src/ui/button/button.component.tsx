@@ -14,6 +14,7 @@ export interface Props {
   onClick?: () => void;
   url?: string | LinkProps;
   type?: JSX.IntrinsicElements['button']['type'];
+  form?: JSX.IntrinsicElements['button']['form'];
   target?: '_self' | '_blank' | '_parent' | '_top';
   icon?: IconName;
   iconPlacement?: 'top' | 'right' | 'bottom' | 'left';
@@ -44,6 +45,7 @@ const Button: FC<Props> = ({
   url,
   target,
   type = 'button',
+  form,
   block,
   icon,
   iconPlacement = 'left',
@@ -130,7 +132,7 @@ const Button: FC<Props> = ({
       <a {...attributes}>{content}</a>
     </Link>
   ) : (
-    <button {...attributes} type={type} disabled={disabled}>
+    <button {...attributes} type={type} disabled={disabled} form={form}>
       {content}
     </button>
   );

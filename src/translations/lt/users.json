@@ -6,7 +6,10 @@
     "account-nav": "Paskyros navigacija"
   },
   "profile": {
-    "title": "Profilis"
+    "title": "Profilis",
+    "subtitle": {
+      "contact": "Kontaktai"
+    }
   },
   "company": {
     "title": "Mano įmonė"
@@ -16,7 +19,8 @@
   },
   "form": {
     "email": "El. paštas",
-    "password": "Slaptažodis"
+    "password": "Slaptažodis",
+    "confirmPassword": "Patvirtink slaptažodį"
   },
   "actions": {
     "forgot-pass": "Pamiršai slaptažodį?",

@@ -5,10 +5,10 @@
   display: flex;
   align-items: flex-start;
 
-  @include spacing(x, 1rem);
+  @include spacing(x, 2rem);
 
   > *:nth-child(1) {
-    width: 22.5rem;
+    width: 25rem;
     flex-shrink: 0;
   }
 

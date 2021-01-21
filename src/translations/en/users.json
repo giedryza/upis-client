@@ -6,7 +6,10 @@
     "account-nav": "Account navigation"
   },
   "profile": {
-    "title": "Profile"
+    "title": "Profile",
+    "subtitle": {
+      "contact": "Contact Info"
+    }
   },
   "company": {
     "title": "My company"
@@ -16,7 +19,8 @@
   },
   "form": {
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "confirmPassword": "Confirm password"
   },
   "actions": {
     "forgot-pass": "Forgot password?",
