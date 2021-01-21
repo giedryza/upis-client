@@ -1,5 +1,20 @@
 .container {
-  width: var(--container-width);
   max-width: 98%;
   margin: 0 auto;
+
+  &.xs {
+    width: var(--container-width-xs);
+  }
+
+  &.sm {
+    width: var(--container-width-sm);
+  }
+
+  &.md {
+    width: var(--container-width-md);
+  }
+
+  &.lg {
+    width: var(--container-width-lg);
+  }
 }

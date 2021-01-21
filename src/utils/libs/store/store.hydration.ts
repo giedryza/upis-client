@@ -1,15 +1,11 @@
 import { State } from 'types/common/redux';
+import { hydrateAuth } from 'domain/auth/store.hydration';
 
-export const hydrateAuth = (clientState: State, serverState: State) => {
-  const auth = serverState.auth.timestamp
-    ? {
-        ...clientState.auth,
-        user: serverState.auth.user,
-        timestamp: serverState.auth.timestamp,
-      }
-    : {
-        ...clientState.auth,
-      };
+export const hydratedState = (clientState: State, serverState: State) => {
+  const nextState: State = {
+    ...clientState,
+    auth: hydrateAuth(clientState, serverState),
+  };
 
-  return auth;
+  return nextState;
 };

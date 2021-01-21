@@ -8,7 +8,7 @@ import { AccountNav } from 'components/users/account-nav/account-nav.component';
 
 const AccountContainer: FC = ({ children }) => {
   return (
-    <Container>
+    <Container size="md">
       <div className={styles.container}>
         <AccountNav />
 

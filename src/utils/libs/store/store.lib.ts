@@ -10,7 +10,7 @@ import thunk from 'redux-thunk';
 import { createWrapper, HYDRATE, Context } from 'next-redux-wrapper';
 
 import { rootReducer } from './store.reducer';
-import { hydrateAuth } from './store.hydration';
+import { hydratedState } from './store.hydration';
 
 import { State } from 'types/common/redux';
 
@@ -32,12 +32,7 @@ class Store {
     if (action.type === HYDRATE) {
       const serverState: State = { ...action.payload };
 
-      const nextState: State = {
-        ...state,
-        auth: hydrateAuth(state, serverState),
-      };
-
-      return nextState;
+      return hydratedState(state, serverState);
     }
 
     return rootReducer(state, action);

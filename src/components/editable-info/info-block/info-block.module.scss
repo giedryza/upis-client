@@ -1,0 +1,39 @@
+@use 'styles/mixins' as *;
+
+.container {
+  font-size: var(--font-size-16);
+  color: var(--color-grey-30);
+  display: flex;
+  align-items: center;
+
+  @include spacing(x, 1em);
+
+  .icon {
+    width: 1.6em;
+    fill: var(--color-grey-50);
+    flex-shrink: 0;
+  }
+
+  .content {
+    flex: 1;
+
+    @include spacing(y, 0.4em);
+  }
+
+  .title {
+    font-size: 1em;
+    color: var(--color-grey-20);
+  }
+
+  .subtitle {
+    font-size: 0.7em;
+  }
+
+  .actions {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+
+    @include spacing(x, 1em);
+  }
+}

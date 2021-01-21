@@ -1,10 +1,21 @@
 @use 'styles/mixins' as *;
 
 .content {
-  h1 {
-    font-size: var(--font-size-24);
+  > h1 {
+    font-size: var(--font-size-20);
     font-weight: 600;
+    padding: 0 0.5em;
   }
 
-  @include spacing(y, 2.5rem);
+  @include spacing(y, 3rem);
+}
+
+.block {
+  > h2 {
+    font-size: var(--font-size-16);
+    font-weight: 500;
+    padding: 0 0.5em;
+  }
+
+  @include spacing(y, 1rem);
 }
