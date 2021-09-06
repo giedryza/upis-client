@@ -1,6 +1,5 @@
 import { Reducer } from 'redux';
 
-import { SetError } from 'types/common/forms';
 import { Actions } from 'types/common/redux';
 
 export enum SocialType {
@@ -69,15 +68,9 @@ export type CompaniesPayloads = {
       'name' | 'phone' | 'email' | 'description' | 'website' | 'address'
     >
   >;
-  [CompaniesActionTypes.SubmitCompanyForm]: {
-    form:
-      | CompaniesPayloads[CompaniesActionTypes.CreateCompany]
-      | CompaniesPayloads[CompaniesActionTypes.UpdateCompany];
-    setError: SetError<
-      | CompaniesPayloads[CompaniesActionTypes.CreateCompany]
-      | CompaniesPayloads[CompaniesActionTypes.UpdateCompany]
-    >;
-  };
+  [CompaniesActionTypes.SubmitCompanyForm]:
+    | CompaniesPayloads[CompaniesActionTypes.CreateCompany]
+    | CompaniesPayloads[CompaniesActionTypes.UpdateCompany];
   [CompaniesActionTypes.ClearCompany]: undefined;
 };
 

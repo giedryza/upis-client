@@ -1,6 +1,9 @@
 import { State } from 'types/common/redux';
 
-export const selectIsCompanyExist = (state: State) => !!state.companies.company;
+export const selectMyCompany = (state: State) => state.companies.company;
+
+export const selectIsMyCompanyExist = (state: State) =>
+  !!selectMyCompany(state);
 
 export const selectCurrentStep = (state: State) => state.companies.step;
 

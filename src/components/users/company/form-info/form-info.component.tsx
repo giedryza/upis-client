@@ -1,92 +1,65 @@
-import React, { FC } from 'react';
+import React, { useMemo, VFC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
-import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
 
 import styles from './form-info.module.scss';
 
 import { Input } from 'ui/input/input.component';
 import { Button } from 'ui/button/button.component';
-import { ValidationRules } from 'types/common/forms';
 import { submitCompanyForm } from 'domain/companies/companies.thunks';
+import { useFormInfo } from 'components/users/company/form-info/form-info.hooks';
+import { selectMyCompany } from 'domain/companies/companies.selectors';
+import { FormInfoValues } from 'components/users/company/form-info/form-info.types';
 
-interface Values {
-  name: string;
-  phone: string;
-  email: string;
-}
-
-const INITIAL_VALUES: Values = {
-  name: '',
-  phone: '',
-  email: '',
-};
-
-const FormInfo: FC = () => {
+const FormInfo: VFC = () => {
   const { t } = useTranslation();
-
   const dispatch = useDispatch();
 
-  const {
-    register,
-    handleSubmit,
-    errors,
-    setError,
-    formState,
-  } = useForm<Values>({
-    defaultValues: INITIAL_VALUES,
-    mode: 'onChange',
-  });
+  const myCompany = useSelector(selectMyCompany);
 
-  const { isSubmitting, isValidating, isSubmitted, isValid } = formState;
+  const values = useMemo(
+    () =>
+      myCompany
+        ? {
+            name: myCompany.name,
+            phone: myCompany.phone,
+            email: myCompany.email,
+          }
+        : null,
+    [myCompany]
+  );
 
-  const validation: ValidationRules<Values> = {
-    name: {
-      required: {
-        value: true,
-        message: t('users:errors.company.name.empty'),
-      },
-    },
-    email: {
-      required: {
-        value: true,
-        message: t('users:errors.company.email.empty'),
-      },
-    },
-    phone: {
-      required: {
-        value: true,
-        message: t('users:errors.company.phone.empty'),
-      },
-    },
+  const onSubmit = ({ name, email, phone }: FormInfoValues) => {
+    dispatch(submitCompanyForm({ name, email, phone }));
   };
 
-  const onSubmit = ({ name, email, phone }: Values) => {
-    dispatch(submitCompanyForm({ form: { name, email, phone }, setError }));
-  };
+  const { handleSubmit, refs, errorMessages, isSubmitDisabled } = useFormInfo(
+    onSubmit,
+    values
+  );
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.inputs}>
         <Input
           name="name"
           label={t('users:company.form.name')}
-          ref={register(validation.name)}
-          error={isSubmitted ? errors.name?.message : ''}
+          ref={refs.name}
+          error={errorMessages.name}
         />
 
         <Input
           name="email"
           label={t('users:company.form.email')}
-          ref={register(validation.email)}
-          error={isSubmitted ? errors.email?.message : ''}
+          ref={refs.email}
+          error={errorMessages.email}
         />
 
         <Input
           name="phone"
           label={t('users:company.form.phone')}
-          ref={register(validation.phone)}
-          error={isSubmitted ? errors.phone?.message : ''}
+          ref={refs.phone}
+          error={errorMessages.phone}
         />
       </div>
 
@@ -95,7 +68,7 @@ const FormInfo: FC = () => {
           label={t('common:actions.next')}
           styleType="primary"
           type="submit"
-          disabled={isSubmitting || isValidating || (isSubmitted && !isValid)}
+          disabled={isSubmitDisabled}
         />
       </div>
     </form>

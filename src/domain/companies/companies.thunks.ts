@@ -11,7 +11,7 @@ import { endpoints } from 'uri/endpoints';
 import { Errors } from 'utils/libs/errors/errors.lib';
 import {
   selectCurrentStep,
-  selectIsCompanyExist,
+  selectIsMyCompanyExist,
 } from 'domain/companies/companies.selectors';
 import { COMPANY_FORM_TOTAL_STEPS } from 'domain/companies/companies.constants';
 
@@ -68,18 +68,17 @@ export const updateCompany = (
   return data;
 };
 
-export const submitCompanyForm = ({
-  form,
-  setError,
-}: CompaniesPayloads[CompaniesActionTypes.SubmitCompanyForm]): Thunk => async (
-  dispatch,
-  getState
-) => {
+export const submitCompanyForm = (
+  form: CompaniesPayloads[CompaniesActionTypes.SubmitCompanyForm]
+): Thunk => async (dispatch, getState) => {
   try {
     dispatch(companiesActions.setLoading(true));
 
     const company =
-      !selectIsCompanyExist(getState()) && form.name && form.email && form.phone
+      !selectIsMyCompanyExist(getState()) &&
+      form.name &&
+      form.email &&
+      form.phone
         ? await dispatch(
             createCompany(
               form as CompaniesPayloads[CompaniesActionTypes.CreateCompany]
@@ -90,7 +89,7 @@ export const submitCompanyForm = ({
     dispatch(companiesActions.setCompany(company));
     dispatch(updateStep());
   } catch (error) {
-    new Errors(error).handleForm(setError);
+    new Errors(error).handleApi();
   } finally {
     dispatch(companiesActions.setLoading(false));
   }
