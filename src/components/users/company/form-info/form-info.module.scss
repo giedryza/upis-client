@@ -1,0 +1,13 @@
+@use 'styles/mixins' as *;
+
+.form {
+  @include spacing(y, 1.5rem);
+}
+
+.inputs {
+  @include spacing(y, 2rem);
+}
+
+.actions {
+  text-align: right;
+}

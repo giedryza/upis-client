@@ -12,7 +12,12 @@
     }
   },
   "company": {
-    "title": "Mano įmonė"
+    "title": "Mano įmonė",
+    "form": {
+      "name": "Pavadinimas",
+      "email": "El. paštas",
+      "phone": "Tel. numeris"
+    }
   },
   "tours": {
     "title": "Mano maršrutai"
@@ -39,6 +44,17 @@
       "confirm": "Patvirtinkite slaptažodį.",
       "not-match": "Slaptažodžiai nesutampa. Bandykite dar kartą.",
       "incorrect": "Neteisingas slaptažodis. Bandykite dar kartą arba spauskite Pamiršai slaptažodį, kad atstatyti."
+    },
+    "company": {
+      "name": {
+        "empty": "Įveskite įmonės pavadinimą"
+      },
+      "email": {
+        "empty": "Įveskite įmonės el. paštą"
+      },
+      "phone": {
+        "empty": "Įveskite įmonės tel. numerį"
+      }
     }
   }
 }

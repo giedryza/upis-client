@@ -1,5 +1,5 @@
 import { State } from 'types/common/redux';
-import { hydrateAuth } from 'domain/auth/store.hydration';
+import { hydrateAuth } from 'domain/auth/auth.hydration';
 
 export const hydratedState = (clientState: State, serverState: State) => {
   const nextState: State = {

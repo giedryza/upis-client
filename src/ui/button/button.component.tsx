@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import { FC, AllHTMLAttributes, useMemo, AriaAttributes } from 'react';
+import { FC, HTMLAttributes, useMemo, AriaAttributes } from 'react';
 import Link, { LinkProps } from 'next/link';
 import clsx from 'clsx';
 
@@ -96,7 +96,7 @@ const Button: FC<Props> = ({
     [label, icon, iconPlacement, withDropdown]
   );
 
-  const attributes: AllHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> = {
+  const attributes: HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> = {
     className: clsx(
       styles.button,
       styles.ripple,

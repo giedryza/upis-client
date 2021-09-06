@@ -1,5 +1,7 @@
 import { ApiError } from './api.error';
 
+import { SetError } from 'types/common/forms';
+
 export class Errors {
   #defaultMessage = 'Something went wrong.';
 
@@ -31,12 +33,7 @@ export class Errors {
     this.#handleGeneric();
   };
 
-  handleForm = <T>(
-    setError: (
-      name: keyof T,
-      error: { message: string; shouldFocus: boolean }
-    ) => void
-  ) => {
+  handleForm = <T extends Record<string, unknown>>(setError: SetError<T>) => {
     if (this.error instanceof ApiError) {
       this.error.data.forEach(({ field, message }) => {
         if (field) {
