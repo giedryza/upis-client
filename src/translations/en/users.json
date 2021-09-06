@@ -12,7 +12,12 @@
     }
   },
   "company": {
-    "title": "My company"
+    "title": "My company",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone"
+    }
   },
   "tours": {
     "title": "My tours"
@@ -39,6 +44,17 @@
       "confirm": "Confirm password.",
       "not-match": "Passwords didn't match. Try again.",
       "incorrect": "Incorrect password. Try again or click Forgot password to reset it."
+    },
+    "company": {
+      "name": {
+        "empty": "Enter company name"
+      },
+      "email": {
+        "empty": "Enter company email"
+      },
+      "phone": {
+        "empty": "Enter company phone"
+      }
     }
   }
 }

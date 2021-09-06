@@ -14,7 +14,8 @@ export const endpoints = {
     me: `${paths.users}/me`,
   },
   companies: {
-    collection: paths.companies,
-    document: `${paths.companies}/:id`,
+    index: paths.companies,
+    me: `${paths.companies}/me`,
+    single: `${paths.companies}/:id`,
   },
 };

@@ -1,0 +1,1 @@
+export const COMPANY_FORM_TOTAL_STEPS = 5;
