@@ -16,7 +16,8 @@
     "form": {
       "name": "Name",
       "email": "Email",
-      "phone": "Phone"
+      "phone": "Phone",
+      "description": "About the Company"
     }
   },
   "tours": {

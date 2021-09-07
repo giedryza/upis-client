@@ -16,7 +16,8 @@
     "form": {
       "name": "Pavadinimas",
       "email": "El. paštas",
-      "phone": "Tel. numeris"
+      "phone": "Tel. numeris",
+      "description": "Apie kompaniją"
     }
   },
   "tours": {

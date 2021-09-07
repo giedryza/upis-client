@@ -44,24 +44,28 @@ export const createCompany = ({
   name,
   email,
   phone,
+  description,
 }: CompaniesPayloads[CompaniesActionTypes.CreateCompany]): PromiseThunk<Company> => async () => {
   const { data } = await new Http<Response<Company>>(
     endpoints.companies.index,
     {
-      body: { name, email, phone },
+      body: { name, email, phone, description },
     }
   ).post();
 
   return data;
 };
 
-export const updateCompany = (
-  form: CompaniesPayloads[CompaniesActionTypes.UpdateCompany]
-): PromiseThunk<Company> => async () => {
+export const updateCompany = ({
+  name,
+  email,
+  phone,
+  description,
+}: CompaniesPayloads[CompaniesActionTypes.UpdateCompany]): PromiseThunk<Company> => async () => {
   const { data } = await new Http<Response<Company>>(
     endpoints.companies.index,
     {
-      body: { name: form.name, email: form.email, phone: form.phone },
+      body: { name, email, phone, description },
     }
   ).post();
 
@@ -74,17 +78,13 @@ export const submitCompanyForm = (
   try {
     dispatch(companiesActions.setLoading(true));
 
-    const company =
-      !selectIsMyCompanyExist(getState()) &&
-      form.name &&
-      form.email &&
-      form.phone
-        ? await dispatch(
-            createCompany(
-              form as CompaniesPayloads[CompaniesActionTypes.CreateCompany]
-            )
+    const company = !selectIsMyCompanyExist(getState())
+      ? await dispatch(
+          createCompany(
+            form as CompaniesPayloads[CompaniesActionTypes.CreateCompany]
           )
-        : await dispatch(updateCompany(form));
+        )
+      : await dispatch(updateCompany(form));
 
     dispatch(companiesActions.setCompany(company));
     dispatch(updateStep());
