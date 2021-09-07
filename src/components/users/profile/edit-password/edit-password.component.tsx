@@ -27,18 +27,18 @@ interface Props {
 const EditPassword: FC<Props> = ({ id }) => {
   const { t } = useTranslation();
 
-  const {
-    register,
-    handleSubmit,
-    errors,
-    setError,
-    formState,
-  } = useForm<Values>({
+  const { register, handleSubmit, formState } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
     mode: 'onChange',
   });
 
-  const { isSubmitting, isValidating, isSubmitted, isValid } = formState;
+  const {
+    isSubmitting,
+    isValidating,
+    isSubmitted,
+    isValid,
+    errors,
+  } = formState;
 
   const validation: ValidationRules<Values> = {
     password: {
@@ -75,22 +75,20 @@ const EditPassword: FC<Props> = ({ id }) => {
       // dispatch(authActions.setSession(data));
       console.log({ password, confirmPassword });
     } catch (error: unknown) {
-      new Errors(error).handleForm(setError);
+      new Errors(error).handleApi();
     }
   };
 
   const form = (
     <form className={styles.form} id={id} onSubmit={handleSubmit(onSubmit)}>
       <Input
-        name="password"
+        {...register('password', { ...validation.password })}
         label={t('users:form.password')}
-        ref={register(validation.password)}
         error={isSubmitted ? errors.password?.message : ''}
       />
       <Input
-        name="confirmPassword"
+        {...register('confirmPassword', { ...validation.confirmPassword })}
         label={t('users:form.confirmPassword')}
-        ref={register(validation.confirmPassword)}
         error={isSubmitted ? errors.confirmPassword?.message : ''}
       />
     </form>

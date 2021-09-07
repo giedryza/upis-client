@@ -1,34 +1,27 @@
-import { useEffect } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useEffect, useMemo } from 'react';
+import { useForm } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
+import { useSelector } from 'react-redux';
 
-import { ErrorMessages, ValidationRules } from 'types/common/forms';
+import { UseFormBase, ValidationRules } from 'types/common/forms';
 import { FormInfoValues } from 'components/users/company/form-info/form-info.types';
+import { selectMyCompany } from 'domain/companies/companies.selectors';
+import { INITIAL_VALUES } from 'components/users/company/form-info/form-info.constants';
 
-const INITIAL_VALUES: FormInfoValues = {
-  name: '',
-  phone: '',
-  email: '',
-};
-
-export const useFormInfo = (
-  onSubmit: SubmitHandler<FormInfoValues>,
-  values: FormInfoValues | null
-) => {
+export const useFormInfo: UseFormBase<FormInfoValues> = (onSubmit, values) => {
   const { t } = useTranslation();
 
-  const {
-    register,
-    reset,
-    handleSubmit,
-    errors,
-    formState,
-  } = useForm<FormInfoValues>({
-    defaultValues: INITIAL_VALUES,
-    mode: 'onChange',
+  const { register, reset, handleSubmit, formState } = useForm<FormInfoValues>({
+    defaultValues: values,
   });
 
-  const { isSubmitting, isValidating, isSubmitted, isValid } = formState;
+  const {
+    isSubmitting,
+    isValidating,
+    isSubmitted,
+    isValid,
+    errors,
+  } = formState;
 
   const validation: ValidationRules<FormInfoValues> = {
     name: {
@@ -51,24 +44,22 @@ export const useFormInfo = (
     },
   };
 
-  const errorMessages: ErrorMessages<FormInfoValues> = {
+  const errorMessages = {
     name: isSubmitted ? errors.name?.message : '',
-    phone: isSubmitted ? errors.phone?.message : '',
+    phones: isSubmitted ? errors.phone?.message : '',
     email: isSubmitted ? errors.email?.message : '',
   };
 
-  const isSubmitDisabled: boolean =
+  const isSubmitDisabled =
     isSubmitting || isValidating || (isSubmitted && !isValid);
 
   const refs = {
-    name: register(validation.name),
-    phone: register(validation.phone),
-    email: register(validation.email),
+    name: register('name', { ...validation.name }),
+    phone: register('phone', { ...validation.phone }),
+    email: register('email', { ...validation.email }),
   };
 
   useEffect(() => {
-    if (!values) return;
-
     reset({
       name: values.name,
       phone: values.phone,
@@ -82,4 +73,22 @@ export const useFormInfo = (
     errorMessages,
     isSubmitDisabled,
   };
+};
+
+export const useValues = (): FormInfoValues => {
+  const myCompany = useSelector(selectMyCompany);
+
+  const values = useMemo(
+    (): FormInfoValues =>
+      myCompany
+        ? {
+            name: myCompany.name,
+            phone: myCompany.phone,
+            email: myCompany.email,
+          }
+        : INITIAL_VALUES,
+    [myCompany]
+  );
+
+  return values;
 };
