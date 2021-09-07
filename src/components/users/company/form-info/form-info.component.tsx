@@ -8,10 +8,10 @@ import { Input } from 'ui/input/input.component';
 import { Button } from 'ui/button/button.component';
 import { submitCompanyForm } from 'domain/companies/companies.thunks';
 import {
-  useFormInfo,
+  useMyCompanyInfoForm,
   useValues,
 } from 'components/users/company/form-info/form-info.hooks';
-import { FormInfoValues } from 'components/users/company/form-info/form-info.types';
+import { MyCompanyInfoFormValues } from 'components/users/company/form-info/form-info.types';
 
 const FormInfo: VFC = () => {
   const { t } = useTranslation();
@@ -19,14 +19,16 @@ const FormInfo: VFC = () => {
 
   const values = useValues();
 
-  const onSubmit = ({ name, email, phone }: FormInfoValues) => {
+  const onSubmit = ({ name, email, phone }: MyCompanyInfoFormValues) => {
     dispatch(submitCompanyForm({ name, email, phone }));
   };
 
-  const { handleSubmit, refs, errorMessages, isSubmitDisabled } = useFormInfo(
-    onSubmit,
-    values
-  );
+  const {
+    handleSubmit,
+    refs,
+    errorMessages,
+    isDisabled,
+  } = useMyCompanyInfoForm(onSubmit, values);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
@@ -55,7 +57,7 @@ const FormInfo: VFC = () => {
           label={t('common:actions.next')}
           styleType="primary"
           type="submit"
-          disabled={isSubmitDisabled}
+          disabled={isDisabled}
         />
       </div>
     </form>

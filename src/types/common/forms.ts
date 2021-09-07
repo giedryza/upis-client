@@ -13,7 +13,7 @@ export type UseFormBase<T extends Record<string, unknown>> = (
   handleSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
   refs: Record<keyof T, UseFormRegisterReturn>;
   errorMessages: Partial<Record<keyof T, string>>;
-  isSubmitDisabled: boolean;
+  isDisabled: boolean;
 };
 
 export type SetError<T extends Record<string, unknown>> = (

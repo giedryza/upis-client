@@ -1,6 +1,6 @@
-import { FormInfoValues } from 'components/users/company/form-info/form-info.types';
+import { MyCompanyInfoFormValues } from 'components/users/company/form-info/form-info.types';
 
-export const INITIAL_VALUES: FormInfoValues = {
+export const INITIAL_VALUES: MyCompanyInfoFormValues = {
   name: '',
   phone: '',
   email: '',
