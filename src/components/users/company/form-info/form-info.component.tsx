@@ -19,8 +19,13 @@ const FormInfo: VFC = () => {
 
   const values = useValues();
 
-  const onSubmit = ({ name, email, phone }: MyCompanyInfoFormValues) => {
-    dispatch(submitCompanyForm({ name, email, phone }));
+  const onSubmit = ({
+    name,
+    email,
+    phone,
+    description,
+  }: MyCompanyInfoFormValues) => {
+    dispatch(submitCompanyForm({ name, email, phone, description }));
   };
 
   const {
@@ -49,6 +54,13 @@ const FormInfo: VFC = () => {
           {...refs.phone}
           label={t('users:company.form.phone')}
           error={errorMessages.phone}
+        />
+
+        <Input
+          {...refs.description}
+          label={t('users:company.form.description')}
+          type="textarea"
+          rows={10}
         />
       </div>
 

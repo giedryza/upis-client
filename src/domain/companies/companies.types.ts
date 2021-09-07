@@ -21,12 +21,12 @@ export interface Company {
   phone: string;
   email: string;
   slug: string;
-  description?: string;
-  website?: string;
-  social?: Social[];
-  address?: string;
+  description: string;
+  website: string;
+  social: Social[];
+  address: string;
   user: string;
-  location?: {
+  location: {
     coordinates: number[];
   };
   logo: {
@@ -60,7 +60,7 @@ export type CompaniesPayloads = {
   [CompaniesActionTypes.SetLoading]: boolean;
   [CompaniesActionTypes.CreateCompany]: Pick<
     Company,
-    'name' | 'phone' | 'email'
+    'name' | 'phone' | 'email' | 'description'
   >;
   [CompaniesActionTypes.UpdateCompany]: Partial<
     Pick<

@@ -62,6 +62,7 @@ export const useMyCompanyInfoForm: UseFormBase<MyCompanyInfoFormValues> = (
     name: register('name', { ...validation.name }),
     phone: register('phone', { ...validation.phone }),
     email: register('email', { ...validation.email }),
+    description: register('description', { ...validation.description }),
   };
 
   useEffect(() => {
@@ -69,6 +70,7 @@ export const useMyCompanyInfoForm: UseFormBase<MyCompanyInfoFormValues> = (
       name: values.name,
       phone: values.phone,
       email: values.email,
+      description: values.description,
     });
   }, [reset, values]);
 
@@ -90,6 +92,7 @@ export const useValues = (): MyCompanyInfoFormValues => {
             name: myCompany.name,
             phone: myCompany.phone,
             email: myCompany.email,
+            description: myCompany.description,
           }
         : INITIAL_VALUES,
     [myCompany]

@@ -4,4 +4,5 @@ export const INITIAL_VALUES: MyCompanyInfoFormValues = {
   name: '',
   phone: '',
   email: '',
+  description: '',
 };

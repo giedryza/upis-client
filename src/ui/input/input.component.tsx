@@ -31,6 +31,7 @@ export interface Props {
   info?: string;
   label?: string;
   placeholder?: string;
+  rows?: number;
 }
 
 const Input = forwardRef<InputElement, Props>(
@@ -49,6 +50,7 @@ const Input = forwardRef<InputElement, Props>(
       info,
       label,
       placeholder,
+      rows,
     },
     ref
   ) => {
@@ -75,6 +77,7 @@ const Input = forwardRef<InputElement, Props>(
 
         {type === 'textarea' ? (
           <textarea
+            rows={rows}
             {...attributes}
             ref={ref as RefObject<HTMLTextAreaElement>}
           />
