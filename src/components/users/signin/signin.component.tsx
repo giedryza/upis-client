@@ -33,18 +33,18 @@ const Signin: FC = () => {
 
   const dispatch = useDispatch();
 
-  const {
-    register,
-    handleSubmit,
-    errors,
-    setError,
-    formState,
-  } = useForm<Values>({
+  const { register, handleSubmit, formState } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
     mode: 'onChange',
   });
 
-  const { isSubmitting, isValidating, isSubmitted, isValid } = formState;
+  const {
+    isSubmitting,
+    isValidating,
+    isSubmitted,
+    isValid,
+    errors,
+  } = formState;
 
   const validation: ValidationRules<Values> = {
     email: {
@@ -82,7 +82,7 @@ const Signin: FC = () => {
 
       Router.push(routes.home);
     } catch (error: unknown) {
-      new Errors(error).handleForm(setError);
+      new Errors(error).handleApi();
     }
   };
 
@@ -95,17 +95,15 @@ const Signin: FC = () => {
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.inputs}>
               <Input
-                name="email"
+                {...register('email', { ...validation.email })}
                 label={t('users:form.email')}
-                ref={register(validation.email)}
                 error={isSubmitted ? errors.email?.message : ''}
               />
 
               <Input
-                name="password"
+                {...register('password', { ...validation.password })}
                 label={t('users:form.password')}
                 type="password"
-                ref={register(validation.password)}
                 error={isSubmitted ? errors.password?.message : ''}
               />
             </div>
