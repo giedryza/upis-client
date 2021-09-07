@@ -4,14 +4,22 @@ import useTranslation from 'next-translate/useTranslation';
 import { useSelector } from 'react-redux';
 
 import { UseFormBase, ValidationRules } from 'types/common/forms';
-import { FormInfoValues } from 'components/users/company/form-info/form-info.types';
+import { MyCompanyInfoFormValues } from 'components/users/company/form-info/form-info.types';
 import { selectMyCompany } from 'domain/companies/companies.selectors';
 import { INITIAL_VALUES } from 'components/users/company/form-info/form-info.constants';
 
-export const useFormInfo: UseFormBase<FormInfoValues> = (onSubmit, values) => {
+export const useMyCompanyInfoForm: UseFormBase<MyCompanyInfoFormValues> = (
+  onSubmit,
+  values
+) => {
   const { t } = useTranslation();
 
-  const { register, reset, handleSubmit, formState } = useForm<FormInfoValues>({
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState,
+  } = useForm<MyCompanyInfoFormValues>({
     defaultValues: values,
   });
 
@@ -23,7 +31,7 @@ export const useFormInfo: UseFormBase<FormInfoValues> = (onSubmit, values) => {
     errors,
   } = formState;
 
-  const validation: ValidationRules<FormInfoValues> = {
+  const validation: ValidationRules<MyCompanyInfoFormValues> = {
     name: {
       required: {
         value: true,
@@ -50,9 +58,6 @@ export const useFormInfo: UseFormBase<FormInfoValues> = (onSubmit, values) => {
     email: isSubmitted ? errors.email?.message : '',
   };
 
-  const isSubmitDisabled =
-    isSubmitting || isValidating || (isSubmitted && !isValid);
-
   const refs = {
     name: register('name', { ...validation.name }),
     phone: register('phone', { ...validation.phone }),
@@ -71,15 +76,15 @@ export const useFormInfo: UseFormBase<FormInfoValues> = (onSubmit, values) => {
     handleSubmit: handleSubmit(onSubmit),
     refs,
     errorMessages,
-    isSubmitDisabled,
+    isDisabled: isSubmitting || isValidating || (isSubmitted && !isValid),
   };
 };
 
-export const useValues = (): FormInfoValues => {
+export const useValues = (): MyCompanyInfoFormValues => {
   const myCompany = useSelector(selectMyCompany);
 
   const values = useMemo(
-    (): FormInfoValues =>
+    (): MyCompanyInfoFormValues =>
       myCompany
         ? {
             name: myCompany.name,

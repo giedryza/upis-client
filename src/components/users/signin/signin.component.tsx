@@ -1,6 +1,5 @@
-import { FC } from 'react';
+import { VFC } from 'react';
 import Router from 'next/router';
-import { useForm } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 import { useDispatch } from 'react-redux';
 
@@ -12,64 +11,19 @@ import { Http } from 'utils/libs/http/http.lib';
 import { endpoints } from 'uri/endpoints';
 import { Errors } from 'utils/libs/errors/errors.lib';
 import { Input } from 'ui/input/input.component';
-import { ValidationRules } from 'types/common/forms';
 import { Session } from 'domain/auth/auth.types';
 import { authActions } from 'domain/auth/auth.actions';
 import { Response } from 'utils/libs/http/http.types';
 import { routes } from 'uri/routes';
+import { useSigninForm } from 'components/users/signin/signin.hooks';
+import { SigninFormValues } from 'components/users/signin/signin.types';
+import { INITIAL_VALUES } from 'components/users/signin/signin.constants';
 
-interface Values {
-  email: string;
-  password: string;
-}
-
-const INITIAL_VALUES: Values = {
-  email: '',
-  password: '',
-};
-
-const Signin: FC = () => {
+const Signin: VFC = () => {
   const { t } = useTranslation();
-
   const dispatch = useDispatch();
 
-  const { register, handleSubmit, formState } = useForm<Values>({
-    defaultValues: INITIAL_VALUES,
-    mode: 'onChange',
-  });
-
-  const {
-    isSubmitting,
-    isValidating,
-    isSubmitted,
-    isValid,
-    errors,
-  } = formState;
-
-  const validation: ValidationRules<Values> = {
-    email: {
-      required: {
-        value: true,
-        message: t('users:errors.email.empty'),
-      },
-    },
-    password: {
-      required: {
-        value: true,
-        message: t('users:errors.password.empty'),
-      },
-      minLength: {
-        value: 8,
-        message: t('users:errors.password.length'),
-      },
-      maxLength: {
-        value: 50,
-        message: t('users:errors.password.length'),
-      },
-    },
-  };
-
-  const onSubmit = async ({ email, password }: Values) => {
+  const onSubmit = async ({ email, password }: SigninFormValues) => {
     try {
       const { data } = await new Http<Response<Session>>(
         endpoints.users.signin,
@@ -86,25 +40,30 @@ const Signin: FC = () => {
     }
   };
 
+  const { handleSubmit, refs, errorMessages, isDisabled } = useSigninForm(
+    onSubmit,
+    INITIAL_VALUES
+  );
+
   return (
     <div className={styles.container}>
       <Card>
         <div className={styles.content}>
           <h1>{t('users:layout.signin')}</h1>
 
-          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.inputs}>
               <Input
-                {...register('email', { ...validation.email })}
+                {...refs.email}
                 label={t('users:form.email')}
-                error={isSubmitted ? errors.email?.message : ''}
+                error={errorMessages.email}
               />
 
               <Input
-                {...register('password', { ...validation.password })}
+                {...refs.password}
                 label={t('users:form.password')}
                 type="password"
-                error={isSubmitted ? errors.password?.message : ''}
+                error={errorMessages.password}
               />
             </div>
 
@@ -119,9 +78,7 @@ const Signin: FC = () => {
                 label={t('users:actions.signin')}
                 styleType="primary"
                 type="submit"
-                disabled={
-                  isSubmitting || isValidating || (isSubmitted && !isValid)
-                }
+                disabled={isDisabled}
               />
             </div>
           </form>
