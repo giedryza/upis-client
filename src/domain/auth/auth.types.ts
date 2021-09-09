@@ -34,6 +34,7 @@ export enum AuthActionTypes {
   SetUser = 'auth/SET_USER',
   SetSession = 'auth/SET_SESSION',
   ClearSession = 'auth/CLEAR_SESSION',
+  Signin = 'auth/SIGNIN',
   SetLoading = 'auth/SET_LOADING',
 }
 
@@ -41,6 +42,7 @@ export type AuthPayloads = {
   [AuthActionTypes.SetUser]: User | null;
   [AuthActionTypes.SetSession]: Session;
   [AuthActionTypes.ClearSession]: undefined;
+  [AuthActionTypes.Signin]: { email: string; password: string };
   [AuthActionTypes.SetLoading]: boolean;
 };
 
