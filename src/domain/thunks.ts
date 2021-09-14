@@ -1,5 +1,5 @@
-import { thunks as auth } from './auth';
-import { thunks as companies } from './companies';
+import * as auth from './auth/auth.thunks';
+import * as companies from './companies/companies.thunks';
 
 export const thunks = {
   auth,

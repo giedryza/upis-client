@@ -1,7 +1,7 @@
-import { actions as auth } from './auth';
-import { actions as companies } from './companies';
-import { actions as dropdown } from './dropdown';
-import { actions as modal } from './modal';
+import * as auth from './auth/auth.actions';
+import * as companies from './companies/companies.actions';
+import * as dropdown from './dropdown/dropdown.actions';
+import * as modal from './modal/modal.actions';
 
 export const actions = {
   auth,
