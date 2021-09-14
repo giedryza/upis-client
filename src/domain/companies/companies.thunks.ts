@@ -1,4 +1,4 @@
-import { Thunk, PromiseThunk } from 'types/common/redux';
+import { Thunk } from 'types/common/redux';
 import {
   CompaniesActionTypes,
   CompaniesPayloads,
@@ -40,53 +40,49 @@ export const updateStep = (): Thunk => (dispatch, getState) => {
   dispatch(companiesActions.setStep(nextStep));
 };
 
-export const createCompany = ({
-  name,
-  email,
-  phone,
-  description,
-}: CompaniesPayloads[CompaniesActionTypes.CreateCompany]): PromiseThunk<Company> => async () => {
-  const { data } = await new Http<Response<Company>>(
-    endpoints.companies.index,
-    {
-      body: { name, email, phone, description },
-    }
-  ).post();
-
-  return data;
-};
-
-export const updateCompany = ({
-  name,
-  email,
-  phone,
-  description,
-}: CompaniesPayloads[CompaniesActionTypes.UpdateCompany]): PromiseThunk<Company> => async () => {
-  const { data } = await new Http<Response<Company>>(
-    endpoints.companies.index,
-    {
-      body: { name, email, phone, description },
-    }
-  ).post();
-
-  return data;
-};
-
-export const submitCompanyForm = (
-  form: CompaniesPayloads[CompaniesActionTypes.SubmitCompanyForm]
+export const updateMyCompany = (
+  form: CompaniesPayloads[CompaniesActionTypes.UpdateCompany]
 ): Thunk => async (dispatch, getState) => {
+  if (!selectIsMyCompanyExist(getState())) return;
+
   try {
     dispatch(companiesActions.setLoading(true));
 
-    const company = !selectIsMyCompanyExist(getState())
-      ? await dispatch(
-          createCompany(
-            form as CompaniesPayloads[CompaniesActionTypes.CreateCompany]
-          )
-        )
-      : await dispatch(updateCompany(form));
+    const { data } = await new Http<Response<Company>>(
+      endpoints.companies.index,
+      {
+        body: { ...form },
+      }
+    ).post();
 
-    dispatch(companiesActions.setCompany(company));
+    dispatch(companiesActions.setCompany(data));
+    dispatch(updateStep());
+  } catch (error) {
+    new Errors(error).handleApi();
+  } finally {
+    dispatch(companiesActions.setLoading(false));
+  }
+};
+
+export const createMyCompany = (
+  form: CompaniesPayloads[CompaniesActionTypes.CreateCompany]
+): Thunk => async (dispatch, getState) => {
+  if (selectIsMyCompanyExist(getState())) {
+    dispatch(updateMyCompany(form));
+    return;
+  }
+
+  try {
+    dispatch(companiesActions.setLoading(true));
+
+    const { data } = await new Http<Response<Company>>(
+      endpoints.companies.index,
+      {
+        body: { ...form },
+      }
+    ).post();
+
+    dispatch(companiesActions.setCompany(data));
     dispatch(updateStep());
   } catch (error) {
     new Errors(error).handleApi();

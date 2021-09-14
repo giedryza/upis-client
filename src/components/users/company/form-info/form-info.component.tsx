@@ -6,7 +6,7 @@ import styles from './form-info.module.scss';
 
 import { Input } from 'ui/input/input.component';
 import { Button } from 'ui/button/button.component';
-import { submitCompanyForm } from 'domain/companies/companies.thunks';
+import { createMyCompany } from 'domain/companies/companies.thunks';
 import {
   useMyCompanyInfoForm,
   useValues,
@@ -25,7 +25,7 @@ const FormInfo: VFC = () => {
     phone,
     description,
   }: MyCompanyInfoFormValues) => {
-    dispatch(submitCompanyForm({ name, email, phone, description }));
+    dispatch(createMyCompany({ name, email, phone, description }));
   };
 
   const {
