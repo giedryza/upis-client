@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { companiesActions } from 'domain/companies/companies.actions';
-import { getMyCompany } from 'domain/companies/companies.thunks';
+import { actions } from 'domain/actions';
+import { thunks } from 'domain/thunks';
 
 export const useMyCompany = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMyCompany());
+    dispatch(thunks.companies.getMyCompany());
 
     return () => {
-      dispatch(companiesActions.clearCompany());
+      dispatch(actions.companies.clearCompany());
     };
   }, [dispatch]);
 };

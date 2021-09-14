@@ -2,13 +2,13 @@ import { FC, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
-import { dropdownActions } from 'domain/dropdown/dropdown.actions';
 import { makeIsDropdownActiveSelector } from 'domain/dropdown/dropdown.selectors';
 import {
   Dropdown as DropdownComponent,
   MenuButton,
 } from 'ui/dropdown/dropdown.component';
 import { State } from 'types/common/redux';
+import { actions } from 'domain/actions';
 
 interface Props {
   id: DropdownKey;
@@ -25,11 +25,11 @@ const Dropdown: FC<Props> = ({ id, menuButton, position, children }) => {
   );
 
   const onOpen = () => {
-    dispatch(dropdownActions.setActiveDropdown(id));
+    dispatch(actions.dropdown.setActiveDropdown(id));
   };
 
   const onClose = () => {
-    dispatch(dropdownActions.setActiveDropdown(null));
+    dispatch(actions.dropdown.setActiveDropdown(null));
   };
 
   return (

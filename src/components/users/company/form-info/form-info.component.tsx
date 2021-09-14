@@ -6,12 +6,12 @@ import styles from './form-info.module.scss';
 
 import { Input } from 'ui/input/input.component';
 import { Button } from 'ui/button/button.component';
-import { createMyCompany } from 'domain/companies/companies.thunks';
 import {
   useMyCompanyInfoForm,
   useValues,
 } from 'components/users/company/form-info/form-info.hooks';
 import { MyCompanyInfoFormValues } from 'components/users/company/form-info/form-info.types';
+import { thunks } from 'domain/thunks';
 
 const FormInfo: VFC = () => {
   const { t } = useTranslation();
@@ -25,7 +25,9 @@ const FormInfo: VFC = () => {
     phone,
     description,
   }: MyCompanyInfoFormValues) => {
-    dispatch(createMyCompany({ name, email, phone, description }));
+    dispatch(
+      thunks.companies.createMyCompany({ name, email, phone, description })
+    );
   };
 
   const {

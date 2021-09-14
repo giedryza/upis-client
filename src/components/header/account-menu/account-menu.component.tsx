@@ -7,13 +7,13 @@ import { DropdownKey } from 'domain/dropdown/dropdown.types';
 import { IconName } from 'ui/icon/icon.component';
 import { Dropdown } from 'components/dropdown/dropdown.container';
 import { List } from 'components/dropdown/list/list.container';
-import { authActions } from 'domain/auth/auth.actions';
 import { Button } from 'ui/button/button.component';
 import { routes } from 'uri/routes';
 import { Http } from 'utils/libs/http/http.lib';
 import { endpoints } from 'uri/endpoints';
 import { Errors } from 'utils/libs/errors/errors.lib';
 import { getUser } from 'domain/auth/auth.selectors';
+import { actions } from 'domain/actions';
 
 const AccountMenu: FC = () => {
   const { t } = useTranslation();
@@ -26,7 +26,7 @@ const AccountMenu: FC = () => {
     try {
       await new Http(endpoints.users.signout).post();
 
-      dispatch(authActions.clearSession());
+      dispatch(actions.auth.clearSession());
 
       Router.push(routes.home);
     } catch (error: unknown) {

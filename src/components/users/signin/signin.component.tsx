@@ -10,14 +10,14 @@ import { Input } from 'ui/input/input.component';
 import { useSigninForm } from 'components/users/signin/signin.hooks';
 import { SigninFormValues } from 'components/users/signin/signin.types';
 import { INITIAL_VALUES } from 'components/users/signin/signin.constants';
-import { signin } from 'domain/auth/auth.thunks';
+import { thunks } from 'domain/thunks';
 
 const Signin: VFC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const onSubmit = async ({ email, password }: SigninFormValues) => {
-    dispatch(signin({ email, password }));
+    dispatch(thunks.auth.signin({ email, password }));
   };
 
   const { handleSubmit, refs, errorMessages, isDisabled } = useSigninForm(

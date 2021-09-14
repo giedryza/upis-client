@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Portal } from 'ui/portal/portal.component';
 import { ModalKey } from 'domain/modal/modal.types';
-import { modalActions } from 'domain/modal/modal.actions';
 import { State } from 'types/common/redux';
+import { actions } from 'domain/actions';
 
 const Modal: FC = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const Modal: FC = () => {
       <button
         type="button"
         onClick={() => {
-          dispatch(modalActions.setActiveModal(ModalKey.TestModal));
+          dispatch(actions.modal.setActiveModal(ModalKey.TestModal));
         }}
       >
         Open Modal
@@ -30,7 +30,7 @@ const Modal: FC = () => {
               <button
                 type="button"
                 onClick={() => {
-                  dispatch(modalActions.setActiveModal(null));
+                  dispatch(actions.modal.setActiveModal(null));
                 }}
               >
                 Close Modal

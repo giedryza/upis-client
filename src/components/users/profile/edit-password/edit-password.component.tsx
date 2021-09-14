@@ -72,7 +72,7 @@ const EditPassword: FC<Props> = ({ id }) => {
       //   }
       // ).post();
 
-      // dispatch(authActions.setSession(data));
+      // dispatch(actions.auth.setSession(data));
       console.log({ password, confirmPassword });
     } catch (error: unknown) {
       new Errors(error).handleApi();

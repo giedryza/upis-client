@@ -2,13 +2,13 @@ import { FC, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
-import { dropdownActions } from 'domain/dropdown/dropdown.actions';
 import { makeIsDropdownActiveSelector } from 'domain/dropdown/dropdown.selectors';
 import {
   List as ListComponent,
   MenuItem,
 } from 'ui/dropdown/list/list.component';
 import { State } from 'types/common/redux';
+import { actions } from 'domain/actions';
 
 interface Props {
   id: DropdownKey;
@@ -26,7 +26,7 @@ const List: FC<Props> = ({ id, items }) => {
 
   const handleClose = () => {
     if (isOpen) {
-      dispatch(dropdownActions.setActiveDropdown(null));
+      dispatch(actions.dropdown.setActiveDropdown(null));
     }
   };
 
