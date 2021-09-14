@@ -50,7 +50,6 @@ export enum CompaniesActionTypes {
   SetLoading = 'companies/SET_LOADING',
   CreateCompany = 'companies/CREATE_COMPANY',
   UpdateCompany = 'companies/UPDATE_COMPANY',
-  SubmitCompanyForm = 'companies/SUBMIT_COMPANY_FORM',
   ClearCompany = 'companies/CLEAR_COMPANY',
 }
 
@@ -68,9 +67,6 @@ export type CompaniesPayloads = {
       'name' | 'phone' | 'email' | 'description' | 'website' | 'address'
     >
   >;
-  [CompaniesActionTypes.SubmitCompanyForm]:
-    | CompaniesPayloads[CompaniesActionTypes.CreateCompany]
-    | CompaniesPayloads[CompaniesActionTypes.UpdateCompany];
   [CompaniesActionTypes.ClearCompany]: undefined;
 };
 
