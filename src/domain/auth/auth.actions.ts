@@ -1,19 +1,20 @@
 import { AuthActionTypes, Session, User } from './auth.types';
 
-export const authActions = {
-  setUser: (user: User | null) => ({
-    type: AuthActionTypes.SetUser,
-    payload: user,
-  }),
-  setSession: (session: Session) => ({
-    type: AuthActionTypes.SetSession,
-    payload: session,
-  }),
-  clearSession: () => ({
-    type: AuthActionTypes.ClearSession,
-  }),
-  setLoading: (flag: boolean) => ({
-    type: AuthActionTypes.SetLoading,
-    payload: flag,
-  }),
-};
+export const setUser = (user: User | null) => ({
+  type: AuthActionTypes.SetUser,
+  payload: user,
+});
+
+export const setSession = (session: Session) => ({
+  type: AuthActionTypes.SetSession,
+  payload: session,
+});
+
+export const clearSession = () => ({
+  type: AuthActionTypes.ClearSession,
+});
+
+export const setLoading = (flag: boolean) => ({
+  type: AuthActionTypes.SetLoading,
+  payload: flag,
+});

@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
 import { makeIsDropdownActiveSelector } from 'domain/dropdown/dropdown.selectors';
-import { dropdownActions } from 'domain/dropdown/dropdown.actions';
 import {
   Layout as LayoutComponent,
   Labels,
 } from 'ui/dropdown/layout/layout.component';
 import { State } from 'types/common/redux';
+import { actions } from 'domain/actions';
 
 interface Props {
   id: DropdownKey;
@@ -47,7 +47,7 @@ const Layout: FC<Props> = ({
   // methods
   const handleClose = () => {
     if (isOpen) {
-      dispatch(dropdownActions.setActiveDropdown(null));
+      dispatch(actions.dropdown.setActiveDropdown(null));
     }
   };
 

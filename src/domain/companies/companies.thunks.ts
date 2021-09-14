@@ -4,7 +4,6 @@ import {
   CompaniesPayloads,
   Company,
 } from 'domain/companies/companies.types';
-import { companiesActions } from 'domain/companies/companies.actions';
 import { Http } from 'utils/libs/http/http.lib';
 import { Response } from 'utils/libs/http/http.types';
 import { endpoints } from 'uri/endpoints';
@@ -14,20 +13,22 @@ import {
   selectIsMyCompanyExist,
 } from 'domain/companies/companies.selectors';
 import { COMPANY_FORM_TOTAL_STEPS } from 'domain/companies/companies.constants';
+import { actions } from 'domain/actions';
+import { thunks } from 'domain/thunks';
 
 export const getMyCompany = (): Thunk => async (dispatch) => {
   try {
-    dispatch(companiesActions.setLoading(true));
+    dispatch(actions.companies.setLoading(true));
 
     const { data } = await new Http<Response<Company | null>>(
       endpoints.companies.me
     ).get();
 
-    dispatch(companiesActions.setCompany(data));
+    dispatch(actions.companies.setCompany(data));
   } catch (error) {
     new Errors(error).handleApi();
   } finally {
-    dispatch(companiesActions.setLoading(false));
+    dispatch(actions.companies.setLoading(false));
   }
 };
 
@@ -37,7 +38,7 @@ export const updateStep = (): Thunk => (dispatch, getState) => {
   const currentStep = selectCurrentStep(state);
   const nextStep = currentStep < COMPANY_FORM_TOTAL_STEPS ? currentStep + 1 : 1;
 
-  dispatch(companiesActions.setStep(nextStep));
+  dispatch(actions.companies.setStep(nextStep));
 };
 
 export const updateMyCompany = (
@@ -46,7 +47,7 @@ export const updateMyCompany = (
   if (!selectIsMyCompanyExist(getState())) return;
 
   try {
-    dispatch(companiesActions.setLoading(true));
+    dispatch(actions.companies.setLoading(true));
 
     const { data } = await new Http<Response<Company>>(
       endpoints.companies.index,
@@ -55,12 +56,12 @@ export const updateMyCompany = (
       }
     ).post();
 
-    dispatch(companiesActions.setCompany(data));
-    dispatch(updateStep());
+    dispatch(actions.companies.setCompany(data));
+    dispatch(thunks.companies.updateStep());
   } catch (error) {
     new Errors(error).handleApi();
   } finally {
-    dispatch(companiesActions.setLoading(false));
+    dispatch(actions.companies.setLoading(false));
   }
 };
 
@@ -68,12 +69,12 @@ export const createMyCompany = (
   form: CompaniesPayloads[CompaniesActionTypes.CreateCompany]
 ): Thunk => async (dispatch, getState) => {
   if (selectIsMyCompanyExist(getState())) {
-    dispatch(updateMyCompany(form));
+    dispatch(thunks.companies.updateMyCompany(form));
     return;
   }
 
   try {
-    dispatch(companiesActions.setLoading(true));
+    dispatch(actions.companies.setLoading(true));
 
     const { data } = await new Http<Response<Company>>(
       endpoints.companies.index,
@@ -82,11 +83,11 @@ export const createMyCompany = (
       }
     ).post();
 
-    dispatch(companiesActions.setCompany(data));
-    dispatch(updateStep());
+    dispatch(actions.companies.setCompany(data));
+    dispatch(thunks.companies.updateStep());
   } catch (error) {
     new Errors(error).handleApi();
   } finally {
-    dispatch(companiesActions.setLoading(false));
+    dispatch(actions.companies.setLoading(false));
   }
 };
