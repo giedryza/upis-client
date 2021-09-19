@@ -55,6 +55,7 @@ const Input = forwardRef<InputElement, Props>(
     ref
   ) => {
     const withInfo = !!(error || info);
+    const infoId = `info-${name}`;
 
     const attributes: AllHTMLAttributes<InputElement> = {
       name,
@@ -68,7 +69,7 @@ const Input = forwardRef<InputElement, Props>(
       onFocus,
       onBlur,
       'aria-invalid': !!error,
-      ...(withInfo ? { 'aria-describedby': 'info' } : {}),
+      ...(withInfo ? { 'aria-describedby': infoId } : {}),
     };
 
     return (
@@ -89,7 +90,7 @@ const Input = forwardRef<InputElement, Props>(
           />
         )}
 
-        {withInfo && <small id="info">{error || info}</small>}
+        {withInfo && <small id={infoId}>{error || info}</small>}
       </div>
     );
   }
