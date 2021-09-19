@@ -1,24 +1,11 @@
-import { FC } from 'react';
+import { VFC } from 'react';
 
 import styles from './list.module.scss';
+import { Props } from './list.types';
 
-import { Button, Props as ButtonProps } from 'ui/button/button.component';
-import { DropdownKey } from 'domain/dropdown/dropdown.types';
+import { Button } from 'ui/button/button.component';
 
-export interface MenuItem {
-  label: string;
-  icon?: ButtonProps['icon'];
-  url?: ButtonProps['url'];
-  target?: ButtonProps['target'];
-  onClick?: ButtonProps['onClick'];
-}
-
-interface Props {
-  id: DropdownKey;
-  items: MenuItem[];
-}
-
-const List: FC<Props> = ({ id, items }) => {
+const List: VFC<Props> = ({ id, items }) => {
   return items.length ? (
     <ul className={styles.list} role="menu" aria-labelledby={id}>
       {items.map((item) => (

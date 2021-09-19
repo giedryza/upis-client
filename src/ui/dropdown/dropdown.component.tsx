@@ -2,31 +2,10 @@ import { FC, useRef, KeyboardEvent } from 'react';
 import clsx from 'clsx';
 
 import styles from './dropdown.module.scss';
+import { Props } from './dropdown.types';
 
-import { Button, Props as ButtonProps } from 'ui/button/button.component';
+import { Button } from 'ui/button/button.component';
 import { useOnClickOutside } from 'utils/hooks/use-on-click-outside.hook';
-
-export type MenuButton = Pick<
-  ButtonProps,
-  | 'label'
-  | 'title'
-  | 'icon'
-  | 'iconPlacement'
-  | 'styleType'
-  | 'size'
-  | 'block'
-  | 'withDropdown'
-  | 'ariaLabel'
->;
-
-interface Props {
-  id: string;
-  menuButton: MenuButton;
-  position?: `${'top' | 'bottom'}-${'left' | 'right'}`;
-  isOpen: boolean;
-  onOpen: () => void;
-  onClose: () => void;
-}
 
 const Dropdown: FC<Props> = ({
   id,
