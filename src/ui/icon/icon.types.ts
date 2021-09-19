@@ -1,3 +1,7 @@
+export interface Props extends React.SVGAttributes<SVGElement> {
+  name: Name;
+}
+
 export enum Name {
   ChevronDown = 'chevron-down',
   ChevronLeft = 'chevron-left',

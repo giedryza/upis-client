@@ -1,27 +1,7 @@
-import { forwardRef, AllHTMLAttributes, ChangeEvent, FocusEvent } from 'react';
+import { forwardRef, AllHTMLAttributes } from 'react';
 
 import styles from './select-input.module.scss';
-
-export interface DropdownOption {
-  label: string;
-  value: string;
-}
-
-export interface Props {
-  name: string;
-  options: DropdownOption[];
-  value?: string;
-  label?: string;
-  placeholder?: string;
-  disabled?: boolean;
-  readonly?: boolean;
-  multiple?: boolean;
-  onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
-  onFocus?: (e: FocusEvent<HTMLSelectElement>) => void;
-  onBlur?: (e: FocusEvent<HTMLSelectElement>) => void;
-  error?: string;
-  info?: string;
-}
+import { Props, DropdownOption } from './select-input.types';
 
 const SelectInput = forwardRef<HTMLSelectElement, Props>(
   (
@@ -81,3 +61,4 @@ const SelectInput = forwardRef<HTMLSelectElement, Props>(
 );
 
 export { SelectInput };
+export type { DropdownOption };

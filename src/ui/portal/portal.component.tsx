@@ -1,9 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-interface Props {
-  selector: string;
-}
+import { Props } from './portal.types';
 
 const Portal: FC<Props> = ({ children, selector }) => {
   const [element, setElement] = useState<Element | null>(null);

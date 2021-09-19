@@ -1,43 +1,14 @@
 /* eslint-disable react/button-has-type */
-import { FC, HTMLAttributes, useMemo, AriaAttributes } from 'react';
+import { VFC, HTMLAttributes, useMemo } from 'react';
 import Link, { LinkProps } from 'next/link';
 import clsx from 'clsx';
 
 import styles from './button.module.scss';
+import { Props } from './button.types';
 
-import { Icon, IconName } from 'ui/icon/icon.component';
+import { Icon } from 'ui/icon/icon.component';
 
-export interface Props {
-  id?: string;
-  label?: string;
-  title?: string;
-  onClick?: () => void;
-  url?: string | LinkProps;
-  type?: JSX.IntrinsicElements['button']['type'];
-  form?: JSX.IntrinsicElements['button']['form'];
-  target?: '_self' | '_blank' | '_parent' | '_top';
-  icon?: IconName;
-  iconPlacement?: 'top' | 'right' | 'bottom' | 'left';
-  styleType?:
-    | 'primary'
-    | 'secondary'
-    | 'ghost'
-    | 'ghost-primary'
-    | 'ghost-dark'
-    | 'text'
-    | 'link';
-  size?: 'xs' | 'sm' | 'md' | 'lg';
-  textAlign?: 'left' | 'right' | 'center';
-  block?: boolean;
-  disabled?: boolean;
-  withDropdown?: boolean;
-  ariaLabel?: AriaAttributes['aria-label'];
-  ariaHasPopup?: AriaAttributes['aria-haspopup'];
-  ariaExpanded?: AriaAttributes['aria-expanded'];
-  role?: string;
-}
-
-const Button: FC<Props> = ({
+const Button: VFC<Props> = ({
   id,
   label,
   title,
@@ -139,3 +110,4 @@ const Button: FC<Props> = ({
 };
 
 export { Button };
+export type { Props as ButtonProps };

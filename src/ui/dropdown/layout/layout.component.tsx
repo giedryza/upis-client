@@ -1,22 +1,10 @@
 import { FC } from 'react';
 
 import styles from './layout.module.scss';
+import { Props } from './layout.types';
 
 import { Button } from 'ui/button/button.component';
 import { IconName } from 'ui/icon/icon.component';
-
-export type Labels = {
-  [K in 'submit' | 'cancel' | 'close']: string;
-};
-
-interface Props {
-  id: string;
-  title?: string;
-  labels: Labels;
-  onSubmit: () => void;
-  onClose: () => void;
-  onCancel: () => void;
-}
 
 const Layout: FC<Props> = ({
   id,

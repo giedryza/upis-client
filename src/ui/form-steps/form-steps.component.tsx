@@ -1,18 +1,9 @@
-import { FC } from 'react';
+import { VFC } from 'react';
 
 import styles from './form-steps.module.scss';
+import { Props, Step } from './form-steps.types';
 
-enum Step {
-  Current = 'current',
-  Completed = 'completed',
-}
-
-interface Props {
-  total: number;
-  current: number;
-}
-
-const FormSteps: FC<Props> = ({ total, current }) => {
+const FormSteps: VFC<Props> = ({ total, current }) => {
   return (
     <div className={styles.container}>
       <ul>

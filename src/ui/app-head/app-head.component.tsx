@@ -1,18 +1,14 @@
-import { FC } from 'react';
+import { VFC } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
+import { Props } from './app-head.types';
+import { APP_NAME, HOST } from './app-head.constants';
+
 import { isDefined } from 'utils/common/is-defined';
 
-const HOST = process.env.NEXT_PUBLIC_HOST_CLIENT;
-const APP_NAME = 'Upis.lt';
-
-interface Props {
-  title?: string;
-}
-
-const AppHead: FC<Props> = ({ title }) => {
+const AppHead: VFC<Props> = ({ title }) => {
   const { locales = [], defaultLocale, pathname } = useRouter();
   const { t } = useTranslation();
 

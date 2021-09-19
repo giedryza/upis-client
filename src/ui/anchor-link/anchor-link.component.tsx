@@ -1,12 +1,8 @@
-import { FC } from 'react';
+import { VFC } from 'react';
 
-interface Props {
-  href: string;
-  label: string;
-  target?: '_self' | '_blank' | '_parent' | '_top';
-}
+import { Props } from './anchor-link.types';
 
-const AnchorLink: FC<Props> = ({ href, label, target = '_self' }) => {
+const AnchorLink: VFC<Props> = ({ href, label, target = '_self' }) => {
   const prefix = href.startsWith('http') ? '' : '//';
 
   return (
