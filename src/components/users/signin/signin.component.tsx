@@ -6,7 +6,7 @@ import styles from './signin.module.scss';
 
 import { Button } from 'ui/button/button.component';
 import { Card } from 'ui/card/card.component';
-import { Input } from 'ui/input/input.component';
+import { TextInput } from 'ui/text-input/text-input.component';
 import { useSigninForm } from 'components/users/signin/signin.hooks';
 import { SigninFormValues } from 'components/users/signin/signin.types';
 import { INITIAL_VALUES } from 'components/users/signin/signin.constants';
@@ -33,13 +33,13 @@ const Signin: VFC = () => {
 
           <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.inputs}>
-              <Input
+              <TextInput
                 {...refs.email}
                 label={t('users:form.email')}
                 error={errorMessages.email}
               />
 
-              <Input
+              <TextInput
                 {...refs.password}
                 label={t('users:form.password')}
                 type="password"

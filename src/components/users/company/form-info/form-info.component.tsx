@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import styles from './form-info.module.scss';
 
-import { Input } from 'ui/input/input.component';
+import { TextInput } from 'ui/text-input/text-input.component';
 import { Button } from 'ui/button/button.component';
 import {
   useMyCompanyInfoForm,
@@ -40,25 +40,25 @@ const FormInfo: VFC = () => {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.inputs}>
-        <Input
+        <TextInput
           {...refs.name}
           label={t('users:company.form.name')}
           error={errorMessages.name}
         />
 
-        <Input
+        <TextInput
           {...refs.email}
           label={t('users:company.form.email')}
           error={errorMessages.email}
         />
 
-        <Input
+        <TextInput
           {...refs.phone}
           label={t('users:company.form.phone')}
           error={errorMessages.phone}
         />
 
-        <Input
+        <TextInput
           {...refs.description}
           label={t('users:company.form.description')}
           type="textarea"

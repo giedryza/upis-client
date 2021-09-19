@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import styles from './edit-password.module.scss';
 
 import { EditInfo } from 'components/editable-info/edit-info.component';
-import { Input } from 'ui/input/input.component';
+import { TextInput } from 'ui/text-input/text-input.component';
 import { ValidationRules } from 'types/common/forms';
 import { Errors } from 'utils/libs/errors/errors.lib';
 import { IconName } from 'ui/icon/icon.component';
@@ -81,12 +81,12 @@ const EditPassword: FC<Props> = ({ id }) => {
 
   const form = (
     <form className={styles.form} id={id} onSubmit={handleSubmit(onSubmit)}>
-      <Input
+      <TextInput
         {...register('password', { ...validation.password })}
         label={t('users:form.password')}
         error={isSubmitted ? errors.password?.message : ''}
       />
-      <Input
+      <TextInput
         {...register('confirmPassword', { ...validation.confirmPassword })}
         label={t('users:form.confirmPassword')}
         error={isSubmitted ? errors.confirmPassword?.message : ''}

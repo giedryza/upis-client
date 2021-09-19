@@ -1,9 +1,9 @@
 import { forwardRef, AllHTMLAttributes, RefObject } from 'react';
 
-import styles from './input.module.scss';
-import { Props, InputElement } from './input.types';
+import styles from './text-input.module.scss';
+import { Props, InputElement } from './text-input.types';
 
-const Input = forwardRef<InputElement, Props>(
+const TextInput = forwardRef<InputElement, Props>(
   (
     {
       name,
@@ -65,4 +65,4 @@ const Input = forwardRef<InputElement, Props>(
   }
 );
 
-export { Input };
+export { TextInput };
