@@ -17,7 +17,8 @@
       "name": "Name",
       "email": "Email",
       "phone": "Phone",
-      "description": "About the Company"
+      "description": "About the Company",
+      "website": "Website"
     }
   },
   "tours": {
@@ -55,6 +56,9 @@
       },
       "phone": {
         "empty": "Enter company phone"
+      },
+      "website": {
+        "invalid": "Enter valid url"
       }
     }
   }

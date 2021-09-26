@@ -17,7 +17,8 @@
       "name": "Pavadinimas",
       "email": "El. paštas",
       "phone": "Tel. numeris",
-      "description": "Apie kompaniją"
+      "description": "Apie kompaniją",
+      "website": "Tinklapis"
     }
   },
   "tours": {
@@ -55,6 +56,9 @@
       },
       "phone": {
         "empty": "Įveskite įmonės tel. numerį"
+      },
+      "website": {
+        "invalid": "Įveskite tinkamą adresą"
       }
     }
   }

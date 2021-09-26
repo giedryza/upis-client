@@ -1,4 +1,4 @@
-import React, { VFC } from 'react';
+import { VFC } from 'react';
 import { useDispatch } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
