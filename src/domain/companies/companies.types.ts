@@ -48,8 +48,6 @@ export enum CompaniesActionTypes {
   SetCompany = 'companies/SET_COMPANY',
   SetStep = 'companies/SET_STEP',
   SetLoading = 'companies/SET_LOADING',
-  CreateCompany = 'companies/CREATE_COMPANY',
-  UpdateCompany = 'companies/UPDATE_COMPANY',
   ClearCompany = 'companies/CLEAR_COMPANY',
 }
 
@@ -57,16 +55,6 @@ export type CompaniesPayloads = {
   [CompaniesActionTypes.SetCompany]: Company | null;
   [CompaniesActionTypes.SetStep]: number;
   [CompaniesActionTypes.SetLoading]: boolean;
-  [CompaniesActionTypes.CreateCompany]: Pick<
-    Company,
-    'name' | 'phone' | 'email' | 'description'
-  >;
-  [CompaniesActionTypes.UpdateCompany]: Partial<
-    Pick<
-      Company,
-      'name' | 'phone' | 'email' | 'description' | 'website' | 'address'
-    >
-  >;
   [CompaniesActionTypes.ClearCompany]: undefined;
 };
 

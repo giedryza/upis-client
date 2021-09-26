@@ -2,7 +2,7 @@ import { FC, useRef, KeyboardEvent } from 'react';
 import clsx from 'clsx';
 
 import styles from './dropdown.module.scss';
-import { Props } from './dropdown.types';
+import { Props, MenuButton } from './dropdown.types';
 
 import { Button } from 'ui/button/button.component';
 import { useOnClickOutside } from 'utils/hooks/use-on-click-outside.hook';
@@ -52,3 +52,4 @@ const Dropdown: FC<Props> = ({
 };
 
 export { Dropdown };
+export type { MenuButton };

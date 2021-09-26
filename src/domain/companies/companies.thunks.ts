@@ -1,9 +1,5 @@
 import { Thunk } from 'types/common/redux';
-import {
-  CompaniesActionTypes,
-  CompaniesPayloads,
-  Company,
-} from 'domain/companies/companies.types';
+import { Company } from 'domain/companies/companies.types';
 import { Http } from 'utils/libs/http/http.lib';
 import { Response } from 'utils/libs/http/http.types';
 import { endpoints } from 'uri/endpoints';
@@ -42,7 +38,12 @@ export const updateStep = (): Thunk => (dispatch, getState) => {
 };
 
 export const updateMyCompany = (
-  form: CompaniesPayloads[CompaniesActionTypes.UpdateCompany]
+  form: Partial<
+    Pick<
+      Company,
+      'name' | 'phone' | 'email' | 'description' | 'website' | 'address'
+    >
+  >
 ): Thunk => async (dispatch, getState) => {
   if (!selectIsMyCompanyExist(getState())) return;
 
@@ -66,7 +67,7 @@ export const updateMyCompany = (
 };
 
 export const createMyCompany = (
-  form: CompaniesPayloads[CompaniesActionTypes.CreateCompany]
+  form: Pick<Company, 'name' | 'phone' | 'email' | 'description'>
 ): Thunk => async (dispatch, getState) => {
   if (selectIsMyCompanyExist(getState())) {
     dispatch(thunks.companies.updateMyCompany(form));

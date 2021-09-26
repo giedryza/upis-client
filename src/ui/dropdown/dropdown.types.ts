@@ -1,6 +1,6 @@
 import { ButtonProps } from 'ui/button/button.component';
 
-type MenuButton = Pick<
+export type MenuButton = Pick<
   ButtonProps,
   | 'label'
   | 'title'
