@@ -42,25 +42,25 @@ const FormInfo: VFC = () => {
       <div className={styles.inputs}>
         <TextInput
           {...refs.name}
-          label={t('users:company.form.name')}
+          label={t('users:company.form.name.label')}
           error={errorMessages.name}
         />
 
         <TextInput
           {...refs.email}
-          label={t('users:company.form.email')}
+          label={t('users:company.form.email.label')}
           error={errorMessages.email}
         />
 
         <TextInput
           {...refs.phone}
-          label={t('users:company.form.phone')}
+          label={t('users:company.form.phone.label')}
           error={errorMessages.phone}
         />
 
         <TextInput
           {...refs.description}
-          label={t('users:company.form.description')}
+          label={t('users:company.form.description.label')}
           type="textarea"
           rows={10}
         />

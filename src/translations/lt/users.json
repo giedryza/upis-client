@@ -14,11 +14,34 @@
   "company": {
     "title": "Mano įmonė",
     "form": {
-      "name": "Pavadinimas",
-      "email": "El. paštas",
-      "phone": "Tel. numeris",
-      "description": "Apie kompaniją",
-      "website": "Tinklapis"
+      "name": {
+        "label": "Pavadinimas",
+        "errors": {
+          "empty": "Įveskite įmonės pavadinimą"
+        }
+      },
+      "email": {
+        "label": "El. paštas",
+        "errors": {
+          "empty": "Įveskite įmonės el. paštą"
+        }
+      },
+      "phone": {
+        "label": "Tel. numeris",
+        "errors": {
+          "empty": "Įveskite įmonės tel. numerį"
+        }
+      },
+      "description": {
+        "label": "Apie kompaniją",
+        "errors": {}
+      },
+      "website": {
+        "label": "Tinklapis",
+        "errors": {
+          "invalid": "Įveskite tinkamą adresą"
+        }
+      }
     }
   },
   "tours": {
@@ -46,20 +69,6 @@
       "confirm": "Patvirtinkite slaptažodį.",
       "not-match": "Slaptažodžiai nesutampa. Bandykite dar kartą.",
       "incorrect": "Neteisingas slaptažodis. Bandykite dar kartą arba spauskite Pamiršai slaptažodį, kad atstatyti."
-    },
-    "company": {
-      "name": {
-        "empty": "Įveskite įmonės pavadinimą"
-      },
-      "email": {
-        "empty": "Įveskite įmonės el. paštą"
-      },
-      "phone": {
-        "empty": "Įveskite įmonės tel. numerį"
-      },
-      "website": {
-        "invalid": "Įveskite tinkamą adresą"
-      }
     }
   }
 }

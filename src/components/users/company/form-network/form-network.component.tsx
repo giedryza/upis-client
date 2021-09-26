@@ -32,7 +32,7 @@ const FormNetwork: VFC = () => {
       <div className={styles.inputs}>
         <TextInput
           {...refs.website}
-          label={t('users:company.form.website')}
+          label={t('users:company.form.website.label')}
           error={errorMessages.website}
         />
       </div>

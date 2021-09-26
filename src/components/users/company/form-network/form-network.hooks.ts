@@ -36,7 +36,7 @@ export const useCompanyFormNetwork: UseFormBase<CompanyFormNetworkValues> = (
     website: {
       pattern: {
         value: isUrl,
-        message: t('users:errors.company.website.invalid'),
+        message: t('users:company.form.website.errors.invalid'),
       },
     },
   };
