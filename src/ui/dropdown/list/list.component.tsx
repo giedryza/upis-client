@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 
 import styles from './list.module.scss';
-import { Props } from './list.types';
+import { Props, MenuItem } from './list.types';
 
 import { Button } from 'ui/button/button.component';
 
@@ -29,3 +29,4 @@ const List: VFC<Props> = ({ id, items }) => {
 };
 
 export { List };
+export type { MenuItem };
