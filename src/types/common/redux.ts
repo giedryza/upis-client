@@ -24,4 +24,8 @@ export type PromiseThunk<P = {} | void> = GenericThunk<Promise<P>>;
 
 export type Dispatch = ThunkDispatch<State, undefined, GenericAction>;
 
+export interface ThunkResponse {
+  success: boolean;
+}
+
 export type { State };

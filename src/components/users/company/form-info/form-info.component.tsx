@@ -26,7 +26,7 @@ const FormInfo: VFC = () => {
     description,
   }: MyCompanyInfoFormValues) => {
     dispatch(
-      thunks.companies.createMyCompany({ name, email, phone, description })
+      thunks.companies.submitInitialStep({ name, email, phone, description })
     );
   };
 

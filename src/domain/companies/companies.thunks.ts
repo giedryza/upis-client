@@ -1,4 +1,4 @@
-import { Thunk } from 'types/common/redux';
+import { PromiseThunk, Thunk, ThunkResponse } from 'types/common/redux';
 import { Company } from 'domain/companies/companies.types';
 import { Http } from 'utils/libs/http/http.lib';
 import { Response } from 'utils/libs/http/http.types';
@@ -6,7 +6,7 @@ import { endpoints } from 'uri/endpoints';
 import { Errors } from 'utils/libs/errors/errors.lib';
 import {
   selectCurrentStep,
-  selectIsMyCompanyExist,
+  selectMyCompany,
 } from 'domain/companies/companies.selectors';
 import { COMPANY_FORM_TOTAL_STEPS } from 'domain/companies/companies.constants';
 import { actions } from 'domain/actions';
@@ -38,29 +38,31 @@ export const updateStep = (): Thunk => (dispatch, getState) => {
 };
 
 export const updateMyCompany = (
+  id: string,
   form: Partial<
     Pick<
       Company,
       'name' | 'phone' | 'email' | 'description' | 'website' | 'address'
     >
   >
-): Thunk => async (dispatch, getState) => {
-  if (!selectIsMyCompanyExist(getState())) return;
-
+): PromiseThunk<ThunkResponse> => async (dispatch) => {
   try {
     dispatch(actions.companies.setLoading(true));
 
     const { data } = await new Http<Response<Company>>(
-      endpoints.companies.index,
+      endpoints.companies.one.replace(':id', id),
       {
         body: { ...form },
       }
-    ).post();
+    ).patch();
 
     dispatch(actions.companies.setCompany(data));
-    dispatch(thunks.companies.updateStep());
+
+    return { success: true };
   } catch (error) {
     new Errors(error).handleApi();
+
+    return { success: false };
   } finally {
     dispatch(actions.companies.setLoading(false));
   }
@@ -68,12 +70,7 @@ export const updateMyCompany = (
 
 export const createMyCompany = (
   form: Pick<Company, 'name' | 'phone' | 'email' | 'description'>
-): Thunk => async (dispatch, getState) => {
-  if (selectIsMyCompanyExist(getState())) {
-    dispatch(thunks.companies.updateMyCompany(form));
-    return;
-  }
-
+): PromiseThunk<ThunkResponse> => async (dispatch) => {
   try {
     dispatch(actions.companies.setLoading(true));
 
@@ -85,10 +82,43 @@ export const createMyCompany = (
     ).post();
 
     dispatch(actions.companies.setCompany(data));
-    dispatch(thunks.companies.updateStep());
+
+    return { success: true };
   } catch (error) {
     new Errors(error).handleApi();
+
+    return { success: false };
   } finally {
     dispatch(actions.companies.setLoading(false));
+  }
+};
+
+export const submitInitialStep = (
+  form: Pick<Company, 'name' | 'phone' | 'email' | 'description'>
+): Thunk => async (dispatch, getState) => {
+  const company = selectMyCompany(getState());
+
+  const { success } = company
+    ? await dispatch(thunks.companies.updateMyCompany(company._id, form))
+    : await dispatch(thunks.companies.createMyCompany(form));
+
+  if (success) {
+    dispatch(thunks.companies.updateStep());
+  }
+};
+
+export const submitAdditionalStep = (
+  form: Pick<Company, 'name' | 'phone' | 'email' | 'description'>
+): Thunk => async (dispatch, getState) => {
+  const company = selectMyCompany(getState());
+
+  if (!company) return;
+
+  const { success } = await dispatch(
+    thunks.companies.updateMyCompany(company._id, form)
+  );
+
+  if (success) {
+    dispatch(thunks.companies.updateStep());
   }
 };

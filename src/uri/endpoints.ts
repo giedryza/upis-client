@@ -16,6 +16,6 @@ export const endpoints = {
   companies: {
     index: paths.companies,
     me: `${paths.companies}/me`,
-    single: `${paths.companies}/:id`,
+    one: `${paths.companies}/:id`,
   },
 };
