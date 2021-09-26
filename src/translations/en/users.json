@@ -14,10 +14,33 @@
   "company": {
     "title": "My company",
     "form": {
-      "name": "Name",
-      "email": "Email",
-      "phone": "Phone",
-      "description": "About the Company"
+      "name": {
+        "label": "Name",
+        "errors": {
+          "empty": "Enter company name"
+        }
+      },
+      "email": {
+        "label": "Email",
+        "errors": {
+          "empty": "Enter company email"
+        }
+      },
+      "phone": {
+        "label": "Phone",
+        "errors": {
+          "empty": "Enter company phone"
+        }
+      },
+      "description": {
+        "label": "About the Company"
+      },
+      "website": {
+        "label": "Website",
+        "errors": {
+          "invalid": "Enter valid url"
+        }
+      }
     }
   },
   "tours": {
@@ -45,17 +68,6 @@
       "confirm": "Confirm password.",
       "not-match": "Passwords didn't match. Try again.",
       "incorrect": "Incorrect password. Try again or click Forgot password to reset it."
-    },
-    "company": {
-      "name": {
-        "empty": "Enter company name"
-      },
-      "email": {
-        "empty": "Enter company email"
-      },
-      "phone": {
-        "empty": "Enter company phone"
-      }
     }
   }
 }

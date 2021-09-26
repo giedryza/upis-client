@@ -1,30 +1,35 @@
-import { FC } from 'react';
+import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useSelector } from 'react-redux';
 
 import styles from './company.module.scss';
 
 import { FormSteps } from 'ui/form-steps/form-steps.component';
-import { FormInfo } from 'components/users/company/form-info/form-info.component';
-import { COMPANY_FORM_TOTAL_STEPS } from 'domain/companies/companies.constants';
 import { selectCurrentStep } from 'domain/companies/companies.selectors';
-import { useMyCompany } from 'components/users/company/company.hooks';
+import { useInitMyCompany } from 'components/users/company/company.hooks';
+import { FORM_BY_STEP } from 'components/users/company/company.constants';
+import { CompanyFormStep } from 'domain/companies/companies.types';
 
-const Company: FC = () => {
+const Company: VFC = () => {
   const { t } = useTranslation();
 
   const step = useSelector(selectCurrentStep);
 
-  useMyCompany();
+  useInitMyCompany();
+
+  const FormByStep = FORM_BY_STEP[step] ?? 'div';
 
   return (
     <div className={styles.content}>
       <h1>{t('users:company.title')}</h1>
 
       <div className={styles.form}>
-        <FormSteps total={COMPANY_FORM_TOTAL_STEPS} current={step} />
+        <FormSteps
+          total={Object.values(CompanyFormStep).length}
+          current={Object.values(CompanyFormStep).indexOf(step) + 1}
+        />
 
-        <FormInfo />
+        <FormByStep />
       </div>
     </div>
   );

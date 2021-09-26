@@ -38,9 +38,17 @@ export interface Company {
   updatedAt: string;
 }
 
+export enum CompanyFormStep {
+  Info = 'info',
+  Network = 'network',
+  Logo = 'logo',
+  Location = 'location',
+  Tours = 'tours',
+}
+
 export interface CompaniesState {
   company: Company | null;
-  step: number;
+  step: CompanyFormStep;
   loading: boolean;
 }
 
@@ -53,7 +61,7 @@ export enum CompaniesActionTypes {
 
 export type CompaniesPayloads = {
   [CompaniesActionTypes.SetCompany]: Company | null;
-  [CompaniesActionTypes.SetStep]: number;
+  [CompaniesActionTypes.SetStep]: CompanyFormStep;
   [CompaniesActionTypes.SetLoading]: boolean;
   [CompaniesActionTypes.ClearCompany]: undefined;
 };

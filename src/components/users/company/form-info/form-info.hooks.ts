@@ -35,19 +35,19 @@ export const useMyCompanyInfoForm: UseFormBase<MyCompanyInfoFormValues> = (
     name: {
       required: {
         value: true,
-        message: t('users:errors.company.name.empty'),
+        message: t('users:company.form.name.errors.empty'),
       },
     },
     email: {
       required: {
         value: true,
-        message: t('users:errors.company.email.empty'),
+        message: t('users:company.form.email.errors.empty'),
       },
     },
     phone: {
       required: {
         value: true,
-        message: t('users:errors.company.phone.empty'),
+        message: t('users:company.form.phone.errors.empty'),
       },
     },
   };

@@ -1,5 +1,5 @@
 import { PromiseThunk, Thunk, ThunkResponse } from 'types/common/redux';
-import { Company } from 'domain/companies/companies.types';
+import { Company, CompanyFormStep } from 'domain/companies/companies.types';
 import { Http } from 'utils/libs/http/http.lib';
 import { Response } from 'utils/libs/http/http.types';
 import { endpoints } from 'uri/endpoints';
@@ -8,7 +8,6 @@ import {
   selectCurrentStep,
   selectMyCompany,
 } from 'domain/companies/companies.selectors';
-import { COMPANY_FORM_TOTAL_STEPS } from 'domain/companies/companies.constants';
 import { actions } from 'domain/actions';
 import { thunks } from 'domain/thunks';
 
@@ -29,12 +28,25 @@ export const getMyCompany = (): Thunk => async (dispatch) => {
 };
 
 export const updateStep = (): Thunk => (dispatch, getState) => {
-  const state = getState();
+  const step = selectCurrentStep(getState());
 
-  const currentStep = selectCurrentStep(state);
-  const nextStep = currentStep < COMPANY_FORM_TOTAL_STEPS ? currentStep + 1 : 1;
+  const getNextStep = () => {
+    switch (step) {
+      case CompanyFormStep.Info:
+        return CompanyFormStep.Network;
+      case CompanyFormStep.Network:
+        return CompanyFormStep.Logo;
+      case CompanyFormStep.Logo:
+        return CompanyFormStep.Location;
+      case CompanyFormStep.Location:
+      case CompanyFormStep.Tours:
+        return CompanyFormStep.Tours;
+      default:
+        return CompanyFormStep.Info;
+    }
+  };
 
-  dispatch(actions.companies.setStep(nextStep));
+  dispatch(actions.companies.setStep(getNextStep()));
 };
 
 export const updateMyCompany = (
@@ -108,7 +120,12 @@ export const submitInitialStep = (
 };
 
 export const submitAdditionalStep = (
-  form: Pick<Company, 'name' | 'phone' | 'email' | 'description'>
+  form: Partial<
+    Pick<
+      Company,
+      'name' | 'phone' | 'email' | 'description' | 'website' | 'address'
+    >
+  >
 ): Thunk => async (dispatch, getState) => {
   const company = selectMyCompany(getState());
 

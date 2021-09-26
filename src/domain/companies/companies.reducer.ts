@@ -2,11 +2,12 @@ import {
   CompaniesActionTypes,
   CompaniesReducer,
   CompaniesState,
+  CompanyFormStep,
 } from 'domain/companies/companies.types';
 
 const INITIAL_STATE: CompaniesState = {
   company: null,
-  step: 1,
+  step: CompanyFormStep.Info,
   loading: false,
 };
 

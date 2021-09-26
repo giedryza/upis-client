@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { actions } from 'domain/actions';
 import { thunks } from 'domain/thunks';
 
-export const useMyCompany = () => {
+export const useInitMyCompany = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
