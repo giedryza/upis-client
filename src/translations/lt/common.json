@@ -22,5 +22,12 @@
     "profile": "Profilis",
     "signin": "Prisijungti",
     "signout": "Atsijungti"
+  },
+  "social": {
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "youtube": "Youtube",
+    "linkedin": "Linkedin",
+    "twitter": "Twitter"
   }
 }

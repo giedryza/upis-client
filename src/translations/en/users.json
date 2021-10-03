@@ -40,6 +40,9 @@
         "errors": {
           "invalid": "Enter valid url"
         }
+      },
+      "social": {
+        "label": "Social Network"
       }
     }
   },
