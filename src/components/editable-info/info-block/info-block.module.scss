@@ -15,7 +15,7 @@
   }
 
   .content {
-    flex: 1;
+    flex-grow: 1;
 
     @include spacing(y, 0.4em);
   }
@@ -23,6 +23,11 @@
   .title {
     font-size: 1em;
     color: var(--color-grey-20);
+
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .subtitle {

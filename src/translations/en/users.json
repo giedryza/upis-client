@@ -13,6 +13,10 @@
   },
   "company": {
     "title": "My company",
+    "subtitle": {
+      "about": "About",
+      "contacts": "Contacts"
+    },
     "form": {
       "name": {
         "label": "Name",
