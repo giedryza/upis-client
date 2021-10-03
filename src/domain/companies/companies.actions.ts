@@ -10,13 +10,6 @@ export const setCompany = (
   payload,
 });
 
-export const setStep = (
-  payload: CompaniesPayloads[CompaniesActionTypes.SetStep]
-) => ({
-  type: CompaniesActionTypes.SetStep,
-  payload,
-});
-
 export const setLoading = (
   payload: CompaniesPayloads[CompaniesActionTypes.SetLoading]
 ) => ({

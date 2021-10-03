@@ -4,35 +4,34 @@ import { useSelector } from 'react-redux';
 
 import styles from './company.module.scss';
 
-import { FormSteps } from 'ui/form-steps/form-steps.component';
-import { selectCurrentStep } from 'domain/companies/companies.selectors';
+import {
+  selectIsCompaniesLoading,
+  selectIsMyCompanyExist,
+} from 'domain/companies/companies.selectors';
 import { useInitMyCompany } from 'components/users/company/company.hooks';
-import { FORM_BY_STEP } from 'components/users/company/company.constants';
-import { CompanyFormStep } from 'domain/companies/companies.types';
+import { Loader } from 'ui/loader/loader.component';
+import { CompanyCreate } from 'components/users/company/company-create/company-create.component';
+import { CompanyEdit } from 'components/users/company/company-edit/company-edit.component';
 
-const Company: VFC = () => {
+export const Company: VFC = () => {
   const { t } = useTranslation();
 
-  const step = useSelector(selectCurrentStep);
+  const isMyCompanyExist = useSelector(selectIsMyCompanyExist);
+  const isLoading = useSelector(selectIsCompaniesLoading);
 
   useInitMyCompany();
-
-  const FormByStep = FORM_BY_STEP[step] ?? 'div';
 
   return (
     <div className={styles.content}>
       <h1>{t('users:company.title')}</h1>
 
-      <div className={styles.form}>
-        <FormSteps
-          total={Object.values(CompanyFormStep).length}
-          current={Object.values(CompanyFormStep).indexOf(step) + 1}
-        />
-
-        <FormByStep />
-      </div>
+      {isLoading ? (
+        <Loader />
+      ) : isMyCompanyExist ? (
+        <CompanyEdit />
+      ) : (
+        <CompanyCreate />
+      )}
     </div>
   );
 };
-
-export { Company };

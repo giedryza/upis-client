@@ -2,12 +2,10 @@ import {
   CompaniesActionTypes,
   CompaniesReducer,
   CompaniesState,
-  CompanyFormStep,
 } from 'domain/companies/companies.types';
 
 const INITIAL_STATE: CompaniesState = {
   company: null,
-  step: CompanyFormStep.Info,
   loading: false,
 };
 
@@ -22,12 +20,6 @@ const reducer: CompaniesReducer = (
         company: action.payload,
       };
 
-    case CompaniesActionTypes.SetStep:
-      return {
-        ...state,
-        step: action.payload,
-      };
-
     case CompaniesActionTypes.SetLoading:
       return {
         ...state,
@@ -38,7 +30,6 @@ const reducer: CompaniesReducer = (
       return {
         ...state,
         company: INITIAL_STATE.company,
-        step: INITIAL_STATE.step,
         loading: INITIAL_STATE.loading,
       };
 
