@@ -36,6 +36,7 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-wrap-multilines": ["error", { "prop": "ignore" }],
+    "react/no-array-index-key": "off",
     "jsx-a11y/anchor-is-valid": [
       "error",
       {

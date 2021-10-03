@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import styles from './layout.module.scss';
-import { Props } from './layout.types';
+import { Props, Labels } from './layout.types';
 
 import { Button } from 'ui/button/button.component';
 import { IconName } from 'ui/icon/icon.component';
@@ -58,3 +58,4 @@ const Layout: FC<Props> = ({
 };
 
 export { Layout };
+export type { Labels };

@@ -76,8 +76,8 @@ const CompanyCard: FC<Props> = ({
 
       <footer className={styles.footer}>
         <ul className={styles.social}>
-          {socials.map((social) => (
-            <li key={social._id}>
+          {socials.map((social, i) => (
+            <li key={i}>
               <Button
                 icon={socialIconByType[social.type]}
                 ariaLabel={socialNameByType[social.type]}
