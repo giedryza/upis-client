@@ -1,11 +1,29 @@
 {
   "extends": "stylelint-config-sass-guidelines",
+  "plugins": ["stylelint-no-unsupported-browser-features"],
   "rules": {
+    "plugin/no-unsupported-browser-features": [
+      true,
+      {
+        "ignore": [
+          "word-break",
+          "css-hyphens",
+          "css-appearance",
+          "pointer",
+          "css-touch-action",
+          "css3-cursors",
+          "css-resize"
+        ],
+        "ignorePartialSupport": true
+      }
+    ],
     "order/properties-alphabetical-order": null,
     "selector-class-pattern": null,
     "function-parentheses-space-inside": "never-single-line",
     "order/order": null,
-    "max-nesting-depth": [4, {"ignore": ["pseudo-classes"]}],
-    "selector-no-qualifying-type": [true, {"ignore": ["attribute", "class"]}]
+    "max-nesting-depth": [4, { "ignore": ["pseudo-classes"] }],
+    "value-no-vendor-prefix": [true, { "ignoreValues": ["box"] }],
+    "property-no-vendor-prefix": [true, { "ignoreProperties": ["box-orient"] }],
+    "selector-no-qualifying-type": [true, { "ignore": ["attribute", "class"] }]
   }
 }
