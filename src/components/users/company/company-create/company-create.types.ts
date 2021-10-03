@@ -1,4 +1,4 @@
-export type MyCompanyInfoFormValues = {
+export type CompanyCreateFormValues = {
   name: string;
   phone: string;
   email: string;

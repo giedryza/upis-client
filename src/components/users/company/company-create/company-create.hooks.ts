@@ -4,11 +4,11 @@ import useTranslation from 'next-translate/useTranslation';
 import { useSelector } from 'react-redux';
 
 import { UseFormBase, ValidationRules } from 'types/common/forms';
-import { MyCompanyInfoFormValues } from 'components/users/company/form-info/form-info.types';
+import { CompanyCreateFormValues } from 'components/users/company/company-create/company-create.types';
 import { selectMyCompany } from 'domain/companies/companies.selectors';
-import { INITIAL_VALUES } from 'components/users/company/form-info/form-info.constants';
+import { INITIAL_VALUES } from 'components/users/company/company-create/company-create.constants';
 
-export const useMyCompanyInfoForm: UseFormBase<MyCompanyInfoFormValues> = (
+export const useCompanyCreateForm: UseFormBase<CompanyCreateFormValues> = (
   onSubmit,
   values
 ) => {
@@ -19,7 +19,7 @@ export const useMyCompanyInfoForm: UseFormBase<MyCompanyInfoFormValues> = (
     reset,
     handleSubmit,
     formState,
-  } = useForm<MyCompanyInfoFormValues>({
+  } = useForm<CompanyCreateFormValues>({
     defaultValues: values,
   });
 
@@ -31,7 +31,7 @@ export const useMyCompanyInfoForm: UseFormBase<MyCompanyInfoFormValues> = (
     errors,
   } = formState;
 
-  const validation: ValidationRules<MyCompanyInfoFormValues> = {
+  const validation: ValidationRules<CompanyCreateFormValues> = {
     name: {
       required: {
         value: true,
@@ -82,11 +82,11 @@ export const useMyCompanyInfoForm: UseFormBase<MyCompanyInfoFormValues> = (
   };
 };
 
-export const useValues = (): MyCompanyInfoFormValues => {
+export const useValues = (): CompanyCreateFormValues => {
   const myCompany = useSelector(selectMyCompany);
 
   const values = useMemo(
-    (): MyCompanyInfoFormValues =>
+    (): CompanyCreateFormValues =>
       myCompany
         ? {
             name: myCompany.name,

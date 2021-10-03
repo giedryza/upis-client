@@ -2,18 +2,18 @@ import { VFC } from 'react';
 import { useDispatch } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
-import styles from './form-info.module.scss';
+import styles from './company-create.module.scss';
 
 import { TextInput } from 'ui/text-input/text-input.component';
 import { Button } from 'ui/button/button.component';
 import {
-  useMyCompanyInfoForm,
+  useCompanyCreateForm,
   useValues,
-} from 'components/users/company/form-info/form-info.hooks';
-import { MyCompanyInfoFormValues } from 'components/users/company/form-info/form-info.types';
+} from 'components/users/company/company-create/company-create.hooks';
+import { CompanyCreateFormValues } from 'components/users/company/company-create/company-create.types';
 import { thunks } from 'domain/thunks';
 
-const FormInfo: VFC = () => {
+export const CompanyCreate: VFC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -24,9 +24,9 @@ const FormInfo: VFC = () => {
     email,
     phone,
     description,
-  }: MyCompanyInfoFormValues) => {
+  }: CompanyCreateFormValues) => {
     dispatch(
-      thunks.companies.submitInitialStep({ name, email, phone, description })
+      thunks.companies.createMyCompany({ name, email, phone, description })
     );
   };
 
@@ -35,7 +35,7 @@ const FormInfo: VFC = () => {
     refs,
     errorMessages,
     isDisabled,
-  } = useMyCompanyInfoForm(onSubmit, values);
+  } = useCompanyCreateForm(onSubmit, values);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
@@ -68,7 +68,7 @@ const FormInfo: VFC = () => {
 
       <div className={styles.actions}>
         <Button
-          label={t('common:actions.next')}
+          label={t('common:actions.save')}
           styleType="primary"
           type="submit"
           disabled={isDisabled}
@@ -77,5 +77,3 @@ const FormInfo: VFC = () => {
     </form>
   );
 };
-
-export { FormInfo };
