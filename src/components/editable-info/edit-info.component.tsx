@@ -51,7 +51,12 @@ const EditInfo: FC<Props> = ({
           isValid={isValid}
         />
       ) : (
-        <InfoBlock info={value} label={label} icon={icon} actions={actions} />
+        <InfoBlock
+          info={value || '-'}
+          label={label}
+          icon={icon}
+          actions={actions}
+        />
       )}
     </div>
   );

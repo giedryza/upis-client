@@ -13,6 +13,10 @@
   },
   "company": {
     "title": "Mano įmonė",
+    "subtitle": {
+      "about": "Apie įmonę",
+      "contacts": "Kontaktai"
+    },
     "form": {
       "name": {
         "label": "Pavadinimas",
