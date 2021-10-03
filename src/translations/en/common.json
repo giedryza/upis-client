@@ -22,5 +22,12 @@
     "profile": "Profile",
     "signin": "Sign in",
     "signout": "Sign out"
+  },
+  "social": {
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "youtube": "Youtube",
+    "linkedin": "Linkedin",
+    "twitter": "Twitter"
   }
 }

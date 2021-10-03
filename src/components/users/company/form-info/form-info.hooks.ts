@@ -54,7 +54,7 @@ export const useMyCompanyInfoForm: UseFormBase<MyCompanyInfoFormValues> = (
 
   const errorMessages = {
     name: isSubmitted ? errors.name?.message : '',
-    phones: isSubmitted ? errors.phone?.message : '',
+    phone: isSubmitted ? errors.phone?.message : '',
     email: isSubmitted ? errors.email?.message : '',
   };
 

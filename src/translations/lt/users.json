@@ -41,6 +41,9 @@
         "errors": {
           "invalid": "Įveskite tinkamą adresą"
         }
+      },
+      "social": {
+        "label": "Socialinis tinklas"
       }
     }
   },
