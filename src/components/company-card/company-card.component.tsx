@@ -81,7 +81,7 @@ const CompanyCard: FC<Props> = ({
               <Button
                 icon={socialIconByType[social.type]}
                 url={social.link}
-                styleType="secondary"
+                variant="secondary"
                 size="xs"
                 attributes={{
                   'aria-label': socialNameByType[social.type],
@@ -98,7 +98,7 @@ const CompanyCard: FC<Props> = ({
           iconPlacement="right"
           label="Plačiau"
           url={companyUrl}
-          styleType="text"
+          variant="text"
           size="sm"
         />
       </footer>

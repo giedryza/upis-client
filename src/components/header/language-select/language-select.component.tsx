@@ -37,7 +37,7 @@ const LanguageSelect: FC = () => {
       menuButton={{
         label: t(`common:language.${currentLocale}-short`),
         icon: iconByLocale[currentLocale as Locale],
-        styleType: 'ghost',
+        variant: 'ghost',
         size: 'sm',
       }}
     >

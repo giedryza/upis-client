@@ -13,7 +13,7 @@ export const Button: VFC<Props> = ({
   block,
   icon,
   iconPlacement = 'left',
-  styleType = 'primary',
+  variant = 'primary',
   size = 'md',
   textAlign = 'center',
   withDropdown,
@@ -51,7 +51,7 @@ export const Button: VFC<Props> = ({
   const className = clsx(
     styles.button,
     styles.ripple,
-    styles[styleType],
+    styles[variant],
     styles[size],
     styles[`icon-${iconPlacement}`],
     styles[`text-${textAlign}`],

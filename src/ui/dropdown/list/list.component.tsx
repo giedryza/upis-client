@@ -12,7 +12,7 @@ export const List: VFC<Props> = ({ id, items }) => {
         const buttonProps: ButtonProps = {
           icon: item.icon,
           label: item.label,
-          styleType: 'ghost',
+          variant: 'ghost',
           textAlign: 'left',
           size: 'sm',
           block: true,

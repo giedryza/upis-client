@@ -29,7 +29,7 @@ const Header: FC = () => {
               menuButton={{
                 ariaLabel: 'Account menu',
                 icon: IconName.ChevronDown,
-                styleType: 'ghost',
+                variant: 'ghost',
                 size: 'lg',
               }}
             >

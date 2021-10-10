@@ -23,7 +23,7 @@ const Layout: FC<Props> = ({
           <li>
             <Button
               icon={IconName.Close}
-              styleType="ghost"
+              variant="ghost"
               size="xs"
               attributes={{
                 title: labels.close,
@@ -40,7 +40,7 @@ const Layout: FC<Props> = ({
           <li>
             <Button
               label={labels.cancel}
-              styleType="ghost"
+              variant="ghost"
               size="sm"
               attributes={{
                 onClick: onCancel,
@@ -50,7 +50,7 @@ const Layout: FC<Props> = ({
           <li>
             <Button
               label={labels.submit}
-              styleType="primary"
+              variant="primary"
               size="sm"
               attributes={{
                 onClick: onSubmit,
