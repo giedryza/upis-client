@@ -35,9 +35,11 @@ const EditInfo: FC<Props> = ({
     <Button
       label={t('common:actions.edit')}
       icon={IconName.Pencil}
-      styleType="link"
+      variant="link"
       size="sm"
-      onClick={toggleEditing}
+      attributes={{
+        onClick: toggleEditing,
+      }}
     />
   ) : null;
 

@@ -41,7 +41,7 @@ const AccountMenu: FC = () => {
       menuButton={{
         label: t('common:account.account'),
         icon: IconName.Account,
-        styleType: 'ghost',
+        variant: 'ghost',
         size: 'sm',
         withDropdown: true,
       }}
@@ -66,7 +66,7 @@ const AccountMenu: FC = () => {
     <Button
       label={t('common:account.signin')}
       icon={IconName.Account}
-      styleType="ghost"
+      variant="ghost"
       size="sm"
       url={routes.users.signin}
     />

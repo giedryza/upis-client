@@ -1,20 +1,15 @@
-import { AriaAttributes } from 'react';
-import { LinkProps } from 'next/link';
+import { LinkProps as NextLinkProps } from 'next/link';
 
 import { IconName } from 'ui/icon/icon.component';
 
-export interface Props {
-  id?: string;
+type ButtonAttributes = JSX.IntrinsicElements['button'];
+type LinkAttributes = JSX.IntrinsicElements['a'];
+
+interface BaseProps {
   label?: string;
-  title?: string;
-  onClick?: () => void;
-  url?: string | LinkProps;
-  type?: JSX.IntrinsicElements['button']['type'];
-  form?: JSX.IntrinsicElements['button']['form'];
-  target?: '_self' | '_blank' | '_parent' | '_top';
   icon?: IconName;
   iconPlacement?: 'top' | 'right' | 'bottom' | 'left';
-  styleType?:
+  variant?:
     | 'primary'
     | 'secondary'
     | 'ghost'
@@ -25,10 +20,17 @@ export interface Props {
   size?: 'xs' | 'sm' | 'md' | 'lg';
   textAlign?: 'left' | 'right' | 'center';
   block?: boolean;
-  disabled?: boolean;
   withDropdown?: boolean;
-  ariaLabel?: AriaAttributes['aria-label'];
-  ariaHasPopup?: AriaAttributes['aria-haspopup'];
-  ariaExpanded?: AriaAttributes['aria-expanded'];
-  role?: string;
 }
+
+export interface ButtonProps extends BaseProps {
+  url?: undefined;
+  attributes?: Omit<ButtonAttributes, 'className'>;
+}
+
+export interface LinkProps extends BaseProps {
+  url: NextLinkProps | string;
+  attributes?: Omit<LinkAttributes, 'className' | 'href'>;
+}
+
+export type Props = ButtonProps | LinkProps;

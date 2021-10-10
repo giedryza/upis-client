@@ -23,19 +23,23 @@ const EditBlock: FC<Props> = ({ id, form, onCancel, isValid = true }) => {
         {onCancel && (
           <Button
             label={t('common:actions.cancel')}
-            styleType="ghost-dark"
+            variant="ghost-dark"
             size="sm"
-            onClick={onCancel}
+            attributes={{
+              onClick: onCancel,
+            }}
           />
         )}
 
         <Button
           label={t('common:actions.save')}
-          type="submit"
-          form={id}
-          disabled={!isValid}
-          styleType="primary"
+          variant="primary"
           size="sm"
+          attributes={{
+            type: 'submit',
+            form: id,
+            disabled: !isValid,
+          }}
         />
       </div>
     </div>

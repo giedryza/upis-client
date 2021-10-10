@@ -49,16 +49,18 @@ const Signin: VFC = () => {
 
             <Button
               label={t('users:actions.forgot-pass')}
-              styleType="link"
+              variant="link"
               size="xs"
             />
 
             <div className={styles.actions}>
               <Button
                 label={t('users:actions.signin')}
-                styleType="primary"
-                type="submit"
-                disabled={isDisabled}
+                variant="primary"
+                attributes={{
+                  type: 'submit',
+                  disabled: isDisabled,
+                }}
               />
             </div>
           </form>

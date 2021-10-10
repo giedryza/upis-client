@@ -1,22 +1,14 @@
 import { FC, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { DropdownKey } from 'domain/dropdown/dropdown.types';
+import { Props } from './dropdown.types';
+
 import { makeIsDropdownActiveSelector } from 'domain/dropdown/dropdown.selectors';
-import {
-  Dropdown as DropdownComponent,
-  MenuButton,
-} from 'ui/dropdown/dropdown.component';
+import { Dropdown as DropdownComponent } from 'ui/dropdown/dropdown.component';
 import { State } from 'types/common/redux';
 import { actions } from 'domain/actions';
 
-interface Props {
-  id: DropdownKey;
-  menuButton: MenuButton;
-  position?: `${'top' | 'bottom'}-${'left' | 'right'}`;
-}
-
-const Dropdown: FC<Props> = ({ id, menuButton, position, children }) => {
+export const Dropdown: FC<Props> = ({ id, menuButton, position, children }) => {
   const dispatch = useDispatch();
 
   const isDropdownActiveSelector = useMemo(makeIsDropdownActiveSelector, []);
@@ -45,5 +37,3 @@ const Dropdown: FC<Props> = ({ id, menuButton, position, children }) => {
     </DropdownComponent>
   );
 };
-
-export { Dropdown };

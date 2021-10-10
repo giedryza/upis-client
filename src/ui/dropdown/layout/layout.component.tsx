@@ -23,11 +23,13 @@ const Layout: FC<Props> = ({
           <li>
             <Button
               icon={IconName.Close}
-              ariaLabel={labels.close}
-              title={labels.close}
-              onClick={onClose}
-              styleType="ghost"
+              variant="ghost"
               size="xs"
+              attributes={{
+                title: labels.close,
+                'aria-label': labels.close,
+                onClick: onClose,
+              }}
             />
           </li>
         </ul>
@@ -38,17 +40,21 @@ const Layout: FC<Props> = ({
           <li>
             <Button
               label={labels.cancel}
-              onClick={onCancel}
-              styleType="ghost"
+              variant="ghost"
               size="sm"
+              attributes={{
+                onClick: onCancel,
+              }}
             />
           </li>
           <li>
             <Button
               label={labels.submit}
-              onClick={onSubmit}
-              styleType="primary"
+              variant="primary"
               size="sm"
+              attributes={{
+                onClick: onSubmit,
+              }}
             />
           </li>
         </ul>

@@ -80,12 +80,14 @@ const CompanyCard: FC<Props> = ({
             <li key={i}>
               <Button
                 icon={socialIconByType[social.type]}
-                ariaLabel={socialNameByType[social.type]}
-                title={socialNameByType[social.type]}
                 url={social.link}
-                target="_blank"
-                styleType="secondary"
+                variant="secondary"
                 size="xs"
+                attributes={{
+                  'aria-label': socialNameByType[social.type],
+                  title: socialNameByType[social.type],
+                  target: '_blank',
+                }}
               />
             </li>
           ))}
@@ -96,7 +98,7 @@ const CompanyCard: FC<Props> = ({
           iconPlacement="right"
           label="Plačiau"
           url={companyUrl}
-          styleType="text"
+          variant="text"
           size="sm"
         />
       </footer>

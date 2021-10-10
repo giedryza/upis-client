@@ -1,17 +1,6 @@
 import { ButtonProps } from 'ui/button/button.component';
 
-export type MenuButton = Pick<
-  ButtonProps,
-  | 'label'
-  | 'title'
-  | 'icon'
-  | 'iconPlacement'
-  | 'styleType'
-  | 'size'
-  | 'block'
-  | 'withDropdown'
-  | 'ariaLabel'
->;
+export type MenuButton = Omit<ButtonProps, 'url' | 'attributes'>;
 
 export interface Props {
   id: string;

@@ -20,7 +20,7 @@ const AccountNav: FC = () => {
             <Button
               label={t(link.label)}
               icon={link.icon}
-              styleType={pathname === link.url ? 'secondary' : 'ghost-dark'}
+              variant={pathname === link.url ? 'secondary' : 'ghost-dark'}
               size="sm"
               url={link.url}
               block

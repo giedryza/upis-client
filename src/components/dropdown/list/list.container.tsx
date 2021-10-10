@@ -1,7 +1,8 @@
-import { FC, useMemo } from 'react';
+import { VFC, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { DropdownKey } from 'domain/dropdown/dropdown.types';
+import { Props } from './list.types';
+
 import { makeIsDropdownActiveSelector } from 'domain/dropdown/dropdown.selectors';
 import {
   List as ListComponent,
@@ -10,12 +11,7 @@ import {
 import { State } from 'types/common/redux';
 import { actions } from 'domain/actions';
 
-interface Props {
-  id: DropdownKey;
-  items: MenuItem[];
-}
-
-const List: FC<Props> = ({ id, items }) => {
+export const List: VFC<Props> = ({ id, items }) => {
   const dispatch = useDispatch();
 
   const isDropdownActiveSelector = useMemo(makeIsDropdownActiveSelector, []);
@@ -45,5 +41,3 @@ const List: FC<Props> = ({ id, items }) => {
 
   return <ListComponent id={id} items={parsedItems} />;
 };
-
-export { List };

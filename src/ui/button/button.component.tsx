@@ -1,43 +1,24 @@
-/* eslint-disable react/button-has-type */
-import { VFC, HTMLAttributes, useMemo } from 'react';
-import Link, { LinkProps } from 'next/link';
+import { VFC, useMemo } from 'react';
+import Link from 'next/link';
 import clsx from 'clsx';
 
 import styles from './button.module.scss';
-import { Props } from './button.types';
+import { Props, LinkProps, ButtonProps } from './button.types';
 
 import { Icon } from 'ui/icon/icon.component';
 
-const Button: VFC<Props> = ({
-  id,
+export const Button: VFC<Props> = ({
   label,
-  title,
-  onClick,
   url,
-  target,
-  type = 'button',
-  form,
   block,
   icon,
   iconPlacement = 'left',
-  styleType = 'primary',
+  variant = 'primary',
   size = 'md',
   textAlign = 'center',
-  disabled,
   withDropdown,
-  role,
-  ariaLabel,
-  ariaHasPopup,
-  ariaExpanded,
+  attributes = {},
 }) => {
-  const parsedUrl =
-    url && typeof url === 'string'
-      ? `${url.startsWith('http') || url.startsWith('/') ? '' : '//'}${url}`
-      : '';
-
-  const getLinkProps = (link: string | LinkProps) =>
-    typeof link === 'string' ? { href: link } : link;
-
   const content = useMemo(
     () => (
       <>
@@ -67,47 +48,36 @@ const Button: VFC<Props> = ({
     [label, icon, iconPlacement, withDropdown]
   );
 
-  const attributes: HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> = {
-    className: clsx(
-      styles.button,
-      styles.ripple,
-      styles[styleType],
-      styles[size],
-      styles[`icon-${iconPlacement}`],
-      styles[`text-${textAlign}`],
-      {
-        [styles.iconButton as string]: icon && !label,
-        [styles.block as string]: block,
-      }
-    ),
-    onClick,
-    id,
-    title,
-    role,
-    'aria-label': ariaLabel,
-    'aria-haspopup': ariaHasPopup,
-    'aria-expanded': ariaExpanded,
-  };
+  const className = clsx(
+    styles.button,
+    styles.ripple,
+    styles[variant],
+    styles[size],
+    styles[`icon-${iconPlacement}`],
+    styles[`text-${textAlign}`],
+    {
+      [styles.iconButton as string]: icon && !label,
+      [styles.block as string]: block,
+    }
+  );
 
-  return target ? (
-    <a
-      {...attributes}
-      href={parsedUrl}
-      target={target}
-      rel="noopener noreferrer"
-    >
-      {content}
-    </a>
-  ) : url ? (
-    <Link {...getLinkProps(url)}>
-      <a {...attributes}>{content}</a>
+  return url ? (
+    <Link {...(typeof url === 'string' ? { href: url } : url)}>
+      <a className={className} {...(attributes as LinkProps['attributes'])}>
+        {content}
+      </a>
     </Link>
   ) : (
-    <button {...attributes} type={type} disabled={disabled} form={form}>
+    <button
+      className={className}
+      {...{
+        type: 'button',
+        ...(attributes as ButtonProps['attributes']),
+      }}
+    >
       {content}
     </button>
   );
 };
 
-export { Button };
-export type { Props as ButtonProps };
+export * from './button.types';
