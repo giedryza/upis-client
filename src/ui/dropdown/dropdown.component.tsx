@@ -7,7 +7,7 @@ import { Props, MenuButton } from './dropdown.types';
 import { Button } from 'ui/button/button.component';
 import { useOnClickOutside } from 'utils/hooks/use-on-click-outside.hook';
 
-const Dropdown: FC<Props> = ({
+export const Dropdown: FC<Props> = ({
   id,
   menuButton,
   position = 'bottom-left',
@@ -40,16 +40,17 @@ const Dropdown: FC<Props> = ({
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div onKeyDown={onKeyDown} className={styles.container} ref={containerRef}>
       <Button
-        onClick={handleToggle}
-        ariaHasPopup
-        ariaExpanded={isOpen}
-        id={id}
         {...menuButton}
+        attributes={{
+          id,
+          'aria-haspopup': true,
+          'aria-expanded': isOpen,
+          onClick: handleToggle,
+        }}
       />
       <div className={clsx(styles.dropdown, styles[position])}>{children}</div>
     </div>
   );
 };
 
-export { Dropdown };
 export type { MenuButton };
