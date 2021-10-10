@@ -57,8 +57,10 @@ const Signin: VFC = () => {
               <Button
                 label={t('users:actions.signin')}
                 styleType="primary"
-                type="submit"
-                disabled={isDisabled}
+                attributes={{
+                  type: 'submit',
+                  disabled: isDisabled,
+                }}
               />
             </div>
           </form>

@@ -70,8 +70,10 @@ export const CompanyCreate: VFC = () => {
         <Button
           label={t('common:actions.save')}
           styleType="primary"
-          type="submit"
-          disabled={isDisabled}
+          attributes={{
+            type: 'submit',
+            disabled: isDisabled,
+          }}
         />
       </div>
     </form>

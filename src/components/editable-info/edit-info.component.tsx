@@ -37,7 +37,9 @@ const EditInfo: FC<Props> = ({
       icon={IconName.Pencil}
       styleType="link"
       size="sm"
-      onClick={toggleEditing}
+      attributes={{
+        onClick: toggleEditing,
+      }}
     />
   ) : null;
 
