@@ -10,6 +10,13 @@ export const setCompany = (
   payload,
 });
 
+export const updateCompany = (
+  payload: CompaniesPayloads[CompaniesActionTypes.UpdateCompany]
+) => ({
+  type: CompaniesActionTypes.UpdateCompany,
+  payload,
+});
+
 export const setLoading = (
   payload: CompaniesPayloads[CompaniesActionTypes.SetLoading]
 ) => ({

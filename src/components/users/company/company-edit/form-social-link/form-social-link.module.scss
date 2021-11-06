@@ -1,0 +1,12 @@
+.form {
+  display: flex;
+  gap: 1.5rem;
+
+  > *:first-child {
+    flex-grow: 1;
+  }
+
+  > *:last-child {
+    flex-shrink: 0;
+  }
+}

@@ -20,6 +20,17 @@ const reducer: CompaniesReducer = (
         company: action.payload,
       };
 
+    case CompaniesActionTypes.UpdateCompany:
+      return {
+        ...state,
+        company: state.company
+          ? {
+              ...state.company,
+              ...action.payload,
+            }
+          : null,
+      };
+
     case CompaniesActionTypes.SetLoading:
       return {
         ...state,

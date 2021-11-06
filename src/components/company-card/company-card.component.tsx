@@ -5,7 +5,7 @@ import styles from './company-card.module.scss';
 
 import { Button } from 'ui/button/button.component';
 import { Icon, IconName } from 'ui/icon/icon.component';
-import { Social, SocialType } from 'domain/companies/companies.types';
+import { SocialLink, SocialType } from 'domain/companies/companies.types';
 import { AnchorLink } from 'ui/anchor-link/anchor-link.component';
 
 const socialNameByType: Record<SocialType, string> = {
@@ -30,7 +30,7 @@ interface Props {
   toursTotal: number;
   slug: string;
   website?: string;
-  socials?: Social[];
+  socials?: SocialLink[];
 }
 
 const CompanyCard: FC<Props> = ({
@@ -80,7 +80,7 @@ const CompanyCard: FC<Props> = ({
             <li key={i}>
               <Button
                 icon={socialIconByType[social.type]}
-                url={social.link}
+                url={social.url}
                 variant="secondary"
                 size="xs"
                 attributes={{

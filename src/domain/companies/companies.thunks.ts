@@ -1,10 +1,15 @@
 import { PromiseThunk, Thunk, ThunkResponse } from 'types/common/redux';
-import { Company } from 'domain/companies/companies.types';
+import {
+  Company,
+  SocialLink,
+  SocialType,
+} from 'domain/companies/companies.types';
 import { Http } from 'utils/libs/http/http.lib';
 import { Response } from 'utils/libs/http/http.types';
 import { endpoints } from 'uri/endpoints';
 import { Errors } from 'utils/libs/errors/errors.lib';
 import { actions } from 'domain/actions';
+import { thunks } from 'domain/thunks';
 
 export const getMyCompany = (): Thunk => async (dispatch) => {
   try {
@@ -67,6 +72,55 @@ export const createMyCompany = (
     ).post();
 
     dispatch(actions.companies.setCompany(data));
+
+    return { success: true };
+  } catch (error) {
+    new Errors(error).handleApi();
+
+    return { success: false };
+  } finally {
+    dispatch(actions.companies.setLoading(false));
+  }
+};
+
+export const addSocialLink = (
+  form: { url: string; type: SocialType },
+  companyId: string
+): PromiseThunk<ThunkResponse> => async (dispatch) => {
+  try {
+    dispatch(actions.companies.setLoading(true));
+
+    await new Http<Response<SocialLink>>(endpoints.socialLinks.index, {
+      body: { ...form, host: companyId },
+    }).post();
+
+    dispatch(thunks.companies.getMyCompany());
+
+    return { success: true };
+  } catch (error) {
+    new Errors(error).handleApi();
+
+    return { success: false };
+  } finally {
+    dispatch(actions.companies.setLoading(false));
+  }
+};
+
+export const updateSocialLink = (
+  form: Partial<{ url: string; type: SocialType }>,
+  socialLinkId: string
+): PromiseThunk<ThunkResponse> => async (dispatch) => {
+  try {
+    dispatch(actions.companies.setLoading(true));
+
+    await new Http<Response<SocialLink>>(
+      endpoints.socialLinks.one.replace(':id', socialLinkId),
+      {
+        body: { ...form },
+      }
+    ).patch();
+
+    dispatch(thunks.companies.getMyCompany());
 
     return { success: true };
   } catch (error) {

@@ -10,6 +10,7 @@ import { FormPhone } from 'components/users/company/company-edit/form-phone/form
 import { FormDescription } from 'components/users/company/company-edit/form-description/form-description.component';
 import { FormWebsite } from 'components/users/company/company-edit/form-website/form-website.component';
 import { selectMyCompany } from 'domain/companies/companies.selectors';
+import { SocialLinks } from 'components/users/company/company-edit/social-links/social-links.component';
 
 export const CompanyEdit: VFC = () => {
   const { t } = useTranslation();
@@ -31,6 +32,11 @@ export const CompanyEdit: VFC = () => {
         <FormEmail companyId={company._id} />
         <FormPhone companyId={company._id} />
         <FormWebsite companyId={company._id} />
+      </div>
+
+      <div className={styles.block}>
+        <h2>{t('users:company.subtitle.socialLinks')}</h2>
+        <SocialLinks companyId={company._id} />
       </div>
     </div>
   );

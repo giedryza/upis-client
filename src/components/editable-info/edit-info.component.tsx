@@ -1,21 +1,13 @@
-import { FC, ReactNode, useState } from 'react';
+import { FC, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import styles from './edit-info.module.scss';
+import { Props } from './edit-info.types';
+import { ICON_BY_VARIANT } from './edit-info.constants';
+import { InfoBlock } from './info-block/info-block.component';
+import { EditBlock } from './edit-block/edit-block.component';
 
-import { IconName } from 'ui/icon/icon.component';
 import { Button } from 'ui/button/button.component';
-import { InfoBlock } from 'components/editable-info/info-block/info-block.component';
-import { EditBlock } from 'components/editable-info/edit-block/edit-block.component';
-
-interface Props {
-  id: string;
-  label: string;
-  value: string;
-  form?: ReactNode;
-  isValid?: boolean;
-  icon?: IconName;
-}
 
 const EditInfo: FC<Props> = ({
   id,
@@ -24,6 +16,7 @@ const EditInfo: FC<Props> = ({
   form = null,
   isValid,
   icon,
+  variant = 'edit',
 }) => {
   const { t } = useTranslation();
 
@@ -33,8 +26,8 @@ const EditInfo: FC<Props> = ({
 
   const actions = form ? (
     <Button
-      label={t('common:actions.edit')}
-      icon={IconName.Pencil}
+      label={t(`common:actions.${variant}`)}
+      icon={ICON_BY_VARIANT[variant]}
       variant="link"
       size="sm"
       attributes={{
@@ -55,9 +48,10 @@ const EditInfo: FC<Props> = ({
       ) : (
         <InfoBlock
           info={value || '-'}
-          label={label}
+          label={label || '-'}
           icon={icon}
           actions={actions}
+          variant={variant}
         />
       )}
     </div>
