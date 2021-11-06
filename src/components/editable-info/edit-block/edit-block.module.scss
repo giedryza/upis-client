@@ -8,7 +8,19 @@
 
 .actions {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+}
 
-  @include spacing(x, 0.5em);
+.primaryActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.secondaryActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }

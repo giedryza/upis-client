@@ -2,6 +2,7 @@ import { config } from 'uri/config';
 
 const paths = {
   companies: 'companies',
+  socialLinks: 'social-links',
   users: 'users',
 };
 
@@ -14,8 +15,12 @@ export const endpoints = {
     me: `${paths.users}/me`,
   },
   companies: {
-    index: paths.companies,
+    index: `${paths.companies}`,
     me: `${paths.companies}/me`,
     one: `${paths.companies}/:id`,
+  },
+  socialLinks: {
+    index: `${paths.socialLinks}`,
+    one: `${paths.socialLinks}/:id`,
   },
 };

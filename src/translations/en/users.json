@@ -15,7 +15,11 @@
     "title": "My company",
     "subtitle": {
       "about": "About",
-      "contacts": "Contacts"
+      "contacts": "Contacts",
+      "socialLinks": "Social Links"
+    },
+    "actions": {
+      "addSocialLink": "Add Social Link"
     },
     "form": {
       "name": {
@@ -45,8 +49,16 @@
           "invalid": "Enter valid url"
         }
       },
-      "social": {
-        "label": "Social Network"
+      "socialLinks": {
+        "type": {
+          "label": "Network"
+        },
+        "url": {
+          "label": "Url",
+          "errors": {
+            "empty": "Enter url"
+          }
+        }
       }
     }
   },

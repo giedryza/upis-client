@@ -23,6 +23,8 @@ export enum Name {
   Path = 'path',
   Pencil = 'pencil',
   Phone = 'phone',
+  Plus = 'plus',
+  Trash = 'trash',
   Account = 'account',
   Twitter = 'twitter',
   User = 'user',

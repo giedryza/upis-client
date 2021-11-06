@@ -10,9 +10,10 @@ export enum SocialType {
   Twitter = 'twitter',
 }
 
-export interface Social {
+export interface SocialLink {
+  _id: string;
   type: SocialType;
-  link: string;
+  url: string;
 }
 
 export interface Company {
@@ -23,9 +24,9 @@ export interface Company {
   slug: string;
   description: string;
   website: string;
-  social: Social[];
   address: string;
   user: string;
+  socialLinks: SocialLink[];
   location: {
     coordinates: number[];
   };
@@ -45,12 +46,14 @@ export interface CompaniesState {
 
 export enum CompaniesActionTypes {
   SetCompany = 'companies/SET_COMPANY',
+  UpdateCompany = 'companies/UPDATE_COMPANY',
   SetLoading = 'companies/SET_LOADING',
   ClearCompany = 'companies/CLEAR_COMPANY',
 }
 
 export type CompaniesPayloads = {
   [CompaniesActionTypes.SetCompany]: Company | null;
+  [CompaniesActionTypes.UpdateCompany]: Partial<Company>;
   [CompaniesActionTypes.SetLoading]: boolean;
   [CompaniesActionTypes.ClearCompany]: undefined;
 };
