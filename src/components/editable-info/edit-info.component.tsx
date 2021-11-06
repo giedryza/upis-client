@@ -17,6 +17,7 @@ const EditInfo: FC<Props> = ({
   isValid,
   icon,
   variant = 'edit',
+  onDelete,
 }) => {
   const { t } = useTranslation();
 
@@ -44,6 +45,7 @@ const EditInfo: FC<Props> = ({
           onCancel={toggleEditing}
           form={form}
           isValid={isValid}
+          onDelete={onDelete}
         />
       ) : (
         <InfoBlock

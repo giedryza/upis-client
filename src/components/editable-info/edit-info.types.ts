@@ -12,4 +12,5 @@ export interface Props {
   isValid?: boolean;
   icon?: IconName;
   variant?: EditInfoVariant;
+  onDelete?: () => void;
 }

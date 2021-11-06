@@ -131,3 +131,25 @@ export const updateSocialLink = (
     dispatch(actions.companies.setLoading(false));
   }
 };
+
+export const deleteSocialLink = (
+  socialLinkId: string
+): PromiseThunk<ThunkResponse> => async (dispatch) => {
+  try {
+    dispatch(actions.companies.setLoading(true));
+
+    await new Http<Response<SocialLink>>(
+      endpoints.socialLinks.one.replace(':id', socialLinkId)
+    ).delete();
+
+    dispatch(thunks.companies.getMyCompany());
+
+    return { success: true };
+  } catch (error) {
+    new Errors(error).handleApi();
+
+    return { success: false };
+  } finally {
+    dispatch(actions.companies.setLoading(false));
+  }
+};

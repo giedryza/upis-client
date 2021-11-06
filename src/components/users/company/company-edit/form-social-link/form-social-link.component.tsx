@@ -31,6 +31,10 @@ export const FormSocialLink: VFC<ComponentProps> = ({ socialLinkId }) => {
     dispatch(thunks.companies.updateSocialLink({ type, url }, socialLinkId));
   };
 
+  const onDelete = () => {
+    dispatch(thunks.companies.deleteSocialLink(socialLinkId));
+  };
+
   const { handleSubmit, refs, errorMessages, isDisabled } = useFormSocialLink(
     onSubmit,
     values
@@ -62,6 +66,7 @@ export const FormSocialLink: VFC<ComponentProps> = ({ socialLinkId }) => {
       value={values.url}
       isValid={!isDisabled}
       icon={ICON_BY_SOCIAL_LINK_TYPE[values.type]}
+      onDelete={onDelete}
     />
   );
 };
