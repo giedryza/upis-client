@@ -24,6 +24,7 @@ export enum Name {
   Pencil = 'pencil',
   Phone = 'phone',
   Plus = 'plus',
+  Trash = 'trash',
   Account = 'account',
   Twitter = 'twitter',
   User = 'user',
