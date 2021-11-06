@@ -15,7 +15,11 @@
     "title": "Mano įmonė",
     "subtitle": {
       "about": "Apie kompaniją",
-      "contacts": "Kontaktai"
+      "contacts": "Kontaktai",
+      "socialLinks": "Socialiniai tinklai"
+    },
+    "actions": {
+      "addSocialLink": "Pridėti socialinį tinklą"
     },
     "form": {
       "name": {
@@ -46,8 +50,16 @@
           "invalid": "Įveskite tinkamą adresą"
         }
       },
-      "social": {
-        "label": "Socialinis tinklas"
+      "socialLinks": {
+        "type": {
+          "label": "Tinklas"
+        },
+        "url": {
+          "label": "Adresas",
+          "errors": {
+            "empty": "Įveskite adresą"
+          }
+        }
       }
     }
   },
