@@ -61,7 +61,7 @@ export const FormSocialLink: VFC<ComponentProps> = ({ socialLinkId }) => {
   return (
     <EditInfo
       id={formId}
-      label={t('users:company.form.socialLinks.url.label')}
+      label={t(`common:social.${values.type}`)}
       form={form}
       value={values.url}
       isValid={!isDisabled}
