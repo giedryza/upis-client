@@ -11,7 +11,7 @@ export const SocialLinks: VFC<ComponentProps> = ({ companyId }) => {
   const socialLinks = useSelector(selectMyCompanySocialLinks);
 
   return (
-    <div>
+    <>
       {socialLinks.map((link) => (
         <FormSocialLink
           companyId={companyId}
@@ -20,6 +20,6 @@ export const SocialLinks: VFC<ComponentProps> = ({ companyId }) => {
         />
       ))}
       <FormSocialLinkAdd companyId={companyId} />
-    </div>
+    </>
   );
 };

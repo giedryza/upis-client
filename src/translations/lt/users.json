@@ -16,7 +16,8 @@
     "subtitle": {
       "about": "Apie kompaniją",
       "contacts": "Kontaktai",
-      "socialLinks": "Socialiniai tinklai"
+      "socialLinks": "Socialiniai tinklai",
+      "location": "Vieta"
     },
     "actions": {
       "addSocialLink": "Pridėti socialinį tinklą"

@@ -16,7 +16,8 @@
     "subtitle": {
       "about": "About",
       "contacts": "Contacts",
-      "socialLinks": "Social Links"
+      "socialLinks": "Social Links",
+      "location": "Location"
     },
     "actions": {
       "addSocialLink": "Add Social Link"

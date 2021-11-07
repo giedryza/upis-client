@@ -3,14 +3,15 @@ import { useSelector } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
 import styles from './company-edit.module.scss';
+import { FormName } from './form-name/form-name.component';
+import { FormEmail } from './form-email/form-email.component';
+import { FormPhone } from './form-phone/form-phone.component';
+import { FormDescription } from './form-description/form-description.component';
+import { FormWebsite } from './form-website/form-website.component';
+import { SocialLinks } from './social-links/social-links.component';
+import { Location } from './location/location.component';
 
-import { FormName } from 'components/users/company/company-edit/form-name/form-name.component';
-import { FormEmail } from 'components/users/company/company-edit/form-email/form-email.component';
-import { FormPhone } from 'components/users/company/company-edit/form-phone/form-phone.component';
-import { FormDescription } from 'components/users/company/company-edit/form-description/form-description.component';
-import { FormWebsite } from 'components/users/company/company-edit/form-website/form-website.component';
 import { selectMyCompany } from 'domain/companies/companies.selectors';
-import { SocialLinks } from 'components/users/company/company-edit/social-links/social-links.component';
 
 export const CompanyEdit: VFC = () => {
   const { t } = useTranslation();
@@ -37,6 +38,11 @@ export const CompanyEdit: VFC = () => {
       <div className={styles.block}>
         <h2>{t('users:company.subtitle.socialLinks')}</h2>
         <SocialLinks companyId={company._id} />
+      </div>
+
+      <div className={styles.block}>
+        <h2>{t('users:company.subtitle.location')}</h2>
+        <Location companyId={company._id} />
       </div>
     </div>
   );
