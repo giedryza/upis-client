@@ -1,3 +1,1 @@
-export interface ComponentProps {
-  companyId: string;
-}
+export interface ComponentProps {}
