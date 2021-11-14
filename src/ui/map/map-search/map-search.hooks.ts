@@ -4,7 +4,7 @@ import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 
 import {
   MapSearchEvent,
-  MapDragEvent,
+  MapSearchResultDragEvent,
   SearchControlOptions,
 } from './map-search.types';
 
@@ -41,7 +41,7 @@ export const useMapSearch = (map: L.Map): Point => {
   });
 
   map.on('geosearch/marker/dragend', (e) => {
-    const { location } = e as MapDragEvent;
+    const { location } = e as MapSearchResultDragEvent;
     setCoordinates({ lat: location.lat, lng: location.lng });
   });
 

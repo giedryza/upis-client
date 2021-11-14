@@ -16,8 +16,15 @@ export interface MapSearchEvent extends L.LeafletEvent {
   };
 }
 
-export interface MapDragEvent extends L.LeafletEvent {
+export interface MapSearchResultDragEvent extends L.LeafletEvent {
   location: Point;
+}
+
+export interface MapDragendEvent extends L.LeafletEvent {
+  distance: number;
+  target: {
+    _latlng: Point;
+  };
 }
 
 export interface SearchResult<RawResult = any> {

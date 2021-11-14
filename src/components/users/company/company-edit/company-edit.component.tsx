@@ -9,7 +9,7 @@ import { FormPhone } from './form-phone/form-phone.component';
 import { FormDescription } from './form-description/form-description.component';
 import { FormWebsite } from './form-website/form-website.component';
 import { SocialLinks } from './social-links/social-links.component';
-import { Location } from './location/location.component';
+import { Location } from './form-location/form-location.component';
 
 import { selectMyCompany } from 'domain/companies/companies.selectors';
 
