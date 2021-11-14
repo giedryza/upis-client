@@ -1,11 +1,18 @@
 import { ConsumerProps } from 'react';
 import * as L from 'leaflet';
 import * as ReactLeaflet from 'react-leaflet';
+
 import 'leaflet/dist/leaflet.css';
 
 import styles from './map-wrapper.module.scss';
 
-type Props = ConsumerProps<{ ReactLeaflet: typeof ReactLeaflet; L: typeof L }> &
+import { MapSearch } from 'ui/map/map-search/map-search';
+
+type Props = ConsumerProps<{
+  reactLeaflet: typeof ReactLeaflet;
+  leaflet: typeof L;
+  custom: { SearchBar: typeof MapSearch };
+}> &
   ReactLeaflet.MapContainerProps;
 
 const MapWrapper = ({ children, ...rest }: Props) => {
@@ -16,7 +23,11 @@ const MapWrapper = ({ children, ...rest }: Props) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {children({ ReactLeaflet, L })}
+      {children({
+        leaflet: L,
+        reactLeaflet: ReactLeaflet,
+        custom: { SearchBar: MapSearch },
+      })}
     </ReactLeaflet.MapContainer>
   );
 };

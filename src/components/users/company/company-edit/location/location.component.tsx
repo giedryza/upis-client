@@ -13,8 +13,16 @@ export const Location: VFC<ComponentProps> = () => {
   return (
     <div style={{ height: 400, width: '100%' }}>
       <Map center={center} zoom={7}>
-        {({ ReactLeaflet: { Marker, Popup }, L: { icon } }) => (
+        {({
+          leaflet: { icon },
+          reactLeaflet: { Marker, Popup, useMap },
+          custom: { SearchBar },
+        }) => (
           <>
+            <SearchBar
+              useMap={useMap}
+              onChange={(coords) => console.log(coords)}
+            />
             <Marker
               draggable
               position={center}
