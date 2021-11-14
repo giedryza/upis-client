@@ -9,9 +9,8 @@ import { FormPhone } from './form-phone/form-phone.component';
 import { FormDescription } from './form-description/form-description.component';
 import { FormWebsite } from './form-website/form-website.component';
 import { SocialLinks } from './social-links/social-links.component';
-// import Location from './location/location.component';
+import { Location } from './location/location.component';
 
-import { Map } from 'ui/map/map.component';
 import { selectMyCompany } from 'domain/companies/companies.selectors';
 
 export const CompanyEdit: VFC = () => {
@@ -43,7 +42,7 @@ export const CompanyEdit: VFC = () => {
 
       <div className={styles.block}>
         <h2>{t('users:company.subtitle.location')}</h2>
-        <Map />
+        <Location />
       </div>
     </div>
   );
