@@ -36,13 +36,13 @@ export const CompanyEdit: VFC = () => {
       </div>
 
       <div className={styles.block}>
-        <h2>{t('users:company.subtitle.socialLinks')}</h2>
-        <SocialLinks companyId={company._id} />
+        <h2>{t('users:company.subtitle.location')}</h2>
+        <Location companyId={company._id} />
       </div>
 
       <div className={styles.block}>
-        <h2>{t('users:company.subtitle.location')}</h2>
-        <Location companyId={company._id} />
+        <h2>{t('users:company.subtitle.socialLinks')}</h2>
+        <SocialLinks companyId={company._id} />
       </div>
     </div>
   );

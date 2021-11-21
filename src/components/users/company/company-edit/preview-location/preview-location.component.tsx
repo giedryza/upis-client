@@ -18,6 +18,7 @@ export const PreviewLocation: VFC<Props> = ({ onClick, center, address }) => {
         info={address || '-'}
         label={t('users:company.form.address.label')}
         variant="edit"
+        icon={IconName.Home}
         actions={
           <Button
             label={t('common:actions.edit')}

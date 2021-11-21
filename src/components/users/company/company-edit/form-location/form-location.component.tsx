@@ -38,7 +38,13 @@ export const Location: VFC<ComponentProps> = ({ companyId }) => {
   return isEditing ? (
     <div className={styles.container}>
       <div className={styles.mapContainer}>
-        <Map center={center} zoom={center.lat && center.lng ? 18 : 7}>
+        <Map
+          center={{
+            lat: center.lat + 0.00025,
+            lng: center.lng,
+          }}
+          zoom={center.lat && center.lng ? 18 : 7}
+        >
           {({
             leaflet: { icon },
             reactLeaflet: { Marker, Popup, useMap },
@@ -64,7 +70,7 @@ export const Location: VFC<ComponentProps> = ({ companyId }) => {
                   },
                 }}
               >
-                <Popup className="labadiena">
+                <Popup className={styles.popup}>
                   {location?.display_name ?? '-'}
                 </Popup>
               </Marker>

@@ -14,6 +14,7 @@ export enum Name {
   FlagEn = 'flag-en',
   FlagLt = 'flag-lt',
   Globe = 'globe',
+  Home = 'home',
   Info = 'info',
   Instagram = 'instagram',
   Kayak = 'kayak',

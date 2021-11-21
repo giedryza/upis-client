@@ -16,6 +16,20 @@
   height: 35rem;
 }
 
+.popup {
+  display: block;
+
+  [class='leaflet-popup-content-wrapper'] {
+    color: var(--color-text);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-default);
+  }
+
+  [class='leaflet-popup-tip'] {
+    box-shadow: var(--shadow-default);
+  }
+}
+
 .actions {
   display: flex;
   align-items: center;
