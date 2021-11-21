@@ -1,9 +1,10 @@
 import { useState, VFC } from 'react';
+import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
 import { ComponentProps } from './form-location.types';
-import { useCoordinates, usePoint } from './form-location.hooks';
+import { useCoordinates, usePoint, useValues } from './form-location.hooks';
 import styles from './form-location.module.scss';
 
 import { Map, mapIcon } from 'ui/map';
@@ -13,14 +14,17 @@ import { Point } from 'types/common/geo';
 import { Locale } from 'types/common/locales';
 import { PreviewLocation } from 'components/users/company/company-edit/preview-location/preview-location.component';
 import { Button } from 'ui/button/button.component';
+import { thunks } from 'domain/thunks';
 
-export const Location: VFC<ComponentProps> = () => {
+export const Location: VFC<ComponentProps> = ({ companyId }) => {
   const { t } = useTranslation();
   const { locale } = useRouter();
+  const dispatch = useDispatch();
 
   const [isEditing, setIsEditing] = useState(false);
 
-  const { point, updatePoint } = usePoint();
+  const values = useValues();
+  const { point, updatePoint } = usePoint({ lat: values.lat, lng: values.lng });
   const location = useCoordinates(
     { lat: point.lat, lng: point.lng },
     locale as Locale
@@ -34,7 +38,7 @@ export const Location: VFC<ComponentProps> = () => {
   return isEditing ? (
     <div className={styles.container}>
       <div className={styles.mapContainer}>
-        <Map center={center} zoom={7}>
+        <Map center={center} zoom={center.lat && center.lng ? 18 : 7}>
           {({
             leaflet: { icon },
             reactLeaflet: { Marker, Popup, useMap },
@@ -55,9 +59,14 @@ export const Location: VFC<ComponentProps> = () => {
                       lng: target._latlng.lng,
                     });
                   },
+                  add: (e) => {
+                    e.target.openPopup();
+                  },
                 }}
               >
-                <Popup>{location?.display_name ?? '-'}</Popup>
+                <Popup className="labadiena">
+                  {location?.display_name ?? '-'}
+                </Popup>
               </Marker>
             </>
           )}
@@ -79,7 +88,15 @@ export const Location: VFC<ComponentProps> = () => {
           variant="primary"
           size="sm"
           attributes={{
-            onClick: () => console.log('submit'),
+            onClick: () => {
+              dispatch(
+                thunks.companies.updateLocation(companyId, {
+                  lat: point.lat,
+                  lng: point.lng,
+                  address: location?.display_name ?? '-',
+                })
+              );
+            },
             disabled: !point.lat || !point.lng,
           }}
         />
@@ -88,7 +105,8 @@ export const Location: VFC<ComponentProps> = () => {
   ) : (
     <PreviewLocation
       onClick={() => setIsEditing(true)}
-      center={{ lat: point.lat, lng: point.lng }}
+      center={{ lat: values.lat, lng: values.lng }}
+      address={values.address}
     />
   );
 };

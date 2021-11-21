@@ -83,6 +83,39 @@ export const createMyCompany = (
   }
 };
 
+export const updateLocation = (
+  id: string,
+  form: { lat: number; lng: number; address: string }
+): PromiseThunk<ThunkResponse> => async (dispatch) => {
+  try {
+    dispatch(actions.companies.setLoading(true));
+
+    if (!form.lat || !form.lng) throw new Error();
+
+    const { data } = await new Http<Response<Company>>(
+      endpoints.companies.one.replace(':id', id),
+      {
+        body: {
+          address: form.address,
+          location: {
+            coordinates: [form.lng, form.lat],
+          },
+        },
+      }
+    ).patch();
+
+    dispatch(actions.companies.setCompany(data));
+
+    return { success: true };
+  } catch (error) {
+    new Errors(error).handleApi();
+
+    return { success: false };
+  } finally {
+    dispatch(actions.companies.setLoading(false));
+  }
+};
+
 export const addSocialLink = (
   form: { url: string; type: SocialType },
   companyId: string

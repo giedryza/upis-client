@@ -60,6 +60,9 @@
             "empty": "Enter url"
           }
         }
+      },
+      "address": {
+        "label": "Address"
       }
     }
   },

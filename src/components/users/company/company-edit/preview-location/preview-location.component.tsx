@@ -9,14 +9,14 @@ import { Button } from 'ui/button/button.component';
 import { IconName } from 'ui/icon/icon.component';
 import { Map, mapIcon } from 'ui/map';
 
-export const PreviewLocation: VFC<Props> = ({ onClick, center }) => {
+export const PreviewLocation: VFC<Props> = ({ onClick, center, address }) => {
   const { t } = useTranslation();
 
   return (
     <div className={styles.container}>
       <InfoBlock
-        info="34, Linkmenų g., Šnipiškės, Šnipiškių seniūnija, Vilnius, Vilnius city municipality, Vilnius County, 08217, Lithuania"
-        label="Address"
+        info={address || '-'}
+        label={t('users:company.form.address.label')}
         variant="edit"
         actions={
           <Button

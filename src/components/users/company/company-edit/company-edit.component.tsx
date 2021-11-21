@@ -42,7 +42,7 @@ export const CompanyEdit: VFC = () => {
 
       <div className={styles.block}>
         <h2>{t('users:company.subtitle.location')}</h2>
-        <Location />
+        <Location companyId={company._id} />
       </div>
     </div>
   );

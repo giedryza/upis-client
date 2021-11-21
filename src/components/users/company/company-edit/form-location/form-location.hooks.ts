@@ -18,28 +18,29 @@ export const useValues = (): FormLocationValues => {
 
     if (!lat || !lng) return FORM_LOCATION_INITIAL_VALUES;
 
-    return { lat, lng };
+    return { lat, lng, address: myCompany.address };
   }, [myCompany]);
 
   return values;
 };
 
-export const usePoint = () => {
-  const [point, setPoint] = useState<Point>(FORM_LOCATION_INITIAL_VALUES);
+export const usePoint = ({ lat, lng }: Point) => {
+  const [currentPoint, setCurrentPoint] = useState<Point>({
+    lat: FORM_LOCATION_INITIAL_VALUES.lat,
+    lng: FORM_LOCATION_INITIAL_VALUES.lng,
+  });
 
-  const values = useValues();
-
-  const updatePoint = useCallback(({ lat, lng }: Point) => {
-    if (lat && lng) {
-      setPoint({ lat, lng });
+  const updatePoint = useCallback((point: Point) => {
+    if (point.lat && point.lng) {
+      setCurrentPoint(point);
     }
   }, []);
 
   useEffect(() => {
-    updatePoint(values);
-  }, [values, updatePoint]);
+    updatePoint({ lat, lng });
+  }, [lat, lng, updatePoint]);
 
-  return { point, updatePoint };
+  return { point: currentPoint, updatePoint };
 };
 
 export const useCoordinates = (

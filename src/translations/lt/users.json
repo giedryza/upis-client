@@ -61,6 +61,9 @@
             "empty": "Įveskite adresą"
           }
         }
+      },
+      "address": {
+        "label": "Adresas"
       }
     }
   },
