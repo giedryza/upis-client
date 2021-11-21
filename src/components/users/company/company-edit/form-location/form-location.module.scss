@@ -1,4 +1,17 @@
+@use 'styles/mixins' as *;
+
+.container {
+  @include spacing(y, 0.7em);
+}
+
 .mapContainer {
   width: 100%;
   height: 35rem;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
 }

@@ -19,7 +19,7 @@ const MapWrapper = ({ children, ...rest }: Props) => {
   return (
     <ReactLeaflet.MapContainer {...rest} className={styles.mapContainer}>
       <ReactLeaflet.TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+        attribution='&copy; <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
