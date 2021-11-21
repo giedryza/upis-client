@@ -31,6 +31,7 @@
   "rules": {
     "prettier/prettier": "error",
     "react/prop-types": "off",
+    "react/require-default-props": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
     "react/jsx-props-no-spreading": "off",
@@ -83,6 +84,8 @@
     "no-underscore-dangle": "off",
     "no-nested-ternary": "off",
     "no-unused-expressions": ["error", { "allowTernary": true }],
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "global-require": "off",
+    "camelcase": "off"
   }
 }

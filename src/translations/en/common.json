@@ -10,7 +10,8 @@
     "add": "Add",
     "edit": "Edit",
     "delete": "Delete",
-    "next": "Next"
+    "next": "Next",
+    "enterAddress": "Enter address"
   },
   "language": {
     "lt": "Lietuvių",
