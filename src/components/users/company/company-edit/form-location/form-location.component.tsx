@@ -1,20 +1,36 @@
 import { VFC } from 'react';
+import { useRouter } from 'next/router';
 
 import { ComponentProps } from './form-location.types';
-import { usePoint } from './form-location.hooks';
+import { useCoordinates, usePoint } from './form-location.hooks';
+import styles from './form-location.module.scss';
 
 import { Map, mapIcon } from 'ui/map';
 import { MapDragendEvent } from 'ui/map/map-search/map-search.types';
+import { DEFAULT_CENTER } from 'components/users/company/company-edit/form-location/form-location.constants';
+import { Point } from 'types/common/geo';
+import { Locale } from 'types/common/locales';
 
 export const Location: VFC<ComponentProps> = () => {
+  const { locale } = useRouter();
+
   const { point, updatePoint } = usePoint();
+  const location = useCoordinates(
+    { lat: point.lat, lng: point.lng },
+    locale as Locale
+  );
+
+  const center: Point = {
+    lat: point.lat || DEFAULT_CENTER.lat,
+    lng: point.lng || DEFAULT_CENTER.lng,
+  };
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
-      <Map center={{ lat: point.lat, lng: point.lng }} zoom={7}>
+    <div className={styles.mapContainer}>
+      <Map center={center} zoom={7}>
         {({
           leaflet: { icon },
-          reactLeaflet: { Marker, useMap },
+          reactLeaflet: { Marker, Popup, useMap },
           custom: { SearchBar },
         }) => (
           <>
@@ -22,7 +38,7 @@ export const Location: VFC<ComponentProps> = () => {
 
             <Marker
               draggable
-              position={{ lat: point.lat, lng: point.lng }}
+              position={center}
               icon={icon(mapIcon({ name: 'pin', size: 48 }))}
               eventHandlers={{
                 dragend: (e) => {
@@ -33,7 +49,9 @@ export const Location: VFC<ComponentProps> = () => {
                   });
                 },
               }}
-            />
+            >
+              <Popup>{location?.display_name ?? '-'}</Popup>
+            </Marker>
           </>
         )}
       </Map>

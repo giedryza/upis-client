@@ -85,6 +85,7 @@
     "no-nested-ternary": "off",
     "no-unused-expressions": ["error", { "allowTernary": true }],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "global-require": "off"
+    "global-require": "off",
+    "camelcase": "off"
   }
 }
