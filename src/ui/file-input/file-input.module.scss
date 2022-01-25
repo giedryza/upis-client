@@ -1,73 +1,116 @@
 @use 'styles/mixins' as *;
 
-.input {
-  $icon-size: 1.75em;
-  $icon-offset: 0.25em;
-
+.container {
   font-size: 1.6rem;
-  position: relative;
 
-  @include spacing(y, 0.25em);
+  @include spacing(y, 1em);
 
-  > input {
-    + div {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      padding-left: calc(2 * #{$icon-offset} + #{$icon-size});
-      font-weight: 500;
-      background-color: var(--color-white);
-      border: 2px solid var(--color-grey-60);
-      border-radius: var(--border-radius-sm);
-      transition: var(--transition-duration-md) box-shadow;
-      line-height: 1;
-      height: 2.25em;
-      cursor: pointer;
+  .dropzone {
+    width: 100%;
+    border: 2px dotted var(--color-grey-60);
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-sm);
+    padding: 1.25em;
+    transition: var(--transition-duration-md) box-shadow;
+
+    &[data-drag-state='accept'],
+    &[data-drag-state='active'] {
+      border-color: var(--color-success-50);
+      background-color: var(--color-grey-99);
     }
 
-    &[disabled] + div {
+    &[data-drag-state='reject'] {
+      border-color: var(--color-danger-50);
+    }
+
+    &[disabled] {
       border-color: var(--color-grey-75);
       background-color: var(--color-grey-95);
-      cursor: not-allowed;
-      color: var(--color-grey-40);
+    }
+  }
+
+  .content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include spacing(y, 0.5em);
+
+    .icon {
+      width: 2em;
+      height: 2em;
+      display: inline-block;
+      fill: var(--color-primary-60);
     }
 
-    &[aria-invalid='true'] + div {
-      border-color: var(--color-danger-60);
-      background-color: var(--color-danger-90);
+    .label {
+      font-size: 0.8em;
+      font-weight: 600;
+    }
 
-      + small {
-        color: var(--color-danger-60);
+    .divider {
+      display: flex;
+      align-items: center;
+      width: 9em;
+      max-width: 100%;
+      gap: 0.5em;
+      color: var(--color-grey-70);
+      font-size: 0.8em;
+      text-transform: uppercase;
+
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: currentColor;
       }
     }
+  }
 
-    &[data-focused='true'] {
-      outline: 2px solid transparent;
-      border-color: var(--color-grey-05);
-      box-shadow: var(--outline-input);
+  .files {
+    @include spacing(y, 1em);
+
+    > h4 {
+      font-size: 0.8em;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--color-grey-65);
     }
   }
 
-  > label {
-    display: block;
-    font-size: 0.9em;
-    color: var(--color-grey-40);
-    font-weight: 600;
+  .filesList {
+    @include spacing(y, 0.75em);
   }
 
-  > small {
-    font-size: 0.75em;
-    font-weight: 400;
+  .fileContainer {
+    display: flex;
+    align-items: center;
+
+    @include spacing(x, 2em);
+
+    > *:first-child {
+      flex-shrink: 0;
+    }
+
+    > *:last-child {
+      margin-left: auto;
+    }
   }
 
-  > svg {
-    fill: currentColor;
-    position: absolute;
-    top: 50%;
-    left: $icon-offset;
-    width: $icon-size;
-    height: $icon-size;
-    transform: translateY(-50%);
-    pointer-events: none;
+  .fileInfo {
+    > h6 {
+      font-size: 0.8em;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    > span {
+      font-size: 0.8em;
+      font-weight: 300;
+      color: var(--color-text);
+    }
   }
 }

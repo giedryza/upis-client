@@ -6,7 +6,11 @@ import { FileInput } from 'ui/file-input/file-input.component';
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div
+      style={{
+        padding: 50,
+      }}
+    >
       <AppHead />
       <h1>next</h1>
       <h1>next</h1>
@@ -14,17 +18,8 @@ const Home: NextPage = () => {
       <h1>next</h1>
       <h1>next</h1>
       <h1>next</h1>
-      <FileInput
-        accept={['image/*']}
-        onChange={(files) => console.log(files)}
-        // filetype="image/png"
-        // filename="company-logo.png"
-        attributes={{
-          name: 'logo',
-          placeholder: 'drop files here',
-        }}
-      />
       <Modal />
+      <FileInput accept={['image/*']} multiple name="logo" />
     </div>
   );
 };

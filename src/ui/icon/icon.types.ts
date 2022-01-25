@@ -16,6 +16,8 @@ export enum Name {
   File = 'file',
   FlagEn = 'flag-en',
   FlagLt = 'flag-lt',
+  FolderClose = 'folder-close',
+  FolderOpen = 'folder-open',
   Globe = 'globe',
   Home = 'home',
   Info = 'info',
