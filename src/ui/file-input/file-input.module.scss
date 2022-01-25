@@ -1,0 +1,116 @@
+@use 'styles/mixins' as *;
+
+.container {
+  font-size: 1.6rem;
+
+  @include spacing(y, 1em);
+
+  .dropzone {
+    width: 100%;
+    border: 2px dotted var(--color-grey-60);
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-sm);
+    padding: 1.25em;
+    transition: var(--transition-duration-md) box-shadow;
+
+    &[data-drag-state='accept'],
+    &[data-drag-state='active'] {
+      border-color: var(--color-success-50);
+      background-color: var(--color-grey-99);
+    }
+
+    &[data-drag-state='reject'] {
+      border-color: var(--color-danger-50);
+    }
+
+    &[disabled] {
+      border-color: var(--color-grey-75);
+      background-color: var(--color-grey-95);
+    }
+  }
+
+  .content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include spacing(y, 0.5em);
+
+    .icon {
+      width: 2em;
+      height: 2em;
+      display: inline-block;
+      fill: var(--color-primary-60);
+    }
+
+    .label {
+      font-size: 0.8em;
+      font-weight: 600;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      width: 9em;
+      max-width: 100%;
+      gap: 0.5em;
+      color: var(--color-grey-70);
+      font-size: 0.8em;
+      text-transform: uppercase;
+
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: currentColor;
+      }
+    }
+  }
+
+  .files {
+    @include spacing(y, 1em);
+
+    > h4 {
+      font-size: 0.8em;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--color-grey-65);
+    }
+  }
+
+  .filesList {
+    @include spacing(y, 0.75em);
+  }
+
+  .fileContainer {
+    display: flex;
+    align-items: center;
+
+    @include spacing(x, 2em);
+
+    > *:first-child {
+      flex-shrink: 0;
+    }
+
+    > *:last-child {
+      margin-left: auto;
+    }
+  }
+
+  .fileInfo {
+    > h6 {
+      font-size: 0.8em;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    > span {
+      font-size: 0.8em;
+      font-weight: 300;
+      color: var(--color-text);
+    }
+  }
+}

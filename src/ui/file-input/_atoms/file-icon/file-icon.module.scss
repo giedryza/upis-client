@@ -1,0 +1,25 @@
+.container {
+  font-size: 1rem;
+  display: inline-block;
+  height: 4em;
+  width: 4em;
+
+  .backdrop {
+    fill: var(--color-grey-85);
+  }
+
+  .flap {
+    fill: var(--color-grey-65);
+  }
+
+  .banner {
+    fill: var(--color-primary-60);
+  }
+
+  .text {
+    fill: var(--color-white);
+    font-size: 85px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
