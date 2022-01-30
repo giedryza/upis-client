@@ -10,44 +10,47 @@ import { routes } from 'uri/routes';
 import { PromiseThunk } from 'types/common/redux';
 import { actions } from 'domain/actions';
 
-export const getSession = (req?: IncomingMessage): PromiseThunk => async (
-  dispatch
-) => {
-  try {
-    dispatch(actions.auth.setLoading(true));
+export const getSession =
+  (req?: IncomingMessage): PromiseThunk =>
+  async (dispatch) => {
+    try {
+      dispatch(actions.auth.setLoading(true));
 
-    const { data } = await new Http<Response<Session>>(endpoints.users.me, {
-      req,
-    }).get();
+      const { data } = await new Http<Response<Session>>(endpoints.users.me, {
+        req,
+      }).get();
 
-    dispatch(actions.auth.setSession(data));
-  } catch (error) {
-    dispatch(actions.auth.clearSession());
+      dispatch(actions.auth.setSession(data));
+    } catch (error) {
+      dispatch(actions.auth.clearSession());
 
-    new Errors(error).handleApi();
-  } finally {
-    dispatch(actions.auth.setLoading(false));
-  }
-};
+      new Errors(error).handleApi();
+    } finally {
+      dispatch(actions.auth.setLoading(false));
+    }
+  };
 
-export const signin = ({
-  email,
-  password,
-}: AuthPayloads[AuthActionTypes.Signin]): PromiseThunk<void> => async (
-  dispatch
-) => {
-  try {
-    dispatch(actions.auth.setLoading(true));
+export const signin =
+  ({
+    email,
+    password,
+  }: AuthPayloads[AuthActionTypes.Signin]): PromiseThunk<void> =>
+  async (dispatch) => {
+    try {
+      dispatch(actions.auth.setLoading(true));
 
-    const { data } = await new Http<Response<Session>>(endpoints.users.signin, {
-      body: { email, password },
-    }).post();
+      const { data } = await new Http<Response<Session>>(
+        endpoints.users.signin,
+        {
+          body: { email, password },
+        }
+      ).post();
 
-    dispatch(actions.auth.setSession(data));
-    Router.push(routes.home);
-  } catch (error) {
-    new Errors(error).handleApi();
-  } finally {
-    dispatch(actions.auth.setLoading(false));
-  }
-};
+      dispatch(actions.auth.setSession(data));
+      Router.push(routes.home);
+    } catch (error) {
+      new Errors(error).handleApi();
+    } finally {
+      dispatch(actions.auth.setLoading(false));
+    }
+  };

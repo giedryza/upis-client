@@ -32,13 +32,8 @@ const EditPassword: FC<Props> = ({ id }) => {
     mode: 'onChange',
   });
 
-  const {
-    isSubmitting,
-    isValidating,
-    isSubmitted,
-    isValid,
-    errors,
-  } = formState;
+  const { isSubmitting, isValidating, isSubmitted, isValid, errors } =
+    formState;
 
   const validation: ValidationRules<Values> = {
     password: {

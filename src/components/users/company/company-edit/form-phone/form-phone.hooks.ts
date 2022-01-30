@@ -20,13 +20,8 @@ export const useFormPhone: UseFormBase<FormPhoneValues> = (
     }
   );
 
-  const {
-    isSubmitting,
-    isValidating,
-    isSubmitted,
-    isValid,
-    errors,
-  } = formState;
+  const { isSubmitting, isValidating, isSubmitted, isValid, errors } =
+    formState;
 
   const validation: ValidationRules<FormPhoneValues> = {
     phone: {

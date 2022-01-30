@@ -38,6 +38,10 @@
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-wrap-multilines": ["error", { "prop": "ignore" }],
     "react/no-array-index-key": "off",
+    "react/function-component-definition": [
+      "error",
+      { "namedComponents": "arrow-function" }
+    ],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
@@ -86,6 +90,8 @@
     "no-unused-expressions": ["error", { "allowTernary": true }],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "global-require": "off",
-    "camelcase": "off"
+    "camelcase": "off",
+    "arrow-body-style": "off",
+    "default-param-last": "off"
   }
 }

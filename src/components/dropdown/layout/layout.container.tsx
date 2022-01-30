@@ -39,9 +39,9 @@ const Layout: FC<Props> = ({
 
   // props
   const {
-    submit = t('common:actions.submit'),
-    cancel = t('common:actions.cancel'),
-    close = t('common:actions.close'),
+    submit = t('common:actions.submit') as string,
+    cancel = t('common:actions.cancel') as string,
+    close = t('common:actions.close') as string,
   } = labels;
 
   // methods

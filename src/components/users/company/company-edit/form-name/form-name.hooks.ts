@@ -15,13 +15,8 @@ export const useFormName: UseFormBase<FormNameValues> = (onSubmit, values) => {
     defaultValues: values,
   });
 
-  const {
-    isSubmitting,
-    isValidating,
-    isSubmitted,
-    isValid,
-    errors,
-  } = formState;
+  const { isSubmitting, isValidating, isSubmitted, isValid, errors } =
+    formState;
 
   const validation: ValidationRules<FormNameValues> = {
     name: {

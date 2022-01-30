@@ -45,12 +45,10 @@ export const PreviewLocation: VFC<Props> = ({ onClick, center, address }) => {
             touchZoom={false}
           >
             {({ leaflet: { icon }, reactLeaflet: { Marker } }) => (
-              <>
-                <Marker
-                  position={center}
-                  icon={icon(mapIcon({ name: 'pin', size: 32 }))}
-                />
-              </>
+              <Marker
+                position={center}
+                icon={icon(mapIcon({ name: 'pin', size: 32 }))}
+              />
             )}
           </Map>
         </div>

@@ -1,11 +1,16 @@
-import { VFC } from 'react';
+import { useMemo, VFC } from 'react';
 import dynamic from 'next/dynamic';
 
 import { Props, Name } from './icon.types';
 
 const Icon: VFC<Props> = ({ name, ...svgProps }) => {
+  const loader = useMemo(
+    () => <span className={svgProps.className} />,
+    [svgProps.className]
+  );
+
   const DynamicIcon = dynamic(() => import(`./svgs/${name}.svg`), {
-    loading: () => <span className={svgProps.className} />,
+    loading: () => loader,
   });
 
   return <DynamicIcon {...svgProps} />;

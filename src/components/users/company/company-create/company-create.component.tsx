@@ -30,12 +30,8 @@ export const CompanyCreate: VFC = () => {
     );
   };
 
-  const {
-    handleSubmit,
-    refs,
-    errorMessages,
-    isDisabled,
-  } = useCompanyCreateForm(onSubmit, values);
+  const { handleSubmit, refs, errorMessages, isDisabled } =
+    useCompanyCreateForm(onSubmit, values);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>

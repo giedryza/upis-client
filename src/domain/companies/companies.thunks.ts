@@ -27,162 +27,172 @@ export const getMyCompany = (): Thunk => async (dispatch) => {
   }
 };
 
-export const updateMyCompany = (
-  id: string,
-  form: Partial<
-    Pick<
-      Company,
-      'name' | 'phone' | 'email' | 'description' | 'website' | 'address'
+export const updateMyCompany =
+  (
+    id: string,
+    form: Partial<
+      Pick<
+        Company,
+        'name' | 'phone' | 'email' | 'description' | 'website' | 'address'
+      >
     >
-  >
-): PromiseThunk<ThunkResponse> => async (dispatch) => {
-  try {
-    dispatch(actions.companies.setLoading(true));
+  ): PromiseThunk<ThunkResponse> =>
+  async (dispatch) => {
+    try {
+      dispatch(actions.companies.setLoading(true));
 
-    const { data } = await new Http<Response<Company>>(
-      endpoints.companies.one.replace(':id', id),
-      {
-        body: { ...form },
-      }
-    ).patch();
+      const { data } = await new Http<Response<Company>>(
+        endpoints.companies.one.replace(':id', id),
+        {
+          body: { ...form },
+        }
+      ).patch();
 
-    dispatch(actions.companies.setCompany(data));
+      dispatch(actions.companies.setCompany(data));
 
-    return { success: true };
-  } catch (error) {
-    new Errors(error).handleApi();
+      return { success: true };
+    } catch (error) {
+      new Errors(error).handleApi();
 
-    return { success: false };
-  } finally {
-    dispatch(actions.companies.setLoading(false));
-  }
-};
+      return { success: false };
+    } finally {
+      dispatch(actions.companies.setLoading(false));
+    }
+  };
 
-export const createMyCompany = (
-  form: Pick<Company, 'name' | 'phone' | 'email' | 'description'>
-): PromiseThunk<ThunkResponse> => async (dispatch) => {
-  try {
-    dispatch(actions.companies.setLoading(true));
+export const createMyCompany =
+  (
+    form: Pick<Company, 'name' | 'phone' | 'email' | 'description'>
+  ): PromiseThunk<ThunkResponse> =>
+  async (dispatch) => {
+    try {
+      dispatch(actions.companies.setLoading(true));
 
-    const { data } = await new Http<Response<Company>>(
-      endpoints.companies.index,
-      {
-        body: { ...form },
-      }
-    ).post();
+      const { data } = await new Http<Response<Company>>(
+        endpoints.companies.index,
+        {
+          body: { ...form },
+        }
+      ).post();
 
-    dispatch(actions.companies.setCompany(data));
+      dispatch(actions.companies.setCompany(data));
 
-    return { success: true };
-  } catch (error) {
-    new Errors(error).handleApi();
+      return { success: true };
+    } catch (error) {
+      new Errors(error).handleApi();
 
-    return { success: false };
-  } finally {
-    dispatch(actions.companies.setLoading(false));
-  }
-};
+      return { success: false };
+    } finally {
+      dispatch(actions.companies.setLoading(false));
+    }
+  };
 
-export const updateLocation = (
-  id: string,
-  form: { lat: number; lng: number; address: string }
-): PromiseThunk<ThunkResponse> => async (dispatch) => {
-  try {
-    dispatch(actions.companies.setLoading(true));
+export const updateLocation =
+  (
+    id: string,
+    form: { lat: number; lng: number; address: string }
+  ): PromiseThunk<ThunkResponse> =>
+  async (dispatch) => {
+    try {
+      dispatch(actions.companies.setLoading(true));
 
-    if (!form.lat || !form.lng) throw new Error();
+      if (!form.lat || !form.lng) throw new Error();
 
-    const { data } = await new Http<Response<Company>>(
-      endpoints.companies.one.replace(':id', id),
-      {
-        body: {
-          address: form.address,
-          location: {
-            coordinates: [form.lng, form.lat],
+      const { data } = await new Http<Response<Company>>(
+        endpoints.companies.one.replace(':id', id),
+        {
+          body: {
+            address: form.address,
+            location: {
+              coordinates: [form.lng, form.lat],
+            },
           },
-        },
-      }
-    ).patch();
+        }
+      ).patch();
 
-    dispatch(actions.companies.setCompany(data));
+      dispatch(actions.companies.setCompany(data));
 
-    return { success: true };
-  } catch (error) {
-    new Errors(error).handleApi();
+      return { success: true };
+    } catch (error) {
+      new Errors(error).handleApi();
 
-    return { success: false };
-  } finally {
-    dispatch(actions.companies.setLoading(false));
-  }
-};
+      return { success: false };
+    } finally {
+      dispatch(actions.companies.setLoading(false));
+    }
+  };
 
-export const addSocialLink = (
-  form: { url: string; type: SocialType },
-  companyId: string
-): PromiseThunk<ThunkResponse> => async (dispatch) => {
-  try {
-    dispatch(actions.companies.setLoading(true));
+export const addSocialLink =
+  (
+    form: { url: string; type: SocialType },
+    companyId: string
+  ): PromiseThunk<ThunkResponse> =>
+  async (dispatch) => {
+    try {
+      dispatch(actions.companies.setLoading(true));
 
-    await new Http<Response<SocialLink>>(endpoints.socialLinks.index, {
-      body: { ...form, host: companyId },
-    }).post();
+      await new Http<Response<SocialLink>>(endpoints.socialLinks.index, {
+        body: { ...form, host: companyId },
+      }).post();
 
-    dispatch(thunks.companies.getMyCompany());
+      dispatch(thunks.companies.getMyCompany());
 
-    return { success: true };
-  } catch (error) {
-    new Errors(error).handleApi();
+      return { success: true };
+    } catch (error) {
+      new Errors(error).handleApi();
 
-    return { success: false };
-  } finally {
-    dispatch(actions.companies.setLoading(false));
-  }
-};
+      return { success: false };
+    } finally {
+      dispatch(actions.companies.setLoading(false));
+    }
+  };
 
-export const updateSocialLink = (
-  form: Partial<{ url: string; type: SocialType }>,
-  socialLinkId: string
-): PromiseThunk<ThunkResponse> => async (dispatch) => {
-  try {
-    dispatch(actions.companies.setLoading(true));
+export const updateSocialLink =
+  (
+    form: Partial<{ url: string; type: SocialType }>,
+    socialLinkId: string
+  ): PromiseThunk<ThunkResponse> =>
+  async (dispatch) => {
+    try {
+      dispatch(actions.companies.setLoading(true));
 
-    await new Http<Response<SocialLink>>(
-      endpoints.socialLinks.one.replace(':id', socialLinkId),
-      {
-        body: { ...form },
-      }
-    ).patch();
+      await new Http<Response<SocialLink>>(
+        endpoints.socialLinks.one.replace(':id', socialLinkId),
+        {
+          body: { ...form },
+        }
+      ).patch();
 
-    dispatch(thunks.companies.getMyCompany());
+      dispatch(thunks.companies.getMyCompany());
 
-    return { success: true };
-  } catch (error) {
-    new Errors(error).handleApi();
+      return { success: true };
+    } catch (error) {
+      new Errors(error).handleApi();
 
-    return { success: false };
-  } finally {
-    dispatch(actions.companies.setLoading(false));
-  }
-};
+      return { success: false };
+    } finally {
+      dispatch(actions.companies.setLoading(false));
+    }
+  };
 
-export const deleteSocialLink = (
-  socialLinkId: string
-): PromiseThunk<ThunkResponse> => async (dispatch) => {
-  try {
-    dispatch(actions.companies.setLoading(true));
+export const deleteSocialLink =
+  (socialLinkId: string): PromiseThunk<ThunkResponse> =>
+  async (dispatch) => {
+    try {
+      dispatch(actions.companies.setLoading(true));
 
-    await new Http<Response<SocialLink>>(
-      endpoints.socialLinks.one.replace(':id', socialLinkId)
-    ).delete();
+      await new Http<Response<SocialLink>>(
+        endpoints.socialLinks.one.replace(':id', socialLinkId)
+      ).delete();
 
-    dispatch(thunks.companies.getMyCompany());
+      dispatch(thunks.companies.getMyCompany());
 
-    return { success: true };
-  } catch (error) {
-    new Errors(error).handleApi();
+      return { success: true };
+    } catch (error) {
+      new Errors(error).handleApi();
 
-    return { success: false };
-  } finally {
-    dispatch(actions.companies.setLoading(false));
-  }
-};
+      return { success: false };
+    } finally {
+      dispatch(actions.companies.setLoading(false));
+    }
+  };

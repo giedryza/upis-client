@@ -14,22 +14,13 @@ export const useCompanyCreateForm: UseFormBase<CompanyCreateFormValues> = (
 ) => {
   const { t } = useTranslation();
 
-  const {
-    register,
-    reset,
-    handleSubmit,
-    formState,
-  } = useForm<CompanyCreateFormValues>({
-    defaultValues: values,
-  });
+  const { register, reset, handleSubmit, formState } =
+    useForm<CompanyCreateFormValues>({
+      defaultValues: values,
+    });
 
-  const {
-    isSubmitting,
-    isValidating,
-    isSubmitted,
-    isValid,
-    errors,
-  } = formState;
+  const { isSubmitting, isValidating, isSubmitted, isValid, errors } =
+    formState;
 
   const validation: ValidationRules<CompanyCreateFormValues> = {
     name: {

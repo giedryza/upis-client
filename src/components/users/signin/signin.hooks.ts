@@ -11,22 +11,13 @@ export const useSigninForm: UseFormBase<SigninFormValues> = (
 ) => {
   const { t } = useTranslation();
 
-  const {
-    register,
-    reset,
-    handleSubmit,
-    formState,
-  } = useForm<SigninFormValues>({
-    defaultValues: values,
-  });
+  const { register, reset, handleSubmit, formState } =
+    useForm<SigninFormValues>({
+      defaultValues: values,
+    });
 
-  const {
-    isSubmitting,
-    isValidating,
-    isSubmitted,
-    isValid,
-    errors,
-  } = formState;
+  const { isSubmitting, isValidating, isSubmitted, isValid, errors } =
+    formState;
 
   const validation: ValidationRules<SigninFormValues> = {
     email: {
