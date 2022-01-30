@@ -103,6 +103,7 @@ const Companies = () => {
           name={company.name}
           toursTotal={company.toursTotal}
           website={company.website}
+          // @ts-ignore
           socials={company.socials}
           slug={company.slug}
         />
