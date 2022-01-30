@@ -6,3 +6,4 @@ ls:
 
 ignore:
   - node_modules
+  - */_atoms

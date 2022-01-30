@@ -1,5 +1,5 @@
 import { State } from 'types/common/redux';
-import { nowInSeconds } from 'utils/common/date-time';
+import { nowInSeconds } from 'tools/common/date-time';
 
 export const isSessionExpired = (state: State) => {
   const { timestamp } = state.auth;

@@ -2,9 +2,9 @@ import { IncomingMessage } from 'http';
 import Router from 'next/router';
 
 import { AuthActionTypes, AuthPayloads, Session } from 'domain/auth/auth.types';
-import { Errors } from 'utils/libs/errors/errors.lib';
-import { Http } from 'utils/libs/http/http.lib';
-import { Response } from 'utils/libs/http/http.types';
+import { Errors } from 'tools/libs/errors/errors.lib';
+import { Http } from 'tools/libs/http/http.lib';
+import { Response } from 'tools/libs/http/http.types';
 import { endpoints } from 'uri/endpoints';
 import { routes } from 'uri/routes';
 import { PromiseThunk } from 'types/common/redux';

@@ -7,7 +7,7 @@ import { DropdownKey } from 'domain/dropdown/dropdown.types';
 import { IconName } from 'ui/icon/icon.component';
 import { Dropdown } from 'components/dropdown/dropdown.container';
 import { List } from 'components/dropdown/list/list.container';
-import { cookies } from 'utils/libs/cookies/cookies.lib';
+import { cookies } from 'tools/libs/cookies/cookies.lib';
 import { CookieName } from 'uri/cookies';
 import { MenuItem } from 'ui/dropdown/list/list.types';
 

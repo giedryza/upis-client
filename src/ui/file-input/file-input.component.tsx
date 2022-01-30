@@ -9,8 +9,8 @@ import styles from './file-input.module.scss';
 
 import { Button } from 'ui/button/button.component';
 import { Icon, IconName } from 'ui/icon/icon.component';
-import { getFiletype } from 'utils/common/files';
-import { formatBytes } from 'utils/common/format-bytes';
+import { getFiletype } from 'tools/common/files';
+import { formatBytes } from 'tools/common/format-bytes';
 
 export const FileInput: VFC<Props> = ({
   accept,

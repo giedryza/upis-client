@@ -24,6 +24,7 @@
     "max-nesting-depth": [4, { "ignore": ["pseudo-classes"] }],
     "value-no-vendor-prefix": [true, { "ignoreValues": ["box"] }],
     "property-no-vendor-prefix": [true, { "ignoreProperties": ["box-orient"] }],
-    "selector-no-qualifying-type": [true, { "ignore": ["attribute", "class"] }]
+    "selector-no-qualifying-type": [true, { "ignore": ["attribute", "class"] }],
+    "selector-max-compound-selectors": [5]
   }
 }

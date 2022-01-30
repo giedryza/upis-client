@@ -9,9 +9,9 @@ import { Dropdown } from 'components/dropdown/dropdown.container';
 import { List } from 'components/dropdown/list/list.container';
 import { Button } from 'ui/button/button.component';
 import { routes } from 'uri/routes';
-import { Http } from 'utils/libs/http/http.lib';
+import { Http } from 'tools/libs/http/http.lib';
 import { endpoints } from 'uri/endpoints';
-import { Errors } from 'utils/libs/errors/errors.lib';
+import { Errors } from 'tools/libs/errors/errors.lib';
 import { getUser } from 'domain/auth/auth.selectors';
 import { actions } from 'domain/actions';
 

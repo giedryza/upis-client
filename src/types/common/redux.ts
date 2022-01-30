@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
-import { RootState as State } from 'utils/libs/store/store.reducer';
+import { RootState as State } from 'tools/libs/store/store.reducer';
 
 export type ActionMap<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined

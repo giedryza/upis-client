@@ -1,4 +1,4 @@
-import { isDefined } from 'utils/common/is-defined';
+import { isDefined } from 'tools/common/is-defined';
 
 class Cookies {
   private getExpiryDate = (days: number) => {

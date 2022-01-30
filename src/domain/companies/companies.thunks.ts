@@ -4,10 +4,10 @@ import {
   SocialLink,
   SocialType,
 } from 'domain/companies/companies.types';
-import { Http } from 'utils/libs/http/http.lib';
-import { Response } from 'utils/libs/http/http.types';
+import { Http } from 'tools/libs/http/http.lib';
+import { Response } from 'tools/libs/http/http.types';
 import { endpoints } from 'uri/endpoints';
-import { Errors } from 'utils/libs/errors/errors.lib';
+import { Errors } from 'tools/libs/errors/errors.lib';
 import { actions } from 'domain/actions';
 import { thunks } from 'domain/thunks';
 

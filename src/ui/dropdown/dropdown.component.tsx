@@ -5,7 +5,7 @@ import styles from './dropdown.module.scss';
 import { Props, MenuButton } from './dropdown.types';
 
 import { Button } from 'ui/button/button.component';
-import { useOnClickOutside } from 'utils/hooks/use-on-click-outside.hook';
+import { useOnClickOutside } from 'tools/hooks/use-on-click-outside.hook';
 
 export const Dropdown: FC<Props> = ({
   id,
