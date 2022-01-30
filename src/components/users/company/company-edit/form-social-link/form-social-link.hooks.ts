@@ -14,22 +14,13 @@ export const useFormSocialLink: UseFormBase<FormSocialLinkValues> = (
 ) => {
   const { t } = useTranslation();
 
-  const {
-    register,
-    reset,
-    handleSubmit,
-    formState,
-  } = useForm<FormSocialLinkValues>({
-    defaultValues: values,
-  });
+  const { register, reset, handleSubmit, formState } =
+    useForm<FormSocialLinkValues>({
+      defaultValues: values,
+    });
 
-  const {
-    isSubmitting,
-    isValidating,
-    isSubmitted,
-    isValid,
-    errors,
-  } = formState;
+  const { isSubmitting, isValidating, isSubmitted, isValid, errors } =
+    formState;
 
   const validation: ValidationRules<FormSocialLinkValues> = {
     url: {

@@ -6,8 +6,7 @@ import { SocialType } from 'domain/companies/companies.types';
 const COMPANIES = [
   {
     _id: '1',
-    logo:
-      'https://www.pipirobaidares.lt/wp-content/uploads/2018/06/pipiro-baidares.png',
+    logo: 'https://www.pipirobaidares.lt/wp-content/uploads/2018/06/pipiro-baidares.png',
     name: 'Pipiro baidarės',
     toursTotal: 8,
     website: 'www.pipirobaidares.lt',
@@ -41,8 +40,7 @@ const COMPANIES = [
   },
   {
     _id: '3',
-    logo:
-      'https://www.vilniaus-baidares.lt/wp-content/uploads/2017/10/vilniaus-baidares.png',
+    logo: 'https://www.vilniaus-baidares.lt/wp-content/uploads/2017/10/vilniaus-baidares.png',
     name: 'Vilniaus baidarės',
     toursTotal: 14,
     website: 'www.vilniaus-baidares.lt',
@@ -57,8 +55,7 @@ const COMPANIES = [
   },
   {
     _id: '4',
-    logo:
-      'http://www.baidariuuostas.lt/wp-content/uploads/2017/05/BU-logo@3x.png',
+    logo: 'http://www.baidariuuostas.lt/wp-content/uploads/2017/05/BU-logo@3x.png',
     name: 'Baidarių uostas',
     toursTotal: 11,
     website: 'www.baidariuuostas.lt',

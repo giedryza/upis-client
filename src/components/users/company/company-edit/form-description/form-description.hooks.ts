@@ -11,22 +11,13 @@ export const useFormDescription: UseFormBase<FormDescriptionValues> = (
   onSubmit,
   values
 ) => {
-  const {
-    register,
-    reset,
-    handleSubmit,
-    formState,
-  } = useForm<FormDescriptionValues>({
-    defaultValues: values,
-  });
+  const { register, reset, handleSubmit, formState } =
+    useForm<FormDescriptionValues>({
+      defaultValues: values,
+    });
 
-  const {
-    isSubmitting,
-    isValidating,
-    isSubmitted,
-    isValid,
-    errors,
-  } = formState;
+  const { isSubmitting, isValidating, isSubmitted, isValid, errors } =
+    formState;
 
   const validation: ValidationRules<FormDescriptionValues> = {
     description: {},

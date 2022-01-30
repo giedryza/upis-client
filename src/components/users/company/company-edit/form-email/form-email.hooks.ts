@@ -20,13 +20,8 @@ export const useFormEmail: UseFormBase<FormEmailValues> = (
     }
   );
 
-  const {
-    isSubmitting,
-    isValidating,
-    isSubmitted,
-    isValid,
-    errors,
-  } = formState;
+  const { isSubmitting, isValidating, isSubmitted, isValid, errors } =
+    formState;
 
   const validation: ValidationRules<FormEmailValues> = {
     email: {

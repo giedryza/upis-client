@@ -11,22 +11,13 @@ export const useFormWebsite: UseFormBase<FormWebsiteValues> = (
   onSubmit,
   values
 ) => {
-  const {
-    register,
-    reset,
-    handleSubmit,
-    formState,
-  } = useForm<FormWebsiteValues>({
-    defaultValues: values,
-  });
+  const { register, reset, handleSubmit, formState } =
+    useForm<FormWebsiteValues>({
+      defaultValues: values,
+    });
 
-  const {
-    isSubmitting,
-    isValidating,
-    isSubmitted,
-    isValid,
-    errors,
-  } = formState;
+  const { isSubmitting, isValidating, isSubmitted, isValid, errors } =
+    formState;
 
   const validation: ValidationRules<FormWebsiteValues> = {
     website: {},
