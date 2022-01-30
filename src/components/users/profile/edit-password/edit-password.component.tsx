@@ -7,7 +7,7 @@ import styles from './edit-password.module.scss';
 import { EditInfo } from 'components/editable-info/edit-info.component';
 import { TextInput } from 'ui/text-input/text-input.component';
 import { ValidationRules } from 'types/common/forms';
-import { Errors } from 'utils/libs/errors/errors.lib';
+import { Errors } from 'tools/libs/errors/errors.lib';
 import { IconName } from 'ui/icon/icon.component';
 
 interface Values {

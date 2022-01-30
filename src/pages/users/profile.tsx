@@ -5,7 +5,7 @@ import { MainLayout } from 'components/layouts/main/main.layout';
 import { Profile } from 'components/users/profile/profile.component';
 import { AppHead } from 'ui/app-head/app-head.component';
 import { AccountContainer } from 'components/users/account-container/account-container.component';
-import { reduxStore } from 'utils/libs/store/store.lib';
+import { reduxStore } from 'tools/libs/store/store.lib';
 import { Dispatch } from 'types/common/redux';
 import { thunks } from 'domain/thunks';
 

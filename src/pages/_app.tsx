@@ -2,8 +2,8 @@ import { AppProps } from 'next/app';
 
 import 'styles/index.scss';
 
-import { reduxStore } from 'utils/libs/store/store.lib';
-import { axe } from 'utils/tools/axe';
+import { reduxStore } from 'tools/libs/store/store.lib';
+import { axe } from 'tools/services/axe';
 import { AppLayout } from 'components/layouts/app/app.layout';
 import { Auth } from 'components/auth/auth.container';
 
