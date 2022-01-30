@@ -2,7 +2,7 @@ import { VFC, useCallback, useMemo, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import useTranslation from 'next-translate/useTranslation';
 
-import { FileIcon } from './_atoms';
+import { FileIcon } from './atoms';
 import { DragState, Props } from './file-input.types';
 import { FILES_LIMIT } from './file-input.constants';
 import styles from './file-input.module.scss';
