@@ -4,9 +4,9 @@ import * as ReactLeaflet from 'react-leaflet';
 
 import 'leaflet/dist/leaflet.css';
 
-import styles from './map-wrapper.module.scss';
-
 import { MapSearch } from 'ui/map/map-search/map-search';
+
+import styles from './map-wrapper.module.scss';
 
 type Props = ConsumerProps<{
   reactLeaflet: typeof ReactLeaflet;

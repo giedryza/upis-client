@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import Link from 'next/link';
 
-import styles from './company-card.module.scss';
-
 import { Button } from 'ui/button/button.component';
-import { Icon, IconName } from 'ui/icon/icon.component';
+import { Icon, IconName } from 'ui/icon';
 import { SocialLink, SocialType } from 'domain/companies/companies.types';
 import { AnchorLink } from 'ui/anchor-link/anchor-link.component';
+
+import styles from './company-card.module.scss';
 
 const socialNameByType: Record<SocialType, string> = {
   [SocialType.Facebook]: 'Facebook',

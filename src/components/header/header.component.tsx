@@ -1,13 +1,14 @@
 import { FC } from 'react';
 import Link from 'next/link';
 
+import Logo from 'components/logo/logo.vector.svg';
+import { routes } from 'uri/routes';
+
 import styles from './header.module.scss';
 import { LanguageSelect } from './language-select/language-select.component';
 import { AccountMenu } from './account-menu/account-menu.component';
 
-import Logo from 'components/logo/logo.vector.svg';
-import { routes } from 'uri/routes';
-// import { IconName } from 'ui/icon/icon.component';
+// import { IconName } from 'ui/icon';
 // import { Dropdown } from 'components/dropdown/dropdown.container';
 // import { Layout } from 'components/dropdown/parts/layout/layout.container';
 // import { DropdownKey } from 'domain/dropdown/dropdown.types';

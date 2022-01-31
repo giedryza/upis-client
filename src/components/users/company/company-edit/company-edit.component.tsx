@@ -2,6 +2,8 @@ import { VFC } from 'react';
 import { useSelector } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
+import { selectMyCompany } from 'domain/companies/companies.selectors';
+
 import styles from './company-edit.module.scss';
 import { FormName } from './form-name/form-name.component';
 import { FormEmail } from './form-email/form-email.component';
@@ -10,8 +12,6 @@ import { FormDescription } from './form-description/form-description.component';
 import { FormWebsite } from './form-website/form-website.component';
 import { SocialLinks } from './social-links/social-links.component';
 import { Location } from './form-location/form-location.component';
-
-import { selectMyCompany } from 'domain/companies/companies.selectors';
 
 export const CompanyEdit: VFC = () => {
   const { t } = useTranslation();

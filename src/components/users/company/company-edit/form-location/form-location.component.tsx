@@ -3,10 +3,6 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
-import { ComponentProps } from './form-location.types';
-import { useCoordinates, usePoint, useValues } from './form-location.hooks';
-import styles from './form-location.module.scss';
-
 import { Map, mapIcon } from 'ui/map';
 import { MapDragendEvent } from 'ui/map/map-search/map-search.types';
 import { DEFAULT_CENTER } from 'components/users/company/company-edit/form-location/form-location.constants';
@@ -15,6 +11,10 @@ import { Locale } from 'types/common/locales';
 import { PreviewLocation } from 'components/users/company/company-edit/preview-location/preview-location.component';
 import { Button } from 'ui/button/button.component';
 import { thunks } from 'domain/thunks';
+
+import styles from './form-location.module.scss';
+import { useCoordinates, usePoint, useValues } from './form-location.hooks';
+import { ComponentProps } from './form-location.types';
 
 export const Location: VFC<ComponentProps> = ({ companyId }) => {
   const { t } = useTranslation();

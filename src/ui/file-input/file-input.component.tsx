@@ -2,15 +2,15 @@ import { VFC, useCallback, useMemo, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import useTranslation from 'next-translate/useTranslation';
 
+import { Button } from 'ui/button/button.component';
+import { Icon, IconName } from 'ui/icon';
+import { getFiletype } from 'tools/common/files';
+import { formatBytes } from 'tools/common/format-bytes';
+
 import { FileIcon } from './atoms';
 import { DragState, Props } from './file-input.types';
 import { FILES_LIMIT } from './file-input.constants';
 import styles from './file-input.module.scss';
-
-import { Button } from 'ui/button/button.component';
-import { Icon, IconName } from 'ui/icon/icon.component';
-import { getFiletype } from 'tools/common/files';
-import { formatBytes } from 'tools/common/format-bytes';
 
 export const FileInput: VFC<Props> = ({
   accept,

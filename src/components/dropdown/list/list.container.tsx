@@ -1,8 +1,6 @@
 import { VFC, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Props } from './list.types';
-
 import { makeIsDropdownActiveSelector } from 'domain/dropdown/dropdown.selectors';
 import {
   List as ListComponent,
@@ -10,6 +8,8 @@ import {
 } from 'ui/dropdown/list/list.component';
 import { State } from 'types/common/redux';
 import { actions } from 'domain/actions';
+
+import { Props } from './list.types';
 
 export const List: VFC<Props> = ({ id, items }) => {
   const dispatch = useDispatch();

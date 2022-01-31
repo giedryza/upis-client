@@ -1,6 +1,6 @@
 import { LinkProps as NextLinkProps } from 'next/link';
 
-import { IconName } from 'ui/icon/icon.component';
+import { IconName } from 'ui/icon';
 
 type ButtonAttributes = JSX.IntrinsicElements['button'];
 type LinkAttributes = JSX.IntrinsicElements['a'];

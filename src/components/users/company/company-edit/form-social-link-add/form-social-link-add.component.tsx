@@ -2,19 +2,19 @@ import { VFC } from 'react';
 import { useDispatch } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
-import styles from './form-social-link-add.module.scss';
-import {
-  ComponentProps,
-  FormSocialLinkAddValues,
-} from './form-social-link-add.types';
-import { useFormSocialLinkAdd } from './form-social-link-add.hooks';
-import { FORM_SOCIAL_LINK_ADD_INITIAL_VALUES } from './form-social-link-add.constants';
-
 import { EditInfo } from 'components/editable-info/edit-info.component';
 import { thunks } from 'domain/thunks';
 import { TextInput } from 'ui/text-input/text-input.component';
 import { SelectInput } from 'ui/select-input/select-input.component';
 import { SocialType } from 'domain/companies/companies.types';
+
+import { FORM_SOCIAL_LINK_ADD_INITIAL_VALUES } from './form-social-link-add.constants';
+import { useFormSocialLinkAdd } from './form-social-link-add.hooks';
+import {
+  ComponentProps,
+  FormSocialLinkAddValues,
+} from './form-social-link-add.types';
+import styles from './form-social-link-add.module.scss';
 
 export const FormSocialLinkAdd: VFC<ComponentProps> = ({ companyId }) => {
   const formId = 'form-social-link-add';

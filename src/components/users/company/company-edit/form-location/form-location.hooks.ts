@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { FormLocationValues } from './form-location.types';
-import { FORM_LOCATION_INITIAL_VALUES } from './form-location.constants';
-
 import { selectMyCompany } from 'domain/companies/companies.selectors';
 import { OSMLocation, Point } from 'types/common/geo';
 import { Locale } from 'types/common/locales';
+
+import { FORM_LOCATION_INITIAL_VALUES } from './form-location.constants';
+import { FormLocationValues } from './form-location.types';
 
 export const useValues = (): FormLocationValues => {
   const myCompany = useSelector(selectMyCompany);

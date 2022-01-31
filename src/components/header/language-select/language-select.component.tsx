@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { Locale } from 'types/common/locales';
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
-import { IconName } from 'ui/icon/icon.component';
+import { IconName } from 'ui/icon';
 import { Dropdown } from 'components/dropdown/dropdown.container';
 import { List } from 'components/dropdown/list/list.container';
 import { cookies } from 'tools/libs/cookies/cookies.lib';

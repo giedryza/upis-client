@@ -1,8 +1,8 @@
-import { Config, Method } from './http.types';
-
 import { endpoints } from 'uri/endpoints';
 import { ApiError } from 'tools/libs/errors/api.error';
 import { isServer } from 'tools/common/is-server';
+
+import { Config, Method } from './http.types';
 
 export class Http<T = any> {
   #method: Method = 'GET';

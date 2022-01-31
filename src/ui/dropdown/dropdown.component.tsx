@@ -1,11 +1,11 @@
 import { FC, useRef, KeyboardEvent } from 'react';
 import clsx from 'clsx';
 
-import styles from './dropdown.module.scss';
-import { Props, MenuButton } from './dropdown.types';
-
 import { Button } from 'ui/button/button.component';
 import { useOnClickOutside } from 'tools/hooks/use-on-click-outside.hook';
+
+import styles from './dropdown.module.scss';
+import { Props, MenuButton } from './dropdown.types';
 
 export const Dropdown: FC<Props> = ({
   id,

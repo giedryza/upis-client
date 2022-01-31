@@ -4,6 +4,8 @@ raw/
 .next/
 .vscode/
 
+*.tsbuildinfo
+
 .env.local
 .env.development
 .env.production

@@ -1,6 +1,6 @@
-import { FormLocationValues } from './form-location.types';
-
 import { Point } from 'types/common/geo';
+
+import { FormLocationValues } from './form-location.types';
 
 export const DEFAULT_CENTER: Point = {
   lat: 55.19,

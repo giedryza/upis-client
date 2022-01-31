@@ -2,10 +2,10 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 
+import { Button } from 'ui/button/button.component';
+
 import styles from './account-nav.module.scss';
 import { LINKS } from './account-nav.constants';
-
-import { Button } from 'ui/button/button.component';
 
 const AccountNav: FC = () => {
   const { t } = useTranslation();

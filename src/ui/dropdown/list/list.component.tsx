@@ -1,9 +1,9 @@
 import { VFC } from 'react';
 
+import { Button, Props as ButtonProps } from 'ui/button/button.component';
+
 import styles from './list.module.scss';
 import { Props } from './list.types';
-
-import { Button, Props as ButtonProps } from 'ui/button/button.component';
 
 export const List: VFC<Props> = ({ id, items }) => {
   return items.length ? (

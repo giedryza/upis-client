@@ -2,8 +2,6 @@ import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useDispatch } from 'react-redux';
 
-import styles from './signin.module.scss';
-
 import { Button } from 'ui/button/button.component';
 import { Card } from 'ui/card/card.component';
 import { TextInput } from 'ui/text-input/text-input.component';
@@ -11,6 +9,8 @@ import { useSigninForm } from 'components/users/signin/signin.hooks';
 import { SigninFormValues } from 'components/users/signin/signin.types';
 import { INITIAL_VALUES } from 'components/users/signin/signin.constants';
 import { thunks } from 'domain/thunks';
+
+import styles from './signin.module.scss';
 
 const Signin: VFC = () => {
   const { t } = useTranslation();

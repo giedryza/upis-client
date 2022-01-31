@@ -1,9 +1,9 @@
 import { FC, ReactNode } from 'react';
 
-import styles from './info-block.module.scss';
-
-import { Icon, IconName } from 'ui/icon/icon.component';
+import { Icon, IconName } from 'ui/icon';
 import { EditInfoVariant } from 'components/editable-info/edit-info.types';
+
+import styles from './info-block.module.scss';
 
 interface Props {
   info: string;

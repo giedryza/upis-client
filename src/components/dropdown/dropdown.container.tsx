@@ -1,12 +1,12 @@
 import { FC, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Props } from './dropdown.types';
-
 import { makeIsDropdownActiveSelector } from 'domain/dropdown/dropdown.selectors';
 import { Dropdown as DropdownComponent } from 'ui/dropdown/dropdown.component';
 import { State } from 'types/common/redux';
 import { actions } from 'domain/actions';
+
+import { Props } from './dropdown.types';
 
 export const Dropdown: FC<Props> = ({ id, menuButton, position, children }) => {
   const dispatch = useDispatch();
