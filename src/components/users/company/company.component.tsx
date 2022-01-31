@@ -2,8 +2,6 @@ import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useSelector } from 'react-redux';
 
-import styles from './company.module.scss';
-
 import {
   selectIsCompaniesLoading,
   selectIsMyCompanyExist,
@@ -12,6 +10,8 @@ import { useInitMyCompany } from 'components/users/company/company.hooks';
 import { Loader } from 'ui/loader/loader.component';
 import { CompanyCreate } from 'components/users/company/company-create/company-create.component';
 import { CompanyEdit } from 'components/users/company/company-edit/company-edit.component';
+
+import styles from './company.module.scss';
 
 export const Company: VFC = () => {
   const { t } = useTranslation();

@@ -1,13 +1,13 @@
 import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import styles from './preview-location.module.scss';
-import { Props } from './preview-location.types';
-
 import { InfoBlock } from 'components/editable-info/info-block/info-block.component';
 import { Button } from 'ui/button/button.component';
 import { IconName } from 'ui/icon/icon.component';
 import { Map, mapIcon } from 'ui/map';
+
+import { Props } from './preview-location.types';
+import styles from './preview-location.module.scss';
 
 export const PreviewLocation: VFC<Props> = ({ onClick, center, address }) => {
   const { t } = useTranslation();

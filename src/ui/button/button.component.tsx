@@ -2,10 +2,10 @@ import { VFC, useMemo } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 
+import { Icon } from 'ui/icon/icon.component';
+
 import styles from './button.module.scss';
 import { Props, LinkProps, ButtonProps } from './button.types';
-
-import { Icon } from 'ui/icon/icon.component';
 
 export const Button: VFC<Props> = ({
   label,

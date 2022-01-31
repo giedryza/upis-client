@@ -2,13 +2,13 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useForm } from 'react-hook-form';
 
-import styles from './edit-password.module.scss';
-
 import { EditInfo } from 'components/editable-info/edit-info.component';
 import { TextInput } from 'ui/text-input/text-input.component';
 import { ValidationRules } from 'types/common/forms';
 import { Errors } from 'tools/libs/errors/errors.lib';
 import { IconName } from 'ui/icon/icon.component';
+
+import styles from './edit-password.module.scss';
 
 interface Values {
   password: string;

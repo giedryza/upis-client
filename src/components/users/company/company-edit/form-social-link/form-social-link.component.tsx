@@ -2,8 +2,6 @@ import { VFC } from 'react';
 import { useDispatch } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
-import styles from './form-social-link.module.scss';
-
 import { EditInfo } from 'components/editable-info/edit-info.component';
 import {
   ComponentProps,
@@ -18,6 +16,8 @@ import {
 } from 'components/users/company/company-edit/form-social-link/form-social-link.hooks';
 import { SocialType } from 'domain/companies/companies.types';
 import { ICON_BY_SOCIAL_LINK_TYPE } from 'components/users/company/company-edit/form-social-link/form-social-link.constants';
+
+import styles from './form-social-link.module.scss';
 
 export const FormSocialLink: VFC<ComponentProps> = ({ socialLinkId }) => {
   const formId = 'form-social-link';

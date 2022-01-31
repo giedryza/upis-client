@@ -1,6 +1,6 @@
-import { ApiError } from './api.error';
-
 import { SetError } from 'types/common/forms';
+
+import { ApiError } from './api.error';
 
 export class Errors {
   #defaultMessage = 'Something went wrong.';

@@ -1,13 +1,13 @@
 import { FC, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
+import { Button } from 'ui/button/button.component';
+
 import styles from './edit-info.module.scss';
 import { Props } from './edit-info.types';
 import { ICON_BY_VARIANT } from './edit-info.constants';
 import { InfoBlock } from './info-block/info-block.component';
 import { EditBlock } from './edit-block/edit-block.component';
-
-import { Button } from 'ui/button/button.component';
 
 const EditInfo: FC<Props> = ({
   id,

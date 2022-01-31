@@ -78,7 +78,7 @@
     "import/order": [
       "error",
       {
-        "groups": [["builtin", "external"], "sibling", "internal"],
+        "groups": [["builtin", "external"], "internal", "sibling"],
         "newlines-between": "always"
       }
     ],

@@ -2,8 +2,6 @@ import { VFC } from 'react';
 import { useDispatch } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
-import styles from './company-create.module.scss';
-
 import { TextInput } from 'ui/text-input/text-input.component';
 import { Button } from 'ui/button/button.component';
 import {
@@ -12,6 +10,8 @@ import {
 } from 'components/users/company/company-create/company-create.hooks';
 import { CompanyCreateFormValues } from 'components/users/company/company-create/company-create.types';
 import { thunks } from 'domain/thunks';
+
+import styles from './company-create.module.scss';
 
 export const CompanyCreate: VFC = () => {
   const { t } = useTranslation();

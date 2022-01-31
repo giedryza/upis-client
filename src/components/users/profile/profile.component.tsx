@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import styles from './profile.module.scss';
-
 import { EditPassword } from 'components/users/profile/edit-password/edit-password.component';
 import { EditEmail } from 'components/users/profile/edit-email/edit-email.component';
+
+import styles from './profile.module.scss';
 
 const Profile: FC = () => {
   const { t } = useTranslation();

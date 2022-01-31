@@ -1,7 +1,7 @@
-import styles from './companies.module.scss';
-
 import { CompanyCard } from 'components/company-card/company-card.component';
 import { SocialType } from 'domain/companies/companies.types';
+
+import styles from './companies.module.scss';
 
 const COMPANIES = [
   {

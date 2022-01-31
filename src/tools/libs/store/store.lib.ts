@@ -9,10 +9,10 @@ import {
 import thunk from 'redux-thunk';
 import { createWrapper, HYDRATE, Context } from 'next-redux-wrapper';
 
+import { State } from 'types/common/redux';
+
 import { rootReducer } from './store.reducer';
 import { hydratedState } from './store.hydration';
-
-import { State } from 'types/common/redux';
 
 class Store {
   private middlewares: Middleware[] = [thunk];

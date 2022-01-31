@@ -1,10 +1,10 @@
 import { FC, ReactNode } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import styles from './edit-block.module.scss';
-
 import { Button } from 'ui/button/button.component';
 import { IconName } from 'ui/icon/icon.component';
+
+import styles from './edit-block.module.scss';
 
 interface Props {
   id: string;
