@@ -7,7 +7,7 @@ import {
   selectIsMyCompanyExist,
 } from 'domain/companies/companies.selectors';
 import { useInitMyCompany } from 'components/users/company/company.hooks';
-import { Loader } from 'ui/loader/loader.component';
+import { Loader } from 'ui/loader';
 import { CompanyCreate } from 'components/users/company/company-create/company-create.component';
 import { CompanyEdit } from 'components/users/company/company-edit/company-edit.component';
 

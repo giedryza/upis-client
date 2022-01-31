@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 
 import { Props } from './portal.types';
 
-const Portal: FC<Props> = ({ children, selector }) => {
+export const Portal: FC<Props> = ({ children, selector }) => {
   const [element, setElement] = useState<Element | null>(null);
 
   useEffect(() => {
@@ -14,5 +14,3 @@ const Portal: FC<Props> = ({ children, selector }) => {
 
   return element ? createPortal(children, element) : null;
 };
-
-export { Portal };
