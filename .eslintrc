@@ -92,6 +92,10 @@
     "global-require": "off",
     "camelcase": "off",
     "arrow-body-style": "off",
-    "default-param-last": "off"
+    "default-param-last": "off",
+    "quotes": "off",
+    "@typescript-eslint/quotes": ["error", "single", { "avoidEscape": true }],
+    "prefer-template": "error",
+    "no-useless-concat": "error"
   }
 }

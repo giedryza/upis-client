@@ -1,5 +1,5 @@
 import { IconName } from 'ui/icon';
-import { routes } from 'uri/routes';
+import { routes } from 'config/routes';
 
 export const LINKS = [
   {

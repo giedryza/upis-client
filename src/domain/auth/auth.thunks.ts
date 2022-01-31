@@ -5,8 +5,8 @@ import { AuthActionTypes, AuthPayloads, Session } from 'domain/auth/auth.types';
 import { Errors } from 'tools/libs/errors/errors.lib';
 import { Http } from 'tools/libs/http/http.lib';
 import { Response } from 'tools/libs/http/http.types';
-import { endpoints } from 'uri/endpoints';
-import { routes } from 'uri/routes';
+import { endpoints } from 'config/endpoints';
+import { routes } from 'config/routes';
 import { PromiseThunk } from 'types/common/redux';
 import { actions } from 'domain/actions';
 

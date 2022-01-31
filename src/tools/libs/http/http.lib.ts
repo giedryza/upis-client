@@ -1,13 +1,14 @@
-import { endpoints } from 'uri/endpoints';
 import { ApiError } from 'tools/libs/errors/api.error';
 import { isServer } from 'tools/common/is-server';
 
-import { Config, Method } from './http.types';
+import { ApiVersion, Config, Method } from './http.types';
 
 export class Http<T = any> {
   #method: Method = 'GET';
 
-  #baseUrl: string = endpoints.baseUrl;
+  #version: ApiVersion = 'v1';
+
+  #baseUrl: string = `${process.env.NEXT_PUBLIC_HOST_API}/api/${this.#version}`;
 
   constructor(private endpoint: string, private config: Config = {}) {}
 

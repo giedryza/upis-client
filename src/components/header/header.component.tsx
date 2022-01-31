@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 
 import Logo from 'components/logo/logo.vector.svg';
-import { routes } from 'uri/routes';
+import { routes } from 'config/routes';
 
 import styles from './header.module.scss';
 import { LanguageSelect } from './language-select/language-select.component';

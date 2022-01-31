@@ -8,7 +8,7 @@ import { IconName } from 'ui/icon';
 import { Dropdown } from 'components/dropdown/dropdown.container';
 import { List } from 'components/dropdown/list/list.container';
 import { cookies } from 'tools/libs/cookies/cookies.lib';
-import { CookieName } from 'uri/cookies';
+import { CookieName } from 'config/cookies';
 import { MenuItem } from 'ui/dropdown/list/list.types';
 
 const iconByLocale: Record<Locale, IconName> = {
