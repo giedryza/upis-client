@@ -15,3 +15,5 @@ export interface Response<D> {
 export interface ResponseWithMeta<D, M> extends Response<D> {
   meta: M;
 }
+
+export type ApiVersion = `v${1}`;

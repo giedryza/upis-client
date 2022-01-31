@@ -6,7 +6,7 @@ import {
 } from 'domain/companies/companies.types';
 import { Http } from 'tools/libs/http/http.lib';
 import { Response } from 'tools/libs/http/http.types';
-import { endpoints } from 'uri/endpoints';
+import { endpoints } from 'config/endpoints';
 import { Errors } from 'tools/libs/errors/errors.lib';
 import { actions } from 'domain/actions';
 import { thunks } from 'domain/thunks';
