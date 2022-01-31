@@ -9,7 +9,7 @@ import {
 } from 'components/users/company/company-edit/form-name/form-name.types';
 import { thunks } from 'domain/thunks';
 import { TextInput } from 'ui/text-input/text-input.component';
-import { IconName } from 'ui/icon/icon.component';
+import { IconName } from 'ui/icon';
 import {
   useFormName,
   useValues,

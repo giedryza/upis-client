@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
-import { IconName } from 'ui/icon/icon.component';
+import { IconName } from 'ui/icon';
 import { Dropdown } from 'components/dropdown/dropdown.container';
 import { List } from 'components/dropdown/list/list.container';
 import { Button } from 'ui/button/button.component';

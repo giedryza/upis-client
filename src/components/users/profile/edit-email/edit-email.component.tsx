@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useSelector } from 'react-redux';
 
 import { EditInfo } from 'components/editable-info/edit-info.component';
-import { IconName } from 'ui/icon/icon.component';
+import { IconName } from 'ui/icon';
 import { getUser } from 'domain/auth/auth.selectors';
 
 interface Props {

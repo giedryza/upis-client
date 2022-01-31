@@ -1,6 +1,6 @@
 import { FormSocialLinkValues } from 'components/users/company/company-edit/form-social-link/form-social-link.types';
 import { SocialType } from 'domain/companies/companies.types';
-import { IconName } from 'ui/icon/icon.component';
+import { IconName } from 'ui/icon';
 
 export const FORM_SOCIAL_LINK_INITIAL_VALUES: FormSocialLinkValues = {
   type: SocialType.Facebook,

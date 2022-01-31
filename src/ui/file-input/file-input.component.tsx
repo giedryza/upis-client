@@ -3,7 +3,7 @@ import { useDropzone } from 'react-dropzone';
 import useTranslation from 'next-translate/useTranslation';
 
 import { Button } from 'ui/button/button.component';
-import { Icon, IconName } from 'ui/icon/icon.component';
+import { Icon, IconName } from 'ui/icon';
 import { getFiletype } from 'tools/common/files';
 import { formatBytes } from 'tools/common/format-bytes';
 

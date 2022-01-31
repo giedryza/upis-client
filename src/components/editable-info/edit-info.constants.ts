@@ -1,4 +1,4 @@
-import { IconName } from 'ui/icon/icon.component';
+import { IconName } from 'ui/icon';
 
 import { EditInfoVariant } from './edit-info.types';
 

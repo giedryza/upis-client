@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { InfoBlock } from 'components/editable-info/info-block/info-block.component';
 import { Button } from 'ui/button/button.component';
-import { IconName } from 'ui/icon/icon.component';
+import { IconName } from 'ui/icon';
 import { Map, mapIcon } from 'ui/map';
 
 import { Props } from './preview-location.types';

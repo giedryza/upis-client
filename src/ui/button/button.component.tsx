@@ -2,7 +2,7 @@ import { VFC, useMemo } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 
-import { Icon } from 'ui/icon/icon.component';
+import { Icon } from 'ui/icon';
 
 import styles from './button.module.scss';
 import { Props, LinkProps, ButtonProps } from './button.types';

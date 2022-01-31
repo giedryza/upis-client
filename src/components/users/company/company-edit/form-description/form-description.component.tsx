@@ -5,7 +5,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { thunks } from 'domain/thunks';
 import { EditInfo } from 'components/editable-info/edit-info.component';
 import { TextInput } from 'ui/text-input/text-input.component';
-import { IconName } from 'ui/icon/icon.component';
+import { IconName } from 'ui/icon';
 import {
   ComponentProps,
   FormDescriptionValues,
