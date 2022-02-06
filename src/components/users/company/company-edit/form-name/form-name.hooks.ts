@@ -1,12 +1,11 @@
 import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
-import { useSelector } from 'react-redux';
 
 import { UseFormBase, ValidationRules } from 'types/common/forms';
-import { selectMyCompany } from 'domain/companies/companies.selectors';
 import { FORM_NAME_INITIAL_VALUES } from 'components/users/company/company-edit/form-name/form-name.constants';
 import { FormNameValues } from 'components/users/company/company-edit/form-name/form-name.types';
+import { useMyCompany } from 'domain/companies/companies.queries';
 
 export const useFormName: UseFormBase<FormNameValues> = (onSubmit, values) => {
   const { t } = useTranslation();
@@ -50,16 +49,16 @@ export const useFormName: UseFormBase<FormNameValues> = (onSubmit, values) => {
 };
 
 export const useValues = (): FormNameValues => {
-  const myCompany = useSelector(selectMyCompany);
+  const { data: company } = useMyCompany();
 
   const values = useMemo(
     (): FormNameValues =>
-      myCompany
+      company
         ? {
-            name: myCompany.name,
+            name: company.name,
           }
         : FORM_NAME_INITIAL_VALUES,
-    [myCompany]
+    [company]
   );
 
   return values;

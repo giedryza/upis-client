@@ -8,6 +8,7 @@ import {
 
 import { AppProps } from 'types/common/next';
 import { reduxStore } from 'tools/libs/store/store.lib';
+import { queryClientConfig } from 'tools/libs/query-client';
 import { axe } from 'tools/services/axe';
 import { AppLayout } from 'components/layouts/app/app.layout';
 import { Auth } from 'components/auth/auth.container';
@@ -20,7 +21,7 @@ const MyApp = ({
   Component,
   pageProps,
 }: AppProps<{ dehydratedState: DehydratedState }>) => {
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(() => new QueryClient(queryClientConfig));
 
   return (
     <QueryClientProvider client={queryClient}>

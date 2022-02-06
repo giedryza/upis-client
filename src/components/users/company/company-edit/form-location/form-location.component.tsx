@@ -1,5 +1,4 @@
 import { useState, VFC } from 'react';
-import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
@@ -10,7 +9,7 @@ import { Point } from 'types/common/geo';
 import { Locale } from 'types/common/locales';
 import { PreviewLocation } from 'components/users/company/company-edit/preview-location/preview-location.component';
 import { Button } from 'ui/button/button.component';
-import { thunks } from 'domain/thunks';
+import { useUpdateLocation } from 'domain/companies/companies.mutations';
 
 import styles from './form-location.module.scss';
 import { useCoordinates, usePoint, useValues } from './form-location.hooks';
@@ -19,7 +18,6 @@ import { ComponentProps } from './form-location.types';
 export const Location: VFC<ComponentProps> = ({ companyId }) => {
   const { t } = useTranslation();
   const { locale } = useRouter();
-  const dispatch = useDispatch();
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -29,6 +27,7 @@ export const Location: VFC<ComponentProps> = ({ companyId }) => {
     { lat: point.lat, lng: point.lng },
     locale as Locale
   );
+  const { mutate: updateLocation } = useUpdateLocation();
 
   const center: Point = {
     lat: point.lat || DEFAULT_CENTER.lat,
@@ -95,13 +94,14 @@ export const Location: VFC<ComponentProps> = ({ companyId }) => {
           size="sm"
           attributes={{
             onClick: () => {
-              dispatch(
-                thunks.companies.updateLocation(companyId, {
+              updateLocation({
+                id: companyId,
+                form: {
                   lat: point.lat,
                   lng: point.lng,
                   address: location?.display_name ?? '-',
-                })
-              );
+                },
+              });
             },
             disabled: !point.lat || !point.lng,
           }}

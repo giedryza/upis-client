@@ -1,5 +1,4 @@
 import { VFC } from 'react';
-import { useDispatch } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
 import { TextInput } from 'ui/text-input/text-input.component';
@@ -9,15 +8,16 @@ import {
   useValues,
 } from 'components/users/company/company-create/company-create.hooks';
 import { CompanyCreateFormValues } from 'components/users/company/company-create/company-create.types';
-import { thunks } from 'domain/thunks';
+import { useCreateCompany } from 'domain/companies/companies.mutations';
 
 import styles from './company-create.module.scss';
 
 export const CompanyCreate: VFC = () => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
 
   const values = useValues();
+
+  const { mutate: createCompany } = useCreateCompany();
 
   const onSubmit = ({
     name,
@@ -25,9 +25,7 @@ export const CompanyCreate: VFC = () => {
     phone,
     description,
   }: CompanyCreateFormValues) => {
-    dispatch(
-      thunks.companies.createMyCompany({ name, email, phone, description })
-    );
+    createCompany({ form: { name, email, phone, description } });
   };
 
   const { handleSubmit, refs, errorMessages, isDisabled } =

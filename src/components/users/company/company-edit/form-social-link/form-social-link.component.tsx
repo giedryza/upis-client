@@ -1,5 +1,4 @@
 import { VFC } from 'react';
-import { useDispatch } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
 import { EditInfo } from 'components/editable-info/edit-info.component';
@@ -7,7 +6,6 @@ import {
   ComponentProps,
   FormSocialLinkValues,
 } from 'components/users/company/company-edit/form-social-link/form-social-link.types';
-import { thunks } from 'domain/thunks';
 import { TextInput } from 'ui/text-input/text-input.component';
 import { SelectInput } from 'ui/select-input/select-input.component';
 import {
@@ -16,6 +14,10 @@ import {
 } from 'components/users/company/company-edit/form-social-link/form-social-link.hooks';
 import { SocialType } from 'domain/companies/companies.types';
 import { ICON_BY_SOCIAL_LINK_TYPE } from 'components/users/company/company-edit/form-social-link/form-social-link.constants';
+import {
+  useDeleteSocialLink,
+  useUpdateSocialLink,
+} from 'domain/companies/companies.mutations';
 
 import styles from './form-social-link.module.scss';
 
@@ -23,16 +25,18 @@ export const FormSocialLink: VFC<ComponentProps> = ({ socialLinkId }) => {
   const formId = 'form-social-link';
 
   const { t } = useTranslation();
-  const dispatch = useDispatch();
 
   const values = useValues(socialLinkId);
 
+  const { mutate: updateSocialLink } = useUpdateSocialLink();
+  const { mutate: deleteSocialLink } = useDeleteSocialLink();
+
   const onSubmit = ({ type, url }: FormSocialLinkValues) => {
-    dispatch(thunks.companies.updateSocialLink({ type, url }, socialLinkId));
+    updateSocialLink({ form: { type, url }, socialLinkId });
   };
 
   const onDelete = () => {
-    dispatch(thunks.companies.deleteSocialLink(socialLinkId));
+    deleteSocialLink({ socialLinkId });
   };
 
   const { handleSubmit, refs, errorMessages, isDisabled } = useFormSocialLink(
