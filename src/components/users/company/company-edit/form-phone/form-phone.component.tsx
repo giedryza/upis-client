@@ -1,5 +1,4 @@
 import { VFC } from 'react';
-import { useDispatch } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
 import { EditInfo } from 'components/editable-info/edit-info.component';
@@ -7,24 +6,24 @@ import {
   ComponentProps,
   FormPhoneValues,
 } from 'components/users/company/company-edit/form-phone/form-phone.types';
-import { thunks } from 'domain/thunks';
 import { TextInput } from 'ui/text-input/text-input.component';
 import { IconName } from 'ui/icon';
 import {
   useFormPhone,
   useValues,
 } from 'components/users/company/company-edit/form-phone/form-phone.hooks';
+import { useUpdateCompany } from 'domain/companies/companies.mutations';
 
 export const FormPhone: VFC<ComponentProps> = ({ companyId }) => {
   const formId = 'form-company-phone';
 
   const { t } = useTranslation();
-  const dispatch = useDispatch();
 
   const values = useValues();
+  const { mutate: updateCompany } = useUpdateCompany();
 
   const onSubmit = ({ phone }: FormPhoneValues) => {
-    dispatch(thunks.companies.updateMyCompany(companyId, { phone }));
+    updateCompany({ id: companyId, form: { phone } });
   };
 
   const { handleSubmit, refs, errorMessages, isDisabled } = useFormPhone(

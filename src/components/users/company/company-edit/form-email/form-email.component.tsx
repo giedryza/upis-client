@@ -1,5 +1,4 @@
 import { VFC } from 'react';
-import { useDispatch } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
 import { EditInfo } from 'components/editable-info/edit-info.component';
@@ -7,24 +6,25 @@ import {
   ComponentProps,
   FormEmailValues,
 } from 'components/users/company/company-edit/form-email/form-email.types';
-import { thunks } from 'domain/thunks';
 import { TextInput } from 'ui/text-input/text-input.component';
 import { IconName } from 'ui/icon';
 import {
   useFormEmail,
   useValues,
 } from 'components/users/company/company-edit/form-email/form-email.hooks';
+import { useUpdateCompany } from 'domain/companies/companies.mutations';
 
 export const FormEmail: VFC<ComponentProps> = ({ companyId }) => {
   const formId = 'form-company-email';
 
   const { t } = useTranslation();
-  const dispatch = useDispatch();
 
   const values = useValues();
 
+  const { mutate: updateCompany } = useUpdateCompany();
+
   const onSubmit = ({ email }: FormEmailValues) => {
-    dispatch(thunks.companies.updateMyCompany(companyId, { email }));
+    updateCompany({ id: companyId, form: { email } });
   };
 
   const { handleSubmit, refs, errorMessages, isDisabled } = useFormEmail(

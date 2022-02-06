@@ -1,8 +1,7 @@
 import { VFC } from 'react';
-import { useSelector } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
-import { selectMyCompany } from 'domain/companies/companies.selectors';
+import { useMyCompany } from 'domain/companies/companies.queries';
 
 import styles from './company-edit.module.scss';
 import { FormName } from './form-name/form-name.component';
@@ -16,7 +15,7 @@ import { Location } from './form-location/form-location.component';
 export const CompanyEdit: VFC = () => {
   const { t } = useTranslation();
 
-  const company = useSelector(selectMyCompany);
+  const { data: company } = useMyCompany();
 
   if (!company) return null;
 

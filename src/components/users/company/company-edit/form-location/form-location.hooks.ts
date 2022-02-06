@@ -1,25 +1,24 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
 
-import { selectMyCompany } from 'domain/companies/companies.selectors';
 import { OSMLocation, Point } from 'types/common/geo';
 import { Locale } from 'types/common/locales';
+import { useMyCompany } from 'domain/companies/companies.queries';
 
 import { FORM_LOCATION_INITIAL_VALUES } from './form-location.constants';
 import { FormLocationValues } from './form-location.types';
 
 export const useValues = (): FormLocationValues => {
-  const myCompany = useSelector(selectMyCompany);
+  const { data: company } = useMyCompany();
 
   const values = useMemo((): FormLocationValues => {
-    if (!myCompany?.location?.coordinates) return FORM_LOCATION_INITIAL_VALUES;
+    if (!company?.location?.coordinates) return FORM_LOCATION_INITIAL_VALUES;
 
-    const [lng, lat] = myCompany.location.coordinates;
+    const [lng, lat] = company.location.coordinates;
 
     if (!lat || !lng) return FORM_LOCATION_INITIAL_VALUES;
 
-    return { lat, lng, address: myCompany.address };
-  }, [myCompany]);
+    return { lat, lng, address: company.address };
+  }, [company]);
 
   return values;
 };

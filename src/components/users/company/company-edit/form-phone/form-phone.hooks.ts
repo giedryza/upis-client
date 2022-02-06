@@ -1,12 +1,11 @@
 import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
-import { useSelector } from 'react-redux';
 
 import { UseFormBase, ValidationRules } from 'types/common/forms';
-import { selectMyCompany } from 'domain/companies/companies.selectors';
 import { FORM_PHONE_INITIAL_VALUES } from 'components/users/company/company-edit/form-phone/form-phone.constants';
 import { FormPhoneValues } from 'components/users/company/company-edit/form-phone/form-phone.types';
+import { useMyCompany } from 'domain/companies/companies.queries';
 
 export const useFormPhone: UseFormBase<FormPhoneValues> = (
   onSubmit,
@@ -55,16 +54,16 @@ export const useFormPhone: UseFormBase<FormPhoneValues> = (
 };
 
 export const useValues = (): FormPhoneValues => {
-  const myCompany = useSelector(selectMyCompany);
+  const { data: company } = useMyCompany();
 
   const values = useMemo(
     (): FormPhoneValues =>
-      myCompany
+      company
         ? {
-            phone: myCompany.phone,
+            phone: company.phone,
           }
         : FORM_PHONE_INITIAL_VALUES,
-    [myCompany]
+    [company]
   );
 
   return values;

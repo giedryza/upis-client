@@ -1,7 +1,3 @@
-import { Reducer } from 'redux';
-
-import { Actions } from 'types/common/redux';
-
 export enum SocialType {
   Facebook = 'facebook',
   Instagram = 'instagram',
@@ -38,26 +34,3 @@ export interface Company {
   createdAt: string;
   updatedAt: string;
 }
-
-export interface CompaniesState {
-  company: Company | null;
-  loading: boolean;
-}
-
-export enum CompaniesActionTypes {
-  SetCompany = 'companies/SET_COMPANY',
-  UpdateCompany = 'companies/UPDATE_COMPANY',
-  SetLoading = 'companies/SET_LOADING',
-  ClearCompany = 'companies/CLEAR_COMPANY',
-}
-
-export type CompaniesPayloads = {
-  [CompaniesActionTypes.SetCompany]: Company | null;
-  [CompaniesActionTypes.UpdateCompany]: Partial<Company>;
-  [CompaniesActionTypes.SetLoading]: boolean;
-  [CompaniesActionTypes.ClearCompany]: undefined;
-};
-
-export type CompaniesActions = Actions<CompaniesPayloads>;
-
-export type CompaniesReducer = Reducer<CompaniesState, CompaniesActions>;

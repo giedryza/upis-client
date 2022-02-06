@@ -1,11 +1,10 @@
 import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
 
 import { UseFormBase, ValidationRules } from 'types/common/forms';
-import { selectMyCompany } from 'domain/companies/companies.selectors';
 import { FORM_DESCRIPTION_INITIAL_VALUES } from 'components/users/company/company-edit/form-description/form-description.constants';
 import { FormDescriptionValues } from 'components/users/company/company-edit/form-description/form-description.types';
+import { useMyCompany } from 'domain/companies/companies.queries';
 
 export const useFormDescription: UseFormBase<FormDescriptionValues> = (
   onSubmit,
@@ -46,16 +45,16 @@ export const useFormDescription: UseFormBase<FormDescriptionValues> = (
 };
 
 export const useValues = (): FormDescriptionValues => {
-  const myCompany = useSelector(selectMyCompany);
+  const { data: company } = useMyCompany();
 
   const values = useMemo(
     (): FormDescriptionValues =>
-      myCompany
+      company
         ? {
-            description: myCompany.description,
+            description: company.description,
           }
         : FORM_DESCRIPTION_INITIAL_VALUES,
-    [myCompany]
+    [company]
   );
 
   return values;

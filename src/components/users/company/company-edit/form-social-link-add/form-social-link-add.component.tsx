@@ -1,12 +1,11 @@
 import { VFC } from 'react';
-import { useDispatch } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
 import { EditInfo } from 'components/editable-info/edit-info.component';
-import { thunks } from 'domain/thunks';
 import { TextInput } from 'ui/text-input/text-input.component';
 import { SelectInput } from 'ui/select-input/select-input.component';
 import { SocialType } from 'domain/companies/companies.types';
+import { useAddSocialLink } from 'domain/companies/companies.mutations';
 
 import { FORM_SOCIAL_LINK_ADD_INITIAL_VALUES } from './form-social-link-add.constants';
 import { useFormSocialLinkAdd } from './form-social-link-add.hooks';
@@ -20,10 +19,11 @@ export const FormSocialLinkAdd: VFC<ComponentProps> = ({ companyId }) => {
   const formId = 'form-social-link-add';
 
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+
+  const { mutate: addSocialLink } = useAddSocialLink();
 
   const onSubmit = ({ type, url }: FormSocialLinkAddValues) => {
-    dispatch(thunks.companies.addSocialLink({ type, url }, companyId));
+    addSocialLink({ form: { type, url }, companyId });
   };
 
   const { handleSubmit, refs, errorMessages } = useFormSocialLinkAdd(

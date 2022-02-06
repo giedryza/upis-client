@@ -1,12 +1,11 @@
 import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
-import { useSelector } from 'react-redux';
 
 import { UseFormBase, ValidationRules } from 'types/common/forms';
-import { selectMyCompany } from 'domain/companies/companies.selectors';
 import { FORM_EMAIL_INITIAL_VALUES } from 'components/users/company/company-edit/form-email/form-email.constants';
 import { FormEmailValues } from 'components/users/company/company-edit/form-email/form-email.types';
+import { useMyCompany } from 'domain/companies/companies.queries';
 
 export const useFormEmail: UseFormBase<FormEmailValues> = (
   onSubmit,
@@ -55,16 +54,16 @@ export const useFormEmail: UseFormBase<FormEmailValues> = (
 };
 
 export const useValues = (): FormEmailValues => {
-  const myCompany = useSelector(selectMyCompany);
+  const { data: company } = useMyCompany();
 
   const values = useMemo(
     (): FormEmailValues =>
-      myCompany
+      company
         ? {
-            email: myCompany.email,
+            email: company.email,
           }
         : FORM_EMAIL_INITIAL_VALUES,
-    [myCompany]
+    [company]
   );
 
   return values;

@@ -1,11 +1,10 @@
 import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
 
 import { UseFormBase, ValidationRules } from 'types/common/forms';
-import { selectMyCompany } from 'domain/companies/companies.selectors';
 import { FORM_WEBSITE_INITIAL_VALUES } from 'components/users/company/company-edit/form-website/form-website.constants';
 import { FormWebsiteValues } from 'components/users/company/company-edit/form-website/form-website.types';
+import { useMyCompany } from 'domain/companies/companies.queries';
 
 export const useFormWebsite: UseFormBase<FormWebsiteValues> = (
   onSubmit,
@@ -46,16 +45,16 @@ export const useFormWebsite: UseFormBase<FormWebsiteValues> = (
 };
 
 export const useValues = (): FormWebsiteValues => {
-  const myCompany = useSelector(selectMyCompany);
+  const { data: company } = useMyCompany();
 
   const values = useMemo(
     (): FormWebsiteValues =>
-      myCompany
+      company
         ? {
-            website: myCompany.website,
+            website: company.website,
           }
         : FORM_WEBSITE_INITIAL_VALUES,
-    [myCompany]
+    [company]
   );
 
   return values;

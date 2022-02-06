@@ -1,12 +1,11 @@
 import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
-import { useSelector } from 'react-redux';
 
 import { UseFormBase, ValidationRules } from 'types/common/forms';
-import { selectMyCompanySocialLinks } from 'domain/companies/companies.selectors';
 import { FORM_SOCIAL_LINK_INITIAL_VALUES } from 'components/users/company/company-edit/form-social-link/form-social-link.constants';
 import { FormSocialLinkValues } from 'components/users/company/company-edit/form-social-link/form-social-link.types';
+import { useMyCompany } from 'domain/companies/companies.queries';
 
 export const useFormSocialLink: UseFormBase<FormSocialLinkValues> = (
   onSubmit,
@@ -56,9 +55,9 @@ export const useFormSocialLink: UseFormBase<FormSocialLinkValues> = (
 };
 
 export const useValues = (socialLinkId: string): FormSocialLinkValues => {
-  const myCompanySocialLinks = useSelector(selectMyCompanySocialLinks);
+  const { data: company } = useMyCompany();
 
-  const socialLink = myCompanySocialLinks.find(
+  const socialLink = company?.socialLinks.find(
     (link) => link._id === socialLinkId
   );
 
