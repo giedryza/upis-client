@@ -1,12 +1,12 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import { requests } from 'domain/companies/companies.requests';
+import { adapters } from 'domain/companies/companies.adapters';
 import { companiesKeys } from 'domain/companies/companies.keys';
 
 export const useUpdateCompany = () => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(requests.updateCompany, {
+  const mutation = useMutation(adapters.updateCompany, {
     onSuccess: () => {
       queryClient.invalidateQueries(companiesKeys.detail('me'));
     },
@@ -18,7 +18,7 @@ export const useUpdateCompany = () => {
 export const useCreateCompany = () => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(requests.createCompany, {
+  const mutation = useMutation(adapters.createCompany, {
     onSuccess: () => {
       queryClient.invalidateQueries(companiesKeys.detail('me'));
     },
@@ -30,7 +30,7 @@ export const useCreateCompany = () => {
 export const useUpdateLocation = () => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(requests.updateLocation, {
+  const mutation = useMutation(adapters.updateLocation, {
     onSuccess: () => {
       queryClient.invalidateQueries(companiesKeys.detail('me'));
     },
@@ -42,7 +42,7 @@ export const useUpdateLocation = () => {
 export const useAddSocialLink = () => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(requests.addSocialLink, {
+  const mutation = useMutation(adapters.addSocialLink, {
     onSuccess: () => {
       queryClient.invalidateQueries(companiesKeys.detail('me'));
     },
@@ -54,7 +54,7 @@ export const useAddSocialLink = () => {
 export const useUpdateSocialLink = () => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(requests.updateSocialLink, {
+  const mutation = useMutation(adapters.updateSocialLink, {
     onSuccess: () => {
       queryClient.invalidateQueries(companiesKeys.detail('me'));
     },
@@ -66,7 +66,7 @@ export const useUpdateSocialLink = () => {
 export const useDeleteSocialLink = () => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(requests.deleteSocialLink, {
+  const mutation = useMutation(adapters.deleteSocialLink, {
     onSuccess: () => {
       queryClient.invalidateQueries(companiesKeys.detail('me'));
     },
