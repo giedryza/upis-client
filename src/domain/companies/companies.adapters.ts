@@ -7,7 +7,7 @@ import {
 import { Http } from 'tools/libs/http/http.lib';
 import { Response } from 'tools/libs/http/http.types';
 
-export const requests = {
+export const adapters = {
   getMyCompany: () =>
     new Http<Response<Company | null>>(endpoints.companies.me).get(),
   updateCompany: ({
