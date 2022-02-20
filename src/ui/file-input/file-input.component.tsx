@@ -9,7 +9,7 @@ import { formatBytes } from 'tools/common/format-bytes';
 
 import { FileIcon } from './atoms';
 import { DragState, Props } from './file-input.types';
-import { FILES_LIMIT } from './file-input.constants';
+import { FILES_LIMIT, MIME_TYPE_BY_FILE } from './file-input.constants';
 import styles from './file-input.module.scss';
 
 export const FileInput: VFC<Props> = ({
@@ -39,7 +39,7 @@ export const FileInput: VFC<Props> = ({
     isDragReject,
     open,
   } = useDropzone({
-    accept,
+    accept: accept?.map((filetype) => MIME_TYPE_BY_FILE[filetype]),
     onDrop,
     disabled,
     maxSize,

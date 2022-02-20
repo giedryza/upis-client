@@ -1,9 +1,9 @@
-import { Filetype, FileTypeUnion } from 'types/common/files';
+import { Filetype } from 'types/common/files';
 
 export type DragState = 'accept' | 'reject' | 'active' | 'inactive';
 
 export interface Props {
-  accept?: (`.${Filetype}` | FileTypeUnion)[];
+  accept?: Filetype[];
   multiple?: boolean;
   maxSize?: number;
   name?: string;
