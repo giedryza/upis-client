@@ -19,7 +19,7 @@ const Home: NextPage = () => {
       <h1>next</h1>
       <h1>next</h1>
       <Modal />
-      <FileInput accept={['image/*']} multiple name="logo" />
+      <FileInput accept={['jpg', 'png', 'jpeg']} multiple name="logo" />
     </div>
   );
 };
