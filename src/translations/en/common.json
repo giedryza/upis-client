@@ -33,7 +33,8 @@
     "account": "My account",
     "profile": "Profile",
     "signin": "Sign in",
-    "signout": "Sign out"
+    "signout": "Sign out",
+    "nav": "Account navigation"
   },
   "social": {
     "facebook": "Facebook",

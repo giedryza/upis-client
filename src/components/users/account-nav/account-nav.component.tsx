@@ -13,7 +13,7 @@ const AccountNav: FC = () => {
   const { pathname } = useRouter();
 
   return (
-    <nav className={styles.nav} aria-label={t('users:layout.account-nav')}>
+    <nav className={styles.nav} aria-label={t('common:account.nav')}>
       <ul>
         {LINKS.map((link) => (
           <li key={link.label}>

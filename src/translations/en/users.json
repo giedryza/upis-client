@@ -1,14 +1,22 @@
 {
-  "layout": {
-    "signup": "Sign up",
-    "signin": "Sign in",
-    "signout": "Sign out",
-    "account-nav": "Account navigation"
-  },
   "profile": {
     "title": "Profile",
     "subtitle": {
       "contact": "Contact Info"
+    }
+  },
+  "form": {
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password"
+  },
+  "errors": {
+    "password": {
+      "empty": "Enter password.",
+      "length": "Use between 8 and 50 characters for password.",
+      "confirm": "Confirm password.",
+      "not-match": "Passwords didn't match. Try again.",
+      "incorrect": "Incorrect password. Try again or click Forgot password to reset it."
     }
   },
   "company": {
@@ -68,29 +76,5 @@
   },
   "tours": {
     "title": "My tours"
-  },
-  "form": {
-    "email": "Email",
-    "password": "Password",
-    "confirmPassword": "Confirm password"
-  },
-  "actions": {
-    "forgot-pass": "Forgot password?",
-    "signin": "Sign in"
-  },
-  "errors": {
-    "email": {
-      "empty": "Enter email.",
-      "invalid": "Enter valid email.",
-      "incorrect": "Incorrect email. Try again.",
-      "taken": "Email is taken. Try another."
-    },
-    "password": {
-      "empty": "Enter password.",
-      "length": "Use between 8 and 50 characters for password.",
-      "confirm": "Confirm password.",
-      "not-match": "Passwords didn't match. Try again.",
-      "incorrect": "Incorrect password. Try again or click Forgot password to reset it."
-    }
   }
 }

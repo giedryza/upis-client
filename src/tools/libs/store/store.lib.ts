@@ -35,6 +35,7 @@ class Store {
       return hydratedState(state, serverState);
     }
 
+    // @ts-ignore
     return rootReducer(state, action);
   };
 

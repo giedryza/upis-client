@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
-import Router from 'next/router';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSession, signOut } from 'next-auth/react';
 
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
 import { IconName } from 'ui/icon';
@@ -9,32 +8,17 @@ import { Dropdown } from 'components/dropdown/dropdown.container';
 import { List } from 'components/dropdown/list/list.container';
 import { Button } from 'ui/button/button.component';
 import { routes } from 'config/routes';
-import { Http } from 'tools/libs/http/http.lib';
-import { endpoints } from 'config/endpoints';
-import { Errors } from 'tools/libs/errors/errors.lib';
-import { getUser } from 'domain/auth/auth.selectors';
-import { actions } from 'domain/actions';
 
 const AccountMenu: FC = () => {
   const { t } = useTranslation();
 
-  const dispatch = useDispatch();
+  const { status } = useSession();
 
-  const user = useSelector(getUser);
-
-  const signout = async () => {
-    try {
-      await new Http(endpoints.users.signout).post();
-
-      dispatch(actions.auth.clearSession());
-
-      Router.push(routes.home);
-    } catch (error: unknown) {
-      new Errors(error).handleApi();
-    }
+  const signout = () => {
+    signOut({ redirect: false });
   };
 
-  return user ? (
+  return status === 'authenticated' ? (
     <Dropdown
       id={DropdownKey.AccountMenu}
       position="bottom-right"
@@ -68,7 +52,7 @@ const AccountMenu: FC = () => {
       icon={IconName.Account}
       variant="ghost"
       size="sm"
-      url={routes.users.signin}
+      url={routes.auth.signin}
     />
   );
 };

@@ -1,3 +1,5 @@
+import { getSession } from 'next-auth/react';
+
 import { ApiError } from 'tools/libs/errors/api.error';
 import { isServer } from 'tools/common/is-server';
 
@@ -35,8 +37,10 @@ export class Http<T = any> {
     return headers as Record<string, string>;
   }
 
-  private get init(): RequestInit {
-    const { headers = {}, body } = this.config;
+  #init = async (): Promise<RequestInit> => {
+    const { headers = {}, body, req } = this.config;
+
+    const session = await getSession({ req });
 
     return {
       method: this.#method,
@@ -44,14 +48,17 @@ export class Http<T = any> {
         ...this.defaultHeaders,
         ...this.serverHeaders,
         ...headers,
+        ...(!!session?.jwt && { Authorization: `Bearer ${session.jwt}` }),
       }),
       body: body ? JSON.stringify(body) : body,
       credentials: 'include',
     };
-  }
+  };
 
   #request = async (): Promise<T> => {
-    const response = await fetch(this.url, this.init);
+    const init = await this.#init();
+
+    const response = await fetch(this.url, init);
 
     if (response.status === 204) {
       return {} as T;

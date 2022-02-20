@@ -23,21 +23,21 @@ export const useSigninForm: UseFormBase<SigninFormValues> = (
     email: {
       required: {
         value: true,
-        message: t('users:errors.email.empty'),
+        message: t('auth:errors.email.empty'),
       },
     },
     password: {
       required: {
         value: true,
-        message: t('users:errors.password.empty'),
+        message: t('auth:errors.password.empty'),
       },
       minLength: {
         value: 8,
-        message: t('users:errors.password.length'),
+        message: t('auth:errors.password.length'),
       },
       maxLength: {
         value: 50,
-        message: t('users:errors.password.length'),
+        message: t('auth:errors.password.length'),
       },
     },
   };
