@@ -2,7 +2,7 @@ import { FC, useRef, KeyboardEvent } from 'react';
 import clsx from 'clsx';
 
 import { Button } from 'ui/button/button.component';
-import { useOnClickOutside } from 'tools/hooks/use-on-click-outside.hook';
+import { useOnClickOutside } from 'tools/hooks';
 
 import styles from './dropdown.module.scss';
 import { Props, MenuButton } from './dropdown.types';

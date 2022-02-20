@@ -1,10 +1,9 @@
 import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
-import { useSelector } from 'react-redux';
+import { useSession } from 'next-auth/react';
 
 import { EditInfo } from 'components/editable-info/edit-info.component';
 import { IconName } from 'ui/icon';
-import { getUser } from 'domain/auth/auth.selectors';
 
 interface Props {
   id: string;
@@ -13,13 +12,13 @@ interface Props {
 const EditEmail: FC<Props> = ({ id }) => {
   const { t } = useTranslation();
 
-  const user = useSelector(getUser);
+  const { data: session } = useSession();
 
   return (
     <EditInfo
       id={id}
       label={t('users:form.email')}
-      value={user?.email ?? '-'}
+      value={session?.user?.email ?? '-'}
       icon={IconName.Mail}
     />
   );

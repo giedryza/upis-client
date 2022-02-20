@@ -1,8 +1,10 @@
 export const routes = {
   home: '/',
+  auth: {
+    signin: '/auth/signin',
+    signup: '/auth/signup',
+  },
   users: {
-    signup: '/users/signup',
-    signin: '/users/signin',
     profile: '/users/profile',
     company: '/users/company',
     tours: '/users/tours',

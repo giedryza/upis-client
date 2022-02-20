@@ -1,5 +1,12 @@
 import type { AppProps as NextAppProps } from 'next/app';
+import { Session } from 'next-auth';
+import { DehydratedState } from 'react-query';
 
-export type AppProps<P = any> = {
-  pageProps: P;
-} & Omit<NextAppProps<P>, 'pageProps'>;
+interface PageProps {
+  dehydratedState: DehydratedState;
+  session: Session | null;
+}
+
+export type AppProps = {
+  pageProps: PageProps;
+} & Omit<NextAppProps<PageProps>, 'pageProps'>;

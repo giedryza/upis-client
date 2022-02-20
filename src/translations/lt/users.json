@@ -1,14 +1,22 @@
 {
-  "layout": {
-    "signup": "Registruotis",
-    "signin": "Prisijungti",
-    "signout": "Atsijungti",
-    "account-nav": "Paskyros navigacija"
-  },
   "profile": {
     "title": "Profilis",
     "subtitle": {
       "contact": "Kontaktai"
+    }
+  },
+  "form": {
+    "email": "El. paštas",
+    "password": "Slaptažodis",
+    "confirmPassword": "Patvirtink slaptažodį"
+  },
+  "errors": {
+    "password": {
+      "empty": "Įveskite slaptažodį.",
+      "length": "Slaptažodis turi būti tarp 8 ir 50 ženklų.",
+      "confirm": "Patvirtinkite slaptažodį.",
+      "not-match": "Slaptažodžiai nesutampa. Bandykite dar kartą.",
+      "incorrect": "Neteisingas slaptažodis. Bandykite dar kartą arba spauskite Pamiršai slaptažodį, kad atstatyti."
     }
   },
   "company": {
@@ -69,29 +77,5 @@
   },
   "tours": {
     "title": "Mano maršrutai"
-  },
-  "form": {
-    "email": "El. paštas",
-    "password": "Slaptažodis",
-    "confirmPassword": "Patvirtink slaptažodį"
-  },
-  "actions": {
-    "forgot-pass": "Pamiršai slaptažodį?",
-    "signin": "Prisijungti"
-  },
-  "errors": {
-    "email": {
-      "empty": "Įveskite el. paštą.",
-      "invalid": "Įveskite tinkamą el. paštą.",
-      "incorrect": "Neteisingas el. paštas. Bandykite dar kartą.",
-      "taken": "El. paštas užimtas. Pasirinkite kitą."
-    },
-    "password": {
-      "empty": "Įveskite slaptažodį.",
-      "length": "Slaptažodis turi būti tarp 8 ir 50 ženklų.",
-      "confirm": "Patvirtinkite slaptažodį.",
-      "not-match": "Slaptažodžiai nesutampa. Bandykite dar kartą.",
-      "incorrect": "Neteisingas slaptažodis. Bandykite dar kartą arba spauskite Pamiršai slaptažodį, kad atstatyti."
-    }
   }
 }
