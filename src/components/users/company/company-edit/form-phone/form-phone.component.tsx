@@ -6,7 +6,7 @@ import {
   ComponentProps,
   FormPhoneValues,
 } from 'components/users/company/company-edit/form-phone/form-phone.types';
-import { TextInput } from 'ui/text-input/text-input.component';
+import { TextInput } from 'ui/text-input';
 import { IconName } from 'ui/icon';
 import {
   useFormPhone,

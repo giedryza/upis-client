@@ -3,7 +3,7 @@ import { forwardRef, AllHTMLAttributes, RefObject } from 'react';
 import styles from './text-input.module.scss';
 import { Props, InputElement } from './text-input.types';
 
-const TextInput = forwardRef<InputElement, Props>(
+export const TextInput = forwardRef<InputElement, Props>(
   (
     {
       name,
@@ -64,5 +64,3 @@ const TextInput = forwardRef<InputElement, Props>(
     );
   }
 );
-
-export { TextInput };

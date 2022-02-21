@@ -2,7 +2,7 @@ import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { EditInfo } from 'components/editable-info/edit-info.component';
-import { TextInput } from 'ui/text-input/text-input.component';
+import { TextInput } from 'ui/text-input';
 import { IconName } from 'ui/icon';
 import {
   ComponentProps,

@@ -6,7 +6,7 @@ import {
   ComponentProps,
   FormEmailValues,
 } from 'components/users/company/company-edit/form-email/form-email.types';
-import { TextInput } from 'ui/text-input/text-input.component';
+import { TextInput } from 'ui/text-input';
 import { IconName } from 'ui/icon';
 import {
   useFormEmail,

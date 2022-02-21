@@ -2,8 +2,8 @@ import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { EditInfo } from 'components/editable-info/edit-info.component';
-import { TextInput } from 'ui/text-input/text-input.component';
-import { SelectInput } from 'ui/select-input/select-input.component';
+import { TextInput } from 'ui/text-input';
+import { SelectInput } from 'ui/select-input';
 import { SocialType } from 'domain/companies/companies.types';
 import { useAddSocialLink } from 'domain/companies/companies.mutations';
 
