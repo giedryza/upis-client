@@ -1,11 +1,18 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { FileInput } from './file-input.component';
+import { FileInput } from '.';
 
 export default {
   title: 'UI/FileInput',
   component: FileInput,
+  args: {
+    name: 'my-file',
+    accept: ['jpg', 'jpeg', 'png', 'gif'],
+  },
+  argTypes: {
+    onChange: { action: 'onChange' },
+  },
 } as ComponentMeta<typeof FileInput>;
 
 const Template: ComponentStory<typeof FileInput> = (args) => (
@@ -13,4 +20,18 @@ const Template: ComponentStory<typeof FileInput> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  ...Default.args,
+};
+
+export const Multiple = Template.bind({});
+Multiple.args = {
+  ...Default.args,
+  multiple: true,
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  ...Default.args,
+  disabled: true,
+};

@@ -4,7 +4,7 @@ import { signIn } from 'next-auth/react';
 
 import { Button } from 'ui/button/button.component';
 import { Card } from 'ui/card/card.component';
-import { TextInput } from 'ui/text-input/text-input.component';
+import { TextInput } from 'ui/text-input';
 import { useSigninForm } from 'components/users/signin/signin.hooks';
 import { SigninFormValues } from 'components/users/signin/signin.types';
 import { INITIAL_VALUES } from 'components/users/signin/signin.constants';

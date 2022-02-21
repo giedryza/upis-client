@@ -6,7 +6,7 @@ import {
   ComponentProps,
   FormNameValues,
 } from 'components/users/company/company-edit/form-name/form-name.types';
-import { TextInput } from 'ui/text-input/text-input.component';
+import { TextInput } from 'ui/text-input';
 import { IconName } from 'ui/icon';
 import {
   useFormName,

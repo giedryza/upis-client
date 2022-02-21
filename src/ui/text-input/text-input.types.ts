@@ -4,14 +4,7 @@ export type InputElement = HTMLInputElement | HTMLTextAreaElement;
 
 export interface Props {
   name: string;
-  type?:
-    | 'text'
-    | 'textarea'
-    | 'number'
-    | 'email'
-    | 'password'
-    | 'date'
-    | 'file';
+  type?: 'text' | 'textarea' | 'number' | 'email' | 'password' | 'date';
   inputmode?: JSX.IntrinsicElements['input']['inputMode'];
   disabled?: boolean;
   readonly?: boolean;

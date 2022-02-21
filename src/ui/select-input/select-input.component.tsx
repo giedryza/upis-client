@@ -1,9 +1,9 @@
 import { forwardRef, AllHTMLAttributes } from 'react';
 
 import styles from './select-input.module.scss';
-import { Props, DropdownOption } from './select-input.types';
+import { Props } from './select-input.types';
 
-const SelectInput = forwardRef<HTMLSelectElement, Props>(
+export const SelectInput = forwardRef<HTMLSelectElement, Props>(
   (
     {
       name,
@@ -59,6 +59,3 @@ const SelectInput = forwardRef<HTMLSelectElement, Props>(
     );
   }
 );
-
-export { SelectInput };
-export type { DropdownOption };

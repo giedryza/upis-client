@@ -6,7 +6,7 @@ import {
   ComponentProps,
   FormWebsiteValues,
 } from 'components/users/company/company-edit/form-website/form-website.types';
-import { TextInput } from 'ui/text-input/text-input.component';
+import { TextInput } from 'ui/text-input';
 import { IconName } from 'ui/icon';
 import {
   useFormWebsite,

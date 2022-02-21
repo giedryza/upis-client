@@ -6,8 +6,8 @@ import {
   ComponentProps,
   FormSocialLinkValues,
 } from 'components/users/company/company-edit/form-social-link/form-social-link.types';
-import { TextInput } from 'ui/text-input/text-input.component';
-import { SelectInput } from 'ui/select-input/select-input.component';
+import { TextInput } from 'ui/text-input';
+import { SelectInput } from 'ui/select-input';
 import {
   useFormSocialLink,
   useValues,

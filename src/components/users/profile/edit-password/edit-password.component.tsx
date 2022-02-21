@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useForm } from 'react-hook-form';
 
 import { EditInfo } from 'components/editable-info/edit-info.component';
-import { TextInput } from 'ui/text-input/text-input.component';
+import { TextInput } from 'ui/text-input';
 import { ValidationRules } from 'types/common/forms';
 import { Errors } from 'tools/libs/errors/errors.lib';
 import { IconName } from 'ui/icon';
