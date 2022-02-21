@@ -5,6 +5,7 @@ raw/
 .vscode/
 
 *.tsbuildinfo
+yarn-error.log
 
 .env.local
 .env.development
