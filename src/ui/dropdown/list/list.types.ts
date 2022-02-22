@@ -1,4 +1,4 @@
-import { Props as ButtonProps } from 'ui/button/button.component';
+import { ButtonProps } from 'ui/button';
 import { DropdownKey } from 'domain/dropdown/dropdown.types';
 
 export type MenuItem = Pick<ButtonProps, 'label' | 'icon' | 'url'> & {

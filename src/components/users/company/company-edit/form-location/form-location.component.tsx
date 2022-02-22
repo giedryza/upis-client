@@ -8,7 +8,7 @@ import { DEFAULT_CENTER } from 'components/users/company/company-edit/form-locat
 import { Point } from 'types/common/geo';
 import { Locale } from 'types/common/locales';
 import { PreviewLocation } from 'components/users/company/company-edit/preview-location/preview-location.component';
-import { Button } from 'ui/button/button.component';
+import { Button } from 'ui/button';
 import { useUpdateLocation } from 'domain/companies/companies.mutations';
 
 import styles from './form-location.module.scss';

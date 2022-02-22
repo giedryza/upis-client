@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 
-import { Button } from 'ui/button/button.component';
+import { Button } from 'ui/button';
 import { Icon, IconName } from 'ui/icon';
 import { SocialLink, SocialType } from 'domain/companies/companies.types';
 import { AnchorLink } from 'ui/anchor-link/anchor-link.component';
