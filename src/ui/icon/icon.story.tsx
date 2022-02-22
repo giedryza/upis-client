@@ -12,7 +12,7 @@ export default {
 const Template: ComponentStory<typeof Icon> = (args) => (
   <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
     {Object.values(IconName).map((name) => (
-      <div>
+      <div key={name}>
         <div
           style={{
             backgroundColor: '#f1f2f4',

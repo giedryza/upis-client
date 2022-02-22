@@ -7,20 +7,24 @@
 
   .dropzone {
     width: 100%;
-    border: 2px dotted var(--color-grey-60);
+    border: 1px dashed var(--color-grey-60);
     background-color: var(--color-white);
     border-radius: var(--border-radius-sm);
     padding: 1.25em;
     transition: var(--transition-duration-md) box-shadow;
 
+    &:hover {
+      border-color: var(--color-grey-40);
+    }
+
     &[data-drag-state='accept'],
     &[data-drag-state='active'] {
-      border-color: var(--color-success-50);
+      border-color: var(--color-success-60);
       background-color: var(--color-grey-99);
     }
 
     &[data-drag-state='reject'] {
-      border-color: var(--color-danger-50);
+      border-color: var(--color-danger-60);
     }
 
     &[disabled] {

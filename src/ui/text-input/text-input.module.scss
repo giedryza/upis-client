@@ -3,7 +3,7 @@
 .input {
   font-size: 1.6rem;
 
-  @include spacing(y, 0.25em);
+  @include spacing(y, 0.35em);
 
   > input,
   > textarea {
@@ -12,7 +12,7 @@
     padding: 0.25em 0.5em;
     font-weight: 500;
     background-color: var(--color-white);
-    border: 2px solid var(--color-grey-60);
+    border: 1px solid var(--color-grey-60);
     border-radius: var(--border-radius-sm);
     transition: var(--transition-duration-md) box-shadow;
 
@@ -22,31 +22,44 @@
     }
 
     &[readonly] {
-      border-style: dotted;
+      border-style: dashed;
       cursor: default;
-      color: var(--color-grey-40);
+      color: var(--color-grey-25);
     }
 
     &[disabled] {
+      color: var(--color-grey-40);
       border-color: var(--color-grey-75);
       background-color: var(--color-grey-95);
       cursor: not-allowed;
-      color: var(--color-grey-40);
     }
 
     &[aria-invalid='true'] {
       border-color: var(--color-danger-60);
-      background-color: var(--color-danger-90);
+      background-color: var(--color-danger-95);
 
-      + small {
+      ~ small[data-help='error'] {
         color: var(--color-danger-60);
+      }
+    }
+
+    &:hover {
+      border-color: var(--color-grey-40);
+
+      &[aria-invalid='true'] {
+        border-color: var(--color-danger-40);
       }
     }
 
     &:focus {
       outline: 2px solid transparent;
-      border-color: var(--color-grey-05);
+      border-color: var(--color-primary-60);
       box-shadow: var(--outline-input);
+
+      &[aria-invalid='true'] {
+        border-color: var(--color-danger-60);
+        box-shadow: var(--outline-input-error);
+      }
     }
   }
 
@@ -56,13 +69,14 @@
 
   > label {
     display: block;
-    font-size: 0.9em;
-    color: var(--color-grey-40);
+    font-size: 0.8em;
+    color: var(--color-text);
     font-weight: 600;
   }
 
   > small {
-    font-size: 0.75em;
+    display: block;
+    font-size: 0.7em;
     font-weight: 400;
   }
 }
