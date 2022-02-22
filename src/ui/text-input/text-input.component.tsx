@@ -1,4 +1,6 @@
-import { forwardRef, AllHTMLAttributes, RefObject } from 'react';
+import { forwardRef, RefObject } from 'react';
+import { useTextField } from 'react-aria';
+import { mergeProps, useObjectRef } from '@react-aria/utils';
 
 import styles from './text-input.module.scss';
 import { Props, InputElement } from './text-input.types';
@@ -8,7 +10,7 @@ export const TextInput = forwardRef<InputElement, Props>(
     {
       name,
       type = 'text',
-      inputmode = 'text',
+      inputmode,
       disabled,
       readonly,
       value,
@@ -20,46 +22,71 @@ export const TextInput = forwardRef<InputElement, Props>(
       label,
       placeholder,
       rows,
+      autofocus,
     },
-    ref
+    forwardedRef
   ) => {
-    const withInfo = !!(error || info);
-    const infoId = `info-${name}`;
+    const ref = useObjectRef(forwardedRef);
 
-    const attributes: AllHTMLAttributes<InputElement> = {
-      name,
-      id: name,
-      placeholder,
-      disabled,
-      readOnly: readonly,
-      inputMode: inputmode,
-      value,
-      onChange,
-      onFocus,
-      onBlur,
-      'aria-invalid': !!error,
-      ...(withInfo ? { 'aria-describedby': infoId } : {}),
-    };
+    const { labelProps, inputProps, descriptionProps, errorMessageProps } =
+      useTextField<'input' | 'textarea'>(
+        {
+          inputElementType: type === 'textarea' ? 'textarea' : 'input',
+          isDisabled: disabled,
+          isReadOnly: readonly,
+          description: info,
+          errorMessage: error,
+          autoFocus: autofocus,
+          placeholder,
+          value,
+          label,
+          name,
+          type,
+          inputMode: inputmode,
+          validationState: error ? 'invalid' : 'valid',
+          'aria-label': label,
+        },
+        ref
+      );
 
     return (
       <div className={styles.input}>
-        {label && <label htmlFor={name}>{label}</label>}
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+        <label {...labelProps}>{label}</label>
 
         {type === 'textarea' ? (
           <textarea
-            rows={rows}
-            {...attributes}
-            ref={ref as RefObject<HTMLTextAreaElement>}
+            {...mergeProps(
+              inputProps,
+              { onChange, onFocus, onBlur },
+              {
+                rows,
+                ref: ref as RefObject<HTMLTextAreaElement>,
+              }
+            )}
           />
         ) : (
           <input
-            type={type}
-            {...attributes}
-            ref={ref as RefObject<HTMLInputElement>}
+            {...mergeProps(
+              inputProps,
+              { onChange, onFocus, onBlur },
+              {
+                ref: ref as RefObject<HTMLInputElement>,
+              }
+            )}
           />
         )}
 
-        {withInfo && <small id={infoId}>{error || info}</small>}
+        {info && (
+          <small {...descriptionProps} data-help="info">
+            {info}
+          </small>
+        )}
+        {error && (
+          <small {...errorMessageProps} data-help="error">
+            {error}
+          </small>
+        )}
       </div>
     );
   }

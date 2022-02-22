@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { SessionProvider } from 'next-auth/react';
+import { SSRProvider } from 'react-aria';
 
 import { AppProps } from 'types/common/next';
 import { reduxStore } from 'tools/libs/store/store.lib';
@@ -19,9 +20,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <SessionProvider session={pageProps.session}>
-          <AppLayout>
-            <Component {...pageProps} />
-          </AppLayout>
+          <SSRProvider>
+            <AppLayout>
+              <Component {...pageProps} />
+            </AppLayout>
+          </SSRProvider>
         </SessionProvider>
       </Hydrate>
     </QueryClientProvider>
