@@ -2,7 +2,7 @@ import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { TextInput } from 'ui/text-input';
-import { Button } from 'ui/button/button.component';
+import { Button } from 'ui/button';
 import {
   useCompanyCreateForm,
   useValues,

@@ -2,7 +2,7 @@ import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { signIn } from 'next-auth/react';
 
-import { Button } from 'ui/button/button.component';
+import { Button } from 'ui/button';
 import { Card } from 'ui/card/card.component';
 import { TextInput } from 'ui/text-input';
 import { useSigninForm } from 'components/users/signin/signin.hooks';

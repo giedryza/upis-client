@@ -1,6 +1,6 @@
 import { VFC } from 'react';
 
-import { Button, Props as ButtonProps } from 'ui/button/button.component';
+import { Button, ButtonProps } from 'ui/button';
 
 import styles from './list.module.scss';
 import { Props } from './list.types';

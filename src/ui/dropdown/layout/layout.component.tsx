@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Button } from 'ui/button/button.component';
+import { Button } from 'ui/button';
 import { IconName } from 'ui/icon';
 
 import styles from './layout.module.scss';

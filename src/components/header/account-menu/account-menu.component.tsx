@@ -6,7 +6,7 @@ import { DropdownKey } from 'domain/dropdown/dropdown.types';
 import { IconName } from 'ui/icon';
 import { Dropdown } from 'components/dropdown/dropdown.container';
 import { List } from 'components/dropdown/list/list.container';
-import { Button } from 'ui/button/button.component';
+import { Button } from 'ui/button';
 import { routes } from 'config/routes';
 
 const AccountMenu: FC = () => {

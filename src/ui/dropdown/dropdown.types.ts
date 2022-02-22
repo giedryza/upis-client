@@ -1,4 +1,4 @@
-import { ButtonProps } from 'ui/button/button.component';
+import { ButtonProps } from 'ui/button';
 
 export type MenuButton = Omit<ButtonProps, 'url' | 'attributes'>;
 

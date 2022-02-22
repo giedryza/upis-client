@@ -2,7 +2,7 @@ import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { InfoBlock } from 'components/editable-info/info-block/info-block.component';
-import { Button } from 'ui/button/button.component';
+import { Button } from 'ui/button';
 import { IconName } from 'ui/icon';
 import { Map, mapIcon } from 'ui/map';
 

@@ -1,7 +1,7 @@
 import { FC, useRef, KeyboardEvent } from 'react';
 import clsx from 'clsx';
 
-import { Button } from 'ui/button/button.component';
+import { Button } from 'ui/button';
 import { useOnClickOutside } from 'tools/hooks';
 
 import styles from './dropdown.module.scss';
