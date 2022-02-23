@@ -2,14 +2,11 @@ import { FC } from 'react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
-import { Locale } from 'types/common/locales';
-import { DropdownKey } from 'domain/dropdown/dropdown.types';
-import { IconName } from 'ui/icon';
-import { Dropdown } from 'components/dropdown/dropdown.container';
-import { List } from 'components/dropdown/list/list.container';
-import { cookies } from 'tools/libs/cookies/cookies.lib';
 import { CookieName } from 'config/cookies';
-import { MenuItem } from 'ui/dropdown/list/list.types';
+import { Locale } from 'types/common/locales';
+import { cookies } from 'tools/libs/cookies/cookies.lib';
+import { IconName } from 'ui/icon';
+import { DropdownMenu, DropdownMenuItem } from 'ui/dropdown-menu';
 
 const iconByLocale: Record<Locale, IconName> = {
   [Locale.Lt]: IconName.FlagLt,
@@ -20,7 +17,7 @@ const LanguageSelect: FC = () => {
   const { locale: currentLocale, asPath } = useRouter();
   const { t } = useTranslation();
 
-  const items: MenuItem[] = Object.values(Locale).map((locale) => ({
+  const items: DropdownMenuItem[] = Object.values(Locale).map((locale) => ({
     label: t(`common:language.${locale}`),
     icon: iconByLocale[locale],
     onClick: () => cookies.set(CookieName.Language, locale),
@@ -31,8 +28,7 @@ const LanguageSelect: FC = () => {
   }));
 
   return (
-    <Dropdown
-      id={DropdownKey.LanguageSelect}
+    <DropdownMenu
       position="bottom-right"
       menuButton={{
         label: t(`common:language.${currentLocale}-short`),
@@ -40,9 +36,8 @@ const LanguageSelect: FC = () => {
         variant: 'ghost',
         size: 'sm',
       }}
-    >
-      <List id={DropdownKey.LanguageSelect} items={items} />
-    </Dropdown>
+      items={items}
+    />
   );
 };
 
