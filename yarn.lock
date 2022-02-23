@@ -2287,6 +2287,14 @@
     "@react-types/combobox" "^3.2.3"
     "@react-types/shared" "^3.11.1"
 
+"@react-stately/data@^3.4.5":
+  version "3.4.5"
+  resolved "https://registry.yarnpkg.com/@react-stately/data/-/data-3.4.5.tgz#791bb662be536fd29c80f0cf2eace4baac10324c"
+  integrity sha512-IbAuoG6iuO52eKLhB7lvo3i7nAk76i8Q8eqkAkyx2w6Yi68cruUyQ2kmx/FoNyCSfKyGCGT8VOSSYBR3mxjpvw==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@react-types/shared" "^3.11.1"
+
 "@react-stately/grid@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@react-stately/grid/-/grid-3.1.2.tgz#50280b52272f44619e6cfbf85be524f7065d2a74"
@@ -11028,6 +11036,30 @@ react-sizeme@^3.0.1:
     shallowequal "^1.1.0"
     throttle-debounce "^3.0.1"
 
+react-stately@^3.12.1:
+  version "3.12.1"
+  resolved "https://registry.yarnpkg.com/react-stately/-/react-stately-3.12.1.tgz#1b35583d6768836bd027a38f1e38bbafd7d4cb15"
+  integrity sha512-2zmIg+pXOqMnqg6vVh0uqfuIFxWUcz919JJaszK/MMsUrdjTEIfaRQnOfnEWfZreGfkdK2vDfMCY9i/2xe+Bbg==
+  dependencies:
+    "@react-stately/checkbox" "^3.0.5"
+    "@react-stately/collections" "^3.3.6"
+    "@react-stately/combobox" "^3.0.3"
+    "@react-stately/data" "^3.4.5"
+    "@react-stately/list" "^3.4.3"
+    "@react-stately/menu" "^3.2.5"
+    "@react-stately/numberfield" "^3.0.4"
+    "@react-stately/overlays" "^3.1.5"
+    "@react-stately/radio" "^3.3.4"
+    "@react-stately/searchfield" "^3.1.5"
+    "@react-stately/select" "^3.1.5"
+    "@react-stately/selection" "^3.9.2"
+    "@react-stately/slider" "^3.0.5"
+    "@react-stately/table" "^3.1.2"
+    "@react-stately/tabs" "^3.0.3"
+    "@react-stately/toggle" "^3.2.5"
+    "@react-stately/tooltip" "^3.0.7"
+    "@react-stately/tree" "^3.2.2"
+
 react-syntax-highlighter@^13.5.3:
   version "13.5.3"
   resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-13.5.3.tgz#9712850f883a3e19eb858cf93fad7bb357eea9c6"
@@ -11378,11 +11410,6 @@ require-from-string@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/require-from-string/-/require-from-string-2.0.2.tgz#89a7fdd938261267318eafe14f9c32e598c36909"
   integrity sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==
-
-reselect@^4.1.5:
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/reselect/-/reselect-4.1.5.tgz#852c361247198da6756d07d9296c2b51eddb79f6"
-  integrity sha512-uVdlz8J7OO+ASpBYoz1Zypgx0KasCY20H+N8JD13oUMtPvSHQuscrHop4KbXrbsBcdB9Ds7lVK7eRkBIfO43vQ==
 
 resolve-from@^4.0.0:
   version "4.0.0"

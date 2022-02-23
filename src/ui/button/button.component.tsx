@@ -42,7 +42,11 @@ export const Button: VFC<Props> = ({
           />
         )}
 
-        {withDropdown && <span className={styles.arrow}>&#x25BC;</span>}
+        {withDropdown && (
+          <span className={styles.arrow} aria-hidden>
+            &#x25BC;
+          </span>
+        )}
       </>
     ),
     [label, icon, iconPlacement, withDropdown]

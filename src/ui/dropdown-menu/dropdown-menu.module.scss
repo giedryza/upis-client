@@ -11,7 +11,7 @@
 
   > .dropdown {
     position: absolute;
-
+    z-index: 5;
     background-color: var(--color-white);
     border-radius: var(--border-radius-sm);
     box-shadow: var(--shadow-default);
@@ -35,5 +35,14 @@
     &.bottom-right {
       right: 0;
     }
+  }
+}
+
+.list {
+  padding: 0.5rem 0;
+  min-width: 17.5rem;
+
+  > li[role='none'] {
+    display: block;
   }
 }

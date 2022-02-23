@@ -22,6 +22,9 @@ const Template: ComponentStory<typeof TextInput> = (args) => (
 );
 
 export const Default = Template.bind({});
+Default.args = {
+  ...Default.args,
+};
 
 export const TextArea = Template.bind({});
 TextArea.args = {

@@ -42,10 +42,10 @@
     "react-leaflet": "^3.2.5",
     "react-query": "^3.34.16",
     "react-redux": "^7.2.6",
+    "react-stately": "^3.12.1",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.4.1",
-    "reselect": "^4.1.5"
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",

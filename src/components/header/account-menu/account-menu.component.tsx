@@ -2,12 +2,10 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useSession, signOut } from 'next-auth/react';
 
-import { DropdownKey } from 'domain/dropdown/dropdown.types';
-import { IconName } from 'ui/icon';
-import { Dropdown } from 'components/dropdown/dropdown.container';
-import { List } from 'components/dropdown/list/list.container';
-import { Button } from 'ui/button';
 import { routes } from 'config/routes';
+import { IconName } from 'ui/icon';
+import { Button } from 'ui/button';
+import { DropdownMenu } from 'ui/dropdown-menu';
 
 const AccountMenu: FC = () => {
   const { t } = useTranslation();
@@ -19,9 +17,7 @@ const AccountMenu: FC = () => {
   };
 
   return status === 'authenticated' ? (
-    <Dropdown
-      id={DropdownKey.AccountMenu}
-      position="bottom-right"
+    <DropdownMenu
       menuButton={{
         label: t('common:account.account'),
         icon: IconName.Account,
@@ -29,23 +25,19 @@ const AccountMenu: FC = () => {
         size: 'sm',
         withDropdown: true,
       }}
-    >
-      <List
-        id={DropdownKey.AccountMenu}
-        items={[
-          {
-            label: t('common:account.profile'),
-            icon: IconName.User,
-            url: routes.users.profile,
-          },
-          {
-            label: t('common:account.signout'),
-            icon: IconName.Exit,
-            onClick: signout,
-          },
-        ]}
-      />
-    </Dropdown>
+      items={[
+        {
+          label: t('common:account.profile'),
+          icon: IconName.User,
+          url: routes.users.profile,
+        },
+        {
+          label: t('common:account.signout'),
+          icon: IconName.Exit,
+          onClick: signout,
+        },
+      ]}
+    />
   ) : (
     <Button
       label={t('common:account.signin')}
