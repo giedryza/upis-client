@@ -7,10 +7,14 @@ import { adapters } from 'domain/companies/companies.adapters';
 export const useMyCompany = () => {
   const { status } = useSession();
 
-  const query = useQuery(companiesKeys.detail('me'), adapters.getMyCompany, {
-    enabled: status === 'authenticated',
-    select: ({ data }) => data,
-  });
+  const query = useQuery(
+    companiesKeys.detail('me'),
+    () => adapters.getMyCompany(),
+    {
+      enabled: status === 'authenticated',
+      select: ({ data }) => data,
+    }
+  );
 
   return query;
 };
