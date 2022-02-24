@@ -42,12 +42,14 @@ export const CompanyCreate: VFC = () => {
 
         <TextInput
           {...refs.email}
+          type="email"
           label={t('users:company.form.email.label')}
           error={errorMessages.email}
         />
 
         <TextInput
           {...refs.phone}
+          type="phone"
           label={t('users:company.form.phone.label')}
           error={errorMessages.phone}
         />
