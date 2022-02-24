@@ -56,7 +56,7 @@ export const DropdownMenu: VFC<Props> = ({
             role="menu"
             aria-labelledby={buttonId}
           >
-            {items.map(({ onClick, ...rest }, i) => (
+            {items.map(({ onClick, attributes, ...rest }, i) => (
               <li role="none" key={i}>
                 <Button
                   {...rest}
@@ -65,6 +65,7 @@ export const DropdownMenu: VFC<Props> = ({
                   size="sm"
                   block
                   attributes={{
+                    ...attributes,
                     role: 'menuitem',
                     onClick: () => {
                       handleClose();

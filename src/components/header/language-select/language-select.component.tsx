@@ -25,6 +25,7 @@ const LanguageSelect: FC = () => {
       href: asPath,
       locale,
     },
+    attributes: { lang: locale, hrefLang: locale },
   }));
 
   return (
