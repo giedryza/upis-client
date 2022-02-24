@@ -33,4 +33,6 @@ export interface LinkProps extends BaseProps {
   attributes?: Omit<LinkAttributes, 'className' | 'href'>;
 }
 
+export type Attributes = ButtonProps['attributes'] & LinkProps['attributes'];
+
 export type Props = ButtonProps | LinkProps;
