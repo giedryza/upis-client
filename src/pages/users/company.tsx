@@ -1,6 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next';
 import useTranslation from 'next-translate/useTranslation';
 import { getSession } from 'next-auth/react';
+import { dehydrate, QueryClient } from 'react-query';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
@@ -8,6 +9,8 @@ import { MainLayout } from 'components/layouts/main/main.layout';
 import { AppHead } from 'ui/app-head/app-head.component';
 import { AccountContainer } from 'components/users/account-container/account-container.component';
 import { Company } from 'components/users/company/company.component';
+import { companiesKeys } from 'domain/companies/companies.keys';
+import { adapters } from 'domain/companies/companies.adapters';
 
 const CompanyPage: NextPage = () => {
   const { t } = useTranslation();
@@ -37,9 +40,16 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     };
   }
 
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(companiesKeys.detail('me'), () =>
+    adapters.getMyCompany({ req })
+  );
+
   return {
     props: {
       session,
+      dehydratedState: dehydrate(queryClient),
     },
   };
 };

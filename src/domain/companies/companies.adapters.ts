@@ -1,3 +1,5 @@
+import { IncomingMessage } from 'http';
+
 import { endpoints } from 'config/endpoints';
 import {
   Company,
@@ -8,8 +10,8 @@ import { Http } from 'tools/libs/http/http.lib';
 import { Response } from 'tools/libs/http/http.types';
 
 export const adapters = {
-  getMyCompany: () =>
-    new Http<Response<Company | null>>(endpoints.companies.me).get(),
+  getMyCompany: ({ req }: { req?: IncomingMessage } = {}) =>
+    new Http<Response<Company | null>>(endpoints.companies.me, { req }).get(),
   updateCompany: ({
     id,
     form,
