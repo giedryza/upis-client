@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { IconName } from 'ui/icon';
+import { IconName } from 'ui';
 
 export type EditInfoVariant = 'add' | 'edit';
 

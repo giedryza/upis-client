@@ -1,4 +1,4 @@
-import { ButtonProps, ButtonAttributes } from 'ui/button';
+import { ButtonProps, ButtonAttributes } from 'ui';
 
 export type MenuItem = Pick<ButtonProps, 'label' | 'icon' | 'url'> & {
   onClick?: () => void;

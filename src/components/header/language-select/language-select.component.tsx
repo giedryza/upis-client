@@ -5,8 +5,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { CookieName } from 'config/cookies';
 import { Locale } from 'types/common/locales';
 import { cookies } from 'tools/libs/cookies/cookies.lib';
-import { IconName } from 'ui/icon';
-import { DropdownMenu, DropdownMenuItem } from 'ui/dropdown-menu';
+import { IconName, DropdownMenu, DropdownMenuItem } from 'ui';
 
 const iconByLocale: Record<Locale, IconName> = {
   [Locale.Lt]: IconName.FlagLt,

@@ -3,7 +3,7 @@ import { useId } from 'react-aria';
 import clsx from 'clsx';
 
 import { useOnClickOutside } from 'tools/hooks';
-import { Button } from 'ui/button';
+import { Button } from 'ui';
 
 import { Props } from './dropdown-menu.types';
 import styles from './dropdown-menu.module.scss';

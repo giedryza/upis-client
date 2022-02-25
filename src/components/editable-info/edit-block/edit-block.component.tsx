@@ -1,8 +1,7 @@
 import { FC, ReactNode } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { Button } from 'ui/button';
-import { IconName } from 'ui/icon';
+import { Button, IconName } from 'ui';
 
 import styles from './edit-block.module.scss';
 

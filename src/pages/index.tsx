@@ -1,8 +1,7 @@
 import { NextPage } from 'next';
 
 import { Modal } from 'components/modal/modal.component';
-import { AppHead } from 'ui/app-head/app-head.component';
-import { FileInput } from 'ui/file-input/file-input.component';
+import { AppHead, FileInput } from 'ui';
 
 const Home: NextPage = () => {
   return (
