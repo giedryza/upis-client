@@ -3,8 +3,8 @@ import { getSession } from 'next-auth/react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { MainLayout } from 'components/layouts/main/main.layout';
-import { Signin } from 'components/users/signin/signin.component';
-import { AppHead } from 'ui/app-head/app-head.component';
+import { Signin } from 'components/account/signin/signin.component';
+import { AppHead } from 'ui';
 import { useGuestPage } from 'tools/hooks';
 import { routes } from 'config/routes';
 

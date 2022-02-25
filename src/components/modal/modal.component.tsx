@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Portal } from 'ui/portal';
+import { Portal } from 'ui';
 import { ModalKey } from 'domain/modal/modal.types';
 import { State } from 'types/common/redux';
 import { actions } from 'domain/actions';

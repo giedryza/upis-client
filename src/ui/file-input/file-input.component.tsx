@@ -2,8 +2,7 @@ import { VFC, useCallback, useMemo, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import useTranslation from 'next-translate/useTranslation';
 
-import { Button } from 'ui/button';
-import { Icon, IconName } from 'ui/icon';
+import { Button, Icon, IconName } from 'ui';
 import { getFiletype } from 'tools/common/files';
 import { formatBytes } from 'tools/common/format-bytes';
 

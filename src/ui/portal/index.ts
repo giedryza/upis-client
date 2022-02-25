@@ -1,1 +1,1 @@
-export * from './portal.component';
+export { Portal } from './portal.component';

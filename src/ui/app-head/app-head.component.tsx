@@ -6,7 +6,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { Props } from './app-head.types';
 import { APP_NAME, HOST } from './app-head.constants';
 
-const AppHead: VFC<Props> = ({ title }) => {
+export const AppHead: VFC<Props> = ({ title }) => {
   const { locales = [], defaultLocale, pathname } = useRouter();
   const { t } = useTranslation();
 
@@ -31,5 +31,3 @@ const AppHead: VFC<Props> = ({ title }) => {
     </Head>
   );
 };
-
-export { AppHead };

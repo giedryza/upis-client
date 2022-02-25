@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 
-import { Icon, IconName } from 'ui/icon';
+import { Icon, IconName } from 'ui';
 import { EditInfoVariant } from 'components/editable-info/edit-info.types';
 
 import styles from './info-block.module.scss';

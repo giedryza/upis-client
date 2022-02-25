@@ -4,10 +4,10 @@ export const routes = {
     signin: '/auth/signin',
     signup: '/auth/signup',
   },
-  users: {
-    profile: '/users/profile',
-    company: '/users/company',
-    tours: '/users/tours',
+  account: {
+    profile: '/account/profile',
+    company: '/account/company',
+    tours: '/account/tours',
   },
   companies: {
     list: '/companies',

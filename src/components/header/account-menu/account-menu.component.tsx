@@ -3,9 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useSession, signOut } from 'next-auth/react';
 
 import { routes } from 'config/routes';
-import { IconName } from 'ui/icon';
-import { Button } from 'ui/button';
-import { DropdownMenu } from 'ui/dropdown-menu';
+import { Button, IconName, DropdownMenu } from 'ui';
 
 const AccountMenu: FC = () => {
   const { t } = useTranslation();
@@ -29,7 +27,7 @@ const AccountMenu: FC = () => {
         {
           label: t('common:account.profile'),
           icon: IconName.User,
-          url: routes.users.profile,
+          url: routes.account.profile,
         },
         {
           label: t('common:account.signout'),

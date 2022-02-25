@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { Button } from 'ui/button';
+import { Button } from 'ui';
 
 import styles from './edit-info.module.scss';
 import { Props } from './edit-info.types';

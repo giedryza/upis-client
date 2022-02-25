@@ -4,7 +4,7 @@ module.exports = {
   pages: {
     '*': ['common'],
     '/': ['home'],
-    'rgx:^/users': ['users'],
+    'rgx:^/account': ['account'],
     'rgx:^/auth': ['auth'],
   },
   loadLocaleFrom: (locale, namespace) =>
