@@ -1,0 +1,11 @@
+@use 'styles/mixins' as *;
+
+.breadcrumbs {
+  font-size: var(--font-size-18);
+
+  .list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
