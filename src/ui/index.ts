@@ -1,4 +1,5 @@
 export * from './app-head';
+export * from './breadcrumbs';
 export * from './button';
 export * from './dropdown-menu';
 export * from './file-input';
