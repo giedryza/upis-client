@@ -7,6 +7,7 @@ export const routes = {
   account: {
     profile: {
       index: '/account/profile',
+      general: '/account/profile/general',
     },
     company: {
       index: '/account/company',

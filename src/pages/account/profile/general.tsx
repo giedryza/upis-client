@@ -6,7 +6,7 @@ import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead } from 'ui';
 import { AccountLayout } from 'layouts';
-import { Profile } from 'components/account';
+import { General } from 'components/account';
 import { MainLayout } from 'components/layouts/main/main.layout';
 
 const ProfilePage: NextPage = () => {
@@ -19,7 +19,7 @@ const ProfilePage: NextPage = () => {
       <AppHead title={t('account:profile.title')} />
 
       <AccountLayout>
-        <Profile />
+        <General />
       </AccountLayout>
     </MainLayout>
   );

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useSession } from 'next-auth/react';
 
@@ -8,7 +8,7 @@ import { InfoBlock, InfoItem } from 'components/account/atoms';
 
 import styles from './profile.module.scss';
 
-const Profile: FC = () => {
+export const Profile: VFC = () => {
   const { t } = useTranslation();
 
   const { data: session } = useSession();
@@ -25,6 +25,7 @@ const Profile: FC = () => {
       <InfoBlock
         title={t('account:profile.subtitle.general')}
         icon={IconName.Gear}
+        editPage={routes.account.profile.general}
       >
         <InfoItem
           label={t('account:form.email')}
@@ -38,5 +39,3 @@ const Profile: FC = () => {
     </div>
   );
 };
-
-export { Profile };
