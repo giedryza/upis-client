@@ -27,7 +27,7 @@ const AccountMenu: FC = () => {
         {
           label: t('common:account.profile'),
           icon: IconName.User,
-          url: routes.account.profile,
+          url: routes.account.profile.index,
         },
         {
           label: t('common:account.signout'),
