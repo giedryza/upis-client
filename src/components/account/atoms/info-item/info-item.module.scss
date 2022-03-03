@@ -3,8 +3,6 @@
 .content {
   font-size: var(--font-size-16);
 
-  @include spacing(y, 0.25em);
-
   .title {
     font-size: 0.75em;
     color: var(--color-grey-30);

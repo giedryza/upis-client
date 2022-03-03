@@ -6,8 +6,8 @@ import styles from './info-item.module.scss';
 export const InfoItem: FC<Props> = ({ label, value }) => {
   return (
     <div className={styles.content}>
-      <div className={styles.title}>{label}</div>
-      <div className={styles.subtitle}>{value}</div>
+      <h6 className={styles.title}>{label}</h6>
+      <span className={styles.subtitle}>{value}</span>
     </div>
   );
 };
