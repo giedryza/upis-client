@@ -1,8 +1,9 @@
 {
+  "title": "Account",
   "profile": {
     "title": "Profile",
     "subtitle": {
-      "contact": "Contact Info"
+      "general": "General"
     }
   },
   "form": {

@@ -4,9 +4,10 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { MainLayout } from 'components/layouts/main/main.layout';
 import { AppHead } from 'ui';
-import { AccountContainer } from 'components/account/account-container/account-container.component';
+import { AccountLayout } from 'layouts';
+import { Tours } from 'components/account';
+import { MainLayout } from 'components/layouts/main/main.layout';
 
 const ToursPage: NextPage = () => {
   const { t } = useTranslation();
@@ -17,7 +18,9 @@ const ToursPage: NextPage = () => {
     <MainLayout>
       <AppHead title={t('account:tours.title')} />
 
-      <AccountContainer>tours</AccountContainer>
+      <AccountLayout>
+        <Tours />
+      </AccountLayout>
     </MainLayout>
   );
 };

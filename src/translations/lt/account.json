@@ -1,8 +1,9 @@
 {
+  "title": "Paskyra",
   "profile": {
     "title": "Profilis",
     "subtitle": {
-      "contact": "Kontaktai"
+      "general": "Asmens duomenys"
     }
   },
   "form": {

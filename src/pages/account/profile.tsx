@@ -4,10 +4,10 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { MainLayout } from 'components/layouts/main/main.layout';
-import { Profile } from 'components/account/profile/profile.component';
 import { AppHead } from 'ui';
-import { AccountContainer } from 'components/account/account-container/account-container.component';
+import { AccountLayout } from 'layouts';
+import { Profile } from 'components/account';
+import { MainLayout } from 'components/layouts/main/main.layout';
 
 const ProfilePage: NextPage = () => {
   const { t } = useTranslation();
@@ -18,9 +18,9 @@ const ProfilePage: NextPage = () => {
     <MainLayout>
       <AppHead title={t('account:profile.title')} />
 
-      <AccountContainer>
+      <AccountLayout>
         <Profile />
-      </AccountContainer>
+      </AccountLayout>
     </MainLayout>
   );
 };

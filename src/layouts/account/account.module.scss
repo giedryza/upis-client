@@ -1,0 +1,17 @@
+@use 'styles/mixins' as *;
+
+.layout {
+  display: flex;
+  align-items: flex-start;
+  padding: 2rem;
+
+  @include spacing(x, 2rem);
+}
+
+.sidebar {
+  background-color: var(--color-white);
+}
+
+.main {
+  flex-grow: 1;
+}
