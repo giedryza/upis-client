@@ -83,6 +83,7 @@
     "stylelint": "^14.5.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-recommended": "^7.0.0",
     "stylelint-config-sass-guidelines": "^9.0.1",
     "stylelint-no-unsupported-browser-features": "^5.0.3",
     "stylelint-order": "^5.0.0",
