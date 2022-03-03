@@ -4,9 +4,9 @@ import { signIn } from 'next-auth/react';
 
 import { Button, TextInput } from 'ui';
 import { Card } from 'ui/card/card.component';
-import { useSigninForm } from 'components/account/signin/signin.hooks';
-import { SigninFormValues } from 'components/account/signin/signin.types';
-import { INITIAL_VALUES } from 'components/account/signin/signin.constants';
+import { useSigninForm } from 'components/auth/signin/signin.hooks';
+import { SigninFormValues } from 'components/auth/signin/signin.types';
+import { INITIAL_VALUES } from 'components/auth/signin/signin.constants';
 
 import styles from './signin.module.scss';
 

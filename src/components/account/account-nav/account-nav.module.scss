@@ -1,7 +1,0 @@
-@use 'styles/mixins' as *;
-
-.nav {
-  > ul {
-    @include spacing(y, 0.5rem);
-  }
-}
