@@ -1,5 +1,5 @@
 {
-  "extends": "stylelint-config-sass-guidelines",
+  "extends": ["stylelint-config-sass-guidelines", "stylelint-config-prettier"],
   "plugins": ["stylelint-no-unsupported-browser-features"],
   "rules": {
     "plugin/no-unsupported-browser-features": [
@@ -19,7 +19,6 @@
     ],
     "order/properties-alphabetical-order": null,
     "selector-class-pattern": null,
-    "function-parentheses-space-inside": "never-single-line",
     "order/order": null,
     "max-nesting-depth": [4, { "ignore": ["pseudo-classes"] }],
     "value-no-vendor-prefix": [true, { "ignoreValues": ["box"] }],

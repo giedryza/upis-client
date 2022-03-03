@@ -21,6 +21,7 @@
     "lint:filenames": "npx @ls-lint/ls-lint",
     "lint:prettier": "npx prettier --check \"src/**\"",
     "lint:prettier:fix": "npx prettier --write \"src/**\"",
+    "stylelint:check-conflicting-rules": "stylelint-config-prettier-check",
     "storybook:start": "start-storybook -p 6006",
     "storybook:build": "build-storybook"
   },
@@ -80,6 +81,7 @@
     "sass": "^1.49.8",
     "sass-loader": "^12.6.0",
     "stylelint": "^14.5.1",
+    "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-sass-guidelines": "^9.0.1",
     "stylelint-no-unsupported-browser-features": "^5.0.3",
     "typescript": "^4.5.5",
