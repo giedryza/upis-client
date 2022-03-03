@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { VFC } from 'react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
@@ -12,7 +12,7 @@ const iconByLocale: Record<Locale, IconName> = {
   [Locale.En]: IconName.FlagEn,
 };
 
-const LanguageSelect: FC = () => {
+const LanguageSelect: VFC = () => {
   const { locale: currentLocale, asPath } = useRouter();
   const { t } = useTranslation();
 

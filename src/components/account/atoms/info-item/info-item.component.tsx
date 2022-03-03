@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { VFC } from 'react';
 
 import { Props } from './info-item.types';
 import styles from './info-item.module.scss';
 
-export const InfoItem: FC<Props> = ({ label, value }) => {
+export const InfoItem: VFC<Props> = ({ label, value }) => {
   return (
     <div className={styles.content}>
       <h6 className={styles.title}>{label}</h6>
