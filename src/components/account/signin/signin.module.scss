@@ -1,15 +1,15 @@
 @use 'styles/mixins' as *;
 
 .container {
-  margin: 5rem auto;
   width: 40rem;
   max-width: 95%;
+  margin: 5rem auto;
 }
 
 .content {
   h1 {
-    font-size: var(--font-size-30);
     font-weight: 600;
+    font-size: var(--font-size-30);
   }
 
   @include spacing(y, 2.5rem);

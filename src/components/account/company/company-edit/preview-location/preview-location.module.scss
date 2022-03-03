@@ -1,9 +1,10 @@
 @use 'styles/mixins' as *;
 
 .container {
-  padding: 0.5em;
-  border-radius: var(--border-radius-xs);
   width: 100%;
+  padding: 0.5em;
+
+  border-radius: var(--border-radius-xs);
 
   &:hover {
     background-color: var(--color-grey-95);

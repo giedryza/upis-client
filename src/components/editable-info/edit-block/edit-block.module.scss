@@ -8,19 +8,19 @@
 
 .actions {
   display: flex;
+  gap: 0.5em;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5em;
 }
 
 .primaryActions {
   display: flex;
-  align-items: center;
   gap: 0.5em;
+  align-items: center;
 }
 
 .secondaryActions {
   display: flex;
-  align-items: center;
   gap: 0.5em;
+  align-items: center;
 }

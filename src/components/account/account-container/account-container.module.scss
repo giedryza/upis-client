@@ -1,15 +1,15 @@
 @use 'styles/mixins' as *;
 
 .container {
-  margin: 5rem 0;
   display: flex;
   align-items: flex-start;
+  margin: 5rem 0;
 
   @include spacing(x, 2rem);
 
   > *:nth-child(1) {
-    width: 25rem;
     flex-shrink: 0;
+    width: 25rem;
   }
 
   > *:nth-child(2) {

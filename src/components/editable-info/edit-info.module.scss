@@ -1,8 +1,10 @@
 @use 'styles/mixins' as *;
 
 .container {
-  font-size: var(--font-size-16);
   padding: 0.5em;
+
+  font-size: var(--font-size-16);
+
   border-radius: var(--border-radius-xs);
 
   &:hover {

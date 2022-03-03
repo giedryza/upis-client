@@ -7,10 +7,12 @@ html {
 
 body {
   color: var(--color-grey-05);
+
   background-color: var(--color-grey-95);
 }
 
 ::selection {
-  background: var(--color-primary-70);
   color: var(--color-white);
+
+  background: var(--color-primary-70);
 }

@@ -1,8 +1,9 @@
 .container {
-  font-size: 1rem;
   display: inline-block;
-  height: 4em;
   width: 4em;
+  height: 4em;
+
+  font-size: 1rem;
 
   .backdrop {
     fill: var(--color-grey-85);
@@ -17,9 +18,10 @@
   }
 
   .text {
-    fill: var(--color-white);
-    font-size: 85px;
     font-weight: 600;
+    font-size: 85px;
     text-transform: uppercase;
+
+    fill: var(--color-white);
   }
 }
