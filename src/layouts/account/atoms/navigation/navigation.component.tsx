@@ -16,17 +16,17 @@ export const Navigation: VFC = () => {
     {
       label: t('account:profile.title'),
       icon: IconName.User,
-      url: routes.account.profile,
+      url: routes.account.profile.index,
     },
     {
       label: t('account:company.title'),
       icon: IconName.Kayak,
-      url: routes.account.company,
+      url: routes.account.company.index,
     },
     {
       label: t('account:tours.title'),
       icon: IconName.Path,
-      url: routes.account.tours,
+      url: routes.account.tours.index,
     },
   ];
 

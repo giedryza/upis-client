@@ -5,9 +5,15 @@ export const routes = {
     signup: '/auth/signup',
   },
   account: {
-    profile: '/account/profile',
-    company: '/account/company',
-    tours: '/account/tours',
+    profile: {
+      index: '/account/profile',
+    },
+    company: {
+      index: '/account/company',
+    },
+    tours: {
+      index: '/account/tours',
+    },
   },
   companies: {
     list: '/companies',
