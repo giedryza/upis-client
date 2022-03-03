@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
@@ -7,7 +7,7 @@ import { InfoBlock } from 'components/account/atoms';
 
 import styles from './general.module.scss';
 
-export const General: FC = () => {
+export const General: VFC = () => {
   const { t } = useTranslation();
 
   return (
