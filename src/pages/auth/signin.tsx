@@ -2,11 +2,11 @@ import { GetServerSideProps, NextPage } from 'next';
 import { getSession } from 'next-auth/react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { MainLayout } from 'components/layouts/main/main.layout';
-import { Signin } from 'components/account/signin/signin.component';
-import { AppHead } from 'ui';
-import { useGuestPage } from 'tools/hooks';
 import { routes } from 'config/routes';
+import { useGuestPage } from 'tools/hooks';
+import { AppHead } from 'ui';
+import { Signin } from 'components/auth';
+import { MainLayout } from 'components/layouts/main/main.layout';
 
 const SigninPage: NextPage = () => {
   const { t } = useTranslation();

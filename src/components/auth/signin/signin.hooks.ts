@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
 import { UseFormBase, ValidationRules } from 'types/common/forms';
-import { SigninFormValues } from 'components/account/signin/signin.types';
+import { SigninFormValues } from 'components/auth/signin/signin.types';
 
 export const useSigninForm: UseFormBase<SigninFormValues> = (
   onSubmit,
