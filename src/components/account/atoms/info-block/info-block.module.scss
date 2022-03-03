@@ -9,10 +9,12 @@
 
   width: 100%;
   max-width: var(--container-width);
-  background-color: var(--color-white);
   padding: var(--container-padding);
+
   font-size: var(--font-size-16);
   line-height: 1.875;
+
+  background-color: var(--color-white);
 
   @include spacing(y, 2rem);
 
@@ -26,14 +28,15 @@
   }
 
   .icon {
+    flex-shrink: 0;
     width: 2rem;
     height: 3rem;
-    flex-shrink: 0;
   }
 
   .heading {
     display: flex;
     align-items: flex-start;
+
     vertical-align: middle;
 
     @include spacing(x, 0.75rem);

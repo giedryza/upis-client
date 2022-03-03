@@ -6,8 +6,8 @@
 
 .block {
   > h2 {
-    font-size: var(--font-size-16);
     font-weight: 500;
+    font-size: var(--font-size-16);
   }
 
   @include spacing(y, 1.5rem);

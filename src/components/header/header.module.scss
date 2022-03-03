@@ -4,23 +4,25 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: var(--header-height);
   z-index: 5;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  height: var(--header-height);
+  padding: 0.5em;
 
   font-size: 1rem;
-  padding: 0.5em;
+
   background-color: var(--color-white);
   box-shadow: var(--shadow-default);
 }
 
 .logo {
-  border-radius: var(--border-radius-sm);
   padding: 0.25em;
+
+  border-radius: var(--border-radius-sm);
 
   @include focus-button;
 
@@ -30,6 +32,7 @@
 
   svg {
     height: 3em;
+
     fill: var(--button-ghost-text);
   }
 }

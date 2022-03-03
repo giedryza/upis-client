@@ -7,10 +7,12 @@
 
   .dropzone {
     width: 100%;
-    border: 1px dashed var(--color-grey-60);
-    background-color: var(--color-white);
-    border-radius: var(--border-radius-sm);
     padding: 1.25em;
+
+    background-color: var(--color-white);
+    border: 1px dashed var(--color-grey-60);
+    border-radius: var(--border-radius-sm);
+
     transition: var(--transition-duration-md) box-shadow;
 
     &:hover {
@@ -19,8 +21,8 @@
 
     &[data-drag-state='accept'],
     &[data-drag-state='active'] {
-      border-color: var(--color-success-60);
       background-color: var(--color-grey-99);
+      border-color: var(--color-success-60);
     }
 
     &[data-drag-state='reject'] {
@@ -28,48 +30,53 @@
     }
 
     &[disabled] {
-      border-color: var(--color-grey-75);
       background-color: var(--color-grey-95);
+      border-color: var(--color-grey-75);
     }
   }
 
   .content {
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    text-align: center;
+
     @include spacing(y, 0.5em);
 
     .icon {
+      display: inline-block;
       width: 2em;
       height: 2em;
-      display: inline-block;
+
       fill: var(--color-primary-60);
     }
 
     .label {
-      font-size: 0.8em;
       font-weight: 600;
+      font-size: 0.8em;
     }
 
     .divider {
       display: flex;
+      gap: 0.5em;
       align-items: center;
       width: 9em;
       max-width: 100%;
-      gap: 0.5em;
+
       color: var(--color-grey-70);
       font-size: 0.8em;
       text-transform: uppercase;
 
       &::before,
       &::after {
-        content: '';
         display: block;
-        height: 1px;
         width: 100%;
+        height: 1px;
+
         background-color: currentColor;
+
+        content: '';
       }
     }
   }
@@ -78,10 +85,10 @@
     @include spacing(y, 1em);
 
     > h4 {
-      font-size: 0.8em;
-      font-weight: 600;
-      text-transform: uppercase;
       color: var(--color-grey-65);
+      font-weight: 600;
+      font-size: 0.8em;
+      text-transform: uppercase;
     }
   }
 
@@ -106,15 +113,15 @@
 
   .fileInfo {
     > h6 {
-      font-size: 0.8em;
-      font-weight: 600;
       color: var(--color-text);
+      font-weight: 600;
+      font-size: 0.8em;
     }
 
     > span {
-      font-size: 0.8em;
-      font-weight: 300;
       color: var(--color-text);
+      font-weight: 300;
+      font-size: 0.8em;
     }
   }
 }

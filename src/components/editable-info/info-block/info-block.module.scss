@@ -1,17 +1,19 @@
 @use 'styles/mixins' as *;
 
 .container {
-  font-size: var(--font-size-16);
-  color: var(--color-grey-30);
   display: flex;
   align-items: center;
+
+  color: var(--color-grey-30);
+  font-size: var(--font-size-16);
 
   @include spacing(x, 1em);
 
   .icon {
-    width: 1.6em;
-    fill: var(--color-grey-50);
     flex-shrink: 0;
+    width: 1.6em;
+
+    fill: var(--color-grey-50);
   }
 
   .content {
@@ -21,13 +23,14 @@
   }
 
   .title {
-    font-size: 1em;
-    color: var(--color-grey-20);
 
     display: -webkit-box;
+    overflow: hidden;
+
+    color: var(--color-grey-20);
+    font-size: 1em;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 
   .subtitle {
@@ -35,8 +38,8 @@
   }
 
   .actions {
-    flex-shrink: 0;
     display: flex;
+    flex-shrink: 0;
     align-items: center;
 
     @include spacing(x, 1em);

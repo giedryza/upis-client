@@ -10,33 +10,39 @@
     display: block;
     width: 100%;
     padding: 0.25em 0.5em;
+
     font-weight: 500;
+
     background-color: var(--color-white);
     border: 1px solid var(--color-grey-60);
     border-radius: var(--border-radius-sm);
+
     transition: var(--transition-duration-md) box-shadow;
 
     &:not(textarea) {
-      line-height: 1;
       height: 2.25em;
+
+      line-height: 1;
     }
 
     &[readonly] {
+      color: var(--color-grey-25);
+
       border-style: dashed;
       cursor: default;
-      color: var(--color-grey-25);
     }
 
     &[disabled] {
       color: var(--color-grey-40);
-      border-color: var(--color-grey-75);
+
       background-color: var(--color-grey-95);
+      border-color: var(--color-grey-75);
       cursor: not-allowed;
     }
 
     &[aria-invalid='true'] {
-      border-color: var(--color-danger-60);
       background-color: var(--color-danger-95);
+      border-color: var(--color-danger-60);
 
       ~ small[data-help='error'] {
         color: var(--color-danger-60);
@@ -52,8 +58,8 @@
     }
 
     &:focus {
-      outline: 2px solid transparent;
       border-color: var(--color-primary-60);
+      outline: 2px solid transparent;
       box-shadow: var(--outline-input);
 
       &[aria-invalid='true'] {
@@ -69,14 +75,16 @@
 
   > label {
     display: inline-block;
-    font-size: 0.8em;
+
     color: var(--color-text);
     font-weight: 600;
+    font-size: 0.8em;
   }
 
   > small {
     display: block;
-    font-size: 0.7em;
+
     font-weight: 400;
+    font-size: 0.7em;
   }
 }
