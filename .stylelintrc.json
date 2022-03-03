@@ -1,5 +1,6 @@
 {
   "extends": [
+    "stylelint-config-recommended",
     "stylelint-config-sass-guidelines",
     "stylelint-config-rational-order",
     "stylelint-config-prettier"
@@ -21,9 +22,10 @@
         "ignorePartialSupport": true
       }
     ],
+    "order/order": null,
     "order/properties-alphabetical-order": null,
     "selector-class-pattern": null,
-    "order/order": null,
+    "no-descending-specificity": null,
     "max-nesting-depth": [4, { "ignore": ["pseudo-classes"] }],
     "value-no-vendor-prefix": [true, { "ignoreValues": ["box"] }],
     "property-no-vendor-prefix": [true, { "ignoreProperties": ["box-orient"] }],
