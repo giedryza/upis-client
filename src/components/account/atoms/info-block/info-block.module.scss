@@ -1,0 +1,60 @@
+@use 'styles/mixins' as *;
+
+.container {
+  --container-width: 80rem;
+  --container-height: 3rem;
+  --container-padding: 2rem;
+  --grid-gap: 2rem;
+  --_grid-columns: 2;
+
+  width: 100%;
+  max-width: var(--container-width);
+  background-color: var(--color-white);
+  padding: var(--container-padding);
+  font-size: var(--font-size-16);
+  line-height: 1.875;
+
+  @include spacing(y, 2rem);
+
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    min-height: var(--container-height);
+
+    @include spacing(x, 0.5rem);
+  }
+
+  .icon {
+    width: 2rem;
+    height: 3rem;
+    flex-shrink: 0;
+  }
+
+  .heading {
+    display: flex;
+    align-items: flex-start;
+    vertical-align: middle;
+
+    @include spacing(x, 0.75rem);
+  }
+
+  .title {
+    font-weight: 500;
+  }
+
+  .content {
+    --column-width: calc(
+      (
+          (
+              var(--container-width) - 2 * var(--container-padding) -
+                var(--grid-columns, var(--_grid-columns)) * var(--grid-gap)
+            ) / (var(--grid-columns, var(--_grid-columns)) + 1)
+        ) + 1px
+    );
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--column-width), 1fr));
+    gap: 2rem;
+  }
+}

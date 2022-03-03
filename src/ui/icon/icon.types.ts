@@ -15,6 +15,7 @@ export enum IconName {
   FlagLt = 'flag-lt',
   FolderClose = 'folder-close',
   FolderOpen = 'folder-open',
+  Gear = 'gear',
   Globe = 'globe',
   Home = 'home',
   Info = 'info',

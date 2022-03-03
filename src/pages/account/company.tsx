@@ -5,10 +5,10 @@ import { dehydrate, QueryClient } from 'react-query';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { MainLayout } from 'components/layouts/main/main.layout';
 import { AppHead } from 'ui';
-import { AccountContainer } from 'components/account/account-container/account-container.component';
-import { Company } from 'components/account/company/company.component';
+import { AccountLayout } from 'layouts';
+import { Company } from 'components/account';
+import { MainLayout } from 'components/layouts/main/main.layout';
 import { companiesKeys } from 'domain/companies/companies.keys';
 import { adapters } from 'domain/companies/companies.adapters';
 
@@ -21,9 +21,9 @@ const CompanyPage: NextPage = () => {
     <MainLayout>
       <AppHead title={t('account:company.title')} />
 
-      <AccountContainer>
+      <AccountLayout>
         <Company />
-      </AccountContainer>
+      </AccountLayout>
     </MainLayout>
   );
 };

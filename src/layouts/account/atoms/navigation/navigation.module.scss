@@ -1,0 +1,68 @@
+@use 'styles/mixins' as *;
+
+.navigation {
+  --button-size: 6.5em;
+  --icon-size: 30%;
+  --gap: 1em;
+
+  font-size: 1rem;
+  text-align: center;
+  padding: var(--gap);
+
+  .list {
+    @include spacing(y, var(--gap));
+  }
+
+  .link {
+    border: 0;
+    text-decoration: none;
+    cursor: pointer;
+
+    @media screen and (-ms-high-contrast: active) {
+      border: 2px solid currentcolor;
+    }
+
+    width: var(--button-size);
+    height: var(--button-size);
+
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-weight: 600;
+    color: var(--color-text);
+    border-radius: var(--border-radius-sm);
+    padding: 0.2em;
+    transition-property: background-color, box-shadow;
+    transition-duration: var(--transition-duration-md);
+
+    @include spacing(y, 0.25em);
+
+    &:focus {
+      outline: 2px solid transparent;
+      box-shadow: var(--outline-button);
+
+      &:not(:focus-visible) {
+        box-shadow: none;
+      }
+    }
+
+    &:focus-visible {
+      box-shadow: var(--outline-button);
+    }
+
+    &:hover,
+    &:active,
+    &[aria-current='page'] {
+      background-color: var(--color-grey-95);
+    }
+
+    .icon {
+      fill: currentcolor;
+      width: var(--icon-size);
+      height: var(--icon-size);
+      flex-shrink: 0;
+    }
+  }
+}
