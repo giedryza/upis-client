@@ -5,7 +5,11 @@
     "stylelint-config-rational-order",
     "stylelint-config-prettier"
   ],
-  "plugins": ["stylelint-no-unsupported-browser-features"],
+  "plugins": [
+    "stylelint-no-unsupported-browser-features",
+    "stylelint-high-performance-animation",
+    "stylelint-declaration-block-no-ignored-properties"
+  ],
   "rules": {
     "plugin/no-unsupported-browser-features": [
       true,
@@ -22,6 +26,11 @@
         "ignorePartialSupport": true
       }
     ],
+    "plugin/no-low-performance-animation-properties": [
+      true,
+      { "ignoreProperties": ["color", "background-color", "box-shadow"] }
+    ],
+    "plugin/declaration-block-no-ignored-properties": true,
     "order/order": null,
     "order/properties-alphabetical-order": null,
     "selector-class-pattern": null,
