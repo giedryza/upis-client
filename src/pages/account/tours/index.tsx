@@ -16,6 +16,7 @@ const ToursPage: NextPage = () => {
   return (
     <>
       <AppHead title={t('account:tours.title')} />
+
       <MainLayout>
         <AccountPageLayout>
           <Breadcrumbs

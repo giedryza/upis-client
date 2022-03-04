@@ -19,6 +19,7 @@ const CompanyPage: NextPage = () => {
   return (
     <>
       <AppHead title={t('account:company.title')} />
+
       <MainLayout>
         <AccountPageLayout>
           <Breadcrumbs

@@ -16,6 +16,7 @@ const ProfilePage: NextPage = () => {
   return (
     <>
       <AppHead title={t('account:profile.title')} />
+
       <MainLayout>
         <AccountPageLayout>
           <Breadcrumbs

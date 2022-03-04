@@ -16,6 +16,7 @@ const SigninPage: NextPage = () => {
   return (
     <>
       <AppHead title={t('auth:layout.signin')} />
+
       <MainLayout>
         <Signin />
       </MainLayout>
