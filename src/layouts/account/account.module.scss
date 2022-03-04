@@ -2,8 +2,8 @@
 
 .layout {
   display: flex;
-  align-items: flex-start;
   gap: 2rem;
+  align-items: flex-start;
 
   @include mobile {
     flex-direction: column;
