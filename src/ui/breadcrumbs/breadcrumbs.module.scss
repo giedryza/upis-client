@@ -1,7 +1,7 @@
 @use 'styles/mixins' as *;
 
 .breadcrumbs {
-  font-size: var(--font-size-18);
+  font-size: var(--font-size-14);
 
   .list {
     display: flex;
