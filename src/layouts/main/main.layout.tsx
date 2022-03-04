@@ -4,7 +4,7 @@ import { Footer } from 'components/footer/footer.component';
 
 import styles from './main.module.scss';
 
-const MainLayout: FC = ({ children }) => {
+export const MainLayout: FC = ({ children }) => {
   return (
     <div className={styles.container}>
       {children}
@@ -12,5 +12,3 @@ const MainLayout: FC = ({ children }) => {
     </div>
   );
 };
-
-export { MainLayout };

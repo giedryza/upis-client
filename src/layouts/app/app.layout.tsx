@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { Header } from 'components/header/header.component';
 
-const AppLayout: FC = ({ children }) => {
+export const AppLayout: FC = ({ children }) => {
   return (
     <div>
       <Header />
@@ -10,5 +10,3 @@ const AppLayout: FC = ({ children }) => {
     </div>
   );
 };
-
-export { AppLayout };

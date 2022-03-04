@@ -38,7 +38,7 @@ export const Navigation: VFC = () => {
             <Link href={link.url}>
               <a
                 className={styles.link}
-                {...(pathname === link.url && { 'aria-current': 'page' })}
+                {...(pathname.includes(link.url) && { 'aria-current': 'page' })}
               >
                 <Icon
                   name={link.icon}

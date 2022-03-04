@@ -4,10 +4,9 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { AppHead } from 'ui';
-import { AccountLayout } from 'layouts';
+import { AppHead, Breadcrumbs } from 'ui';
+import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
 import { Tours } from 'components/account';
-import { MainLayout } from 'components/layouts/main/main.layout';
 
 const ToursPage: NextPage = () => {
   const { t } = useTranslation();
@@ -15,13 +14,23 @@ const ToursPage: NextPage = () => {
   useProtectedPage();
 
   return (
-    <MainLayout>
+    <>
       <AppHead title={t('account:tours.title')} />
+      <MainLayout>
+        <AccountPageLayout>
+          <Breadcrumbs
+            items={[
+              { label: t('account:title'), url: routes.account.profile.index },
+              { label: t('account:tours.title') },
+            ]}
+          />
 
-      <AccountLayout>
-        <Tours />
-      </AccountLayout>
-    </MainLayout>
+          <AccountLayout>
+            <Tours />
+          </AccountLayout>
+        </AccountPageLayout>
+      </MainLayout>
+    </>
   );
 };
 

@@ -3,7 +3,6 @@
 .layout {
   display: flex;
   align-items: flex-start;
-  padding: 2rem;
 
   @include spacing(x, 2rem);
 }

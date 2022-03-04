@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useSession } from 'next-auth/react';
 
 import { routes } from 'config/routes';
-import { Breadcrumbs, IconName } from 'ui';
+import { IconName } from 'ui';
 import { InfoBlock, InfoItem } from 'components/account/atoms';
 
 import styles from './profile.module.scss';
@@ -15,13 +15,6 @@ export const Profile: VFC = () => {
 
   return (
     <div className={styles.content}>
-      <Breadcrumbs
-        items={[
-          { label: t('account:title'), url: routes.account.profile.index },
-          { label: t('account:profile.title') },
-        ]}
-      />
-
       <InfoBlock
         title={t('account:profile.subtitle.general')}
         icon={IconName.Gear}

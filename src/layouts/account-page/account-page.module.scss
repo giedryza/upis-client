@@ -1,0 +1,7 @@
+@use 'styles/mixins' as *;
+
+.layout {
+  padding: 2rem;
+
+  @include spacing(y, 2rem);
+}
