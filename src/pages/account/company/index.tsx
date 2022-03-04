@@ -5,10 +5,9 @@ import { dehydrate, QueryClient } from 'react-query';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { AppHead } from 'ui';
-import { AccountLayout } from 'layouts';
+import { AppHead, Breadcrumbs } from 'ui';
+import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
 import { Company } from 'components/account';
-import { MainLayout } from 'components/layouts/main/main.layout';
 import { companiesKeys } from 'domain/companies/companies.keys';
 import { adapters } from 'domain/companies/companies.adapters';
 
@@ -18,13 +17,23 @@ const CompanyPage: NextPage = () => {
   useProtectedPage();
 
   return (
-    <MainLayout>
+    <>
       <AppHead title={t('account:company.title')} />
+      <MainLayout>
+        <AccountPageLayout>
+          <Breadcrumbs
+            items={[
+              { label: t('account:title'), url: routes.account.profile.index },
+              { label: t('account:company.title') },
+            ]}
+          />
 
-      <AccountLayout>
-        <Company />
-      </AccountLayout>
-    </MainLayout>
+          <AccountLayout>
+            <Company />
+          </AccountLayout>
+        </AccountPageLayout>
+      </MainLayout>
+    </>
   );
 };
 

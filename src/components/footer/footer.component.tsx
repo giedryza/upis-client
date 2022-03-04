@@ -1,13 +1,13 @@
-import { Container } from 'ui/container/container.component';
+import { VFC } from 'react';
+
+import { Container } from 'ui';
 
 import styles from './footer.module.scss';
 
-const Footer = () => {
+export const Footer: VFC = () => {
   return (
     <footer className={styles.footer}>
       <Container>footer</Container>
     </footer>
   );
 };
-
-export { Footer };

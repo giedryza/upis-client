@@ -7,7 +7,7 @@ import { AppProps } from 'types/common/next';
 import { reduxStore } from 'tools/libs/store/store.lib';
 import { queryClientConfig } from 'tools/libs/query-client';
 import { axe } from 'tools/services/axe';
-import { AppLayout } from 'components/layouts/app/app.layout';
+import { AppLayout } from 'layouts';
 
 import 'styles/index.scss';
 
