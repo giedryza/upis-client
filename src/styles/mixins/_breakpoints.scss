@@ -1,0 +1,25 @@
+@import 'styles/variables/breakpoints';
+
+@mixin mobile {
+  @media screen and (max-width: $breakpoint-xs) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media screen and (max-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (max-width: $breakpoint-lg) {
+    @content;
+  }
+}

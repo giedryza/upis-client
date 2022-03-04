@@ -16,7 +16,7 @@ export const InfoBlock: FC<Props> = ({
   const { t } = useTranslation();
 
   return (
-    <div className={styles.container} style={{ '--_grid-columns': columns }}>
+    <div className={styles.container} style={{ '--grid-columns': columns }}>
       <div className={styles.header}>
         <div className={styles.heading}>
           <Icon name={icon} className={styles.icon} />

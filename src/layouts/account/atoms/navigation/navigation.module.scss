@@ -9,8 +9,19 @@
   font-size: 1rem;
   text-align: center;
 
+  @include mobile {
+    font-size: 0.85rem;
+  }
+
   .list {
-    @include spacing(y, var(--gap));
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+
+    @include mobile {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 
   .link {
