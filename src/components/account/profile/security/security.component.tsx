@@ -22,19 +22,23 @@ export const Security: VFC = () => {
             <TextInput
               name="currentPassword"
               label={t('account:security.form.currentPassword.label')}
-              placeholder={Array.from({ length: 8 }).fill('\u2217').join('')}
+              placeholder={t(
+                'account:security.form.currentPassword.placeholder'
+              )}
             />
 
             <TextInput
               name="newPassword"
               label={t('account:security.form.newPassword.label')}
-              placeholder={Array.from({ length: 8 }).fill('\u2217').join('')}
+              placeholder={t('account:security.form.newPassword.placeholder')}
             />
 
             <TextInput
               name="confirmPassword"
               label={t('account:security.form.confirmPassword.label')}
-              placeholder={Array.from({ length: 8 }).fill('\u2217').join('')}
+              placeholder={t(
+                'account:security.form.confirmPassword.placeholder'
+              )}
             />
           </fieldset>
 

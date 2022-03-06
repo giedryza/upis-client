@@ -15,16 +15,20 @@
     "title": "Security",
     "form": {
       "password": {
-        "label": "Password"
+        "label": "Password",
+        "placeholder": "∗∗∗∗∗∗∗∗"
       },
       "currentPassword": {
-        "label": "Current password"
+        "label": "Current password",
+        "placeholder": "∗∗∗∗∗∗∗∗"
       },
       "newPassword": {
-        "label": "New password"
+        "label": "New password",
+        "placeholder": "∗∗∗∗∗∗∗∗"
       },
       "confirmPassword": {
-        "label": "Confirm password"
+        "label": "Confirm password",
+        "placeholder": "∗∗∗∗∗∗∗∗"
       }
     }
   },

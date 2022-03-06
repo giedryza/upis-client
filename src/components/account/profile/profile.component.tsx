@@ -29,7 +29,7 @@ export const Profile: VFC = () => {
       >
         <InfoItem
           label={t('account:security.form.password.label')}
-          value={Array.from({ length: 8 }).fill('\u2217').join('')}
+          value={t('account:security.form.password.placeholder')}
         />
       </InfoBlock>
     </div>

@@ -15,16 +15,20 @@
     "title": "Sauga",
     "form": {
       "password": {
-        "label": "Slaptažodis"
+        "label": "Slaptažodis",
+        "placeholder": "∗∗∗∗∗∗∗∗"
       },
       "currentPassword": {
-        "label": "Dabartinis slaptažodis"
+        "label": "Dabartinis slaptažodis",
+        "placeholder": "∗∗∗∗∗∗∗∗"
       },
       "newPassword": {
-        "label": "Naujas slaptažodis"
+        "label": "Naujas slaptažodis",
+        "placeholder": "∗∗∗∗∗∗∗∗"
       },
       "confirmPassword": {
-        "label": "Patvirtink slaptažodį"
+        "label": "Patvirtink slaptažodį",
+        "placeholder": "∗∗∗∗∗∗∗∗"
       }
     }
   },
