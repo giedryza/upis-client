@@ -20,25 +20,28 @@
       },
       "currentPassword": {
         "label": "Current password",
-        "placeholder": "∗∗∗∗∗∗∗∗"
+        "placeholder": "∗∗∗∗∗∗∗∗",
+        "error": {
+          "empty": "Enter current password.",
+          "incorrect": "Incorrect password. Try again or click Forgot password to reset it."
+        }
       },
       "newPassword": {
         "label": "New password",
-        "placeholder": "∗∗∗∗∗∗∗∗"
+        "placeholder": "∗∗∗∗∗∗∗∗",
+        "error": {
+          "empty": "Enter new password.",
+          "length": "Use between {{minLength}} and {{maxLength}} characters for password."
+        }
       },
       "confirmPassword": {
         "label": "Confirm password",
-        "placeholder": "∗∗∗∗∗∗∗∗"
+        "placeholder": "∗∗∗∗∗∗∗∗",
+        "error": {
+          "empty": "Confirm password.",
+          "notMatch": "Passwords didn't match. Try again."
+        }
       }
-    }
-  },
-  "errors": {
-    "password": {
-      "empty": "Enter password.",
-      "length": "Use between 8 and 50 characters for password.",
-      "confirm": "Confirm password.",
-      "not-match": "Passwords didn't match. Try again.",
-      "incorrect": "Incorrect password. Try again or click Forgot password to reset it."
     }
   },
   "company": {

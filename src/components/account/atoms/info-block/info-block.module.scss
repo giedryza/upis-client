@@ -31,12 +31,14 @@
     flex-shrink: 0;
     width: 2rem;
     height: 3rem;
+
     fill: currentColor;
   }
 
   .heading {
     display: flex;
     align-items: flex-start;
+
     color: var(--color-text);
 
     @include spacing(x, 0.75rem);

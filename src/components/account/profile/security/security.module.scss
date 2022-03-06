@@ -5,8 +5,8 @@
 }
 
 .form {
-  max-width: var(--container-width-xs);
   width: 100%;
+  max-width: var(--container-width-xs);
 
   @include spacing(y, 2rem);
 }
