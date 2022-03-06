@@ -6,9 +6,9 @@ import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
-import { General } from 'components/account';
+import { Security } from 'components/account';
 
-const ProfilePage: NextPage = () => {
+const SecurityPage: NextPage = () => {
   const { t } = useTranslation();
 
   useProtectedPage();
@@ -30,13 +30,13 @@ const ProfilePage: NextPage = () => {
                 url: routes.account.profile.index,
               },
               {
-                label: t('account:profile.subtitle.general'),
+                label: t('account:security.title'),
               },
             ]}
           />
 
           <AccountLayout>
-            <General />
+            <Security />
           </AccountLayout>
         </AccountPageLayout>
       </MainLayout>
@@ -63,4 +63,4 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   };
 };
 
-export default ProfilePage;
+export default SecurityPage;

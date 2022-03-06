@@ -1,15 +1,32 @@
 {
   "title": "Paskyra",
   "profile": {
-    "title": "Profilis",
-    "subtitle": {
-      "general": "Asmens duomenys"
+    "title": "Profilis"
+  },
+  "general": {
+    "title": "Asmens duomenys",
+    "form": {
+      "email": {
+        "label": "El. paštas"
+      }
     }
   },
-  "form": {
-    "email": "El. paštas",
-    "password": "Slaptažodis",
-    "confirmPassword": "Patvirtink slaptažodį"
+  "security": {
+    "title": "Sauga",
+    "form": {
+      "password": {
+        "label": "Slaptažodis"
+      },
+      "currentPassword": {
+        "label": "Dabartinis slaptažodis"
+      },
+      "newPassword": {
+        "label": "Naujas slaptažodis"
+      },
+      "confirmPassword": {
+        "label": "Patvirtink slaptažodį"
+      }
+    }
   },
   "errors": {
     "password": {
