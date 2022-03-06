@@ -20,25 +20,28 @@
       },
       "currentPassword": {
         "label": "Dabartinis slaptažodis",
-        "placeholder": "∗∗∗∗∗∗∗∗"
+        "placeholder": "∗∗∗∗∗∗∗∗",
+        "error": {
+          "empty": "Įveskite dabartinį slaptažodį.",
+          "incorrect": "Neteisingas slaptažodis. Bandykite dar kartą arba spauskite Pamiršai slaptažodį, kad atstatyti."
+        }
       },
       "newPassword": {
         "label": "Naujas slaptažodis",
-        "placeholder": "∗∗∗∗∗∗∗∗"
+        "placeholder": "∗∗∗∗∗∗∗∗",
+        "error": {
+          "empty": "Įveskite naują slaptažodį.",
+          "length": "Slaptažodis turi būti tarp {{minLength}} ir {{maxLength}} ženklų."
+        }
       },
       "confirmPassword": {
         "label": "Patvirtink slaptažodį",
-        "placeholder": "∗∗∗∗∗∗∗∗"
+        "placeholder": "∗∗∗∗∗∗∗∗",
+        "error": {
+          "empty": "Patvirtinkite slaptažodį.",
+          "notMatch": "Slaptažodžiai nesutampa. Bandykite dar kartą."
+        }
       }
-    }
-  },
-  "errors": {
-    "password": {
-      "empty": "Įveskite slaptažodį.",
-      "length": "Slaptažodis turi būti tarp 8 ir 50 ženklų.",
-      "confirm": "Patvirtinkite slaptažodį.",
-      "not-match": "Slaptažodžiai nesutampa. Bandykite dar kartą.",
-      "incorrect": "Neteisingas slaptažodis. Bandykite dar kartą arba spauskite Pamiršai slaptažodį, kad atstatyti."
     }
   },
   "company": {
