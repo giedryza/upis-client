@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { routes } from 'config/routes';
 import { Button, IconName, TextInput } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
+import { useUpdatePassword } from 'domain/users/users.mutations';
 
 import {
   INITIAL_VALUES,
@@ -25,8 +26,14 @@ export const Security: VFC = () => {
     defaultValues: INITIAL_VALUES,
   });
 
-  const onSubmit: SubmitHandler<Values> = (values) => {
-    console.log(values);
+  const { mutate: updatePassword, isLoading } = useUpdatePassword();
+
+  const onSubmit: SubmitHandler<Values> = ({
+    currentPassword,
+    newPassword,
+    confirmPassword,
+  }) => {
+    updatePassword({ currentPassword, newPassword, confirmPassword });
   };
 
   return (
@@ -37,7 +44,7 @@ export const Security: VFC = () => {
         columns={1}
       >
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <fieldset className={styles.fieldset}>
+          <fieldset className={styles.fieldset} disabled={isLoading}>
             <TextInput
               {...register('currentPassword', {
                 required: {
@@ -51,6 +58,7 @@ export const Security: VFC = () => {
               placeholder={t(
                 'account:security.form.currentPassword.placeholder'
               )}
+              type="password"
               error={errors.currentPassword?.message}
             />
 
@@ -77,6 +85,7 @@ export const Security: VFC = () => {
               })}
               label={t('account:security.form.newPassword.label')}
               placeholder={t('account:security.form.newPassword.placeholder')}
+              type="password"
               error={errors.newPassword?.message}
             />
 
@@ -93,6 +102,7 @@ export const Security: VFC = () => {
               placeholder={t(
                 'account:security.form.confirmPassword.placeholder'
               )}
+              type="password"
               error={errors.confirmPassword?.message}
             />
           </fieldset>
@@ -111,7 +121,7 @@ export const Security: VFC = () => {
               size="sm"
               attributes={{
                 type: 'submit',
-                disabled: !isDirty,
+                disabled: !isDirty || isLoading,
               }}
             />
           </div>
