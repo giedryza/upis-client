@@ -58,6 +58,10 @@
     grid-template-columns: repeat(auto-fill, minmax(var(--column-width), 1fr));
     gap: var(--grid-gap);
 
+    &.single {
+      grid-template-columns: 1fr;
+    }
+
     @include mobile {
       grid-template-columns: 1fr;
     }

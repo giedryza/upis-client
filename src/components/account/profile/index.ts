@@ -1,2 +1,2 @@
 export { Profile } from './profile.component';
-export * from './general';
+export * from './security';

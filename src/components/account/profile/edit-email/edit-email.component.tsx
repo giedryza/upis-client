@@ -17,7 +17,7 @@ const EditEmail: FC<Props> = ({ id }) => {
   return (
     <EditInfo
       id={id}
-      label={t('account:form.email')}
+      label={t('account:general.form.email.label')}
       value={session?.user?.email ?? '-'}
       icon={IconName.Mail}
     />

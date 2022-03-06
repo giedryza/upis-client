@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
+import clsx from 'clsx';
 
 import { Button, Icon, IconName } from 'ui';
 
@@ -16,7 +17,7 @@ export const InfoBlock: FC<Props> = ({
   const { t } = useTranslation();
 
   return (
-    <div className={styles.container} style={{ '--grid-columns': columns }}>
+    <section className={styles.container} style={{ '--grid-columns': columns }}>
       <div className={styles.header}>
         <div className={styles.heading}>
           <Icon name={icon} className={styles.icon} />
@@ -33,7 +34,13 @@ export const InfoBlock: FC<Props> = ({
         )}
       </div>
 
-      <div className={styles.content}>{children}</div>
-    </div>
+      <div
+        className={clsx(styles.content, {
+          [`${styles.single}`]: columns === 1,
+        })}
+      >
+        {children}
+      </div>
+    </section>
   );
 };

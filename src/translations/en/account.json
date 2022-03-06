@@ -1,15 +1,32 @@
 {
   "title": "Account",
   "profile": {
-    "title": "Profile",
-    "subtitle": {
-      "general": "General"
+    "title": "Profile"
+  },
+  "general": {
+    "title": "General",
+    "form": {
+      "email": {
+        "label": "Email"
+      }
     }
   },
-  "form": {
-    "email": "Email",
-    "password": "Password",
-    "confirmPassword": "Confirm password"
+  "security": {
+    "title": "Security",
+    "form": {
+      "password": {
+        "label": "Password"
+      },
+      "currentPassword": {
+        "label": "Current password"
+      },
+      "newPassword": {
+        "label": "New password"
+      },
+      "confirmPassword": {
+        "label": "Confirm password"
+      }
+    }
   },
   "errors": {
     "password": {

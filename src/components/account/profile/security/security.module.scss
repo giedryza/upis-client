@@ -1,0 +1,22 @@
+@use 'styles/mixins' as *;
+
+.content {
+  @include spacing(y, 2rem);
+}
+
+.form {
+  max-width: var(--container-width-xs);
+  width: 100%;
+
+  @include spacing(y, 2rem);
+}
+
+.fieldset {
+  @include spacing(y, 1rem);
+}
+
+.actions {
+  text-align: right;
+
+  @include spacing(x, 1rem);
+}
