@@ -35,7 +35,7 @@
         }
       },
       "confirmPassword": {
-        "label": "Patvirtink slaptažodį",
+        "label": "Patvirtinkite slaptažodį",
         "placeholder": "∗∗∗∗∗∗∗∗",
         "error": {
           "empty": "Patvirtinkite slaptažodį.",
