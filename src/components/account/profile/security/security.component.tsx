@@ -49,6 +49,7 @@ export const Security: VFC = () => {
               size="sm"
               url={routes.account.profile.index}
             />
+
             <Button
               label={t('common:actions.save')}
               variant="primary"
