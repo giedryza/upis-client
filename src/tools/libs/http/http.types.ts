@@ -5,6 +5,7 @@ export type Method = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
 export interface Config {
   headers?: Record<string, string>;
   body?: Record<string, any>;
+  params?: Record<string, any>;
   req?: IncomingMessage;
 }
 

@@ -7,7 +7,6 @@ export const endpoints = {
   },
   companies: {
     index: 'companies',
-    me: 'companies/me',
     one: 'companies/:id',
   },
   socialLinks: {

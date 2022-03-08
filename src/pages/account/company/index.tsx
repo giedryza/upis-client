@@ -10,6 +10,7 @@ import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
 import { Company } from 'components/account';
 import { companiesKeys } from 'domain/companies/companies.keys';
 import { adapters } from 'domain/companies/companies.adapters';
+import { CompaniesFilters } from 'domain/companies/companies.types';
 
 const CompanyPage: NextPage = () => {
   const { t } = useTranslation();
@@ -51,9 +52,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   }
 
   const queryClient = new QueryClient();
+  const filters: CompaniesFilters = { user: session.user.id };
 
-  await queryClient.prefetchQuery(companiesKeys.detail('me'), () =>
-    adapters.getMyCompany({ req })
+  await queryClient.prefetchQuery(companiesKeys.list(filters), () =>
+    adapters.getCompanies({ params: filters })
   );
 
   return {

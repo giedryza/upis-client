@@ -1,5 +1,8 @@
 @use 'styles/mixins' as *;
 
 .content {
-  @include spacing(y, 3rem);
+  padding: 2rem;
+  background-color: var(--color-white);
+
+  @include spacing(y, 2rem);
 }
