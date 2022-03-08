@@ -1,4 +1,5 @@
 import { getSession } from 'next-auth/react';
+import { stringifyUrl } from 'query-string';
 
 import { ApiError } from 'tools/libs/errors/api.error';
 import { isServer } from 'tools/common/is-server';
@@ -15,7 +16,12 @@ export class Http<T = any> {
   constructor(private endpoint: string, private config: Config = {}) {}
 
   private get url(): string {
-    return `${this.#baseUrl}/${this.endpoint}`;
+    const { params } = this.config;
+
+    return stringifyUrl({
+      url: `${this.#baseUrl}/${this.endpoint}`,
+      query: params,
+    });
   }
 
   private get defaultHeaders(): Record<string, string> {

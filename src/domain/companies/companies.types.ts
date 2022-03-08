@@ -34,3 +34,7 @@ export interface Company {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface CompaniesFilters {
+  user?: string;
+}

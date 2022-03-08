@@ -44,6 +44,18 @@
       }
     }
   },
+  "companies": {
+    "title": "Įmonė",
+    "table": {
+      "name": "Pavadinimas",
+      "email": "El. paštas",
+      "phone": "Telefonas",
+      "website": "Tinklapis"
+    },
+    "actions": {
+      "add": "Pridėti įmonę"
+    }
+  },
   "company": {
     "title": "Mano įmonė",
     "subtitle": {
@@ -101,6 +113,6 @@
     }
   },
   "tours": {
-    "title": "Mano maršrutai"
+    "title": "Maršrutai"
   }
 }

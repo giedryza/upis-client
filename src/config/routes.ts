@@ -9,8 +9,8 @@ export const routes = {
       index: '/account/profile',
       security: '/account/profile/security',
     },
-    company: {
-      index: '/account/company',
+    companies: {
+      index: '/account/companies',
     },
     tours: {
       index: '/account/tours',

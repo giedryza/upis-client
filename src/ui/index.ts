@@ -9,4 +9,5 @@ export * from './loader';
 export * from './map';
 export * from './portal';
 export * from './select-input';
+export * from './table';
 export * from './text-input';

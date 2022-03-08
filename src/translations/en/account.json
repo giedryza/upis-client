@@ -44,6 +44,18 @@
       }
     }
   },
+  "companies": {
+    "title": "Companies",
+    "table": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "website": "Website"
+    },
+    "actions": {
+      "add": "Add company"
+    }
+  },
   "company": {
     "title": "My company",
     "subtitle": {
@@ -100,6 +112,6 @@
     }
   },
   "tours": {
-    "title": "My tours"
+    "title": "Tours"
   }
 }

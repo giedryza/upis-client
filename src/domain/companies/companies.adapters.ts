@@ -2,16 +2,27 @@ import { IncomingMessage } from 'http';
 
 import { endpoints } from 'config/endpoints';
 import {
+  CompaniesFilters,
   Company,
   SocialLink,
   SocialType,
 } from 'domain/companies/companies.types';
 import { Http } from 'tools/libs/http/http.lib';
-import { Response } from 'tools/libs/http/http.types';
+import { Response, ResponseWithMeta } from 'tools/libs/http/http.types';
+import { Pagination } from 'types/common/pagination';
 
 export const adapters = {
-  getMyCompany: ({ req }: { req?: IncomingMessage } = {}) =>
-    new Http<Response<Company | null>>(endpoints.companies.me, { req }).get(),
+  getCompanies: ({
+    req,
+    params,
+  }: { req?: IncomingMessage; params?: CompaniesFilters } = {}) =>
+    new Http<ResponseWithMeta<Company[], Pagination>>(
+      endpoints.companies.index,
+      {
+        req,
+        params,
+      }
+    ).get(),
   updateCompany: ({
     id,
     form,
