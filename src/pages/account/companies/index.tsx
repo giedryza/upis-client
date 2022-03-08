@@ -7,31 +7,31 @@ import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
-import { Company } from 'components/account';
+import { Companies } from 'components/account';
 import { companiesKeys } from 'domain/companies/companies.keys';
 import { adapters } from 'domain/companies/companies.adapters';
 import { CompaniesFilters } from 'domain/companies/companies.types';
 
-const CompanyPage: NextPage = () => {
+const CompaniesPage: NextPage = () => {
   const { t } = useTranslation();
 
   useProtectedPage();
 
   return (
     <>
-      <AppHead title={t('account:company.title')} />
+      <AppHead title={t('account:companies.title')} />
 
       <MainLayout>
         <AccountPageLayout>
           <Breadcrumbs
             items={[
               { label: t('account:title'), url: routes.account.profile.index },
-              { label: t('account:company.title') },
+              { label: t('account:companies.title') },
             ]}
           />
 
           <AccountLayout>
-            <Company />
+            <Companies />
           </AccountLayout>
         </AccountPageLayout>
       </MainLayout>
@@ -66,4 +66,4 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   };
 };
 
-export default CompanyPage;
+export default CompaniesPage;

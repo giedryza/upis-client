@@ -19,9 +19,9 @@ export const Navigation: VFC = () => {
       url: routes.account.profile.index,
     },
     {
-      label: t('account:company.title'),
+      label: t('account:companies.title'),
       icon: IconName.Kayak,
-      url: routes.account.company.index,
+      url: routes.account.companies.index,
     },
     {
       label: t('account:tours.title'),
