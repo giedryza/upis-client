@@ -18,7 +18,7 @@ export const CompaniesTable: VFC = () => {
       { accessor: 'email', label: t('account:companies.table.email') },
       { accessor: 'phone', label: t('account:companies.table.phone') },
       { accessor: 'website', label: t('account:companies.table.website') },
-      { accessor: 'actions', label: '', align: 'left' },
+      { accessor: 'actions', label: '', align: 'right' },
     ];
   }, [t]);
 
