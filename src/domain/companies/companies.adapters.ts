@@ -23,6 +23,13 @@ export const adapters = {
         params,
       }
     ).get(),
+  getCompany: ({ req, slug }: { req?: IncomingMessage; slug: string }) =>
+    new Http<Response<Company | null>>(
+      endpoints.companies.one.replace(':id', slug),
+      {
+        req,
+      }
+    ).get(),
   updateCompany: ({
     id,
     form,

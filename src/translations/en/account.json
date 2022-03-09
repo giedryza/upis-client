@@ -52,6 +52,31 @@
       "phone": "Phone",
       "website": "Website"
     },
+    "about": {
+      "title": "About",
+      "form": {
+        "name": {
+          "label": "Name"
+        },
+        "description": {
+          "label": "Description"
+        }
+      }
+    },
+    "contacts": {
+      "title": "Contacts",
+      "form": {
+        "email": {
+          "label": "Email"
+        },
+        "phone": {
+          "label": "Phone"
+        },
+        "website": {
+          "label": "Website"
+        }
+      }
+    },
     "actions": {
       "add": "Add company"
     }

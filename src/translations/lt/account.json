@@ -52,6 +52,31 @@
       "phone": "Telefonas",
       "website": "Tinklapis"
     },
+    "about": {
+      "title": "Apie kompaniją",
+      "form": {
+        "name": {
+          "label": "Pavadinimas"
+        },
+        "description": {
+          "label": "Aprašymas"
+        }
+      }
+    },
+    "contacts": {
+      "title": "Kontaktai",
+      "form": {
+        "email": {
+          "label": "El. paštas"
+        },
+        "phone": {
+          "label": "Tel. numeris"
+        },
+        "website": {
+          "label": "Tinklapis"
+        }
+      }
+    },
     "actions": {
       "add": "Pridėti įmonę"
     }
