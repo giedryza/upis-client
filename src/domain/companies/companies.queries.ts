@@ -33,3 +33,16 @@ export const useMyCompanies = (filters: CompaniesFilters = {}) => {
 
   return query;
 };
+
+export const useCompany = (slug: string) => {
+  const query = useQuery(
+    companiesKeys.detail(slug),
+    () => adapters.getCompany({ slug }),
+    {
+      select: ({ data }) => data,
+      enabled: !!slug,
+    }
+  );
+
+  return query;
+};

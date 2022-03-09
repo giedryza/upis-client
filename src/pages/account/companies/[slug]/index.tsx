@@ -6,13 +6,13 @@ import { dehydrate, QueryClient } from 'react-query';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
+import { capitalizeFirstLetter } from 'tools/common/capitalizeFirstLetter';
+import { getRouteParam } from 'tools/common/getRouteParam';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
-import { Companies, CompanyEdit } from 'components/account';
+import { CompanyEdit } from 'components/account';
 import { companiesKeys } from 'domain/companies/companies.keys';
 import { adapters } from 'domain/companies/companies.adapters';
-import { CompaniesFilters } from 'domain/companies/companies.types';
-import { capitalizeFirstLetter } from 'tools/common/capitalizeFirstLetter';
 
 const CompanyEditPage: NextPage = () => {
   const { t } = useTranslation();
@@ -36,7 +36,7 @@ const CompanyEditPage: NextPage = () => {
               },
               {
                 label: capitalizeFirstLetter(
-                  (query.slug as string).split('-').join(' ')
+                  getRouteParam(query.slug).split('-').join(' ')
                 ),
                 url: routes.account.companies.index,
               },
@@ -52,7 +52,10 @@ const CompanyEditPage: NextPage = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  params,
+}) => {
   const session = await getSession({ req });
 
   if (!session) {
@@ -64,17 +67,17 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     };
   }
 
-  // const queryClient = new QueryClient();
-  // const filters: CompaniesFilters = { user: session.user.id };
+  const queryClient = new QueryClient();
+  const slug = getRouteParam(params?.slug);
 
-  // await queryClient.prefetchQuery(companiesKeys.list(filters), () =>
-  //   adapters.getCompanies({ params: filters })
-  // );
+  await queryClient.prefetchQuery(companiesKeys.detail(slug), () =>
+    adapters.getCompany({ req, slug })
+  );
 
   return {
     props: {
       session,
-      // dehydratedState: dehydrate(queryClient),
+      dehydratedState: dehydrate(queryClient),
     },
   };
 };

@@ -51,6 +51,7 @@ export const CompaniesTable: VFC = () => {
               icon={IconName.Pencil}
               size="xs"
               variant="secondary"
+              url={routes.account.companies.one.replace(':slug', company.slug)}
               attributes={{ title: t('common:actions.edit') }}
             />
           </div>
