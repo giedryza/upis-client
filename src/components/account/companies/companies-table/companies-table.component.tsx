@@ -1,6 +1,7 @@
 import { useMemo, VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
+import { routes } from 'config/routes';
 import { Button, IconName, Table, TableProps } from 'ui';
 import { useMyCompanies } from 'domain/companies/companies.queries';
 
@@ -26,7 +27,15 @@ export const CompaniesTable: VFC = () => {
     return companies.map((company) => ({
       id: company._id,
       content: {
-        name: <Button label={company.name} variant="link" size="sm" />,
+        name: (
+          <Button
+            label={company.name}
+            variant="link"
+            size="sm"
+            textAlign="left"
+            url={routes.account.companies.one.replace(':slug', company.slug)}
+          />
+        ),
         email: company.email,
         phone: company.phone,
         website: company.website,
