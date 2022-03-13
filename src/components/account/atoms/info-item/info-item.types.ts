@@ -1,5 +1,5 @@
 export interface Props {
   label: string;
-  value: string;
+  value?: string;
   fallback?: string | null;
 }
