@@ -14,6 +14,7 @@ export const routes = {
       one: {
         index: '/account/companies/:slug',
         about: '/account/companies/:slug/about',
+        contacts: '/account/companies/:slug/contacts',
       },
     },
     tours: {

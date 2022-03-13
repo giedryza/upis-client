@@ -65,12 +65,14 @@
 
   > input {
     height: 2.25em;
+
     line-height: 1;
   }
 
   > textarea {
-    resize: vertical;
     line-height: 1.6;
+
+    resize: vertical;
   }
 
   > label {

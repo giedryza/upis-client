@@ -12,6 +12,7 @@ export interface Props {
     | 'email'
     | 'password'
     | 'date'
+    | 'url'
     | 'phone';
   inputmode?: JSX.IntrinsicElements['input']['inputMode'];
   disabled?: boolean;

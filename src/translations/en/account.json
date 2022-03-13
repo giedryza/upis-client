@@ -70,10 +70,16 @@
       "title": "Contacts",
       "form": {
         "email": {
-          "label": "Email"
+          "label": "Email",
+          "error": {
+            "empty": "Enter email"
+          }
         },
         "phone": {
-          "label": "Phone"
+          "label": "Phone",
+          "error": {
+            "empty": "Enter phone"
+          }
         },
         "website": {
           "label": "Website"
