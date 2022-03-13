@@ -1,8 +1,8 @@
-import { GetServerSideProps, NextPage } from 'next';
-import useTranslation from 'next-translate/useTranslation';
+import { NextPage, GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { dehydrate, QueryClient } from 'react-query';
+import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
@@ -10,13 +10,15 @@ import { capitalizeFirstLetter } from 'tools/common/capitalizeFirstLetter';
 import { getRouteParam } from 'tools/common/getRouteParam';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
-import { Company } from 'components/account';
+import { CompanyEditAbout } from 'components/account';
 import { companiesKeys } from 'domain/companies/companies.keys';
 import { adapters } from 'domain/companies/companies.adapters';
 
-const CompanyPage: NextPage = () => {
+const CompanyEditAboutPage: NextPage = () => {
   const { t } = useTranslation();
   const { query } = useRouter();
+
+  const slug = getRouteParam(query.slug);
 
   useProtectedPage();
 
@@ -34,15 +36,17 @@ const CompanyPage: NextPage = () => {
                 url: routes.account.companies.index,
               },
               {
-                label: capitalizeFirstLetter(
-                  getRouteParam(query.slug).split('-').join(' ')
-                ),
+                label: capitalizeFirstLetter(slug.split('-').join(' ')),
+                url: routes.account.companies.one.index.replace(':slug', slug),
+              },
+              {
+                label: t('account:companies.about.title'),
               },
             ]}
           />
 
           <AccountLayout>
-            <Company />
+            <CompanyEditAbout />
           </AccountLayout>
         </AccountPageLayout>
       </MainLayout>
@@ -80,4 +84,4 @@ export const getServerSideProps: GetServerSideProps = async ({
   };
 };
 
-export default CompanyPage;
+export default CompanyEditAboutPage;

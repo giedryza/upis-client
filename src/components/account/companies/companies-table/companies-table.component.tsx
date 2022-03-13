@@ -33,7 +33,10 @@ export const CompaniesTable: VFC = () => {
             variant="link"
             size="sm"
             textAlign="left"
-            url={routes.account.companies.one.replace(':slug', company.slug)}
+            url={routes.account.companies.one.index.replace(
+              ':slug',
+              company.slug
+            )}
           />
         ),
         email: company.email,
@@ -51,7 +54,10 @@ export const CompaniesTable: VFC = () => {
               icon={IconName.Pencil}
               size="xs"
               variant="secondary"
-              url={routes.account.companies.one.replace(':slug', company.slug)}
+              url={routes.account.companies.one.index.replace(
+                ':slug',
+                company.slug
+              )}
               attributes={{ title: t('common:actions.edit') }}
             />
           </div>

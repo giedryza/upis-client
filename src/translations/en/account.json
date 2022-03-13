@@ -56,7 +56,10 @@
       "title": "About",
       "form": {
         "name": {
-          "label": "Name"
+          "label": "Name",
+          "error": {
+            "empty": "Enter company name"
+          }
         },
         "description": {
           "label": "Description"

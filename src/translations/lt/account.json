@@ -56,7 +56,10 @@
       "title": "Apie kompaniją",
       "form": {
         "name": {
-          "label": "Pavadinimas"
+          "label": "Pavadinimas",
+          "error": {
+            "empty": "Įveskite įmonės pavadinimą"
+          }
         },
         "description": {
           "label": "Aprašymas"
