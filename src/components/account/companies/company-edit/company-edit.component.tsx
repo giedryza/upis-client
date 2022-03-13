@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { IconName } from 'ui';
 import { getRouteParam } from 'tools/common/getRouteParam';
 import { useCompany } from 'domain/companies/companies.queries';
-import { InfoBlock, InfoItem } from 'components/account/atoms';
+import { InfoBlock, InfoItem, MapItem } from 'components/account/atoms';
 
 import styles from './company-edit.module.scss';
 import { FormName } from './form-name/form-name.component';
@@ -25,6 +25,18 @@ export const CompanyEdit: VFC = () => {
 
   if (!company) return null;
 
+  const {
+    name,
+    description,
+    email,
+    phone,
+    website,
+    address,
+    location: {
+      coordinates: [lng, lat],
+    },
+  } = company;
+
   return (
     <div className={styles.content}>
       <InfoBlock
@@ -34,11 +46,11 @@ export const CompanyEdit: VFC = () => {
       >
         <InfoItem
           label={t('account:companies.about.form.name.label')}
-          value={company.name}
+          value={name}
         />
         <InfoItem
           label={t('account:companies.about.form.description.label')}
-          value={company.description}
+          value={description}
         />
       </InfoBlock>
 
@@ -48,23 +60,31 @@ export const CompanyEdit: VFC = () => {
       >
         <InfoItem
           label={t('account:companies.contacts.form.email.label')}
-          value={company.email}
+          value={email}
         />
         <InfoItem
           label={t('account:companies.contacts.form.phone.label')}
-          value={company.phone}
+          value={phone}
         />
         <InfoItem
           label={t('account:companies.contacts.form.website.label')}
-          value={company.website}
+          value={website}
         />
       </InfoBlock>
-      {/* 
-      <div className={styles.block}>
-        <h2>{t('account:company.subtitle.location')}</h2>
-        <Location companyId={company._id} />
-      </div>
 
+      <InfoBlock
+        title={t('account:companies.location.title')}
+        icon={IconName.Pin}
+        columns={1}
+      >
+        <InfoItem
+          label={t('account:companies.location.form.address.label')}
+          value={address}
+        />
+
+        <MapItem lat={lat} lng={lng} />
+      </InfoBlock>
+      {/* 
       <div className={styles.block}>
         <h2>{t('account:company.subtitle.socialLinks')}</h2>
         <SocialLinks companyId={company._id} />

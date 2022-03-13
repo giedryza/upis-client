@@ -8,9 +8,9 @@ export const FORM_SOCIAL_LINK_INITIAL_VALUES: FormSocialLinkValues = {
 };
 
 export const ICON_BY_SOCIAL_LINK_TYPE: Record<SocialType, IconName> = {
-  [SocialType.Facebook]: IconName.Facebook,
-  [SocialType.Instagram]: IconName.Instagram,
-  [SocialType.Youtube]: IconName.Youtube,
-  [SocialType.Linkedin]: IconName.Linkedin,
-  [SocialType.Twitter]: IconName.Twitter,
+  [SocialType.Facebook]: IconName.LogoFacebook,
+  [SocialType.Instagram]: IconName.LogoInstagram,
+  [SocialType.Youtube]: IconName.LogoYoutube,
+  [SocialType.Linkedin]: IconName.LogoLinkedin,
+  [SocialType.Twitter]: IconName.LogoTwitter,
 };

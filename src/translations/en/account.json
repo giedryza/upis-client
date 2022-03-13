@@ -77,6 +77,14 @@
         }
       }
     },
+    "location": {
+      "title": "Location",
+      "form": {
+        "address": {
+          "label": "Address"
+        }
+      }
+    },
     "actions": {
       "add": "Add company"
     }

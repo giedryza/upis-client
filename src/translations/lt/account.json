@@ -77,6 +77,14 @@
         }
       }
     },
+    "location": {
+      "title": "Lokacija",
+      "form": {
+        "address": {
+          "label": "Adresas"
+        }
+      }
+    },
     "actions": {
       "add": "Pridėti įmonę"
     }
