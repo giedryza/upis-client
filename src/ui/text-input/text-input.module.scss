@@ -19,12 +19,6 @@
 
     transition: var(--transition-duration-md) box-shadow;
 
-    &:not(textarea) {
-      height: 2.25em;
-
-      line-height: 1;
-    }
-
     &[readonly] {
       color: var(--color-grey-25);
 
@@ -69,8 +63,14 @@
     }
   }
 
+  > input {
+    height: 2.25em;
+    line-height: 1;
+  }
+
   > textarea {
     resize: vertical;
+    line-height: 1.6;
   }
 
   > label {

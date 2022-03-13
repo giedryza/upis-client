@@ -3,12 +3,16 @@ import { useMutation, useQueryClient } from 'react-query';
 import { adapters } from 'domain/companies/companies.adapters';
 import { companiesKeys } from 'domain/companies/companies.keys';
 
-export const useUpdateCompany = () => {
+export const useUpdateCompany = ({
+  onSuccess,
+}: { onSuccess?: () => void } = {}) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(adapters.updateCompany, {
     onSuccess: () => {
       queryClient.invalidateQueries(companiesKeys.details());
+
+      onSuccess?.();
     },
   });
 
