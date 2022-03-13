@@ -11,11 +11,11 @@ import {
   INITIAL_VALUES,
   PASSWORD_MAX_LENGTH,
   PASSWORD_MIN_LENGTH,
-} from './security.constants';
-import { Values } from './security.types';
-import styles from './security.module.scss';
+} from './profile-edit-security.constants';
+import { Values } from './profile-edit-security.types';
+import styles from './profile-edit-security.module.scss';
 
-export const Security: VFC = () => {
+export const ProfileEditSecurity: VFC = () => {
   const { t } = useTranslation();
 
   const {
@@ -40,7 +40,7 @@ export const Security: VFC = () => {
     <div className={styles.content}>
       <InfoBlock
         title={t('account:security.title')}
-        icon={IconName.Gear}
+        icon={IconName.Lock}
         columns={1}
       >
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>

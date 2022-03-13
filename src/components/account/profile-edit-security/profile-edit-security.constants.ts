@@ -1,4 +1,4 @@
-import { Values } from './security.types';
+import { Values } from './profile-edit-security.types';
 
 export const INITIAL_VALUES: Values = {
   currentPassword: '',

@@ -4,9 +4,9 @@ import { About } from './about';
 import { Contacts } from './contacts';
 import { Location } from './location';
 import { SocialLinks } from './social-links';
-import styles from './company-preview.module.scss';
+import styles from './company.module.scss';
 
-export const CompanyPreview: VFC = () => {
+export const Company: VFC = () => {
   return (
     <div className={styles.content}>
       <About />
