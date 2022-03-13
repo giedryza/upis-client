@@ -6,9 +6,9 @@ import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
-import { Security } from 'components/account';
+import { ProfileEditSecurity } from 'components/account';
 
-const SecurityPage: NextPage = () => {
+const ProfileEditSecurityPage: NextPage = () => {
   const { t } = useTranslation();
 
   useProtectedPage();
@@ -36,7 +36,7 @@ const SecurityPage: NextPage = () => {
           />
 
           <AccountLayout>
-            <Security />
+            <ProfileEditSecurity />
           </AccountLayout>
         </AccountPageLayout>
       </MainLayout>
@@ -63,4 +63,4 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   };
 };
 
-export default SecurityPage;
+export default ProfileEditSecurityPage;
