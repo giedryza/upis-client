@@ -1,9 +1,6 @@
 import { VFC } from 'react';
 
-import { About } from './about';
-import { Contacts } from './contacts';
-import { Location } from './location';
-import { SocialLinks } from './social-links';
+import { About, Contacts, Location, SocialLinks } from './atoms';
 import styles from './company.module.scss';
 
 export const Company: VFC = () => {
