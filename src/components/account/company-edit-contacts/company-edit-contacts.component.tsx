@@ -71,6 +71,7 @@ export const CompanyEditContacts: VFC = () => {
                 },
               })}
               label={t('account:companies.contacts.form.email.label')}
+              placeholder="jonas@doe.com"
               type="email"
               error={errors.email?.message}
             />
@@ -92,6 +93,7 @@ export const CompanyEditContacts: VFC = () => {
             <TextInput
               {...register('website')}
               label={t('account:companies.contacts.form.website.label')}
+              placeholder="https://tinklapis.lt"
               type="url"
               error={errors.website?.message}
             />
