@@ -70,10 +70,16 @@
       "title": "Kontaktai",
       "form": {
         "email": {
-          "label": "El. paštas"
+          "label": "El. paštas",
+          "error": {
+            "empty": "Įveskite el. paštą"
+          }
         },
         "phone": {
-          "label": "Tel. numeris"
+          "label": "Tel. numeris",
+          "error": {
+            "empty": "Įveskite tel. numerį"
+          }
         },
         "website": {
           "label": "Tinklapis"
