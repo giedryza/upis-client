@@ -85,6 +85,13 @@
         }
       }
     },
+    "socialNetworks": {
+      "title": "Socialiniai tinklai",
+      "table": {
+        "type": "Tinklas",
+        "url": "Adresas"
+      }
+    },
     "actions": {
       "add": "Pridėti įmonę"
     }

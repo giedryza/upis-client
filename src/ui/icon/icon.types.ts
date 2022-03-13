@@ -26,6 +26,7 @@ export enum IconName {
   LogoTwitter = 'logo-twitter',
   LogoYoutube = 'logo-youtube',
   Mail = 'mail',
+  Network = 'network',
   Path = 'path',
   Pencil = 'pencil',
   Phone = 'phone',

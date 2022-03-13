@@ -8,7 +8,7 @@ export const useUpdateCompany = () => {
 
   const mutation = useMutation(adapters.updateCompany, {
     onSuccess: () => {
-      queryClient.invalidateQueries(companiesKeys.detail('me'));
+      queryClient.invalidateQueries(companiesKeys.details());
     },
   });
 
@@ -20,7 +20,7 @@ export const useCreateCompany = () => {
 
   const mutation = useMutation(adapters.createCompany, {
     onSuccess: () => {
-      queryClient.invalidateQueries(companiesKeys.detail('me'));
+      queryClient.invalidateQueries(companiesKeys.details());
     },
   });
 
@@ -32,7 +32,7 @@ export const useUpdateLocation = () => {
 
   const mutation = useMutation(adapters.updateLocation, {
     onSuccess: () => {
-      queryClient.invalidateQueries(companiesKeys.detail('me'));
+      queryClient.invalidateQueries(companiesKeys.details());
     },
   });
 
@@ -44,7 +44,7 @@ export const useAddSocialLink = () => {
 
   const mutation = useMutation(adapters.addSocialLink, {
     onSuccess: () => {
-      queryClient.invalidateQueries(companiesKeys.detail('me'));
+      queryClient.invalidateQueries(companiesKeys.details());
     },
   });
 
@@ -56,7 +56,7 @@ export const useUpdateSocialLink = () => {
 
   const mutation = useMutation(adapters.updateSocialLink, {
     onSuccess: () => {
-      queryClient.invalidateQueries(companiesKeys.detail('me'));
+      queryClient.invalidateQueries(companiesKeys.details());
     },
   });
 
@@ -68,7 +68,7 @@ export const useDeleteSocialLink = () => {
 
   const mutation = useMutation(adapters.deleteSocialLink, {
     onSuccess: () => {
-      queryClient.invalidateQueries(companiesKeys.detail('me'));
+      queryClient.invalidateQueries(companiesKeys.details());
     },
   });
 

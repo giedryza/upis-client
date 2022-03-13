@@ -85,6 +85,13 @@
         }
       }
     },
+    "socialNetworks": {
+      "title": "Social networks",
+      "table": {
+        "type": "Network",
+        "url": "Url"
+      }
+    },
     "actions": {
       "add": "Add company"
     }
