@@ -1,6 +1,8 @@
 import { useQuery } from 'react-query';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
+import { getRouteParam } from 'tools/common/getRouteParam';
 import { companiesKeys } from 'domain/companies/companies.keys';
 import { adapters } from 'domain/companies/companies.adapters';
 import { CompaniesFilters } from 'domain/companies/companies.types';
@@ -43,6 +45,15 @@ export const useCompany = (slug: string) => {
       enabled: !!slug,
     }
   );
+
+  return query;
+};
+
+export const useActiveCompany = () => {
+  const { query: params } = useRouter();
+  const slug = getRouteParam(params?.slug);
+
+  const query = useCompany(slug);
 
   return query;
 };
