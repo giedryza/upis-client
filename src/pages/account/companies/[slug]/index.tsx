@@ -10,11 +10,11 @@ import { capitalizeFirstLetter } from 'tools/common/capitalizeFirstLetter';
 import { getRouteParam } from 'tools/common/getRouteParam';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
-import { CompanyPreview } from 'components/account';
+import { Company } from 'components/account';
 import { companiesKeys } from 'domain/companies/companies.keys';
 import { adapters } from 'domain/companies/companies.adapters';
 
-const CompanyPreviewPage: NextPage = () => {
+const CompanyPage: NextPage = () => {
   const { t } = useTranslation();
 
   useProtectedPage();
@@ -44,7 +44,7 @@ const CompanyPreviewPage: NextPage = () => {
           />
 
           <AccountLayout>
-            <CompanyPreview />
+            <Company />
           </AccountLayout>
         </AccountPageLayout>
       </MainLayout>
@@ -82,4 +82,4 @@ export const getServerSideProps: GetServerSideProps = async ({
   };
 };
 
-export default CompanyPreviewPage;
+export default CompanyPage;
