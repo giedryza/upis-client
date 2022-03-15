@@ -1,7 +1,6 @@
 import { VFC } from 'react';
 
-import { CompaniesTable } from 'components/account';
-
+import { CompaniesTable } from './atoms';
 import styles from './companies.module.scss';
 
 export const Companies: VFC = () => {
