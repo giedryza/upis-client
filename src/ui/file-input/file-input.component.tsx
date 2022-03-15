@@ -3,8 +3,7 @@ import { useDropzone } from 'react-dropzone';
 import useTranslation from 'next-translate/useTranslation';
 
 import { Button, Icon, IconName } from 'ui';
-import { getFiletype } from 'tools/common/files';
-import { formatBytes } from 'tools/common/format-bytes';
+import { getFiletype, formatBytes } from 'tools/common';
 
 import { FileIcon } from './atoms';
 import { DragState, Props } from './file-input.types';

@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 
 import { routes } from 'config/routes';
-import { getRouteParam } from 'tools/common/get-route-param';
+import { getRouteParam } from 'tools/common';
 import {
   Button,
   IconName,

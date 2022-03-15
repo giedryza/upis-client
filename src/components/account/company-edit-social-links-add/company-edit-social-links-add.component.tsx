@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, IconName, SelectInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
-import { getRouteParam } from 'tools/common/get-route-param';
+import { getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import { useAddSocialLink } from 'domain/companies/companies.mutations';
 import { useActiveCompany } from 'domain/companies/companies.queries';

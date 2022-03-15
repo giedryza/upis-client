@@ -6,8 +6,7 @@ import { dehydrate, QueryClient } from 'react-query';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { capitalizeFirstLetter } from 'tools/common/capitalize-first-letter';
-import { getRouteParam } from 'tools/common/get-route-param';
+import { capitalizeFirstLetter, getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
 import { Company } from 'components/account';

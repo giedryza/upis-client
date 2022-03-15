@@ -1,4 +1,4 @@
-import { isServer } from 'tools/common/is-server';
+import { isServer } from 'tools/common';
 
 class Axe {
   private get isAvailable() {
