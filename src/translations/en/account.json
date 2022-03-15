@@ -126,61 +126,6 @@
       "add": "Add company"
     }
   },
-  "company": {
-    "title": "My company",
-    "subtitle": {
-      "about": "About",
-      "contacts": "Contacts",
-      "socialLinks": "Social Links",
-      "location": "Location"
-    },
-    "actions": {
-      "addSocialLink": "Add Social Link"
-    },
-    "form": {
-      "name": {
-        "label": "Name",
-        "errors": {
-          "empty": "Enter company name"
-        }
-      },
-      "email": {
-        "label": "Email",
-        "errors": {
-          "empty": "Enter company email"
-        }
-      },
-      "phone": {
-        "label": "Phone",
-        "errors": {
-          "empty": "Enter company phone"
-        }
-      },
-      "description": {
-        "label": "About the Company"
-      },
-      "website": {
-        "label": "Website",
-        "errors": {
-          "invalid": "Enter valid url"
-        }
-      },
-      "socialLinks": {
-        "type": {
-          "label": "Network"
-        },
-        "url": {
-          "label": "Url",
-          "errors": {
-            "empty": "Enter url"
-          }
-        }
-      },
-      "address": {
-        "label": "Address"
-      }
-    }
-  },
   "tours": {
     "title": "Tours"
   }

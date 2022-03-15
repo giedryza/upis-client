@@ -126,62 +126,6 @@
       "add": "Pridėti įmonę"
     }
   },
-  "company": {
-    "title": "Mano įmonė",
-    "subtitle": {
-      "about": "Apie kompaniją",
-      "contacts": "Kontaktai",
-      "socialLinks": "Socialiniai tinklai",
-      "location": "Vieta"
-    },
-    "actions": {
-      "addSocialLink": "Pridėti socialinį tinklą"
-    },
-    "form": {
-      "name": {
-        "label": "Pavadinimas",
-        "errors": {
-          "empty": "Įveskite įmonės pavadinimą"
-        }
-      },
-      "email": {
-        "label": "El. paštas",
-        "errors": {
-          "empty": "Įveskite įmonės el. paštą"
-        }
-      },
-      "phone": {
-        "label": "Tel. numeris",
-        "errors": {
-          "empty": "Įveskite įmonės tel. numerį"
-        }
-      },
-      "description": {
-        "label": "Apie kompaniją",
-        "errors": {}
-      },
-      "website": {
-        "label": "Tinklapis",
-        "errors": {
-          "invalid": "Įveskite tinkamą adresą"
-        }
-      },
-      "socialLinks": {
-        "type": {
-          "label": "Tinklas"
-        },
-        "url": {
-          "label": "Adresas",
-          "errors": {
-            "empty": "Įveskite adresą"
-          }
-        }
-      },
-      "address": {
-        "label": "Adresas"
-      }
-    }
-  },
   "tours": {
     "title": "Maršrutai"
   }
