@@ -63,14 +63,16 @@ export const SocialLinks: VFC = () => {
                 attributes={{
                   title: t('common:actions.delete'),
                   disabled: isDeleteSocialLinkLoading,
-                  onClick: () =>
-                    deleteSocialLink({ socialLinkId: socialLink._id }),
+                  onClick: () => deleteSocialLink({ id: socialLink._id }),
                 }}
               />
               <Button
                 icon={IconName.Pencil}
                 size="xs"
                 variant="secondary"
+                url={routes.account.companies.one.socialLinks.one
+                  .replace(':slug', slug)
+                  .replace(':id', socialLink._id)}
                 attributes={{ title: t('common:actions.edit') }}
               />
             </div>
@@ -78,7 +80,7 @@ export const SocialLinks: VFC = () => {
         },
       })) ?? []
     );
-  }, [company, t, deleteSocialLink, isDeleteSocialLinkLoading]);
+  }, [company, t, slug, deleteSocialLink, isDeleteSocialLinkLoading]);
 
   return (
     <InfoBlock

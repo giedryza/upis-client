@@ -93,7 +93,7 @@ export const CompanyEditContacts: VFC = () => {
             <TextInput
               {...register('website')}
               label={t('account:companies.contacts.form.website.label')}
-              placeholder="https://tinklapis.lt"
+              placeholder="https://upis.lt"
               type="url"
               error={errors.website?.message}
             />

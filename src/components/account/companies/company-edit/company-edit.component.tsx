@@ -66,8 +66,7 @@ export const CompanyEdit: VFC = () => {
                 attributes={{
                   title: t('common:actions.delete'),
                   disabled: isDeleteSocialLinkLoading,
-                  onClick: () =>
-                    deleteSocialLink({ socialLinkId: socialLink._id }),
+                  onClick: () => deleteSocialLink({ id: socialLink._id }),
                 }}
               />
               <Button

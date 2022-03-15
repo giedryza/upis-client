@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { useEffect, VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -7,15 +7,15 @@ import { Button, IconName, SelectInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { getRouteParam } from 'tools/common/getRouteParam';
 import { InfoBlock } from 'components/account/atoms';
-import { useAddSocialLink } from 'domain/companies/companies.mutations';
-import { useActiveCompany } from 'domain/companies/companies.queries';
+import { useUpdateSocialLink } from 'domain/companies/companies.mutations';
+import { useActiveSocialLink } from 'domain/companies/companies.queries';
 import { SocialType } from 'domain/companies/companies.types';
 
-import { Values } from './company-edit-social-links-add.types';
-import { INITIAL_VALUES } from './company-edit-social-links-add.constants';
-import styles from './company-edit-social-links-add.module.scss';
+import { Values } from './company-edit-social-links-edit.types';
+import { INITIAL_VALUES } from './company-edit-social-links-edit.constants';
+import styles from './company-edit-social-links-edit.module.scss';
 
-export const CompanyEditSocialLinksAdd: VFC = () => {
+export const CompanyEditSocialLinksEdit: VFC = () => {
   const { t } = useTranslation();
   const { query, push } = useRouter();
 
@@ -24,24 +24,32 @@ export const CompanyEditSocialLinksAdd: VFC = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isDirty },
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
   });
 
-  const { data: company } = useActiveCompany();
-  const { mutate: addSocialLink, isLoading } = useAddSocialLink({
+  const { data: socialLink } = useActiveSocialLink();
+  const { mutate: updateSocialLink, isLoading } = useUpdateSocialLink({
     onSuccess: () => {
       push(routes.account.companies.one.index.replace(':slug', slug));
     },
   });
 
+  useEffect(() => {
+    reset({
+      type: socialLink?.type,
+      url: socialLink?.url,
+    });
+  }, [reset, socialLink]);
+
   const onSubmit: SubmitHandler<Values> = ({ type, url }) => {
-    const companyId = company?._id;
+    const id = socialLink?._id;
 
-    if (!companyId) return;
+    if (!id) return;
 
-    addSocialLink({ companyId, form: { type, url } });
+    updateSocialLink({ id, form: { type, url } });
   };
 
   return (
@@ -95,7 +103,7 @@ export const CompanyEditSocialLinksAdd: VFC = () => {
             />
 
             <Button
-              label={t('common:actions.add')}
+              label={t('common:actions.save')}
               variant="primary"
               size="sm"
               attributes={{

@@ -31,11 +31,11 @@ export const FormSocialLink: VFC<ComponentProps> = ({ socialLinkId }) => {
   const { mutate: deleteSocialLink } = useDeleteSocialLink();
 
   const onSubmit = ({ type, url }: FormSocialLinkValues) => {
-    updateSocialLink({ form: { type, url }, socialLinkId });
+    updateSocialLink({ form: { type, url }, id: socialLinkId });
   };
 
   const onDelete = () => {
-    deleteSocialLink({ socialLinkId });
+    deleteSocialLink({ id: socialLinkId });
   };
 
   const { handleSubmit, refs, errorMessages, isDisabled } = useFormSocialLink(
