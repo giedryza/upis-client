@@ -45,7 +45,11 @@
     }
   },
   "companies": {
-    "title": "Įmonės",
+    "title": {
+      "one": "Įmonė",
+      "other": "Įmonių",
+      "few": "Įmonės"
+    },
     "table": {
       "name": "Pavadinimas",
       "email": "El. paštas",

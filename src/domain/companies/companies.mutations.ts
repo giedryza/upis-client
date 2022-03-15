@@ -18,11 +18,14 @@ export const useUpdateCompany = ({
   return mutation;
 };
 
-export const useCreateCompany = () => {
+export const useCreateCompany = ({
+  onSuccess,
+}: { onSuccess?: () => void } = {}) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(adapters.createCompany, {
     onSuccess: () => {
+      onSuccess?.();
       queryClient.invalidateQueries(companiesKeys.details());
     },
   });

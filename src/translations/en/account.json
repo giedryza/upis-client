@@ -45,7 +45,11 @@
     }
   },
   "companies": {
-    "title": "Companies",
+    "title": {
+      "one": "Company",
+      "other": "Companies",
+      "few": "Companies"
+    },
     "table": {
       "name": "Name",
       "email": "Email",
