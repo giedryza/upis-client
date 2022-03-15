@@ -1,0 +1,36 @@
+@use 'styles/mixins' as *;
+
+.content {
+  @include spacing(y, 2rem);
+}
+
+.form {
+  width: 100%;
+
+  @include spacing(y, 2rem);
+}
+
+.fieldset {
+  @include spacing(y, 1rem);
+}
+
+.actions {
+  text-align: right;
+
+  @include spacing(x, 1rem);
+}
+
+.mapContainer {
+  @include spacing(y, 0.5rem);
+}
+
+.info {
+  color: var(--color-text);
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+.map {
+  width: 100%;
+  height: 50rem;
+}

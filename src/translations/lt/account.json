@@ -45,7 +45,7 @@
     }
   },
   "companies": {
-    "title": "Įmonė",
+    "title": "Įmonės",
     "table": {
       "name": "Pavadinimas",
       "email": "El. paštas",
@@ -92,6 +92,9 @@
         "address": {
           "label": "Adresas"
         }
+      },
+      "map": {
+        "info": "Tempdami žymeklį pasirinkite lokaciją"
       }
     },
     "socialNetworks": {

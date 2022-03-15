@@ -11,7 +11,7 @@
     "edit": "Redaguoti",
     "delete": "Ištrinti",
     "next": "Toliau",
-    "enterAddress": "Įveskite adresą"
+    "enterAddress": "Ieškoti adreso"
   },
   "components": {
     "fileInput": {

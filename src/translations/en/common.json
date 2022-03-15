@@ -11,7 +11,7 @@
     "edit": "Edit",
     "delete": "Delete",
     "next": "Next",
-    "enterAddress": "Enter address"
+    "enterAddress": "Search address"
   },
   "components": {
     "fileInput": {

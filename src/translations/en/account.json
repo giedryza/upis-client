@@ -92,6 +92,9 @@
         "address": {
           "label": "Address"
         }
+      },
+      "map": {
+        "info": "Move marker to select location"
       }
     },
     "socialNetworks": {
