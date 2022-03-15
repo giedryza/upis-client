@@ -6,8 +6,8 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { capitalizeFirstLetter } from 'tools/common/capitalizeFirstLetter';
-import { getRouteParam } from 'tools/common/getRouteParam';
+import { capitalizeFirstLetter } from 'tools/common/capitalize-first-letter';
+import { getRouteParam } from 'tools/common/get-route-param';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
 import { CompanyEditLocation } from 'components/account';

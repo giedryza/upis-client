@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
-import { getRouteParam } from 'tools/common/getRouteParam';
+import { getRouteParam } from 'tools/common/get-route-param';
 import { companiesKeys } from 'domain/companies/companies.keys';
 import { adapters } from 'domain/companies/companies.adapters';
 import { CompaniesFilters } from 'domain/companies/companies.types';
