@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 
 import { IconName } from 'ui';
-import { getRouteParam } from 'tools/common/getRouteParam';
+import { getRouteParam } from 'tools/common/get-route-param';
 import { InfoBlock, InfoItem } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies/companies.queries';
 import { routes } from 'config/routes';

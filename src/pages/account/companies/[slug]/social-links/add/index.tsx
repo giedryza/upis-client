@@ -10,11 +10,11 @@ import { capitalizeFirstLetter } from 'tools/common/capitalize-first-letter';
 import { getRouteParam } from 'tools/common/get-route-param';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
-import { CompanyEditContacts } from 'components/account';
+import { CompanyEditSocialLinksAdd } from 'components/account';
 import { companiesKeys } from 'domain/companies/companies.keys';
 import { adapters } from 'domain/companies/companies.adapters';
 
-const CompanyEditContactsPage: NextPage = () => {
+const CompanyEditSocialLinksAddPage: NextPage = () => {
   const { t } = useTranslation();
   const { query } = useRouter();
 
@@ -40,13 +40,13 @@ const CompanyEditContactsPage: NextPage = () => {
                 url: routes.account.companies.one.index.replace(':slug', slug),
               },
               {
-                label: t('account:companies.contacts.title'),
+                label: t('account:companies.socialLinks.title'),
               },
             ]}
           />
 
           <AccountLayout>
-            <CompanyEditContacts />
+            <CompanyEditSocialLinksAdd />
           </AccountLayout>
         </AccountPageLayout>
       </MainLayout>
@@ -84,4 +84,4 @@ export const getServerSideProps: GetServerSideProps = async ({
   };
 };
 
-export default CompanyEditContactsPage;
+export default CompanyEditSocialLinksAddPage;

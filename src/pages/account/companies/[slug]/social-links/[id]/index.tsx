@@ -6,15 +6,15 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { capitalizeFirstLetter } from 'tools/common/capitalizeFirstLetter';
-import { getRouteParam } from 'tools/common/getRouteParam';
+import { capitalizeFirstLetter } from 'tools/common/capitalize-first-letter';
+import { getRouteParam } from 'tools/common/get-route-param';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
-import { CompanyEditSocialLinksAdd } from 'components/account';
+import { CompanyEditSocialLinksEdit } from 'components/account';
 import { companiesKeys } from 'domain/companies/companies.keys';
 import { adapters } from 'domain/companies/companies.adapters';
 
-const CompanyEditSocialLinksAddPage: NextPage = () => {
+const CompanyEditSocialLinksEditPage: NextPage = () => {
   const { t } = useTranslation();
   const { query } = useRouter();
 
@@ -46,7 +46,7 @@ const CompanyEditSocialLinksAddPage: NextPage = () => {
           />
 
           <AccountLayout>
-            <CompanyEditSocialLinksAdd />
+            <CompanyEditSocialLinksEdit />
           </AccountLayout>
         </AccountPageLayout>
       </MainLayout>
@@ -70,10 +70,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const queryClient = new QueryClient();
-  const slug = getRouteParam(params?.slug);
+  const id = getRouteParam(params?.id);
 
-  await queryClient.prefetchQuery(companiesKeys.detail(slug), () =>
-    adapters.getCompany({ req, slug })
+  await queryClient.prefetchQuery(companiesKeys.detail(id), () =>
+    adapters.getSocialLink({ req, id })
   );
 
   return {
@@ -84,4 +84,4 @@ export const getServerSideProps: GetServerSideProps = async ({
   };
 };
 
-export default CompanyEditSocialLinksAddPage;
+export default CompanyEditSocialLinksEditPage;

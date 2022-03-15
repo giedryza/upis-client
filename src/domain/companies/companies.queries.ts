@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
-import { getRouteParam } from 'tools/common/getRouteParam';
+import { getRouteParam } from 'tools/common/get-route-param';
 import { companiesKeys } from 'domain/companies/companies.keys';
 import { adapters } from 'domain/companies/companies.adapters';
 import { CompaniesFilters } from 'domain/companies/companies.types';
@@ -54,6 +54,28 @@ export const useActiveCompany = () => {
   const slug = getRouteParam(params?.slug);
 
   const query = useCompany(slug);
+
+  return query;
+};
+
+export const useSocialLink = (id: string) => {
+  const query = useQuery(
+    companiesKeys.detail(id),
+    () => adapters.getSocialLink({ id }),
+    {
+      select: ({ data }) => data,
+      enabled: !!id,
+    }
+  );
+
+  return query;
+};
+
+export const useActiveSocialLink = () => {
+  const { query: params } = useRouter();
+  const id = getRouteParam(params?.id);
+
+  const query = useSocialLink(id);
 
   return query;
 };

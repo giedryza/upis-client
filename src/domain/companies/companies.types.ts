@@ -10,6 +10,7 @@ export interface SocialLink {
   _id: string;
   type: SocialType;
   url: string;
+  host: string;
 }
 
 export interface Company {

@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 
 import { routes } from 'config/routes';
-import { getRouteParam } from 'tools/common/getRouteParam';
+import { getRouteParam } from 'tools/common/get-route-param';
 import { Button, Icon, IconName, Table, TableProps } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies/companies.queries';
@@ -63,14 +63,16 @@ export const SocialLinks: VFC = () => {
                 attributes={{
                   title: t('common:actions.delete'),
                   disabled: isDeleteSocialLinkLoading,
-                  onClick: () =>
-                    deleteSocialLink({ socialLinkId: socialLink._id }),
+                  onClick: () => deleteSocialLink({ id: socialLink._id }),
                 }}
               />
               <Button
                 icon={IconName.Pencil}
                 size="xs"
                 variant="secondary"
+                url={routes.account.companies.one.socialLinks.one
+                  .replace(':slug', slug)
+                  .replace(':id', socialLink._id)}
                 attributes={{ title: t('common:actions.edit') }}
               />
             </div>
@@ -78,7 +80,7 @@ export const SocialLinks: VFC = () => {
         },
       })) ?? []
     );
-  }, [company, t, deleteSocialLink, isDeleteSocialLinkLoading]);
+  }, [company, t, slug, deleteSocialLink, isDeleteSocialLinkLoading]);
 
   return (
     <InfoBlock

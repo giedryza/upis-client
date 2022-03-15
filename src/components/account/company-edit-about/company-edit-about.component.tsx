@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, IconName, TextInput } from 'ui';
 import { routes } from 'config/routes';
-import { getRouteParam } from 'tools/common/getRouteParam';
+import { getRouteParam } from 'tools/common/get-route-param';
 import { InfoBlock } from 'components/account/atoms';
 import { useUpdateCompany } from 'domain/companies/companies.mutations';
 import { useActiveCompany } from 'domain/companies/companies.queries';

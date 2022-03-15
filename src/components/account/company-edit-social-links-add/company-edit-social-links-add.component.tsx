@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, IconName, SelectInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
-import { getRouteParam } from 'tools/common/getRouteParam';
+import { getRouteParam } from 'tools/common/get-route-param';
 import { InfoBlock } from 'components/account/atoms';
 import { useAddSocialLink } from 'domain/companies/companies.mutations';
 import { useActiveCompany } from 'domain/companies/companies.queries';
@@ -80,6 +80,7 @@ export const CompanyEditSocialLinksAdd: VFC = () => {
                 },
               })}
               label={t('account:companies.socialLinks.form.url.label')}
+              placeholder="https://upis.lt"
               type="url"
               error={errors.url?.message}
             />

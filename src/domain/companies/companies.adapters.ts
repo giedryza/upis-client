@@ -67,6 +67,13 @@ export const adapters = {
           form.lng && { location: { coordinates: [form.lng, form.lat] } }),
       },
     }).patch(),
+  getSocialLink: ({ req, id }: { req?: IncomingMessage; id: string }) =>
+    new Http<Response<SocialLink>>(
+      endpoints.socialLinks.one.replace(':id', id),
+      {
+        req,
+      }
+    ).get(),
   addSocialLink: ({
     form,
     companyId,
@@ -79,19 +86,19 @@ export const adapters = {
     }).post(),
   updateSocialLink: ({
     form,
-    socialLinkId,
+    id,
   }: {
     form: Partial<{ url: string; type: SocialType }>;
-    socialLinkId: string;
+    id: string;
   }) =>
     new Http<Response<SocialLink>>(
-      endpoints.socialLinks.one.replace(':id', socialLinkId),
+      endpoints.socialLinks.one.replace(':id', id),
       {
         body: form,
       }
     ).patch(),
-  deleteSocialLink: ({ socialLinkId }: { socialLinkId: string }) =>
+  deleteSocialLink: ({ id }: { id: string }) =>
     new Http<Response<SocialLink>>(
-      endpoints.socialLinks.one.replace(':id', socialLinkId)
+      endpoints.socialLinks.one.replace(':id', id)
     ).delete(),
 };

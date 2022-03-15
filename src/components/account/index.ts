@@ -4,6 +4,7 @@ export * from './company-edit-about';
 export * from './company-edit-contacts';
 export * from './company-edit-location';
 export * from './company-edit-social-links-add';
+export * from './company-edit-social-links-edit';
 export * from './profile';
 export * from './profile-edit-security';
 export * from './tours';

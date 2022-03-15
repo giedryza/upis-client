@@ -3,18 +3,19 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, IconName, TextInput } from 'ui';
+import { Button, IconName, SelectInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { getRouteParam } from 'tools/common/get-route-param';
 import { InfoBlock } from 'components/account/atoms';
-import { useUpdateCompany } from 'domain/companies/companies.mutations';
-import { useActiveCompany } from 'domain/companies/companies.queries';
+import { useUpdateSocialLink } from 'domain/companies/companies.mutations';
+import { useActiveSocialLink } from 'domain/companies/companies.queries';
+import { SocialType } from 'domain/companies/companies.types';
 
-import { Values } from './company-edit-contacts.types';
-import { INITIAL_VALUES } from './company-edit-contacts.constants';
-import styles from './company-edit-contacts.module.scss';
+import { Values } from './company-edit-social-links-edit.types';
+import { INITIAL_VALUES } from './company-edit-social-links-edit.constants';
+import styles from './company-edit-social-links-edit.module.scss';
 
-export const CompanyEditContacts: VFC = () => {
+export const CompanyEditSocialLinksEdit: VFC = () => {
   const { t } = useTranslation();
   const { query, push } = useRouter();
 
@@ -29,8 +30,8 @@ export const CompanyEditContacts: VFC = () => {
     defaultValues: INITIAL_VALUES,
   });
 
-  const { data: company } = useActiveCompany();
-  const { mutate: updateCompany, isLoading } = useUpdateCompany({
+  const { data: socialLink } = useActiveSocialLink();
+  const { mutate: updateSocialLink, isLoading } = useUpdateSocialLink({
     onSuccess: () => {
       push(routes.account.companies.one.index.replace(':slug', slug));
     },
@@ -38,64 +39,58 @@ export const CompanyEditContacts: VFC = () => {
 
   useEffect(() => {
     reset({
-      email: company?.email,
-      phone: company?.phone,
-      website: company?.website,
+      type: socialLink?.type,
+      url: socialLink?.url,
     });
-  }, [reset, company]);
+  }, [reset, socialLink]);
 
-  const onSubmit: SubmitHandler<Values> = ({ email, phone, website }) => {
-    const companyId = company?._id;
+  const onSubmit: SubmitHandler<Values> = ({ type, url }) => {
+    const id = socialLink?._id;
 
-    if (!companyId) return;
+    if (!id) return;
 
-    updateCompany({ id: companyId, form: { email, phone, website } });
+    updateSocialLink({ id, form: { type, url } });
   };
 
   return (
     <div className={styles.content}>
       <InfoBlock
-        title={t('account:companies.contacts.title')}
-        icon={IconName.Phone}
+        title={t('account:companies.socialLinks.title')}
+        icon={IconName.Network}
         columns={1}
       >
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <fieldset className={styles.fieldset} disabled={isLoading}>
-            <TextInput
-              {...register('email', {
+            <SelectInput
+              {...register('type', {
                 required: {
                   value: true,
                   message: t(
-                    'account:companies.contacts.form.email.error.empty'
+                    'account:companies.socialLinks.form.type.error.empty'
                   ),
                 },
               })}
-              label={t('account:companies.contacts.form.email.label')}
-              placeholder="jonas@doe.com"
-              type="email"
-              error={errors.email?.message}
+              label={t('account:companies.socialLinks.form.type.label')}
+              error={errors.type?.message}
+              options={Object.values(SocialType).map((type) => ({
+                label: t(`common:social.${type}`),
+                value: type,
+              }))}
             />
 
             <TextInput
-              {...register('phone', {
+              {...register('url', {
                 required: {
                   value: true,
                   message: t(
-                    'account:companies.contacts.form.phone.error.empty'
+                    'account:companies.socialLinks.form.url.error.empty'
                   ),
                 },
               })}
-              label={t('account:companies.contacts.form.phone.label')}
-              type="phone"
-              error={errors.phone?.message}
-            />
-
-            <TextInput
-              {...register('website')}
-              label={t('account:companies.contacts.form.website.label')}
+              label={t('account:companies.socialLinks.form.url.label')}
               placeholder="https://upis.lt"
               type="url"
-              error={errors.website?.message}
+              error={errors.url?.message}
             />
           </fieldset>
 
