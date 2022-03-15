@@ -1,13 +1,18 @@
 import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/router';
 
+import { routes } from 'config/routes';
+import { getRouteParam } from 'tools/common/getRouteParam';
 import { IconName } from 'ui';
 import { InfoBlock, InfoItem, MapItem } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies/companies.queries';
 
 export const Location: VFC = () => {
   const { t } = useTranslation();
+  const { query } = useRouter();
 
+  const slug = getRouteParam(query.slug);
   const { data: company } = useActiveCompany();
 
   return (
@@ -15,6 +20,7 @@ export const Location: VFC = () => {
       title={t('account:companies.location.title')}
       icon={IconName.Pin}
       columns={1}
+      editPage={routes.account.companies.one.location.replace(':slug', slug)}
     >
       <InfoItem
         label={t('account:companies.location.form.address.label')}
