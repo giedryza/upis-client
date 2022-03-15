@@ -97,11 +97,25 @@
         "info": "Tempdami žymeklį pasirinkite lokaciją"
       }
     },
-    "socialNetworks": {
+    "socialLinks": {
       "title": "Socialiniai tinklai",
       "table": {
         "type": "Tinklas",
         "url": "Adresas"
+      },
+      "form": {
+        "type": {
+          "label": "Tinklas",
+          "error": {
+            "empty": "Pasirinkite tinklą"
+          }
+        },
+        "url": {
+          "label": "Adresas",
+          "error": {
+            "empty": "Įveskite adresą"
+          }
+        }
       }
     },
     "actions": {

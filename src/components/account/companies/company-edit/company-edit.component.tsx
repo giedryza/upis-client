@@ -32,11 +32,11 @@ export const CompanyEdit: VFC = () => {
     return [
       {
         accessor: 'type',
-        label: t('account:companies.socialNetworks.table.type'),
+        label: t('account:companies.socialLinks.table.type'),
       },
       {
         accessor: 'url',
-        label: t('account:companies.socialNetworks.table.url'),
+        label: t('account:companies.socialLinks.table.url'),
       },
       { accessor: 'actions', label: '', align: 'right' },
     ];
@@ -146,7 +146,7 @@ export const CompanyEdit: VFC = () => {
       </InfoBlock>
 
       <InfoBlock
-        title={t('account:companies.socialNetworks.title')}
+        title={t('account:companies.socialLinks.title')}
         icon={IconName.Network}
         columns={1}
       >
