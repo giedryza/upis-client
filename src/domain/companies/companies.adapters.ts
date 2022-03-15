@@ -9,7 +9,7 @@ import {
 } from 'domain/companies/companies.types';
 import { Http } from 'tools/libs/http/http.lib';
 import { Response, ResponseWithMeta } from 'tools/libs/http/http.types';
-import { Pagination } from 'types/common/pagination';
+import { Pagination } from 'types/common';
 
 export const adapters = {
   getCompanies: ({

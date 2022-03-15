@@ -11,6 +11,7 @@ export const routes = {
     },
     companies: {
       index: '/account/companies',
+      create: '/account/companies/create',
       one: {
         index: '/account/companies/:slug',
         about: '/account/companies/:slug/about',

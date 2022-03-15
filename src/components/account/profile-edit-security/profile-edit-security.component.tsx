@@ -39,7 +39,7 @@ export const ProfileEditSecurity: VFC = () => {
   return (
     <div className={styles.content}>
       <InfoBlock
-        title={t('account:security.title')}
+        title={t('account:profile.security.title')}
         icon={IconName.Lock}
         columns={1}
       >
@@ -50,13 +50,13 @@ export const ProfileEditSecurity: VFC = () => {
                 required: {
                   value: true,
                   message: t(
-                    'account:security.form.currentPassword.error.empty'
+                    'account:profile.security.form.currentPassword.error.empty'
                   ),
                 },
               })}
-              label={t('account:security.form.currentPassword.label')}
+              label={t('account:profile.security.form.currentPassword.label')}
               placeholder={t(
-                'account:security.form.currentPassword.placeholder'
+                'account:profile.security.form.currentPassword.placeholder'
               )}
               type="password"
               error={errors.currentPassword?.message}
@@ -66,25 +66,35 @@ export const ProfileEditSecurity: VFC = () => {
               {...register('newPassword', {
                 required: {
                   value: true,
-                  message: t('account:security.form.newPassword.error.empty'),
+                  message: t(
+                    'account:profile.security.form.newPassword.error.empty'
+                  ),
                 },
                 minLength: {
                   value: PASSWORD_MIN_LENGTH,
-                  message: t('account:security.form.newPassword.error.length', {
-                    minLength: PASSWORD_MIN_LENGTH,
-                    maxLength: PASSWORD_MAX_LENGTH,
-                  }),
+                  message: t(
+                    'account:profile.security.form.newPassword.error.length',
+                    {
+                      minLength: PASSWORD_MIN_LENGTH,
+                      maxLength: PASSWORD_MAX_LENGTH,
+                    }
+                  ),
                 },
                 maxLength: {
                   value: PASSWORD_MAX_LENGTH,
-                  message: t('account:security.form.newPassword.error.length', {
-                    minLength: PASSWORD_MIN_LENGTH,
-                    maxLength: PASSWORD_MAX_LENGTH,
-                  }),
+                  message: t(
+                    'account:profile.security.form.newPassword.error.length',
+                    {
+                      minLength: PASSWORD_MIN_LENGTH,
+                      maxLength: PASSWORD_MAX_LENGTH,
+                    }
+                  ),
                 },
               })}
-              label={t('account:security.form.newPassword.label')}
-              placeholder={t('account:security.form.newPassword.placeholder')}
+              label={t('account:profile.security.form.newPassword.label')}
+              placeholder={t(
+                'account:profile.security.form.newPassword.placeholder'
+              )}
               type="password"
               error={errors.newPassword?.message}
             />
@@ -94,13 +104,13 @@ export const ProfileEditSecurity: VFC = () => {
                 required: {
                   value: true,
                   message: t(
-                    'account:security.form.confirmPassword.error.empty'
+                    'account:profile.security.form.confirmPassword.error.empty'
                   ),
                 },
               })}
-              label={t('account:security.form.confirmPassword.label')}
+              label={t('account:profile.security.form.confirmPassword.label')}
               placeholder={t(
-                'account:security.form.confirmPassword.placeholder'
+                'account:profile.security.form.confirmPassword.placeholder'
               )}
               type="password"
               error={errors.confirmPassword?.message}

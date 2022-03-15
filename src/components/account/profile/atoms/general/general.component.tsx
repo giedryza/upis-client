@@ -11,9 +11,9 @@ export const General: VFC = () => {
   const { data: session } = useSession();
 
   return (
-    <InfoBlock title={t('account:general.title')} icon={IconName.Gear}>
+    <InfoBlock title={t('account:profile.general.title')} icon={IconName.Gear}>
       <InfoItem
-        label={t('account:general.form.email.label')}
+        label={t('account:profile.general.form.email.label')}
         value={session?.user?.email ?? '-'}
       />
     </InfoBlock>

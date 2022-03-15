@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Portal } from 'ui';
 import { ModalKey } from 'domain/modal/modal.types';
-import { State } from 'types/common/redux';
+import { State } from 'types/common';
 import { actions } from 'domain/actions';
 
 const Modal: FC = () => {

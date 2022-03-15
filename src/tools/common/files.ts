@@ -1,4 +1,4 @@
-import { Filetype, filetypes } from 'types/common/files';
+import { Filetype, filetypes } from 'types/common';
 
 export const getFiletype = (filename?: string): Filetype | null => {
   if (!filename) return null;

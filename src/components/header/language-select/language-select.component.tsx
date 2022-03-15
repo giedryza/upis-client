@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
 import { CookieName } from 'config/cookies';
-import { Locale } from 'types/common/locales';
+import { Locale } from 'types/common';
 import { cookies } from 'tools/libs/cookies/cookies.lib';
 import { IconName, DropdownMenu, DropdownMenuItem } from 'ui';
 

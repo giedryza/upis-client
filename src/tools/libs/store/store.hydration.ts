@@ -1,4 +1,4 @@
-import { State } from 'types/common/redux';
+import { State } from 'types/common';
 
 export const hydratedState = (clientState: State, _serverState: State) => {
   const nextState: State = {

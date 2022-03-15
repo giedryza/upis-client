@@ -1,66 +1,64 @@
-import { useEffect, VFC } from 'react';
+import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, IconName, TextInput } from 'ui';
 import { routes } from 'config/routes';
-import { getRouteParam } from 'tools/common';
+import { Button, IconName, TextInput } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
-import { useUpdateCompany } from 'domain/companies/companies.mutations';
-import { useActiveCompany } from 'domain/companies/companies.queries';
+import { useCreateCompany } from 'domain/companies/companies.mutations';
 
-import { Values } from './company-edit-contacts.types';
-import { INITIAL_VALUES } from './company-edit-contacts.constants';
-import styles from './company-edit-contacts.module.scss';
+import { Values } from './company-create.types';
+import { INITIAL_VALUES } from './company-create.constants';
+import styles from './company-create.module.scss';
 
-export const CompanyEditContacts: VFC = () => {
+export const CompanyCreate: VFC = () => {
   const { t } = useTranslation();
-  const { query, push } = useRouter();
-
-  const slug = getRouteParam(query.slug);
+  const { push } = useRouter();
 
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors, isDirty },
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
   });
 
-  const { data: company } = useActiveCompany();
-  const { mutate: updateCompany, isLoading } = useUpdateCompany({
+  const { mutate: createCompany, isLoading } = useCreateCompany({
     onSuccess: () => {
-      push(routes.account.companies.one.index.replace(':slug', slug));
+      push(routes.account.companies.index);
     },
   });
 
-  useEffect(() => {
-    reset({
-      email: company?.email,
-      phone: company?.phone,
-      website: company?.website,
-    });
-  }, [reset, company]);
-
-  const onSubmit: SubmitHandler<Values> = ({ email, phone, website }) => {
-    const companyId = company?._id;
-
-    if (!companyId) return;
-
-    updateCompany({ id: companyId, form: { email, phone, website } });
+  const onSubmit: SubmitHandler<Values> = ({
+    name,
+    email,
+    phone,
+    description,
+  }) => {
+    createCompany({ form: { name, email, phone, description } });
   };
 
   return (
     <div className={styles.content}>
       <InfoBlock
-        title={t('account:companies.contacts.title')}
-        icon={IconName.Phone}
+        title={t('account:companies.title', { count: 1 })}
+        icon={IconName.Kayak}
         columns={1}
       >
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <fieldset className={styles.fieldset} disabled={isLoading}>
+            <TextInput
+              {...register('name', {
+                required: {
+                  value: true,
+                  message: t('account:companies.about.form.name.error.empty'),
+                },
+              })}
+              label={t('account:companies.about.form.name.label')}
+              error={errors.name?.message}
+            />
+
             <TextInput
               {...register('email', {
                 required: {
@@ -91,11 +89,11 @@ export const CompanyEditContacts: VFC = () => {
             />
 
             <TextInput
-              {...register('website')}
-              label={t('account:companies.contacts.form.website.label')}
-              placeholder="https://upis.lt"
-              type="url"
-              error={errors.website?.message}
+              {...register('description')}
+              label={t('account:companies.about.form.description.label')}
+              type="textarea"
+              rows={8}
+              error={errors.description?.message}
             />
           </fieldset>
 
@@ -104,11 +102,11 @@ export const CompanyEditContacts: VFC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.companies.one.index.replace(':slug', slug)}
+              url={routes.account.companies.index}
             />
 
             <Button
-              label={t('common:actions.save')}
+              label={t('common:actions.submit')}
               variant="primary"
               size="sm"
               attributes={{

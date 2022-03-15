@@ -1,51 +1,55 @@
 {
   "title": "Paskyra",
   "profile": {
-    "title": "Profilis"
-  },
-  "general": {
-    "title": "Asmens duomenys",
-    "form": {
-      "email": {
-        "label": "El. paštas"
+    "title": "Profilis",
+    "general": {
+      "title": "Asmens duomenys",
+      "form": {
+        "email": {
+          "label": "El. paštas"
+        }
       }
-    }
-  },
-  "security": {
-    "title": "Sauga",
-    "form": {
-      "password": {
-        "label": "Slaptažodis",
-        "placeholder": "∗∗∗∗∗∗∗∗"
-      },
-      "currentPassword": {
-        "label": "Dabartinis slaptažodis",
-        "placeholder": "∗∗∗∗∗∗∗∗",
-        "error": {
-          "empty": "Įveskite dabartinį slaptažodį.",
-          "incorrect": "Neteisingas slaptažodis. Bandykite dar kartą arba spauskite Pamiršai slaptažodį, kad atstatyti."
-        }
-      },
-      "newPassword": {
-        "label": "Naujas slaptažodis",
-        "placeholder": "∗∗∗∗∗∗∗∗",
-        "error": {
-          "empty": "Įveskite naują slaptažodį.",
-          "length": "Slaptažodis turi būti tarp {{minLength}} ir {{maxLength}} ženklų."
-        }
-      },
-      "confirmPassword": {
-        "label": "Patvirtinkite slaptažodį",
-        "placeholder": "∗∗∗∗∗∗∗∗",
-        "error": {
-          "empty": "Patvirtinkite slaptažodį.",
-          "notMatch": "Slaptažodžiai nesutampa. Bandykite dar kartą."
+    },
+    "security": {
+      "title": "Sauga",
+      "form": {
+        "password": {
+          "label": "Slaptažodis",
+          "placeholder": "∗∗∗∗∗∗∗∗"
+        },
+        "currentPassword": {
+          "label": "Dabartinis slaptažodis",
+          "placeholder": "∗∗∗∗∗∗∗∗",
+          "error": {
+            "empty": "Įveskite dabartinį slaptažodį.",
+            "incorrect": "Neteisingas slaptažodis. Bandykite dar kartą arba spauskite Pamiršai slaptažodį, kad atstatyti."
+          }
+        },
+        "newPassword": {
+          "label": "Naujas slaptažodis",
+          "placeholder": "∗∗∗∗∗∗∗∗",
+          "error": {
+            "empty": "Įveskite naują slaptažodį.",
+            "length": "Slaptažodis turi būti tarp {{minLength}} ir {{maxLength}} ženklų."
+          }
+        },
+        "confirmPassword": {
+          "label": "Patvirtinkite slaptažodį",
+          "placeholder": "∗∗∗∗∗∗∗∗",
+          "error": {
+            "empty": "Patvirtinkite slaptažodį.",
+            "notMatch": "Slaptažodžiai nesutampa. Bandykite dar kartą."
+          }
         }
       }
     }
   },
   "companies": {
-    "title": "Įmonės",
+    "title": {
+      "one": "Įmonė",
+      "other": "Įmonių",
+      "few": "Įmonės"
+    },
     "table": {
       "name": "Pavadinimas",
       "email": "El. paštas",
@@ -120,62 +124,6 @@
     },
     "actions": {
       "add": "Pridėti įmonę"
-    }
-  },
-  "company": {
-    "title": "Mano įmonė",
-    "subtitle": {
-      "about": "Apie kompaniją",
-      "contacts": "Kontaktai",
-      "socialLinks": "Socialiniai tinklai",
-      "location": "Vieta"
-    },
-    "actions": {
-      "addSocialLink": "Pridėti socialinį tinklą"
-    },
-    "form": {
-      "name": {
-        "label": "Pavadinimas",
-        "errors": {
-          "empty": "Įveskite įmonės pavadinimą"
-        }
-      },
-      "email": {
-        "label": "El. paštas",
-        "errors": {
-          "empty": "Įveskite įmonės el. paštą"
-        }
-      },
-      "phone": {
-        "label": "Tel. numeris",
-        "errors": {
-          "empty": "Įveskite įmonės tel. numerį"
-        }
-      },
-      "description": {
-        "label": "Apie kompaniją",
-        "errors": {}
-      },
-      "website": {
-        "label": "Tinklapis",
-        "errors": {
-          "invalid": "Įveskite tinkamą adresą"
-        }
-      },
-      "socialLinks": {
-        "type": {
-          "label": "Tinklas"
-        },
-        "url": {
-          "label": "Adresas",
-          "errors": {
-            "empty": "Įveskite adresą"
-          }
-        }
-      },
-      "address": {
-        "label": "Adresas"
-      }
     }
   },
   "tours": {

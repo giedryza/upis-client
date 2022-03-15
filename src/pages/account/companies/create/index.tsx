@@ -1,42 +1,39 @@
-import { NextPage, GetServerSideProps } from 'next';
-import { getSession } from 'next-auth/react';
+import { GetServerSideProps, NextPage } from 'next';
 import useTranslation from 'next-translate/useTranslation';
+import { getSession } from 'next-auth/react';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
-import { ProfileEditSecurity } from 'components/account';
+import { AppHead, Breadcrumbs } from 'ui';
+import { CompanyCreate } from 'components/account';
 
-const ProfileEditSecurityPage: NextPage = () => {
+const CompanyCreatePage: NextPage = () => {
   const { t } = useTranslation();
 
   useProtectedPage();
 
   return (
     <>
-      <AppHead title={t('account:profile.title')} />
+      <AppHead title={t('account:companies.title', { count: 1 })} />
 
       <MainLayout>
         <AccountPageLayout>
           <Breadcrumbs
             items={[
+              { label: t('account:title'), url: routes.account.profile.index },
               {
-                label: t('account:title'),
-                url: routes.account.profile.index,
+                label: t('account:companies.title', { count: 2 }),
+                url: routes.account.companies.index,
               },
               {
-                label: t('account:profile.title'),
-                url: routes.account.profile.index,
-              },
-              {
-                label: t('account:profile.security.title'),
+                label: t('common:actions.create'),
               },
             ]}
           />
 
           <AccountLayout>
-            <ProfileEditSecurity />
+            <CompanyCreate />
           </AccountLayout>
         </AccountPageLayout>
       </MainLayout>
@@ -63,4 +60,4 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   };
 };
 
-export default ProfileEditSecurityPage;
+export default CompanyCreatePage;

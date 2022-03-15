@@ -10,13 +10,13 @@ export const Security: VFC = () => {
 
   return (
     <InfoBlock
-      title={t('account:security.title')}
+      title={t('account:profile.security.title')}
       icon={IconName.Lock}
       editPage={routes.account.profile.security}
     >
       <InfoItem
-        label={t('account:security.form.password.label')}
-        value={t('account:security.form.password.placeholder')}
+        label={t('account:profile.security.form.password.label')}
+        value={t('account:profile.security.form.password.placeholder')}
       />
     </InfoBlock>
   );

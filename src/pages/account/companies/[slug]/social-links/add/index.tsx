@@ -6,8 +6,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { capitalizeFirstLetter } from 'tools/common/capitalize-first-letter';
-import { getRouteParam } from 'tools/common/get-route-param';
+import { capitalizeFirstLetter, getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
 import { CompanyEditSocialLinksAdd } from 'components/account';
@@ -24,7 +23,7 @@ const CompanyEditSocialLinksAddPage: NextPage = () => {
 
   return (
     <>
-      <AppHead title={t('account:companies.title')} />
+      <AppHead title={t('account:companies.title', { count: 1 })} />
 
       <MainLayout>
         <AccountPageLayout>
@@ -32,7 +31,7 @@ const CompanyEditSocialLinksAddPage: NextPage = () => {
             items={[
               { label: t('account:title'), url: routes.account.profile.index },
               {
-                label: t('account:companies.title'),
+                label: t('account:companies.title', { count: 2 }),
                 url: routes.account.companies.index,
               },
               {

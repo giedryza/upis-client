@@ -1,4 +1,4 @@
-import { Filetype } from 'types/common/files';
+import { Filetype } from 'types/common';
 
 export const FILES_LIMIT = 5;
 

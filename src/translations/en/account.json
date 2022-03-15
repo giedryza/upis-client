@@ -1,51 +1,55 @@
 {
   "title": "Account",
   "profile": {
-    "title": "Profile"
-  },
-  "general": {
-    "title": "General",
-    "form": {
-      "email": {
-        "label": "Email"
+    "title": "Profile",
+    "general": {
+      "title": "General",
+      "form": {
+        "email": {
+          "label": "Email"
+        }
       }
-    }
-  },
-  "security": {
-    "title": "Security",
-    "form": {
-      "password": {
-        "label": "Password",
-        "placeholder": "∗∗∗∗∗∗∗∗"
-      },
-      "currentPassword": {
-        "label": "Current password",
-        "placeholder": "∗∗∗∗∗∗∗∗",
-        "error": {
-          "empty": "Enter current password.",
-          "incorrect": "Incorrect password. Try again or click Forgot password to reset it."
-        }
-      },
-      "newPassword": {
-        "label": "New password",
-        "placeholder": "∗∗∗∗∗∗∗∗",
-        "error": {
-          "empty": "Enter new password.",
-          "length": "Use between {{minLength}} and {{maxLength}} characters for password."
-        }
-      },
-      "confirmPassword": {
-        "label": "Confirm password",
-        "placeholder": "∗∗∗∗∗∗∗∗",
-        "error": {
-          "empty": "Confirm password.",
-          "notMatch": "Passwords didn't match. Try again."
+    },
+    "security": {
+      "title": "Security",
+      "form": {
+        "password": {
+          "label": "Password",
+          "placeholder": "∗∗∗∗∗∗∗∗"
+        },
+        "currentPassword": {
+          "label": "Current password",
+          "placeholder": "∗∗∗∗∗∗∗∗",
+          "error": {
+            "empty": "Enter current password.",
+            "incorrect": "Incorrect password. Try again or click Forgot password to reset it."
+          }
+        },
+        "newPassword": {
+          "label": "New password",
+          "placeholder": "∗∗∗∗∗∗∗∗",
+          "error": {
+            "empty": "Enter new password.",
+            "length": "Use between {{minLength}} and {{maxLength}} characters for password."
+          }
+        },
+        "confirmPassword": {
+          "label": "Confirm password",
+          "placeholder": "∗∗∗∗∗∗∗∗",
+          "error": {
+            "empty": "Confirm password.",
+            "notMatch": "Passwords didn't match. Try again."
+          }
         }
       }
     }
   },
   "companies": {
-    "title": "Companies",
+    "title": {
+      "one": "Company",
+      "other": "Companies",
+      "few": "Companies"
+    },
     "table": {
       "name": "Name",
       "email": "Email",
@@ -120,61 +124,6 @@
     },
     "actions": {
       "add": "Add company"
-    }
-  },
-  "company": {
-    "title": "My company",
-    "subtitle": {
-      "about": "About",
-      "contacts": "Contacts",
-      "socialLinks": "Social Links",
-      "location": "Location"
-    },
-    "actions": {
-      "addSocialLink": "Add Social Link"
-    },
-    "form": {
-      "name": {
-        "label": "Name",
-        "errors": {
-          "empty": "Enter company name"
-        }
-      },
-      "email": {
-        "label": "Email",
-        "errors": {
-          "empty": "Enter company email"
-        }
-      },
-      "phone": {
-        "label": "Phone",
-        "errors": {
-          "empty": "Enter company phone"
-        }
-      },
-      "description": {
-        "label": "About the Company"
-      },
-      "website": {
-        "label": "Website",
-        "errors": {
-          "invalid": "Enter valid url"
-        }
-      },
-      "socialLinks": {
-        "type": {
-          "label": "Network"
-        },
-        "url": {
-          "label": "Url",
-          "errors": {
-            "empty": "Enter url"
-          }
-        }
-      },
-      "address": {
-        "label": "Address"
-      }
     }
   },
   "tours": {
