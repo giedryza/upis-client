@@ -97,11 +97,25 @@
         "info": "Move marker to select location"
       }
     },
-    "socialNetworks": {
+    "socialLinks": {
       "title": "Social networks",
       "table": {
         "type": "Network",
         "url": "Url"
+      },
+      "form": {
+        "type": {
+          "label": "Network",
+          "error": {
+            "empty": "Select network"
+          }
+        },
+        "url": {
+          "label": "Url",
+          "error": {
+            "empty": "Enter url"
+          }
+        }
       }
     },
     "actions": {

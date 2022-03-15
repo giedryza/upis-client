@@ -16,6 +16,10 @@ export const routes = {
         about: '/account/companies/:slug/about',
         contacts: '/account/companies/:slug/contacts',
         location: '/account/companies/:slug/location',
+        socialLinks: {
+          add: '/account/companies/:slug/social-links/add',
+          one: '/account/companies/:slug/social-links/:id',
+        },
       },
     },
     tours: {

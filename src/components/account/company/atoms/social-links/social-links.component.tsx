@@ -1,6 +1,9 @@
 import { useMemo, VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/router';
 
+import { routes } from 'config/routes';
+import { getRouteParam } from 'tools/common/getRouteParam';
 import { Button, Icon, IconName, Table, TableProps } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies/companies.queries';
@@ -12,6 +15,9 @@ import styles from './social-links.module.scss';
 
 export const SocialLinks: VFC = () => {
   const { t } = useTranslation();
+  const { query } = useRouter();
+
+  const slug = getRouteParam(query.slug);
 
   const { data: company } = useActiveCompany();
   const { mutate: deleteSocialLink, isLoading: isDeleteSocialLinkLoading } =
@@ -23,11 +29,11 @@ export const SocialLinks: VFC = () => {
     return [
       {
         accessor: 'type',
-        label: t('account:companies.socialNetworks.table.type'),
+        label: t('account:companies.socialLinks.table.type'),
       },
       {
         accessor: 'url',
-        label: t('account:companies.socialNetworks.table.url'),
+        label: t('account:companies.socialLinks.table.url'),
       },
       { accessor: 'actions', label: '', align: 'right' },
     ];
@@ -76,11 +82,22 @@ export const SocialLinks: VFC = () => {
 
   return (
     <InfoBlock
-      title={t('account:companies.socialNetworks.title')}
+      title={t('account:companies.socialLinks.title')}
       icon={IconName.Network}
       columns={1}
     >
       <Table columns={columns} rows={rows} />
+      <div>
+        <Button
+          label={t('common:actions.add')}
+          icon={IconName.Plus}
+          size="xs"
+          url={routes.account.companies.one.socialLinks.add.replace(
+            ':slug',
+            slug
+          )}
+        />
+      </div>
     </InfoBlock>
   );
 };

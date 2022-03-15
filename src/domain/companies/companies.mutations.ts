@@ -45,11 +45,14 @@ export const useUpdateLocation = ({
   return mutation;
 };
 
-export const useAddSocialLink = () => {
+export const useAddSocialLink = ({
+  onSuccess,
+}: { onSuccess?: () => void } = {}) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(adapters.addSocialLink, {
     onSuccess: () => {
+      onSuccess?.();
       queryClient.invalidateQueries(companiesKeys.details());
     },
   });
@@ -57,11 +60,14 @@ export const useAddSocialLink = () => {
   return mutation;
 };
 
-export const useUpdateSocialLink = () => {
+export const useUpdateSocialLink = ({
+  onSuccess,
+}: { onSuccess?: () => void } = {}) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(adapters.updateSocialLink, {
     onSuccess: () => {
+      onSuccess?.();
       queryClient.invalidateQueries(companiesKeys.details());
     },
   });
