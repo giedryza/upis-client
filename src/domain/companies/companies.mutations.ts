@@ -10,9 +10,8 @@ export const useUpdateCompany = ({
 
   const mutation = useMutation(adapters.updateCompany, {
     onSuccess: () => {
-      queryClient.invalidateQueries(companiesKeys.details());
-
       onSuccess?.();
+      queryClient.invalidateQueries(companiesKeys.details());
     },
   });
 
@@ -31,11 +30,14 @@ export const useCreateCompany = () => {
   return mutation;
 };
 
-export const useUpdateLocation = () => {
+export const useUpdateLocation = ({
+  onSuccess,
+}: { onSuccess?: () => void } = {}) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(adapters.updateLocation, {
     onSuccess: () => {
+      onSuccess?.();
       queryClient.invalidateQueries(companiesKeys.details());
     },
   });

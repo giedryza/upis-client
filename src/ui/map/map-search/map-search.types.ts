@@ -1,7 +1,7 @@
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import { MarkerProps, useMap } from 'react-leaflet';
 
-import { BoundsTuple, Point } from 'types/common/geo';
+import { BoundsTuple, Point } from '..';
 
 export interface Props {
   useMap: typeof useMap;

@@ -30,6 +30,14 @@ export const adapters = {
         req,
       }
     ).get(),
+  createCompany: ({
+    form,
+  }: {
+    form: Pick<Company, 'name' | 'phone' | 'email' | 'description'>;
+  }) =>
+    new Http<Response<Company>>(endpoints.companies.index, {
+      body: form,
+    }).post(),
   updateCompany: ({
     id,
     form,
@@ -45,14 +53,6 @@ export const adapters = {
     new Http<Response<Company>>(endpoints.companies.one.replace(':id', id), {
       body: form,
     }).patch(),
-  createCompany: ({
-    form,
-  }: {
-    form: Pick<Company, 'name' | 'phone' | 'email' | 'description'>;
-  }) =>
-    new Http<Response<Company>>(endpoints.companies.index, {
-      body: form,
-    }).post(),
   updateLocation: ({
     id,
     form,
@@ -63,9 +63,8 @@ export const adapters = {
     new Http<Response<Company>>(endpoints.companies.one.replace(':id', id), {
       body: {
         address: form.address,
-        location: {
-          coordinates: [form.lng, form.lat],
-        },
+        ...(form.lat &&
+          form.lng && { location: { coordinates: [form.lng, form.lat] } }),
       },
     }).patch(),
   addSocialLink: ({
