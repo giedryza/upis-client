@@ -11,9 +11,10 @@
     width: 100%;
     padding: 0.25em 0.5em;
 
+    color: var(--color-text);
+
     font-weight: 500;
 
-    color: var(--color-text);
     background-color: var(--color-white);
     border: 1px solid var(--color-grey-60);
     border-radius: var(--border-radius-sm);
@@ -64,8 +65,8 @@
     }
 
     &::placeholder {
-      font-weight: 400;
       color: var(--color-grey-60);
+      font-weight: 400;
     }
   }
 
