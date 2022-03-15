@@ -30,7 +30,7 @@ const ProfileEditSecurityPage: NextPage = () => {
                 url: routes.account.profile.index,
               },
               {
-                label: t('account:security.title'),
+                label: t('account:profile.security.title'),
               },
             ]}
           />

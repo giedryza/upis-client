@@ -1,45 +1,45 @@
 {
   "title": "Paskyra",
   "profile": {
-    "title": "Profilis"
-  },
-  "general": {
-    "title": "Asmens duomenys",
-    "form": {
-      "email": {
-        "label": "El. paštas"
+    "title": "Profilis",
+    "general": {
+      "title": "Asmens duomenys",
+      "form": {
+        "email": {
+          "label": "El. paštas"
+        }
       }
-    }
-  },
-  "security": {
-    "title": "Sauga",
-    "form": {
-      "password": {
-        "label": "Slaptažodis",
-        "placeholder": "∗∗∗∗∗∗∗∗"
-      },
-      "currentPassword": {
-        "label": "Dabartinis slaptažodis",
-        "placeholder": "∗∗∗∗∗∗∗∗",
-        "error": {
-          "empty": "Įveskite dabartinį slaptažodį.",
-          "incorrect": "Neteisingas slaptažodis. Bandykite dar kartą arba spauskite Pamiršai slaptažodį, kad atstatyti."
-        }
-      },
-      "newPassword": {
-        "label": "Naujas slaptažodis",
-        "placeholder": "∗∗∗∗∗∗∗∗",
-        "error": {
-          "empty": "Įveskite naują slaptažodį.",
-          "length": "Slaptažodis turi būti tarp {{minLength}} ir {{maxLength}} ženklų."
-        }
-      },
-      "confirmPassword": {
-        "label": "Patvirtinkite slaptažodį",
-        "placeholder": "∗∗∗∗∗∗∗∗",
-        "error": {
-          "empty": "Patvirtinkite slaptažodį.",
-          "notMatch": "Slaptažodžiai nesutampa. Bandykite dar kartą."
+    },
+    "security": {
+      "title": "Sauga",
+      "form": {
+        "password": {
+          "label": "Slaptažodis",
+          "placeholder": "∗∗∗∗∗∗∗∗"
+        },
+        "currentPassword": {
+          "label": "Dabartinis slaptažodis",
+          "placeholder": "∗∗∗∗∗∗∗∗",
+          "error": {
+            "empty": "Įveskite dabartinį slaptažodį.",
+            "incorrect": "Neteisingas slaptažodis. Bandykite dar kartą arba spauskite Pamiršai slaptažodį, kad atstatyti."
+          }
+        },
+        "newPassword": {
+          "label": "Naujas slaptažodis",
+          "placeholder": "∗∗∗∗∗∗∗∗",
+          "error": {
+            "empty": "Įveskite naują slaptažodį.",
+            "length": "Slaptažodis turi būti tarp {{minLength}} ir {{maxLength}} ženklų."
+          }
+        },
+        "confirmPassword": {
+          "label": "Patvirtinkite slaptažodį",
+          "placeholder": "∗∗∗∗∗∗∗∗",
+          "error": {
+            "empty": "Patvirtinkite slaptažodį.",
+            "notMatch": "Slaptažodžiai nesutampa. Bandykite dar kartą."
+          }
         }
       }
     }

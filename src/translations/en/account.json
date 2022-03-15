@@ -1,45 +1,45 @@
 {
   "title": "Account",
   "profile": {
-    "title": "Profile"
-  },
-  "general": {
-    "title": "General",
-    "form": {
-      "email": {
-        "label": "Email"
+    "title": "Profile",
+    "general": {
+      "title": "General",
+      "form": {
+        "email": {
+          "label": "Email"
+        }
       }
-    }
-  },
-  "security": {
-    "title": "Security",
-    "form": {
-      "password": {
-        "label": "Password",
-        "placeholder": "∗∗∗∗∗∗∗∗"
-      },
-      "currentPassword": {
-        "label": "Current password",
-        "placeholder": "∗∗∗∗∗∗∗∗",
-        "error": {
-          "empty": "Enter current password.",
-          "incorrect": "Incorrect password. Try again or click Forgot password to reset it."
-        }
-      },
-      "newPassword": {
-        "label": "New password",
-        "placeholder": "∗∗∗∗∗∗∗∗",
-        "error": {
-          "empty": "Enter new password.",
-          "length": "Use between {{minLength}} and {{maxLength}} characters for password."
-        }
-      },
-      "confirmPassword": {
-        "label": "Confirm password",
-        "placeholder": "∗∗∗∗∗∗∗∗",
-        "error": {
-          "empty": "Confirm password.",
-          "notMatch": "Passwords didn't match. Try again."
+    },
+    "security": {
+      "title": "Security",
+      "form": {
+        "password": {
+          "label": "Password",
+          "placeholder": "∗∗∗∗∗∗∗∗"
+        },
+        "currentPassword": {
+          "label": "Current password",
+          "placeholder": "∗∗∗∗∗∗∗∗",
+          "error": {
+            "empty": "Enter current password.",
+            "incorrect": "Incorrect password. Try again or click Forgot password to reset it."
+          }
+        },
+        "newPassword": {
+          "label": "New password",
+          "placeholder": "∗∗∗∗∗∗∗∗",
+          "error": {
+            "empty": "Enter new password.",
+            "length": "Use between {{minLength}} and {{maxLength}} characters for password."
+          }
+        },
+        "confirmPassword": {
+          "label": "Confirm password",
+          "placeholder": "∗∗∗∗∗∗∗∗",
+          "error": {
+            "empty": "Confirm password.",
+            "notMatch": "Passwords didn't match. Try again."
+          }
         }
       }
     }
