@@ -1,4 +1,4 @@
-import { Filetype } from 'types/common/files';
+import { Filetype } from 'types/common';
 
 export type DragState = 'accept' | 'reject' | 'active' | 'inactive';
 

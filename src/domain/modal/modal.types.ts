@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 
-import { Actions } from 'types/common/redux';
+import { Actions } from 'types/common';
 
 export enum ModalKey {
   TestModal = 'test-modal',

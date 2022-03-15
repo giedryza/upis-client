@@ -1,4 +1,4 @@
-import { SetError } from 'types/common/forms';
+import { SetError } from 'types/common';
 
 import { ApiError } from './api.error';
 

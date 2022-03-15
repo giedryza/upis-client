@@ -1,4 +1,4 @@
-import { Env } from 'types/common/env';
+import { Env } from 'types/common';
 
 declare global {
   namespace NodeJS {

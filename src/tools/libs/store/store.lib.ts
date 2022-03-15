@@ -9,7 +9,7 @@ import {
 import thunk from 'redux-thunk';
 import { createWrapper, HYDRATE, Context } from 'next-redux-wrapper';
 
-import { State } from 'types/common/redux';
+import { State } from 'types/common';
 
 import { rootReducer } from './store.reducer';
 import { hydratedState } from './store.hydration';

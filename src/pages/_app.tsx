@@ -3,7 +3,7 @@ import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { SessionProvider } from 'next-auth/react';
 import { SSRProvider } from 'react-aria';
 
-import { AppProps } from 'types/common/next';
+import { AppProps } from 'types/common';
 import { reduxStore } from 'tools/libs/store/store.lib';
 import { queryClientConfig } from 'tools/libs/query-client';
 import { axe } from 'tools/services/axe';
