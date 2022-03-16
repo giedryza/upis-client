@@ -1,7 +1,10 @@
+.container {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .table {
   width: 100%;
-
-  overflow-x: auto;
 
   color: var(--color-text);
   font-size: var(--font-size-14);
