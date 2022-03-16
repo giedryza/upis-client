@@ -38,7 +38,7 @@ Default.args = {
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   ...Default.args,
-  icon: IconName.Home,
+  icon: IconName.Pencil,
 };
 
 export const Disabled = Template.bind({});

@@ -3,10 +3,6 @@ export interface Props extends React.SVGAttributes<SVGElement> {
 }
 
 export enum IconName {
-  ChevronDown = 'chevron-down',
-  ChevronLeft = 'chevron-left',
-  ChevronRight = 'chevron-right',
-  ChevronUp = 'chevron-up',
   Close = 'close',
   Exit = 'exit',
   File = 'file',
@@ -15,8 +11,6 @@ export enum IconName {
   FolderClose = 'folder-close',
   FolderOpen = 'folder-open',
   Gear = 'gear',
-  Globe = 'globe',
-  Home = 'home',
   Info = 'info',
   Kayak = 'kayak',
   Lock = 'lock',
@@ -25,7 +19,6 @@ export enum IconName {
   LogoLinkedin = 'logo-linkedin',
   LogoTwitter = 'logo-twitter',
   LogoYoutube = 'logo-youtube',
-  Mail = 'mail',
   Network = 'network',
   Path = 'path',
   Pencil = 'pencil',
