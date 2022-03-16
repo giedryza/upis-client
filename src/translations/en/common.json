@@ -21,6 +21,9 @@
       "browse": "Browse files",
       "files": "Uploaded files",
       "remove": "Remove file"
+    },
+    "table": {
+      "empty": "No records"
     }
   },
   "language": {

@@ -60,3 +60,24 @@
     }
   }
 }
+
+.empty {
+  font-size: 1.5rem;
+
+  text-align: center;
+  height: 4em;
+
+  > *:not(:last-child) {
+    margin-right: 0.5em;
+  }
+
+  span {
+    vertical-align: top;
+    line-height: 1.25em;
+  }
+
+  .icon {
+    width: 1.25em;
+    height: 1.25em;
+  }
+}

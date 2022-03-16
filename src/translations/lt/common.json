@@ -21,6 +21,9 @@
       "browse": "Pasirinkite failą",
       "files": "Įkelti failai",
       "remove": "Ištrinti failą"
+    },
+    "table": {
+      "empty": "Nėra įrašų"
     }
   },
   "language": {
