@@ -107,6 +107,13 @@ const columns: TableProps<Columns>['columns'] = [
 export const Default = Template.bind({});
 Default.args = {
   ...Default.args,
-  rows,
   columns,
+  rows,
+};
+
+export const Empty = Template.bind({});
+Empty.args = {
+  ...Default.args,
+  columns,
+  rows: [],
 };
