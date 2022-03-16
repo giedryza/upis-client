@@ -67,6 +67,8 @@ export const adapters = {
           form.lng && { location: { coordinates: [form.lng, form.lat] } }),
       },
     }).patch(),
+  deleteCompany: ({ id }: { id: string }) =>
+    new Http(endpoints.companies.one.replace(':id', id)).delete(),
   getSocialLink: ({ req, id }: { req?: IncomingMessage; id: string }) =>
     new Http<Response<SocialLink>>(
       endpoints.socialLinks.one.replace(':id', id),
@@ -98,7 +100,5 @@ export const adapters = {
       }
     ).patch(),
   deleteSocialLink: ({ id }: { id: string }) =>
-    new Http<Response<SocialLink>>(
-      endpoints.socialLinks.one.replace(':id', id)
-    ).delete(),
+    new Http(endpoints.socialLinks.one.replace(':id', id)).delete(),
 };

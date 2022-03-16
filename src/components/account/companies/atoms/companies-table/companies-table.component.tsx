@@ -4,6 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { routes } from 'config/routes';
 import { Button, IconName, Table, TableProps } from 'ui';
 import { useMyCompanies } from 'domain/companies/companies.queries';
+import { useDeleteCompany } from 'domain/companies/companies.mutations';
 
 import { CompaniesTableColumns } from './companies-table.types';
 import styles from './companies-table.module.scss';
@@ -12,6 +13,8 @@ export const CompaniesTable: VFC = () => {
   const { t } = useTranslation();
 
   const { data: companies = [] } = useMyCompanies();
+  const { mutate: deleteCompany, isLoading: isDeleteCompanyLoading } =
+    useDeleteCompany();
 
   const columns = useMemo<TableProps<CompaniesTableColumns>['columns']>(() => {
     return [
@@ -48,7 +51,13 @@ export const CompaniesTable: VFC = () => {
               icon={IconName.Trash}
               size="xs"
               variant="secondary"
-              attributes={{ title: t('common:actions.delete') }}
+              attributes={{
+                title: t('common:actions.delete'),
+                disabled: isDeleteCompanyLoading,
+                onClick: () => {
+                  deleteCompany({ id: company._id });
+                },
+              }}
             />
             <Button
               icon={IconName.Pencil}
@@ -64,7 +73,7 @@ export const CompaniesTable: VFC = () => {
         ),
       },
     }));
-  }, [companies, t]);
+  }, [companies, t, deleteCompany, isDeleteCompanyLoading]);
 
   return <Table columns={columns} rows={rows} />;
 };
