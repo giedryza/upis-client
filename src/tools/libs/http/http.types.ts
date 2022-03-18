@@ -4,9 +4,10 @@ export type Method = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
 
 export interface Config {
   headers?: Record<string, string>;
-  body?: Record<string, any>;
+  body?: BodyInit;
   params?: Record<string, any>;
   req?: IncomingMessage;
+  credentials?: RequestCredentials;
 }
 
 export interface Response<D> {

@@ -25,13 +25,14 @@ export class Http<T = any> {
   }
 
   private get defaultHeaders(): Record<string, string> {
-    const { headers = {} } = this.config;
-    const { 'Content-Type': contentType = 'application/json' } = headers;
+    const { body } = this.config;
+
+    const isJson =
+      typeof body === 'string' &&
+      ['POST', 'PATCH', 'PUT'].includes(this.#method);
 
     return {
-      ...(['POST', 'PATCH', 'PUT'].includes(this.#method)
-        ? { 'Content-Type': contentType }
-        : {}),
+      ...(isJson && { 'Content-Type': 'application/json' }),
     };
   }
 
@@ -56,7 +57,7 @@ export class Http<T = any> {
         ...headers,
         ...(!!session?.jwt && { Authorization: `Bearer ${session.jwt}` }),
       }),
-      body: body ? JSON.stringify(body) : body,
+      body,
       credentials: 'include',
     };
   };
