@@ -46,6 +46,19 @@ export const useUpdateLocation = ({ onSuccess }: Options = {}) => {
   return mutation;
 };
 
+export const useUploadLogo = ({ onSuccess }: Options = {}) => {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation(adapters.uploadLogo, {
+    onSuccess: () => {
+      onSuccess?.();
+      queryClient.invalidateQueries(companiesKeys.details());
+    },
+  });
+
+  return mutation;
+};
+
 export const useDeleteCompany = ({ onSuccess }: Options = {}) => {
   const queryClient = useQueryClient();
 

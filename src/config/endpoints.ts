@@ -7,7 +7,10 @@ export const endpoints = {
   },
   companies: {
     index: 'companies',
-    one: 'companies/:id',
+    one: {
+      index: 'companies/:id',
+      logo: 'companies/:id/logo',
+    },
   },
   socialLinks: {
     index: 'social-links',
