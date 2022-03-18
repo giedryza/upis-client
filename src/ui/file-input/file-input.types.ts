@@ -4,7 +4,7 @@ export type DragState = 'accept' | 'reject' | 'active' | 'inactive';
 
 export interface Props {
   accept?: Filetype[];
-  multiple?: boolean;
+  maxFiles?: number;
   maxSize?: number;
   name?: string;
   disabled?: boolean;

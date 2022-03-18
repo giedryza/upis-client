@@ -1,7 +1,5 @@
 import { Filetype } from 'types/common';
 
-export const FILES_LIMIT = 5;
-
 export const MIME_TYPE_BY_FILE: Record<Filetype, string> = {
   jpg: 'image/jpeg',
   jpeg: 'image/jpeg',

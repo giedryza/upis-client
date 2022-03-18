@@ -5,6 +5,9 @@ import nextTranslate from 'next-translate';
  */
 const nextConfig = {
   swcMinify: true,
+  images: {
+    domains: ['upis.s3.eu-central-1.amazonaws.com'],
+  },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,

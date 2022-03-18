@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 
 import { Modal } from 'components/modal/modal.component';
-import { AppHead, FileInput } from 'ui';
+import { AppHead } from 'ui';
 
 const Home: NextPage = () => {
   return (
@@ -11,14 +11,8 @@ const Home: NextPage = () => {
       }}
     >
       <AppHead />
-      <h1>next</h1>
-      <h1>next</h1>
-      <h1>next</h1>
-      <h1>next</h1>
-      <h1>next</h1>
-      <h1>next</h1>
+
       <Modal />
-      <FileInput accept={['jpg', 'png', 'jpeg']} multiple name="logo" />
     </div>
   );
 };
