@@ -6,6 +6,7 @@ import { endpoints } from 'config/endpoints';
 import { Session } from 'domain/auth/auth.types';
 import { Http } from 'tools/libs/http/http.lib';
 import { Response } from 'tools/libs/http/http.types';
+import { getJsonBody } from 'tools/libs/http/http.utils';
 
 const options: NextAuthOptions = {
   session: {
@@ -27,7 +28,7 @@ const options: NextAuthOptions = {
           const { data } = await new Http<Response<Session>>(
             endpoints.users.signin,
             {
-              body: { email, password },
+              body: getJsonBody({ email, password }),
             }
           ).post();
 

@@ -1,5 +1,6 @@
 import { endpoints } from 'config/endpoints';
 import { Http } from 'tools/libs/http/http.lib';
+import { getJsonBody } from 'tools/libs/http/http.utils';
 
 export const adapters = {
   updatePassword: ({
@@ -12,10 +13,10 @@ export const adapters = {
     confirmPassword: string;
   }) =>
     new Http(endpoints.users.updatePassword, {
-      body: {
+      body: getJsonBody({
         currentPassword,
         newPassword,
         confirmPassword,
-      },
+      }),
     }).patch(),
 };
