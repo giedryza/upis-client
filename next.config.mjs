@@ -1,10 +1,9 @@
 import nextTranslate from 'next-translate';
 
-/**
- * @type {import('next').NextConfig}
- */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   swcMinify: true,
+  reactStrictMode: true,
   images: {
     domains: ['upis.s3.eu-central-1.amazonaws.com'],
   },

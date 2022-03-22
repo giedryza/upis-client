@@ -83,5 +83,3 @@ export const Button: VFC<Props> = ({
     </button>
   );
 };
-
-export * from './button.types';
