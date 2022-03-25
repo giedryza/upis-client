@@ -13,7 +13,7 @@ export const useAddSocialLink = ({ onSuccess }: Options = {}) => {
   const mutation = useMutation(adapters.addSocialLink, {
     onSuccess: () => {
       onSuccess?.();
-      queryClient.invalidateQueries(socialLinksKeys.details());
+      queryClient.invalidateQueries(socialLinksKeys.lists());
     },
   });
 
@@ -26,7 +26,7 @@ export const useUpdateSocialLink = ({ onSuccess }: Options = {}) => {
   const mutation = useMutation(adapters.updateSocialLink, {
     onSuccess: () => {
       onSuccess?.();
-      queryClient.invalidateQueries(socialLinksKeys.details());
+      queryClient.invalidateQueries(socialLinksKeys.lists());
     },
   });
 
@@ -39,7 +39,7 @@ export const useDeleteSocialLink = ({ onSuccess }: Options = {}) => {
   const mutation = useMutation(adapters.deleteSocialLink, {
     onSuccess: () => {
       onSuccess?.();
-      queryClient.invalidateQueries(socialLinksKeys.details());
+      queryClient.invalidateQueries(socialLinksKeys.lists());
     },
   });
 

@@ -8,6 +8,7 @@ import { Button, Icon, IconName, Table, TableProps } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies/companies.queries';
 import { useDeleteSocialLink } from 'domain/social-links/social-links.mutations';
+import { useSocialLinks } from 'domain/social-links/social-links.queries';
 
 import { SocialLinksTableColumns } from './social-links.types';
 import { ICON_BY_SOCIAL_LINK_TYPE } from './social-links.constants';
@@ -20,6 +21,9 @@ export const SocialLinks: VFC = () => {
   const slug = getRouteParam(query.slug);
 
   const { data: company } = useActiveCompany();
+  const { data: socialLinks = [] } = useSocialLinks({
+    host: company?._id ?? '',
+  });
   const { mutate: deleteSocialLink, isLoading: isDeleteSocialLinkLoading } =
     useDeleteSocialLink();
 
@@ -41,7 +45,7 @@ export const SocialLinks: VFC = () => {
 
   const rows = useMemo<TableProps<SocialLinksTableColumns>['rows']>(() => {
     return (
-      company?.socialLinks.map((socialLink) => ({
+      socialLinks.map((socialLink) => ({
         id: socialLink._id,
         content: {
           type: (
@@ -80,7 +84,7 @@ export const SocialLinks: VFC = () => {
         },
       })) ?? []
     );
-  }, [company, t, slug, deleteSocialLink, isDeleteSocialLinkLoading]);
+  }, [socialLinks, t, slug, deleteSocialLink, isDeleteSocialLinkLoading]);
 
   return (
     <InfoBlock

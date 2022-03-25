@@ -12,3 +12,7 @@ export interface SocialLink {
   url: string;
   host: string;
 }
+
+export interface SocialLinksFilters {
+  host: string;
+}
