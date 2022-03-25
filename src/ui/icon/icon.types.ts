@@ -19,7 +19,6 @@ export enum IconName {
   Plus = 'plus',
   Trash = 'trash',
   User = 'user',
-  Account = 'util-account',
   UtilFolderClose = 'util-folder-close',
   UtilFolderOpen = 'util-folder-open',
   FlagEn = 'flag-en',

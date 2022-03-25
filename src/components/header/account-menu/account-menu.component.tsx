@@ -20,7 +20,7 @@ const AccountMenu: VFC = () => {
       position="bottom-right"
       menuButton={{
         label: t('common:account.account'),
-        icon: IconName.Account,
+        icon: IconName.User,
         variant: 'ghost',
         size: 'sm',
         withDropdown: true,
