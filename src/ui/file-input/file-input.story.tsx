@@ -27,7 +27,7 @@ Default.args = {
 export const Multiple = Template.bind({});
 Multiple.args = {
   ...Default.args,
-  multiple: true,
+  maxFiles: 5,
 };
 
 export const Disabled = Template.bind({});

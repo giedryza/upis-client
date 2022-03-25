@@ -7,7 +7,7 @@ import { getRouteParam } from 'tools/common';
 import { Button, Icon, IconName, Table, TableProps } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies/companies.queries';
-import { useDeleteSocialLink } from 'domain/companies/companies.mutations';
+import { useDeleteSocialLink } from 'domain/social-links/social-links.mutations';
 
 import { SocialLinksTableColumns } from './social-links.types';
 import { ICON_BY_SOCIAL_LINK_TYPE } from './social-links.constants';

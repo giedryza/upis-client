@@ -1,12 +1,7 @@
 import { IncomingMessage } from 'http';
 
 import { endpoints } from 'config/endpoints';
-import {
-  CompaniesFilters,
-  Company,
-  SocialLink,
-  SocialType,
-} from 'domain/companies/companies.types';
+import { CompaniesFilters, Company } from 'domain/companies/companies.types';
 import { Http } from 'tools/libs/http/http.lib';
 import { getFilesBody, getJsonBody } from 'tools/libs/http/http.utils';
 import { Response, ResponseWithMeta } from 'tools/libs/http/http.types';
@@ -83,36 +78,4 @@ export const adapters = {
     ).patch(),
   deleteCompany: ({ id }: { id: string }) =>
     new Http(endpoints.companies.one.index.replace(':id', id)).delete(),
-  getSocialLink: ({ req, id }: { req?: IncomingMessage; id: string }) =>
-    new Http<Response<SocialLink>>(
-      endpoints.socialLinks.one.replace(':id', id),
-      {
-        req,
-      }
-    ).get(),
-  addSocialLink: ({
-    form,
-    companyId,
-  }: {
-    form: { url: string; type: SocialType };
-    companyId: string;
-  }) =>
-    new Http<Response<SocialLink>>(endpoints.socialLinks.index, {
-      body: getJsonBody({ ...form, host: companyId }),
-    }).post(),
-  updateSocialLink: ({
-    form,
-    id,
-  }: {
-    form: Partial<{ url: string; type: SocialType }>;
-    id: string;
-  }) =>
-    new Http<Response<SocialLink>>(
-      endpoints.socialLinks.one.replace(':id', id),
-      {
-        body: getJsonBody(form),
-      }
-    ).patch(),
-  deleteSocialLink: ({ id }: { id: string }) =>
-    new Http(endpoints.socialLinks.one.replace(':id', id)).delete(),
 };

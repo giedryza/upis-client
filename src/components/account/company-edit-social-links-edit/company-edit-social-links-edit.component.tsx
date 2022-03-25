@@ -7,9 +7,9 @@ import { Button, IconName, SelectInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
-import { useUpdateSocialLink } from 'domain/companies/companies.mutations';
-import { useActiveSocialLink } from 'domain/companies/companies.queries';
-import { SocialType } from 'domain/companies/companies.types';
+import { useUpdateSocialLink } from 'domain/social-links/social-links.mutations';
+import { useSocialLink } from 'domain/social-links/social-links.queries';
+import { SocialType } from 'domain/social-links/social-links.types';
 
 import { Values } from './company-edit-social-links-edit.types';
 import { INITIAL_VALUES } from './company-edit-social-links-edit.constants';
@@ -20,6 +20,7 @@ export const CompanyEditSocialLinksEdit: VFC = () => {
   const { query, push } = useRouter();
 
   const slug = getRouteParam(query.slug);
+  const id = getRouteParam(query.id);
 
   const {
     register,
@@ -30,7 +31,7 @@ export const CompanyEditSocialLinksEdit: VFC = () => {
     defaultValues: INITIAL_VALUES,
   });
 
-  const { data: socialLink } = useActiveSocialLink();
+  const { data: socialLink } = useSocialLink(id);
   const { mutate: updateSocialLink, isLoading } = useUpdateSocialLink({
     onSuccess: () => {
       push(routes.account.companies.one.index.replace(':slug', slug));
@@ -45,8 +46,6 @@ export const CompanyEditSocialLinksEdit: VFC = () => {
   }, [reset, socialLink]);
 
   const onSubmit: SubmitHandler<Values> = ({ type, url }) => {
-    const id = socialLink?._id;
-
     if (!id) return;
 
     updateSocialLink({ id, form: { type, url } });
