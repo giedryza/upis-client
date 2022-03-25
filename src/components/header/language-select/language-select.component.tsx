@@ -29,6 +29,7 @@ const LanguageSelect: VFC = () => {
 
   return (
     <DropdownMenu
+      id="language-select"
       position="bottom-right"
       menuButton={{
         label: t(`common:language.${currentLocale}-short`),

@@ -1,5 +1,4 @@
 import { useRef, useState, VFC, KeyboardEvent } from 'react';
-import { useId } from 'react-aria';
 import clsx from 'clsx';
 
 import { useOnClickOutside } from 'tools/hooks';
@@ -9,12 +8,13 @@ import { Props } from './dropdown-menu.types';
 import styles from './dropdown-menu.module.scss';
 
 export const DropdownMenu: VFC<Props> = ({
+  id,
   menuButton,
   position = 'bottom-left',
   items = [],
 }) => {
-  const menuId = useId();
-  const buttonId = useId();
+  const menuId = `menu-${id}`;
+  const buttonId = `button-${id}`;
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);

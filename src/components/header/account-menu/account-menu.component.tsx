@@ -16,6 +16,7 @@ const AccountMenu: VFC = () => {
 
   return status === 'authenticated' ? (
     <DropdownMenu
+      id="account-menu"
       position="bottom-right"
       menuButton={{
         label: t('common:account.account'),

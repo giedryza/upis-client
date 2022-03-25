@@ -57,25 +57,3 @@ export const useActiveCompany = () => {
 
   return query;
 };
-
-export const useSocialLink = (id: string) => {
-  const query = useQuery(
-    companiesKeys.detail(id),
-    () => adapters.getSocialLink({ id }),
-    {
-      select: ({ data }) => data,
-      enabled: !!id,
-    }
-  );
-
-  return query;
-};
-
-export const useActiveSocialLink = () => {
-  const { query: params } = useRouter();
-  const id = getRouteParam(params?.id);
-
-  const query = useSocialLink(id);
-
-  return query;
-};
