@@ -41,7 +41,7 @@ const AccountMenu: VFC = () => {
   ) : (
     <Button
       label={t('common:account.signin')}
-      icon={IconName.Account}
+      icon={IconName.User}
       variant="ghost"
       size="sm"
       url={routes.auth.signin}
