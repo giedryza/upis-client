@@ -13,18 +13,34 @@ const Template: ComponentStory<typeof Button> = (args) => (
   <div
     style={{
       display: 'flex',
-      alignItems: 'center',
-      gap: 15,
-      flexWrap: 'wrap',
+      flexDirection: 'column',
+      gap: 50,
     }}
   >
-    <Button {...args} label="primary" variant="primary" />
-    <Button {...args} label="secondary" variant="secondary" />
-    <Button {...args} label="ghost" variant="ghost" />
-    <Button {...args} label="ghost-primary" variant="ghost-primary" />
-    <Button {...args} label="ghost-dark" variant="ghost-dark" />
-    <Button {...args} label="text" variant="text" />
-    <Button {...args} label="link" variant="link" />
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 15,
+        flexWrap: 'wrap',
+      }}
+    >
+      <Button {...args} label="primary" variant="primary" />
+      <Button {...args} label="secondary" variant="secondary" />
+      <Button {...args} label="tertiary" variant="tertiary" />
+      <Button {...args} label="ghost" variant="ghost" />
+    </div>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 15,
+        flexWrap: 'wrap',
+      }}
+    >
+      <Button {...args} label="text" variant="text" />
+      <Button {...args} label="link" variant="link" />
+    </div>
   </div>
 );
 

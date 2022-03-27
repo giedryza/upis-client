@@ -76,7 +76,7 @@ export const CompanyEditLogo: VFC = () => {
 
             <Button
               label={t('common:actions.save')}
-              variant="primary"
+              variant="tertiary"
               size="sm"
               attributes={{
                 type: 'submit',

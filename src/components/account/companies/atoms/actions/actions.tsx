@@ -11,6 +11,7 @@ export const Actions: VFC = () => {
     <div>
       <Button
         label={t('account:companies.actions.add')}
+        variant="tertiary"
         icon="plus"
         size="xs"
         url={routes.account.companies.create}
