@@ -8,7 +8,9 @@
   "scripts": {
     "start": "next start",
     "start:dev": "next dev",
+    "start:storybook": "start-storybook -p 6006",
     "build": "next build",
+    "build:storybook": "build-storybook",
     "compile": "tsc",
     "browserslist": "npx browserslist",
     "update": "npx npm-check-updates",
@@ -21,9 +23,7 @@
     "lint:prettier": "npx prettier --check \"src/**\"",
     "lint:prettier:fix": "npx prettier --write \"src/**\"",
     "lint:filenames": "npx @ls-lint/ls-lint",
-    "stylelint:check-conflicting-rules": "stylelint-config-prettier-check",
-    "storybook:start": "start-storybook -p 6006",
-    "storybook:build": "build-storybook"
+    "stylelint:check-conflicting-rules": "stylelint-config-prettier-check"
   },
   "dependencies": {
     "@axe-core/react": "^4.4.2",
