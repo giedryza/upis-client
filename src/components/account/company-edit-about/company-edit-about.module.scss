@@ -1,9 +1,5 @@
 @use 'styles/mixins' as *;
 
-.content {
-  @include spacing(y, 2rem);
-}
-
 .form {
   width: 100%;
   max-width: var(--container-width-xs);
