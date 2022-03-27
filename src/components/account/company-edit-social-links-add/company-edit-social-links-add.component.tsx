@@ -45,67 +45,65 @@ export const CompanyEditSocialLinksAdd: VFC = () => {
   };
 
   return (
-    <div className={styles.content}>
-      <InfoBlock
-        title={t('account:companies.socialLinks.title')}
-        icon="network"
-        columns={1}
-      >
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <fieldset className={styles.fieldset} disabled={isLoading}>
-            <SelectInput
-              {...register('type', {
-                required: {
-                  value: true,
-                  message: t(
-                    'account:companies.socialLinks.form.type.error.empty'
-                  ),
-                },
-              })}
-              label={t('account:companies.socialLinks.form.type.label')}
-              error={errors.type?.message}
-              options={Object.values(SocialType).map((type) => ({
-                label: t(`common:social.${type}`),
-                value: type,
-              }))}
-            />
+    <InfoBlock
+      title={t('account:companies.socialLinks.title')}
+      icon="network"
+      columns={1}
+    >
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <fieldset className={styles.fieldset} disabled={isLoading}>
+          <SelectInput
+            {...register('type', {
+              required: {
+                value: true,
+                message: t(
+                  'account:companies.socialLinks.form.type.error.empty'
+                ),
+              },
+            })}
+            label={t('account:companies.socialLinks.form.type.label')}
+            error={errors.type?.message}
+            options={Object.values(SocialType).map((type) => ({
+              label: t(`common:social.${type}`),
+              value: type,
+            }))}
+          />
 
-            <TextInput
-              {...register('url', {
-                required: {
-                  value: true,
-                  message: t(
-                    'account:companies.socialLinks.form.url.error.empty'
-                  ),
-                },
-              })}
-              label={t('account:companies.socialLinks.form.url.label')}
-              placeholder="https://upis.lt"
-              type="url"
-              error={errors.url?.message}
-            />
-          </fieldset>
+          <TextInput
+            {...register('url', {
+              required: {
+                value: true,
+                message: t(
+                  'account:companies.socialLinks.form.url.error.empty'
+                ),
+              },
+            })}
+            label={t('account:companies.socialLinks.form.url.label')}
+            placeholder="https://upis.lt"
+            type="url"
+            error={errors.url?.message}
+          />
+        </fieldset>
 
-          <div className={styles.actions}>
-            <Button
-              label={t('common:actions.cancel')}
-              variant="ghost"
-              size="sm"
-              url={routes.account.companies.one.index.replace(':slug', slug)}
-            />
+        <div className={styles.actions}>
+          <Button
+            label={t('common:actions.cancel')}
+            variant="ghost"
+            size="sm"
+            url={routes.account.companies.one.index.replace(':slug', slug)}
+          />
 
-            <Button
-              label={t('common:actions.add')}
-              variant="tertiary"
-              size="sm"
-              attributes={{
-                type: 'submit',
-                disabled: !isDirty || isLoading,
-              }}
-            />
-          </div>
-        </form>
-      </InfoBlock>
-    </div>
+          <Button
+            label={t('common:actions.add')}
+            variant="tertiary"
+            size="sm"
+            attributes={{
+              type: 'submit',
+              disabled: !isDirty || isLoading,
+            }}
+          />
+        </div>
+      </form>
+    </InfoBlock>
   );
 };

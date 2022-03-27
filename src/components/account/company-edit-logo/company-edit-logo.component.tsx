@@ -41,51 +41,49 @@ export const CompanyEditLogo: VFC = () => {
   };
 
   return (
-    <div className={styles.content}>
-      <InfoBlock
-        title={t('account:companies.logo.title')}
-        icon="picture"
-        columns={1}
-      >
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <fieldset className={styles.fieldset} disabled={isLoading}>
-            <Controller
-              name="logo"
-              control={control}
-              render={({ field: { name, onChange, ref } }) => (
-                <FileInput
-                  name={name}
-                  onChange={([file]) => {
-                    onChange(file);
-                  }}
-                  accept={['jpeg', 'jpg', 'png', 'svg', 'gif', 'bmp']}
-                  maxSize={1 * 1000 * 1000}
-                  ref={ref}
-                />
-              )}
-            />
-          </fieldset>
+    <InfoBlock
+      title={t('account:companies.logo.title')}
+      icon="picture"
+      columns={1}
+    >
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <fieldset className={styles.fieldset} disabled={isLoading}>
+          <Controller
+            name="logo"
+            control={control}
+            render={({ field: { name, onChange, ref } }) => (
+              <FileInput
+                name={name}
+                onChange={([file]) => {
+                  onChange(file);
+                }}
+                accept={['jpeg', 'jpg', 'png', 'svg', 'gif', 'bmp']}
+                maxSize={1 * 1000 * 1000}
+                ref={ref}
+              />
+            )}
+          />
+        </fieldset>
 
-          <div className={styles.actions}>
-            <Button
-              label={t('common:actions.cancel')}
-              variant="ghost"
-              size="sm"
-              url={routes.account.companies.one.index.replace(':slug', slug)}
-            />
+        <div className={styles.actions}>
+          <Button
+            label={t('common:actions.cancel')}
+            variant="ghost"
+            size="sm"
+            url={routes.account.companies.one.index.replace(':slug', slug)}
+          />
 
-            <Button
-              label={t('common:actions.save')}
-              variant="tertiary"
-              size="sm"
-              attributes={{
-                type: 'submit',
-                disabled: !isDirty || isLoading,
-              }}
-            />
-          </div>
-        </form>
-      </InfoBlock>
-    </div>
+          <Button
+            label={t('common:actions.save')}
+            variant="tertiary"
+            size="sm"
+            attributes={{
+              type: 'submit',
+              disabled: !isDirty || isLoading,
+            }}
+          />
+        </div>
+      </form>
+    </InfoBlock>
   );
 };

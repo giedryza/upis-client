@@ -53,72 +53,66 @@ export const CompanyEditContacts: VFC = () => {
   };
 
   return (
-    <div className={styles.content}>
-      <InfoBlock
-        title={t('account:companies.contacts.title')}
-        icon="phone"
-        columns={1}
-      >
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <fieldset className={styles.fieldset} disabled={isLoading}>
-            <TextInput
-              {...register('email', {
-                required: {
-                  value: true,
-                  message: t(
-                    'account:companies.contacts.form.email.error.empty'
-                  ),
-                },
-              })}
-              label={t('account:companies.contacts.form.email.label')}
-              placeholder="jonas@doe.com"
-              type="email"
-              error={errors.email?.message}
-            />
+    <InfoBlock
+      title={t('account:companies.contacts.title')}
+      icon="phone"
+      columns={1}
+    >
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <fieldset className={styles.fieldset} disabled={isLoading}>
+          <TextInput
+            {...register('email', {
+              required: {
+                value: true,
+                message: t('account:companies.contacts.form.email.error.empty'),
+              },
+            })}
+            label={t('account:companies.contacts.form.email.label')}
+            placeholder="jonas@doe.com"
+            type="email"
+            error={errors.email?.message}
+          />
 
-            <TextInput
-              {...register('phone', {
-                required: {
-                  value: true,
-                  message: t(
-                    'account:companies.contacts.form.phone.error.empty'
-                  ),
-                },
-              })}
-              label={t('account:companies.contacts.form.phone.label')}
-              type="phone"
-              error={errors.phone?.message}
-            />
+          <TextInput
+            {...register('phone', {
+              required: {
+                value: true,
+                message: t('account:companies.contacts.form.phone.error.empty'),
+              },
+            })}
+            label={t('account:companies.contacts.form.phone.label')}
+            type="phone"
+            error={errors.phone?.message}
+          />
 
-            <TextInput
-              {...register('website')}
-              label={t('account:companies.contacts.form.website.label')}
-              placeholder="https://upis.lt"
-              type="url"
-              error={errors.website?.message}
-            />
-          </fieldset>
+          <TextInput
+            {...register('website')}
+            label={t('account:companies.contacts.form.website.label')}
+            placeholder="https://upis.lt"
+            type="url"
+            error={errors.website?.message}
+          />
+        </fieldset>
 
-          <div className={styles.actions}>
-            <Button
-              label={t('common:actions.cancel')}
-              variant="ghost"
-              size="sm"
-              url={routes.account.companies.one.index.replace(':slug', slug)}
-            />
+        <div className={styles.actions}>
+          <Button
+            label={t('common:actions.cancel')}
+            variant="ghost"
+            size="sm"
+            url={routes.account.companies.one.index.replace(':slug', slug)}
+          />
 
-            <Button
-              label={t('common:actions.save')}
-              variant="tertiary"
-              size="sm"
-              attributes={{
-                type: 'submit',
-                disabled: !isDirty || isLoading,
-              }}
-            />
-          </div>
-        </form>
-      </InfoBlock>
-    </div>
+          <Button
+            label={t('common:actions.save')}
+            variant="tertiary"
+            size="sm"
+            attributes={{
+              type: 'submit',
+              disabled: !isDirty || isLoading,
+            }}
+          />
+        </div>
+      </form>
+    </InfoBlock>
   );
 };

@@ -63,78 +63,76 @@ export const CompanyEditLocation: VFC = () => {
   };
 
   return (
-    <div className={styles.content}>
-      <InfoBlock
-        title={t('account:companies.location.title')}
-        icon="pin"
-        columns={1}
-      >
-        <div className={styles.mapContainer}>
-          <div className={styles.map}>
-            <Map
-              center={{
-                lat: center.lat + 0.00025,
-                lng: center.lng,
-              }}
-              zoom={point.lat && point.lng ? 18 : 7}
-            >
-              {({
-                leaflet: { icon },
-                reactLeaflet: { Marker, Popup, useMap },
-                custom: { SearchBar },
-              }) => (
-                <>
-                  <SearchBar useMap={useMap} onChange={updatePoint} />
-
-                  <Marker
-                    draggable
-                    position={center}
-                    icon={icon(mapIcon({ name: 'pin', size: 48 }))}
-                    eventHandlers={{
-                      dragend: (e) => {
-                        const { lat, lng } = (e as MapDragendEvent).target
-                          ._latlng;
-
-                        updatePoint({ lat, lng });
-                      },
-                      add: (e) => {
-                        e.target.openPopup();
-                      },
-                    }}
-                  >
-                    <Popup className={styles.popup}>
-                      {location?.display_name ??
-                        t('account:companies.location.map.info')}
-                    </Popup>
-                  </Marker>
-                </>
-              )}
-            </Map>
-          </div>
-          <p className={styles.info}>
-            {t('account:companies.location.map.info')}
-          </p>
-        </div>
-
-        <div className={styles.actions}>
-          <Button
-            label={t('common:actions.cancel')}
-            variant="ghost"
-            size="sm"
-            url={routes.account.companies.one.index.replace(':slug', slug)}
-          />
-
-          <Button
-            label={t('common:actions.save')}
-            variant="tertiary"
-            size="sm"
-            attributes={{
-              disabled: isLoading,
-              onClick: onSubmit,
+    <InfoBlock
+      title={t('account:companies.location.title')}
+      icon="pin"
+      columns={1}
+    >
+      <div className={styles.mapContainer}>
+        <div className={styles.map}>
+          <Map
+            center={{
+              lat: center.lat + 0.00025,
+              lng: center.lng,
             }}
-          />
+            zoom={point.lat && point.lng ? 18 : 7}
+          >
+            {({
+              leaflet: { icon },
+              reactLeaflet: { Marker, Popup, useMap },
+              custom: { SearchBar },
+            }) => (
+              <>
+                <SearchBar useMap={useMap} onChange={updatePoint} />
+
+                <Marker
+                  draggable
+                  position={center}
+                  icon={icon(mapIcon({ name: 'pin', size: 48 }))}
+                  eventHandlers={{
+                    dragend: (e) => {
+                      const { lat, lng } = (e as MapDragendEvent).target
+                        ._latlng;
+
+                      updatePoint({ lat, lng });
+                    },
+                    add: (e) => {
+                      e.target.openPopup();
+                    },
+                  }}
+                >
+                  <Popup>
+                    {location?.display_name ??
+                      t('account:companies.location.map.info')}
+                  </Popup>
+                </Marker>
+              </>
+            )}
+          </Map>
         </div>
-      </InfoBlock>
-    </div>
+        <p className={styles.info}>
+          {t('account:companies.location.map.info')}
+        </p>
+      </div>
+
+      <div className={styles.actions}>
+        <Button
+          label={t('common:actions.cancel')}
+          variant="ghost"
+          size="sm"
+          url={routes.account.companies.one.index.replace(':slug', slug)}
+        />
+
+        <Button
+          label={t('common:actions.save')}
+          variant="tertiary"
+          size="sm"
+          attributes={{
+            disabled: isLoading,
+            onClick: onSubmit,
+          }}
+        />
+      </div>
+    </InfoBlock>
   );
 };
