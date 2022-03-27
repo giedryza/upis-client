@@ -66,6 +66,19 @@
     }
   }
 
+  &.tertiary {
+    color: var(--button-tertiary-text);
+
+    background-color: var(--button-tertiary-background);
+
+    &:hover,
+    &:active {
+      &:not([disabled]) {
+        background-color: var(--button-tertiary-background-hover);
+      }
+    }
+  }
+
   &.ghost {
     color: var(--button-ghost-text);
 
@@ -73,30 +86,6 @@
     &:active {
       &:not([disabled]) {
         background-color: var(--button-ghost-background-hover);
-      }
-    }
-  }
-
-  &.ghost-dark {
-    color: var(--button-ghost-dark-text);
-
-    &:hover,
-    &:active {
-      &:not([disabled]) {
-        background-color: var(--button-ghost-dark-background-hover);
-      }
-    }
-  }
-
-  &.ghost-primary {
-    color: var(--button-ghost-primary-text);
-
-    &:hover,
-    &:active {
-      &:not([disabled]) {
-        color: var(--button-ghost-primary-text-hover);
-
-        background-color: var(--button-ghost-primary-background-hover);
       }
     }
   }

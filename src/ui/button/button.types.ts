@@ -9,14 +9,7 @@ interface BaseProps {
   label?: string;
   icon?: IconName;
   iconPlacement?: 'top' | 'right' | 'bottom' | 'left';
-  variant?:
-    | 'primary'
-    | 'secondary'
-    | 'ghost'
-    | 'ghost-primary'
-    | 'ghost-dark'
-    | 'text'
-    | 'link';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'text' | 'link';
   size?: 'xs' | 'sm' | 'md' | 'lg';
   textAlign?: 'left' | 'right' | 'center';
   block?: boolean;
