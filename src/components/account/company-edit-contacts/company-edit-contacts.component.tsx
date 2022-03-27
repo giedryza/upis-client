@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, IconName, TextInput } from 'ui';
+import { Button, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
@@ -56,7 +56,7 @@ export const CompanyEditContacts: VFC = () => {
     <div className={styles.content}>
       <InfoBlock
         title={t('account:companies.contacts.title')}
-        icon={IconName.Phone}
+        icon="phone"
         columns={1}
       >
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>

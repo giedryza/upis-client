@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { routes } from 'config/routes';
-import { Button, IconName, TextInput } from 'ui';
+import { Button, TextInput } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useCreateCompany } from 'domain/companies/companies.mutations';
 
@@ -43,7 +43,7 @@ export const CompanyCreate: VFC = () => {
     <div className={styles.content}>
       <InfoBlock
         title={t('account:companies.title', { count: 1 })}
-        icon={IconName.Kayak}
+        icon="kayak"
         columns={1}
       >
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -84,6 +84,7 @@ export const CompanyCreate: VFC = () => {
                 },
               })}
               label={t('account:companies.contacts.form.phone.label')}
+              placeholder="+37065555555"
               type="phone"
               error={errors.phone?.message}
             />

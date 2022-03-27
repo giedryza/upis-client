@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Button, IconName } from 'ui';
+import { Button } from 'ui';
 
 import { Table, TableProps } from '.';
 
@@ -77,13 +77,13 @@ const rows: TableProps<Columns>['rows'] = MOCK_DATA.map((item) => ({
     actions: (
       <div style={{ display: 'inline-flex', gap: 10 }}>
         <Button
-          icon={IconName.Trash}
+          icon="trash"
           size="xs"
           variant="secondary"
           attributes={{ 'aria-label': 'Delete' }}
         />
         <Button
-          icon={IconName.Pencil}
+          icon="pencil"
           size="xs"
           variant="secondary"
           attributes={{ 'aria-label': 'Edit' }}

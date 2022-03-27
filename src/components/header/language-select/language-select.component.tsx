@@ -8,8 +8,8 @@ import { cookies } from 'tools/libs/cookies/cookies.lib';
 import { IconName, DropdownMenu, DropdownMenuItem } from 'ui';
 
 const iconByLocale: Record<Locale, IconName> = {
-  [Locale.Lt]: IconName.FlagLt,
-  [Locale.En]: IconName.FlagEn,
+  [Locale.Lt]: 'flag-lt',
+  [Locale.En]: 'flag-en',
 };
 
 const LanguageSelect: VFC = () => {

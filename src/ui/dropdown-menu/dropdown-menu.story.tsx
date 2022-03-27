@@ -1,8 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { IconName } from 'ui';
-
 import { DropdownMenu } from '.';
 
 export default {
@@ -10,7 +8,7 @@ export default {
   component: DropdownMenu,
   args: {
     menuButton: {
-      icon: IconName.Kayak,
+      icon: 'kayak',
       label: 'My account',
       withDropdown: true,
       variant: 'secondary',
@@ -18,11 +16,11 @@ export default {
     items: [
       {
         label: 'Profile',
-        icon: IconName.User,
+        icon: 'user',
       },
       {
         label: 'Signout',
-        icon: IconName.Exit,
+        icon: 'exit',
       },
     ],
   },

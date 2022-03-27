@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, FileInput, IconName } from 'ui';
+import { Button, FileInput } from 'ui';
 import { routes } from 'config/routes';
 import { getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
@@ -44,7 +44,7 @@ export const CompanyEditLogo: VFC = () => {
     <div className={styles.content}>
       <InfoBlock
         title={t('account:companies.logo.title')}
-        icon={IconName.Picture}
+        icon="picture"
         columns={1}
       >
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>

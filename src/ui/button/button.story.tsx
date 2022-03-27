@@ -1,8 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { IconName } from 'ui';
-
 import { Button } from '.';
 
 export default {
@@ -38,7 +36,7 @@ Default.args = {
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   ...Default.args,
-  icon: IconName.Pencil,
+  icon: 'pencil',
 };
 
 export const Disabled = Template.bind({});

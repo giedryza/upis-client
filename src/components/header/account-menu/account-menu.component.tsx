@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useSession, signOut } from 'next-auth/react';
 
 import { routes } from 'config/routes';
-import { Button, IconName, DropdownMenu } from 'ui';
+import { Button, DropdownMenu } from 'ui';
 
 const AccountMenu: VFC = () => {
   const { t } = useTranslation();
@@ -20,7 +20,7 @@ const AccountMenu: VFC = () => {
       position="bottom-right"
       menuButton={{
         label: t('common:account.account'),
-        icon: IconName.User,
+        icon: 'user',
         variant: 'ghost',
         size: 'sm',
         withDropdown: true,
@@ -28,12 +28,12 @@ const AccountMenu: VFC = () => {
       items={[
         {
           label: t('common:account.profile'),
-          icon: IconName.User,
+          icon: 'user',
           url: routes.account.profile.index,
         },
         {
           label: t('common:account.signout'),
-          icon: IconName.Exit,
+          icon: 'exit',
           onClick: signout,
         },
       ]}
@@ -41,7 +41,7 @@ const AccountMenu: VFC = () => {
   ) : (
     <Button
       label={t('common:account.signin')}
-      icon={IconName.User}
+      icon="user"
       variant="ghost"
       size="sm"
       url={routes.auth.signin}
