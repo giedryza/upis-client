@@ -2,7 +2,7 @@ import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { signIn } from 'next-auth/react';
 
-import { Button, TextInput } from 'ui';
+import { Button, Container, TextInput } from 'ui';
 import { Card } from 'ui/card/card.component';
 import { useSigninForm } from 'components/auth/signin/signin.hooks';
 import { SigninFormValues } from 'components/auth/signin/signin.types';
@@ -27,7 +27,7 @@ export const Signin: VFC = () => {
   );
 
   return (
-    <div className={styles.container}>
+    <Container size="xs">
       <Card>
         <div className={styles.content}>
           <h1>{t('auth:layout.signin')}</h1>
@@ -67,6 +67,6 @@ export const Signin: VFC = () => {
           </form>
         </div>
       </Card>
-    </div>
+    </Container>
   );
 };

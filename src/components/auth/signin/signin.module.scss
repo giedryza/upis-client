@@ -1,11 +1,5 @@
 @use 'styles/mixins' as *;
 
-.container {
-  width: 40rem;
-  max-width: 95%;
-  margin: 5rem auto;
-}
-
 .content {
   h1 {
     font-weight: 600;

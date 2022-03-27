@@ -8,7 +8,7 @@ import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
 import { capitalizeFirstLetter, getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
-import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
+import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { CompanyEditAbout } from 'components/account';
 import { companiesKeys } from 'domain/companies/companies.keys';
 import { adapters } from 'domain/companies/companies.adapters';
@@ -26,7 +26,7 @@ const CompanyEditAboutPage: NextPage = () => {
       <AppHead title={t('account:companies.title', { count: 1 })} />
 
       <MainLayout>
-        <AccountPageLayout>
+        <PageLayout>
           <Breadcrumbs
             items={[
               { label: t('account:title'), url: routes.account.profile.index },
@@ -47,7 +47,7 @@ const CompanyEditAboutPage: NextPage = () => {
           <AccountLayout>
             <CompanyEditAbout />
           </AccountLayout>
-        </AccountPageLayout>
+        </PageLayout>
       </MainLayout>
     </>
   );

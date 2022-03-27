@@ -6,7 +6,7 @@ import { routes } from 'config/routes';
 import { useGuestPage } from 'tools/hooks';
 import { AppHead } from 'ui';
 import { Signin } from 'components/auth';
-import { MainLayout } from 'layouts';
+import { PageLayout, MainLayout } from 'layouts';
 
 const SigninPage: NextPage = () => {
   const { t } = useTranslation();
@@ -18,7 +18,9 @@ const SigninPage: NextPage = () => {
       <AppHead title={t('auth:layout.signin')} />
 
       <MainLayout>
-        <Signin />
+        <PageLayout>
+          <Signin />
+        </PageLayout>
       </MainLayout>
     </>
   );
