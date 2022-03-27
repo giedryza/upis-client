@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { routes } from 'config/routes';
-import { Button, IconName, TextInput } from 'ui';
+import { Button, TextInput } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useUpdatePassword } from 'domain/users/users.mutations';
 
@@ -40,7 +40,7 @@ export const ProfileEditSecurity: VFC = () => {
     <div className={styles.content}>
       <InfoBlock
         title={t('account:profile.security.title')}
-        icon={IconName.Lock}
+        icon="lock"
         columns={1}
       >
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>

@@ -1,7 +1,6 @@
 import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { IconName } from 'ui';
 import { InfoBlock, InfoItem } from 'components/account/atoms';
 import { routes } from 'config/routes';
 
@@ -11,7 +10,7 @@ export const Security: VFC = () => {
   return (
     <InfoBlock
       title={t('account:profile.security.title')}
-      icon={IconName.Lock}
+      icon="lock"
       editPage={routes.account.profile.security}
     >
       <InfoItem

@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { Icon, IconName } from 'ui';
+import { Icon } from 'ui';
 
 import { Props } from './table.types';
 import styles from './table.module.scss';
@@ -44,7 +44,7 @@ export const Table: VFC<Props> = ({ rows, columns }) => {
           ) : (
             <tr>
               <td colSpan={columns.length} className={styles.empty}>
-                <Icon name={IconName.File} className={styles.icon} />
+                <Icon name="file" className={styles.icon} />
                 <span>{t('common:components.table.empty')}</span>
               </td>
             </tr>

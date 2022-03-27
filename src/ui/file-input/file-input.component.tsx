@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState, forwardRef } from 'react';
 import { useDropzone } from 'react-dropzone';
 import useTranslation from 'next-translate/useTranslation';
 
-import { Button, Icon, IconName } from 'ui';
+import { Button, Icon } from 'ui';
 import { getFiletype, formatBytes } from 'tools/common';
 
 import { FileIcon } from './atoms';
@@ -76,8 +76,8 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
             <Icon
               name={
                 ['accept', 'active'].includes(dragState)
-                  ? IconName.UtilFolderOpen
-                  : IconName.UtilFolderClose
+                  ? 'util-folder-open'
+                  : 'util-folder-close'
               }
               className={styles.icon}
             />
@@ -112,7 +112,7 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
                   </div>
 
                   <Button
-                    icon={IconName.Close}
+                    icon="close"
                     size="xs"
                     variant="secondary"
                     attributes={{

@@ -6,7 +6,6 @@ import { routes } from 'config/routes';
 import { getRouteParam } from 'tools/common';
 import {
   Button,
-  IconName,
   Map,
   mapIcon,
   MapDragendEvent,
@@ -67,7 +66,7 @@ export const CompanyEditLocation: VFC = () => {
     <div className={styles.content}>
       <InfoBlock
         title={t('account:companies.location.title')}
-        icon={IconName.Pin}
+        icon="pin"
         columns={1}
       >
         <div className={styles.mapContainer}>

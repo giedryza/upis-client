@@ -2,7 +2,7 @@ import { useMemo, VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
-import { Button, IconName, Table, TableProps } from 'ui';
+import { Button, Table, TableProps } from 'ui';
 import { useMyCompanies } from 'domain/companies/companies.queries';
 import { useDeleteCompany } from 'domain/companies/companies.mutations';
 
@@ -48,7 +48,7 @@ export const CompaniesTable: VFC = () => {
         actions: (
           <div className={styles.actions}>
             <Button
-              icon={IconName.Trash}
+              icon="trash"
               size="xs"
               variant="secondary"
               attributes={{
@@ -60,7 +60,7 @@ export const CompaniesTable: VFC = () => {
               }}
             />
             <Button
-              icon={IconName.Pencil}
+              icon="pencil"
               size="xs"
               variant="secondary"
               url={routes.account.companies.one.index.replace(

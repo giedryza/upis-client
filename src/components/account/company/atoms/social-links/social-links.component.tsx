@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { routes } from 'config/routes';
 import { getRouteParam } from 'tools/common';
-import { Button, Icon, IconName, Table, TableProps } from 'ui';
+import { Button, Icon, Table, TableProps } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies/companies.queries';
 import { useDeleteSocialLink } from 'domain/social-links/social-links.mutations';
@@ -61,7 +61,7 @@ export const SocialLinks: VFC = () => {
           actions: (
             <div className={styles.actions}>
               <Button
-                icon={IconName.Trash}
+                icon="trash"
                 size="xs"
                 variant="secondary"
                 attributes={{
@@ -71,7 +71,7 @@ export const SocialLinks: VFC = () => {
                 }}
               />
               <Button
-                icon={IconName.Pencil}
+                icon="pencil"
                 size="xs"
                 variant="secondary"
                 url={routes.account.companies.one.socialLinks.one
@@ -89,14 +89,14 @@ export const SocialLinks: VFC = () => {
   return (
     <InfoBlock
       title={t('account:companies.socialLinks.title')}
-      icon={IconName.Network}
+      icon="network"
       columns={1}
     >
       <Table columns={columns} rows={rows} />
       <div>
         <Button
           label={t('common:actions.add')}
-          icon={IconName.Plus}
+          icon="plus"
           size="xs"
           url={routes.account.companies.one.socialLinks.add.replace(
             ':slug',

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import clsx from 'clsx';
 
-import { Button, Icon, IconName } from 'ui';
+import { Button, Icon } from 'ui';
 
 import { Props } from './info-block.types';
 import styles from './info-block.module.scss';
@@ -27,7 +27,7 @@ export const InfoBlock: FC<Props> = ({
         {!!editPage && (
           <Button
             label={t('common:actions.edit')}
-            icon={IconName.Pencil}
+            icon="pencil"
             size="xs"
             url={editPage}
           />

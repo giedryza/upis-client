@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 
 import { routes } from 'config/routes';
 import { getRouteParam } from 'tools/common';
-import { IconName } from 'ui';
 import { InfoBlock, InfoItem } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies/companies.queries';
 
@@ -18,7 +17,7 @@ export const Contacts: VFC = () => {
   return (
     <InfoBlock
       title={t('account:companies.contacts.title')}
-      icon={IconName.Phone}
+      icon="phone"
       editPage={routes.account.companies.one.contacts.replace(':slug', slug)}
     >
       <InfoItem

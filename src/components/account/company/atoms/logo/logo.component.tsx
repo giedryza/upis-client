@@ -2,7 +2,6 @@ import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 
-import { IconName } from 'ui';
 import { getRouteParam } from 'tools/common';
 import { ImageItem, InfoBlock } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies/companies.queries';
@@ -19,7 +18,7 @@ export const Logo: VFC = () => {
   return (
     <InfoBlock
       title={t('account:companies.logo.title')}
-      icon={IconName.Picture}
+      icon="picture"
       columns={1}
       editPage={routes.account.companies.one.logo.replace(':slug', slug)}
     >

@@ -12,20 +12,20 @@ export const Navigation: VFC = () => {
   const { t } = useTranslation();
   const { pathname } = useRouter();
 
-  const links = [
+  const links: { label: string; icon: IconName; url: string }[] = [
     {
       label: t('account:profile.title'),
-      icon: IconName.User,
+      icon: 'user',
       url: routes.account.profile.index,
     },
     {
       label: t('account:companies.title', { count: 2 }),
-      icon: IconName.Kayak,
+      icon: 'kayak',
       url: routes.account.companies.index,
     },
     {
       label: t('account:tours.title'),
-      icon: IconName.Path,
+      icon: 'path',
       url: routes.account.tours.index,
     },
   ];
