@@ -108,7 +108,7 @@ export const CompanyCreate: VFC = () => {
 
             <Button
               label={t('common:actions.submit')}
-              variant="primary"
+              variant="tertiary"
               size="sm"
               attributes={{
                 type: 'submit',

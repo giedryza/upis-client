@@ -96,7 +96,7 @@ export const CompanyEditSocialLinksAdd: VFC = () => {
 
             <Button
               label={t('common:actions.add')}
-              variant="primary"
+              variant="tertiary"
               size="sm"
               attributes={{
                 type: 'submit',

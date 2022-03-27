@@ -96,6 +96,7 @@ export const SocialLinks: VFC = () => {
       <div>
         <Button
           label={t('common:actions.add')}
+          variant="tertiary"
           icon="plus"
           size="xs"
           url={routes.account.companies.one.socialLinks.add.replace(

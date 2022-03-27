@@ -27,6 +27,7 @@ export const InfoBlock: FC<Props> = ({
         {!!editPage && (
           <Button
             label={t('common:actions.edit')}
+            variant="tertiary"
             icon="pencil"
             size="xs"
             url={editPage}

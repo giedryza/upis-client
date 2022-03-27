@@ -126,7 +126,7 @@ export const CompanyEditLocation: VFC = () => {
 
           <Button
             label={t('common:actions.save')}
-            variant="primary"
+            variant="tertiary"
             size="sm"
             attributes={{
               disabled: isLoading,
