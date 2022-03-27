@@ -6,7 +6,7 @@ import { dehydrate, QueryClient } from 'react-query';
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
-import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
+import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Companies } from 'components/account';
 import { companiesKeys } from 'domain/companies/companies.keys';
 import { adapters } from 'domain/companies/companies.adapters';
@@ -22,7 +22,7 @@ const CompaniesPage: NextPage = () => {
       <AppHead title={t('account:companies.title', { count: 2 })} />
 
       <MainLayout>
-        <AccountPageLayout>
+        <PageLayout>
           <Breadcrumbs
             items={[
               { label: t('account:title'), url: routes.account.profile.index },
@@ -33,7 +33,7 @@ const CompaniesPage: NextPage = () => {
           <AccountLayout>
             <Companies />
           </AccountLayout>
-        </AccountPageLayout>
+        </PageLayout>
       </MainLayout>
     </>
   );

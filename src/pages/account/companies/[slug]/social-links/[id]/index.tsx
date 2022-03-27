@@ -8,7 +8,7 @@ import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
 import { capitalizeFirstLetter, getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
-import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
+import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { CompanyEditSocialLinksEdit } from 'components/account';
 import { socialLinksKeys } from 'domain/social-links/social-links.keys';
 import { adapters } from 'domain/social-links/social-links.adapters';
@@ -26,7 +26,7 @@ const CompanyEditSocialLinksEditPage: NextPage = () => {
       <AppHead title={t('account:companies.title', { count: 1 })} />
 
       <MainLayout>
-        <AccountPageLayout>
+        <PageLayout>
           <Breadcrumbs
             items={[
               { label: t('account:title'), url: routes.account.profile.index },
@@ -47,7 +47,7 @@ const CompanyEditSocialLinksEditPage: NextPage = () => {
           <AccountLayout>
             <CompanyEditSocialLinksEdit />
           </AccountLayout>
-        </AccountPageLayout>
+        </PageLayout>
       </MainLayout>
     </>
   );

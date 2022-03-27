@@ -4,7 +4,7 @@ import { getSession } from 'next-auth/react';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
+import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { AppHead, Breadcrumbs } from 'ui';
 import { CompanyCreate } from 'components/account';
 
@@ -18,7 +18,7 @@ const CompanyCreatePage: NextPage = () => {
       <AppHead title={t('account:companies.title', { count: 1 })} />
 
       <MainLayout>
-        <AccountPageLayout>
+        <PageLayout>
           <Breadcrumbs
             items={[
               { label: t('account:title'), url: routes.account.profile.index },
@@ -35,7 +35,7 @@ const CompanyCreatePage: NextPage = () => {
           <AccountLayout>
             <CompanyCreate />
           </AccountLayout>
-        </AccountPageLayout>
+        </PageLayout>
       </MainLayout>
     </>
   );

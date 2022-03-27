@@ -5,7 +5,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
-import { MainLayout, AccountLayout, AccountPageLayout } from 'layouts';
+import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { ProfileEditSecurity } from 'components/account';
 
 const ProfileEditSecurityPage: NextPage = () => {
@@ -18,7 +18,7 @@ const ProfileEditSecurityPage: NextPage = () => {
       <AppHead title={t('account:profile.title')} />
 
       <MainLayout>
-        <AccountPageLayout>
+        <PageLayout>
           <Breadcrumbs
             items={[
               {
@@ -38,7 +38,7 @@ const ProfileEditSecurityPage: NextPage = () => {
           <AccountLayout>
             <ProfileEditSecurity />
           </AccountLayout>
-        </AccountPageLayout>
+        </PageLayout>
       </MainLayout>
     </>
   );
