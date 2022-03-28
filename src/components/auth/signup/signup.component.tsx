@@ -112,11 +112,6 @@ export const Signup: VFC = () => {
                 type="password"
                 error={errors.confirmPassword?.message}
               />
-              <Button
-                label={t('auth:actions.forgot-pass')}
-                variant="link"
-                size="xs"
-              />
             </fieldset>
 
             <Button

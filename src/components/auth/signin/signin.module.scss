@@ -1,22 +1,26 @@
 @use 'styles/mixins' as *;
 
 .content {
-  h1 {
+  @include spacing(y, 2.5rem);
+
+  .title {
     font-weight: 600;
-    font-size: var(--font-size-30);
+    font-size: var(--font-size-24);
+    text-align: center;
   }
 
-  @include spacing(y, 2.5rem);
-}
+  .form {
+    @include spacing(y, 5rem);
+  }
 
-.form {
-  @include spacing(y, 1rem);
-}
+  .fieldset {
+    @include spacing(y, 1rem);
+  }
 
-.inputs {
-  @include spacing(y, 1.5rem);
-}
+  .footer {
+    font-size: 1.2rem;
+    text-align: center;
 
-.actions {
-  text-align: right;
+    @include spacing(x, 0.5rem);
+  }
 }
