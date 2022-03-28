@@ -1,18 +1,22 @@
 .notification {
-  font-size: 1.4rem;
+  display: flex;
+  gap: 1em;
+  align-items: flex-start;
   width: 100%;
   max-width: 25em;
-  background-color: var(--color-white);
-  display: flex;
-  align-items: flex-start;
   padding: 1.5em;
-  gap: 1em;
+
+  font-size: 1.4rem;
+
+  background-color: var(--color-white);
 
   .icon {
     width: 2.5em;
     height: 2.5em;
-    border-radius: 50%;
     padding: 0.5em;
+
+    border-radius: 50%;
+
     fill: var(--color-white);
 
     &.type-info {
@@ -34,6 +38,7 @@
 
   .message {
     flex: 1;
+
     font-weight: 500;
   }
 }
