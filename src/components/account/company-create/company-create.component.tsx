@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { routes } from 'config/routes';
-import { Button, TextInput } from 'ui';
+import { Button, Container, TextInput } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useCreateCompany } from 'domain/companies/companies.mutations';
 
@@ -45,73 +45,79 @@ export const CompanyCreate: VFC = () => {
       icon="kayak"
       columns={1}
     >
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <fieldset className={styles.fieldset} disabled={isLoading}>
-          <TextInput
-            {...register('name', {
-              required: {
-                value: true,
-                message: t('account:companies.about.form.name.error.empty'),
-              },
-            })}
-            label={t('account:companies.about.form.name.label')}
-            error={errors.name?.message}
-          />
+      <Container align="left" size="sm">
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <fieldset className={styles.fieldset} disabled={isLoading}>
+            <TextInput
+              {...register('name', {
+                required: {
+                  value: true,
+                  message: t('account:companies.about.form.name.error.empty'),
+                },
+              })}
+              label={t('account:companies.about.form.name.label')}
+              error={errors.name?.message}
+            />
 
-          <TextInput
-            {...register('email', {
-              required: {
-                value: true,
-                message: t('account:companies.contacts.form.email.error.empty'),
-              },
-            })}
-            label={t('account:companies.contacts.form.email.label')}
-            placeholder="jonas@doe.com"
-            type="email"
-            error={errors.email?.message}
-          />
+            <TextInput
+              {...register('email', {
+                required: {
+                  value: true,
+                  message: t(
+                    'account:companies.contacts.form.email.error.empty'
+                  ),
+                },
+              })}
+              label={t('account:companies.contacts.form.email.label')}
+              placeholder="jonas@doe.com"
+              type="email"
+              error={errors.email?.message}
+            />
 
-          <TextInput
-            {...register('phone', {
-              required: {
-                value: true,
-                message: t('account:companies.contacts.form.phone.error.empty'),
-              },
-            })}
-            label={t('account:companies.contacts.form.phone.label')}
-            placeholder="+37065555555"
-            type="phone"
-            error={errors.phone?.message}
-          />
+            <TextInput
+              {...register('phone', {
+                required: {
+                  value: true,
+                  message: t(
+                    'account:companies.contacts.form.phone.error.empty'
+                  ),
+                },
+              })}
+              label={t('account:companies.contacts.form.phone.label')}
+              placeholder="+37065555555"
+              type="phone"
+              error={errors.phone?.message}
+            />
 
-          <TextInput
-            {...register('description')}
-            label={t('account:companies.about.form.description.label')}
-            type="textarea"
-            rows={8}
-            error={errors.description?.message}
-          />
-        </fieldset>
+            <TextInput
+              {...register('description')}
+              label={t('account:companies.about.form.description.label')}
+              type="textarea"
+              rows={8}
+              error={errors.description?.message}
+            />
+          </fieldset>
 
-        <div className={styles.actions}>
-          <Button
-            label={t('common:actions.cancel')}
-            variant="ghost"
-            size="sm"
-            url={routes.account.companies.index}
-          />
+          <div className={styles.actions}>
+            <Button
+              label={t('common:actions.cancel')}
+              variant="ghost"
+              size="sm"
+              url={routes.account.companies.index}
+            />
 
-          <Button
-            label={t('common:actions.submit')}
-            variant="tertiary"
-            size="sm"
-            attributes={{
-              type: 'submit',
-              disabled: !isDirty || isLoading,
-            }}
-          />
-        </div>
-      </form>
+            <Button
+              label={t('common:actions.submit')}
+              variant="tertiary"
+              size="sm"
+              attributes={{
+                type: 'submit',
+                disabled: !isDirty || isLoading,
+              }}
+            />
+          </div>
+        </form>
+      </Container>
     </InfoBlock>
   );
 };

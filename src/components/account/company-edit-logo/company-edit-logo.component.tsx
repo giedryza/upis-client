@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, FileInput } from 'ui';
+import { Button, Container, FileInput } from 'ui';
 import { routes } from 'config/routes';
 import { getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
@@ -46,44 +46,46 @@ export const CompanyEditLogo: VFC = () => {
       icon="picture"
       columns={1}
     >
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <fieldset className={styles.fieldset} disabled={isLoading}>
-          <Controller
-            name="logo"
-            control={control}
-            render={({ field: { name, onChange, ref } }) => (
-              <FileInput
-                name={name}
-                onChange={([file]) => {
-                  onChange(file);
-                }}
-                accept={['jpeg', 'jpg', 'png', 'svg', 'gif', 'bmp']}
-                maxSize={1 * 1000 * 1000}
-                ref={ref}
-              />
-            )}
-          />
-        </fieldset>
+      <Container align="left" size="sm">
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <fieldset className={styles.fieldset} disabled={isLoading}>
+            <Controller
+              name="logo"
+              control={control}
+              render={({ field: { name, onChange, ref } }) => (
+                <FileInput
+                  name={name}
+                  onChange={([file]) => {
+                    onChange(file);
+                  }}
+                  accept={['jpeg', 'jpg', 'png', 'svg', 'gif', 'bmp']}
+                  maxSize={1 * 1000 * 1000}
+                  ref={ref}
+                />
+              )}
+            />
+          </fieldset>
 
-        <div className={styles.actions}>
-          <Button
-            label={t('common:actions.cancel')}
-            variant="ghost"
-            size="sm"
-            url={routes.account.companies.one.index.replace(':slug', slug)}
-          />
+          <div className={styles.actions}>
+            <Button
+              label={t('common:actions.cancel')}
+              variant="ghost"
+              size="sm"
+              url={routes.account.companies.one.index.replace(':slug', slug)}
+            />
 
-          <Button
-            label={t('common:actions.save')}
-            variant="tertiary"
-            size="sm"
-            attributes={{
-              type: 'submit',
-              disabled: !isDirty || isLoading,
-            }}
-          />
-        </div>
-      </form>
+            <Button
+              label={t('common:actions.save')}
+              variant="tertiary"
+              size="sm"
+              attributes={{
+                type: 'submit',
+                disabled: !isDirty || isLoading,
+              }}
+            />
+          </div>
+        </form>
+      </Container>
     </InfoBlock>
   );
 };

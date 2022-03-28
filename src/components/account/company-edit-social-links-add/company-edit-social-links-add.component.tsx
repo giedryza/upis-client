@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, SelectInput, TextInput } from 'ui';
+import { Button, Container, SelectInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
@@ -50,60 +50,62 @@ export const CompanyEditSocialLinksAdd: VFC = () => {
       icon="network"
       columns={1}
     >
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <fieldset className={styles.fieldset} disabled={isLoading}>
-          <SelectInput
-            {...register('type', {
-              required: {
-                value: true,
-                message: t(
-                  'account:companies.socialLinks.form.type.error.empty'
-                ),
-              },
-            })}
-            label={t('account:companies.socialLinks.form.type.label')}
-            error={errors.type?.message}
-            options={Object.values(SocialType).map((type) => ({
-              label: t(`common:social.${type}`),
-              value: type,
-            }))}
-          />
+      <Container align="left" size="sm">
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <fieldset className={styles.fieldset} disabled={isLoading}>
+            <SelectInput
+              {...register('type', {
+                required: {
+                  value: true,
+                  message: t(
+                    'account:companies.socialLinks.form.type.error.empty'
+                  ),
+                },
+              })}
+              label={t('account:companies.socialLinks.form.type.label')}
+              error={errors.type?.message}
+              options={Object.values(SocialType).map((type) => ({
+                label: t(`common:social.${type}`),
+                value: type,
+              }))}
+            />
 
-          <TextInput
-            {...register('url', {
-              required: {
-                value: true,
-                message: t(
-                  'account:companies.socialLinks.form.url.error.empty'
-                ),
-              },
-            })}
-            label={t('account:companies.socialLinks.form.url.label')}
-            placeholder="https://upis.lt"
-            type="url"
-            error={errors.url?.message}
-          />
-        </fieldset>
+            <TextInput
+              {...register('url', {
+                required: {
+                  value: true,
+                  message: t(
+                    'account:companies.socialLinks.form.url.error.empty'
+                  ),
+                },
+              })}
+              label={t('account:companies.socialLinks.form.url.label')}
+              placeholder="https://upis.lt"
+              type="url"
+              error={errors.url?.message}
+            />
+          </fieldset>
 
-        <div className={styles.actions}>
-          <Button
-            label={t('common:actions.cancel')}
-            variant="ghost"
-            size="sm"
-            url={routes.account.companies.one.index.replace(':slug', slug)}
-          />
+          <div className={styles.actions}>
+            <Button
+              label={t('common:actions.cancel')}
+              variant="ghost"
+              size="sm"
+              url={routes.account.companies.one.index.replace(':slug', slug)}
+            />
 
-          <Button
-            label={t('common:actions.add')}
-            variant="tertiary"
-            size="sm"
-            attributes={{
-              type: 'submit',
-              disabled: !isDirty || isLoading,
-            }}
-          />
-        </div>
-      </form>
+            <Button
+              label={t('common:actions.add')}
+              variant="tertiary"
+              size="sm"
+              attributes={{
+                type: 'submit',
+                disabled: !isDirty || isLoading,
+              }}
+            />
+          </div>
+        </form>
+      </Container>
     </InfoBlock>
   );
 };
