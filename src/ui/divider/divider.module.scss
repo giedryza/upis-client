@@ -6,7 +6,12 @@
 
   color: var(--color-grey-70);
   font-size: 1.3rem;
+  min-height: 1.3em;
   text-transform: uppercase;
+
+  &.-empty {
+    gap: 0;
+  }
 
   &::before,
   &::after {

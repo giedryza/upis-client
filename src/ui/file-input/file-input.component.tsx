@@ -85,7 +85,7 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
               {t('common:components.fileInput.dragAndDrop')}
             </p>
             <div className={styles.divider}>
-              <Divider label={t('common:components.fileInput.or')} />
+              <Divider label={t('common:texts.or')} />
             </div>
             <Button
               label={t('common:components.fileInput.browse')}
