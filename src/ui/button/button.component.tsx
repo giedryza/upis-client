@@ -10,11 +10,11 @@ import { Props, LinkProps, ButtonProps } from './button.types';
 export const Button: VFC<Props> = ({
   label,
   url,
-  block,
   icon,
   iconPlacement = 'left',
   variant = 'primary',
   size = 'md',
+  width = 'normal',
   textAlign = 'center',
   withDropdown,
   attributes = {},
@@ -59,9 +59,9 @@ export const Button: VFC<Props> = ({
     styles[size],
     styles[`icon-${iconPlacement}`],
     styles[`text-${textAlign}`],
+    styles[`width-${width}`],
     {
       [styles.iconButton as string]: icon && !label,
-      [styles.block as string]: block,
     }
   );
 

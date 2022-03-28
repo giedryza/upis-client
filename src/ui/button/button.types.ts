@@ -11,8 +11,8 @@ interface BaseProps {
   iconPlacement?: 'top' | 'right' | 'bottom' | 'left';
   variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'text' | 'link';
   size?: 'xs' | 'sm' | 'md' | 'lg';
+  width?: 'normal' | 'full';
   textAlign?: 'left' | 'right' | 'center';
-  block?: boolean;
   withDropdown?: boolean;
 }
 

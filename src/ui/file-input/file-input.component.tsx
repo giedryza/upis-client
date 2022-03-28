@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState, forwardRef } from 'react';
 import { useDropzone } from 'react-dropzone';
 import useTranslation from 'next-translate/useTranslation';
 
-import { Button, Icon } from 'ui';
+import { Button, Icon, Divider } from 'ui';
 import { getFiletype, formatBytes } from 'tools/common';
 
 import { FileIcon } from './atoms';
@@ -85,7 +85,7 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
               {t('common:components.fileInput.dragAndDrop')}
             </p>
             <div className={styles.divider}>
-              {t('common:components.fileInput.or')}
+              <Divider label={t('common:components.fileInput.or')} />
             </div>
             <Button
               label={t('common:components.fileInput.browse')}
