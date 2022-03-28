@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, TextInput } from 'ui';
+import { Button, Container, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
@@ -57,47 +57,49 @@ export const CompanyEditAbout: VFC = () => {
       icon="info"
       columns={1}
     >
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <fieldset className={styles.fieldset} disabled={isLoading}>
-          <TextInput
-            {...register('name', {
-              required: {
-                value: true,
-                message: t('account:companies.about.form.name.error.empty'),
-              },
-            })}
-            label={t('account:companies.about.form.name.label')}
-            error={errors.name?.message}
-          />
+      <Container align="left" size="sm">
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <fieldset className={styles.fieldset} disabled={isLoading}>
+            <TextInput
+              {...register('name', {
+                required: {
+                  value: true,
+                  message: t('account:companies.about.form.name.error.empty'),
+                },
+              })}
+              label={t('account:companies.about.form.name.label')}
+              error={errors.name?.message}
+            />
 
-          <TextInput
-            {...register('description')}
-            label={t('account:companies.about.form.description.label')}
-            type="textarea"
-            rows={8}
-            error={errors.description?.message}
-          />
-        </fieldset>
+            <TextInput
+              {...register('description')}
+              label={t('account:companies.about.form.description.label')}
+              type="textarea"
+              rows={8}
+              error={errors.description?.message}
+            />
+          </fieldset>
 
-        <div className={styles.actions}>
-          <Button
-            label={t('common:actions.cancel')}
-            variant="ghost"
-            size="sm"
-            url={routes.account.companies.one.index.replace(':slug', slug)}
-          />
+          <div className={styles.actions}>
+            <Button
+              label={t('common:actions.cancel')}
+              variant="ghost"
+              size="sm"
+              url={routes.account.companies.one.index.replace(':slug', slug)}
+            />
 
-          <Button
-            label={t('common:actions.save')}
-            variant="tertiary"
-            size="sm"
-            attributes={{
-              type: 'submit',
-              disabled: !isDirty || isLoading,
-            }}
-          />
-        </div>
-      </form>
+            <Button
+              label={t('common:actions.save')}
+              variant="tertiary"
+              size="sm"
+              attributes={{
+                type: 'submit',
+                disabled: !isDirty || isLoading,
+              }}
+            />
+          </div>
+        </form>
+      </Container>
     </InfoBlock>
   );
 };
