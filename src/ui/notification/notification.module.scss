@@ -1,0 +1,39 @@
+.notification {
+  font-size: 1.4rem;
+  width: 100%;
+  max-width: 25em;
+  background-color: var(--color-white);
+  display: flex;
+  align-items: flex-start;
+  padding: 1.5em;
+  gap: 1em;
+
+  .icon {
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    padding: 0.5em;
+    fill: var(--color-white);
+
+    &.type-info {
+      background-color: var(--color-primary-60);
+    }
+
+    &.type-success {
+      background-color: var(--color-success-60);
+    }
+
+    &.type-warning {
+      background-color: var(--color-warning-60);
+    }
+
+    &.type-danger {
+      background-color: var(--color-danger-60);
+    }
+  }
+
+  .message {
+    flex: 1;
+    font-weight: 500;
+  }
+}
