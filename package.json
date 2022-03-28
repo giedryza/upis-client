@@ -2,6 +2,7 @@
   "name": "upis-client",
   "version": "1.0.0",
   "private": true,
+  "author": "Giedrius Blažulionis <giedrius.bla@gmail.com>",
   "engines": {
     "node": "16.x"
   },
