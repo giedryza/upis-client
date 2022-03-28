@@ -1,4 +1,9 @@
 .container {
+  --container-width-xs: 40rem;
+  --container-width-sm: 54rem;
+  --container-width-md: 78rem;
+  --container-width-lg: 114rem;
+
   width: 100%;
 
   &.align-center {
