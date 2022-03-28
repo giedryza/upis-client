@@ -1,16 +1,31 @@
 import { useMutation } from 'react-query';
-import { useRouter } from 'next/router';
-
-import { routes } from 'config/routes';
+import { signIn } from 'next-auth/react';
 
 import { adapters } from './users.adapters';
 
-export const useUpdatePassword = () => {
-  const { push } = useRouter();
+interface Options {
+  onSuccess?: () => void;
+}
 
+export const useSignup = ({ onSuccess }: Options = {}) => {
+  const mutation = useMutation(adapters.signup, {
+    onSuccess: (_data, { email, password }) => {
+      signIn<'credentials'>('credentials', {
+        redirect: false,
+        email,
+        password,
+      });
+      onSuccess?.();
+    },
+  });
+
+  return mutation;
+};
+
+export const useUpdatePassword = ({ onSuccess }: Options = {}) => {
   const mutation = useMutation(adapters.updatePassword, {
     onSuccess: () => {
-      push(routes.account.profile.index);
+      onSuccess?.();
     },
   });
 

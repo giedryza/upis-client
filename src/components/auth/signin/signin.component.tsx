@@ -30,7 +30,7 @@ export const Signin: VFC = () => {
     <Container size="xs">
       <Card>
         <div className={styles.content}>
-          <h1>{t('auth:layout.signin')}</h1>
+          <h1>{t('auth:signin.title')}</h1>
 
           <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.inputs}>

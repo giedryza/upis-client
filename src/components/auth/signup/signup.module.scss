@@ -1,0 +1,26 @@
+@use 'styles/mixins' as *;
+
+.content {
+  @include spacing(y, 2.5rem);
+
+  .title {
+    font-weight: 600;
+    font-size: var(--font-size-24);
+    text-align: center;
+  }
+
+  .form {
+    @include spacing(y, 5rem);
+  }
+
+  .fieldset {
+    @include spacing(y, 1rem);
+  }
+
+  .footer {
+    font-size: 1.2rem;
+    text-align: center;
+
+    @include spacing(x, 0.5rem);
+  }
+}

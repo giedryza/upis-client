@@ -1,4 +1,5 @@
 import { VFC } from 'react';
+import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -17,6 +18,7 @@ import styles from './profile-edit-security.module.scss';
 
 export const ProfileEditSecurity: VFC = () => {
   const { t } = useTranslation();
+  const { push } = useRouter();
 
   const {
     register,
@@ -26,7 +28,11 @@ export const ProfileEditSecurity: VFC = () => {
     defaultValues: INITIAL_VALUES,
   });
 
-  const { mutate: updatePassword, isLoading } = useUpdatePassword();
+  const { mutate: updatePassword, isLoading } = useUpdatePassword({
+    onSuccess: () => {
+      push(routes.account.profile.index);
+    },
+  });
 
   const onSubmit: SubmitHandler<Values> = ({
     currentPassword,
