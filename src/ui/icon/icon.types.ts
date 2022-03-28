@@ -27,6 +27,7 @@ export const flagIcons = ['flag-en', 'flag-lt'] as const;
 
 export const logoIcons = [
   'logo-facebook',
+  'logo-google',
   'logo-instagram',
   'logo-linkedin',
   'logo-twitter',
