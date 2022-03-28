@@ -3,6 +3,7 @@ export interface Props extends React.SVGAttributes<SVGElement> {
 }
 
 export const baseIcons = [
+  'bell',
   'close',
   'exit',
   'file',
