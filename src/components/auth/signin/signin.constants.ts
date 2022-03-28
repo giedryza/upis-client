@@ -1,6 +1,6 @@
-import { SigninFormValues } from 'components/auth/signin/signin.types';
+import { Values } from './signin.types';
 
-export const INITIAL_VALUES: SigninFormValues = {
+export const INITIAL_VALUES: Values = {
   email: '',
   password: '',
 };

@@ -17,7 +17,6 @@
   "components": {
     "fileInput": {
       "dragAndDrop": "Drag & drop your files here",
-      "or": "or",
       "browse": "Browse files",
       "files": "Uploaded files",
       "remove": "Remove file"
@@ -25,6 +24,9 @@
     "table": {
       "empty": "No records"
     }
+  },
+  "texts": {
+    "or": "Or"
   },
   "language": {
     "lt": "Lietuvių",

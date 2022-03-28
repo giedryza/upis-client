@@ -17,7 +17,6 @@
   "components": {
     "fileInput": {
       "dragAndDrop": "Tempdami įkelkite failą čia",
-      "or": "arba",
       "browse": "Pasirinkite failą",
       "files": "Įkelti failai",
       "remove": "Ištrinti failą"
@@ -25,6 +24,9 @@
     "table": {
       "empty": "Nėra įrašų"
     }
+  },
+  "texts": {
+    "or": "Arba"
   },
   "language": {
     "lt": "Lietuvių",

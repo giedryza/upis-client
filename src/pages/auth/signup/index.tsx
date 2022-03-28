@@ -5,21 +5,21 @@ import useTranslation from 'next-translate/useTranslation';
 import { routes } from 'config/routes';
 import { useGuestPage } from 'tools/hooks';
 import { AppHead } from 'ui';
-import { Signin } from 'components/auth';
+import { Signup } from 'components/auth';
 import { PageLayout, MainLayout } from 'layouts';
 
-const SigninPage: NextPage = () => {
+const SignupPage: NextPage = () => {
   const { t } = useTranslation();
 
   useGuestPage();
 
   return (
     <>
-      <AppHead title={t('auth:layout.signin')} />
+      <AppHead title={t('auth:signup.title')} />
 
       <MainLayout>
         <PageLayout>
-          <Signin />
+          <Signup />
         </PageLayout>
       </MainLayout>
     </>
@@ -45,4 +45,4 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   };
 };
 
-export default SigninPage;
+export default SignupPage;
