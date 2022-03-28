@@ -61,9 +61,3 @@ Disabled.args = {
   url: undefined,
   attributes: { disabled: true },
 };
-
-export const Block = Template.bind({});
-Block.args = {
-  ...Default.args,
-  block: true,
-};

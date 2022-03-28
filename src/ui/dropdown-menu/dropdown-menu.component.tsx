@@ -63,7 +63,7 @@ export const DropdownMenu: VFC<Props> = ({
                   variant="ghost"
                   textAlign="left"
                   size="sm"
-                  block
+                  width="full"
                   attributes={{
                     ...attributes,
                     role: 'menuitem',
