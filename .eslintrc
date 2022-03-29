@@ -114,6 +114,12 @@
       "rules": {
         "import/no-extraneous-dependencies": "off"
       }
+    },
+    {
+      "files": ["*.slice.ts"],
+      "rules": {
+        "no-param-reassign": "off"
+      }
     }
   ]
 }
