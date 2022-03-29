@@ -2,7 +2,7 @@ import { endpoints } from 'config/endpoints';
 import { Http } from 'tools/libs/http/http.lib';
 import { Response } from 'tools/libs/http/http.types';
 import { getJsonBody } from 'tools/libs/http/http.utils';
-import { Session } from 'domain/auth/auth.types';
+import { Session } from 'domain/users/users.types';
 
 export const adapters = {
   signup: ({

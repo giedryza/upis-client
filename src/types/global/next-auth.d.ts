@@ -1,18 +1,14 @@
 import NextAuth, { DefaultSession } from 'next-auth';
 import { JWT as DefaultJWT } from 'next-auth/jwt';
 
-import { Role } from 'domain/auth/auth.types';
+import { Role, User as AppUser } from 'domain/users/users.types';
 
 declare module 'next-auth' {
   /**
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
    */
   interface Session {
-    user: {
-      id: string;
-      email: string;
-      role: Role;
-    };
+    user: AppUser;
     jwt: string;
     expires: DefaultSession['expires'];
   }
