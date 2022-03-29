@@ -3,7 +3,7 @@ import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 import { endpoints } from 'config/endpoints';
-import { Session } from 'domain/auth/auth.types';
+import { Session } from 'domain/users/users.types';
 import { Http } from 'tools/libs/http/http.lib';
 import { Response } from 'tools/libs/http/http.types';
 import { getJsonBody } from 'tools/libs/http/http.utils';
