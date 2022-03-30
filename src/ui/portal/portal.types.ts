@@ -1,3 +1,3 @@
 export interface Props {
-  selector: string;
+  id: string;
 }

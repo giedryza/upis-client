@@ -1,11 +1,11 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Notification } from '.';
+import { Toast } from '.';
 
 export default {
-  title: 'UI/Notification',
-  component: Notification,
+  title: 'UI/Toast',
+  component: Toast,
   parameters: {
     backgrounds: {
       default: 'grey',
@@ -21,11 +21,9 @@ export default {
     onTouchStart: { action: 'onTouchStart' },
     onTouchEnd: { action: 'onTouchEnd' },
   },
-} as ComponentMeta<typeof Notification>;
+} as ComponentMeta<typeof Toast>;
 
-const Template: ComponentStory<typeof Notification> = (args) => (
-  <Notification {...args} />
-);
+const Template: ComponentStory<typeof Toast> = (args) => <Toast {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

@@ -9,7 +9,7 @@ export * from './file-input';
 export * from './icon';
 export * from './loader';
 export * from './map';
-export * from './notification';
+export * from './toast';
 export * from './portal';
 export * from './select-input';
 export * from './table';
