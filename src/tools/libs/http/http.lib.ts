@@ -75,9 +75,9 @@ export class Http<T = any> {
 
     if (!response.ok) {
       const { statusText, status } = response;
-      const { data } = json;
+      const { data, isAppError } = json;
 
-      throw new ApiError(statusText, status, data);
+      throw new ApiError(statusText, status, data, isAppError);
     }
 
     return json as T;
