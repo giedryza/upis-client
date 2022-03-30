@@ -1,10 +1,9 @@
 import { getSession } from 'next-auth/react';
 import { stringifyUrl } from 'query-string';
 
-import { ApiError } from 'tools/libs/errors/api.error';
 import { isServer } from 'tools/common';
 
-import { ApiVersion, Config, Method } from './http.types';
+import { ApiVersion, Config, Method, ApiError } from './http.types';
 
 export class Http<T = any> {
   #method: Method = 'GET';
