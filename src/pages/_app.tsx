@@ -9,6 +9,7 @@ import { queryClientConfig } from 'tools/libs/query-client';
 import { store } from 'tools/libs/store';
 import { axe } from 'tools/services/axe';
 import { AppLayout } from 'layouts';
+import { Notifications } from 'components/notifications';
 
 import 'styles/index.scss';
 
@@ -25,6 +26,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             <SSRProvider>
               <AppLayout>
                 <Component {...pageProps} />
+
+                <Notifications />
               </AppLayout>
             </SSRProvider>
           </SessionProvider>

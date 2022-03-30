@@ -20,7 +20,7 @@ const Modal: FC = () => {
         Open Modal
       </button>
       {false && (
-        <Portal selector="#modal">
+        <Portal id="modal">
           <div className="backdrop">
             <div className="modal">
               <p>This modal is rendered using portals</p>

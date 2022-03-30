@@ -1,0 +1,19 @@
+.fading {
+  --fade-duration: 2 * 1000;
+
+  animation: fade;
+  animation-duration: calc(var(--fade-duration) * 1ms);
+  animation-delay: calc(
+    (var(--fade-delay, 6 * 1000) - var(--fade-duration)) * 1ms
+  );
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

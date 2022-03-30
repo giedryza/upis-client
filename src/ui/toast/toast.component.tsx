@@ -3,10 +3,10 @@ import clsx from 'clsx';
 
 import { Icon, Button } from 'ui';
 
-import { Props } from './notification.types';
-import styles from './notification.module.scss';
+import { Props } from './toast.types';
+import styles from './toast.module.scss';
 
-export const Notification: VFC<Props> = ({
+export const Toast: VFC<Props> = ({
   type = 'info',
   message,
   onClose,
@@ -17,7 +17,7 @@ export const Notification: VFC<Props> = ({
 }) => {
   return (
     <div
-      className={styles.notification}
+      className={styles.toast}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onTouchStart={onTouchStart}
