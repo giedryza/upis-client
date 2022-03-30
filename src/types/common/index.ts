@@ -1,4 +1,5 @@
 export * from './env';
+export * from './errors';
 export * from './files';
 export * from './forms';
 export * from './locales';
