@@ -7,8 +7,7 @@ import { Button, Container, FileInput } from 'ui';
 import { routes } from 'config/routes';
 import { getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
-import { useUploadLogo } from 'domain/companies/companies.mutations';
-import { useActiveCompany } from 'domain/companies/companies.queries';
+import { useActiveCompany, useUploadLogo } from 'domain/companies';
 
 import { Values } from './company-edit-logo.types';
 import styles from './company-edit-logo.module.scss';

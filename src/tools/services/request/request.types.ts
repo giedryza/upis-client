@@ -12,12 +12,9 @@ export interface Config {
   credentials?: RequestCredentials;
 }
 
-export interface Response<D> {
+export interface ApiResponse<D = any, M = any> {
   data: D;
-}
-
-export interface ResponseWithMeta<D, M> extends Response<D> {
-  meta: M;
+  meta?: M;
 }
 
 export type ApiVersion = `v${1}`;

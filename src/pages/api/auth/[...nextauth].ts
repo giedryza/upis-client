@@ -3,10 +3,8 @@ import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 import { endpoints } from 'config/endpoints';
-import { Session } from 'domain/users/users.types';
-import { Http } from 'tools/libs/http/http.lib';
-import { Response } from 'tools/libs/http/http.types';
-import { getJsonBody } from 'tools/libs/http/http.utils';
+import { Session } from 'domain/users';
+import { Request, getJsonBody } from 'tools/services/request';
 
 const options: NextAuthOptions = {
   session: {
@@ -25,12 +23,9 @@ const options: NextAuthOptions = {
         const { email, password } = credentials;
 
         try {
-          const { data } = await new Http<Response<Session>>(
-            endpoints.users.signin,
-            {
-              body: getJsonBody({ email, password }),
-            }
-          ).post();
+          const { data } = await new Request<Session>(endpoints.users.signin, {
+            body: getJsonBody({ email, password }),
+          }).post();
 
           return {
             ...data.user,

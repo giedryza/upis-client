@@ -1,4 +1,4 @@
-import { SocialLink } from 'domain/social-links/social-links.types';
+import { SocialLink } from 'domain/social-links';
 
 export interface Company {
   _id: string;

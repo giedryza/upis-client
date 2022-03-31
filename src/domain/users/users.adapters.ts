@@ -1,8 +1,7 @@
 import { endpoints } from 'config/endpoints';
-import { Http } from 'tools/libs/http/http.lib';
-import { Response } from 'tools/libs/http/http.types';
-import { getJsonBody } from 'tools/libs/http/http.utils';
-import { Session } from 'domain/users/users.types';
+import { Request, getJsonBody } from 'tools/services/request';
+
+import { Session } from './users.types';
 
 export const adapters = {
   signup: ({
@@ -14,7 +13,7 @@ export const adapters = {
     password: string;
     confirmPassword: string;
   }) =>
-    new Http<Response<Session>>(endpoints.users.signup, {
+    new Request<Session>(endpoints.users.signup, {
       body: getJsonBody({
         email,
         password,
@@ -30,7 +29,7 @@ export const adapters = {
     newPassword: string;
     confirmPassword: string;
   }) =>
-    new Http(endpoints.users.updatePassword, {
+    new Request(endpoints.users.updatePassword, {
       body: getJsonBody({
         currentPassword,
         newPassword,

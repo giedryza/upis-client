@@ -7,9 +7,8 @@ import { Button, Container, SelectInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
-import { useAddSocialLink } from 'domain/social-links/social-links.mutations';
-import { useActiveCompany } from 'domain/companies/companies.queries';
-import { SocialType } from 'domain/social-links/social-links.types';
+import { useAddSocialLink, SocialType } from 'domain/social-links';
+import { useActiveCompany } from 'domain/companies';
 
 import { Values } from './company-edit-social-links-add.types';
 import { INITIAL_VALUES } from './company-edit-social-links-add.constants';

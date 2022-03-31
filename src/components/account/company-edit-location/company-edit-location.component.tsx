@@ -15,8 +15,7 @@ import {
   DEFAULT_CENTER,
 } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
-import { useUpdateLocation } from 'domain/companies/companies.mutations';
-import { useActiveCompany } from 'domain/companies/companies.queries';
+import { useActiveCompany, useUpdateLocation } from 'domain/companies';
 
 import styles from './company-edit-location.module.scss';
 

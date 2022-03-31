@@ -3,8 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
 import { Button, Table, TableProps } from 'ui';
-import { useMyCompanies } from 'domain/companies/companies.queries';
-import { useDeleteCompany } from 'domain/companies/companies.mutations';
+import { useMyCompanies, useDeleteCompany } from 'domain/companies';
 
 import { CompaniesTableColumns } from './companies-table.types';
 import styles from './companies-table.module.scss';

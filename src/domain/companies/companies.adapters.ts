@@ -1,26 +1,22 @@
 import { IncomingMessage } from 'http';
 
 import { endpoints } from 'config/endpoints';
-import { CompaniesFilters, Company } from 'domain/companies/companies.types';
-import { Http } from 'tools/libs/http/http.lib';
-import { getFilesBody, getJsonBody } from 'tools/libs/http/http.utils';
-import { Response, ResponseWithMeta } from 'tools/libs/http/http.types';
+import { Request, getFilesBody, getJsonBody } from 'tools/services/request';
 import { Pagination } from 'types/common';
+
+import { CompaniesFilters, Company } from './companies.types';
 
 export const adapters = {
   getCompanies: ({
     req,
     params,
   }: { req?: IncomingMessage; params?: CompaniesFilters } = {}) =>
-    new Http<ResponseWithMeta<Company[], Pagination>>(
-      endpoints.companies.index,
-      {
-        req,
-        params,
-      }
-    ).get(),
+    new Request<Company[], Pagination>(endpoints.companies.index, {
+      req,
+      params,
+    }).get(),
   getCompany: ({ req, slug }: { req?: IncomingMessage; slug: string }) =>
-    new Http<Response<Company | null>>(
+    new Request<Company | null>(
       endpoints.companies.one.index.replace(':id', slug),
       {
         req,
@@ -31,7 +27,7 @@ export const adapters = {
   }: {
     form: Pick<Company, 'name' | 'phone' | 'email' | 'description'>;
   }) =>
-    new Http<Response<Company>>(endpoints.companies.index, {
+    new Request<Company>(endpoints.companies.index, {
       body: getJsonBody(form),
     }).post(),
   updateCompany: ({
@@ -46,12 +42,9 @@ export const adapters = {
       >
     >;
   }) =>
-    new Http<Response<Company>>(
-      endpoints.companies.one.index.replace(':id', id),
-      {
-        body: getJsonBody(form),
-      }
-    ).patch(),
+    new Request<Company>(endpoints.companies.one.index.replace(':id', id), {
+      body: getJsonBody(form),
+    }).patch(),
   updateLocation: ({
     id,
     form,
@@ -59,23 +52,17 @@ export const adapters = {
     id: string;
     form: { lat: number; lng: number; address: string };
   }) =>
-    new Http<Response<Company>>(
-      endpoints.companies.one.index.replace(':id', id),
-      {
-        body: getJsonBody({
-          address: form.address,
-          ...(form.lat &&
-            form.lng && { location: { coordinates: [form.lng, form.lat] } }),
-        }),
-      }
-    ).patch(),
+    new Request<Company>(endpoints.companies.one.index.replace(':id', id), {
+      body: getJsonBody({
+        address: form.address,
+        ...(form.lat &&
+          form.lng && { location: { coordinates: [form.lng, form.lat] } }),
+      }),
+    }).patch(),
   uploadLogo: ({ id, logo }: { id: string; logo: File }) =>
-    new Http<Response<Company>>(
-      endpoints.companies.one.logo.replace(':id', id),
-      {
-        body: getFilesBody([{ field: 'logo', file: logo }]),
-      }
-    ).patch(),
+    new Request<Company>(endpoints.companies.one.logo.replace(':id', id), {
+      body: getFilesBody([{ field: 'logo', file: logo }]),
+    }).patch(),
   deleteCompany: ({ id }: { id: string }) =>
-    new Http(endpoints.companies.one.index.replace(':id', id)).delete(),
+    new Request(endpoints.companies.one.index.replace(':id', id)).delete(),
 };

@@ -10,8 +10,7 @@ import { capitalizeFirstLetter, getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { CompanyEditSocialLinksEdit } from 'components/account';
-import { socialLinksKeys } from 'domain/social-links/social-links.keys';
-import { adapters } from 'domain/social-links/social-links.adapters';
+import { adapters, socialLinksKeys } from 'domain/social-links';
 
 const CompanyEditSocialLinksEditPage: NextPage = () => {
   const { t } = useTranslation();

@@ -7,8 +7,7 @@ import { Button, Container, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
-import { useUpdateCompany } from 'domain/companies/companies.mutations';
-import { useActiveCompany } from 'domain/companies/companies.queries';
+import { useUpdateCompany, useActiveCompany } from 'domain/companies';
 
 import { Values } from './company-edit-about.types';
 import { INITIAL_VALUES } from './company-edit-about.constants';

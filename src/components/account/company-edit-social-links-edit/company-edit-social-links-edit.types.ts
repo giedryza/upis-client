@@ -1,4 +1,4 @@
-import { SocialType } from 'domain/social-links/social-links.types';
+import { SocialType } from 'domain/social-links';
 
 export interface Values {
   type: SocialType;

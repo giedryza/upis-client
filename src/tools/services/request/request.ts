@@ -3,9 +3,15 @@ import { stringifyUrl } from 'query-string';
 
 import { isServer } from 'tools/common';
 
-import { ApiVersion, Config, Method, ApiError } from './http.types';
+import {
+  ApiVersion,
+  Config,
+  Method,
+  ApiError,
+  ApiResponse,
+} from './request.types';
 
-export class Http<T = any> {
+export class Request<ResponseData = any, ResponseMeta = any> {
   #method: Method = 'GET';
 
   #version: ApiVersion = 'v1';
@@ -61,13 +67,13 @@ export class Http<T = any> {
     };
   };
 
-  #request = async (): Promise<T> => {
+  exec = async (): Promise<ApiResponse<ResponseData, ResponseMeta>> => {
     const init = await this.#init();
 
     const response = await fetch(this.url, init);
 
     if (response.status === 204) {
-      return {} as T;
+      return {} as ApiResponse<ResponseData, ResponseMeta>;
     }
 
     const json = await response.json();
@@ -79,36 +85,36 @@ export class Http<T = any> {
       throw new ApiError(statusText, status, data, isAppError);
     }
 
-    return json as T;
+    return json as ApiResponse<ResponseData, ResponseMeta>;
   };
 
   get = () => {
     this.#method = 'GET';
 
-    return this.#request();
+    return this.exec();
   };
 
   post = () => {
     this.#method = 'POST';
 
-    return this.#request();
+    return this.exec();
   };
 
   patch = () => {
     this.#method = 'PATCH';
 
-    return this.#request();
+    return this.exec();
   };
 
   put = () => {
     this.#method = 'PUT';
 
-    return this.#request();
+    return this.exec();
   };
 
   delete = () => {
     this.#method = 'DELETE';
 
-    return this.#request();
+    return this.exec();
   };
 }

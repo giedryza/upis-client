@@ -1,6 +1,6 @@
 import { VFC } from 'react';
 
-import { useAppSelector } from 'tools/libs/store';
+import { useAppSelector } from 'tools/services/store';
 import { Portal } from 'ui';
 import { selectNotifications } from 'domain/notifications';
 

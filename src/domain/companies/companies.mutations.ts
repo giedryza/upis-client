@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import { adapters } from 'domain/companies/companies.adapters';
-import { companiesKeys } from 'domain/companies/companies.keys';
+import { adapters } from './companies.adapters';
+import { companiesKeys } from './companies.keys';
 
 interface Options {
   onSuccess?: () => void;

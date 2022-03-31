@@ -5,9 +5,9 @@ import { SessionProvider } from 'next-auth/react';
 import { SSRProvider } from 'react-aria';
 
 import { AppProps } from 'types/common';
-import { queryClientConfig } from 'tools/libs/query-client';
-import { store } from 'tools/libs/store';
-import { axe } from 'tools/services/axe';
+import { queryClientConfig } from 'tools/services/query-client';
+import { store } from 'tools/services/store';
+import { axe } from 'tools/services/a11y';
 import { AppLayout } from 'layouts';
 import { Notifications } from 'components/notifications';
 

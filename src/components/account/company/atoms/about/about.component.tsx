@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { getRouteParam } from 'tools/common';
 import { InfoBlock, InfoItem } from 'components/account/atoms';
-import { useActiveCompany } from 'domain/companies/companies.queries';
+import { useActiveCompany } from 'domain/companies';
 import { routes } from 'config/routes';
 
 export const About: VFC = () => {
