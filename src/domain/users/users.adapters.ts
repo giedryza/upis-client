@@ -1,7 +1,7 @@
 import { endpoints } from 'config/endpoints';
-import { Http } from 'tools/services/http/http';
-import { ApiResponse } from 'tools/services/http/http.types';
-import { getJsonBody } from 'tools/services/http/http.utils';
+import { Request } from 'tools/services/request/request';
+import { ApiResponse } from 'tools/services/request/request.types';
+import { getJsonBody } from 'tools/services/request/request.utils';
 import { Session } from 'domain/users/users.types';
 
 export const adapters = {
@@ -14,7 +14,7 @@ export const adapters = {
     password: string;
     confirmPassword: string;
   }) =>
-    new Http<ApiResponse<Session>>(endpoints.users.signup, {
+    new Request<ApiResponse<Session>>(endpoints.users.signup, {
       body: getJsonBody({
         email,
         password,
@@ -30,7 +30,7 @@ export const adapters = {
     newPassword: string;
     confirmPassword: string;
   }) =>
-    new Http(endpoints.users.updatePassword, {
+    new Request(endpoints.users.updatePassword, {
       body: getJsonBody({
         currentPassword,
         newPassword,

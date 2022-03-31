@@ -2,9 +2,12 @@ import { IncomingMessage } from 'http';
 
 import { endpoints } from 'config/endpoints';
 import { CompaniesFilters, Company } from 'domain/companies/companies.types';
-import { Http } from 'tools/services/http/http';
-import { getFilesBody, getJsonBody } from 'tools/services/http/http.utils';
-import { ApiResponse } from 'tools/services/http/http.types';
+import { Request } from 'tools/services/request/request';
+import {
+  getFilesBody,
+  getJsonBody,
+} from 'tools/services/request/request.utils';
+import { ApiResponse } from 'tools/services/request/request.types';
 import { Pagination } from 'types/common';
 
 export const adapters = {
@@ -12,12 +15,12 @@ export const adapters = {
     req,
     params,
   }: { req?: IncomingMessage; params?: CompaniesFilters } = {}) =>
-    new Http<ApiResponse<Company[], Pagination>>(endpoints.companies.index, {
+    new Request<ApiResponse<Company[], Pagination>>(endpoints.companies.index, {
       req,
       params,
     }).get(),
   getCompany: ({ req, slug }: { req?: IncomingMessage; slug: string }) =>
-    new Http<ApiResponse<Company | null>>(
+    new Request<ApiResponse<Company | null>>(
       endpoints.companies.one.index.replace(':id', slug),
       {
         req,
@@ -28,7 +31,7 @@ export const adapters = {
   }: {
     form: Pick<Company, 'name' | 'phone' | 'email' | 'description'>;
   }) =>
-    new Http<ApiResponse<Company>>(endpoints.companies.index, {
+    new Request<ApiResponse<Company>>(endpoints.companies.index, {
       body: getJsonBody(form),
     }).post(),
   updateCompany: ({
@@ -43,7 +46,7 @@ export const adapters = {
       >
     >;
   }) =>
-    new Http<ApiResponse<Company>>(
+    new Request<ApiResponse<Company>>(
       endpoints.companies.one.index.replace(':id', id),
       {
         body: getJsonBody(form),
@@ -56,7 +59,7 @@ export const adapters = {
     id: string;
     form: { lat: number; lng: number; address: string };
   }) =>
-    new Http<ApiResponse<Company>>(
+    new Request<ApiResponse<Company>>(
       endpoints.companies.one.index.replace(':id', id),
       {
         body: getJsonBody({
@@ -67,12 +70,12 @@ export const adapters = {
       }
     ).patch(),
   uploadLogo: ({ id, logo }: { id: string; logo: File }) =>
-    new Http<ApiResponse<Company>>(
+    new Request<ApiResponse<Company>>(
       endpoints.companies.one.logo.replace(':id', id),
       {
         body: getFilesBody([{ field: 'logo', file: logo }]),
       }
     ).patch(),
   deleteCompany: ({ id }: { id: string }) =>
-    new Http(endpoints.companies.one.index.replace(':id', id)).delete(),
+    new Request(endpoints.companies.one.index.replace(':id', id)).delete(),
 };

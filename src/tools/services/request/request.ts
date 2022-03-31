@@ -3,9 +3,9 @@ import { stringifyUrl } from 'query-string';
 
 import { isServer } from 'tools/common';
 
-import { ApiVersion, Config, Method, ApiError } from './http.types';
+import { ApiVersion, Config, Method, ApiError } from './request.types';
 
-export class Http<T = any> {
+export class Request<T = any> {
   #method: Method = 'GET';
 
   #version: ApiVersion = 'v1';
@@ -61,7 +61,7 @@ export class Http<T = any> {
     };
   };
 
-  #request = async (): Promise<T> => {
+  exec = async (): Promise<T> => {
     const init = await this.#init();
 
     const response = await fetch(this.url, init);
@@ -85,30 +85,30 @@ export class Http<T = any> {
   get = () => {
     this.#method = 'GET';
 
-    return this.#request();
+    return this.exec();
   };
 
   post = () => {
     this.#method = 'POST';
 
-    return this.#request();
+    return this.exec();
   };
 
   patch = () => {
     this.#method = 'PATCH';
 
-    return this.#request();
+    return this.exec();
   };
 
   put = () => {
     this.#method = 'PUT';
 
-    return this.#request();
+    return this.exec();
   };
 
   delete = () => {
     this.#method = 'DELETE';
 
-    return this.#request();
+    return this.exec();
   };
 }
