@@ -1,7 +1,5 @@
 import { endpoints } from 'config/endpoints';
-import { Request } from 'tools/services/request/request';
-import { ApiResponse } from 'tools/services/request/request.types';
-import { getJsonBody } from 'tools/services/request/request.utils';
+import { Request, getJsonBody, ApiResponse } from 'tools/services/request';
 import { Session } from 'domain/users/users.types';
 
 export const adapters = {

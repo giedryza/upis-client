@@ -2,12 +2,12 @@ import { IncomingMessage } from 'http';
 
 import { endpoints } from 'config/endpoints';
 import { CompaniesFilters, Company } from 'domain/companies/companies.types';
-import { Request } from 'tools/services/request/request';
 import {
+  Request,
   getFilesBody,
   getJsonBody,
-} from 'tools/services/request/request.utils';
-import { ApiResponse } from 'tools/services/request/request.types';
+  ApiResponse,
+} from 'tools/services/request';
 import { Pagination } from 'types/common';
 
 export const adapters = {
