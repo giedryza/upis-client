@@ -1,7 +1,7 @@
 import NextAuth, { DefaultSession } from 'next-auth';
 import { JWT as DefaultJWT } from 'next-auth/jwt';
 
-import { Role, User as AppUser } from 'domain/users/users.types';
+import { Role, User as AppUser } from 'domain/users';
 
 declare module 'next-auth' {
   /**

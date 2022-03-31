@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { routes } from 'config/routes';
 import { Button, Container, TextInput } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
-import { useUpdatePassword } from 'domain/users/users.mutations';
+import { useUpdatePassword } from 'domain/users';
 
 import {
   INITIAL_VALUES,

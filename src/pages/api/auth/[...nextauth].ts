@@ -3,7 +3,7 @@ import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 import { endpoints } from 'config/endpoints';
-import { Session } from 'domain/users/users.types';
+import { Session } from 'domain/users';
 import { Request, getJsonBody } from 'tools/services/request';
 
 const options: NextAuthOptions = {

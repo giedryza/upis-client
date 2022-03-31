@@ -1,6 +1,7 @@
 import { endpoints } from 'config/endpoints';
 import { Request, getJsonBody } from 'tools/services/request';
-import { Session } from 'domain/users/users.types';
+
+import { Session } from './users.types';
 
 export const adapters = {
   signup: ({
