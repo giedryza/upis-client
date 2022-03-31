@@ -48,5 +48,8 @@
     "youtube": "Youtube",
     "linkedin": "Linkedin",
     "twitter": "Twitter"
+  },
+  "errors": {
+    "generic": "Oops! Įvyko nenumatyta klaida."
   }
 }
