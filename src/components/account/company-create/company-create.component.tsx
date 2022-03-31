@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { routes } from 'config/routes';
 import { Button, Container, TextInput } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
-import { useCreateCompany } from 'domain/companies/companies.mutations';
+import { useCreateCompany } from 'domain/companies';
 
 import { Values } from './company-create.types';
 import { INITIAL_VALUES } from './company-create.constants';

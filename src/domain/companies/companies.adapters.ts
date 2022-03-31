@@ -1,9 +1,10 @@
 import { IncomingMessage } from 'http';
 
 import { endpoints } from 'config/endpoints';
-import { CompaniesFilters, Company } from 'domain/companies/companies.types';
 import { Request, getFilesBody, getJsonBody } from 'tools/services/request';
 import { Pagination } from 'types/common';
+
+import { CompaniesFilters, Company } from './companies.types';
 
 export const adapters = {
   getCompanies: ({

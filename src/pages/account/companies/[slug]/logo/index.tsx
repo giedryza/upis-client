@@ -10,8 +10,7 @@ import { capitalizeFirstLetter, getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { CompanyEditLogo } from 'components/account';
-import { companiesKeys } from 'domain/companies/companies.keys';
-import { adapters } from 'domain/companies/companies.adapters';
+import { companiesKeys, adapters } from 'domain/companies';
 
 const CompanyEditLogoPage: NextPage = () => {
   const { t } = useTranslation();

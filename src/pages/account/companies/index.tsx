@@ -8,9 +8,7 @@ import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Companies } from 'components/account';
-import { companiesKeys } from 'domain/companies/companies.keys';
-import { adapters } from 'domain/companies/companies.adapters';
-import { CompaniesFilters } from 'domain/companies/companies.types';
+import { companiesKeys, adapters, CompaniesFilters } from 'domain/companies';
 
 const CompaniesPage: NextPage = () => {
   const { t } = useTranslation();
