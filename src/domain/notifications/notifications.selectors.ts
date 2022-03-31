@@ -1,4 +1,4 @@
-import { AppState } from 'tools/libs/store';
+import { AppState } from 'tools/services/store';
 
 export const selectNotifications = (state: AppState) =>
   state.notifications.items;

@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { CookieName } from 'config/cookies';
 import { Locale } from 'types/common';
-import { cookies } from 'tools/libs/cookies/cookies.lib';
+import { cookies } from 'tools/services/cookies';
 import { IconName, DropdownMenu, DropdownMenuItem } from 'ui';
 
 const iconByLocale: Record<Locale, IconName> = {

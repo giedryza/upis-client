@@ -1,7 +1,7 @@
 import { useState, VFC } from 'react';
 import clsx from 'clsx';
 
-import { useAppDispatch } from 'tools/libs/store';
+import { useAppDispatch } from 'tools/services/store';
 import { useTimeout } from 'tools/hooks';
 import { Toast } from 'ui';
 import { notifications } from 'domain/notifications';

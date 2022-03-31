@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 
 import { AppHead } from 'ui';
 import { MainLayout } from 'layouts';
-import { useAppDispatch } from 'tools/libs/store';
+import { useAppDispatch } from 'tools/services/store';
 import { notifications } from 'domain/notifications';
 
 const Home: NextPage = () => {

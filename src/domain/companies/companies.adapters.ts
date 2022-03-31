@@ -2,9 +2,9 @@ import { IncomingMessage } from 'http';
 
 import { endpoints } from 'config/endpoints';
 import { CompaniesFilters, Company } from 'domain/companies/companies.types';
-import { Http } from 'tools/libs/http/http.lib';
-import { getFilesBody, getJsonBody } from 'tools/libs/http/http.utils';
-import { Response, ResponseWithMeta } from 'tools/libs/http/http.types';
+import { Http } from 'tools/services/http/http';
+import { getFilesBody, getJsonBody } from 'tools/services/http/http.utils';
+import { Response, ResponseWithMeta } from 'tools/services/http/http.types';
 import { Pagination } from 'types/common';
 
 export const adapters = {

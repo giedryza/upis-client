@@ -1,6 +1,6 @@
 import { ThunkAction, Action } from '@reduxjs/toolkit';
 
-import { store } from './store.lib';
+import { store } from './store';
 
 export type AppState = ReturnType<typeof store.getState>;
 
