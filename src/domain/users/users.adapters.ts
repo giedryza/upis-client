@@ -1,5 +1,5 @@
 import { endpoints } from 'config/endpoints';
-import { Request, getJsonBody, ApiResponse } from 'tools/services/request';
+import { Request, getJsonBody } from 'tools/services/request';
 import { Session } from 'domain/users/users.types';
 
 export const adapters = {
@@ -12,7 +12,7 @@ export const adapters = {
     password: string;
     confirmPassword: string;
   }) =>
-    new Request<ApiResponse<Session>>(endpoints.users.signup, {
+    new Request<Session>(endpoints.users.signup, {
       body: getJsonBody({
         email,
         password,

@@ -1,7 +1,7 @@
 import { IncomingMessage } from 'http';
 
 import { endpoints } from 'config/endpoints';
-import { Request, getJsonBody, ApiResponse } from 'tools/services/request';
+import { Request, getJsonBody } from 'tools/services/request';
 import { Pagination } from 'types/common';
 
 import {
@@ -15,20 +15,14 @@ export const adapters = {
     req,
     params,
   }: { req?: IncomingMessage; params?: SocialLinksFilters } = {}) =>
-    new Request<ApiResponse<SocialLink[], Pagination>>(
-      endpoints.socialLinks.index,
-      {
-        req,
-        params,
-      }
-    ).get(),
+    new Request<SocialLink[], Pagination>(endpoints.socialLinks.index, {
+      req,
+      params,
+    }).get(),
   getSocialLink: ({ req, id }: { req?: IncomingMessage; id: string }) =>
-    new Request<ApiResponse<SocialLink>>(
-      endpoints.socialLinks.one.replace(':id', id),
-      {
-        req,
-      }
-    ).get(),
+    new Request<SocialLink>(endpoints.socialLinks.one.replace(':id', id), {
+      req,
+    }).get(),
   addSocialLink: ({
     form,
     hostId,
@@ -36,7 +30,7 @@ export const adapters = {
     form: { url: string; type: SocialType };
     hostId: string;
   }) =>
-    new Request<ApiResponse<SocialLink>>(endpoints.socialLinks.index, {
+    new Request<SocialLink>(endpoints.socialLinks.index, {
       body: getJsonBody({ ...form, host: hostId }),
     }).post(),
   updateSocialLink: ({
@@ -46,12 +40,9 @@ export const adapters = {
     form: Partial<{ url: string; type: SocialType }>;
     id: string;
   }) =>
-    new Request<ApiResponse<SocialLink>>(
-      endpoints.socialLinks.one.replace(':id', id),
-      {
-        body: getJsonBody(form),
-      }
-    ).patch(),
+    new Request<SocialLink>(endpoints.socialLinks.one.replace(':id', id), {
+      body: getJsonBody(form),
+    }).patch(),
   deleteSocialLink: ({ id }: { id: string }) =>
     new Request(endpoints.socialLinks.one.replace(':id', id)).delete(),
 };

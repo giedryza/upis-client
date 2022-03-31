@@ -3,9 +3,15 @@ import { stringifyUrl } from 'query-string';
 
 import { isServer } from 'tools/common';
 
-import { ApiVersion, Config, Method, ApiError } from './request.types';
+import {
+  ApiVersion,
+  Config,
+  Method,
+  ApiError,
+  ApiResponse,
+} from './request.types';
 
-export class Request<T = any> {
+export class Request<ResponseData = any, ResponseMeta = any> {
   #method: Method = 'GET';
 
   #version: ApiVersion = 'v1';
@@ -61,13 +67,13 @@ export class Request<T = any> {
     };
   };
 
-  exec = async (): Promise<T> => {
+  exec = async (): Promise<ApiResponse<ResponseData, ResponseMeta>> => {
     const init = await this.#init();
 
     const response = await fetch(this.url, init);
 
     if (response.status === 204) {
-      return {} as T;
+      return {} as ApiResponse<ResponseData, ResponseMeta>;
     }
 
     const json = await response.json();
@@ -79,7 +85,7 @@ export class Request<T = any> {
       throw new ApiError(statusText, status, data, isAppError);
     }
 
-    return json as T;
+    return json as ApiResponse<ResponseData, ResponseMeta>;
   };
 
   get = () => {

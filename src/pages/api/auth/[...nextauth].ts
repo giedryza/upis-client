@@ -4,7 +4,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 
 import { endpoints } from 'config/endpoints';
 import { Session } from 'domain/users/users.types';
-import { Request, getJsonBody, ApiResponse } from 'tools/services/request';
+import { Request, getJsonBody } from 'tools/services/request';
 
 const options: NextAuthOptions = {
   session: {
@@ -23,12 +23,9 @@ const options: NextAuthOptions = {
         const { email, password } = credentials;
 
         try {
-          const { data } = await new Request<ApiResponse<Session>>(
-            endpoints.users.signin,
-            {
-              body: getJsonBody({ email, password }),
-            }
-          ).post();
+          const { data } = await new Request<Session>(endpoints.users.signin, {
+            body: getJsonBody({ email, password }),
+          }).post();
 
           return {
             ...data.user,
