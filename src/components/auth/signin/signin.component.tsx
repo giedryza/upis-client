@@ -5,6 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { routes } from 'config/routes';
 import { Button, Container, Card, Divider, TextInput } from 'ui';
+import { handleError } from 'tools/errors';
 
 import { Values } from './signin.types';
 import { INITIAL_VALUES } from './signin.constants';
@@ -13,12 +14,16 @@ import styles from './signin.module.scss';
 export const Signin: VFC = () => {
   const { t } = useTranslation();
 
-  const onSubmit: SubmitHandler<Values> = ({ email, password }) => {
-    signIn<'credentials'>('credentials', {
+  const onSubmit: SubmitHandler<Values> = async ({ email, password }) => {
+    const response = await signIn<'credentials'>('credentials', {
       redirect: false,
       email,
       password,
     });
+
+    if (response?.error) {
+      handleError(t('auth:errors.invalid-credentials'));
+    }
   };
 
   const {

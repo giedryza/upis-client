@@ -7,7 +7,6 @@ import { Session } from 'domain/users/users.types';
 import { Http } from 'tools/libs/http/http.lib';
 import { Response } from 'tools/libs/http/http.types';
 import { getJsonBody } from 'tools/libs/http/http.utils';
-import { handleError } from 'tools/errors';
 
 const options: NextAuthOptions = {
   session: {
@@ -38,7 +37,6 @@ const options: NextAuthOptions = {
             token: data.token,
           };
         } catch (error) {
-          handleError(error);
           return null;
         }
       },

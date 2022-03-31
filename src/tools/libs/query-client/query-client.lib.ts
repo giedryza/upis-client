@@ -1,6 +1,6 @@
 import { QueryCache, QueryClientConfig } from 'react-query';
 
-import { handleError } from 'tools/errors';
+import { handleErrors } from 'tools/errors';
 
 export const queryClientConfig: QueryClientConfig = {
   defaultOptions: {
@@ -10,13 +10,13 @@ export const queryClientConfig: QueryClientConfig = {
     },
     mutations: {
       onError: (error) => {
-        handleError(error);
+        handleErrors(error);
       },
     },
   },
   queryCache: new QueryCache({
     onError: (error) => {
-      handleError(error);
+      handleErrors(error);
     },
   }),
 };
