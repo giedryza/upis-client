@@ -4,7 +4,7 @@ import { endpoints } from 'config/endpoints';
 import { CompaniesFilters, Company } from 'domain/companies/companies.types';
 import { Http } from 'tools/services/http/http';
 import { getFilesBody, getJsonBody } from 'tools/services/http/http.utils';
-import { Response, ResponseWithMeta } from 'tools/services/http/http.types';
+import { ApiResponse } from 'tools/services/http/http.types';
 import { Pagination } from 'types/common';
 
 export const adapters = {
@@ -12,15 +12,12 @@ export const adapters = {
     req,
     params,
   }: { req?: IncomingMessage; params?: CompaniesFilters } = {}) =>
-    new Http<ResponseWithMeta<Company[], Pagination>>(
-      endpoints.companies.index,
-      {
-        req,
-        params,
-      }
-    ).get(),
+    new Http<ApiResponse<Company[], Pagination>>(endpoints.companies.index, {
+      req,
+      params,
+    }).get(),
   getCompany: ({ req, slug }: { req?: IncomingMessage; slug: string }) =>
-    new Http<Response<Company | null>>(
+    new Http<ApiResponse<Company | null>>(
       endpoints.companies.one.index.replace(':id', slug),
       {
         req,
@@ -31,7 +28,7 @@ export const adapters = {
   }: {
     form: Pick<Company, 'name' | 'phone' | 'email' | 'description'>;
   }) =>
-    new Http<Response<Company>>(endpoints.companies.index, {
+    new Http<ApiResponse<Company>>(endpoints.companies.index, {
       body: getJsonBody(form),
     }).post(),
   updateCompany: ({
@@ -46,7 +43,7 @@ export const adapters = {
       >
     >;
   }) =>
-    new Http<Response<Company>>(
+    new Http<ApiResponse<Company>>(
       endpoints.companies.one.index.replace(':id', id),
       {
         body: getJsonBody(form),
@@ -59,7 +56,7 @@ export const adapters = {
     id: string;
     form: { lat: number; lng: number; address: string };
   }) =>
-    new Http<Response<Company>>(
+    new Http<ApiResponse<Company>>(
       endpoints.companies.one.index.replace(':id', id),
       {
         body: getJsonBody({
@@ -70,7 +67,7 @@ export const adapters = {
       }
     ).patch(),
   uploadLogo: ({ id, logo }: { id: string; logo: File }) =>
-    new Http<Response<Company>>(
+    new Http<ApiResponse<Company>>(
       endpoints.companies.one.logo.replace(':id', id),
       {
         body: getFilesBody([{ field: 'logo', file: logo }]),

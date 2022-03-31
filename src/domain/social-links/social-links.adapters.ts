@@ -3,7 +3,7 @@ import { IncomingMessage } from 'http';
 import { endpoints } from 'config/endpoints';
 import { Http } from 'tools/services/http/http';
 import { getJsonBody } from 'tools/services/http/http.utils';
-import { Response, ResponseWithMeta } from 'tools/services/http/http.types';
+import { ApiResponse } from 'tools/services/http/http.types';
 import { Pagination } from 'types/common';
 
 import {
@@ -17,7 +17,7 @@ export const adapters = {
     req,
     params,
   }: { req?: IncomingMessage; params?: SocialLinksFilters } = {}) =>
-    new Http<ResponseWithMeta<SocialLink[], Pagination>>(
+    new Http<ApiResponse<SocialLink[], Pagination>>(
       endpoints.socialLinks.index,
       {
         req,
@@ -25,7 +25,7 @@ export const adapters = {
       }
     ).get(),
   getSocialLink: ({ req, id }: { req?: IncomingMessage; id: string }) =>
-    new Http<Response<SocialLink>>(
+    new Http<ApiResponse<SocialLink>>(
       endpoints.socialLinks.one.replace(':id', id),
       {
         req,
@@ -38,7 +38,7 @@ export const adapters = {
     form: { url: string; type: SocialType };
     hostId: string;
   }) =>
-    new Http<Response<SocialLink>>(endpoints.socialLinks.index, {
+    new Http<ApiResponse<SocialLink>>(endpoints.socialLinks.index, {
       body: getJsonBody({ ...form, host: hostId }),
     }).post(),
   updateSocialLink: ({
@@ -48,7 +48,7 @@ export const adapters = {
     form: Partial<{ url: string; type: SocialType }>;
     id: string;
   }) =>
-    new Http<Response<SocialLink>>(
+    new Http<ApiResponse<SocialLink>>(
       endpoints.socialLinks.one.replace(':id', id),
       {
         body: getJsonBody(form),
