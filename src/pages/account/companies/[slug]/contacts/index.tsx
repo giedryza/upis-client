@@ -10,7 +10,7 @@ import { capitalizeFirstLetter, getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { CompanyEditContacts } from 'components/account';
-import { companiesKeys, adapters } from 'domain/companies';
+import { companiesKeys, loaders } from 'domain/companies';
 
 const CompanyEditContactsPage: NextPage = () => {
   const { t } = useTranslation();
@@ -71,7 +71,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   const slug = getRouteParam(params?.slug);
 
   await queryClient.prefetchQuery(companiesKeys.detail(slug), () =>
-    adapters.getCompany({ req, slug })
+    loaders.getCompany({ req, slug })
   );
 
   return {

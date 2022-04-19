@@ -8,7 +8,7 @@ import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Companies } from 'components/account';
-import { companiesKeys, adapters, CompaniesFilters } from 'domain/companies';
+import { companiesKeys, loaders, CompaniesFilters } from 'domain/companies';
 
 const CompaniesPage: NextPage = () => {
   const { t } = useTranslation();
@@ -53,7 +53,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const filters: CompaniesFilters = { user: session.user.id };
 
   await queryClient.prefetchQuery(companiesKeys.list(filters), () =>
-    adapters.getCompanies({ params: filters })
+    loaders.getCompanies({ params: filters })
   );
 
   return {

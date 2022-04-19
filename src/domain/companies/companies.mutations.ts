@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import { adapters } from './companies.adapters';
+import { loaders } from './companies.loaders';
 import { companiesKeys } from './companies.keys';
 
 interface Options {
@@ -10,7 +10,7 @@ interface Options {
 export const useUpdateCompany = ({ onSuccess }: Options = {}) => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(adapters.updateCompany, {
+  const mutation = useMutation(loaders.updateCompany, {
     onSuccess: () => {
       onSuccess?.();
       queryClient.invalidateQueries(companiesKeys.details());
@@ -23,7 +23,7 @@ export const useUpdateCompany = ({ onSuccess }: Options = {}) => {
 export const useCreateCompany = ({ onSuccess }: Options = {}) => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(adapters.createCompany, {
+  const mutation = useMutation(loaders.createCompany, {
     onSuccess: () => {
       onSuccess?.();
       queryClient.invalidateQueries(companiesKeys.details());
@@ -36,7 +36,7 @@ export const useCreateCompany = ({ onSuccess }: Options = {}) => {
 export const useUpdateLocation = ({ onSuccess }: Options = {}) => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(adapters.updateLocation, {
+  const mutation = useMutation(loaders.updateLocation, {
     onSuccess: () => {
       onSuccess?.();
       queryClient.invalidateQueries(companiesKeys.details());
@@ -49,7 +49,7 @@ export const useUpdateLocation = ({ onSuccess }: Options = {}) => {
 export const useUploadLogo = ({ onSuccess }: Options = {}) => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(adapters.uploadLogo, {
+  const mutation = useMutation(loaders.uploadLogo, {
     onSuccess: () => {
       onSuccess?.();
       queryClient.invalidateQueries(companiesKeys.details());
@@ -62,7 +62,7 @@ export const useUploadLogo = ({ onSuccess }: Options = {}) => {
 export const useDeleteCompany = ({ onSuccess }: Options = {}) => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(adapters.deleteCompany, {
+  const mutation = useMutation(loaders.deleteCompany, {
     onSuccess: () => {
       onSuccess?.();
       queryClient.invalidateQueries(companiesKeys.lists());

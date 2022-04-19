@@ -3,7 +3,7 @@ import { Request, getJsonBody } from 'tools/services/request';
 
 import { Session } from './users.types';
 
-export const adapters = {
+export const loaders = {
   signup: ({
     email,
     password,

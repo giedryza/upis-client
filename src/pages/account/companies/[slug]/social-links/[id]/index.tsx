@@ -10,7 +10,7 @@ import { capitalizeFirstLetter, getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { CompanyEditSocialLinksEdit } from 'components/account';
-import { adapters, socialLinksKeys } from 'domain/social-links';
+import { loaders, socialLinksKeys } from 'domain/social-links';
 
 const CompanyEditSocialLinksEditPage: NextPage = () => {
   const { t } = useTranslation();
@@ -71,7 +71,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   const id = getRouteParam(params?.id);
 
   await queryClient.prefetchQuery(socialLinksKeys.detail(id), () =>
-    adapters.getSocialLink({ req, id })
+    loaders.getSocialLink({ req, id })
   );
 
   return {

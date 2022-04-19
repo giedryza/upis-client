@@ -1,4 +1,4 @@
-export * from './companies.adapters';
+export * from './companies.loaders';
 export * from './companies.keys';
 export * from './companies.mutations';
 export * from './companies.queries';
