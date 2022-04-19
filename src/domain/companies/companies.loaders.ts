@@ -6,7 +6,7 @@ import { Pagination } from 'types/common';
 
 import { CompaniesFilters, Company } from './companies.types';
 
-export const adapters = {
+export const loaders = {
   getCompanies: ({
     req,
     params,

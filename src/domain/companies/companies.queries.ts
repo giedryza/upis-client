@@ -3,14 +3,15 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
 import { getRouteParam } from 'tools/common';
-import { companiesKeys } from 'domain/companies/companies.keys';
-import { adapters } from 'domain/companies/companies.adapters';
-import { CompaniesFilters } from 'domain/companies/companies.types';
+
+import { companiesKeys } from './companies.keys';
+import { loaders } from './companies.loaders';
+import { CompaniesFilters } from './companies.types';
 
 export const useCompanies = (filters: CompaniesFilters = {}) => {
   const query = useQuery(
     companiesKeys.list(filters),
-    () => adapters.getCompanies({ params: filters }),
+    () => loaders.getCompanies({ params: filters }),
     {
       select: ({ data }) => data,
     }
@@ -26,7 +27,7 @@ export const useMyCompanies = (filters: CompaniesFilters = {}) => {
 
   const query = useQuery(
     companiesKeys.list(params),
-    () => adapters.getCompanies({ params }),
+    () => loaders.getCompanies({ params }),
     {
       enabled: !!session?.user.id,
       select: ({ data }) => data,
@@ -39,7 +40,7 @@ export const useMyCompanies = (filters: CompaniesFilters = {}) => {
 export const useCompany = (slug: string) => {
   const query = useQuery(
     companiesKeys.detail(slug),
-    () => adapters.getCompany({ slug }),
+    () => loaders.getCompany({ slug }),
     {
       select: ({ data }) => data,
       enabled: !!slug,

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 
 import { socialLinksKeys } from './social-links.keys';
-import { adapters } from './social-links.adapters';
+import { loaders } from './social-links.loaders';
 
 interface Options {
   onSuccess?: () => void;
@@ -10,7 +10,7 @@ interface Options {
 export const useAddSocialLink = ({ onSuccess }: Options = {}) => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(adapters.addSocialLink, {
+  const mutation = useMutation(loaders.addSocialLink, {
     onSuccess: () => {
       onSuccess?.();
       queryClient.invalidateQueries(socialLinksKeys.lists());
@@ -23,7 +23,7 @@ export const useAddSocialLink = ({ onSuccess }: Options = {}) => {
 export const useUpdateSocialLink = ({ onSuccess }: Options = {}) => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(adapters.updateSocialLink, {
+  const mutation = useMutation(loaders.updateSocialLink, {
     onSuccess: () => {
       onSuccess?.();
       queryClient.invalidateQueries(socialLinksKeys.lists());
@@ -36,7 +36,7 @@ export const useUpdateSocialLink = ({ onSuccess }: Options = {}) => {
 export const useDeleteSocialLink = ({ onSuccess }: Options = {}) => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(adapters.deleteSocialLink, {
+  const mutation = useMutation(loaders.deleteSocialLink, {
     onSuccess: () => {
       onSuccess?.();
       queryClient.invalidateQueries(socialLinksKeys.lists());

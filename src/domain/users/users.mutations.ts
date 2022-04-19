@@ -1,14 +1,14 @@
 import { useMutation } from 'react-query';
 import { signIn } from 'next-auth/react';
 
-import { adapters } from './users.adapters';
+import { loaders } from './users.loaders';
 
 interface Options {
   onSuccess?: () => void;
 }
 
 export const useSignup = ({ onSuccess }: Options = {}) => {
-  const mutation = useMutation(adapters.signup, {
+  const mutation = useMutation(loaders.signup, {
     onSuccess: (_data, { email, password }) => {
       signIn<'credentials'>('credentials', {
         redirect: false,
@@ -23,7 +23,7 @@ export const useSignup = ({ onSuccess }: Options = {}) => {
 };
 
 export const useUpdatePassword = ({ onSuccess }: Options = {}) => {
-  const mutation = useMutation(adapters.updatePassword, {
+  const mutation = useMutation(loaders.updatePassword, {
     onSuccess: () => {
       onSuccess?.();
     },

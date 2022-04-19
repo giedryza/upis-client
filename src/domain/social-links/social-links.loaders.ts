@@ -10,7 +10,7 @@ import {
   SocialLinksFilters,
 } from './social-links.types';
 
-export const adapters = {
+export const loaders = {
   getSocialLinks: ({
     req,
     params,
