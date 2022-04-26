@@ -1,1 +1,0 @@
-export { redirectMiddleware } from './redirect';

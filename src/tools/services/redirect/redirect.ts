@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 
 import { routes } from 'config/routes';
 
@@ -10,29 +10,31 @@ const REDIRECT_LOCATIONS: Record<string, { route: string }> = {
 
 const REDIRECT_KEY = 'location' as const;
 
-export const redirectMiddleware = ({ nextUrl }: NextRequest) => {
+export const redirect = (nextUrl: NextRequest['nextUrl']): URL | null => {
+  if (nextUrl.pathname !== routes.redirect) {
+    return null;
+  }
+
   if (!nextUrl.searchParams.has(REDIRECT_KEY)) {
-    return NextResponse.next();
+    return null;
   }
 
   const location = nextUrl.searchParams.get(REDIRECT_KEY);
 
   if (!location) {
-    return NextResponse.next();
+    return null;
   }
 
-  const url = nextUrl.clone();
   const redirectLocation = REDIRECT_LOCATIONS[location];
 
   if (!redirectLocation) {
-    url.pathname = routes.home;
-    url.search = '';
-
-    return NextResponse.redirect(url);
+    return null;
   }
+
+  const url = nextUrl.clone();
 
   url.pathname = redirectLocation.route;
   url.searchParams.delete(REDIRECT_KEY);
 
-  return NextResponse.redirect(url);
+  return url;
 };

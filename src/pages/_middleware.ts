@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { routes } from 'config/routes';
-import { redirectMiddleware } from 'tools/services/middlewares';
+import { redirect } from 'tools/services/redirect';
 
-export const middleware = async (req: NextRequest) => {
-  if (req.nextUrl.pathname === routes.redirect) {
-    return redirectMiddleware(req);
+export const middleware = async ({ nextUrl }: NextRequest) => {
+  const url = redirect(nextUrl);
+
+  if (url) {
+    return NextResponse.redirect(url);
   }
 
   return NextResponse.next();
