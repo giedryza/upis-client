@@ -42,4 +42,20 @@ export const loaders = {
         email,
       }),
     }).post(),
+  resetPassword: ({
+    userId,
+    token,
+    password,
+  }: {
+    userId: string;
+    token: string;
+    password: string;
+  }) =>
+    new Request(endpoints.users.password.reset, {
+      body: getJsonBody({
+        userId,
+        token,
+        password,
+      }),
+    }).post(),
 };

@@ -41,3 +41,13 @@ export const useForgotPassword = ({ onSuccess }: Options = {}) => {
 
   return mutation;
 };
+
+export const useResetPassword = ({ onSuccess }: Options = {}) => {
+  const mutation = useMutation(loaders.resetPassword, {
+    onSuccess: () => {
+      onSuccess?.();
+    },
+  });
+
+  return mutation;
+};

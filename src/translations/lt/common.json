@@ -13,6 +13,7 @@
     "delete": "Ištrinti",
     "next": "Toliau",
     "continue": "Tęsti",
+    "tryAgain": "Bandyti iš naujo",
     "enterAddress": "Ieškoti adreso"
   },
   "components": {

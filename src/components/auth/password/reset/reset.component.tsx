@@ -1,10 +1,14 @@
 import { useState, VFC } from 'react';
+import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
+import Trans from 'next-translate/Trans';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 
 import { routes } from 'config/routes';
 import { Button, Container, Card, TextInput } from 'ui';
-import { useForgotPassword } from 'domain/users';
+import { useResetPassword } from 'domain/users';
+import { notifications } from 'domain/notifications';
 
 import { PasswordResetSuccess } from './atoms';
 import { Values } from './reset.types';
@@ -17,17 +21,49 @@ import styles from './reset.module.scss';
 
 export const PasswordReset: VFC = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const { query } = useRouter();
 
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const { mutate: forgotPassword, isLoading } = useForgotPassword({
+  const { mutate: resetPassword, isLoading } = useResetPassword({
     onSuccess: () => {
       setIsSuccess(true);
     },
   });
 
   const onSubmit: SubmitHandler<Values> = async ({ newPassword }) => {
-    console.log(newPassword);
+    const { token, userId } = query;
+
+    if (typeof token !== 'string' || typeof userId !== 'string') {
+      dispatch(
+        notifications.actions.open({
+          type: 'danger',
+          // @ts-ignore
+          message: (
+            <Trans
+              i18nKey="auth:passwordReset.error"
+              components={[
+                <Button
+                  label={t('common:actions.tryAgain')}
+                  size="sm"
+                  variant="link"
+                  url={routes.auth.password.forgot}
+                />,
+              ]}
+            />
+          ),
+        })
+      );
+
+      return;
+    }
+
+    resetPassword({
+      userId,
+      token,
+      password: newPassword,
+    });
   };
 
   const {
