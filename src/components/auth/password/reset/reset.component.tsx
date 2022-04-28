@@ -39,7 +39,6 @@ export const PasswordReset: VFC = () => {
       dispatch(
         notifications.actions.open({
           type: 'danger',
-          // @ts-ignore
           message: (
             <Trans
               i18nKey="auth:passwordReset.error"

@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 
@@ -19,7 +20,7 @@ export const notifications = createSlice({
   reducers: {
     open: (
       state,
-      { payload }: PayloadAction<{ type: Status; message: string }>
+      { payload }: PayloadAction<{ type: Status; message: ReactNode }>
     ) => {
       state.items.push({ ...payload, id: nanoid() });
     },
