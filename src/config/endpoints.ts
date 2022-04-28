@@ -3,7 +3,11 @@ export const endpoints = {
     signup: 'users/signup',
     signin: 'users/signin',
     me: 'users/me',
-    updatePassword: 'users/update-password',
+    password: {
+      update: 'users/update-password',
+      forgot: 'users/forgot-password',
+      reset: 'users/reset-password',
+    },
   },
   companies: {
     index: 'companies',

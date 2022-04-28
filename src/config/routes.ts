@@ -1,8 +1,13 @@
 export const routes = {
   home: '/',
+  redirect: '/redirect',
   auth: {
     signin: '/auth/signin',
     signup: '/auth/signup',
+    password: {
+      forgot: '/auth/password/forgot',
+      reset: '/auth/password/reset',
+    },
   },
   account: {
     profile: {
@@ -27,8 +32,5 @@ export const routes = {
     tours: {
       index: '/account/tours',
     },
-  },
-  companies: {
-    list: '/companies',
   },
 };

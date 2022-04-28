@@ -29,11 +29,17 @@ export const loaders = {
     newPassword: string;
     confirmPassword: string;
   }) =>
-    new Request(endpoints.users.updatePassword, {
+    new Request(endpoints.users.password.update, {
       body: getJsonBody({
         currentPassword,
         newPassword,
         confirmPassword,
       }),
     }).patch(),
+  forgotPassword: ({ email }: { email: string }) =>
+    new Request(endpoints.users.password.forgot, {
+      body: getJsonBody({
+        email,
+      }),
+    }).post(),
 };

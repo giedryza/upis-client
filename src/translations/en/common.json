@@ -12,6 +12,7 @@
     "edit": "Edit",
     "delete": "Delete",
     "next": "Next",
+    "continue": "Continue",
     "enterAddress": "Search address"
   },
   "components": {
