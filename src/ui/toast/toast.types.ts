@@ -1,9 +1,9 @@
-import { MouseEvent, TouchEvent } from 'react';
+import { MouseEvent, ReactNode, TouchEvent } from 'react';
 
 import { Status } from 'types/common';
 
 export interface Props {
-  message: string;
+  message: ReactNode;
   type?: Status;
   onClose?: () => void;
   onMouseEnter?: (e: MouseEvent<HTMLDivElement>) => void;

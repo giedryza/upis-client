@@ -1,2 +1,2 @@
 export * from './forgot';
-// export * from './reset';
+export * from './reset';

@@ -13,6 +13,7 @@
     "delete": "Delete",
     "next": "Next",
     "continue": "Continue",
+    "tryAgain": "Try again",
     "enterAddress": "Search address"
   },
   "components": {

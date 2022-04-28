@@ -5,21 +5,21 @@ import useTranslation from 'next-translate/useTranslation';
 import { routes } from 'config/routes';
 import { useGuestPage } from 'tools/hooks';
 import { AppHead } from 'ui';
-// import { Signin } from 'components/auth';
+import { PasswordReset } from 'components/auth';
 import { PageLayout, MainLayout } from 'layouts';
 
-const PasswordReset: NextPage = () => {
+const PasswordResetPage: NextPage = () => {
   const { t } = useTranslation();
 
   useGuestPage();
 
   return (
     <>
-      <AppHead title={t('auth:signin.title')} />
+      <AppHead title={t('auth:passwordReset.title')} />
 
       <MainLayout>
         <PageLayout>
-          <div>PasswordReset</div>
+          <PasswordReset />
         </PageLayout>
       </MainLayout>
     </>
@@ -45,4 +45,4 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   };
 };
 
-export default PasswordReset;
+export default PasswordResetPage;

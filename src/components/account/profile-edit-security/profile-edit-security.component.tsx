@@ -22,6 +22,7 @@ export const ProfileEditSecurity: VFC = () => {
 
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors, isDirty },
   } = useForm<Values>({
@@ -112,6 +113,13 @@ export const ProfileEditSecurity: VFC = () => {
                   message: t(
                     'account:profile.security.form.confirmPassword.error.empty'
                   ),
+                },
+                validate: (value) => {
+                  if (watch('newPassword') !== value) {
+                    return t(
+                      'account:profile.security.form.confirmPassword.error.notMatch'
+                    );
+                  }
                 },
               })}
               label={t('account:profile.security.form.confirmPassword.label')}
