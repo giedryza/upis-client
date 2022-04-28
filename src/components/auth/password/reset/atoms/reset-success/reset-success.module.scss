@@ -1,0 +1,23 @@
+@use 'styles/mixins' as *;
+
+.content {
+  @include spacing(y, 2.5rem);
+
+  .title {
+    font-weight: 600;
+    font-size: var(--font-size-24);
+    text-align: center;
+  }
+
+  .text {
+    font-weight: 500;
+    font-size: var(--font-size-14);
+  }
+
+  .footer {
+    font-size: var(--font-size-12);
+    text-align: center;
+
+    @include spacing(x, 0.5rem);
+  }
+}
