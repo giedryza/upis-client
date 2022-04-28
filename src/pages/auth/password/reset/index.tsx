@@ -5,7 +5,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { routes } from 'config/routes';
 import { useGuestPage } from 'tools/hooks';
 import { AppHead } from 'ui';
-import { Signin } from 'components/auth';
+// import { Signin } from 'components/auth';
 import { PageLayout, MainLayout } from 'layouts';
 
 const PasswordReset: NextPage = () => {
