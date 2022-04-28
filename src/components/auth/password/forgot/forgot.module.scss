@@ -9,6 +9,11 @@
     text-align: center;
   }
 
+  .text {
+    font-size: var(--font-size-14);
+    font-weight: 500;
+  }
+
   .form {
     @include spacing(y, 5rem);
   }

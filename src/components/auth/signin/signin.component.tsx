@@ -81,6 +81,7 @@ export const Signin: VFC = () => {
                 label={t('auth:actions.forgot-pass')}
                 variant="link"
                 size="xs"
+                url={routes.auth.password.forgot}
               />
             </fieldset>
 

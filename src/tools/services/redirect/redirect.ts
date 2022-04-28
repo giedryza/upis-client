@@ -4,7 +4,7 @@ import { routes } from 'config/routes';
 
 const REDIRECT_LOCATIONS: Record<string, { route: string }> = {
   'password-reset': {
-    route: routes.auth.passwordReset,
+    route: routes.auth.password.reset,
   },
 };
 

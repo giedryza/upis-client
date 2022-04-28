@@ -4,7 +4,10 @@ export const routes = {
   auth: {
     signin: '/auth/signin',
     signup: '/auth/signup',
-    passwordReset: '/auth/password-reset',
+    password: {
+      forgot: '/auth/password/forgot',
+      reset: '/auth/password/reset',
+    },
   },
   account: {
     profile: {
