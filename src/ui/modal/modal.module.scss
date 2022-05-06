@@ -1,0 +1,35 @@
+@use 'styles/mixins' as *;
+
+.modal {
+  font-size: 1.4rem;
+
+  align-items: center;
+  background-color: hsla(var(--color-grey-h), var(--color-grey-s), 5%, 25%);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 50;
+
+  .box {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-default);
+
+    width: 35em;
+    max-height: 100%;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1.25em 1em;
+    position: relative;
+  }
+
+  .header {
+    position: absolute;
+    right: 0.25em;
+    top: 0.25em;
+  }
+}

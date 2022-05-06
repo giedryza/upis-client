@@ -9,6 +9,7 @@ export * from './file-input';
 export * from './icon';
 export * from './loader';
 export * from './map';
+export * from './modal';
 export * from './toast';
 export * from './portal';
 export * from './select-input';
