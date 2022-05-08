@@ -26,7 +26,7 @@ const Home: NextPage = () => {
             );
           }}
         >
-          PUSH
+          TOAST
         </button>
       </MainLayout>
     </>

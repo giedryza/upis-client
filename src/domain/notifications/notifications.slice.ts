@@ -1,8 +1,5 @@
-import { ReactNode } from 'react';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
-
-import { Status } from 'types/common';
 
 import { Notification } from './notifications.types';
 
@@ -18,11 +15,13 @@ export const notifications = createSlice({
   name: 'notifications',
   initialState,
   reducers: {
-    open: (
-      state,
-      { payload }: PayloadAction<{ type: Status; message: ReactNode }>
-    ) => {
-      state.items.push({ ...payload, id: nanoid() });
+    open: {
+      reducer: (state, { payload }: PayloadAction<Notification>) => {
+        state.items.push(payload);
+      },
+      prepare: (item: Omit<Notification, 'id'>) => ({
+        payload: { ...item, id: nanoid() },
+      }),
     },
     close: (state, { payload }: PayloadAction<string>) => {
       state.items = state.items.filter((item) => item.id !== payload);

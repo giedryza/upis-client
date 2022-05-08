@@ -1,0 +1,19 @@
+@use 'styles/mixins' as *;
+
+.content {
+  @include spacing(y, 2.5rem);
+
+  .title {
+    font-weight: 600;
+    font-size: var(--font-size-18);
+    line-height: 1.3;
+  }
+
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}

@@ -4,12 +4,15 @@ import useTranslation from 'next-translate/useTranslation';
 import { routes } from 'config/routes';
 import { Button, Table, TableProps } from 'ui';
 import { useMyCompanies, useDeleteCompany } from 'domain/companies';
+import { useConfirm } from 'domain/confirm';
 
 import { CompaniesTableColumns } from './companies-table.types';
 import styles from './companies-table.module.scss';
 
 export const CompaniesTable: VFC = () => {
   const { t } = useTranslation();
+
+  const { confirmation } = useConfirm();
 
   const { data: companies = [] } = useMyCompanies();
   const { mutate: deleteCompany, isLoading: isDeleteCompanyLoading } =
@@ -53,8 +56,16 @@ export const CompaniesTable: VFC = () => {
               attributes={{
                 title: t('common:actions.delete'),
                 disabled: isDeleteCompanyLoading,
-                onClick: () => {
-                  deleteCompany({ id: company._id });
+                onClick: async () => {
+                  const { confirmed } = await confirmation(
+                    t('account:companies.texts.confirmDelete', {
+                      name: company.name,
+                    })
+                  );
+
+                  if (confirmed) {
+                    deleteCompany({ id: company._id });
+                  }
                 },
               }}
             />
@@ -72,7 +83,7 @@ export const CompaniesTable: VFC = () => {
         ),
       },
     }));
-  }, [companies, t, deleteCompany, isDeleteCompanyLoading]);
+  }, [companies, t, deleteCompany, isDeleteCompanyLoading, confirmation]);
 
   return <Table columns={columns} rows={rows} />;
 };

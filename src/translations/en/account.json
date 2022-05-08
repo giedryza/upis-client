@@ -123,7 +123,13 @@
             "empty": "Enter url"
           }
         }
+      },
+      "texts": {
+        "confirmDelete": "This action cannot be undone. It will permanently delete <strong>{{type}}</strong> link <strong>{{url}}</strong>. Are you sure you want to proceed?"
       }
+    },
+    "texts": {
+      "confirmDelete": "This action cannot be undone. It will permanently delete company <strong>{{name}}</strong> and all its associated information. Are you sure you want to proceed?"
     },
     "actions": {
       "add": "Add company"
