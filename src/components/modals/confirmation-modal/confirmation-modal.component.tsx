@@ -37,7 +37,11 @@ export const ConfirmationModal: VFC = () => {
         },
       ]}
     >
-      {prompt}
+      <p
+        dangerouslySetInnerHTML={{
+          __html: prompt,
+        }}
+      />
     </Modal.Content>
   );
 };

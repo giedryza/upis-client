@@ -123,6 +123,9 @@
             "empty": "Įveskite adresą"
           }
         }
+      },
+      "texts": {
+        "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins <strong>{{type}}</strong> nuorodą <strong>{{url}}</strong>. Ar tikrai norite tęsti?"
       }
     },
     "actions": {

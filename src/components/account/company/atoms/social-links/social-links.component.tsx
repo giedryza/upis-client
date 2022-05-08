@@ -8,6 +8,7 @@ import { Button, Icon, Table, TableProps } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies';
 import { useSocialLinks, useDeleteSocialLink } from 'domain/social-links';
+import { useConfirm } from 'domain/confirm';
 
 import { SocialLinksTableColumns } from './social-links.types';
 import { ICON_BY_SOCIAL_LINK_TYPE } from './social-links.constants';
@@ -16,6 +17,8 @@ import styles from './social-links.module.scss';
 export const SocialLinks: VFC = () => {
   const { t } = useTranslation();
   const { query } = useRouter();
+
+  const { confirmation } = useConfirm();
 
   const slug = getRouteParam(query.slug);
 
@@ -66,7 +69,18 @@ export const SocialLinks: VFC = () => {
                 attributes={{
                   title: t('common:actions.delete'),
                   disabled: isDeleteSocialLinkLoading,
-                  onClick: () => deleteSocialLink({ id: socialLink._id }),
+                  onClick: async () => {
+                    const { confirmed } = await confirmation(
+                      t('account:companies.socialLinks.texts.confirmDelete', {
+                        type: t(`common:social.${socialLink.type}`),
+                        url: socialLink.url,
+                      })
+                    );
+
+                    if (confirmed) {
+                      deleteSocialLink({ id: socialLink._id });
+                    }
+                  },
                 }}
               />
               <Button
@@ -83,7 +97,14 @@ export const SocialLinks: VFC = () => {
         },
       })) ?? []
     );
-  }, [socialLinks, t, slug, deleteSocialLink, isDeleteSocialLinkLoading]);
+  }, [
+    socialLinks,
+    t,
+    slug,
+    deleteSocialLink,
+    isDeleteSocialLinkLoading,
+    confirmation,
+  ]);
 
   return (
     <InfoBlock
