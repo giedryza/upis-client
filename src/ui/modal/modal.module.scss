@@ -25,11 +25,12 @@
     padding: 1.25em 1em;
     overflow: auto;
 
+    line-height: 1.5;
+
     background-color: var(--color-white);
     border-radius: var(--border-radius-sm);
     outline: none;
     box-shadow: var(--shadow-default);
-    line-height: 1.5;
   }
 
   .header {
