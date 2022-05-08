@@ -5,6 +5,7 @@
   "actions": {
     "close": "Uždaryti",
     "cancel": "Atšaukti",
+    "yes": "Taip",
     "submit": "Patvirtinti",
     "save": "Išsaugoti",
     "add": "Pridėti",
@@ -25,6 +26,9 @@
     },
     "table": {
       "empty": "Nėra įrašų"
+    },
+    "confirm": {
+      "title": "Ar tikrai?"
     }
   },
   "texts": {

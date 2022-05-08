@@ -8,8 +8,11 @@ import { AppProps } from 'types/common';
 import { queryClientConfig } from 'tools/services/query-client';
 import { store } from 'tools/services/store';
 import { axe } from 'tools/services/a11y';
+import { Modal } from 'ui';
 import { AppLayout } from 'layouts';
 import { Notifications } from 'components/notifications';
+import { ModalSlot } from 'components/modal-slot';
+import { ConfirmationModal } from 'components/modals';
 
 import 'styles/index.scss';
 
@@ -24,11 +27,17 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <Hydrate state={pageProps.dehydratedState}>
           <SessionProvider session={pageProps.session}>
             <SSRProvider>
-              <AppLayout>
-                <Component {...pageProps} />
+              <Modal.Provider>
+                <AppLayout>
+                  <Component {...pageProps} />
 
-                <Notifications />
-              </AppLayout>
+                  <Notifications />
+                  <ModalSlot
+                    modalName="confirmation"
+                    slot={<ConfirmationModal />}
+                  />
+                </AppLayout>
+              </Modal.Provider>
             </SSRProvider>
           </SessionProvider>
         </Hydrate>
