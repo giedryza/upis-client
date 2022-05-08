@@ -14,11 +14,11 @@ import styles from './forgot.module.scss';
 export const PasswordForgot: VFC = () => {
   const { t } = useTranslation();
 
-  const [isSent, setIsSent] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const { mutate: forgotPassword, isLoading } = useForgotPassword({
     onSuccess: () => {
-      setIsSent(true);
+      setIsSuccess(true);
     },
   });
 
@@ -35,11 +35,11 @@ export const PasswordForgot: VFC = () => {
     defaultValues: INITIAL_VALUES,
   });
 
-  if (isSent) {
+  if (isSuccess) {
     return (
       <PasswordForgotSent
         onRetry={() => {
-          setIsSent(false);
+          setIsSuccess(false);
           resetField('email');
         }}
       />
