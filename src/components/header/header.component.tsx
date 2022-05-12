@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import Link from 'next/link';
 
-import Logo from 'components/logo/logo.vector.svg';
+import Logo from 'components/logo/logo-horizontal.svg';
 import { routes } from 'config/routes';
 
 import styles from './header.module.scss';
