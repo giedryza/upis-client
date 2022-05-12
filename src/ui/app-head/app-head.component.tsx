@@ -16,6 +16,11 @@ export const AppHead: VFC<Props> = ({ title }) => {
 
       <meta name="description" content={t('common:app.description')} />
 
+      <link rel="manifest" href="/manifest.json" />
+      <meta name="theme-color" content="#f1f2f4" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <meta name="apple-mobile-web-app-status-bar" content="#f1f2f4" />
+
       {/* hreflang */}
       {locales.map((locale) => (
         <link

@@ -9,8 +9,11 @@ export const makeStore = () =>
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: {
-          ignoredActions: ['confirm/setProceed', 'confirm/setCancel'],
-          ignoredPaths: ['confirm.proceed', 'confirm.cancel'],
+          ignoredActions: [
+            `${confirm.name}/setProceed`,
+            `${confirm.name}/setCancel`,
+          ],
+          ignoredPaths: [`${confirm.name}.proceed`, `${confirm.name}.cancel`],
         },
       }),
     reducer: {
