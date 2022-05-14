@@ -76,6 +76,8 @@
     "no-empty-function": ["error", { "allow": ["constructors"] }],
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": "error",
+    "no-redeclare": "off",
+    "@typescript-eslint/no-redeclare": ["error"],
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "no-undef": "off",
