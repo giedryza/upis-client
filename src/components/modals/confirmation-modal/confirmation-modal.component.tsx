@@ -1,15 +1,15 @@
 import { useEffect, VFC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
+import { useAppDispatch, useAppSelector } from 'tools/services/store';
 import { Modal } from 'ui';
 import { confirm, selectConfirm } from 'domain/confirm';
 
 export const ConfirmationModal: VFC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const { prompt, proceed, cancel } = useSelector(selectConfirm);
+  const { prompt, proceed, cancel } = useAppSelector(selectConfirm);
 
   useEffect(() => {
     return () => {
