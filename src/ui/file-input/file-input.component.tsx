@@ -36,7 +36,13 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
       isDragReject,
       open,
     } = useDropzone({
-      accept: accept?.map((filetype) => MIME_TYPE_BY_FILE[filetype]),
+      accept: accept?.reduce(
+        (acc, filetype) => ({
+          ...acc,
+          [MIME_TYPE_BY_FILE[filetype]]: [`.${filetype}`],
+        }),
+        {}
+      ),
       onDrop,
       disabled,
       maxSize,
