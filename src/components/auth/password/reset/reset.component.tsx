@@ -3,9 +3,9 @@ import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
 
 import { routes } from 'config/routes';
+import { useAppDispatch } from 'tools/services/store';
 import { Button, Container, Card, TextInput } from 'ui';
 import { useResetPassword } from 'domain/users';
 import { notifications } from 'domain/notifications';
@@ -21,7 +21,7 @@ import styles from './reset.module.scss';
 
 export const PasswordReset: VFC = () => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { query } = useRouter();
 
   const [isSuccess, setIsSuccess] = useState(false);

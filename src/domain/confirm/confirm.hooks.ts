@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
+import { useAppDispatch, useAppSelector } from 'tools/services/store';
 import { modal } from 'domain/modal';
 
 import { confirm } from './confirm.slice';
 import { selectConfirm } from './confirm.selectors';
 
 export const useConfirm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const { cancel } = useSelector(selectConfirm);
+  const { cancel } = useAppSelector(selectConfirm);
 
   const confirmation = (prompt: string): Promise<{ confirmed: boolean }> => {
     const promise = new Promise<void>((resolve, reject) => {

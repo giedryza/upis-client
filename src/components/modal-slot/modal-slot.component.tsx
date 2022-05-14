@@ -1,15 +1,15 @@
 import React, { VFC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
+import { useAppDispatch, useAppSelector } from 'tools/services/store';
 import { Modal } from 'ui';
 import { modal, selectIsModalActive } from 'domain/modal';
 
 import { Props } from './modal-slot.types';
 
 export const ModalSlot: VFC<Props> = ({ modalName, slot }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const isOpen = useSelector(selectIsModalActive(modalName));
+  const isOpen = useAppSelector(selectIsModalActive(modalName));
 
   return isOpen ? (
     <Modal
