@@ -7,6 +7,7 @@ export * from './divider';
 export * from './dropdown-menu';
 export * from './file-input';
 export * from './icon';
+export * from './image-placeholder';
 export * from './loader';
 export * from './map';
 export * from './modal';
