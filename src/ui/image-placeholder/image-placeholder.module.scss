@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  color: var(--color-grey-60);
+
+  border: 2px dashed currentColor;
+  border-radius: var(--border-radius-md);
+
+  aspect-ratio: 16 / 9;
+
+  @supports not (aspect-ratio: 16 / 9) {
+    padding: 5rem;
+  }
+
+  > .icon {
+    width: 5rem;
+    height: 5rem;
+
+    fill: currentColor;
+  }
+}

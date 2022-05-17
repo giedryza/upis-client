@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 
-import styles from './container.module.scss';
 import { Props } from './container.types';
+import styles from './container.module.scss';
 
 export const Container: FC<Props> = ({
   children,
