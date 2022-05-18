@@ -3,7 +3,6 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 
 import { routes } from 'config/routes';
-import { getRouteParam } from 'tools/common';
 import {
   Button,
   Map,
@@ -21,14 +20,14 @@ import styles from './company-edit-location.module.scss';
 
 export const CompanyEditLocation: VFC = () => {
   const { t } = useTranslation();
-  const { query, push } = useRouter();
-
-  const slug = getRouteParam(query.slug);
+  const { push } = useRouter();
 
   const { data: company } = useActiveCompany();
   const { mutate: updateLocation, isLoading } = useUpdateLocation({
     onSuccess: () => {
-      push(routes.account.companies.one.index.replace(':slug', slug));
+      push(
+        routes.account.companies.one.index.replace(':id', company?._id ?? '')
+      );
     },
   });
 
@@ -119,7 +118,10 @@ export const CompanyEditLocation: VFC = () => {
           label={t('common:actions.cancel')}
           variant="ghost"
           size="sm"
-          url={routes.account.companies.one.index.replace(':slug', slug)}
+          url={routes.account.companies.one.index.replace(
+            ':id',
+            company?._id ?? ''
+          )}
         />
 
         <Button

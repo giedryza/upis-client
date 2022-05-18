@@ -37,13 +37,13 @@ export const useMyCompanies = (filters: CompaniesFilters = {}) => {
   return query;
 };
 
-export const useCompany = (slug: string) => {
+export const useCompany = (id: string) => {
   const query = useQuery(
-    companiesKeys.detail(slug),
-    () => loaders.getCompany({ slug }),
+    companiesKeys.detail(id),
+    () => loaders.getCompany({ id }),
     {
       select: ({ data }) => data,
-      enabled: !!slug,
+      enabled: !!id,
     }
   );
 
@@ -52,9 +52,9 @@ export const useCompany = (slug: string) => {
 
 export const useActiveCompany = () => {
   const { query: params } = useRouter();
-  const slug = getRouteParam(params?.slug);
+  const id = getRouteParam(params?.id);
 
-  const query = useCompany(slug);
+  const query = useCompany(id);
 
   return query;
 };

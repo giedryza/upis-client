@@ -1,22 +1,22 @@
-import { NextPage, GetServerSideProps } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
+import useTranslation from 'next-translate/useTranslation';
 import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { dehydrate, QueryClient } from 'react-query';
-import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { capitalizeFirstLetter, getRouteParam } from 'tools/common';
+import { getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { CompanyEditLocation } from 'components/account';
+import { Company } from 'components/account';
 import { companiesKeys, loaders } from 'domain/companies';
 
-const CompanyEditLocationPage: NextPage = () => {
+const CompanyPage: NextPage = () => {
   const { t } = useTranslation();
   const { query } = useRouter();
 
-  const slug = getRouteParam(query.slug);
+  const id = getRouteParam(query.id);
 
   useProtectedPage();
 
@@ -33,18 +33,12 @@ const CompanyEditLocationPage: NextPage = () => {
                 label: t('account:companies.title', { count: 2 }),
                 url: routes.account.companies.index,
               },
-              {
-                label: capitalizeFirstLetter(slug.split('-').join(' ')),
-                url: routes.account.companies.one.index.replace(':slug', slug),
-              },
-              {
-                label: t('account:companies.location.title'),
-              },
+              { label: id },
             ]}
           />
 
           <AccountLayout>
-            <CompanyEditLocation />
+            <Company />
           </AccountLayout>
         </PageLayout>
       </MainLayout>
@@ -68,10 +62,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const queryClient = new QueryClient();
-  const slug = getRouteParam(params?.slug);
+  const id = getRouteParam(params?.id);
 
-  await queryClient.prefetchQuery(companiesKeys.detail(slug), () =>
-    loaders.getCompany({ req, slug })
+  await queryClient.prefetchQuery(companiesKeys.detail(id), () =>
+    loaders.getCompany({ req, id })
   );
 
   return {
@@ -82,4 +76,4 @@ export const getServerSideProps: GetServerSideProps = async ({
   };
 };
 
-export default CompanyEditLocationPage;
+export default CompanyPage;

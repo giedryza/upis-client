@@ -15,12 +15,10 @@ export const loaders = {
       req,
       params,
     }).get(),
-  getCompany: ({ req, slug }: { req?: IncomingMessage; slug: string }) =>
+  getCompany: ({ req, id }: { req?: IncomingMessage; id: string }) =>
     new Request<Company | null>(
-      endpoints.companies.one.index.replace(':id', slug),
-      {
-        req,
-      }
+      endpoints.companies.one.index.replace(':id', id),
+      { req }
     ).get(),
   createCompany: ({
     form,

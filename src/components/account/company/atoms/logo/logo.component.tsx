@@ -1,28 +1,25 @@
 import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
-import { useRouter } from 'next/router';
 
-import { getRouteParam } from 'tools/common';
 import { ImageItem, InfoBlock } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies';
 import { routes } from 'config/routes';
 
 export const Logo: VFC = () => {
   const { t } = useTranslation();
-  const { query } = useRouter();
-
-  const slug = getRouteParam(query.slug);
 
   const { data: company } = useActiveCompany();
+
+  if (!company) return null;
 
   return (
     <InfoBlock
       title={t('account:companies.logo.title')}
       icon="picture"
       columns={1}
-      editPage={routes.account.companies.one.logo.replace(':slug', slug)}
+      editPage={routes.account.companies.one.logo.replace(':id', company._id)}
     >
-      <ImageItem src={company?.logo.location} />
+      <ImageItem src={company.logo.location} />
     </InfoBlock>
   );
 };
