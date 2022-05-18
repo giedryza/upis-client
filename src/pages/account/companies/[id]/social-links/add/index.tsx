@@ -6,17 +6,17 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { capitalizeFirstLetter, getRouteParam } from 'tools/common';
+import { getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { CompanyEditContacts } from 'components/account';
+import { CompanyEditSocialLinksAdd } from 'components/account';
 import { companiesKeys, loaders } from 'domain/companies';
 
-const CompanyEditContactsPage: NextPage = () => {
+const CompanyEditSocialLinksAddPage: NextPage = () => {
   const { t } = useTranslation();
   const { query } = useRouter();
 
-  const slug = getRouteParam(query.slug);
+  const id = getRouteParam(query.id);
 
   useProtectedPage();
 
@@ -34,17 +34,17 @@ const CompanyEditContactsPage: NextPage = () => {
                 url: routes.account.companies.index,
               },
               {
-                label: capitalizeFirstLetter(slug.split('-').join(' ')),
-                url: routes.account.companies.one.index.replace(':slug', slug),
+                label: id,
+                url: routes.account.companies.one.index.replace(':id', id),
               },
               {
-                label: t('account:companies.contacts.title'),
+                label: t('account:companies.socialLinks.title'),
               },
             ]}
           />
 
           <AccountLayout>
-            <CompanyEditContacts />
+            <CompanyEditSocialLinksAdd />
           </AccountLayout>
         </PageLayout>
       </MainLayout>
@@ -68,10 +68,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const queryClient = new QueryClient();
-  const slug = getRouteParam(params?.slug);
+  const id = getRouteParam(params?.id);
 
-  await queryClient.prefetchQuery(companiesKeys.detail(slug), () =>
-    loaders.getCompany({ req, slug })
+  await queryClient.prefetchQuery(companiesKeys.detail(id), () =>
+    loaders.getCompany({ req, id })
   );
 
   return {
@@ -82,4 +82,4 @@ export const getServerSideProps: GetServerSideProps = async ({
   };
 };
 
-export default CompanyEditContactsPage;
+export default CompanyEditSocialLinksAddPage;

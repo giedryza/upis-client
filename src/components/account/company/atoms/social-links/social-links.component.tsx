@@ -1,9 +1,7 @@
 import { useMemo, VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
-import { useRouter } from 'next/router';
 
 import { routes } from 'config/routes';
-import { getRouteParam } from 'tools/common';
 import { Button, Icon, Table, TableProps } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies';
@@ -16,11 +14,8 @@ import styles from './social-links.module.scss';
 
 export const SocialLinks: VFC = () => {
   const { t } = useTranslation();
-  const { query } = useRouter();
 
   const { confirmation } = useConfirm();
-
-  const slug = getRouteParam(query.slug);
 
   const { data: company } = useActiveCompany();
   const { data: socialLinks = [] } = useSocialLinks({
@@ -88,8 +83,8 @@ export const SocialLinks: VFC = () => {
                 size="xs"
                 variant="secondary"
                 url={routes.account.companies.one.socialLinks.one
-                  .replace(':slug', slug)
-                  .replace(':id', socialLink._id)}
+                  .replace(':id', socialLink.host)
+                  .replace(':socialLinkId', socialLink._id)}
                 attributes={{ title: t('common:actions.edit') }}
               />
             </div>
@@ -100,7 +95,6 @@ export const SocialLinks: VFC = () => {
   }, [
     socialLinks,
     t,
-    slug,
     deleteSocialLink,
     isDeleteSocialLinkLoading,
     confirmation,
@@ -120,8 +114,8 @@ export const SocialLinks: VFC = () => {
           icon="plus"
           size="xs"
           url={routes.account.companies.one.socialLinks.add.replace(
-            ':slug',
-            slug
+            ':id',
+            company?._id ?? ''
           )}
         />
       </div>

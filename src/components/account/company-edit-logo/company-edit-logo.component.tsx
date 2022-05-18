@@ -5,7 +5,6 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, FileInput } from 'ui';
 import { routes } from 'config/routes';
-import { getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveCompany, useUploadLogo } from 'domain/companies';
 
@@ -14,9 +13,7 @@ import styles from './company-edit-logo.module.scss';
 
 export const CompanyEditLogo: VFC = () => {
   const { t } = useTranslation();
-  const { query, push } = useRouter();
-
-  const slug = getRouteParam(query.slug);
+  const { push } = useRouter();
 
   const {
     control,
@@ -27,7 +24,9 @@ export const CompanyEditLogo: VFC = () => {
   const { data: company } = useActiveCompany();
   const { mutate: uploadLogo, isLoading } = useUploadLogo({
     onSuccess: () => {
-      push(routes.account.companies.one.index.replace(':slug', slug));
+      push(
+        routes.account.companies.one.index.replace(':id', company?._id ?? '')
+      );
     },
   });
 
@@ -70,7 +69,10 @@ export const CompanyEditLogo: VFC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.companies.one.index.replace(':slug', slug)}
+              url={routes.account.companies.one.index.replace(
+                ':id',
+                company?._id ?? ''
+              )}
             />
 
             <Button

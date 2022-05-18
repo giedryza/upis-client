@@ -5,7 +5,6 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, SelectInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
-import { getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import { useAddSocialLink, SocialType } from 'domain/social-links';
 import { useActiveCompany } from 'domain/companies';
@@ -16,9 +15,7 @@ import styles from './company-edit-social-links-add.module.scss';
 
 export const CompanyEditSocialLinksAdd: VFC = () => {
   const { t } = useTranslation();
-  const { query, push } = useRouter();
-
-  const slug = getRouteParam(query.slug);
+  const { push } = useRouter();
 
   const {
     register,
@@ -31,7 +28,9 @@ export const CompanyEditSocialLinksAdd: VFC = () => {
   const { data: company } = useActiveCompany();
   const { mutate: addSocialLink, isLoading } = useAddSocialLink({
     onSuccess: () => {
-      push(routes.account.companies.one.index.replace(':slug', slug));
+      push(
+        routes.account.companies.one.index.replace(':id', company?._id ?? '')
+      );
     },
   });
 
@@ -90,7 +89,10 @@ export const CompanyEditSocialLinksAdd: VFC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.companies.one.index.replace(':slug', slug)}
+              url={routes.account.companies.one.index.replace(
+                ':id',
+                company?._id ?? ''
+              )}
             />
 
             <Button

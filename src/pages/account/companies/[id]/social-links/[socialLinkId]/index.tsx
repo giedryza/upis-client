@@ -6,17 +6,17 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { capitalizeFirstLetter, getRouteParam } from 'tools/common';
+import { getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { CompanyEditAbout } from 'components/account';
-import { companiesKeys, loaders } from 'domain/companies';
+import { CompanyEditSocialLinksEdit } from 'components/account';
+import { loaders, socialLinksKeys } from 'domain/social-links';
 
-const CompanyEditAboutPage: NextPage = () => {
+const CompanyEditSocialLinksEditPage: NextPage = () => {
   const { t } = useTranslation();
   const { query } = useRouter();
 
-  const slug = getRouteParam(query.slug);
+  const id = getRouteParam(query.id);
 
   useProtectedPage();
 
@@ -34,17 +34,17 @@ const CompanyEditAboutPage: NextPage = () => {
                 url: routes.account.companies.index,
               },
               {
-                label: capitalizeFirstLetter(slug.split('-').join(' ')),
-                url: routes.account.companies.one.index.replace(':slug', slug),
+                label: id,
+                url: routes.account.companies.one.index.replace(':id', id),
               },
               {
-                label: t('account:companies.about.title'),
+                label: t('account:companies.socialLinks.title'),
               },
             ]}
           />
 
           <AccountLayout>
-            <CompanyEditAbout />
+            <CompanyEditSocialLinksEdit />
           </AccountLayout>
         </PageLayout>
       </MainLayout>
@@ -68,10 +68,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const queryClient = new QueryClient();
-  const slug = getRouteParam(params?.slug);
+  const id = getRouteParam(params?.id);
 
-  await queryClient.prefetchQuery(companiesKeys.detail(slug), () =>
-    loaders.getCompany({ req, slug })
+  await queryClient.prefetchQuery(socialLinksKeys.detail(id), () =>
+    loaders.getSocialLink({ req, id })
   );
 
   return {
@@ -82,4 +82,4 @@ export const getServerSideProps: GetServerSideProps = async ({
   };
 };
 
-export default CompanyEditAboutPage;
+export default CompanyEditSocialLinksEditPage;
