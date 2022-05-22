@@ -12,7 +12,7 @@ const iconByLocale: Record<Locale, IconName> = {
   [Locale.En]: 'flag-en',
 };
 
-const LanguageSelect: VFC = () => {
+export const LanguageSelect: VFC = () => {
   const { locale: currentLocale, asPath } = useRouter();
   const { t } = useTranslation();
 
@@ -41,5 +41,3 @@ const LanguageSelect: VFC = () => {
     />
   );
 };
-
-export { LanguageSelect };

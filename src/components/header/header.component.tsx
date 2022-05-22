@@ -8,7 +8,7 @@ import styles from './header.module.scss';
 import { LanguageSelect } from './language-select/language-select.component';
 import { AccountMenu } from './account-menu/account-menu.component';
 
-const Header: VFC = () => {
+export const Header: VFC = () => {
   return (
     <header className={styles.header}>
       <Link href={routes.home}>
@@ -29,5 +29,3 @@ const Header: VFC = () => {
     </header>
   );
 };
-
-export { Header };

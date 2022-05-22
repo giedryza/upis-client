@@ -5,7 +5,7 @@ import { useSession, signOut } from 'next-auth/react';
 import { routes } from 'config/routes';
 import { Button, DropdownMenu } from 'ui';
 
-const AccountMenu: VFC = () => {
+export const AccountMenu: VFC = () => {
   const { t } = useTranslation();
 
   const { status } = useSession();
@@ -48,5 +48,3 @@ const AccountMenu: VFC = () => {
     />
   );
 };
-
-export { AccountMenu };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Icon, baseIcon, utilIcon, flagIcon, logoIcon } from '.';
+import { Icon, baseIcons, utilIcons, flagIcons, logoIcons } from '.';
 
 export default {
   title: 'UI/Icon',
@@ -12,7 +12,7 @@ export default {
 const Template: ComponentStory<typeof Icon> = (args) => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: 50 }}>
     <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-      {baseIcon.map((name) => (
+      {baseIcons.map((name) => (
         <div key={name}>
           <div
             style={{
@@ -39,7 +39,7 @@ const Template: ComponentStory<typeof Icon> = (args) => (
       ))}
     </div>
     <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-      {logoIcon.map((name) => (
+      {logoIcons.map((name) => (
         <div key={name}>
           <div
             style={{
@@ -66,7 +66,7 @@ const Template: ComponentStory<typeof Icon> = (args) => (
       ))}
     </div>
     <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-      {flagIcon.map((name) => (
+      {flagIcons.map((name) => (
         <div key={name}>
           <div
             style={{
@@ -93,7 +93,7 @@ const Template: ComponentStory<typeof Icon> = (args) => (
       ))}
     </div>
     <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-      {utilIcon.map((name) => (
+      {utilIcons.map((name) => (
         <div key={name}>
           <div
             style={{
