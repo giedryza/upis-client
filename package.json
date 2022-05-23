@@ -24,7 +24,7 @@
     "lint:prettier": "npx prettier --check \"src/**\"",
     "lint:prettier:fix": "npx prettier --write \"src/**\"",
     "lint:filenames": "npx @ls-lint/ls-lint",
-    "stylelint:check-conflicting-rules": "stylelint-config-prettier-check"
+    "stylelint:conflicting-rules": "stylelint-config-prettier-check"
   },
   "dependencies": {
     "@axe-core/react": "^4.4.2",
