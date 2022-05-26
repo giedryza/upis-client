@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { confirm } from 'domain/confirm';
 import { modal } from 'domain/modal';
-import { notifications } from 'domain/notifications';
+import { alerts } from 'domain/alerts';
 
 export const makeStore = () =>
   configureStore({
@@ -19,7 +19,7 @@ export const makeStore = () =>
     reducer: {
       [confirm.name]: confirm.reducer,
       [modal.name]: modal.reducer,
-      [notifications.name]: notifications.reducer,
+      [alerts.name]: alerts.reducer,
     },
   });
 

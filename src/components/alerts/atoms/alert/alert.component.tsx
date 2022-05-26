@@ -4,28 +4,29 @@ import clsx from 'clsx';
 import { useAppDispatch } from 'tools/services/store';
 import { useTimeout } from 'tools/hooks';
 import { Toast } from 'ui';
-import { notifications } from 'domain/notifications';
+import { alerts } from 'domain/alerts';
 
-import { Props } from './notification.types';
-import { NOTIFICATION_FADE_DELAY } from './notification.constants';
-import styles from './notification.module.scss';
+import { Props } from './alert.types';
+import { ALERT_FADE_DELAY } from './alert.constants';
+import styles from './alert.module.scss';
 
-export const Notification: VFC<Props> = ({ id, type, message }) => {
+export const Alert: VFC<Props> = ({ id, type, message }) => {
   const dispatch = useAppDispatch();
 
   const [isFading, setIsFading] = useState(true);
 
   useTimeout(
-    () => dispatch(notifications.actions.close(id)),
-    isFading ? NOTIFICATION_FADE_DELAY - 10 : null
+    () => dispatch(alerts.actions.close(id)),
+    isFading ? ALERT_FADE_DELAY - 10 : null
   );
 
   return (
     <div
       className={clsx({ [styles.fading as string]: isFading })}
       style={{
-        '--fade-delay': NOTIFICATION_FADE_DELAY,
+        '--fade-delay': ALERT_FADE_DELAY,
       }}
+      role="alert"
     >
       <Toast
         type={type}
@@ -36,7 +37,7 @@ export const Notification: VFC<Props> = ({ id, type, message }) => {
         onTouchEnd={() => setIsFading(true)}
         onClose={() => {
           setIsFading(false);
-          dispatch(notifications.actions.close(id));
+          dispatch(alerts.actions.close(id));
         }}
       />
     </div>

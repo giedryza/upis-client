@@ -1,6 +1,6 @@
-import { notifications } from 'domain/notifications';
+import { alerts } from 'domain/alerts';
 import { store } from 'tools/services/store';
 
 export const handleError = (message: string) => {
-  store.dispatch(notifications.actions.open({ type: 'danger', message }));
+  store.dispatch(alerts.actions.open({ type: 'danger', message }));
 };

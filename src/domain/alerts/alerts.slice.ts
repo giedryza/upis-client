@@ -1,25 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 
-import { Notification } from './notifications.types';
+import { Alert } from './alerts.types';
 
-interface NotificationsState {
-  items: Notification[];
+interface AlertsState {
+  items: Alert[];
 }
 
-const initialState: NotificationsState = {
+const initialState: AlertsState = {
   items: [],
 };
 
-export const notifications = createSlice({
-  name: 'notifications',
+export const alerts = createSlice({
+  name: 'alerts',
   initialState,
   reducers: {
     open: {
-      reducer: (state, { payload }: PayloadAction<Notification>) => {
+      reducer: (state, { payload }: PayloadAction<Alert>) => {
         state.items.push(payload);
       },
-      prepare: (item: Omit<Notification, 'id'>) => ({
+      prepare: (item: Omit<Alert, 'id'>) => ({
         payload: { ...item, id: nanoid() },
       }),
     },
