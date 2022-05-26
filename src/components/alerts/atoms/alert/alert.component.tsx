@@ -26,6 +26,7 @@ export const Alert: VFC<Props> = ({ id, type, message }) => {
       style={{
         '--fade-delay': ALERT_FADE_DELAY,
       }}
+      role="alert"
     >
       <Toast
         type={type}
