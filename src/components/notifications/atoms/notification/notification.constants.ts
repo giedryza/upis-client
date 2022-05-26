@@ -1,1 +1,0 @@
-export const NOTIFICATION_FADE_DELAY = 1000 * 6;

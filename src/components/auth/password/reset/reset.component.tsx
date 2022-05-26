@@ -8,7 +8,7 @@ import { routes } from 'config/routes';
 import { useAppDispatch } from 'tools/services/store';
 import { Button, Container, Card, TextInput } from 'ui';
 import { useResetPassword } from 'domain/users';
-import { notifications } from 'domain/notifications';
+import { alerts } from 'domain/alerts';
 
 import { PasswordResetSuccess } from './atoms';
 import { Values } from './reset.types';
@@ -37,7 +37,7 @@ export const PasswordReset: VFC = () => {
 
     if (typeof token !== 'string' || typeof userId !== 'string') {
       dispatch(
-        notifications.actions.open({
+        alerts.actions.open({
           type: 'danger',
           message: (
             <Trans

@@ -10,7 +10,7 @@ import { store } from 'tools/services/store';
 import { axe } from 'tools/services/a11y';
 import { Modal } from 'ui';
 import { AppLayout } from 'layouts';
-import { Notifications } from 'components/notifications';
+import { Alerts } from 'components/alerts';
 import { ModalSlot } from 'components/modal-slot';
 import { ConfirmationModal } from 'components/modals';
 
@@ -31,7 +31,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                 <AppLayout>
                   <Component {...pageProps} />
 
-                  <Notifications />
+                  <Alerts />
                   <ModalSlot
                     modalName="confirmation"
                     slot={<ConfirmationModal />}

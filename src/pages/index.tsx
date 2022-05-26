@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import { AppHead } from 'ui';
 import { MainLayout } from 'layouts';
 import { useAppDispatch } from 'tools/services/store';
-import { notifications } from 'domain/notifications';
+import { alerts } from 'domain/alerts';
 
 const Home: NextPage = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +18,7 @@ const Home: NextPage = () => {
           type="button"
           onClick={() => {
             dispatch(
-              notifications.actions.open({
+              alerts.actions.open({
                 type: 'warning',
                 message:
                   'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, tempora.',

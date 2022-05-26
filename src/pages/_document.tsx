@@ -20,7 +20,7 @@ class MyDocument extends Document {
         <body>
           <Main />
 
-          <div id="notifications" />
+          <div id="alerts" />
 
           <NextScript />
         </body>
