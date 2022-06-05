@@ -2,6 +2,7 @@ import { useQuery } from 'react-query';
 
 import { socialLinksKeys } from './social-links.keys';
 import { loaders } from './social-links.loaders';
+import { converters } from './social-links.converters';
 import { SocialLinksFilters } from './social-links.types';
 
 export const useSocialLinks = (filters: SocialLinksFilters) => {
@@ -9,8 +10,8 @@ export const useSocialLinks = (filters: SocialLinksFilters) => {
     socialLinksKeys.list(filters),
     () => loaders.getSocialLinks({ params: filters }),
     {
-      select: ({ data }) => data,
       enabled: !!filters.host,
+      select: converters.getSocialLinks,
     }
   );
 
@@ -22,8 +23,8 @@ export const useSocialLink = (id: string) => {
     socialLinksKeys.detail(id),
     () => loaders.getSocialLink({ id }),
     {
-      select: ({ data }) => data,
       enabled: !!id,
+      select: converters.getSocialLink,
     }
   );
 
