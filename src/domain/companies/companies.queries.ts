@@ -6,6 +6,7 @@ import { getRouteParam } from 'tools/common';
 
 import { companiesKeys } from './companies.keys';
 import { loaders } from './companies.loaders';
+import { converters } from './companies.converters';
 import { CompaniesFilters } from './companies.types';
 
 export const useCompanies = (filters: CompaniesFilters = {}) => {
@@ -13,7 +14,7 @@ export const useCompanies = (filters: CompaniesFilters = {}) => {
     companiesKeys.list(filters),
     () => loaders.getCompanies({ params: filters }),
     {
-      select: ({ data }) => data,
+      select: converters.getCompanies,
     }
   );
 
@@ -30,7 +31,7 @@ export const useMyCompanies = (filters: CompaniesFilters = {}) => {
     () => loaders.getCompanies({ params }),
     {
       enabled: !!session?.user.id,
-      select: ({ data }) => data,
+      select: converters.getCompanies,
     }
   );
 
@@ -42,8 +43,8 @@ export const useCompany = (id: string) => {
     companiesKeys.detail(id),
     () => loaders.getCompany({ id }),
     {
-      select: ({ data }) => data,
       enabled: !!id,
+      select: converters.getCompany,
     }
   );
 
