@@ -1,2 +1,2 @@
 export * from './actions';
-export * from './companies-table';
+export * from './table';

@@ -6,8 +6,8 @@ import { Button, Table, TableProps } from 'ui';
 import { useMyCompanies, useDeleteCompany } from 'domain/companies';
 import { useConfirm } from 'domain/confirm';
 
-import { CompaniesTableColumns } from './companies-table.types';
-import styles from './companies-table.module.scss';
+import { CompaniesTableColumns } from './table.types';
+import styles from './table.module.scss';
 
 export const CompaniesTable: VFC = () => {
   const { t } = useTranslation();
