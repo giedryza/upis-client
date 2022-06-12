@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { routes } from 'config/routes';
 import { Button } from 'ui';
 
-export const Actions: VFC = () => {
+export const CompaniesActions: VFC = () => {
   const { t } = useTranslation();
 
   return (
