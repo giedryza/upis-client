@@ -136,6 +136,13 @@
     }
   },
   "tours": {
-    "title": "Maršrutai"
+    "title": {
+      "one": "Maršrutas",
+      "other": "Maršrutų",
+      "few": "Maršrutai"
+    },
+    "actions": {
+      "add": "Pridėti maršrutą"
+    }
   }
 }

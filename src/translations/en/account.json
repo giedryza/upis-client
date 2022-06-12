@@ -136,6 +136,13 @@
     }
   },
   "tours": {
-    "title": "Tours"
+    "title": {
+      "one": "Tour",
+      "other": "Tours",
+      "few": "Tours"
+    },
+    "actions": {
+      "add": "Add tour"
+    }
   }
 }
