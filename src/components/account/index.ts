@@ -10,3 +10,4 @@ export * from './company-edit-social-links-edit';
 export * from './profile';
 export * from './profile-edit-security';
 export * from './tours';
+export * from './tour-create';
