@@ -23,10 +23,15 @@ export class Request<ResponseData = any, ResponseMeta = any> {
   private get url(): string {
     const { params } = this.config;
 
-    return stringifyUrl({
-      url: `${this.#baseUrl}/${this.endpoint}`,
-      query: params,
-    });
+    return stringifyUrl(
+      {
+        url: `${this.#baseUrl}/${this.endpoint}`,
+        query: params,
+      },
+      {
+        arrayFormat: 'bracket',
+      }
+    );
   }
 
   private get defaultHeaders(): Record<string, string> {
