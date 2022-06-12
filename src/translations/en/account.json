@@ -141,6 +141,25 @@
       "other": "Tours",
       "few": "Tours"
     },
+    "about": {
+      "title": "About",
+      "form": {
+        "name": {
+          "label": "Name",
+          "placeholder": "In river Žeimena",
+          "error": {
+            "empty": "Enter tour name"
+          }
+        },
+        "company": {
+          "label": "Company",
+          "placeholder": "Select company",
+          "error": {
+            "empty": "Select company"
+          }
+        }
+      }
+    },
     "actions": {
       "add": "Add tour"
     }

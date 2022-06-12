@@ -16,6 +16,12 @@ export const endpoints = {
       logo: 'companies/:id/logo',
     },
   },
+  tours: {
+    index: 'tours',
+    one: {
+      index: 'tours/:id',
+    },
+  },
   socialLinks: {
     index: 'social-links',
     one: 'social-links/:id',

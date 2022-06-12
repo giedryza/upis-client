@@ -141,6 +141,25 @@
       "other": "Maršrutų",
       "few": "Maršrutai"
     },
+    "about": {
+      "title": "Apie maršrutą",
+      "form": {
+        "name": {
+          "label": "Pavadinimas",
+          "placeholder": "Žeimenos upe",
+          "error": {
+            "empty": "Įveskite maršruto pavadinimą"
+          }
+        },
+        "company": {
+          "label": "Kompanija",
+          "placeholder": "Pasirinkite kompaniją",
+          "error": {
+            "empty": "Pasirinkite kompaniją"
+          }
+        }
+      }
+    },
     "actions": {
       "add": "Pridėti maršrutą"
     }

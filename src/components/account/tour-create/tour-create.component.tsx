@@ -4,9 +4,10 @@ import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { routes } from 'config/routes';
-import { Button, Container, TextInput } from 'ui';
+import { Button, Container, SelectInput, TextInput } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
-import { useCreateCompany } from 'domain/companies';
+import { useCreateTour } from 'domain/tours';
+import { useMyCompanies } from 'domain/companies';
 
 import { Values } from './tour-create.types';
 import { INITIAL_VALUES } from './tour-create.constants';
@@ -24,19 +25,16 @@ export const TourCreate: VFC = () => {
     defaultValues: INITIAL_VALUES,
   });
 
-  const { mutate: createCompany, isLoading } = useCreateCompany({
+  const { data: companies = [] } = useMyCompanies({ select: ['_id', 'name'] });
+
+  const { mutate: createTour, isLoading } = useCreateTour({
     onSuccess: () => {
-      push(routes.account.companies.index);
+      push(routes.account.tours.index);
     },
   });
 
-  const onSubmit: SubmitHandler<Values> = ({
-    name,
-    email,
-    phone,
-    description,
-  }) => {
-    createCompany({ form: { name, email, phone, description } });
+  const onSubmit: SubmitHandler<Values> = ({ name, company }) => {
+    createTour({ form: { name, company } });
   };
 
   return (
@@ -52,49 +50,28 @@ export const TourCreate: VFC = () => {
               {...register('name', {
                 required: {
                   value: true,
-                  message: t('account:companies.about.form.name.error.empty'),
+                  message: t('account:tours.about.form.name.error.empty'),
                 },
               })}
-              label={t('account:companies.about.form.name.label')}
+              label={t('account:tours.about.form.name.label')}
+              placeholder={t('account:tours.about.form.name.placeholder')}
               error={errors.name?.message}
             />
 
-            <TextInput
-              {...register('email', {
+            <SelectInput
+              {...register('company', {
                 required: {
                   value: true,
-                  message: t(
-                    'account:companies.contacts.form.email.error.empty'
-                  ),
+                  message: t('account:tours.about.form.company.error.empty'),
                 },
               })}
-              label={t('account:companies.contacts.form.email.label')}
-              placeholder="jonas@doe.com"
-              type="email"
-              error={errors.email?.message}
-            />
-
-            <TextInput
-              {...register('phone', {
-                required: {
-                  value: true,
-                  message: t(
-                    'account:companies.contacts.form.phone.error.empty'
-                  ),
-                },
-              })}
-              label={t('account:companies.contacts.form.phone.label')}
-              placeholder="+37065555555"
-              type="phone"
-              error={errors.phone?.message}
-            />
-
-            <TextInput
-              {...register('description')}
-              label={t('account:companies.about.form.description.label')}
-              type="textarea"
-              rows={8}
-              error={errors.description?.message}
+              options={companies.map((company) => ({
+                label: company.name,
+                value: company._id,
+              }))}
+              label={t('account:tours.about.form.company.label')}
+              placeholder={t('account:tours.about.form.company.placeholder')}
+              error={errors.company?.message}
             />
           </fieldset>
 
@@ -103,7 +80,7 @@ export const TourCreate: VFC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.companies.index}
+              url={routes.account.tours.index}
             />
 
             <Button
