@@ -31,3 +31,9 @@ export type FileTypeUnion =
   | 'audio/*'
   | 'text/*'
   | 'application/*';
+
+export interface AppFile {
+  location: string;
+  key?: string;
+  contentType?: string;
+}
