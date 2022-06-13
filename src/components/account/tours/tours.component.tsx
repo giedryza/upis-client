@@ -2,7 +2,7 @@ import { VFC } from 'react';
 
 import { Card } from 'ui';
 
-import { ToursActions } from './atoms';
+import { ToursActions, ToursTable } from './atoms';
 import styles from './tours.module.scss';
 
 export const Tours: VFC = () => {
@@ -10,6 +10,7 @@ export const Tours: VFC = () => {
     <Card>
       <div className={styles.content}>
         <ToursActions />
+        <ToursTable />
       </div>
     </Card>
   );

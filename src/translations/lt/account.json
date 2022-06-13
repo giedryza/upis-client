@@ -141,6 +141,17 @@
       "other": "Maršrutų",
       "few": "Maršrutai"
     },
+    "table": {
+      "name": "Pavadinimas",
+      "trip": "Kelionė",
+      "distance": "Atstumas",
+      "duration": "Trukmė",
+      "days": "Dienos",
+      "rivers": "Upės",
+      "regions": "Regionai",
+      "difficulty": "Sudėtingumas",
+      "price": "Kaina"
+    },
     "about": {
       "title": "Apie maršrutą",
       "form": {
@@ -159,6 +170,9 @@
           }
         }
       }
+    },
+    "texts": {
+      "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins maršrutą <strong>{{name}}</strong> ir visą su juo susijusią informaciją. Ar tikrai norite tęsti?"
     },
     "actions": {
       "add": "Pridėti maršrutą"
