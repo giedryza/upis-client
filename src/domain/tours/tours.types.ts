@@ -68,3 +68,8 @@ export interface Tour {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface ToursFilters {
+  user?: string;
+  select?: (keyof Tour)[];
+}
