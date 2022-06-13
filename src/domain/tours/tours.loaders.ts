@@ -15,6 +15,11 @@ interface CreateTour {
   form: Pick<Tour, 'name'> & { company: string };
 }
 
+interface UpdateTour {
+  id: string;
+  form: Partial<Pick<Tour, 'name' | 'description' | 'website'>>;
+}
+
 interface DeleteTour {
   id: string;
 }
@@ -33,6 +38,10 @@ export const loaders = {
     new Request<Tour>(endpoints.tours.index, {
       body: getJsonBody(form),
     }).post(),
+  updateTour: ({ id, form }: UpdateTour) =>
+    new Request<Tour>(endpoints.tours.one.index.replace(':id', id), {
+      body: getJsonBody(form),
+    }).patch(),
   deleteTour: ({ id }: DeleteTour) =>
     new Request(endpoints.tours.one.index.replace(':id', id)).delete(),
 };

@@ -17,6 +17,19 @@ export const useCreateTour = ({ onSuccess }: Options = {}) => {
   return mutation;
 };
 
+export const useUpdateTour = ({ onSuccess }: Options = {}) => {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation(loaders.updateTour, {
+    onSuccess: () => {
+      onSuccess?.();
+      queryClient.invalidateQueries(toursKeys.details());
+    },
+  });
+
+  return mutation;
+};
+
 export const useDeleteTour = ({ onSuccess }: Options = {}) => {
   const queryClient = useQueryClient();
 

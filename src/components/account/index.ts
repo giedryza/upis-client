@@ -11,4 +11,5 @@ export * from './profile';
 export * from './profile-edit-security';
 export * from './tour';
 export * from './tours';
+export * from './tour-edit-about';
 export * from './tour-create';
