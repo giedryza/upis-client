@@ -162,6 +162,12 @@
             "empty": "Įveskite maršruto pavadinimą"
           }
         },
+        "description": {
+          "label": "Aprašymas"
+        },
+        "website": {
+          "label": "Tinklapis"
+        },
         "company": {
           "label": "Kompanija",
           "placeholder": "Pasirinkite kompaniją",

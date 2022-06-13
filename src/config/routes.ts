@@ -34,6 +34,7 @@ export const routes = {
       create: '/account/tours/create',
       one: {
         index: '/account/tours/:id',
+        about: '/account/tours/:id/about',
       },
     },
   },

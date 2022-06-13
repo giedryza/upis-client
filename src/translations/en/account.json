@@ -162,6 +162,12 @@
             "empty": "Enter tour name"
           }
         },
+        "description": {
+          "label": "Description"
+        },
+        "website": {
+          "label": "Website"
+        },
         "company": {
           "label": "Company",
           "placeholder": "Select company",
