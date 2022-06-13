@@ -25,6 +25,10 @@ export const loaders = {
       req,
       params,
     }).get(),
+  getTour: ({ req, id }: { req?: IncomingMessage; id: string }) =>
+    new Request<Tour | null>(endpoints.tours.one.index.replace(':id', id), {
+      req,
+    }).get(),
   createTour: ({ form }: CreateTour) =>
     new Request<Tour>(endpoints.tours.index, {
       body: getJsonBody(form),

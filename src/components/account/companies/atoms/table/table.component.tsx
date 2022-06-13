@@ -6,7 +6,7 @@ import { Button, Table, TableProps } from 'ui';
 import { useMyCompanies, useDeleteCompany } from 'domain/companies';
 import { useConfirm } from 'domain/confirm';
 
-import { CompaniesTableColumns } from './table.types';
+import { TableColumns } from './table.types';
 import styles from './table.module.scss';
 
 export const CompaniesTable: VFC = () => {
@@ -18,7 +18,7 @@ export const CompaniesTable: VFC = () => {
   const { mutate: deleteCompany, isLoading: isDeleteCompanyLoading } =
     useDeleteCompany();
 
-  const columns = useMemo<TableProps<CompaniesTableColumns>['columns']>(() => {
+  const columns = useMemo<TableProps<TableColumns>['columns']>(() => {
     return [
       { accessor: 'name', label: t('account:companies.table.name') },
       { accessor: 'email', label: t('account:companies.table.email') },
@@ -28,7 +28,7 @@ export const CompaniesTable: VFC = () => {
     ];
   }, [t]);
 
-  const rows = useMemo<TableProps<CompaniesTableColumns>['rows']>(() => {
+  const rows = useMemo<TableProps<TableColumns>['rows']>(() => {
     return companies.map((company) => ({
       id: company._id,
       content: {
