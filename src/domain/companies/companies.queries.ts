@@ -9,12 +9,21 @@ import { loaders } from './companies.loaders';
 import { converters } from './companies.converters';
 import { CompaniesFilters } from './companies.types';
 
-export const useCompanies = (filters: CompaniesFilters = {}) => {
+interface UseCompanies {
+  filters?: CompaniesFilters;
+  enabled?: boolean;
+}
+
+export const useCompanies = ({
+  filters = {},
+  enabled = true,
+}: UseCompanies) => {
   const query = useQuery(
     companiesKeys.list(filters),
     () => loaders.getCompanies({ params: filters }),
     {
       select: converters.getCompanies,
+      enabled,
     }
   );
 
@@ -24,16 +33,10 @@ export const useCompanies = (filters: CompaniesFilters = {}) => {
 export const useMyCompanies = (filters: CompaniesFilters = {}) => {
   const { data: session } = useSession();
 
-  const params: CompaniesFilters = { ...filters, user: session?.user.id };
-
-  const query = useQuery(
-    companiesKeys.list(params),
-    () => loaders.getCompanies({ params }),
-    {
-      enabled: !!session?.user.id,
-      select: converters.getCompanies,
-    }
-  );
+  const query = useCompanies({
+    filters: { ...filters, user: session?.user.id },
+    enabled: !!session?.user.id,
+  });
 
   return query;
 };
