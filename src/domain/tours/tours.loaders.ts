@@ -12,7 +12,7 @@ interface GetTours {
 }
 
 interface CreateTour {
-  form: Pick<Tour, 'name' | 'company'>;
+  form: Pick<Tour, 'name'> & { company: string };
 }
 
 interface DeleteTour {

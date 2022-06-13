@@ -47,7 +47,7 @@ export const useTour = (id: string) => {
   return query;
 };
 
-export const useActiveCompany = () => {
+export const useActiveTour = () => {
   const { query: params } = useRouter();
   const id = getRouteParam(params?.id);
 

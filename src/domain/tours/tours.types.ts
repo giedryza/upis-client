@@ -1,3 +1,4 @@
+import { Company } from 'domain/companies';
 import { AppFile, Currency, Language, Price } from 'types/common';
 
 export const regions = [
@@ -61,7 +62,7 @@ export interface Tour {
   difficulty: Difficulty | null;
   price: Price | null;
   photos: AppFile[];
-  company: string;
+  company: Company;
   website: string;
   amenities: Amenity[];
   boats: Boat[];
