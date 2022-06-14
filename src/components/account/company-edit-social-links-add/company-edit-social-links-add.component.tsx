@@ -26,20 +26,26 @@ export const CompanyEditSocialLinksAdd: VFC = () => {
   });
 
   const { data: company } = useActiveCompany();
-  const { mutate: addSocialLink, isLoading } = useAddSocialLink({
-    onSuccess: () => {
-      push(
-        routes.account.companies.one.index.replace(':id', company?._id ?? '')
-      );
-    },
-  });
+  const { mutate: addSocialLink, isLoading } = useAddSocialLink();
 
   const onSubmit: SubmitHandler<Values> = ({ type, url }) => {
     const companyId = company?._id;
 
     if (!companyId) return;
 
-    addSocialLink({ hostId: companyId, form: { type, url } });
+    addSocialLink(
+      { hostId: companyId, form: { type, url } },
+      {
+        onSuccess: () => {
+          push(
+            routes.account.companies.one.index.replace(
+              ':id',
+              company?._id ?? ''
+            )
+          );
+        },
+      }
+    );
   };
 
   return (

@@ -33,16 +33,7 @@ export const CompanyEditSocialLinksEdit: VFC = () => {
   });
 
   const { data: socialLink } = useSocialLink(id);
-  const { mutate: updateSocialLink, isLoading } = useUpdateSocialLink({
-    onSuccess: () => {
-      push(
-        routes.account.companies.one.index.replace(
-          ':id',
-          socialLink?.host ?? ''
-        )
-      );
-    },
-  });
+  const { mutate: updateSocialLink, isLoading } = useUpdateSocialLink();
 
   useEffect(() => {
     reset({
@@ -54,7 +45,19 @@ export const CompanyEditSocialLinksEdit: VFC = () => {
   const onSubmit: SubmitHandler<Values> = ({ type, url }) => {
     if (!id) return;
 
-    updateSocialLink({ id, form: { type, url } });
+    updateSocialLink(
+      { id, form: { type, url } },
+      {
+        onSuccess: () => {
+          push(
+            routes.account.companies.one.index.replace(
+              ':id',
+              socialLink?.host ?? ''
+            )
+          );
+        },
+      }
+    );
   };
 
   return (
