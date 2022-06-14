@@ -22,20 +22,26 @@ export const CompanyEditLogo: VFC = () => {
   } = useForm<Values>();
 
   const { data: company } = useActiveCompany();
-  const { mutate: uploadLogo, isLoading } = useUploadLogo({
-    onSuccess: () => {
-      push(
-        routes.account.companies.one.index.replace(':id', company?._id ?? '')
-      );
-    },
-  });
+  const { mutate: uploadLogo, isLoading } = useUploadLogo();
 
   const onSubmit: SubmitHandler<Values> = ({ logo }) => {
     const companyId = company?._id;
 
     if (!companyId) return;
 
-    uploadLogo({ id: companyId, logo });
+    uploadLogo(
+      { id: companyId, logo },
+      {
+        onSuccess: () => {
+          push(
+            routes.account.companies.one.index.replace(
+              ':id',
+              company?._id ?? ''
+            )
+          );
+        },
+      }
+    );
   };
 
   return (

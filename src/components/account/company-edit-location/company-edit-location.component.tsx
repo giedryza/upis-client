@@ -23,13 +23,7 @@ export const CompanyEditLocation: VFC = () => {
   const { push } = useRouter();
 
   const { data: company } = useActiveCompany();
-  const { mutate: updateLocation, isLoading } = useUpdateLocation({
-    onSuccess: () => {
-      push(
-        routes.account.companies.one.index.replace(':id', company?._id ?? '')
-      );
-    },
-  });
+  const { mutate: updateLocation, isLoading } = useUpdateLocation();
 
   const { point, updatePoint } = usePoint({
     lat: company?.location.coordinates[1] ?? 0,
@@ -50,14 +44,26 @@ export const CompanyEditLocation: VFC = () => {
 
     if (!companyId) return;
 
-    updateLocation({
-      id: companyId,
-      form: {
-        lat: point.lat,
-        lng: point.lng,
-        address: location?.display_name || '',
+    updateLocation(
+      {
+        id: companyId,
+        form: {
+          lat: point.lat,
+          lng: point.lng,
+          address: location?.display_name || '',
+        },
       },
-    });
+      {
+        onSuccess: () => {
+          push(
+            routes.account.companies.one.index.replace(
+              ':id',
+              company?._id ?? ''
+            )
+          );
+        },
+      }
+    );
   };
 
   return (

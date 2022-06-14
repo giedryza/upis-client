@@ -26,13 +26,7 @@ export const CompanyEditAbout: VFC = () => {
   });
 
   const { data: company } = useActiveCompany();
-  const { mutate: updateCompany, isLoading } = useUpdateCompany({
-    onSuccess: () => {
-      push(
-        routes.account.companies.one.index.replace(':id', company?._id ?? '')
-      );
-    },
-  });
+  const { mutate: updateCompany, isLoading } = useUpdateCompany();
 
   useEffect(() => {
     reset({
@@ -46,7 +40,19 @@ export const CompanyEditAbout: VFC = () => {
 
     if (!companyId) return;
 
-    updateCompany({ id: companyId, form: { name, description } });
+    updateCompany(
+      { id: companyId, form: { name, description } },
+      {
+        onSuccess: () => {
+          push(
+            routes.account.companies.one.index.replace(
+              ':id',
+              company?._id ?? ''
+            )
+          );
+        },
+      }
+    );
   };
 
   return (
