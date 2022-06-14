@@ -27,14 +27,17 @@ export const TourCreate: VFC = () => {
 
   const { data: companies = [] } = useMyCompanies({ select: ['_id', 'name'] });
 
-  const { mutate: createTour, isLoading } = useCreateTour({
-    onSuccess: () => {
-      push(routes.account.tours.index);
-    },
-  });
+  const { mutate: createTour, isLoading } = useCreateTour();
 
   const onSubmit: SubmitHandler<Values> = ({ name, company }) => {
-    createTour({ form: { name, company } });
+    createTour(
+      { form: { name, company } },
+      {
+        onSuccess: () => {
+          push(routes.account.tours.index);
+        },
+      }
+    );
   };
 
   return (

@@ -3,26 +3,17 @@ import { useMutation, useQueryClient } from 'react-query';
 import { toursKeys } from './tours.keys';
 import { loaders } from './tours.loaders';
 
-interface Options {
-  onSuccess?: () => void;
-}
-
-export const useCreateTour = ({ onSuccess }: Options = {}) => {
-  const mutation = useMutation(loaders.createTour, {
-    onSuccess: () => {
-      onSuccess?.();
-    },
-  });
+export const useCreateTour = () => {
+  const mutation = useMutation(loaders.createTour);
 
   return mutation;
 };
 
-export const useUpdateTour = ({ onSuccess }: Options = {}) => {
+export const useUpdateTour = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(loaders.updateTour, {
     onSuccess: () => {
-      onSuccess?.();
       queryClient.invalidateQueries(toursKeys.details());
     },
   });
@@ -30,12 +21,11 @@ export const useUpdateTour = ({ onSuccess }: Options = {}) => {
   return mutation;
 };
 
-export const useDeleteTour = ({ onSuccess }: Options = {}) => {
+export const useDeleteTour = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(loaders.deleteTour, {
     onSuccess: () => {
-      onSuccess?.();
       queryClient.invalidateQueries(toursKeys.lists());
     },
   });
