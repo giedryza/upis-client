@@ -9,4 +9,8 @@ export * from './company-edit-social-links-add';
 export * from './company-edit-social-links-edit';
 export * from './profile';
 export * from './profile-edit-security';
+export * from './tour';
 export * from './tours';
+export * from './tour-edit-about';
+export * from './tour-edit-details';
+export * from './tour-create';

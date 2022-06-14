@@ -24,7 +24,7 @@ export const Navigation: VFC = () => {
       url: routes.account.companies.index,
     },
     {
-      label: t('account:tours.title'),
+      label: t('account:tours.title', { count: 2 }),
       icon: 'path',
       url: routes.account.tours.index,
     },

@@ -1,1 +1,1 @@
-export { Actions } from './actions';
+export { CompaniesActions } from './actions.component';

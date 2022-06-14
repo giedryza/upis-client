@@ -136,6 +136,78 @@
     }
   },
   "tours": {
-    "title": "Tours"
+    "title": {
+      "one": "Tour",
+      "other": "Tours",
+      "few": "Tours"
+    },
+    "table": {
+      "name": "Name",
+      "trip": "Trip",
+      "distance": "Distance",
+      "duration": "Duration",
+      "days": "Days",
+      "rivers": "Rivers",
+      "regions": "Regions",
+      "difficulty": "Difficulty",
+      "price": "Price"
+    },
+    "about": {
+      "title": "About",
+      "form": {
+        "name": {
+          "label": "Name",
+          "placeholder": "In river Žeimena",
+          "error": {
+            "empty": "Enter tour name"
+          }
+        },
+        "description": {
+          "label": "Description"
+        },
+        "website": {
+          "label": "Website"
+        },
+        "company": {
+          "label": "Company",
+          "placeholder": "Select company",
+          "error": {
+            "empty": "Select company"
+          }
+        }
+      }
+    },
+    "details": {
+      "title": "Details",
+      "form": {
+        "distance": {
+          "label": "Distance",
+          "error": {
+            "min": "Distance must be at least 1 km."
+          }
+        },
+        "duration": {
+          "label": "Duration",
+          "error": {
+            "min": "Duration must be at least 1 hour."
+          }
+        },
+        "days": {
+          "label": "Days",
+          "error": {
+            "min": "Tour must be at least 1 day long."
+          }
+        },
+        "difficulty": {
+          "label": "Difficulty"
+        }
+      }
+    },
+    "texts": {
+      "confirmDelete": "This action cannot be undone. It will permanently delete tour <strong>{{name}}</strong> and all its associated information. Are you sure you want to proceed?"
+    },
+    "actions": {
+      "add": "Add tour"
+    }
   }
 }

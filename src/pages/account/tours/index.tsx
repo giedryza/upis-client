@@ -15,14 +15,14 @@ const ToursPage: NextPage = () => {
 
   return (
     <>
-      <AppHead title={t('account:tours.title')} />
+      <AppHead title={t('account:tours.title', { count: 2 })} />
 
       <MainLayout>
         <PageLayout>
           <Breadcrumbs
             items={[
               { label: t('account:title'), url: routes.account.profile.index },
-              { label: t('account:tours.title') },
+              { label: t('account:tours.title', { count: 2 }) },
             ]}
           />
 

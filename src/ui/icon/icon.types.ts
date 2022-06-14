@@ -18,6 +18,7 @@ export const baseIcons = [
   'picture',
   'pin',
   'plus',
+  'timer',
   'trash',
   'user',
 ] as const;

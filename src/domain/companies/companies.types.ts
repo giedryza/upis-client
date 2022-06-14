@@ -25,4 +25,5 @@ export interface Company {
 
 export interface CompaniesFilters {
   user?: string;
+  select?: (keyof Company)[];
 }

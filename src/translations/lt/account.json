@@ -136,6 +136,78 @@
     }
   },
   "tours": {
-    "title": "Maršrutai"
+    "title": {
+      "one": "Maršrutas",
+      "other": "Maršrutų",
+      "few": "Maršrutai"
+    },
+    "table": {
+      "name": "Pavadinimas",
+      "trip": "Kelionė",
+      "distance": "Atstumas",
+      "duration": "Trukmė",
+      "days": "Dienos",
+      "rivers": "Upės",
+      "regions": "Regionai",
+      "difficulty": "Sudėtingumas",
+      "price": "Kaina"
+    },
+    "about": {
+      "title": "Apie maršrutą",
+      "form": {
+        "name": {
+          "label": "Pavadinimas",
+          "placeholder": "Žeimenos upe",
+          "error": {
+            "empty": "Įveskite maršruto pavadinimą"
+          }
+        },
+        "description": {
+          "label": "Aprašymas"
+        },
+        "website": {
+          "label": "Tinklapis"
+        },
+        "company": {
+          "label": "Kompanija",
+          "placeholder": "Pasirinkite kompaniją",
+          "error": {
+            "empty": "Pasirinkite kompaniją"
+          }
+        }
+      }
+    },
+    "details": {
+      "title": "Ypatybės",
+      "form": {
+        "distance": {
+          "label": "Atstumas",
+          "error": {
+            "min": "Minimalus maršruto atstumas - 1 km."
+          }
+        },
+        "duration": {
+          "label": "Trukmė",
+          "error": {
+            "min": "Minimali distancijos įveikimo trukmė - 1 valanda."
+          }
+        },
+        "days": {
+          "label": "Dienos",
+          "error": {
+            "min": "Maršrutas turi trukti bent 1 dieną."
+          }
+        },
+        "difficulty": {
+          "label": "Sudėtingumas"
+        }
+      }
+    },
+    "texts": {
+      "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins maršrutą <strong>{{name}}</strong> ir visą su juo susijusią informaciją. Ar tikrai norite tęsti?"
+    },
+    "actions": {
+      "add": "Pridėti maršrutą"
+    }
   }
 }
