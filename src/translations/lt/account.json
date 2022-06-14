@@ -177,6 +177,32 @@
         }
       }
     },
+    "details": {
+      "title": "Ypatybės",
+      "form": {
+        "distance": {
+          "label": "Atstumas",
+          "error": {
+            "min": "Minimalus maršruto atstumas - 1 km."
+          }
+        },
+        "duration": {
+          "label": "Trukmė",
+          "error": {
+            "min": "Minimali distancijos įveikimo trukmė - 1 valanda."
+          }
+        },
+        "days": {
+          "label": "Dienos",
+          "error": {
+            "min": "Maršrutas turi trukti bent 1 dieną."
+          }
+        },
+        "difficulty": {
+          "label": "Sudėtingumas"
+        }
+      }
+    },
     "texts": {
       "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins maršrutą <strong>{{name}}</strong> ir visą su juo susijusią informaciją. Ar tikrai norite tęsti?"
     },

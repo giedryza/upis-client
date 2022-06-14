@@ -17,7 +17,18 @@ interface CreateTour {
 
 interface UpdateTour {
   id: string;
-  form: Partial<Pick<Tour, 'name' | 'description' | 'website'>>;
+  form: Partial<
+    Pick<
+      Tour,
+      | 'name'
+      | 'description'
+      | 'website'
+      | 'distance'
+      | 'duration'
+      | 'days'
+      | 'difficulty'
+    >
+  >;
 }
 
 interface DeleteTour {
