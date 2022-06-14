@@ -26,11 +26,7 @@ export const TourEditDetails: VFC = () => {
   });
 
   const { data: tour } = useActiveTour();
-  const { mutate: updateTour, isLoading } = useUpdateTour({
-    onSuccess: () => {
-      push(routes.account.tours.one.index.replace(':id', tour?._id ?? ''));
-    },
-  });
+  const { mutate: updateTour, isLoading } = useUpdateTour();
 
   useEffect(() => {
     reset({
@@ -51,7 +47,14 @@ export const TourEditDetails: VFC = () => {
 
     if (!tourId) return;
 
-    updateTour({ id: tourId, form: { distance, duration, days, difficulty } });
+    updateTour(
+      { id: tourId, form: { distance, duration, days, difficulty } },
+      {
+        onSuccess: () => {
+          push(routes.account.tours.one.index.replace(':id', tour?._id ?? ''));
+        },
+      }
+    );
   };
 
   return (

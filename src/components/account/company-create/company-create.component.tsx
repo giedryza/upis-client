@@ -24,11 +24,7 @@ export const CompanyCreate: VFC = () => {
     defaultValues: INITIAL_VALUES,
   });
 
-  const { mutate: createCompany, isLoading } = useCreateCompany({
-    onSuccess: () => {
-      push(routes.account.companies.index);
-    },
-  });
+  const { mutate: createCompany, isLoading } = useCreateCompany();
 
   const onSubmit: SubmitHandler<Values> = ({
     name,
@@ -36,7 +32,14 @@ export const CompanyCreate: VFC = () => {
     phone,
     description,
   }) => {
-    createCompany({ form: { name, email, phone, description } });
+    createCompany(
+      { form: { name, email, phone, description } },
+      {
+        onSuccess: () => {
+          push(routes.account.companies.index);
+        },
+      }
+    );
   };
 
   return (

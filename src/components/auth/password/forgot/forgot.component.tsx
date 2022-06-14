@@ -16,14 +16,17 @@ export const PasswordForgot: VFC = () => {
 
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const { mutate: forgotPassword, isLoading } = useForgotPassword({
-    onSuccess: () => {
-      setIsSuccess(true);
-    },
-  });
+  const { mutate: forgotPassword, isLoading } = useForgotPassword();
 
   const onSubmit: SubmitHandler<Values> = async ({ email }) => {
-    forgotPassword({ email });
+    forgotPassword(
+      { email },
+      {
+        onSuccess: () => {
+          setIsSuccess(true);
+        },
+      }
+    );
   };
 
   const {

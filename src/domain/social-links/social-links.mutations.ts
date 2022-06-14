@@ -3,16 +3,11 @@ import { useMutation, useQueryClient } from 'react-query';
 import { socialLinksKeys } from './social-links.keys';
 import { loaders } from './social-links.loaders';
 
-interface Options {
-  onSuccess?: () => void;
-}
-
-export const useAddSocialLink = ({ onSuccess }: Options = {}) => {
+export const useAddSocialLink = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(loaders.addSocialLink, {
     onSuccess: () => {
-      onSuccess?.();
       queryClient.invalidateQueries(socialLinksKeys.lists());
     },
   });
@@ -20,12 +15,11 @@ export const useAddSocialLink = ({ onSuccess }: Options = {}) => {
   return mutation;
 };
 
-export const useUpdateSocialLink = ({ onSuccess }: Options = {}) => {
+export const useUpdateSocialLink = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(loaders.updateSocialLink, {
     onSuccess: () => {
-      onSuccess?.();
       queryClient.invalidateQueries(socialLinksKeys.lists());
     },
   });
@@ -33,12 +27,11 @@ export const useUpdateSocialLink = ({ onSuccess }: Options = {}) => {
   return mutation;
 };
 
-export const useDeleteSocialLink = ({ onSuccess }: Options = {}) => {
+export const useDeleteSocialLink = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(loaders.deleteSocialLink, {
     onSuccess: () => {
-      onSuccess?.();
       queryClient.invalidateQueries(socialLinksKeys.lists());
     },
   });

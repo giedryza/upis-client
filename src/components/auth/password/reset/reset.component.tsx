@@ -26,11 +26,7 @@ export const PasswordReset: VFC = () => {
 
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const { mutate: resetPassword, isLoading } = useResetPassword({
-    onSuccess: () => {
-      setIsSuccess(true);
-    },
-  });
+  const { mutate: resetPassword, isLoading } = useResetPassword();
 
   const onSubmit: SubmitHandler<Values> = async ({ newPassword }) => {
     const { token, userId } = query;
@@ -58,11 +54,18 @@ export const PasswordReset: VFC = () => {
       return;
     }
 
-    resetPassword({
-      userId,
-      token,
-      password: newPassword,
-    });
+    resetPassword(
+      {
+        userId,
+        token,
+        password: newPassword,
+      },
+      {
+        onSuccess: () => {
+          setIsSuccess(true);
+        },
+      }
+    );
   };
 
   const {

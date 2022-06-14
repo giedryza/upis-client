@@ -29,18 +29,21 @@ export const ProfileEditSecurity: VFC = () => {
     defaultValues: INITIAL_VALUES,
   });
 
-  const { mutate: updatePassword, isLoading } = useUpdatePassword({
-    onSuccess: () => {
-      push(routes.account.profile.index);
-    },
-  });
+  const { mutate: updatePassword, isLoading } = useUpdatePassword();
 
   const onSubmit: SubmitHandler<Values> = ({
     currentPassword,
     newPassword,
     confirmPassword,
   }) => {
-    updatePassword({ currentPassword, newPassword, confirmPassword });
+    updatePassword(
+      { currentPassword, newPassword, confirmPassword },
+      {
+        onSuccess: () => {
+          push(routes.account.profile.index);
+        },
+      }
+    );
   };
 
   return (

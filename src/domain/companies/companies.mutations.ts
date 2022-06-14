@@ -3,16 +3,11 @@ import { useMutation, useQueryClient } from 'react-query';
 import { loaders } from './companies.loaders';
 import { companiesKeys } from './companies.keys';
 
-interface Options {
-  onSuccess?: () => void;
-}
-
-export const useUpdateCompany = ({ onSuccess }: Options = {}) => {
+export const useUpdateCompany = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(loaders.updateCompany, {
     onSuccess: () => {
-      onSuccess?.();
       queryClient.invalidateQueries(companiesKeys.details());
     },
   });
@@ -20,12 +15,11 @@ export const useUpdateCompany = ({ onSuccess }: Options = {}) => {
   return mutation;
 };
 
-export const useCreateCompany = ({ onSuccess }: Options = {}) => {
+export const useCreateCompany = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(loaders.createCompany, {
     onSuccess: () => {
-      onSuccess?.();
       queryClient.invalidateQueries(companiesKeys.details());
     },
   });
@@ -33,12 +27,11 @@ export const useCreateCompany = ({ onSuccess }: Options = {}) => {
   return mutation;
 };
 
-export const useUpdateLocation = ({ onSuccess }: Options = {}) => {
+export const useUpdateLocation = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(loaders.updateLocation, {
     onSuccess: () => {
-      onSuccess?.();
       queryClient.invalidateQueries(companiesKeys.details());
     },
   });
@@ -46,12 +39,11 @@ export const useUpdateLocation = ({ onSuccess }: Options = {}) => {
   return mutation;
 };
 
-export const useUploadLogo = ({ onSuccess }: Options = {}) => {
+export const useUploadLogo = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(loaders.uploadLogo, {
     onSuccess: () => {
-      onSuccess?.();
       queryClient.invalidateQueries(companiesKeys.details());
     },
   });
@@ -59,12 +51,11 @@ export const useUploadLogo = ({ onSuccess }: Options = {}) => {
   return mutation;
 };
 
-export const useDeleteCompany = ({ onSuccess }: Options = {}) => {
+export const useDeleteCompany = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(loaders.deleteCompany, {
     onSuccess: () => {
-      onSuccess?.();
       queryClient.invalidateQueries(companiesKeys.lists());
     },
   });
