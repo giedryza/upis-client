@@ -3,11 +3,7 @@ import { signIn } from 'next-auth/react';
 
 import { loaders } from './users.loaders';
 
-interface Options {
-  onSuccess?: () => void;
-}
-
-export const useSignup = ({ onSuccess }: Options = {}) => {
+export const useSignup = () => {
   const mutation = useMutation(loaders.signup, {
     onSuccess: (_data, { email, password }) => {
       signIn<'credentials'>('credentials', {
@@ -15,39 +11,26 @@ export const useSignup = ({ onSuccess }: Options = {}) => {
         email,
         password,
       });
-      onSuccess?.();
     },
   });
 
   return mutation;
 };
 
-export const useUpdatePassword = ({ onSuccess }: Options = {}) => {
-  const mutation = useMutation(loaders.updatePassword, {
-    onSuccess: () => {
-      onSuccess?.();
-    },
-  });
+export const useUpdatePassword = () => {
+  const mutation = useMutation(loaders.updatePassword);
 
   return mutation;
 };
 
-export const useForgotPassword = ({ onSuccess }: Options = {}) => {
-  const mutation = useMutation(loaders.forgotPassword, {
-    onSuccess: () => {
-      onSuccess?.();
-    },
-  });
+export const useForgotPassword = () => {
+  const mutation = useMutation(loaders.forgotPassword);
 
   return mutation;
 };
 
-export const useResetPassword = ({ onSuccess }: Options = {}) => {
-  const mutation = useMutation(loaders.resetPassword, {
-    onSuccess: () => {
-      onSuccess?.();
-    },
-  });
+export const useResetPassword = () => {
+  const mutation = useMutation(loaders.resetPassword);
 
   return mutation;
 };
