@@ -6,7 +6,9 @@ import { ImagePlaceholder } from '.';
 export default {
   title: 'UI/ImagePlaceholder',
   component: ImagePlaceholder,
-  args: {},
+  args: {
+    width: 320,
+  },
 } as ComponentMeta<typeof ImagePlaceholder>;
 
 const Template: ComponentStory<typeof ImagePlaceholder> = (args) => (
