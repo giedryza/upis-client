@@ -1,0 +1,58 @@
+.slider {
+  --thumb-size: 1.25em;
+  --line-size: 1px;
+
+  font-size: 1.6rem;
+
+  touch-action: none;
+  color: var(--color-grey-05);
+
+  .label {
+    display: block;
+
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 0.8em;
+  }
+
+  .trackpadContainer {
+    padding: 0 calc(var(--thumb-size) * 0.5);
+  }
+
+  .trackpad {
+    position: relative;
+    height: 2.25em;
+    width: 100%;
+  }
+
+  .line {
+    position: absolute;
+    background-color: var(--color-grey-75);
+    height: var(--line-size);
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+
+    &.-active {
+      background-color: currentColor;
+      width: calc(var(--thumb-position, 0) * 100%);
+    }
+  }
+
+  .thumbContainer {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: calc(var(--thumb-position, 0) * 100%);
+  }
+
+  .output {
+    position: absolute;
+    top: 115%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75em;
+    font-weight: 500;
+  }
+}

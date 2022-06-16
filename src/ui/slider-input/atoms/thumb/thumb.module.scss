@@ -1,0 +1,17 @@
+.thumb {
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  border-radius: 50%;
+  background-color: var(--color-white);
+  border: var(--line-size) solid currentColor;
+
+  &.-focus {
+    border-color: var(--color-primary-60);
+    outline: 2px solid transparent;
+    box-shadow: var(--outline-input);
+  }
+
+  &.-dragging {
+    background-color: var(--color-grey-95);
+  }
+}
