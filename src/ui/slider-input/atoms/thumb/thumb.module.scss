@@ -1,9 +1,10 @@
 .thumb {
   width: var(--thumb-size);
   height: var(--thumb-size);
-  border-radius: 50%;
+
   background-color: var(--color-white);
   border: var(--line-size) solid currentColor;
+  border-radius: 50%;
 
   &.-focus {
     border-color: var(--color-primary-60);
