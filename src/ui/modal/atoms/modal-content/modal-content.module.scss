@@ -15,5 +15,9 @@
     gap: 1rem;
     align-items: center;
     justify-content: flex-end;
+
+    @include mobile {
+      justify-content: center;
+    }
   }
 }
