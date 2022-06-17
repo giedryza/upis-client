@@ -10,13 +10,12 @@ import { Thumb } from './atoms';
 import { Props } from './slider-input.types';
 import styles from './slider-input.module.scss';
 
-export const SliderInput = forwardRef<HTMLDivElement, Props>(
+export const SliderInput = forwardRef<HTMLInputElement, Props>(
   (
     {
       label,
       id,
       value,
-      defaultValue,
       onChange,
       disabled = false,
       min,
@@ -33,8 +32,7 @@ export const SliderInput = forwardRef<HTMLDivElement, Props>(
 
     const sliderProps: Parameters<typeof useSliderState>[0] = {
       label,
-      value: isDefined(value) ? [value] : undefined,
-      defaultValue: isDefined(defaultValue) ? [defaultValue] : undefined,
+      value: isDefined(value) ? [value || 0] : undefined,
       onChange: isDefined(onChange) ? ([v]) => onChange(v ?? 0) : undefined,
       isDisabled: disabled,
       minValue: min,
@@ -57,7 +55,6 @@ export const SliderInput = forwardRef<HTMLDivElement, Props>(
         className={clsx(styles.slider, {
           [`${styles['-disabled']}`]: disabled,
         })}
-        ref={forwardedRef}
       >
         <label className={styles.label} {...labelProps}>
           {label}
@@ -81,6 +78,7 @@ export const SliderInput = forwardRef<HTMLDivElement, Props>(
                 state={state}
                 trackRef={trackRef}
                 disabled={disabled}
+                forwardedRef={forwardedRef}
               />
 
               <output {...outputProps} className={styles.output}>

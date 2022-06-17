@@ -4,7 +4,6 @@ export interface Props {
   label: ReactNode;
   id?: string;
   value?: number;
-  defaultValue?: number;
   onChange?: (value: number) => void;
   disabled?: boolean;
   min?: number;
