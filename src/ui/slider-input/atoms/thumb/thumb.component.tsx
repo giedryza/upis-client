@@ -10,7 +10,7 @@ import clsx from 'clsx';
 import { Props } from './thumb.types';
 import styles from './thumb.module.scss';
 
-export const Thumb: FC<Props> = ({ state, trackRef, index }) => {
+export const Thumb: FC<Props> = ({ state, trackRef, index, disabled }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { visuallyHiddenProps } = useVisuallyHidden();
 
@@ -29,8 +29,9 @@ export const Thumb: FC<Props> = ({ state, trackRef, index }) => {
     <div
       {...thumbProps}
       className={clsx(styles.thumb, {
-        [styles['-focus'] as string]: isFocusVisible,
-        [styles['-dragging'] as string]: state.isThumbDragging(index),
+        [`${styles['-focus']}`]: isFocusVisible,
+        [`${styles['-disabled']}`]: disabled,
+        [`${styles['-dragging']}`]: state.isThumbDragging(index),
       })}
     >
       <input

@@ -16,7 +16,7 @@ export const SliderInput: FC<Props> = ({
   value,
   defaultValue,
   onChange,
-  disabled,
+  disabled = false,
   min,
   max,
   step,
@@ -48,7 +48,12 @@ export const SliderInput: FC<Props> = ({
   );
 
   return (
-    <div {...groupProps} className={styles.slider}>
+    <div
+      {...groupProps}
+      className={clsx(styles.slider, {
+        [`${styles['-disabled']}`]: disabled,
+      })}
+    >
       <label className={styles.label} {...labelProps}>
         {label}
       </label>
@@ -59,7 +64,6 @@ export const SliderInput: FC<Props> = ({
           className={styles.trackpad}
           style={{
             '--thumb-position': state.getThumbPercent(THUMB_INDEX),
-            // backgroundColor: 'yellow',
           }}
           ref={trackRef}
         >
@@ -67,7 +71,12 @@ export const SliderInput: FC<Props> = ({
           <div className={clsx(styles.line, styles['-active'])} />
 
           <div className={styles.thumbContainer}>
-            <Thumb index={THUMB_INDEX} state={state} trackRef={trackRef} />
+            <Thumb
+              index={THUMB_INDEX}
+              state={state}
+              trackRef={trackRef}
+              disabled={disabled}
+            />
 
             <output {...outputProps} className={styles.output}>
               {state.getThumbValueLabel(THUMB_INDEX)}

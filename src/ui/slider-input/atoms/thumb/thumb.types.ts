@@ -5,4 +5,5 @@ export interface Props {
   state: SliderState;
   trackRef: RefObject<HTMLDivElement>;
   index: number;
+  disabled: boolean;
 }
