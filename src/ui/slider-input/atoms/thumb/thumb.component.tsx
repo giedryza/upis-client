@@ -1,4 +1,4 @@
-import { useRef, FC } from 'react';
+import { FC } from 'react';
 import {
   useSliderThumb,
   useFocusRing,
@@ -6,13 +6,20 @@ import {
   useVisuallyHidden,
 } from 'react-aria';
 import clsx from 'clsx';
+import { useObjectRef } from '@react-aria/utils';
 
 import { Props } from './thumb.types';
 import styles from './thumb.module.scss';
 
-export const Thumb: FC<Props> = ({ state, trackRef, index }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
+export const Thumb: FC<Props> = ({
+  state,
+  trackRef,
+  forwardedRef,
+  index,
+  disabled,
+}) => {
   const { visuallyHiddenProps } = useVisuallyHidden();
+  const inputRef = useObjectRef(forwardedRef);
 
   const { thumbProps, inputProps } = useSliderThumb(
     {
@@ -29,8 +36,9 @@ export const Thumb: FC<Props> = ({ state, trackRef, index }) => {
     <div
       {...thumbProps}
       className={clsx(styles.thumb, {
-        [styles['-focus'] as string]: isFocusVisible,
-        [styles['-dragging'] as string]: state.isThumbDragging(index),
+        [`${styles['-focus']}`]: isFocusVisible,
+        [`${styles['-disabled']}`]: disabled,
+        [`${styles['-dragging']}`]: state.isThumbDragging(index),
       })}
     >
       <input

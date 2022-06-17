@@ -1,9 +1,9 @@
 import { useEffect, VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, Container, TextInput } from 'ui';
+import { Button, Container, SliderInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTour } from 'domain/tours';
@@ -20,6 +20,7 @@ export const TourEditDetails: VFC = () => {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors, isDirty },
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
@@ -105,13 +106,20 @@ export const TourEditDetails: VFC = () => {
               type="number"
             />
 
-            <TextInput
-              {...register('difficulty', {
-                valueAsNumber: true,
-              })}
-              label={t('account:tours.details.form.difficulty.label')}
-              error={errors.difficulty?.message}
-              type="number"
+            <Controller
+              control={control}
+              name="difficulty"
+              render={({ field: { onChange, value, ref } }) => (
+                <SliderInput
+                  label={t('account:tours.details.form.difficulty.label')}
+                  value={value}
+                  onChange={onChange}
+                  ref={ref}
+                  min={0}
+                  max={5}
+                  step={0.5}
+                />
+              )}
             />
           </fieldset>
 

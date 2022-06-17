@@ -15,9 +15,7 @@ export default {
 } as ComponentMeta<typeof SliderInput>;
 
 const Template: ComponentStory<typeof SliderInput> = (args) => (
-  <div style={{ padding: 10 }}>
-    <SliderInput {...args} />
-  </div>
+  <SliderInput {...args} />
 );
 
 export const Default = Template.bind({});

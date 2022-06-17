@@ -3,6 +3,8 @@
 .select {
   font-size: 1.6rem;
 
+  line-height: 1.9;
+
   @include spacing(y, 0.35em);
 
   > select {
