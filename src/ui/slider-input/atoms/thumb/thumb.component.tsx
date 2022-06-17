@@ -1,4 +1,4 @@
-import { useRef, FC } from 'react';
+import { FC } from 'react';
 import {
   useSliderThumb,
   useFocusRing,
@@ -6,13 +6,20 @@ import {
   useVisuallyHidden,
 } from 'react-aria';
 import clsx from 'clsx';
+import { useObjectRef } from '@react-aria/utils';
 
 import { Props } from './thumb.types';
 import styles from './thumb.module.scss';
 
-export const Thumb: FC<Props> = ({ state, trackRef, index, disabled }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
+export const Thumb: FC<Props> = ({
+  state,
+  trackRef,
+  forwardedRef,
+  index,
+  disabled,
+}) => {
   const { visuallyHiddenProps } = useVisuallyHidden();
+  const inputRef = useObjectRef(forwardedRef);
 
   const { thumbProps, inputProps } = useSliderThumb(
     {
