@@ -3,6 +3,8 @@
 .input {
   font-size: 1.6rem;
 
+  line-height: 1.9;
+
   @include spacing(y, 0.35em);
 
   > input,
@@ -14,7 +16,6 @@
     color: var(--color-text);
 
     font-weight: 500;
-    line-height: 1.9;
 
     background-color: var(--color-white);
     border: 1px solid var(--color-grey-60);
