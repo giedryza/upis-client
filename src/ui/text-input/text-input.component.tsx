@@ -91,3 +91,5 @@ export const TextInput = forwardRef<InputElement, Props>(
     );
   }
 );
+
+TextInput.displayName = 'TextInput';

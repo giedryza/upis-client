@@ -103,7 +103,8 @@
     "@typescript-eslint/quotes": ["error", "single", { "avoidEscape": true }],
     "prefer-template": "error",
     "no-useless-concat": "error",
-    "react/no-danger": "off"
+    "react/no-danger": "off",
+    "react/display-name": "error"
   },
   "overrides": [
     {

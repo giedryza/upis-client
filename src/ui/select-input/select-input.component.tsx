@@ -63,3 +63,5 @@ export const SelectInput = forwardRef<HTMLSelectElement, Props>(
     );
   }
 );
+
+SelectInput.displayName = 'SelectInput';
