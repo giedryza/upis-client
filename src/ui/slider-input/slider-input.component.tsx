@@ -18,9 +18,9 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
       value,
       onChange,
       disabled = false,
-      min,
-      max,
-      step,
+      min = 0,
+      max = 100,
+      step = 1,
       formatOptions,
     },
     forwardedRef
@@ -32,7 +32,7 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
 
     const sliderProps: Parameters<typeof useSliderState>[0] = {
       label,
-      value: isDefined(value) ? [value || 0] : undefined,
+      value: isDefined(value) ? [value || min] : undefined,
       onChange: isDefined(onChange) ? ([v]) => onChange(v ?? 0) : undefined,
       isDisabled: disabled,
       minValue: min,
@@ -55,20 +55,16 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
         className={clsx(styles.slider, {
           [`${styles['-disabled']}`]: disabled,
         })}
+        style={{
+          '--thumb-position': state.getThumbPercent(THUMB_INDEX),
+        }}
       >
         <label className={styles.label} {...labelProps}>
           {label}
         </label>
 
         <div className={styles.trackpadContainer}>
-          <div
-            {...trackProps}
-            className={styles.trackpad}
-            style={{
-              '--thumb-position': state.getThumbPercent(THUMB_INDEX),
-            }}
-            ref={trackRef}
-          >
+          <div {...trackProps} className={styles.trackpad} ref={trackRef}>
             <div className={styles.line} />
             <div className={clsx(styles.line, styles['-active'])} />
 
