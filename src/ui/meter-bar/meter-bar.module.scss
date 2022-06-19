@@ -1,0 +1,38 @@
+@use 'src/styles/mixins' as *;
+
+.meterBar {
+  --track-size: 0.75em;
+
+  font-size: 1.6rem;
+  line-height: 1.9;
+
+  .label {
+    display: inline-block;
+
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 0.8em;
+  }
+
+  .body {
+    display: flex;
+    align-items: center;
+    line-height: 1.1;
+
+    @include spacing(x, 0.5em);
+  }
+
+  .track {
+    background-color: var(--color-grey-85);
+    border-radius: calc(var(--track-size) * 0.5);
+    height: var(--track-size);
+    flex: 1;
+  }
+
+  .bar {
+    background-color: var(--color-grey-05);
+    border-radius: calc(var(--track-size) * 0.5);
+    height: 100%;
+    width: min(calc(var(--percentage, 0) * 100%), 100%);
+  }
+}

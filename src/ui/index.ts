@@ -10,6 +10,7 @@ export * from './icon';
 export * from './image-placeholder';
 export * from './loader';
 export * from './map';
+export * from './meter-bar';
 export * from './modal';
 export * from './toast';
 export * from './portal';

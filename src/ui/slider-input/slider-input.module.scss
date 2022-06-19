@@ -3,7 +3,7 @@
 .slider {
   --thumb-size: 1.25em;
   --line-size: 1px;
-  --capacity: min(calc(var(--thumb-position, 0) * 100%), 100%);
+  --capacity: min(calc(var(--percentage, 0) * 100%), 100%);
 
   color: var(--color-grey-05);
   font-size: 1.6rem;
