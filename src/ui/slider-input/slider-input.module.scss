@@ -3,6 +3,7 @@
 .slider {
   --thumb-size: 1.25em;
   --line-size: 1px;
+  --capacity: min(calc(var(--thumb-position, 0) * 100%), 100%);
 
   color: var(--color-grey-05);
   font-size: 1.6rem;
@@ -53,7 +54,7 @@
     transform: translateY(-50%);
 
     &.-active {
-      width: calc(var(--thumb-position, 0) * 100%);
+      width: var(--capacity);
 
       background-color: currentColor;
     }
@@ -62,7 +63,7 @@
   .thumbContainer {
     position: absolute;
     top: calc(var(--thumb-size) * 0.5);
-    left: calc(var(--thumb-position, 0) * 100%);
+    left: var(--capacity);
 
     transform: translate(-50%, -50%);
   }
