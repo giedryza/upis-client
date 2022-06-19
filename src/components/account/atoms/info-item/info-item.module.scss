@@ -1,11 +1,14 @@
 @use 'styles/mixins' as *;
 
 .content {
-  font-size: var(--font-size-16);
+  font-size: 1.6rem;
 
   .title {
+    display: inline-block;
+
     color: var(--color-grey-30);
     font-size: 0.75em;
+    font-weight: 400;
   }
 
   .subtitle {
