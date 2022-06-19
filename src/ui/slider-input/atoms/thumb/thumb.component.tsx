@@ -35,11 +35,12 @@ export const Thumb: FC<Props> = ({
   return (
     <div
       {...thumbProps}
-      className={clsx(styles.thumb, {
-        [`${styles['-focus']}`]: isFocusVisible,
-        [`${styles['-disabled']}`]: disabled,
-        [`${styles['-dragging']}`]: state.isThumbDragging(index),
-      })}
+      className={clsx(
+        styles.thumb,
+        isFocusVisible && styles['-focus'],
+        disabled && styles['-disabled'],
+        state.isThumbDragging(index) && styles['-dragging']
+      )}
     >
       <input
         ref={inputRef}

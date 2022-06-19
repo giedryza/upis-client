@@ -52,9 +52,7 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
     return (
       <div
         {...groupProps}
-        className={clsx(styles.slider, {
-          [`${styles['-disabled']}`]: disabled,
-        })}
+        className={clsx(styles.slider, disabled && styles['-disabled'])}
         style={{
           '--thumb-position': state.getThumbPercent(THUMB_INDEX),
         }}

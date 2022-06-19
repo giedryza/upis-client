@@ -6,7 +6,7 @@ import styles from './divider.module.scss';
 
 export const Divider: VFC<Props> = ({ label }) => {
   return (
-    <div className={clsx(styles.divider, { [`${styles['-empty']}`]: !label })}>
+    <div className={clsx(styles.divider, !label && styles['-empty'])}>
       {label}
     </div>
   );
