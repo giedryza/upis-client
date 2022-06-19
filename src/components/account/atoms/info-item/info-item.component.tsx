@@ -6,7 +6,7 @@ import styles from './info-item.module.scss';
 export const InfoItem: VFC<Props> = ({ label, value, fallback = '-' }) => {
   return (
     <div className={styles.content}>
-      <h3 className={styles.title}>{label}</h3>
+      <span className={styles.title}>{label}</span>
       <p className={styles.subtitle}>{value ?? fallback}</p>
     </div>
   );

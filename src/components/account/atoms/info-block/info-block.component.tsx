@@ -39,11 +39,7 @@ export const InfoBlock: FC<Props> = ({
           )}
         </div>
 
-        <div
-          className={clsx(styles.content, {
-            [`${styles.single}`]: columns === 1,
-          })}
-        >
+        <div className={clsx(styles.content, columns === 1 && styles.single)}>
           {children}
         </div>
       </section>

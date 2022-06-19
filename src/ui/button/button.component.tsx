@@ -60,9 +60,7 @@ export const Button: VFC<Props> = ({
     styles[`icon-${iconPlacement}`],
     styles[`text-${textAlign}`],
     styles[`width-${width}`],
-    {
-      [styles.iconButton as string]: icon && !label,
-    }
+    icon && !label && styles.iconButton
   );
 
   return url ? (

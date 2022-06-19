@@ -22,7 +22,7 @@ export const Alert: VFC<Props> = ({ id, type, message }) => {
 
   return (
     <div
-      className={clsx({ [styles.fading as string]: isFading })}
+      className={clsx(isFading && styles.fading)}
       style={{
         '--fade-delay': ALERT_FADE_DELAY,
       }}

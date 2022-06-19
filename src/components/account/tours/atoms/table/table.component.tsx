@@ -2,7 +2,7 @@ import { useMemo, VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
-import { Button, Table, TableProps } from 'ui';
+import { Button, Meter, Table, TableProps } from 'ui';
 import { useDeleteTour, useMyTours } from 'domain/tours';
 import { useConfirm } from 'domain/confirm';
 
@@ -55,7 +55,15 @@ export const ToursTable: VFC = () => {
         days: tour.days,
         rivers: tour.rivers.join(', '),
         regions: tour.regions.join(', '),
-        difficulty: tour.difficulty,
+        difficulty: (
+          <Meter
+            ariaLabel={t('account:tours.table.difficulty')}
+            min={0}
+            max={5}
+            value={tour.difficulty}
+            formatOptions={{ style: 'decimal' }}
+          />
+        ),
         price: tour.price,
         actions: (
           <div className={styles.actions}>
