@@ -17,22 +17,25 @@
   .body {
     display: flex;
     align-items: center;
+
     line-height: 1.1;
 
     @include spacing(x, 0.5em);
   }
 
   .track {
+    flex: 1;
+    height: var(--track-size);
+
     background-color: var(--color-grey-85);
     border-radius: calc(var(--track-size) * 0.5);
-    height: var(--track-size);
-    flex: 1;
   }
 
   .bar {
+    width: min(calc(var(--percentage, 0) * 100%), 100%);
+    height: 100%;
+
     background-color: var(--color-grey-05);
     border-radius: calc(var(--track-size) * 0.5);
-    height: 100%;
-    width: min(calc(var(--percentage, 0) * 100%), 100%);
   }
 }
