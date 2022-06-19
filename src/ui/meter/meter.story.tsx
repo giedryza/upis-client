@@ -1,19 +1,17 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { MeterBar } from '.';
+import { Meter } from '.';
 
 export default {
-  title: 'UI/MeterBar',
-  component: MeterBar,
+  title: 'UI/Meter',
+  component: Meter,
   args: {
     label: 'Difficulty',
   },
-} as ComponentMeta<typeof MeterBar>;
+} as ComponentMeta<typeof Meter>;
 
-const Template: ComponentStory<typeof MeterBar> = (args) => (
-  <MeterBar {...args} />
-);
+const Template: ComponentStory<typeof Meter> = (args) => <Meter {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

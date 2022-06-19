@@ -1,10 +1,10 @@
 import { VFC } from 'react';
 import { useMeter } from 'react-aria';
 
-import { Props } from './meter-bar.types';
-import styles from './meter-bar.module.scss';
+import { Props } from './meter.types';
+import styles from './meter.module.scss';
 
-export const MeterBar: VFC<Props> = ({
+export const Meter: VFC<Props> = ({
   label,
   ariaLabel,
   valueLabel,
@@ -29,7 +29,7 @@ export const MeterBar: VFC<Props> = ({
   return (
     <div
       {...meterProps}
-      className={styles.meterBar}
+      className={styles.meter}
       style={{
         '--percentage': (value - min) / (max - min),
       }}
