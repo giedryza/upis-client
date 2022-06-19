@@ -59,7 +59,7 @@ export interface Tour {
   days: number;
   rivers: string[];
   regions: Region[];
-  difficulty: number | null;
+  difficulty: number;
   price: Price | null;
   photos: AppFile[];
   company: Company;
