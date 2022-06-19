@@ -4,6 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { InfoBlock, InfoItem } from 'components/account/atoms';
 import { useActiveTour } from 'domain/tours';
 import { routes } from 'config/routes';
+import { MeterBar } from 'ui';
 
 export const Details: VFC = () => {
   const { t } = useTranslation();
@@ -31,9 +32,12 @@ export const Details: VFC = () => {
         label={t('account:tours.details.form.days.label')}
         value={tour.days}
       />
-      <InfoItem
-        label={t('account:tours.details.form.difficulty.label')}
+      <MeterBar
+        label={t('account:tours.table.difficulty')}
+        min={0}
+        max={5}
         value={tour.difficulty}
+        formatOptions={{ style: 'decimal' }}
       />
     </InfoBlock>
   );

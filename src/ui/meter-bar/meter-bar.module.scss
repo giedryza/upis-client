@@ -9,9 +9,9 @@
   .label {
     display: inline-block;
 
-    color: var(--color-text);
-    font-weight: 600;
-    font-size: 0.8em;
+    color: var(--color-grey-30);
+    font-size: 0.75em;
+    font-weight: 400;
   }
 
   .body {
@@ -37,5 +37,12 @@
 
     background-color: var(--color-grey-05);
     border-radius: calc(var(--track-size) * 0.5);
+  }
+
+  .value {
+    display: inline-block;
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 0.8em;
   }
 }

@@ -44,7 +44,7 @@ export const MeterBar: VFC<Props> = ({
         <div className={styles.track}>
           <div className={styles.bar} />
         </div>
-        <span className={styles.label}>{meterProps['aria-valuetext']}</span>
+        <span className={styles.value}>{meterProps['aria-valuetext']}</span>
       </div>
     </div>
   );
