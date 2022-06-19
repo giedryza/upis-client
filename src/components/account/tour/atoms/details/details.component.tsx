@@ -37,6 +37,7 @@ export const Details: VFC = () => {
         min={0}
         max={5}
         value={tour.difficulty}
+        valueLabel={`${tour.difficulty} / 5`}
         formatOptions={{ style: 'decimal' }}
       />
     </InfoBlock>
