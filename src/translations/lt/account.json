@@ -132,7 +132,8 @@
       "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins kompaniją <strong>{{name}}</strong> ir visą su ja susijusią informaciją. Ar tikrai norite tęsti?"
     },
     "actions": {
-      "add": "Pridėti įmonę"
+      "add": "Pridėti įmonę",
+      "delete": "Ištrinti įmonę"
     }
   },
   "tours": {

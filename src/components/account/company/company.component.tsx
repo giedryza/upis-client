@@ -1,6 +1,13 @@
 import { VFC } from 'react';
 
-import { About, Contacts, Location, Logo, SocialLinks } from './atoms';
+import {
+  About,
+  Contacts,
+  Location,
+  Logo,
+  SocialLinks,
+  CompanyActions,
+} from './atoms';
 import styles from './company.module.scss';
 
 export const Company: VFC = () => {
@@ -15,6 +22,8 @@ export const Company: VFC = () => {
       <Location />
 
       <SocialLinks />
+
+      <CompanyActions />
     </div>
   );
 };
