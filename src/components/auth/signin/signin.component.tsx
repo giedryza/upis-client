@@ -40,15 +40,6 @@ export const Signin: VFC = () => {
         <div className={styles.content}>
           <h1 className={styles.title}>{t('auth:signin.title')}</h1>
 
-          <Button
-            label={t('auth:actions.signin-google')}
-            icon="logo-google"
-            variant="secondary"
-            width="full"
-          />
-
-          <Divider label={t('common:texts.or')} />
-
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <fieldset className={styles.fieldset}>
               <TextInput
@@ -94,6 +85,15 @@ export const Signin: VFC = () => {
               }}
             />
           </form>
+
+          <Divider label={t('common:texts.or')} />
+
+          <Button
+            label={t('auth:actions.signin-google')}
+            icon="logo-google"
+            variant="secondary"
+            width="full"
+          />
 
           <div className={styles.footer}>
             <span>{t('auth:signin.texts.not-have-account')}</span>
