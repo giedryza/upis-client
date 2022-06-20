@@ -38,6 +38,8 @@
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-wrap-multilines": ["error", { "prop": "ignore" }],
     "react/no-array-index-key": "off",
+    "react/no-danger": "off",
+    "react/display-name": "error",
     "react/function-component-definition": [
       "error",
       { "namedComponents": "arrow-function" }
@@ -51,17 +53,6 @@
       }
     ],
     "no-console": ["warn", { "allow": ["info", "error"] }],
-    "import/prefer-default-export": "off",
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "ts": "never",
-        "tsx": "never",
-        "js": "never",
-        "jsx": "never"
-      }
-    ],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
@@ -80,7 +71,19 @@
     "@typescript-eslint/no-redeclare": ["error"],
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
-    "no-undef": "off",
+    "quotes": "off",
+    "@typescript-eslint/quotes": ["error", "single", { "avoidEscape": true }],
+    "import/prefer-default-export": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never",
+        "js": "never",
+        "jsx": "never"
+      }
+    ],
     "import/order": [
       "error",
       {
@@ -88,9 +91,23 @@
         "newlines-between": "always"
       }
     ],
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": ["return", "throw", "try", "switch", "if", "while", "for"]
+      },
+      {
+        "blankLine": "always",
+        "prev": "import",
+        "next": ["export", "block-like"]
+      }
+    ],
     "consistent-return": "off",
     "class-methods-use-this": "off",
     "no-case-declarations": "off",
+    "no-undef": "off",
     "no-underscore-dangle": "off",
     "no-nested-ternary": "off",
     "no-unused-expressions": ["error", { "allowTernary": true }],
@@ -99,12 +116,8 @@
     "camelcase": "off",
     "arrow-body-style": "off",
     "default-param-last": "off",
-    "quotes": "off",
-    "@typescript-eslint/quotes": ["error", "single", { "avoidEscape": true }],
     "prefer-template": "error",
-    "no-useless-concat": "error",
-    "react/no-danger": "off",
-    "react/display-name": "error"
+    "no-useless-concat": "error"
   },
   "overrides": [
     {
