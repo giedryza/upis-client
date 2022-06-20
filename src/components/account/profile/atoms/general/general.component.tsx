@@ -2,7 +2,8 @@ import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useSession } from 'next-auth/react';
 
-import { InfoBlock, InfoItem } from 'components/account/atoms';
+import { InfoBlock } from 'components/account/atoms';
+import { FieldDisplay } from 'ui';
 
 export const General: VFC = () => {
   const { t } = useTranslation();
@@ -11,7 +12,7 @@ export const General: VFC = () => {
 
   return (
     <InfoBlock title={t('account:profile.general.title')} icon="gear">
-      <InfoItem
+      <FieldDisplay
         label={t('account:profile.general.form.email.label')}
         value={session?.user?.email ?? '-'}
       />

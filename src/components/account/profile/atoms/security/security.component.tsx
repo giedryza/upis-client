@@ -1,8 +1,9 @@
 import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { InfoBlock, InfoItem } from 'components/account/atoms';
+import { InfoBlock } from 'components/account/atoms';
 import { routes } from 'config/routes';
+import { FieldDisplay } from 'ui';
 
 export const Security: VFC = () => {
   const { t } = useTranslation();
@@ -13,7 +14,7 @@ export const Security: VFC = () => {
       icon="lock"
       editPage={routes.account.profile.security}
     >
-      <InfoItem
+      <FieldDisplay
         label={t('account:profile.security.form.password.label')}
         value={t('account:profile.security.form.password.placeholder')}
       />
