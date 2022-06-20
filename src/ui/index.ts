@@ -5,6 +5,7 @@ export * from './card';
 export * from './container';
 export * from './divider';
 export * from './dropdown-menu';
+export * from './field-display';
 export * from './file-input';
 export * from './icon';
 export * from './image-placeholder';

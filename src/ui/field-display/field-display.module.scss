@@ -1,0 +1,21 @@
+@use 'styles/mixins' as *;
+
+.container {
+  font-size: 1.6rem;
+  line-height: 1.9;
+
+  .title {
+    display: inline-block;
+
+    color: var(--color-grey-30);
+    font-weight: 400;
+    font-size: 0.75em;
+  }
+
+  .subtitle {
+    color: var(--color-grey-20);
+    font-size: 1em;
+    line-height: 1.6;
+    white-space: pre-line;
+  }
+}
