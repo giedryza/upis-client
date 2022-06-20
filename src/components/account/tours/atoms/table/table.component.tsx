@@ -22,16 +22,14 @@ export const ToursTable: VFC = () => {
     return [
       { accessor: 'name', label: t('account:tours.table.name') },
       { accessor: 'trip', label: t('account:tours.table.trip') },
+      { accessor: 'price', label: t('account:tours.table.price') },
       { accessor: 'distance', label: t('account:tours.table.distance') },
       { accessor: 'duration', label: t('account:tours.table.duration') },
       { accessor: 'days', label: t('account:tours.table.days') },
-      { accessor: 'rivers', label: t('account:tours.table.rivers') },
-      { accessor: 'regions', label: t('account:tours.table.regions') },
       {
         accessor: 'difficulty',
         label: t('account:tours.table.difficulty'),
       },
-      { accessor: 'price', label: t('account:tours.table.price') },
       { accessor: 'actions', label: '', align: 'right' },
     ];
   }, [t]);
@@ -50,11 +48,10 @@ export const ToursTable: VFC = () => {
           />
         ),
         trip: [tour.departure, tour.arrival].join(' - '),
+        price: tour.price,
         distance: tour.distance,
         duration: tour.duration,
         days: tour.days,
-        rivers: tour.rivers.join(', '),
-        regions: tour.regions.join(', '),
         difficulty: (
           <Meter
             ariaLabel={t('account:tours.table.difficulty')}
@@ -64,7 +61,6 @@ export const ToursTable: VFC = () => {
             formatOptions={{ style: 'decimal' }}
           />
         ),
-        price: tour.price,
         actions: (
           <div className={styles.actions}>
             <Button

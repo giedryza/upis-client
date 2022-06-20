@@ -4,8 +4,6 @@ export type TableColumns =
   | 'distance'
   | 'duration'
   | 'days'
-  | 'rivers'
-  | 'regions'
   | 'difficulty'
   | 'price'
   | 'actions';
