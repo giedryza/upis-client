@@ -2,8 +2,9 @@ import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
-import { InfoBlock, InfoItem } from 'components/account/atoms';
+import { InfoBlock } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies';
+import { FieldDisplay } from 'ui';
 
 export const Contacts: VFC = () => {
   const { t } = useTranslation();
@@ -21,15 +22,15 @@ export const Contacts: VFC = () => {
         company._id
       )}
     >
-      <InfoItem
+      <FieldDisplay
         label={t('account:companies.contacts.form.email.label')}
         value={company.email}
       />
-      <InfoItem
+      <FieldDisplay
         label={t('account:companies.contacts.form.phone.label')}
         value={company.phone}
       />
-      <InfoItem
+      <FieldDisplay
         label={t('account:companies.contacts.form.website.label')}
         value={company.website}
       />

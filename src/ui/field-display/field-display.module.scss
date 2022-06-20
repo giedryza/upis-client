@@ -1,7 +1,8 @@
 @use 'styles/mixins' as *;
 
-.content {
+.container {
   font-size: 1.6rem;
+  line-height: 1.9;
 
   .title {
     display: inline-block;

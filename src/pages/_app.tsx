@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Provider } from 'react-redux';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
+import { useRouter } from 'next/router';
 import { SessionProvider } from 'next-auth/react';
-import { SSRProvider } from 'react-aria';
+import { SSRProvider, I18nProvider } from 'react-aria';
 
 import { AppProps } from 'types/common';
 import { queryClientConfig } from 'tools/services/query-client';
@@ -20,6 +21,7 @@ axe.init();
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const [queryClient] = useState(() => new QueryClient(queryClientConfig));
+  const { locale } = useRouter();
 
   return (
     <Provider store={store}>
@@ -27,17 +29,19 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <Hydrate state={pageProps.dehydratedState}>
           <SessionProvider session={pageProps.session}>
             <SSRProvider>
-              <Modal.Provider>
-                <AppLayout>
-                  <Component {...pageProps} />
+              <I18nProvider locale={locale}>
+                <Modal.Provider>
+                  <AppLayout>
+                    <Component {...pageProps} />
 
-                  <Alerts />
-                  <ModalSlot
-                    modalName="confirmation"
-                    slot={<ConfirmationModal />}
-                  />
-                </AppLayout>
-              </Modal.Provider>
+                    <Alerts />
+                    <ModalSlot
+                      modalName="confirmation"
+                      slot={<ConfirmationModal />}
+                    />
+                  </AppLayout>
+                </Modal.Provider>
+              </I18nProvider>
             </SSRProvider>
           </SessionProvider>
         </Hydrate>

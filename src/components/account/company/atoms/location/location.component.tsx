@@ -2,8 +2,9 @@ import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
-import { InfoBlock, InfoItem, MapItem } from 'components/account/atoms';
+import { InfoBlock, MapItem } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies';
+import { FieldDisplay } from 'ui';
 
 export const Location: VFC = () => {
   const { t } = useTranslation();
@@ -22,7 +23,7 @@ export const Location: VFC = () => {
         company._id
       )}
     >
-      <InfoItem
+      <FieldDisplay
         label={t('account:companies.location.form.address.label')}
         value={company.address}
       />

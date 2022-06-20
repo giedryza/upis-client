@@ -1,9 +1,10 @@
 import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { InfoBlock, InfoItem } from 'components/account/atoms';
+import { InfoBlock } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies';
 import { routes } from 'config/routes';
+import { FieldDisplay } from 'ui';
 
 export const About: VFC = () => {
   const { t } = useTranslation();
@@ -19,11 +20,11 @@ export const About: VFC = () => {
       columns={1}
       editPage={routes.account.companies.one.about.replace(':id', company._id)}
     >
-      <InfoItem
+      <FieldDisplay
         label={t('account:companies.about.form.name.label')}
         value={company.name}
       />
-      <InfoItem
+      <FieldDisplay
         label={t('account:companies.about.form.description.label')}
         value={company.description}
       />

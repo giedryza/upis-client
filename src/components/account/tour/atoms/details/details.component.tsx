@@ -1,10 +1,10 @@
 import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { InfoBlock, InfoItem } from 'components/account/atoms';
+import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour } from 'domain/tours';
 import { routes } from 'config/routes';
-import { Meter } from 'ui';
+import { FieldDisplay, Meter } from 'ui';
 
 export const Details: VFC = () => {
   const { t } = useTranslation();
@@ -20,15 +20,15 @@ export const Details: VFC = () => {
       columns={2}
       editPage={routes.account.tours.one.details.replace(':id', tour._id)}
     >
-      <InfoItem
+      <FieldDisplay
         label={t('account:tours.details.form.distance.label')}
         value={tour.distance}
       />
-      <InfoItem
+      <FieldDisplay
         label={t('account:tours.details.form.duration.label')}
         value={tour.duration}
       />
-      <InfoItem
+      <FieldDisplay
         label={t('account:tours.details.form.days.label')}
         value={tour.days}
       />
