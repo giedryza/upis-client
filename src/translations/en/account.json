@@ -132,7 +132,8 @@
       "confirmDelete": "This action cannot be undone. It will permanently delete company <strong>{{name}}</strong> and all its associated information. Are you sure you want to proceed?"
     },
     "actions": {
-      "add": "Add company"
+      "add": "Add company",
+      "delete": "Delete company"
     }
   },
   "tours": {
