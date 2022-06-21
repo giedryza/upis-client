@@ -198,7 +198,7 @@
           }
         },
         "difficulty": {
-          "label": "Difficulty"
+          "label": "Difficulty (1 - easy, 5 - hard)"
         }
       }
     },

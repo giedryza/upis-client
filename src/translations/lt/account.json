@@ -198,7 +198,7 @@
           }
         },
         "difficulty": {
-          "label": "Sudėtingumas"
+          "label": "Sudėtingumas (1 - lengvas, 5 - sunkus)"
         }
       }
     },
