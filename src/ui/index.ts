@@ -17,5 +17,6 @@ export * from './toast';
 export * from './portal';
 export * from './select-input';
 export * from './slider-input';
+export * from './stepper-input';
 export * from './table';
 export * from './text-input';
