@@ -1,6 +1,7 @@
 export interface Props {
   label: string;
   placeholder?: string;
+  name?: string;
   value?: number;
   onChange?: (value: number) => void;
   disabled?: boolean;

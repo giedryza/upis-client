@@ -12,6 +12,7 @@ export const NumberInput = forwardRef<HTMLInputElement, Props>(
     {
       label,
       placeholder,
+      name,
       value,
       onChange,
       disabled,
@@ -89,7 +90,12 @@ export const NumberInput = forwardRef<HTMLInputElement, Props>(
               -
             </button>
           )}
-          <input className={styles.input} {...inputProps} ref={inputRef} />
+          <input
+            className={styles.input}
+            {...inputProps}
+            name={name}
+            ref={inputRef}
+          />
           {stepper && (
             <button
               className={styles.stepper}
