@@ -1,6 +1,6 @@
 import { forwardRef, RefObject } from 'react';
-import { useTextField } from 'react-aria';
-import { mergeProps, useObjectRef } from '@react-aria/utils';
+import { useTextField, mergeProps } from 'react-aria';
+import { useObjectRef } from '@react-aria/utils';
 
 import styles from './text-input.module.scss';
 import { Props, InputElement } from './text-input.types';

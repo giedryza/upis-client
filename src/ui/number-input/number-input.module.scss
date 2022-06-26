@@ -1,0 +1,113 @@
+@use 'src/styles/mixins' as *;
+
+.container {
+  font-size: 1.6rem;
+
+  line-height: 1.9;
+
+  @include spacing(y, 0.35em);
+
+  .label {
+    display: inline-block;
+
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 0.8em;
+  }
+
+  .inputContainer {
+    display: flex;
+    gap: 0.4em;
+    align-items: center;
+
+    &[aria-invalid='true'] {
+      .input {
+        background-color: var(--color-danger-95);
+        border-color: var(--color-danger-60);
+      }
+
+      ~ small[data-help='error'] {
+        color: var(--color-danger-60);
+      }
+    }
+  }
+
+  .input {
+    display: block;
+    width: 100%;
+    height: 2.25em;
+    padding: 0.25em 0.5em;
+
+    color: var(--color-text);
+
+    font-weight: 500;
+    line-height: 1;
+
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-60);
+    border-radius: var(--border-radius-sm);
+
+    transition: var(--transition-duration-md) box-shadow;
+
+    &[readonly] {
+      color: var(--color-grey-25);
+
+      border-style: dashed;
+      cursor: default;
+    }
+
+    &[disabled] {
+      color: var(--color-grey-40);
+
+      background-color: var(--color-grey-95);
+      border-color: var(--color-grey-75);
+      cursor: not-allowed;
+    }
+
+    &:hover {
+      border-color: var(--color-grey-40);
+
+      &[aria-invalid='true'] {
+        border-color: var(--color-danger-40);
+      }
+    }
+
+    &:focus {
+      border-color: var(--color-primary-60);
+      outline: 2px solid transparent;
+      box-shadow: var(--outline-input);
+
+      &[aria-invalid='true'] {
+        border-color: var(--color-danger-60);
+        box-shadow: var(--outline-input-error);
+      }
+    }
+
+    &::placeholder {
+      color: var(--color-grey-60);
+      font-weight: 400;
+    }
+  }
+
+  .stepper {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 1.25em;
+    height: 1.25em;
+
+    color: var(--color-white);
+
+    background-color: var(--color-text);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  small {
+    display: block;
+
+    font-weight: 400;
+    font-size: 0.7em;
+  }
+}

@@ -13,6 +13,7 @@ export * from './loader';
 export * from './map';
 export * from './meter';
 export * from './modal';
+export * from './number-input';
 export * from './toast';
 export * from './portal';
 export * from './select-input';
