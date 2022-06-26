@@ -1,24 +1,25 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { StepperInput } from '.';
+import { NumberInput } from '.';
 
 export default {
-  title: 'UI/StepperInput',
-  component: StepperInput,
+  title: 'UI/NumberInput',
+  component: NumberInput,
   args: {
     label: 'Price',
   },
   argTypes: {
     onChange: { action: 'onChange' },
   },
-} as ComponentMeta<typeof StepperInput>;
+} as ComponentMeta<typeof NumberInput>;
 
-const Template: ComponentStory<typeof StepperInput> = (args) => (
-  <StepperInput {...args} />
+const Template: ComponentStory<typeof NumberInput> = (args) => (
+  <NumberInput {...args} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
   ...Default.args,
+  stepper: true,
 };

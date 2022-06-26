@@ -11,5 +11,6 @@ export interface Props {
   error?: string;
   info?: string;
   autofocus?: boolean;
+  stepper?: boolean;
   formatOptions?: Intl.NumberFormatOptions;
 }

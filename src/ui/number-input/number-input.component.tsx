@@ -3,10 +3,10 @@ import { useRef, VFC } from 'react';
 import { useButton, useLocale, useNumberField } from 'react-aria';
 import { useNumberFieldState } from 'react-stately';
 
-import { Props } from './stepper-input.types';
-import styles from './stepper-input.module.scss';
+import { Props } from './number-input.types';
+import styles from './number-input.module.scss';
 
-export const StepperInput: VFC<Props> = ({
+export const NumberInput: VFC<Props> = ({
   label,
   placeholder,
   value,
@@ -19,6 +19,7 @@ export const StepperInput: VFC<Props> = ({
   error,
   info,
   autofocus,
+  stepper = false,
   formatOptions,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -73,23 +74,27 @@ export const StepperInput: VFC<Props> = ({
       </label>
 
       <div className={styles.inputContainer} {...groupProps}>
-        <button
-          className={styles.stepperButton}
-          {...decrementProps}
-          type="button"
-          ref={decrementRef}
-        >
-          -
-        </button>
+        {stepper && (
+          <button
+            className={styles.stepper}
+            {...decrementProps}
+            type="button"
+            ref={decrementRef}
+          >
+            -
+          </button>
+        )}
         <input className={styles.input} {...inputProps} ref={inputRef} />
-        <button
-          className={styles.stepperButton}
-          {...incrementProps}
-          type="button"
-          ref={incrementRef}
-        >
-          +
-        </button>
+        {stepper && (
+          <button
+            className={styles.stepper}
+            {...incrementProps}
+            type="button"
+            ref={incrementRef}
+          >
+            +
+          </button>
+        )}
       </div>
 
       {info && (
