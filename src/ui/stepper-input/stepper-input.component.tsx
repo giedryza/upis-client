@@ -52,6 +52,8 @@ export const StepperInput: VFC<Props> = ({
     labelProps,
     groupProps,
     inputProps,
+    descriptionProps,
+    errorMessageProps,
     incrementButtonProps,
     decrementButtonProps,
   } = useNumberField(numberFieldProps, state, inputRef);
@@ -65,17 +67,41 @@ export const StepperInput: VFC<Props> = ({
   );
 
   return (
-    <div>
-      <label {...labelProps}>{label}</label>
-      <div {...groupProps}>
-        <button {...decrementProps} type="button" ref={decrementRef}>
+    <div className={styles.container}>
+      <label className={styles.label} {...labelProps}>
+        {label}
+      </label>
+
+      <div className={styles.inputContainer} {...groupProps}>
+        <button
+          className={styles.stepperButton}
+          {...decrementProps}
+          type="button"
+          ref={decrementRef}
+        >
           -
         </button>
-        <input {...inputProps} ref={inputRef} />
-        <button {...incrementProps} type="button" ref={incrementRef}>
+        <input className={styles.input} {...inputProps} ref={inputRef} />
+        <button
+          className={styles.stepperButton}
+          {...incrementProps}
+          type="button"
+          ref={incrementRef}
+        >
           +
         </button>
       </div>
+
+      {info && (
+        <small {...descriptionProps} data-help="info">
+          {info}
+        </small>
+      )}
+      {error && (
+        <small {...errorMessageProps} data-help="error">
+          {error}
+        </small>
+      )}
     </div>
   );
 };
