@@ -7,7 +7,10 @@ export default {
   title: 'UI/StepperInput',
   component: StepperInput,
   args: {
-    label: 'label',
+    label: 'Price',
+  },
+  argTypes: {
+    onChange: { action: 'onChange' },
   },
 } as ComponentMeta<typeof StepperInput>;
 

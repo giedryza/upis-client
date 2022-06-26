@@ -1,3 +1,15 @@
 export interface Props {
-  label?: string;
+  label: string;
+  placeholder?: string;
+  value?: number;
+  onChange?: (value: number) => void;
+  disabled?: boolean;
+  readonly?: boolean;
+  min?: number;
+  max?: number;
+  step?: number;
+  error?: string;
+  info?: string;
+  autofocus?: boolean;
+  formatOptions?: Intl.NumberFormatOptions;
 }
