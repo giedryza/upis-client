@@ -206,7 +206,8 @@
       "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins maršrutą <strong>{{name}}</strong> ir visą su juo susijusią informaciją. Ar tikrai norite tęsti?"
     },
     "actions": {
-      "add": "Pridėti maršrutą"
+      "add": "Pridėti maršrutą",
+      "delete": "Ištrinti maršrutą"
     }
   }
 }
