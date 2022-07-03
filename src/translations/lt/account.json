@@ -58,7 +58,8 @@
     },
     "empty": {
       "title": "Įmonių nėra",
-      "message": "Pridėję įmonę galėsite pradėti kurti maršrutus."
+      "messageCompanies": "Pridėję įmonę galėsite pradėti kurti maršrutus.",
+      "messageTours": "Pradėkite kurti maršrutus."
     },
     "about": {
       "title": "Apie kompaniją",

@@ -157,7 +157,8 @@
     },
     "empty": {
       "title": "No tours",
-      "message": "Add company to start creating tours."
+      "messageCompanies": "Add company to start creating tours.",
+      "messageTours": "Start creating tours."
     },
     "about": {
       "title": "About",
