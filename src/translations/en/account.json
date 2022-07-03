@@ -189,7 +189,7 @@
       "title": "Details",
       "form": {
         "distance": {
-          "label": "Distance",
+          "label": "Distance (km)",
           "error": {
             "min": "Distance must be at least 1 km."
           }

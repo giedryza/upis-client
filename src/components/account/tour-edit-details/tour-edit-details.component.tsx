@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, Container, SliderInput, TextInput } from 'ui';
+import { Button, Container, NumberInput, SliderInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTour } from 'domain/tours';
@@ -67,17 +67,28 @@ export const TourEditDetails: VFC = () => {
       <Container align="left" size="sm">
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <fieldset className={styles.fieldset} disabled={isLoading}>
-            <TextInput
-              {...register('distance', {
-                valueAsNumber: true,
+            <Controller
+              control={control}
+              name="distance"
+              rules={{
                 min: {
-                  value: 1,
+                  value: 0.01,
                   message: t('account:tours.details.form.distance.error.min'),
                 },
-              })}
-              label={t('account:tours.details.form.distance.label')}
-              error={errors.distance?.message}
-              type="number"
+              }}
+              render={({ field: { name, onChange, value, ref } }) => (
+                <NumberInput
+                  label={t('account:tours.details.form.distance.label')}
+                  name={name}
+                  value={value}
+                  placeholder="6,5"
+                  onChange={onChange}
+                  min={0.01}
+                  step={0.01}
+                  error={errors.distance?.message}
+                  ref={ref}
+                />
+              )}
             />
 
             <TextInput
@@ -93,17 +104,28 @@ export const TourEditDetails: VFC = () => {
               type="number"
             />
 
-            <TextInput
-              {...register('days', {
-                valueAsNumber: true,
+            <Controller
+              control={control}
+              name="days"
+              rules={{
                 min: {
                   value: 1,
                   message: t('account:tours.details.form.days.error.min'),
                 },
-              })}
-              label={t('account:tours.details.form.days.label')}
-              error={errors.days?.message}
-              type="number"
+              }}
+              render={({ field: { name, onChange, value, ref } }) => (
+                <NumberInput
+                  label={t('account:tours.details.form.days.label')}
+                  name={name}
+                  value={value}
+                  placeholder="1"
+                  onChange={onChange}
+                  min={1}
+                  step={1}
+                  error={errors.days?.message}
+                  ref={ref}
+                />
+              )}
             />
 
             <Controller

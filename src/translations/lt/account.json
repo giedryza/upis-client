@@ -189,7 +189,7 @@
       "title": "Ypatybės",
       "form": {
         "distance": {
-          "label": "Atstumas",
+          "label": "Atstumas  (km)",
           "error": {
             "min": "Minimalus maršruto atstumas - 1 km."
           }
