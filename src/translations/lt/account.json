@@ -56,6 +56,10 @@
       "phone": "Telefonas",
       "website": "Tinklapis"
     },
+    "empty": {
+      "title": "Įmonių nėra",
+      "message": "Pridėję įmonę galėsite pradėti kurti maršrutus."
+    },
     "about": {
       "title": "Apie kompaniją",
       "form": {

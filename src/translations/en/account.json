@@ -56,6 +56,10 @@
       "phone": "Phone",
       "website": "Website"
     },
+    "empty": {
+      "title": "No companies",
+      "message": "You will be able to create tours when you add the company."
+    },
     "about": {
       "title": "About",
       "form": {
