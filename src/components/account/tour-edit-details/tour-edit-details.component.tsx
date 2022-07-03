@@ -7,6 +7,7 @@ import { Button, Container, NumberInput, SliderInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTour } from 'domain/tours';
+import { useNumberFormat } from 'tools/format';
 
 import { Values } from './tour-edit-details.types';
 import { INITIAL_VALUES } from './tour-edit-details.constants';
@@ -15,6 +16,8 @@ import styles from './tour-edit-details.module.scss';
 export const TourEditDetails: VFC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
+
+  const { formatter } = useNumberFormat({ trailingZero: true });
 
   const {
     register,
@@ -81,7 +84,7 @@ export const TourEditDetails: VFC = () => {
                   label={t('account:tours.details.form.distance.label')}
                   name={name}
                   value={value}
-                  placeholder="6,5"
+                  placeholder={formatter.format(6.5)}
                   onChange={onChange}
                   min={0.01}
                   step={0.01}
