@@ -151,6 +151,10 @@
       "difficulty": "Difficulty",
       "price": "Price"
     },
+    "empty": {
+      "title": "No tours",
+      "message": "Add company to start creating tours."
+    },
     "about": {
       "title": "About",
       "form": {

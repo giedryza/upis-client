@@ -151,6 +151,10 @@
       "difficulty": "Sudėtingumas",
       "price": "Kaina"
     },
+    "empty": {
+      "title": "Maršrutų nėra",
+      "message": "Pridėkite įmonę norėdami kurti maršrutus."
+    },
     "about": {
       "title": "Apie maršrutą",
       "form": {

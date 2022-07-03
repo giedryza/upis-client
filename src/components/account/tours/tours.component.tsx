@@ -1,17 +1,37 @@
 import { VFC } from 'react';
+import useTranslation from 'next-translate/useTranslation';
 
-import { Card } from 'ui';
+import { Card, EmptyState } from 'ui';
+import { routes } from 'config/routes';
+import { useMyTours } from 'domain/tours';
 
 import { ToursActions, ToursTable } from './atoms';
 import styles from './tours.module.scss';
 
 export const Tours: VFC = () => {
+  const { t } = useTranslation();
+
+  const { data: tours = [], isLoading } = useMyTours();
+
   return (
     <Card>
-      <div className={styles.content}>
-        <ToursActions />
-        <ToursTable />
-      </div>
+      {!tours.length && !isLoading ? (
+        <EmptyState
+          title={t('account:tours.empty.title')}
+          message={t('account:tours.empty.message')}
+          icon="path"
+          action={{
+            label: t('account:companies.actions.add'),
+            icon: 'plus',
+            url: routes.account.companies.create,
+          }}
+        />
+      ) : (
+        <div className={styles.content}>
+          <ToursActions />
+          <ToursTable />
+        </div>
+      )}
     </Card>
   );
 };
