@@ -1,0 +1,29 @@
+@use 'styles/mixins' as *;
+
+.container {
+  @include spacing(y, 1.5em);
+
+  font-size: 1.6rem;
+
+  text-align: center;
+
+  .body {
+    @include spacing(y, 0.35em);
+  }
+
+  .icon {
+    width: 2.5em;
+    height: 2.5em;
+  }
+
+  .title {
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 1em;
+  }
+
+  .message {
+    font-weight: 400;
+    font-size: 0.8em;
+  }
+}
