@@ -8,5 +8,6 @@ module.exports = {
     'rgx:^/auth': ['auth'],
   },
   loadLocaleFrom: (locale, namespace) =>
-    import(`./src/translations/${locale}/${namespace}`).then((m) => m.default),
+    // eslint-disable-next-line import/no-dynamic-require
+    require(`./src/translations/${locale}/${namespace}`),
 };
