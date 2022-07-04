@@ -36,6 +36,10 @@
       background-color: var(--color-grey-95);
       border-color: var(--color-grey-75);
       cursor: not-allowed;
+
+      &::placeholder {
+        opacity: 0%;
+      }
     }
 
     &[aria-invalid='true'] {

@@ -13,5 +13,6 @@ export interface Props {
   info?: string;
   autofocus?: boolean;
   stepper?: boolean;
+  textAlign?: 'left' | 'center';
   formatOptions?: Intl.NumberFormatOptions;
 }
