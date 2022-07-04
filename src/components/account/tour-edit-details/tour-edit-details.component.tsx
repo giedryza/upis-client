@@ -25,7 +25,7 @@ export const TourEditDetails: VFC = () => {
     handleSubmit,
     reset,
     control,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
   });
@@ -183,7 +183,7 @@ export const TourEditDetails: VFC = () => {
               size="sm"
               attributes={{
                 type: 'submit',
-                disabled: !isDirty || isLoading,
+                disabled: isLoading,
               }}
             />
           </div>

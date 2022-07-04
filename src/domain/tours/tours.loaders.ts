@@ -51,7 +51,7 @@ export const loaders = {
     }).post(),
   updateTour: ({ id, form }: UpdateTour) =>
     new Request<Tour>(endpoints.tours.one.index.replace(':id', id), {
-      body: getJsonBody(form),
+      body: getJsonBody(form, [NaN, null, undefined]),
     }).patch(),
   deleteTour: ({ id }: DeleteTour) =>
     new Request(endpoints.tours.one.index.replace(':id', id)).delete(),
