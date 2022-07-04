@@ -195,7 +195,8 @@
           }
         },
         "duration": {
-          "label": "Duration, h (only if 1 day tour)",
+          "label": "Duration, h",
+          "info": "* Only if 1 day tour",
           "error": {
             "min": "Duration must be at least 1 hour."
           }

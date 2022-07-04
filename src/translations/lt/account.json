@@ -195,7 +195,8 @@
           }
         },
         "duration": {
-          "label": "Trukmė, h (jei 1 dienos maršrutas)",
+          "label": "Trukmė, h",
+          "info": "* Pildoma, jei 1 dienos maršrutas",
           "error": {
             "min": "Minimali distancijos įveikimo trukmė - 1 valanda."
           }

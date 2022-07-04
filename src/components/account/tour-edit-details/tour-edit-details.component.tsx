@@ -111,6 +111,7 @@ export const TourEditDetails: VFC = () => {
               render={({ field: { name, onChange, value, ref } }) => (
                 <NumberInput
                   label={t('account:tours.details.form.duration.label')}
+                  info={t('account:tours.details.form.duration.info')}
                   disabled={days > 1}
                   name={name}
                   value={value}
