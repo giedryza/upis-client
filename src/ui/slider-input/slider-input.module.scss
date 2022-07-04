@@ -11,7 +11,7 @@
 
   touch-action: none;
 
-  @include spacing(y, 0.15em);
+  @include spacing(y, 0.35em);
 
   &.-disabled {
     color: var(--color-grey-40);
