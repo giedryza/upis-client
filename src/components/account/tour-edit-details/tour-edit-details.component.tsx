@@ -3,10 +3,11 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, Container, SliderInput, TextInput } from 'ui';
+import { Button, Container, NumberInput, SliderInput } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTour } from 'domain/tours';
+import { useNumberFormat } from 'tools/format';
 
 import { Values } from './tour-edit-details.types';
 import { INITIAL_VALUES } from './tour-edit-details.constants';
@@ -16,15 +17,20 @@ export const TourEditDetails: VFC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 
+  const { formatter } = useNumberFormat();
+
   const {
-    register,
+    watch,
+    setValue,
     handleSubmit,
     reset,
     control,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
   });
+
+  const [days] = watch(['days']);
 
   const { data: tour } = useActiveTour();
   const { mutate: updateTour, isLoading } = useUpdateTour();
@@ -38,18 +44,13 @@ export const TourEditDetails: VFC = () => {
     });
   }, [reset, tour]);
 
-  const onSubmit: SubmitHandler<Values> = ({
-    distance,
-    duration,
-    days,
-    difficulty,
-  }) => {
+  const onSubmit: SubmitHandler<Values> = (form) => {
     const tourId = tour?._id;
 
     if (!tourId) return;
 
     updateTour(
-      { id: tourId, form: { distance, duration, days, difficulty } },
+      { id: tourId, form },
       {
         onSuccess: () => {
           push(routes.account.tours.one.index.replace(':id', tour?._id ?? ''));
@@ -67,43 +68,85 @@ export const TourEditDetails: VFC = () => {
       <Container align="left" size="sm">
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <fieldset className={styles.fieldset} disabled={isLoading}>
-            <TextInput
-              {...register('distance', {
-                valueAsNumber: true,
-                min: {
-                  value: 1,
-                  message: t('account:tours.details.form.distance.error.min'),
-                },
-              })}
-              label={t('account:tours.details.form.distance.label')}
-              error={errors.distance?.message}
-              type="number"
-            />
+            <div className={styles.duration}>
+              <Controller
+                control={control}
+                name="days"
+                rules={{
+                  min: {
+                    value: 1,
+                    message: t('account:tours.details.form.days.error.min'),
+                  },
+                }}
+                render={({ field: { name, onChange, value, ref } }) => (
+                  <NumberInput
+                    label={t('account:tours.details.form.days.label')}
+                    textAlign="center"
+                    name={name}
+                    value={value}
+                    placeholder="1"
+                    onChange={(v) => {
+                      onChange(v);
+                      setValue('duration', NaN);
+                    }}
+                    min={1}
+                    step={1}
+                    stepper
+                    error={errors.days?.message}
+                    ref={ref}
+                  />
+                )}
+              />
+            </div>
 
-            <TextInput
-              {...register('duration', {
-                valueAsNumber: true,
+            <Controller
+              control={control}
+              name="duration"
+              rules={{
                 min: {
-                  value: 1,
+                  value: 0.5,
                   message: t('account:tours.details.form.duration.error.min'),
                 },
-              })}
-              label={t('account:tours.details.form.duration.label')}
-              error={errors.duration?.message}
-              type="number"
+              }}
+              render={({ field: { name, onChange, value, ref } }) => (
+                <NumberInput
+                  label={t('account:tours.details.form.duration.label')}
+                  info={t('account:tours.details.form.duration.info')}
+                  disabled={days > 1}
+                  name={name}
+                  value={value}
+                  placeholder={formatter.format(4.5)}
+                  onChange={onChange}
+                  min={0.5}
+                  step={0.5}
+                  error={errors.duration?.message}
+                  ref={ref}
+                />
+              )}
             />
 
-            <TextInput
-              {...register('days', {
-                valueAsNumber: true,
+            <Controller
+              control={control}
+              name="distance"
+              rules={{
                 min: {
-                  value: 1,
-                  message: t('account:tours.details.form.days.error.min'),
+                  value: 0.01,
+                  message: t('account:tours.details.form.distance.error.min'),
                 },
-              })}
-              label={t('account:tours.details.form.days.label')}
-              error={errors.days?.message}
-              type="number"
+              }}
+              render={({ field: { name, onChange, value, ref } }) => (
+                <NumberInput
+                  label={t('account:tours.details.form.distance.label')}
+                  name={name}
+                  value={value}
+                  placeholder={formatter.format(6.5)}
+                  onChange={onChange}
+                  min={0.01}
+                  step={0.01}
+                  error={errors.distance?.message}
+                  ref={ref}
+                />
+              )}
             />
 
             <Controller
@@ -140,7 +183,7 @@ export const TourEditDetails: VFC = () => {
               size="sm"
               attributes={{
                 type: 'submit',
-                disabled: !isDirty || isLoading,
+                disabled: isLoading,
               }}
             />
           </div>

@@ -189,13 +189,14 @@
       "title": "Details",
       "form": {
         "distance": {
-          "label": "Distance",
+          "label": "Distance, km",
           "error": {
             "min": "Distance must be at least 1 km."
           }
         },
         "duration": {
-          "label": "Duration",
+          "label": "Duration, h",
+          "info": "* Only if 1 day tour",
           "error": {
             "min": "Duration must be at least 1 hour."
           }

@@ -2,7 +2,26 @@ type JsonData = Record<string, any>;
 
 type FilesData = { field: string; file: File }[];
 
-export const getJsonBody = (data: JsonData): string => JSON.stringify(data);
+export const stripFalsyValues = <InitialObject extends JsonData>(
+  object: InitialObject,
+  falsyValues: (string | number | boolean | null | undefined)[] = [
+    NaN,
+    null,
+    undefined,
+  ]
+): Partial<InitialObject> =>
+  Object.fromEntries(
+    Object.entries(object).filter(([_, value]) => !falsyValues.includes(value))
+  ) as Partial<InitialObject>;
+
+export const getJsonBody = (
+  data: JsonData,
+  falsyValues?: (string | number | boolean | null | undefined)[]
+): string => {
+  const body = falsyValues ? stripFalsyValues(data, falsyValues) : data;
+
+  return JSON.stringify(body);
+};
 
 export const getFilesBody = (data: FilesData): FormData => {
   const formData = new FormData();
