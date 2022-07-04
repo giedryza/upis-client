@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, Container, NumberInput, SliderInput, TextInput } from 'ui';
+import { Button, Container, NumberInput, SliderInput } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTour } from 'domain/tours';
@@ -17,10 +17,11 @@ export const TourEditDetails: VFC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 
-  const { formatter } = useNumberFormat({ trailingZero: true });
+  const { formatter } = useNumberFormat();
 
   const {
-    register,
+    watch,
+    setValue,
     handleSubmit,
     reset,
     control,
@@ -28,6 +29,8 @@ export const TourEditDetails: VFC = () => {
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
   });
+
+  const [days] = watch(['days']);
 
   const { data: tour } = useActiveTour();
   const { mutate: updateTour, isLoading } = useUpdateTour();
@@ -41,18 +44,13 @@ export const TourEditDetails: VFC = () => {
     });
   }, [reset, tour]);
 
-  const onSubmit: SubmitHandler<Values> = ({
-    distance,
-    duration,
-    days,
-    difficulty,
-  }) => {
+  const onSubmit: SubmitHandler<Values> = (form) => {
     const tourId = tour?._id;
 
     if (!tourId) return;
 
     updateTour(
-      { id: tourId, form: { distance, duration, days, difficulty } },
+      { id: tourId, form },
       {
         onSuccess: () => {
           push(routes.account.tours.one.index.replace(':id', tour?._id ?? ''));
@@ -70,6 +68,62 @@ export const TourEditDetails: VFC = () => {
       <Container align="left" size="sm">
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <fieldset className={styles.fieldset} disabled={isLoading}>
+            <div className={styles.duration}>
+              <Controller
+                control={control}
+                name="days"
+                rules={{
+                  min: {
+                    value: 1,
+                    message: t('account:tours.details.form.days.error.min'),
+                  },
+                }}
+                render={({ field: { name, onChange, value, ref } }) => (
+                  <NumberInput
+                    label={t('account:tours.details.form.days.label')}
+                    textAlign="center"
+                    name={name}
+                    value={value}
+                    placeholder="1"
+                    onChange={(v) => {
+                      onChange(v);
+                      setValue('duration', NaN);
+                    }}
+                    min={1}
+                    step={1}
+                    stepper
+                    error={errors.days?.message}
+                    ref={ref}
+                  />
+                )}
+              />
+            </div>
+
+            <Controller
+              control={control}
+              name="duration"
+              rules={{
+                min: {
+                  value: 0.5,
+                  message: t('account:tours.details.form.duration.error.min'),
+                },
+              }}
+              render={({ field: { name, onChange, value, ref } }) => (
+                <NumberInput
+                  label={t('account:tours.details.form.duration.label')}
+                  disabled={days > 1}
+                  name={name}
+                  value={value}
+                  placeholder={formatter.format(4.5)}
+                  onChange={onChange}
+                  min={0.5}
+                  step={0.5}
+                  error={errors.duration?.message}
+                  ref={ref}
+                />
+              )}
+            />
+
             <Controller
               control={control}
               name="distance"
@@ -89,43 +143,6 @@ export const TourEditDetails: VFC = () => {
                   min={0.01}
                   step={0.01}
                   error={errors.distance?.message}
-                  ref={ref}
-                />
-              )}
-            />
-
-            <TextInput
-              {...register('duration', {
-                valueAsNumber: true,
-                min: {
-                  value: 1,
-                  message: t('account:tours.details.form.duration.error.min'),
-                },
-              })}
-              label={t('account:tours.details.form.duration.label')}
-              error={errors.duration?.message}
-              type="number"
-            />
-
-            <Controller
-              control={control}
-              name="days"
-              rules={{
-                min: {
-                  value: 1,
-                  message: t('account:tours.details.form.days.error.min'),
-                },
-              }}
-              render={({ field: { name, onChange, value, ref } }) => (
-                <NumberInput
-                  label={t('account:tours.details.form.days.label')}
-                  name={name}
-                  value={value}
-                  placeholder="1"
-                  onChange={onChange}
-                  min={1}
-                  step={1}
-                  error={errors.days?.message}
                   ref={ref}
                 />
               )}

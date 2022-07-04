@@ -189,13 +189,13 @@
       "title": "Ypatybės",
       "form": {
         "distance": {
-          "label": "Atstumas  (km)",
+          "label": "Atstumas, km",
           "error": {
             "min": "Minimalus maršruto atstumas - 1 km."
           }
         },
         "duration": {
-          "label": "Trukmė",
+          "label": "Trukmė, h (jei 1 dienos maršrutas)",
           "error": {
             "min": "Minimali distancijos įveikimo trukmė - 1 valanda."
           }
