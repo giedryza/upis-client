@@ -62,7 +62,7 @@
       "messageTours": "Pradėkite kurti maršrutus."
     },
     "about": {
-      "title": "Apie kompaniją",
+      "title": "Apie įmonę",
       "form": {
         "name": {
           "label": "Pavadinimas",
@@ -134,7 +134,7 @@
       }
     },
     "texts": {
-      "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins kompaniją <strong>{{name}}</strong> ir visą su ja susijusią informaciją. Ar tikrai norite tęsti?"
+      "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins įmonę <strong>{{name}}</strong> ir visą su ja susijusią informaciją. Ar tikrai norite tęsti?"
     },
     "actions": {
       "add": "Pridėti įmonę",
@@ -177,10 +177,10 @@
           "label": "Tinklapis"
         },
         "company": {
-          "label": "Kompanija",
-          "placeholder": "Pasirinkite kompaniją",
+          "label": "Įmonė",
+          "placeholder": "Pasirinkite įmonę",
           "error": {
-            "empty": "Pasirinkite kompaniją"
+            "empty": "Pasirinkite įmonę"
           }
         }
       }
