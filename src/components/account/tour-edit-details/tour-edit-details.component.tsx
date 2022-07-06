@@ -7,7 +7,7 @@ import { Button, Container, NumberInput, SliderInput } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTour } from 'domain/tours';
-import { useNumberFormat } from 'tools/format';
+import { useFormatNumber } from 'tools/format';
 
 import { Values } from './tour-edit-details.types';
 import { INITIAL_VALUES } from './tour-edit-details.constants';
@@ -17,7 +17,7 @@ export const TourEditDetails: VFC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 
-  const { formatter } = useNumberFormat();
+  const { formatter: numberFormatter } = useFormatNumber();
 
   const {
     watch,
@@ -115,7 +115,7 @@ export const TourEditDetails: VFC = () => {
                   disabled={days > 1}
                   name={name}
                   value={value}
-                  placeholder={formatter.format(4.5)}
+                  placeholder={numberFormatter.format(4.5)}
                   onChange={onChange}
                   min={0.5}
                   step={0.5}
@@ -139,7 +139,7 @@ export const TourEditDetails: VFC = () => {
                   label={t('account:tours.details.form.distance.label')}
                   name={name}
                   value={value}
-                  placeholder={formatter.format(6.5)}
+                  placeholder={numberFormatter.format(6.5)}
                   onChange={onChange}
                   min={0.01}
                   step={0.01}

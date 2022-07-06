@@ -150,8 +150,8 @@
     "table": {
       "name": "Pavadinimas",
       "trip": "Kelionė",
-      "distance": "Atstumas",
-      "duration": "Trukmė",
+      "distance": "Atstumas, km",
+      "duration": "Trukmė, h",
       "days": "Dienos",
       "difficulty": "Sudėtingumas",
       "price": "Kaina"
@@ -190,12 +190,14 @@
       "form": {
         "distance": {
           "label": "Atstumas, km",
+          "display": "Atstumas",
           "error": {
             "min": "Minimalus maršruto atstumas - 1 km."
           }
         },
         "duration": {
           "label": "Trukmė, h",
+          "display": "Trukmė",
           "info": "* Pildoma, jei 1 dienos maršrutas",
           "error": {
             "min": "Minimali distancijos įveikimo trukmė - 1 valanda."
@@ -203,12 +205,14 @@
         },
         "days": {
           "label": "Dienos",
+          "display": "Dienos",
           "error": {
             "min": "Maršrutas turi trukti bent 1 dieną."
           }
         },
         "difficulty": {
-          "label": "Sudėtingumas (1 - lengvas, 5 - sunkus)"
+          "label": "Sudėtingumas (1 - lengvas, 5 - sunkus)",
+          "display": "Sudėtingumas"
         }
       }
     },
