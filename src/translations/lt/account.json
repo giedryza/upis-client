@@ -133,6 +133,9 @@
         "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins <strong>{{type}}</strong> nuorodą <strong>{{url}}</strong>. Ar tikrai norite tęsti?"
       }
     },
+    "settings": {
+      "title": "Nustatymai"
+    },
     "texts": {
       "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins įmonę <strong>{{name}}</strong> ir visą su ja susijusią informaciją. Ar tikrai norite tęsti?"
     },
@@ -215,6 +218,9 @@
           "display": "Sudėtingumas"
         }
       }
+    },
+    "settings": {
+      "title": "Nustatymai"
     },
     "texts": {
       "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins maršrutą <strong>{{name}}</strong> ir visą su juo susijusią informaciją. Ar tikrai norite tęsti?"

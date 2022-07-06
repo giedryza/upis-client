@@ -6,8 +6,7 @@ import { routes } from 'config/routes';
 import { useConfirm } from 'domain/confirm';
 import { useActiveTour, useDeleteTour } from 'domain/tours';
 import { Button } from 'ui';
-
-import styles from './actions.module.scss';
+import { InfoBlock } from 'components/account/atoms';
 
 export const TourActions: FC = () => {
   const { t } = useTranslation();
@@ -22,34 +21,40 @@ export const TourActions: FC = () => {
   if (!tour) return null;
 
   return (
-    <div className={styles.container}>
-      <Button
-        label={t('account:tours.actions.delete')}
-        variant="ghost"
-        icon="trash"
-        size="sm"
-        attributes={{
-          disabled: isDeleteTourLoading,
-          onClick: async () => {
-            const { confirmed } = await confirmation(
-              t('account:tours.texts.confirmDelete', {
-                name: tour.name,
-              })
-            );
-
-            if (confirmed) {
-              deleteTour(
-                { id: tour._id },
-                {
-                  onSuccess: () => {
-                    push(routes.account.tours.index);
-                  },
-                }
+    <InfoBlock
+      title={t('account:tours.settings.title')}
+      columns={1}
+      icon="gear"
+    >
+      <div>
+        <Button
+          label={t('account:tours.actions.delete')}
+          variant="ghost"
+          icon="trash"
+          size="sm"
+          attributes={{
+            disabled: isDeleteTourLoading,
+            onClick: async () => {
+              const { confirmed } = await confirmation(
+                t('account:tours.texts.confirmDelete', {
+                  name: tour.name,
+                })
               );
-            }
-          },
-        }}
-      />
-    </div>
+
+              if (confirmed) {
+                deleteTour(
+                  { id: tour._id },
+                  {
+                    onSuccess: () => {
+                      push(routes.account.tours.index);
+                    },
+                  }
+                );
+              }
+            },
+          }}
+        />
+      </div>
+    </InfoBlock>
   );
 };
