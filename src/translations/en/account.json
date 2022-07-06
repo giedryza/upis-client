@@ -149,8 +149,8 @@
     "table": {
       "name": "Name",
       "trip": "Trip",
-      "distance": "Distance",
-      "duration": "Duration",
+      "distance": "Distance, km",
+      "duration": "Duration, h",
       "days": "Days",
       "difficulty": "Difficulty",
       "price": "Price"
@@ -190,12 +190,14 @@
       "form": {
         "distance": {
           "label": "Distance, km",
+          "display": "Distance",
           "error": {
             "min": "Distance must be at least 1 km."
           }
         },
         "duration": {
           "label": "Duration, h",
+          "display": "Duration",
           "info": "* Only if 1 day tour",
           "error": {
             "min": "Duration must be at least 1 hour."
@@ -203,12 +205,14 @@
         },
         "days": {
           "label": "Days",
+          "display": "Days",
           "error": {
             "min": "Tour must be at least 1 day long."
           }
         },
         "difficulty": {
-          "label": "Difficulty (1 - easy, 5 - hard)"
+          "label": "Difficulty (1 - easy, 5 - hard)",
+          "display": "Difficulty"
         }
       }
     },

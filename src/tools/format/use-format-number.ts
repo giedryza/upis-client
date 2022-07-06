@@ -4,7 +4,7 @@ interface UseNumberFormat {
   trailingZero?: boolean;
 }
 
-export const useNumberFormat = ({
+export const useFormatNumber = ({
   trailingZero = false,
 }: UseNumberFormat = {}) => {
   const formatter = useNumberFormatter({

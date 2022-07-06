@@ -21,19 +21,31 @@ export const Details: VFC = () => {
       editPage={routes.account.tours.one.details.replace(':id', tour._id)}
     >
       <FieldDisplay
-        label={t('account:tours.details.form.distance.label')}
+        label={t('account:tours.details.form.distance.display')}
         value={tour.distance}
+        formatOptions={{
+          style: 'unit',
+          unit: 'kilometer',
+        }}
       />
       <FieldDisplay
-        label={t('account:tours.details.form.duration.label')}
+        label={t('account:tours.details.form.duration.display')}
         value={tour.duration}
+        formatOptions={{
+          style: 'unit',
+          unit: 'hour',
+        }}
       />
       <FieldDisplay
-        label={t('account:tours.details.form.days.label')}
+        label={t('account:tours.details.form.days.display')}
         value={tour.days}
+        formatOptions={{
+          style: 'unit',
+          unit: 'day',
+        }}
       />
       <Meter
-        label={t('account:tours.table.difficulty')}
+        label={t('account:tours.details.form.difficulty.display')}
         min={0}
         max={5}
         value={tour.difficulty}
