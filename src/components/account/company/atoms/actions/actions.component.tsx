@@ -6,8 +6,7 @@ import { routes } from 'config/routes';
 import { Button } from 'ui';
 import { useConfirm } from 'domain/confirm';
 import { useActiveCompany, useDeleteCompany } from 'domain/companies';
-
-import styles from './actions.module.scss';
+import { InfoBlock } from 'components/account/atoms';
 
 export const CompanyActions: FC = () => {
   const { t } = useTranslation();
@@ -22,34 +21,40 @@ export const CompanyActions: FC = () => {
   if (!company) return null;
 
   return (
-    <div className={styles.container}>
-      <Button
-        label={t('account:companies.actions.delete')}
-        variant="ghost"
-        icon="trash"
-        size="sm"
-        attributes={{
-          disabled: isDeleteCompanyLoading,
-          onClick: async () => {
-            const { confirmed } = await confirmation(
-              t('account:companies.texts.confirmDelete', {
-                name: company.name,
-              })
-            );
-
-            if (confirmed) {
-              deleteCompany(
-                { id: company._id },
-                {
-                  onSuccess: () => {
-                    push(routes.account.companies.index);
-                  },
-                }
+    <InfoBlock
+      title={t('account:companies.settings.title')}
+      columns={1}
+      icon="gear"
+    >
+      <div>
+        <Button
+          label={t('account:companies.actions.delete')}
+          variant="ghost"
+          icon="trash"
+          size="sm"
+          attributes={{
+            disabled: isDeleteCompanyLoading,
+            onClick: async () => {
+              const { confirmed } = await confirmation(
+                t('account:companies.texts.confirmDelete', {
+                  name: company.name,
+                })
               );
-            }
-          },
-        }}
-      />
-    </div>
+
+              if (confirmed) {
+                deleteCompany(
+                  { id: company._id },
+                  {
+                    onSuccess: () => {
+                      push(routes.account.companies.index);
+                    },
+                  }
+                );
+              }
+            },
+          }}
+        />
+      </div>
+    </InfoBlock>
   );
 };
