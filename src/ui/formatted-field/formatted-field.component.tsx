@@ -16,5 +16,5 @@ export const FormattedField: VFC<Props> = ({
     ? formatter.format(Number(value))
     : value;
 
-  return <div>{displayValue}</div>;
+  return <>{displayValue}</>;
 };
