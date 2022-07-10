@@ -2,7 +2,7 @@ import { useMemo, VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
-import { Button, Meter, Table, TableProps } from 'ui';
+import { Button, FormattedField, Meter, Table, TableProps } from 'ui';
 import { useDeleteTour, useMyTours } from 'domain/tours';
 import { useConfirm } from 'domain/confirm';
 
@@ -48,7 +48,17 @@ export const ToursTable: VFC = () => {
           />
         ),
         trip: [tour.departure, tour.arrival].join(' - '),
-        price: tour.price,
+        price: tour.price ? (
+          <FormattedField
+            value={tour.price.amount}
+            formatOptions={{
+              style: 'currency',
+              currency: tour.price.currency,
+            }}
+          />
+        ) : (
+          '-'
+        ),
         distance: tour.distance,
         duration: tour.duration,
         days: tour.days,

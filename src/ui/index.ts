@@ -8,6 +8,7 @@ export * from './dropdown-menu';
 export * from './empty-state';
 export * from './field-display';
 export * from './file-input';
+export * from './formatted-field';
 export * from './icon';
 export * from './image-placeholder';
 export * from './loader';

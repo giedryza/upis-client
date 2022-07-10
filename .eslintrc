@@ -44,6 +44,7 @@
       "error",
       { "namedComponents": "arrow-function" }
     ],
+    "react/jsx-no-useless-fragment": ["error", { "allowExpressions": true }],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
