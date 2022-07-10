@@ -25,16 +25,18 @@ export const Toast: VFC<Props> = ({
     >
       <Icon name="bell" className={clsx(styles.icon, styles[`type-${type}`])} />
       <p className={styles.message}>{message}</p>
-      <div className={styles.actions}>
-        <Button
-          icon="close"
-          variant="ghost"
-          size="sm"
-          attributes={{
-            onClick: onClose,
-          }}
-        />
-      </div>
+      {!!onClose && (
+        <div className={styles.actions}>
+          <Button
+            icon="close"
+            variant="ghost"
+            size="sm"
+            attributes={{
+              onClick: onClose,
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 };
