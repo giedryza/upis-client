@@ -2,7 +2,7 @@
 import { useRef, forwardRef } from 'react';
 import { useSlider, useNumberFormatter } from 'react-aria';
 import { useSliderState } from 'react-stately';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 import { isDefined } from 'tools/common';
 

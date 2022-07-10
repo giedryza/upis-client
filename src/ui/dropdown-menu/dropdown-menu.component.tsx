@@ -1,5 +1,5 @@
 import { useRef, useState, VFC, KeyboardEvent } from 'react';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 import { useOnClickOutside } from 'tools/hooks';
 import { Button } from 'ui';

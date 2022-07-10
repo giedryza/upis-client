@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 import { Props } from './container.types';
 import styles from './container.module.scss';

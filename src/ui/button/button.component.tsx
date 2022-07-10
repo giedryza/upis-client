@@ -1,6 +1,6 @@
 import { VFC, useMemo } from 'react';
 import Link from 'next/link';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 import { Icon } from 'ui';
 
