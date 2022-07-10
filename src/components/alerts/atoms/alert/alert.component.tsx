@@ -1,5 +1,5 @@
 import { useState, VFC } from 'react';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 import { useAppDispatch } from 'tools/services/store';
 import { useTimeout } from 'tools/hooks';

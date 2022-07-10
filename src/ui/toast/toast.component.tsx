@@ -1,5 +1,5 @@
 import { VFC } from 'react';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 import { Icon, Button } from 'ui';
 

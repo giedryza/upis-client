@@ -5,7 +5,7 @@ import {
   mergeProps,
   useVisuallyHidden,
 } from 'react-aria';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useObjectRef } from '@react-aria/utils';
 
 import { Props } from './thumb.types';

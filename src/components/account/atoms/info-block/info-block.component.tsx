@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 import { Button, Card, Icon } from 'ui';
 

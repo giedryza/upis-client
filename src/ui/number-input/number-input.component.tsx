@@ -3,7 +3,7 @@ import { forwardRef, useRef } from 'react';
 import { useButton, useLocale, useNumberField } from 'react-aria';
 import { useNumberFieldState } from 'react-stately';
 import { useObjectRef } from '@react-aria/utils';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 import { Props } from './number-input.types';
 import styles from './number-input.module.scss';
