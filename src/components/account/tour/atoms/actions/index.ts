@@ -1,1 +1,1 @@
-export { TourActions } from './actions.component';
+export { Actions } from './actions.component';

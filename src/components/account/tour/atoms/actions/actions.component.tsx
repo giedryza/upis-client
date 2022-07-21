@@ -8,7 +8,7 @@ import { useActiveTour, useDeleteTour } from 'domain/tours';
 import { Button } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 
-export const TourActions: FC = () => {
+export const Actions: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 
