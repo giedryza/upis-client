@@ -152,8 +152,8 @@
     "table": {
       "name": "Name",
       "trip": "Trip",
-      "distance": "Distance, km",
-      "duration": "Duration, h",
+      "distance": "Distance",
+      "duration": "Duration",
       "days": "Days",
       "difficulty": "Difficulty",
       "price": "Price"
@@ -216,6 +216,16 @@
         "difficulty": {
           "label": "Difficulty (1 - easy, 5 - hard)",
           "display": "Difficulty"
+        }
+      }
+    },
+    "prices": {
+      "title": "Prices",
+      "form": {
+        "price": {
+          "label": "Price",
+          "info": "* Per person, per day",
+          "display": "Price (per person, per day)"
         }
       }
     },

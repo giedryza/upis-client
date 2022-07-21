@@ -153,8 +153,8 @@
     "table": {
       "name": "Pavadinimas",
       "trip": "Kelionė",
-      "distance": "Atstumas, km",
-      "duration": "Trukmė, h",
+      "distance": "Atstumas",
+      "duration": "Trukmė",
       "days": "Dienos",
       "difficulty": "Sudėtingumas",
       "price": "Kaina"
@@ -216,6 +216,16 @@
         "difficulty": {
           "label": "Sudėtingumas (1 - lengvas, 5 - sunkus)",
           "display": "Sudėtingumas"
+        }
+      }
+    },
+    "prices": {
+      "title": "Kainos",
+      "form": {
+        "price": {
+          "label": "Kaina",
+          "info": "* Žmogui už parą",
+          "display": "Kaina (žmogui už parą)"
         }
       }
     },

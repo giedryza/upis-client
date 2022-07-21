@@ -36,6 +36,7 @@ export const routes = {
         index: '/account/tours/:id',
         about: '/account/tours/:id/about',
         details: '/account/tours/:id/details',
+        price: '/account/tours/:id/price',
       },
     },
   },
