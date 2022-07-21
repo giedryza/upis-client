@@ -18,7 +18,7 @@ export const Prices: VFC = () => {
       title={t('account:tours.prices.title')}
       icon="price"
       columns={2}
-      editPage={routes.account.tours.one.price.replace(':id', tour._id)}
+      editPage={routes.account.tours.one.prices.replace(':id', tour._id)}
     >
       <FieldDisplay
         label={t('account:tours.prices.form.price.display')}

@@ -2,7 +2,7 @@ import { IncomingMessage } from 'http';
 
 import { endpoints } from 'config/endpoints';
 import { Request, getJsonBody } from 'tools/services/request';
-import { Pagination } from 'types/common';
+import { Pagination, Price } from 'types/common';
 
 import { Tour, ToursFilters } from './tours.types';
 
@@ -31,6 +31,11 @@ interface UpdateTour {
   >;
 }
 
+interface UpdateTourPrice {
+  id: string;
+  form: Price;
+}
+
 interface DeleteTour {
   id: string;
 }
@@ -52,6 +57,10 @@ export const loaders = {
   updateTour: ({ id, form }: UpdateTour) =>
     new Request<Tour>(endpoints.tours.one.index.replace(':id', id), {
       body: getJsonBody(form, [NaN, null, undefined]),
+    }).patch(),
+  updateTourPrice: ({ id, form }: UpdateTourPrice) =>
+    new Request<Tour>(endpoints.tours.one.price.replace(':id', id), {
+      body: getJsonBody(form),
     }).patch(),
   deleteTour: ({ id }: DeleteTour) =>
     new Request(endpoints.tours.one.index.replace(':id', id)).delete(),

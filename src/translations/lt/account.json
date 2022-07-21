@@ -225,7 +225,16 @@
         "price": {
           "label": "Kaina",
           "info": "* Žmogui už parą",
-          "display": "Kaina (žmogui už parą)"
+          "display": "Kaina (žmogui už parą)",
+          "error": {
+            "min": "Įveskite kainą."
+          }
+        },
+        "currency": {
+          "label": "Valiuta",
+          "error": {
+            "empty": "Pasirinkite valiutą."
+          }
         }
       }
     },

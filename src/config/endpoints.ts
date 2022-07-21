@@ -20,6 +20,7 @@ export const endpoints = {
     index: 'tours',
     one: {
       index: 'tours/:id',
+      price: 'tours/:id/price',
     },
   },
   socialLinks: {

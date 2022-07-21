@@ -225,7 +225,16 @@
         "price": {
           "label": "Price",
           "info": "* Per person, per day",
-          "display": "Price (per person, per day)"
+          "display": "Price (per person, per day)",
+          "error": {
+            "min": "Enter tour price."
+          }
+        },
+        "currency": {
+          "label": "Currency",
+          "error": {
+            "empty": "Choose currency."
+          }
         }
       }
     },
