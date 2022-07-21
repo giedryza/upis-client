@@ -50,7 +50,7 @@ export const ToursTable: VFC = () => {
         trip: [tour.departure, tour.arrival].join(' - '),
         price: tour.price ? (
           <FormattedField
-            value={tour.price.amount}
+            value={tour.price.amount / 100}
             formatOptions={{
               style: 'currency',
               currency: tour.price.currency,
@@ -59,9 +59,33 @@ export const ToursTable: VFC = () => {
         ) : (
           '-'
         ),
-        distance: tour.distance,
-        duration: tour.duration,
-        days: tour.days,
+        distance: (
+          <FormattedField
+            value={tour.distance}
+            formatOptions={{
+              style: 'unit',
+              unit: 'kilometer',
+            }}
+          />
+        ),
+        duration: (
+          <FormattedField
+            value={tour.duration}
+            formatOptions={{
+              style: 'unit',
+              unit: 'hour',
+            }}
+          />
+        ),
+        days: (
+          <FormattedField
+            value={tour.days}
+            formatOptions={{
+              style: 'unit',
+              unit: 'day',
+            }}
+          />
+        ),
         difficulty: (
           <Meter
             ariaLabel={t('account:tours.table.difficulty')}

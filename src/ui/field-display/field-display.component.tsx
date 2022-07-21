@@ -10,9 +10,13 @@ export const FieldDisplay: VFC<Props> = ({
   fallback = '-',
   formatOptions,
 }) => {
-  const formatter = useNumberFormatter(formatOptions);
+  const isValidValue = !['', NaN, null, undefined].includes(value);
 
-  const displayValue = ['', NaN, null, undefined].includes(value)
+  const formatter = useNumberFormatter(
+    isValidValue ? formatOptions : undefined
+  );
+
+  const displayValue = !isValidValue
     ? fallback
     : formatOptions
     ? formatter.format(Number(value))

@@ -13,4 +13,5 @@ export * from './tour';
 export * from './tours';
 export * from './tour-edit-about';
 export * from './tour-edit-details';
+export * from './tour-edit-prices';
 export * from './tour-create';
