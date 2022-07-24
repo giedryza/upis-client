@@ -3,11 +3,14 @@
 .checkbox {
   --box-size: 1.2em;
 
-  font-size: 1.4rem;
-  cursor: pointer;
   display: flex;
-  line-height: 1.25;
+
   color: var(--color-text);
+
+  font-size: 1.4rem;
+  line-height: 1.25;
+
+  cursor: pointer;
 
   @include spacing(x, 0.5em);
 
@@ -23,6 +26,7 @@
 
   &.disabled {
     color: var(--color-grey-40);
+
     cursor: not-allowed;
 
     .box {
@@ -62,29 +66,34 @@
   }
 
   .box {
+    position: relative;
+
+    flex-shrink: 0;
     width: var(--box-size);
     height: var(--box-size);
+
     background-color: var(--color-white);
     border: 1px solid var(--color-grey-60);
     border-radius: var(--border-radius-xs);
-    flex-shrink: 0;
-    position: relative;
 
     &::after {
-      content: '';
-      border-width: 0;
-      border-bottom-width: 2px;
-      border-left-width: 2px;
-      border-style: solid;
-      border-color: var(--color-white);
-      display: block;
-      width: calc(var(--box-size) * 0.3);
-      height: calc(var(--box-size) * 0.5);
       position: absolute;
       top: 50%;
       left: 50%;
+
+      display: block;
+      width: calc(var(--box-size) * 0.3);
+      height: calc(var(--box-size) * 0.5);
+
+      border-color: var(--color-white);
+      border-style: solid;
+      border-width: 0;
+      border-bottom-width: 2px;
+      border-left-width: 2px;
       transform: translate(-50%, -70%) rotate(-45deg);
       opacity: 0;
+
+      content: '';
     }
   }
 }
