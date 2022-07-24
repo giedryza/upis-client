@@ -8,6 +8,7 @@ export const CheckboxGroupInput: VFC<Props> = ({
   items,
   value,
   onChange,
+  error,
   disabled,
   readonly,
 }) => {
@@ -16,11 +17,12 @@ export const CheckboxGroupInput: VFC<Props> = ({
       label={label}
       onChange={onChange}
       value={value}
+      error={error}
       disabled={disabled}
       readonly={readonly}
     >
       {items.map((item) => (
-        <Checkbox key={item.value} {...item}>
+        <Checkbox {...item} error={!!error} key={item.value}>
           {item.label}
         </Checkbox>
       ))}

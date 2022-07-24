@@ -11,6 +11,7 @@ export const Group: FC<Props> = ({
   label,
   value,
   onChange,
+  error,
   disabled,
   readonly,
   children,
@@ -21,6 +22,7 @@ export const Group: FC<Props> = ({
     onChange,
     isDisabled: disabled,
     isReadOnly: readonly,
+    'aria-errormessage': 'checkbox-group-error',
   };
 
   const state = useCheckboxGroupState(props);
@@ -37,6 +39,8 @@ export const Group: FC<Props> = ({
       <CheckboxContextProvider value={state}>
         <div className={styles.group}>{children}</div>
       </CheckboxContextProvider>
+
+      {!!error && <small id="checkbox-group-error">{error}</small>}
     </div>
   );
 };

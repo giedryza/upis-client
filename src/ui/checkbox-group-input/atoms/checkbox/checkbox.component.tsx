@@ -16,6 +16,7 @@ import styles from './checkbox.module.scss';
 export const Checkbox: FC<Props> = ({
   children,
   value,
+  error,
   disabled,
   readonly,
 }) => {
@@ -29,6 +30,7 @@ export const Checkbox: FC<Props> = ({
       name: value,
       isDisabled: disabled,
       isReadOnly: readonly,
+      validationState: error ? 'invalid' : 'valid',
     },
     state,
     ref
