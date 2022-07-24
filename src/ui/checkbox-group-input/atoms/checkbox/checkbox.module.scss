@@ -36,6 +36,8 @@
   }
 
   &.readonly {
+    cursor: initial;
+
     .box {
       border-style: dashed;
     }

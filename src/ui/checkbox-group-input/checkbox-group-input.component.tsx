@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 
 import { Props } from './checkbox-group-input.types';
-import { Checkbox, CheckboxGroup } from './atoms';
+import { Checkbox, Group } from './atoms';
 
 export const CheckboxGroupInput: VFC<Props> = ({
   label,
@@ -12,7 +12,7 @@ export const CheckboxGroupInput: VFC<Props> = ({
   readonly,
 }) => {
   return (
-    <CheckboxGroup
+    <Group
       label={label}
       onChange={onChange}
       value={value}
@@ -24,6 +24,6 @@ export const CheckboxGroupInput: VFC<Props> = ({
           {item.label}
         </Checkbox>
       ))}
-    </CheckboxGroup>
+    </Group>
   );
 };

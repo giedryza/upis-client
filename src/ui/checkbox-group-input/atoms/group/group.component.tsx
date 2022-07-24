@@ -4,10 +4,10 @@ import { useCheckboxGroupState } from 'react-stately';
 
 import { CheckboxContextProvider } from '../../checkbox-group-input.context';
 
-import { Props } from './checkbox-group.types';
-import styles from './checkbox-group.module.scss';
+import { Props } from './group.types';
+import styles from './group.module.scss';
 
-export const CheckboxGroup: FC<Props> = ({
+export const Group: FC<Props> = ({
   label,
   value,
   onChange,
