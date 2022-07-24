@@ -33,6 +33,12 @@
     "plugin/declaration-block-no-ignored-properties": true,
     "order/order": null,
     "order/properties-alphabetical-order": null,
+    "order/properties-order": [
+      [],
+      {
+        "severity": "error"
+      }
+    ],
     "selector-class-pattern": null,
     "no-descending-specificity": null,
     "max-nesting-depth": [4, { "ignore": ["pseudo-classes"] }],

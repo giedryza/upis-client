@@ -88,8 +88,19 @@
     "import/order": [
       "error",
       {
-        "groups": [["builtin", "external"], "internal", "sibling"],
+        "groups": [["builtin", "external"], "internal", "parent", "sibling"],
         "newlines-between": "always"
+      }
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "react",
+            "importNames": ["default"]
+          }
+        ]
       }
     ],
     "padding-line-between-statements": [
