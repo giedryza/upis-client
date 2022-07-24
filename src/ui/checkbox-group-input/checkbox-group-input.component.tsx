@@ -1,4 +1,4 @@
-import React, { VFC } from 'react';
+import { VFC } from 'react';
 
 import { Props } from './checkbox-group-input.types';
 import { Checkbox, CheckboxGroup } from './atoms';

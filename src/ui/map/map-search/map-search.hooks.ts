@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 
+import { Point } from '..';
+
 import {
   MapSearchEvent,
   MapSearchResultDragEvent,
   SearchControlOptions,
 } from './map-search.types';
-
-import { Point } from '..';
 
 export const useInitControl = (map: L.Map) => {
   const { t } = useTranslation();

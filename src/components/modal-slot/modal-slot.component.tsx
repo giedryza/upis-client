@@ -1,4 +1,4 @@
-import React, { VFC } from 'react';
+import { VFC } from 'react';
 
 import { useAppDispatch, useAppSelector } from 'tools/services/store';
 import { Modal } from 'ui';
