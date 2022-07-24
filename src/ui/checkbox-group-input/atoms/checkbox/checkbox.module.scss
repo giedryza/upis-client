@@ -7,12 +7,47 @@
   cursor: pointer;
   display: flex;
   line-height: 1.25;
+  color: var(--color-text);
 
   @include spacing(x, 0.5em);
 
   &.selected {
     > .box {
       background-color: var(--color-grey-05);
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.disabled {
+    color: var(--color-grey-40);
+    cursor: not-allowed;
+
+    .box {
+      background-color: var(--color-grey-95);
+      border-color: var(--color-grey-75);
+
+      &::after {
+        border-color: var(--color-grey-75);
+      }
+    }
+  }
+
+  &.readonly {
+    .box {
+      border-style: dashed;
+    }
+
+    &.selected {
+      .box {
+        background-color: var(--color-white);
+
+        &::after {
+          border-color: var(--color-grey-60);
+        }
+      }
     }
   }
 
@@ -35,8 +70,11 @@
 
     &::after {
       content: '';
-      border-bottom: 2px solid var(--color-white);
-      border-left: 2px solid var(--color-white);
+      border-width: 0;
+      border-bottom-width: 2px;
+      border-left-width: 2px;
+      border-style: solid;
+      border-color: var(--color-white);
       display: block;
       width: calc(var(--box-size) * 0.3);
       height: calc(var(--box-size) * 0.5);
@@ -44,6 +82,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -70%) rotate(-45deg);
+      opacity: 0;
     }
   }
 }

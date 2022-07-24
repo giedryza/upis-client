@@ -10,8 +10,8 @@ export default {
     items: [
       { label: 'Aukštaitija', value: 'aukstaitija' },
       { label: 'Žemaitija', value: 'zemaitija' },
-      { label: 'Suvalkija', value: 'suvalkija' },
-      { label: 'Dzūkiją', value: 'dzukija' },
+      { label: 'Suvalkija', value: 'suvalkija', disabled: true },
+      { label: 'Dzūkiją', value: 'dzukija', readonly: true },
       { label: 'Mažoji Lietuva', value: 'mazoji-lietuva' },
     ],
   },

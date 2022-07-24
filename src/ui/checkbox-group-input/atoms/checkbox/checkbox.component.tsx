@@ -41,8 +41,8 @@ export const Checkbox: FC<Props> = ({
       className={clsx(styles.checkbox, {
         [`${styles.selected}`]: state.isSelected(value),
         [`${styles.focus}`]: isFocusVisible,
-        '-disabled': state.isDisabled || disabled,
-        '-readonly': state.isReadOnly || readonly,
+        [`${styles.disabled}`]: state.isDisabled || disabled,
+        [`${styles.readonly}`]: state.isReadOnly || readonly,
       })}
     >
       <input
