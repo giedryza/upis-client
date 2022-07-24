@@ -10,7 +10,6 @@
     "stylelint-high-performance-animation",
     "stylelint-declaration-block-no-ignored-properties"
   ],
-  "defaultSeverity": "error",
   "rules": {
     "plugin/no-unsupported-browser-features": [
       true,
@@ -34,6 +33,12 @@
     "plugin/declaration-block-no-ignored-properties": true,
     "order/order": null,
     "order/properties-alphabetical-order": null,
+    "order/properties-order": [
+      [],
+      {
+        "severity": "error"
+      }
+    ],
     "selector-class-pattern": null,
     "no-descending-specificity": null,
     "max-nesting-depth": [4, { "ignore": ["pseudo-classes"] }],
