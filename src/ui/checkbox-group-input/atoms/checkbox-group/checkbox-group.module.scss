@@ -1,0 +1,20 @@
+@use 'src/styles/mixins' as *;
+
+.group {
+  font-size: 1.6rem;
+  line-height: 1.9;
+
+  @include spacing(y, 0.35em);
+
+  .label {
+    display: inline-block;
+
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 0.8em;
+  }
+
+  .group {
+    @include spacing(y, 0.5em);
+  }
+}

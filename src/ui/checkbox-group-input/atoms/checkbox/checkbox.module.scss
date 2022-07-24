@@ -1,0 +1,49 @@
+@use 'src/styles/mixins' as *;
+
+.checkbox {
+  --box-size: 1.2em;
+
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  line-height: 1.25;
+
+  @include spacing(x, 0.5em);
+
+  &.selected {
+    > .box {
+      background-color: var(--color-grey-05);
+    }
+  }
+
+  &.focus {
+    .box {
+      border-color: var(--color-primary-60);
+      outline: 2px solid transparent;
+      box-shadow: var(--outline-input);
+    }
+  }
+
+  .box {
+    width: var(--box-size);
+    height: var(--box-size);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-60);
+    border-radius: var(--border-radius-xs);
+    flex-shrink: 0;
+    position: relative;
+
+    &::after {
+      content: '';
+      border-bottom: 2px solid var(--color-white);
+      border-left: 2px solid var(--color-white);
+      display: block;
+      width: calc(var(--box-size) * 0.3);
+      height: calc(var(--box-size) * 0.5);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -70%) rotate(-45deg);
+    }
+  }
+}
