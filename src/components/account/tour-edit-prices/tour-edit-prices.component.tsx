@@ -55,7 +55,7 @@ export const TourEditPrices: VFC = () => {
       },
       {
         onSuccess: () => {
-          push(routes.account.tours.one.index.replace(':id', tour?._id ?? ''));
+          push(routes.account.tours.one.index.replace(':id', tourId));
         },
       }
     );

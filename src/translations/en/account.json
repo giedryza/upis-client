@@ -238,6 +238,26 @@
         }
       }
     },
+    "geography": {
+      "title": "Geography",
+      "form": {
+        "regions": {
+          "label": "Regions",
+          "display": "Regions",
+          "values": {
+            "aukstaitija": "Aukštaitija",
+            "dzukija": "Dzūkija",
+            "mazoji-lietuva": "Mažoji Lietuva",
+            "suvalkija": "Suvalkija",
+            "zemaitija": "Žemaitija"
+          }
+        },
+        "rivers": {
+          "label": "Rivers",
+          "display": "Rivers"
+        }
+      }
+    },
     "settings": {
       "title": "Settings"
     },

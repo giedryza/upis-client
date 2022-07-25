@@ -31,6 +31,8 @@ export const difficulty = [1, 2, 3, 4, 5] as const;
 
 export type Region = typeof regions[number];
 
+export type River = string;
+
 export type AmenityVariant = typeof amenityVariants[number];
 
 export type Boat = typeof boats[number];
