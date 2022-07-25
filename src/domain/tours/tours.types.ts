@@ -9,6 +9,26 @@ export const regions = [
   'zemaitija',
 ] as const;
 
+export const rivers = [
+  'bartuva',
+  'dauguva',
+  'dubysa',
+  'jura',
+  'lielupe',
+  'merkys',
+  'musa',
+  'minija',
+  'nemunas',
+  'nemunelis',
+  'neris',
+  'nevezis',
+  'pajuris',
+  'sesupe',
+  'sventoji',
+  'venta',
+  'zeimena',
+] as const;
+
 export const amenityVariants = [
   'transport',
   'child-seat',
@@ -30,6 +50,8 @@ export const units = ['tour', 'day', 'h', 'km'] as const;
 export const difficulty = [1, 2, 3, 4, 5] as const;
 
 export type Region = typeof regions[number];
+
+export type River = typeof rivers[number];
 
 export type AmenityVariant = typeof amenityVariants[number];
 
@@ -57,7 +79,7 @@ export interface Tour {
   distance: number | null;
   duration: number | null;
   days: number;
-  rivers: string[];
+  rivers: River[];
   regions: Region[];
   difficulty: number;
   price: Price | null;

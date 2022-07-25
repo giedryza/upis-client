@@ -4,7 +4,7 @@ import { endpoints } from 'config/endpoints';
 import { Request, getJsonBody } from 'tools/services/request';
 import { Pagination, Price } from 'types/common';
 
-import { Tour, ToursFilters } from './tours.types';
+import { Region, River, Tour, ToursFilters } from './tours.types';
 
 interface GetTours {
   req?: IncomingMessage;
@@ -36,6 +36,14 @@ interface UpdateTourPrice {
   form: Price;
 }
 
+interface UpdateTourGeography {
+  id: string;
+  form: {
+    regions: Region[];
+    rivers: River[];
+  };
+}
+
 interface DeleteTour {
   id: string;
 }
@@ -60,6 +68,10 @@ export const loaders = {
     }).patch(),
   updateTourPrice: ({ id, form }: UpdateTourPrice) =>
     new Request<Tour>(endpoints.tours.one.price.replace(':id', id), {
+      body: getJsonBody(form),
+    }).patch(),
+  updateTourGeography: ({ id, form }: UpdateTourGeography) =>
+    new Request<Tour>(endpoints.tours.one.geography.replace(':id', id), {
       body: getJsonBody(form),
     }).patch(),
   deleteTour: ({ id }: DeleteTour) =>

@@ -8,6 +8,7 @@ export const baseIcons = [
   'exit',
   'file',
   'gear',
+  'globe',
   'info',
   'kayak',
   'lock',

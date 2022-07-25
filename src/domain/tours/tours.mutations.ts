@@ -13,8 +13,8 @@ export const useUpdateTour = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(loaders.updateTour, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(toursKeys.details);
+    onSuccess: (_data, { id }) => {
+      queryClient.invalidateQueries(toursKeys.detail(id));
     },
   });
 
@@ -25,8 +25,20 @@ export const useUpdateTourPrice = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(loaders.updateTourPrice, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(toursKeys.details);
+    onSuccess: (_data, { id }) => {
+      queryClient.invalidateQueries(toursKeys.detail(id));
+    },
+  });
+
+  return mutation;
+};
+
+export const useUpdateTourGeography = () => {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation(loaders.updateTourGeography, {
+    onSuccess: (_data, { id }) => {
+      queryClient.invalidateQueries(toursKeys.detail(id));
     },
   });
 
