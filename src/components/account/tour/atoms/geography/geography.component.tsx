@@ -30,7 +30,11 @@ export const Geography: VFC = () => {
       />
       <FieldDisplay
         label={t('account:tours.geography.form.rivers.display')}
-        value={tour.rivers.join(', ')}
+        value={tour.rivers
+          .map((river) =>
+            t(`account:tours.geography.form.rivers.values.${river}`)
+          )
+          .join(', ')}
       />
     </InfoBlock>
   );

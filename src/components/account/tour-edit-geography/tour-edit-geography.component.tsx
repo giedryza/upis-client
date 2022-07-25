@@ -6,7 +6,12 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Container, CheckboxGroupInput } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
-import { regions, useActiveTour, useUpdateTourGeography } from 'domain/tours';
+import {
+  regions,
+  rivers,
+  useActiveTour,
+  useUpdateTourGeography,
+} from 'domain/tours';
 
 import { Values } from './tour-edit-geography.types';
 import { INITIAL_VALUES } from './tour-edit-geography.constants';
@@ -79,6 +84,28 @@ export const TourEditGeography: VFC = () => {
                   value={value}
                   onChange={onChange}
                   error={errors.regions?.message}
+                  ref={ref}
+                />
+              )}
+            />
+
+            <Controller
+              control={control}
+              name="rivers"
+              render={({ field: { onChange, value, ref } }) => (
+                <CheckboxGroupInput
+                  label={t('account:tours.geography.form.rivers.label')}
+                  items={
+                    rivers.map((river) => ({
+                      label: t(
+                        `account:tours.geography.form.rivers.values.${river}`
+                      ),
+                      value: river,
+                    })) ?? []
+                  }
+                  value={value}
+                  onChange={onChange}
+                  error={errors.rivers?.message}
                   ref={ref}
                 />
               )}
