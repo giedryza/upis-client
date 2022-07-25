@@ -45,7 +45,7 @@ export const TourEditAbout: VFC = () => {
       { id: tourId, form: { name, description, website } },
       {
         onSuccess: () => {
-          push(routes.account.tours.one.index.replace(':id', tour?._id ?? ''));
+          push(routes.account.tours.one.index.replace(':id', tourId));
         },
       }
     );
