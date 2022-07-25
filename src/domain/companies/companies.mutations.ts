@@ -8,7 +8,7 @@ export const useUpdateCompany = () => {
 
   const mutation = useMutation(loaders.updateCompany, {
     onSuccess: () => {
-      queryClient.invalidateQueries(companiesKeys.details());
+      queryClient.invalidateQueries(companiesKeys.details);
     },
   });
 
@@ -20,7 +20,7 @@ export const useCreateCompany = () => {
 
   const mutation = useMutation(loaders.createCompany, {
     onSuccess: () => {
-      queryClient.invalidateQueries(companiesKeys.details());
+      queryClient.invalidateQueries(companiesKeys.details);
     },
   });
 
@@ -32,7 +32,7 @@ export const useUpdateLocation = () => {
 
   const mutation = useMutation(loaders.updateLocation, {
     onSuccess: () => {
-      queryClient.invalidateQueries(companiesKeys.details());
+      queryClient.invalidateQueries(companiesKeys.details);
     },
   });
 
@@ -44,7 +44,7 @@ export const useUploadLogo = () => {
 
   const mutation = useMutation(loaders.uploadLogo, {
     onSuccess: () => {
-      queryClient.invalidateQueries(companiesKeys.details());
+      queryClient.invalidateQueries(companiesKeys.details);
     },
   });
 
@@ -56,7 +56,7 @@ export const useDeleteCompany = () => {
 
   const mutation = useMutation(loaders.deleteCompany, {
     onSuccess: () => {
-      queryClient.invalidateQueries(companiesKeys.lists());
+      queryClient.invalidateQueries(companiesKeys.lists);
     },
   });
 

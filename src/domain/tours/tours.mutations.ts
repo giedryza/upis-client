@@ -14,7 +14,7 @@ export const useUpdateTour = () => {
 
   const mutation = useMutation(loaders.updateTour, {
     onSuccess: () => {
-      queryClient.invalidateQueries(toursKeys.details());
+      queryClient.invalidateQueries(toursKeys.details);
     },
   });
 
@@ -26,7 +26,7 @@ export const useUpdateTourPrice = () => {
 
   const mutation = useMutation(loaders.updateTourPrice, {
     onSuccess: () => {
-      queryClient.invalidateQueries(toursKeys.details());
+      queryClient.invalidateQueries(toursKeys.details);
     },
   });
 
@@ -38,7 +38,7 @@ export const useDeleteTour = () => {
 
   const mutation = useMutation(loaders.deleteTour, {
     onSuccess: () => {
-      queryClient.invalidateQueries(toursKeys.lists());
+      queryClient.invalidateQueries(toursKeys.lists);
     },
   });
 

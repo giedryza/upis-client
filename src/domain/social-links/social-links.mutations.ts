@@ -8,7 +8,7 @@ export const useAddSocialLink = () => {
 
   const mutation = useMutation(loaders.addSocialLink, {
     onSuccess: () => {
-      queryClient.invalidateQueries(socialLinksKeys.lists());
+      queryClient.invalidateQueries(socialLinksKeys.lists);
     },
   });
 
@@ -20,7 +20,7 @@ export const useUpdateSocialLink = () => {
 
   const mutation = useMutation(loaders.updateSocialLink, {
     onSuccess: () => {
-      queryClient.invalidateQueries(socialLinksKeys.lists());
+      queryClient.invalidateQueries(socialLinksKeys.lists);
     },
   });
 
@@ -32,7 +32,7 @@ export const useDeleteSocialLink = () => {
 
   const mutation = useMutation(loaders.deleteSocialLink, {
     onSuccess: () => {
-      queryClient.invalidateQueries(socialLinksKeys.lists());
+      queryClient.invalidateQueries(socialLinksKeys.lists);
     },
   });
 
