@@ -254,26 +254,7 @@
         },
         "rivers": {
           "label": "Upės",
-          "display": "Upės",
-          "values": {
-            "bartuva": "Bartuva",
-            "dauguva": "Dauguva",
-            "dubysa": "Dubysa",
-            "jura": "Jūra",
-            "lielupe": "Lielupė",
-            "merkys": "Merkys",
-            "musa": "Mūša",
-            "minija": "Minija",
-            "nemunas": "Nemunas",
-            "nemunelis": "Nemunėlis",
-            "neris": "Neris",
-            "nevezis": "Nevėžis",
-            "pajuris": "Pajūris",
-            "sesupe": "Šešupė",
-            "sventoji": "Šventoji",
-            "venta": "Venta",
-            "zeimena": "Žeimena"
-          }
+          "display": "Upės"
         }
       }
     },
