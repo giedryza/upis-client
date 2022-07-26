@@ -97,9 +97,7 @@ export const TourEditGeography: VFC = () => {
                   label={t('account:tours.geography.form.rivers.label')}
                   items={
                     rivers.map((river) => ({
-                      label: t(
-                        `account:tours.geography.form.rivers.values.${river}`
-                      ),
+                      label: t(`rivers:${river}`),
                       value: river,
                     })) ?? []
                   }
