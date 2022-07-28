@@ -18,7 +18,7 @@ export default {
       { label: 'Gareth Ronald', value: '8' },
       { label: 'Fyodor Dostoevsky', value: '9' },
     ],
-    value: [],
+    value: ['2', '4'],
   },
   argTypes: {
     onChange: { action: 'onChange' },

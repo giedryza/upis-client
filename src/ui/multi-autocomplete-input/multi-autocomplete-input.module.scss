@@ -26,10 +26,24 @@
 
     transition: var(--transition-duration-md) box-shadow;
 
+    &:hover {
+      border-color: var(--color-grey-40);
+
+      &.invalid {
+        border-color: var(--color-danger-40);
+      }
+    }
+
+    &.invalid {
+      background-color: var(--color-danger-95);
+      border-color: var(--color-danger-60);
+    }
+
     input {
       padding: 0.15em;
       font-size: 1em;
       width: 100%;
+      background-color: transparent;
 
       &:focus {
         outline: 0;
@@ -40,6 +54,11 @@
       border-color: var(--color-primary-60);
       outline: 2px solid transparent;
       box-shadow: var(--outline-input);
+
+      &.invalid {
+        border-color: var(--color-danger-60);
+        box-shadow: var(--outline-input-error);
+      }
     }
   }
 
@@ -149,5 +168,13 @@
     &.selected {
       font-weight: 600;
     }
+  }
+
+  .error {
+    display: block;
+
+    color: var(--color-danger-60);
+    font-weight: 400;
+    font-size: 0.7em;
   }
 }

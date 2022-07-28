@@ -109,8 +109,7 @@ export const TourEditGeography: VFC = () => {
                   }
                   value={value}
                   onChange={onChange}
-                  // TODO
-                  // error={errors.rivers?.message}
+                  error={errors.rivers?.message}
                   ref={ref}
                 />
               )}
