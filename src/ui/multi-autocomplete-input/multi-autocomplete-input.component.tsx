@@ -10,6 +10,11 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
   ({ name, label, items, value, onChange }, forwardedRef) => {
     const [query, setQuery] = useState('');
 
+    const initialItems = useMemo(
+      () => items.filter((item) => value.includes(item.value)),
+      [items, value]
+    );
+
     const {
       getSelectedItemProps,
       getDropdownProps,
@@ -17,9 +22,9 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
       removeSelectedItem,
       selectedItems,
     } = useMultipleSelection<Item>({
-      initialSelectedItems: items.filter((item) => value.includes(item.value)),
+      selectedItems: initialItems,
       onSelectedItemsChange: (changes) => {
-        onChange(changes.selectedItems ?? []);
+        onChange(changes.selectedItems?.map((item) => item.value) ?? []);
       },
     });
 

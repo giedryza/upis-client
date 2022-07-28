@@ -89,6 +89,7 @@
     border-radius: 50%;
     color: currentColor;
     background-color: transparent;
+    cursor: pointer;
 
     transition-duration: var(--transition-duration-md);
     transition-property: color, background-color;
@@ -118,6 +119,7 @@
     top: 100%;
     left: 0;
     z-index: 5;
+    font-size: 0.9em;
 
     background-color: var(--color-white);
     border-radius: var(--border-radius-sm);

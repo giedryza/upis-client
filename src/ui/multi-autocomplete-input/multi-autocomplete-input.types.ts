@@ -8,5 +8,5 @@ export interface Props {
   label: string;
   items: Item[];
   value: Item['value'][];
-  onChange: (item: Item[]) => void;
+  onChange: (value: Item['value'][]) => void;
 }

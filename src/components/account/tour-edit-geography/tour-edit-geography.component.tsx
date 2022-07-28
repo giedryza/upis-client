@@ -3,7 +3,12 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, Container, CheckboxGroupInput } from 'ui';
+import {
+  Button,
+  Container,
+  CheckboxGroupInput,
+  MultiAutocompleteInput,
+} from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import {
@@ -92,8 +97,9 @@ export const TourEditGeography: VFC = () => {
             <Controller
               control={control}
               name="rivers"
-              render={({ field: { onChange, value, ref } }) => (
-                <CheckboxGroupInput
+              render={({ field: { name, onChange, value, ref } }) => (
+                <MultiAutocompleteInput
+                  name={name}
                   label={t('account:tours.geography.form.rivers.label')}
                   items={
                     rivers.map((river) => ({
@@ -103,7 +109,8 @@ export const TourEditGeography: VFC = () => {
                   }
                   value={value}
                   onChange={onChange}
-                  error={errors.rivers?.message}
+                  // TODO
+                  // error={errors.rivers?.message}
                   ref={ref}
                 />
               )}
