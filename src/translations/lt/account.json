@@ -254,7 +254,8 @@
         },
         "rivers": {
           "label": "Upės",
-          "display": "Upės"
+          "display": "Upės",
+          "placeholder": "Ieškoti upių"
         }
       }
     },
