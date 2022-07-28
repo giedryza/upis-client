@@ -7,7 +7,10 @@ import { Props, Item } from './multi-autocomplete-input.types';
 import styles from './multi-autocomplete-input.module.scss';
 
 export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
-  ({ name, label, items, value, onChange, error }, forwardedRef) => {
+  (
+    { name, label, items, value, onChange, placeholder, error },
+    forwardedRef
+  ) => {
     const [query, setQuery] = useState('');
 
     const initialItems = useMemo(
@@ -115,6 +118,7 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
               <input
                 {...getInputProps(
                   getDropdownProps({
+                    placeholder,
                     preventKeyAction: isOpen,
                     'aria-invalid': !!error,
                     ref: forwardedRef,

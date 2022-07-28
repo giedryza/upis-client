@@ -48,6 +48,11 @@
       &:focus {
         outline: 0;
       }
+
+      &::placeholder {
+        color: var(--color-grey-60);
+        font-weight: 400;
+      }
     }
 
     &:focus-within {

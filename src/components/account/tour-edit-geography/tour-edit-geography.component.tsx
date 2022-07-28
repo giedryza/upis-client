@@ -101,6 +101,9 @@ export const TourEditGeography: VFC = () => {
                 <MultiAutocompleteInput
                   name={name}
                   label={t('account:tours.geography.form.rivers.label')}
+                  placeholder={t(
+                    'account:tours.geography.form.rivers.placeholder'
+                  )}
                   items={
                     rivers.map((river) => ({
                       label: t(`rivers:${river}`),

@@ -9,5 +9,6 @@ export interface Props {
   items: Item[];
   value: Item['value'][];
   onChange: (value: Item['value'][]) => void;
+  placeholder?: string;
   error?: string;
 }

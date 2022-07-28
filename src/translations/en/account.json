@@ -254,7 +254,8 @@
         },
         "rivers": {
           "label": "Rivers",
-          "display": "Rivers"
+          "display": "Rivers",
+          "placeholder": "Search rivers"
         }
       }
     },
