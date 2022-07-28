@@ -4,8 +4,9 @@ export interface Item {
 }
 
 export interface Props {
+  name: string;
   label: string;
   items: Item[];
-  value: Item[];
+  value: Item['value'][];
   onChange: (item: Item[]) => void;
 }
