@@ -36,7 +36,7 @@
     "leaflet-geosearch": "^3.6.0",
     "nanoid": "^4.0.0",
     "next": "^12.2.0",
-    "next-auth": "^4.9.0",
+    "next-auth": "^4.10.2",
     "next-translate": "^1.4.0",
     "query-string": "^7.1.1",
     "react": "^17.0.2",
