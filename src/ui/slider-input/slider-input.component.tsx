@@ -33,7 +33,9 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
     const sliderProps: Parameters<typeof useSliderState>[0] = {
       label,
       value: isDefined(value) ? [Number.isNaN(value) ? min : value] : undefined,
-      onChange: isDefined(onChange) ? ([v]) => onChange(v ?? 0) : undefined,
+      onChange: isDefined(onChange)
+        ? (v) => onChange((Array.isArray(v) ? v[0] : v) ?? 0)
+        : undefined,
       isDisabled: disabled,
       minValue: min,
       maxValue: max,
