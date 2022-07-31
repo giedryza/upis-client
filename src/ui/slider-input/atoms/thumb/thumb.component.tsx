@@ -21,7 +21,10 @@ export const Thumb: FC<Props> = ({
   const { visuallyHiddenProps } = useVisuallyHidden();
   const inputRef = useObjectRef(forwardedRef);
 
-  const { thumbProps, inputProps } = useSliderThumb(
+  const {
+    thumbProps: { style, ...thumbPropsWithoutStyle },
+    inputProps,
+  } = useSliderThumb(
     {
       index,
       trackRef,
@@ -34,7 +37,7 @@ export const Thumb: FC<Props> = ({
 
   return (
     <div
-      {...thumbProps}
+      {...thumbPropsWithoutStyle}
       className={clsx(
         styles.thumb,
         isFocusVisible && styles['-focus'],

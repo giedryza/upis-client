@@ -16,9 +16,7 @@ export const Breadcrumbs: VFC<Props> = ({ items, heading }) => {
     />
   ));
 
-  const { navProps } = useBreadcrumbs({
-    children: breadcrumbItems,
-  });
+  const { navProps } = useBreadcrumbs({});
 
   return (
     <nav {...navProps} className={styles.breadcrumbs}>
