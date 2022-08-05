@@ -236,7 +236,12 @@ export const amenityVariants = [
   'pet-friendly',
 ] as const;
 
-export const boats = ['single-kayak', 'double-kayak', 'triple-kayak'] as const;
+export const boats = [
+  'single-kayak',
+  'double-kayak',
+  'triple-kayak',
+  'raft',
+] as const;
 
 export const units = ['tour', 'day', 'h', 'km'] as const;
 
