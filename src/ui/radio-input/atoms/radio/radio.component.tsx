@@ -3,30 +3,27 @@ import { forwardRef } from 'react';
 import { clsx } from 'clsx';
 import {
   mergeProps,
-  useCheckboxGroupItem,
   useFocusRing,
+  useRadio,
   useVisuallyHidden,
 } from 'react-aria';
 import { useObjectRef } from '@react-aria/utils';
 
-import { useCheckboxContext } from '../../checkbox-group-input.context';
+import { useRadioContext } from '../../radio-input.context';
 
-import { Props } from './checkbox.types';
-import styles from './checkbox.module.scss';
+import { Props } from './radio.types';
+import styles from './radio.module.scss';
 
-export const Checkbox = forwardRef<HTMLInputElement, Props>(
-  ({ label, value, error, disabled, readonly }, forwardedRef) => {
+export const Radio = forwardRef<HTMLInputElement, Props>(
+  ({ label, value, disabled }, forwardedRef) => {
     const ref = useObjectRef(forwardedRef);
-    const state = useCheckboxContext();
+    const state = useRadioContext();
 
-    const { inputProps } = useCheckboxGroupItem(
+    const { inputProps } = useRadio(
       {
         children: label,
         value,
-        name: value,
         isDisabled: disabled,
-        isReadOnly: readonly,
-        validationState: error ? 'invalid' : 'valid',
       },
       state,
       ref
@@ -36,11 +33,11 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(
 
     return (
       <label
-        className={clsx(styles.checkbox, {
-          [`${styles.selected}`]: state.isSelected(value),
+        className={clsx(styles.radio, {
+          [`${styles.selected}`]: state.selectedValue === value,
           [`${styles.focus}`]: isFocusVisible,
           [`${styles.disabled}`]: state.isDisabled || disabled,
-          [`${styles.readonly}`]: state.isReadOnly || readonly,
+          [`${styles.readonly}`]: state.isReadOnly,
         })}
       >
         <input
@@ -55,4 +52,4 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(
   }
 );
 
-Checkbox.displayName = 'Checkbox';
+Radio.displayName = 'Radio';
