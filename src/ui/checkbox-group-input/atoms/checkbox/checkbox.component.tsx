@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { forwardRef } from 'react';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import {
   mergeProps,
   useCheckboxGroupItem,
@@ -15,13 +15,13 @@ import { Props } from './checkbox.types';
 import styles from './checkbox.module.scss';
 
 export const Checkbox = forwardRef<HTMLInputElement, Props>(
-  ({ children, value, error, disabled, readonly }, forwardedRef) => {
+  ({ label, value, error, disabled, readonly }, forwardedRef) => {
     const ref = useObjectRef(forwardedRef);
     const state = useCheckboxContext();
 
     const { inputProps } = useCheckboxGroupItem(
       {
-        children,
+        children: label,
         value,
         name: value,
         isDisabled: disabled,
@@ -49,7 +49,7 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(
 
         <div className={styles.box} />
 
-        <span className={styles.label}>{children}</span>
+        <span className={styles.label}>{label}</span>
       </label>
     );
   }

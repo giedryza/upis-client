@@ -23,9 +23,7 @@ export const CheckboxGroupInput = forwardRef<HTMLInputElement, Props>(
             error={!!error}
             ref={forwardedRef}
             key={item.value}
-          >
-            {item.label}
-          </Checkbox>
+          />
         ))}
       </Group>
     );
