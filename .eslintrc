@@ -45,6 +45,10 @@
       { "namedComponents": "arrow-function" }
     ],
     "react/jsx-no-useless-fragment": ["error", { "allowExpressions": true }],
+    "react/jsx-curly-brace-presence": [
+      "error",
+      { "props": "never", "children": "never" }
+    ],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
