@@ -18,8 +18,8 @@
     height: 2.5em;
     padding: 0.5em;
 
-    border-radius: 50%;
     background-color: var(--color-grey-95);
+    border-radius: 50%;
 
     fill: var(--color-grey-05);
   }
@@ -39,9 +39,9 @@
   }
 
   .subtitle {
+    color: var(--color-grey-50);
     font-weight: 500;
     font-size: 0.9em;
-    color: var(--color-grey-50);
   }
 
   .fields {
