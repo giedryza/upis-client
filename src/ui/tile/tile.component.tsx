@@ -24,22 +24,24 @@ export const Tile: VFC<Props> = ({
         </div>
 
         {!!fields.length && (
-          <div className={styles.fields}>
+          <ul className={styles.fields}>
             {fields.map((field, i) => (
-              <div className={styles.field} key={i}>
+              <li className={styles.field} key={i}>
                 <div className={styles.label}>{field.label}</div>
                 <div className={styles.sublabel}>{field.sublabel}</div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
 
         {!!actions.length && (
-          <div className={styles.actions}>
+          <ul className={styles.actions}>
             {actions.map((action, i) => (
-              <Button {...action} size="xs" key={i} />
+              <li key={i}>
+                <Button {...action} size="xs" />
+              </li>
             ))}
-          </div>
+          </ul>
         )}
       </div>
     </div>
