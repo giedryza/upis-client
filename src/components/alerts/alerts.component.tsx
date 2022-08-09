@@ -13,16 +13,13 @@ export const Alerts: VFC = () => {
   return (
     <Portal id="alerts">
       {!!alerts.length && (
-        <div className={styles.container}>
+        <ul className={styles.container}>
           {alerts.map((alert) => (
-            <Alert
-              id={alert.id}
-              type={alert.type}
-              message={alert.message}
-              key={alert.id}
-            />
+            <li key={alert.id}>
+              <Alert id={alert.id} type={alert.type} message={alert.message} />
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </Portal>
   );

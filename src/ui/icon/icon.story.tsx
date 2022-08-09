@@ -10,9 +10,9 @@ export default {
 
 const Template: ComponentStory<typeof Icon> = (args) => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: 50 }}>
-    <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+    <ul style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
       {baseIcons.map((name) => (
-        <div key={name}>
+        <li key={name}>
           <div
             style={{
               backgroundColor: '#f1f2f4',
@@ -34,12 +34,12 @@ const Template: ComponentStory<typeof Icon> = (args) => (
           >
             {name}
           </span>
-        </div>
+        </li>
       ))}
-    </div>
-    <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+    </ul>
+    <ul style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
       {logoIcons.map((name) => (
-        <div key={name}>
+        <li key={name}>
           <div
             style={{
               backgroundColor: '#f1f2f4',
@@ -61,12 +61,12 @@ const Template: ComponentStory<typeof Icon> = (args) => (
           >
             {name}
           </span>
-        </div>
+        </li>
       ))}
-    </div>
-    <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+    </ul>
+    <ul style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
       {flagIcons.map((name) => (
-        <div key={name}>
+        <li key={name}>
           <div
             style={{
               backgroundColor: '#f1f2f4',
@@ -88,12 +88,12 @@ const Template: ComponentStory<typeof Icon> = (args) => (
           >
             {name}
           </span>
-        </div>
+        </li>
       ))}
-    </div>
-    <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+    </ul>
+    <ul style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
       {utilIcons.map((name) => (
-        <div key={name}>
+        <li key={name}>
           <div
             style={{
               backgroundColor: '#f1f2f4',
@@ -115,9 +115,9 @@ const Template: ComponentStory<typeof Icon> = (args) => (
           >
             {name}
           </span>
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   </div>
 );
 
