@@ -9,6 +9,7 @@ export const Tile: VFC<Props> = ({
   icon,
   title,
   subtitle,
+  heading: Heading = 'h3',
   fields = [],
   actions = [],
 }) => {
@@ -18,7 +19,7 @@ export const Tile: VFC<Props> = ({
 
       <div className={styles.body}>
         <div className={styles.header}>
-          <div className={styles.title}>{title}</div>
+          <Heading className={styles.title}>{title}</Heading>
           {!!subtitle && <div className={styles.subtitle}>{subtitle}</div>}
         </div>
 
