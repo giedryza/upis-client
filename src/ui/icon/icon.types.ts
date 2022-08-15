@@ -11,6 +11,7 @@ export const baseIcons = [
   'globe',
   'info',
   'kayak',
+  'link',
   'lock',
   'network',
   'path',
