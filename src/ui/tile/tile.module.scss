@@ -5,13 +5,12 @@
   gap: 1em;
   align-items: flex-start;
   width: 100%;
-  padding: 1em;
+  padding: 0 1em;
 
   font-size: 1.4rem;
 
   background-color: var(--color-white);
-  border-radius: var(--border-radius-sm);
-  box-shadow: var(--shadow-default);
+  border-left: 3px solid var(--color-grey-90);
 
   .icon {
     flex-shrink: 0;
