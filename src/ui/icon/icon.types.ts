@@ -3,27 +3,38 @@ export interface Props extends React.SVGAttributes<SVGElement> {
 }
 
 export const baseIcons = [
+  'baby',
+  'bag',
   'bell',
+  'camera',
   'close',
+  'compass',
   'exit',
   'file',
   'gear',
   'globe',
+  'grill',
   'info',
   'kayak',
   'link',
   'lock',
+  'mobile',
   'network',
   'path',
+  'paw',
   'pencil',
   'phone',
   'picture',
   'pin',
   'plus',
   'price',
+  'sleeping-bag',
+  'tent',
   'timer',
   'trash',
+  'truck',
   'user',
+  'vest',
 ] as const;
 
 export const utilIcons = ['util-folder-close', 'util-folder-open'] as const;
