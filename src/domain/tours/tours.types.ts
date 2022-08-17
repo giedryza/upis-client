@@ -1,5 +1,6 @@
+import { Amenity } from 'domain/amenities';
 import { Company } from 'domain/companies';
-import { AppFile, Currency, Language, Price } from 'types/common';
+import { AppFile, Language, Price } from 'types/common';
 
 export const regions = [
   'aukstaitija',
@@ -222,20 +223,6 @@ export const rivers = [
   'zvelsa',
 ] as const;
 
-export const amenityVariants = [
-  'transport',
-  'child-seat',
-  'life-vest',
-  'phone-case',
-  'dry-bag',
-  'tent',
-  'sleeping-bag',
-  'grill',
-  'guide',
-  'camera',
-  'pet-friendly',
-] as const;
-
 export const boats = [
   'single-kayak',
   'double-kayak',
@@ -243,29 +230,15 @@ export const boats = [
   'raft',
 ] as const;
 
-export const units = ['tour', 'day', 'h', 'km'] as const;
-
 export const difficulty = [1, 2, 3, 4, 5] as const;
 
 export type Region = typeof regions[number];
 
 export type River = typeof rivers[number];
 
-export type AmenityVariant = typeof amenityVariants[number];
-
 export type Boat = typeof boats[number];
 
-export type Unit = typeof units[number];
-
 export type Difficulty = typeof difficulty[number];
-
-export interface Amenity {
-  variant: AmenityVariant;
-  price: number;
-  currency: Currency;
-  unit: Unit;
-  info: string;
-}
 
 export interface Tour {
   _id: string;
