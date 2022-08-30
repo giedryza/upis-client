@@ -1,9 +1,16 @@
-import { VFC } from 'react';
+import { useState, VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, Container, NumberInput, SelectInput, TextInput } from 'ui';
+import {
+  Button,
+  CheckboxInput,
+  Container,
+  NumberInput,
+  SelectInput,
+  TextInput,
+} from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies';
@@ -21,9 +28,12 @@ export const CompanyEditAmenitiesAdd: VFC = () => {
 
   const { formatter: numberFormatter } = useFormatNumber();
 
+  const [isFree, setIsFree] = useState(false);
+
   const {
     register,
     handleSubmit,
+    setValue,
     control,
     formState: { errors, isDirty },
   } = useForm<Values>({
@@ -102,6 +112,7 @@ export const CompanyEditAmenitiesAdd: VFC = () => {
                     onChange={onChange}
                     step={0.01}
                     error={errors.amount?.message}
+                    disabled={isFree}
                     ref={ref}
                   />
                 )}
@@ -115,6 +126,7 @@ export const CompanyEditAmenitiesAdd: VFC = () => {
                   label: currency,
                   value: currency,
                 }))}
+                disabled={isFree}
               />
 
               <SelectInput
@@ -125,8 +137,18 @@ export const CompanyEditAmenitiesAdd: VFC = () => {
                   label: t(`common:amenities.units.${unit}`),
                   value: unit,
                 }))}
+                disabled={isFree}
               />
             </div>
+
+            <CheckboxInput
+              label={t('common:texts.free')}
+              checked={isFree}
+              onChange={(checked) => {
+                setIsFree(checked);
+                setValue('amount', 0);
+              }}
+            />
 
             <TextInput
               {...register('info')}

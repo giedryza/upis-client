@@ -113,10 +113,10 @@
       "title": "Patogumai",
       "form": {
         "variant": {
-          "label": "Patogumas",
-          "display": "Patogumas",
+          "label": "Kategorija",
+          "display": "Kategorija",
           "error": {
-            "empty": "Pasirinkite patogumą."
+            "empty": "Pasirinkite kategoriją."
           }
         },
         "info": {

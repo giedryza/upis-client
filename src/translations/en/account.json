@@ -112,10 +112,10 @@
       "title": "Amenities",
       "form": {
         "variant": {
-          "label": "Amenity",
-          "display": "Amenity",
+          "label": "Category",
+          "display": "Category",
           "error": {
-            "empty": "Choose valid amenity."
+            "empty": "Choose valid category."
           }
         },
         "info": {
