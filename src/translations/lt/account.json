@@ -109,6 +109,34 @@
         "info": "Tempdami žymeklį pasirinkite lokaciją"
       }
     },
+    "amenities": {
+      "title": "Patogumai",
+      "form": {
+        "variant": {
+          "label": "Patogumas",
+          "display": "Patogumas",
+          "error": {
+            "empty": "Pasirinkite patogumą."
+          }
+        },
+        "info": {
+          "label": "Papildoma informacija",
+          "display": "Papildoma informacija"
+        },
+        "amount": {
+          "label": "Kaina",
+          "display": "Kaina"
+        },
+        "currency": {
+          "label": "Valiuta",
+          "display": "Valiuta"
+        },
+        "unit": {
+          "label": "Vienetas",
+          "display": "Vienetas"
+        }
+      }
+    },
     "socialLinks": {
       "title": "Socialiniai tinklai",
       "table": {

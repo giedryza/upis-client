@@ -5,12 +5,13 @@ import { routes } from 'config/routes';
 import { Button, FormattedField, Meter, Table, TableProps } from 'ui';
 import { useDeleteTour, useMyTours } from 'domain/tours';
 import { useConfirm } from 'domain/confirm';
+import { formatCurrency } from 'tools/format';
 
 import { TableColumns } from './table.types';
 import styles from './table.module.scss';
 
 export const ToursTable: VFC = () => {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
 
   const { confirmation } = useConfirm();
 
@@ -48,17 +49,9 @@ export const ToursTable: VFC = () => {
           />
         ),
         trip: [tour.departure, tour.arrival].join(' - '),
-        price: tour.price ? (
-          <FormattedField
-            value={tour.price.amount / 100}
-            formatOptions={{
-              style: 'currency',
-              currency: tour.price.currency,
-            }}
-          />
-        ) : (
-          '-'
-        ),
+        price: tour.price
+          ? formatCurrency(lang, tour.price.amount, tour.price.currency)
+          : '-',
         distance: (
           <FormattedField
             value={tour.distance}
@@ -128,7 +121,7 @@ export const ToursTable: VFC = () => {
         ),
       },
     }));
-  }, [tours, t, deleteTour, isDeleteTourLoading, confirmation]);
+  }, [tours, t, lang, deleteTour, isDeleteTourLoading, confirmation]);
 
   return <Table columns={columns} rows={rows} />;
 };

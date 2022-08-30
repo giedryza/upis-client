@@ -1,0 +1,27 @@
+@use 'styles/mixins' as *;
+
+.form {
+  width: 100%;
+
+  @include spacing(y, 2rem);
+}
+
+.fieldset {
+  @include spacing(y, 1rem);
+}
+
+.actions {
+  text-align: right;
+
+  @include spacing(x, 1rem);
+}
+
+.price {
+  display: flex;
+
+  @include spacing(x, 1rem);
+
+  > *:first-child {
+    flex: 1;
+  }
+}

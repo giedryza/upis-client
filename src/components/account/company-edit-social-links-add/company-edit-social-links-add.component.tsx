@@ -37,12 +37,7 @@ export const CompanyEditSocialLinksAdd: VFC = () => {
       { hostId: companyId, form: { type, url } },
       {
         onSuccess: () => {
-          push(
-            routes.account.companies.one.index.replace(
-              ':id',
-              company?._id ?? ''
-            )
-          );
+          push(routes.account.companies.one.index.replace(':id', companyId));
         },
       }
     );

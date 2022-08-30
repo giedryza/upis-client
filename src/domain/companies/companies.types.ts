@@ -1,4 +1,5 @@
 import { SocialLink } from 'domain/social-links';
+import { Amenity } from 'domain/amenities';
 
 export interface Company {
   _id: string;
@@ -10,6 +11,7 @@ export interface Company {
   website: string;
   address: string;
   user: string;
+  amenities: Amenity[];
   socialLinks: SocialLink[];
   location: {
     coordinates: number[];

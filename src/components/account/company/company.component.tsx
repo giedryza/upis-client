@@ -7,6 +7,7 @@ import {
   Logo,
   SocialLinks,
   CompanyActions,
+  Amenities,
 } from './atoms';
 import styles from './company.module.scss';
 
@@ -20,6 +21,8 @@ export const Company: VFC = () => {
       <Contacts />
 
       <Location />
+
+      <Amenities />
 
       <SocialLinks />
 

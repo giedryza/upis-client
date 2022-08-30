@@ -28,4 +28,8 @@ export const endpoints = {
     index: 'social-links',
     one: 'social-links/:id',
   },
+  amenities: {
+    index: 'amenities',
+    one: 'amenities/:id',
+  },
 };

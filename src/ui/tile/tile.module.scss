@@ -5,12 +5,12 @@
   gap: 1em;
   align-items: flex-start;
   width: 100%;
-  padding: 1em;
+  padding: 0.75em 1em;
 
   font-size: 1.4rem;
+  line-height: 1.25;
 
   background-color: var(--color-white);
-  border-radius: var(--border-radius-sm);
   box-shadow: var(--shadow-default);
 
   .icon {
