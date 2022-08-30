@@ -55,7 +55,7 @@ export const CompanyEditAmenitiesEdit: VFC = () => {
     reset({
       variant: amenity?.variant,
       amount: amenity?.price ? amenity.price.amount / 100 : 0,
-      currency: amenity?.price?.currency,
+      currency: amenity?.price?.currency ?? 'EUR',
       unit: amenity?.unit,
       info: amenity?.info,
       isFree: !amenity?.price,

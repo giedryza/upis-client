@@ -29,6 +29,11 @@ interface UpdateAmenity {
   };
 }
 
+interface DeleteAmenity {
+  id: string;
+  companyId: string;
+}
+
 export const loaders = {
   getAmenity: ({ req, id }: { req?: IncomingMessage; id: string }) =>
     new Request<Amenity>(endpoints.amenities.one.replace(':id', id), {
@@ -42,4 +47,6 @@ export const loaders = {
     new Request<Amenity>(endpoints.amenities.one.replace(':id', id), {
       body: getJsonBody(form),
     }).patch(),
+  deleteAmenity: ({ id }: DeleteAmenity) =>
+    new Request(endpoints.amenities.one.replace(':id', id)).delete(),
 };
