@@ -72,6 +72,7 @@
     },
     "units": {
       "tour": "už maršrutą",
+      "person": "už asmenį",
       "day": "už dieną",
       "h": "už valandą",
       "km": "už kilometrą"
