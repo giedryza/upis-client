@@ -27,6 +27,10 @@ export const routes = {
           add: '/account/companies/:id/social-links/add',
           one: '/account/companies/:id/social-links/:socialLinkId',
         },
+        amenities: {
+          add: '/account/companies/:id/amenities/add',
+          one: '/account/companies/:id/amenities/:amenityId',
+        },
       },
     },
     tours: {
