@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { forwardRef, VFC } from 'react';
+import { forwardRef } from 'react';
 import { useCheckbox, useFocusRing, useVisuallyHidden } from 'react-aria';
 import { useToggleState } from 'react-stately';
 import { useObjectRef, mergeProps } from '@react-aria/utils';
@@ -8,7 +8,7 @@ import { clsx } from 'clsx';
 import { Props } from './checkbox-input.types';
 import styles from './checkbox-input.module.scss';
 
-export const CheckboxInput: VFC<Props> = forwardRef<HTMLInputElement, Props>(
+export const CheckboxInput = forwardRef<HTMLInputElement, Props>(
   ({ label, name, checked, onChange, disabled, readonly }, forwardedRef) => {
     const ref = useObjectRef(forwardedRef);
 
