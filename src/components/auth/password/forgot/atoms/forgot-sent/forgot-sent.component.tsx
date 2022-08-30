@@ -32,6 +32,7 @@ export const PasswordForgotSent: VFC<Props> = ({ onRetry }) => {
                   attributes={{
                     onClick: onRetry,
                   }}
+                  key="retry"
                 />,
               ]}
             />

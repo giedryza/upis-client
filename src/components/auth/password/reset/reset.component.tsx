@@ -44,6 +44,7 @@ export const PasswordReset: VFC = () => {
                   size="sm"
                   variant="link"
                   url={routes.auth.password.forgot}
+                  key="try-again"
                 />,
               ]}
             />
