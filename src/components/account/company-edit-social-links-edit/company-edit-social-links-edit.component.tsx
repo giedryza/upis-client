@@ -22,6 +22,7 @@ export const CompanyEditSocialLinksEdit: VFC = () => {
   const { query, push } = useRouter();
 
   const id = getRouteParam(query.socialLinkId);
+  const companyId = getRouteParam(query.id);
 
   const {
     register,
@@ -49,12 +50,7 @@ export const CompanyEditSocialLinksEdit: VFC = () => {
       { id, form: { type, url } },
       {
         onSuccess: () => {
-          push(
-            routes.account.companies.one.index.replace(
-              ':id',
-              socialLink?.host ?? ''
-            )
-          );
+          push(routes.account.companies.one.index.replace(':id', companyId));
         },
       }
     );
@@ -107,10 +103,7 @@ export const CompanyEditSocialLinksEdit: VFC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.companies.one.index.replace(
-                ':id',
-                socialLink?._id ?? ''
-              )}
+              url={routes.account.companies.one.index.replace(':id', companyId)}
             />
 
             <Button

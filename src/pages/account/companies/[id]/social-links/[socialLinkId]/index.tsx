@@ -68,7 +68,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const queryClient = new QueryClient();
-  const id = getRouteParam(params?.id);
+  const id = getRouteParam(params?.socialLinkId);
 
   await queryClient.prefetchQuery(socialLinksKeys.detail(id), () =>
     loaders.getSocialLink({ req, id })
