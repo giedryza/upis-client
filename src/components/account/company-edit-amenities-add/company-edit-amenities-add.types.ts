@@ -8,4 +8,5 @@ export interface Values {
   currency: Currency;
   info: string;
   companyId: string;
+  isFree: boolean;
 }

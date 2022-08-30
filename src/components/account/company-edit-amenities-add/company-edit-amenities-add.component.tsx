@@ -1,4 +1,4 @@
-import { useState, VFC } from 'react';
+import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -28,12 +28,11 @@ export const CompanyEditAmenitiesAdd: VFC = () => {
 
   const { formatter: numberFormatter } = useFormatNumber();
 
-  const [isFree, setIsFree] = useState(false);
-
   const {
     register,
     handleSubmit,
     setValue,
+    watch,
     control,
     formState: { errors, isDirty },
   } = useForm<Values>({
@@ -72,6 +71,8 @@ export const CompanyEditAmenitiesAdd: VFC = () => {
       }
     );
   };
+
+  const [isFree] = watch(['isFree']);
 
   return (
     <InfoBlock
@@ -141,13 +142,21 @@ export const CompanyEditAmenitiesAdd: VFC = () => {
               />
             </div>
 
-            <CheckboxInput
-              label={t('common:texts.free')}
-              checked={isFree}
-              onChange={(checked) => {
-                setIsFree(checked);
-                setValue('amount', 0);
-              }}
+            <Controller
+              control={control}
+              name="isFree"
+              render={({ field: { name, onChange, value, ref } }) => (
+                <CheckboxInput
+                  label={t('common:texts.free')}
+                  name={name}
+                  checked={value}
+                  onChange={(checked) => {
+                    onChange(checked);
+                    setValue('amount', 0);
+                  }}
+                  ref={ref}
+                />
+              )}
             />
 
             <TextInput

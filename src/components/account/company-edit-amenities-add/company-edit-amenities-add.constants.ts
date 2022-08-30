@@ -7,4 +7,5 @@ export const INITIAL_VALUES: Values = {
   currency: 'EUR',
   info: '',
   companyId: '',
+  isFree: false,
 };
