@@ -43,6 +43,9 @@ export const Amenities: VFC = () => {
               label: t('common:actions.edit'),
               icon: 'pencil',
               variant: 'secondary',
+              url: routes.account.companies.one.amenities.one
+                .replace(':id', company._id)
+                .replace(':amenityId', amenity._id),
             },
             {
               label: t('common:actions.delete'),
