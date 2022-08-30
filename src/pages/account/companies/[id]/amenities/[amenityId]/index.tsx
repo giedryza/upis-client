@@ -68,7 +68,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const queryClient = new QueryClient();
-  const id = getRouteParam(params?.id);
+  const id = getRouteParam(params?.amenityId);
 
   await queryClient.prefetchQuery(amenitiesKeys.detail(id), () =>
     loaders.getAmenity({ req, id })
