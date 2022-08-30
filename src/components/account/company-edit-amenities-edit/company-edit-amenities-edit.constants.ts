@@ -1,4 +1,4 @@
-import { Values } from './company-edit-amenities-add.types';
+import { Values } from './company-edit-amenities-edit.types';
 
 export const INITIAL_VALUES: Values = {
   variant: 'transport',
@@ -6,6 +6,5 @@ export const INITIAL_VALUES: Values = {
   amount: NaN,
   currency: 'EUR',
   info: '',
-  companyId: '',
   isFree: false,
 };

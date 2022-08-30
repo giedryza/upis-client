@@ -9,10 +9,10 @@ import { useProtectedPage } from 'tools/hooks';
 import { getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { CompanyEditSocialLinksEdit } from 'components/account';
-import { loaders, socialLinksKeys } from 'domain/social-links';
+import { CompanyEditAmenitiesEdit } from 'components/account';
+import { amenitiesKeys, loaders } from 'domain/amenities';
 
-const CompanyEditSocialLinksEditPage: NextPage = () => {
+const CompanyEditAmenitiesEditPage: NextPage = () => {
   const { t } = useTranslation();
   const { query } = useRouter();
 
@@ -38,13 +38,13 @@ const CompanyEditSocialLinksEditPage: NextPage = () => {
                 url: routes.account.companies.one.index.replace(':id', id),
               },
               {
-                label: t('account:companies.socialLinks.title'),
+                label: t('account:companies.amenities.title'),
               },
             ]}
           />
 
           <AccountLayout>
-            <CompanyEditSocialLinksEdit />
+            <CompanyEditAmenitiesEdit />
           </AccountLayout>
         </PageLayout>
       </MainLayout>
@@ -68,10 +68,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const queryClient = new QueryClient();
-  const id = getRouteParam(params?.socialLinkId);
+  const id = getRouteParam(params?.amenityId);
 
-  await queryClient.prefetchQuery(socialLinksKeys.detail(id), () =>
-    loaders.getSocialLink({ req, id })
+  await queryClient.prefetchQuery(amenitiesKeys.detail(id), () =>
+    loaders.getAmenity({ req, id })
   );
 
   return {
@@ -82,4 +82,4 @@ export const getServerSideProps: GetServerSideProps = async ({
   };
 };
 
-export default CompanyEditSocialLinksEditPage;
+export default CompanyEditAmenitiesEditPage;

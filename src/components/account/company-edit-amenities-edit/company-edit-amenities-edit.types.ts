@@ -7,6 +7,5 @@ export interface Values {
   amount: number;
   currency: Currency;
   info: string;
-  companyId: string;
   isFree: boolean;
 }

@@ -135,6 +135,9 @@
           "label": "Vienetas",
           "display": "Vienetas"
         }
+      },
+      "texts": {
+        "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins patogumą <strong>{{name}}</strong>. Ar tikrai norite tęsti?"
       }
     },
     "socialLinks": {

@@ -21,7 +21,7 @@ export const SocialLinks: VFC = () => {
   const { data: socialLinks = [] } = useSocialLinks({
     host: company?._id ?? '',
   });
-  const { mutate: deleteSocialLink, isLoading: isDeleteSocialLinkLoading } =
+  const { mutate: deleteSocialLink, isLoading: isDeleting } =
     useDeleteSocialLink();
 
   const columns = useMemo<
@@ -63,7 +63,7 @@ export const SocialLinks: VFC = () => {
                 variant="secondary"
                 attributes={{
                   title: t('common:actions.delete'),
-                  disabled: isDeleteSocialLinkLoading,
+                  disabled: isDeleting,
                   onClick: async () => {
                     const { confirmed } = await confirmation(
                       t('account:companies.socialLinks.texts.confirmDelete', {
@@ -92,13 +92,7 @@ export const SocialLinks: VFC = () => {
         },
       })) ?? []
     );
-  }, [
-    socialLinks,
-    t,
-    deleteSocialLink,
-    isDeleteSocialLinkLoading,
-    confirmation,
-  ]);
+  }, [socialLinks, t, deleteSocialLink, isDeleting, confirmation]);
 
   return (
     <InfoBlock

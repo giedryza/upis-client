@@ -3,6 +3,7 @@ export * from './company';
 export * from './company-create';
 export * from './company-edit-about';
 export * from './company-edit-amenities-add';
+export * from './company-edit-amenities-edit';
 export * from './company-edit-contacts';
 export * from './company-edit-location';
 export * from './company-edit-logo';

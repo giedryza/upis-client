@@ -6,12 +6,16 @@ import { useActiveCompany } from 'domain/companies';
 import { routes } from 'config/routes';
 import { Button, Tile } from 'ui';
 import { formatCurrency } from 'tools/format';
-import { ICON_BY_VARIANT } from 'domain/amenities';
+import { ICON_BY_VARIANT, useDeleteAmenity } from 'domain/amenities';
+import { useConfirm } from 'domain/confirm';
 
 export const Amenities: VFC = () => {
   const { t, lang } = useTranslation();
 
+  const { confirmation } = useConfirm();
+
   const { data: company } = useActiveCompany();
+  const { mutate: deleteAmenity, isLoading: isDeleting } = useDeleteAmenity();
 
   if (!company) return null;
 
@@ -43,11 +47,28 @@ export const Amenities: VFC = () => {
               label: t('common:actions.edit'),
               icon: 'pencil',
               variant: 'secondary',
+              url: routes.account.companies.one.amenities.one
+                .replace(':id', company._id)
+                .replace(':amenityId', amenity._id),
             },
             {
               label: t('common:actions.delete'),
               icon: 'trash',
               variant: 'ghost',
+              attributes: {
+                disabled: isDeleting,
+                onClick: async () => {
+                  const { confirmed } = await confirmation(
+                    t('account:companies.amenities.texts.confirmDelete', {
+                      name: t(`common:amenities.variants.${amenity.variant}`),
+                    })
+                  );
+
+                  if (confirmed) {
+                    deleteAmenity({ id: amenity._id, companyId: company._id });
+                  }
+                },
+              },
             },
           ]}
           key={amenity._id}
