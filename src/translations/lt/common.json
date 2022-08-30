@@ -32,7 +32,8 @@
     }
   },
   "texts": {
-    "or": "Arba"
+    "or": "Arba",
+    "free": "Nemokamai"
   },
   "language": {
     "lt": "Lietuvių",
@@ -54,6 +55,27 @@
     "youtube": "Youtube",
     "linkedin": "Linkedin",
     "twitter": "Twitter"
+  },
+  "amenities": {
+    "variants": {
+      "transport": "Transportavimas",
+      "child-seat": "Vaikiška kėdutė",
+      "life-vest": "Gelbėjimosi liemenė",
+      "phone-case": "Hermetiškas dėklas telefonui",
+      "dry-bag": "Hermetiškas maišas",
+      "tent": "Palapinė",
+      "sleeping-bag": "Miegmaišis",
+      "grill": "Grilius",
+      "guide": "Gido paslaugos",
+      "camera": "Filmavimo/fotografavimo kamera",
+      "pet-friendly": "Draugiški gyvūnams"
+    },
+    "units": {
+      "tour": "už maršrutą",
+      "day": "už dieną",
+      "h": "už valandą",
+      "km": "už kilometrą"
+    }
   },
   "errors": {
     "generic": "Oops! Įvyko nenumatyta klaida."

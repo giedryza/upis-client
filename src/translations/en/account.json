@@ -108,6 +108,34 @@
         "info": "Move marker to select location"
       }
     },
+    "amenities": {
+      "title": "Amenities",
+      "form": {
+        "variant": {
+          "label": "Amenity",
+          "display": "Amenity",
+          "error": {
+            "empty": "Choose valid amenity."
+          }
+        },
+        "info": {
+          "label": "Additional information",
+          "display": "Additional information"
+        },
+        "amount": {
+          "label": "Price",
+          "display": "Price"
+        },
+        "currency": {
+          "label": "Currency",
+          "display": "Currency"
+        },
+        "unit": {
+          "label": "Unit",
+          "display": "Unit"
+        }
+      }
+    },
     "socialLinks": {
       "title": "Social networks",
       "table": {
