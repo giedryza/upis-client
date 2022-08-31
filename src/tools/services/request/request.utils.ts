@@ -1,4 +1,4 @@
-import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/router';
 
 type JsonData = Record<string, any>;
 
@@ -37,9 +37,9 @@ export const loadersFactory = <T extends {}>(
   getLoaders: (locale?: string) => { loaders: T }
 ) => {
   const useLoaders = () => {
-    const { lang } = useTranslation();
+    const { locale } = useRouter();
 
-    const { loaders } = getLoaders(lang);
+    const { loaders } = getLoaders(locale);
 
     return {
       loaders,
