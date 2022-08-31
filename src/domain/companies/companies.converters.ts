@@ -1,12 +1,12 @@
-import { loaders } from './companies.loaders';
+import { Converter } from 'types/common';
+
+import { getLoaders } from './companies.loaders';
 
 export const converters = {
-  getCompanies: ({
-    data,
-  }: Awaited<ReturnType<typeof loaders.getCompanies>>) => {
+  getCompanies: ({ data }: Converter<typeof getLoaders, 'getCompanies'>) => {
     return data;
   },
-  getCompany: ({ data }: Awaited<ReturnType<typeof loaders.getCompany>>) => {
+  getCompany: ({ data }: Converter<typeof getLoaders, 'getCompany'>) => {
     return data;
   },
 };

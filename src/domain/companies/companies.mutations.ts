@@ -1,10 +1,11 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import { loaders } from './companies.loaders';
+import { useLoaders } from './companies.loaders';
 import { companiesKeys } from './companies.keys';
 
 export const useUpdateCompany = () => {
   const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.updateCompany, {
     onSuccess: () => {
@@ -17,6 +18,7 @@ export const useUpdateCompany = () => {
 
 export const useCreateCompany = () => {
   const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.createCompany, {
     onSuccess: () => {
@@ -29,6 +31,7 @@ export const useCreateCompany = () => {
 
 export const useUpdateLocation = () => {
   const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.updateLocation, {
     onSuccess: () => {
@@ -41,6 +44,7 @@ export const useUpdateLocation = () => {
 
 export const useUploadLogo = () => {
   const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.uploadLogo, {
     onSuccess: () => {
@@ -53,6 +57,7 @@ export const useUploadLogo = () => {
 
 export const useDeleteCompany = () => {
   const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.deleteCompany, {
     onSuccess: () => {
