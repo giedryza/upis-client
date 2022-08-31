@@ -3,6 +3,11 @@ import { Request, getJsonBody, loadersFactory } from 'tools/services/request';
 
 import { Session } from './users.types';
 
+interface Signin {
+  email: string;
+  password: string;
+}
+
 interface Signup {
   email: string;
   password: string;
@@ -27,6 +32,11 @@ interface ResetPassword {
 
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
   loaders: {
+    signin: ({ email, password }: Signin) =>
+      new Request<Session>(endpoints.users.signin, {
+        body: getJsonBody({ email, password }),
+        locale,
+      }).post(),
     signup: ({ email, password, confirmPassword }: Signup) =>
       new Request<Session>(endpoints.users.signup, {
         body: getJsonBody({
