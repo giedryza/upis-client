@@ -43,12 +43,13 @@
     color: var(--color-grey-50);
     font-weight: 500;
     font-size: 0.9em;
+    line-height: 1.6;
   }
 
   .fields {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5em 1em;
+    gap: 0.5em 3.5em;
   }
 
   .field {
