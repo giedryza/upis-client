@@ -10,6 +10,7 @@ export interface Config {
   params?: Record<string, any>;
   req?: IncomingMessage;
   credentials?: RequestCredentials;
+  locale?: string;
 }
 
 export interface ApiResponse<D = any, M = any> {
