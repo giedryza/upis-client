@@ -37,7 +37,18 @@ export const SocialLinks: VFC = () => {
           fields={[
             {
               label: t('account:companies.socialLinks.table.url'),
-              sublabel: socialLink.url,
+              sublabel: socialLink.url ? (
+                <a
+                  href={socialLink.url}
+                  className="link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {socialLink.url}
+                </a>
+              ) : (
+                '-'
+              ),
             },
           ]}
           actions={[

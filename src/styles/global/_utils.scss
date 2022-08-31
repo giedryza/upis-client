@@ -10,3 +10,15 @@
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
 }
+
+.link {
+  &:link,
+  &:active,
+  &:visited {
+    color: var(--color-grey-05);
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}

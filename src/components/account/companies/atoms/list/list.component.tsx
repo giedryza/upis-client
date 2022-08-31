@@ -24,7 +24,18 @@ export const CompaniesList: VFC = () => {
           fields={[
             {
               label: t('account:companies.table.email'),
-              sublabel: company.email || '-',
+              sublabel: company.email ? (
+                <a
+                  href={`mailto:${company.email}`}
+                  className="link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {company.email}
+                </a>
+              ) : (
+                '-'
+              ),
             },
             {
               label: t('account:companies.table.phone'),
@@ -32,7 +43,18 @@ export const CompaniesList: VFC = () => {
             },
             {
               label: t('account:companies.table.website'),
-              sublabel: company.website || '-',
+              sublabel: company.website ? (
+                <a
+                  href={company.website}
+                  className="link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {company.website}
+                </a>
+              ) : (
+                '-'
+              ),
             },
           ]}
           actions={[
