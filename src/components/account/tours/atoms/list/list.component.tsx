@@ -21,6 +21,7 @@ export const ToursList: VFC = () => {
         <Tile
           title={tour.name}
           subtitle={tour.company.name}
+          heading="h2"
           fields={[
             {
               label: t('account:tours.table.trip'),

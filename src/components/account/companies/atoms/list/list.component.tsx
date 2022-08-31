@@ -21,6 +21,7 @@ export const CompaniesList: VFC = () => {
         <Tile
           title={company.name}
           subtitle={company.address}
+          heading="h2"
           fields={[
             {
               label: t('account:companies.table.email'),
