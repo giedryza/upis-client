@@ -7,7 +7,7 @@ import { Button, Container, SelectInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useAddSocialLink, SocialType } from 'domain/social-links';
-import { useActiveCompany } from 'domain/companies';
+import { getRouteParam } from 'tools/common';
 
 import { Values } from './company-edit-social-links-add.types';
 import { INITIAL_VALUES } from './company-edit-social-links-add.constants';
@@ -15,7 +15,9 @@ import styles from './company-edit-social-links-add.module.scss';
 
 export const CompanyEditSocialLinksAdd: VFC = () => {
   const { t } = useTranslation();
-  const { push } = useRouter();
+  const { push, query } = useRouter();
+
+  const companyId = getRouteParam(query.id);
 
   const {
     register,
@@ -25,12 +27,9 @@ export const CompanyEditSocialLinksAdd: VFC = () => {
     defaultValues: INITIAL_VALUES,
   });
 
-  const { data: company } = useActiveCompany();
   const { mutate: addSocialLink, isLoading } = useAddSocialLink();
 
   const onSubmit: SubmitHandler<Values> = ({ type, url }) => {
-    const companyId = company?._id;
-
     if (!companyId) return;
 
     addSocialLink(
@@ -90,10 +89,7 @@ export const CompanyEditSocialLinksAdd: VFC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.companies.one.index.replace(
-                ':id',
-                company?._id ?? ''
-              )}
+              url={routes.account.companies.one.index.replace(':id', companyId)}
             />
 
             <Button

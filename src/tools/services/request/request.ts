@@ -55,7 +55,7 @@ export class Request<ResponseData = any, ResponseMeta = any> {
   }
 
   #init = async (): Promise<RequestInit> => {
-    const { headers = {}, body, req } = this.config;
+    const { headers = {}, body, req, locale } = this.config;
 
     const session = await getSession({ req });
 
@@ -66,6 +66,7 @@ export class Request<ResponseData = any, ResponseMeta = any> {
         ...this.serverHeaders,
         ...headers,
         ...(!!session?.jwt && { Authorization: `Bearer ${session.jwt}` }),
+        ...(!!locale && { 'Accept-Language': locale }),
       }),
       body,
       credentials: 'include',

@@ -1,3 +1,5 @@
+import useTranslation from 'next-translate/useTranslation';
+
 type JsonData = Record<string, any>;
 
 type FilesData = { field: string; file: File }[];
@@ -29,4 +31,23 @@ export const getFilesBody = (data: FilesData): FormData => {
   data.forEach(({ field, file }) => formData.append(field, file));
 
   return formData;
+};
+
+export const loadersFactory = <T extends {}>(
+  getLoaders: (locale?: string) => { loaders: T }
+) => {
+  const useLoaders = () => {
+    const { lang } = useTranslation();
+
+    const { loaders } = getLoaders(lang);
+
+    return {
+      loaders,
+    };
+  };
+
+  return {
+    getLoaders,
+    useLoaders,
+  };
 };

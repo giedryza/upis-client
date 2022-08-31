@@ -10,7 +10,7 @@ import { getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { CompanyEditAmenitiesEdit } from 'components/account';
-import { amenitiesKeys, loaders } from 'domain/amenities';
+import { amenitiesKeys, getLoaders } from 'domain/amenities';
 
 const CompanyEditAmenitiesEditPage: NextPage = () => {
   const { t } = useTranslation();
@@ -55,6 +55,7 @@ const CompanyEditAmenitiesEditPage: NextPage = () => {
 export const getServerSideProps: GetServerSideProps = async ({
   req,
   params,
+  locale,
 }) => {
   const session = await getSession({ req });
 
@@ -69,6 +70,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const queryClient = new QueryClient();
   const id = getRouteParam(params?.amenityId);
+
+  const { loaders } = getLoaders(locale);
 
   await queryClient.prefetchQuery(amenitiesKeys.detail(id), () =>
     loaders.getAmenity({ req, id })

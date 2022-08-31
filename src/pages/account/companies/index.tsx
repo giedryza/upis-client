@@ -8,7 +8,7 @@ import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Companies } from 'components/account';
-import { companiesKeys, loaders, CompaniesFilters } from 'domain/companies';
+import { companiesKeys, getLoaders, CompaniesFilters } from 'domain/companies';
 
 const CompaniesPage: NextPage = () => {
   const { t } = useTranslation();
@@ -37,7 +37,10 @@ const CompaniesPage: NextPage = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  locale,
+}) => {
   const session = await getSession({ req });
 
   if (!session) {
@@ -51,6 +54,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
 
   const queryClient = new QueryClient();
   const filters: CompaniesFilters = { user: session.user.id };
+  const { loaders } = getLoaders(locale);
 
   await queryClient.prefetchQuery(companiesKeys.list(filters), () =>
     loaders.getCompanies({ params: filters })

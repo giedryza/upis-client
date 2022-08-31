@@ -2,9 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
-import { endpoints } from 'config/endpoints';
-import { Session } from 'domain/users';
-import { Request, getJsonBody } from 'tools/services/request';
+import { getLoaders } from 'domain/users';
 
 const options: NextAuthOptions = {
   session: {
@@ -22,10 +20,10 @@ const options: NextAuthOptions = {
 
         const { email, password } = credentials;
 
+        const { loaders } = getLoaders();
+
         try {
-          const { data } = await new Request<Session>(endpoints.users.signin, {
-            body: getJsonBody({ email, password }),
-          }).post();
+          const { data } = await loaders.signin({ email, password });
 
           return {
             ...data.user,

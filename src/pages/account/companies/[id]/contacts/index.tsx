@@ -10,7 +10,7 @@ import { getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { CompanyEditContacts } from 'components/account';
-import { companiesKeys, loaders } from 'domain/companies';
+import { companiesKeys, getLoaders } from 'domain/companies';
 
 const CompanyEditContactsPage: NextPage = () => {
   const { t } = useTranslation();
@@ -55,6 +55,7 @@ const CompanyEditContactsPage: NextPage = () => {
 export const getServerSideProps: GetServerSideProps = async ({
   req,
   params,
+  locale,
 }) => {
   const session = await getSession({ req });
 
@@ -69,6 +70,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const queryClient = new QueryClient();
   const id = getRouteParam(params?.id);
+  const { loaders } = getLoaders(locale);
 
   await queryClient.prefetchQuery(companiesKeys.detail(id), () =>
     loaders.getCompany({ req, id })

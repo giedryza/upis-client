@@ -1,14 +1,14 @@
-import { loaders } from './social-links.loaders';
+import { Converter } from 'types/common';
+
+import { getLoaders } from './social-links.loaders';
 
 export const converters = {
   getSocialLinks: ({
     data,
-  }: Awaited<ReturnType<typeof loaders.getSocialLinks>>) => {
+  }: Converter<typeof getLoaders, 'getSocialLinks'>) => {
     return data;
   },
-  getSocialLink: ({
-    data,
-  }: Awaited<ReturnType<typeof loaders.getSocialLink>>) => {
+  getSocialLink: ({ data }: Converter<typeof getLoaders, 'getSocialLink'>) => {
     return data;
   },
 };

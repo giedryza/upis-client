@@ -1,9 +1,11 @@
 import { useMutation, useQueryClient } from 'react-query';
 
 import { toursKeys } from './tours.keys';
-import { loaders } from './tours.loaders';
+import { useLoaders } from './tours.loaders';
 
 export const useCreateTour = () => {
+  const { loaders } = useLoaders();
+
   const mutation = useMutation(loaders.createTour);
 
   return mutation;
@@ -11,6 +13,7 @@ export const useCreateTour = () => {
 
 export const useUpdateTour = () => {
   const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.updateTour, {
     onSuccess: (_data, { id }) => {
@@ -23,6 +26,7 @@ export const useUpdateTour = () => {
 
 export const useUpdateTourPrice = () => {
   const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.updateTourPrice, {
     onSuccess: (_data, { id }) => {
@@ -35,6 +39,7 @@ export const useUpdateTourPrice = () => {
 
 export const useUpdateTourGeography = () => {
   const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.updateTourGeography, {
     onSuccess: (_data, { id }) => {
@@ -47,6 +52,7 @@ export const useUpdateTourGeography = () => {
 
 export const useDeleteTour = () => {
   const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.deleteTour, {
     onSuccess: () => {

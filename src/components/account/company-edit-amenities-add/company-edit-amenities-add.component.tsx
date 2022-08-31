@@ -13,10 +13,10 @@ import {
 } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
-import { useActiveCompany } from 'domain/companies';
 import { units, useAddAmenity, variants } from 'domain/amenities';
 import { useFormatNumber } from 'tools/format';
 import { currencies } from 'types/common';
+import { getRouteParam } from 'tools/common';
 
 import { Values } from './company-edit-amenities-add.types';
 import { INITIAL_VALUES } from './company-edit-amenities-add.constants';
@@ -24,7 +24,9 @@ import styles from './company-edit-amenities-add.module.scss';
 
 export const CompanyEditAmenitiesAdd: VFC = () => {
   const { t } = useTranslation();
-  const { push } = useRouter();
+  const { push, query } = useRouter();
+
+  const companyId = getRouteParam(query.id);
 
   const { formatter: numberFormatter } = useFormatNumber();
 
@@ -39,7 +41,6 @@ export const CompanyEditAmenitiesAdd: VFC = () => {
     defaultValues: INITIAL_VALUES,
   });
 
-  const { data: company } = useActiveCompany();
   const { mutate: addAmenity, isLoading } = useAddAmenity();
 
   const onSubmit: SubmitHandler<Values> = ({
@@ -49,8 +50,6 @@ export const CompanyEditAmenitiesAdd: VFC = () => {
     unit,
     info,
   }) => {
-    const companyId = company?._id;
-
     if (!companyId) return;
 
     addAmenity(
@@ -171,10 +170,7 @@ export const CompanyEditAmenitiesAdd: VFC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.companies.one.index.replace(
-                ':id',
-                company?._id ?? ''
-              )}
+              url={routes.account.companies.one.index.replace(':id', companyId)}
             />
 
             <Button
