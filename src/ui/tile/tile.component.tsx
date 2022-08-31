@@ -15,9 +15,11 @@ export const Tile: VFC<Props> = ({
 }) => {
   return (
     <div className={styles.tile}>
-      <div className={styles.icon}>
-        <Icon name={icon} />
-      </div>
+      {!!icon && (
+        <div className={styles.icon}>
+          <Icon name={icon} />
+        </div>
+      )}
 
       <div className={styles.body}>
         <div className={styles.header}>
