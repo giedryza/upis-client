@@ -1,98 +1,28 @@
-import { useMemo, VFC } from 'react';
+import { VFC } from 'react';
+import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
-import { Button, Icon, Table, TableProps } from 'ui';
+import { Button, Tile } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
-import { useActiveCompany } from 'domain/companies';
 import { useSocialLinks, useDeleteSocialLink } from 'domain/social-links';
 import { useConfirm } from 'domain/confirm';
+import { getRouteParam } from 'tools/common';
 
-import { SocialLinksTableColumns } from './social-links.types';
 import { ICON_BY_SOCIAL_LINK_TYPE } from './social-links.constants';
-import styles from './social-links.module.scss';
 
 export const SocialLinks: VFC = () => {
   const { t } = useTranslation();
-
+  const { query } = useRouter();
   const { confirmation } = useConfirm();
 
-  const { data: company } = useActiveCompany();
+  const companyId = getRouteParam(query.id);
+
   const { data: socialLinks = [] } = useSocialLinks({
-    host: company?._id ?? '',
+    host: companyId,
   });
   const { mutate: deleteSocialLink, isLoading: isDeleting } =
     useDeleteSocialLink();
-
-  const columns = useMemo<
-    TableProps<SocialLinksTableColumns>['columns']
-  >(() => {
-    return [
-      {
-        accessor: 'type',
-        label: t('account:companies.socialLinks.table.type'),
-      },
-      {
-        accessor: 'url',
-        label: t('account:companies.socialLinks.table.url'),
-      },
-      { accessor: 'actions', label: '', align: 'right' },
-    ];
-  }, [t]);
-
-  const rows = useMemo<TableProps<SocialLinksTableColumns>['rows']>(() => {
-    return (
-      socialLinks.map((socialLink) => ({
-        id: socialLink._id,
-        content: {
-          type: (
-            <div className={styles.actions}>
-              <Icon
-                name={ICON_BY_SOCIAL_LINK_TYPE[socialLink.type]}
-                className={styles.icon}
-              />
-              <span>{t(`common:social.${socialLink.type}`)}</span>
-            </div>
-          ),
-          url: socialLink.url,
-          actions: (
-            <div className={styles.actions}>
-              <Button
-                icon="trash"
-                size="xs"
-                variant="secondary"
-                attributes={{
-                  title: t('common:actions.delete'),
-                  disabled: isDeleting,
-                  onClick: async () => {
-                    const { confirmed } = await confirmation(
-                      t('account:companies.socialLinks.texts.confirmDelete', {
-                        type: t(`common:social.${socialLink.type}`),
-                        url: socialLink.url,
-                      })
-                    );
-
-                    if (confirmed) {
-                      deleteSocialLink({ id: socialLink._id });
-                    }
-                  },
-                }}
-              />
-              <Button
-                icon="pencil"
-                size="xs"
-                variant="secondary"
-                url={routes.account.companies.one.socialLinks.one
-                  .replace(':id', socialLink.host)
-                  .replace(':socialLinkId', socialLink._id)}
-                attributes={{ title: t('common:actions.edit') }}
-              />
-            </div>
-          ),
-        },
-      })) ?? []
-    );
-  }, [socialLinks, t, deleteSocialLink, isDeleting, confirmation]);
 
   return (
     <InfoBlock
@@ -100,7 +30,50 @@ export const SocialLinks: VFC = () => {
       icon="network"
       columns={1}
     >
-      <Table columns={columns} rows={rows} />
+      {socialLinks.map((socialLink) => (
+        <Tile
+          title={t(`common:social.${socialLink.type}`)}
+          icon={ICON_BY_SOCIAL_LINK_TYPE[socialLink.type]}
+          fields={[
+            {
+              label: t('account:companies.socialLinks.table.url'),
+              sublabel: socialLink.url,
+            },
+          ]}
+          actions={[
+            {
+              label: t('common:actions.edit'),
+              icon: 'pencil',
+              variant: 'secondary',
+              url: routes.account.companies.one.socialLinks.one
+                .replace(':id', socialLink.host)
+                .replace(':socialLinkId', socialLink._id),
+            },
+            {
+              label: t('common:actions.delete'),
+              icon: 'trash',
+              variant: 'ghost',
+              attributes: {
+                disabled: isDeleting,
+                onClick: async () => {
+                  const { confirmed } = await confirmation(
+                    t('account:companies.socialLinks.texts.confirmDelete', {
+                      type: t(`common:social.${socialLink.type}`),
+                      url: socialLink.url,
+                    })
+                  );
+
+                  if (confirmed) {
+                    deleteSocialLink({ id: socialLink._id });
+                  }
+                },
+              },
+            },
+          ]}
+          key={socialLink._id}
+        />
+      ))}
+
       <div>
         <Button
           label={t('common:actions.add')}
@@ -109,7 +82,7 @@ export const SocialLinks: VFC = () => {
           size="xs"
           url={routes.account.companies.one.socialLinks.add.replace(
             ':id',
-            company?._id ?? ''
+            companyId
           )}
         />
       </div>
