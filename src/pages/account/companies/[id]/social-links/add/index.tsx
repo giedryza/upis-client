@@ -1,7 +1,6 @@
 import { NextPage, GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import { dehydrate, QueryClient } from 'react-query';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
@@ -10,7 +9,6 @@ import { getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { CompanyEditSocialLinksAdd } from 'components/account';
-import { companiesKeys, loaders } from 'domain/companies';
 
 const CompanyEditSocialLinksAddPage: NextPage = () => {
   const { t } = useTranslation();
@@ -52,10 +50,7 @@ const CompanyEditSocialLinksAddPage: NextPage = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-  req,
-  params,
-}) => {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const session = await getSession({ req });
 
   if (!session) {
@@ -67,17 +62,9 @@ export const getServerSideProps: GetServerSideProps = async ({
     };
   }
 
-  const queryClient = new QueryClient();
-  const id = getRouteParam(params?.id);
-
-  await queryClient.prefetchQuery(companiesKeys.detail(id), () =>
-    loaders.getCompany({ req, id })
-  );
-
   return {
     props: {
       session,
-      dehydratedState: dehydrate(queryClient),
     },
   };
 };
