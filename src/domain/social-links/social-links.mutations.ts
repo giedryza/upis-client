@@ -1,10 +1,11 @@
 import { useMutation, useQueryClient } from 'react-query';
 
 import { socialLinksKeys } from './social-links.keys';
-import { loaders } from './social-links.loaders';
+import { useLoaders } from './social-links.loaders';
 
 export const useAddSocialLink = () => {
   const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.addSocialLink, {
     onSuccess: () => {
@@ -17,6 +18,7 @@ export const useAddSocialLink = () => {
 
 export const useUpdateSocialLink = () => {
   const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.updateSocialLink, {
     onSuccess: () => {
@@ -29,6 +31,7 @@ export const useUpdateSocialLink = () => {
 
 export const useDeleteSocialLink = () => {
   const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.deleteSocialLink, {
     onSuccess: () => {

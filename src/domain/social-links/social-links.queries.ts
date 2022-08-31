@@ -1,11 +1,13 @@
 import { useQuery } from 'react-query';
 
 import { socialLinksKeys } from './social-links.keys';
-import { loaders } from './social-links.loaders';
+import { useLoaders } from './social-links.loaders';
 import { converters } from './social-links.converters';
 import { SocialLinksFilters } from './social-links.types';
 
 export const useSocialLinks = (filters: SocialLinksFilters) => {
+  const { loaders } = useLoaders();
+
   const query = useQuery(
     socialLinksKeys.list(filters),
     () => loaders.getSocialLinks({ params: filters }),
@@ -19,6 +21,8 @@ export const useSocialLinks = (filters: SocialLinksFilters) => {
 };
 
 export const useSocialLink = (id: string) => {
+  const { loaders } = useLoaders();
+
   const query = useQuery(
     socialLinksKeys.detail(id),
     () => loaders.getSocialLink({ id }),
