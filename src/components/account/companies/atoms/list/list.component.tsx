@@ -6,7 +6,7 @@ import { Tile } from 'ui';
 import { useMyCompanies, useDeleteCompany } from 'domain/companies';
 import { useConfirm } from 'domain/confirm';
 
-export const CompaniesTable: VFC = () => {
+export const CompaniesList: VFC = () => {
   const { t } = useTranslation();
 
   const { confirmation } = useConfirm();

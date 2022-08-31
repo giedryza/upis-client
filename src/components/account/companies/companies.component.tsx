@@ -5,7 +5,7 @@ import { Card, EmptyState } from 'ui';
 import { routes } from 'config/routes';
 import { useMyCompanies } from 'domain/companies';
 
-import { CompaniesActions, CompaniesTable } from './atoms';
+import { CompaniesActions, CompaniesList } from './atoms';
 import styles from './companies.module.scss';
 
 export const Companies: VFC = () => {
@@ -29,7 +29,7 @@ export const Companies: VFC = () => {
       ) : (
         <div className={styles.content}>
           <CompaniesActions />
-          <CompaniesTable />
+          <CompaniesList />
         </div>
       )}
     </Card>

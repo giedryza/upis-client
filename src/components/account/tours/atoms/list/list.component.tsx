@@ -7,7 +7,7 @@ import { useDeleteTour, useMyTours } from 'domain/tours';
 import { useConfirm } from 'domain/confirm';
 import { formatCurrency } from 'tools/format';
 
-export const ToursTable: VFC = () => {
+export const ToursList: VFC = () => {
   const { t, lang } = useTranslation();
 
   const { confirmation } = useConfirm();

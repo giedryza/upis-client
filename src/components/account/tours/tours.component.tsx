@@ -6,7 +6,7 @@ import { routes } from 'config/routes';
 import { useMyCompanies } from 'domain/companies';
 import { useMyTours } from 'domain/tours';
 
-import { ToursActions, ToursTable } from './atoms';
+import { ToursActions, ToursList } from './atoms';
 import styles from './tours.module.scss';
 
 export const Tours: VFC = () => {
@@ -43,7 +43,7 @@ export const Tours: VFC = () => {
       ) : (
         <div className={styles.content}>
           <ToursActions />
-          <ToursTable />
+          <ToursList />
         </div>
       )}
     </Card>
