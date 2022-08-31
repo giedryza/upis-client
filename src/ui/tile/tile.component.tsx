@@ -15,7 +15,9 @@ export const Tile: VFC<Props> = ({
 }) => {
   return (
     <div className={styles.tile}>
-      <Icon name={icon} className={styles.icon} />
+      <div className={styles.icon}>
+        <Icon name={icon} />
+      </div>
 
       <div className={styles.body}>
         <div className={styles.header}>
