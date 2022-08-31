@@ -28,7 +28,7 @@ export const SocialLinks: VFC = () => {
     <InfoBlock
       title={t('account:companies.socialLinks.title')}
       icon="network"
-      columns={1}
+      columns={2}
     >
       {socialLinks.map((socialLink) => (
         <Tile

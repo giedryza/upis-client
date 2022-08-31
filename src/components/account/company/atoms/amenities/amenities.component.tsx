@@ -23,7 +23,7 @@ export const Amenities: VFC = () => {
     <InfoBlock
       title={t('account:companies.amenities.title')}
       icon="link"
-      columns={1}
+      columns={2}
     >
       {company.amenities.map((amenity) => (
         <Tile
