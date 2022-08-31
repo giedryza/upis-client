@@ -2,10 +2,11 @@ import { useMutation, useQueryClient } from 'react-query';
 
 import { companiesKeys } from 'domain/companies';
 
-import { loaders } from './amenities.loaders';
+import { useLoaders } from './amenities.loaders';
 
 export const useAddAmenity = () => {
   const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.addAmenity, {
     onSuccess: (_, { form }) => {
@@ -18,6 +19,7 @@ export const useAddAmenity = () => {
 
 export const useUpdateAmenity = () => {
   const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.updateAmenity, {
     onSuccess: (_, { companyId }) => {
@@ -30,6 +32,7 @@ export const useUpdateAmenity = () => {
 
 export const useDeleteAmenity = () => {
   const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.deleteAmenity, {
     onSuccess: (_, { companyId }) => {

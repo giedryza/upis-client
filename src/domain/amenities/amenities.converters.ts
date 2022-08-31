@@ -1,7 +1,9 @@
-import { loaders } from './amenities.loaders';
+import { Converter } from 'types/common';
+
+import { getLoaders } from './amenities.loaders';
 
 export const converters = {
-  getAmenity: ({ data }: Awaited<ReturnType<typeof loaders.getAmenity>>) => {
+  getAmenity: ({ data }: Converter<typeof getLoaders, 'getAmenity'>) => {
     return data;
   },
 };
