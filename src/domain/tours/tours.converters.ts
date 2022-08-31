@@ -1,10 +1,12 @@
-import { loaders } from './tours.loaders';
+import { Converter } from 'types/common';
+
+import { getLoaders } from './tours.loaders';
 
 export const converters = {
-  getTours: ({ data }: Awaited<ReturnType<typeof loaders.getTours>>) => {
+  getTours: ({ data }: Converter<typeof getLoaders, 'getTours'>) => {
     return data;
   },
-  getTour: ({ data }: Awaited<ReturnType<typeof loaders.getTour>>) => {
+  getTour: ({ data }: Converter<typeof getLoaders, 'getTour'>) => {
     return data;
   },
 };

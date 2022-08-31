@@ -6,7 +6,7 @@ import { getRouteParam } from 'tools/common';
 
 import { toursKeys } from './tours.keys';
 import { ToursFilters } from './tours.types';
-import { loaders } from './tours.loaders';
+import { useLoaders } from './tours.loaders';
 import { converters } from './tours.converters';
 
 interface UseTours {
@@ -15,6 +15,8 @@ interface UseTours {
 }
 
 export const useTours = ({ filters = {}, enabled = true }: UseTours) => {
+  const { loaders } = useLoaders();
+
   const query = useQuery(
     toursKeys.list(filters),
     () => loaders.getTours({ params: filters }),
@@ -39,6 +41,8 @@ export const useMyTours = (filters: ToursFilters = {}) => {
 };
 
 export const useTour = (id: string) => {
+  const { loaders } = useLoaders();
+
   const query = useQuery(toursKeys.detail(id), () => loaders.getTour({ id }), {
     enabled: !!id,
     select: converters.getTour,
