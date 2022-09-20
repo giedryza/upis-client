@@ -37,10 +37,10 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(
     return (
       <label
         className={clsx(styles.checkbox, {
-          [`${styles.selected}`]: state.isSelected(value),
-          [`${styles.focus}`]: isFocusVisible,
-          [`${styles.disabled}`]: state.isDisabled || disabled,
-          [`${styles.readonly}`]: state.isReadOnly || readonly,
+          [String(styles.selected)]: state.isSelected(value),
+          [String(styles.focus)]: isFocusVisible,
+          [String(styles.disabled)]: state.isDisabled || disabled,
+          [String(styles.readonly)]: state.isReadOnly || readonly,
         })}
       >
         <input

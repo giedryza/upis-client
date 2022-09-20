@@ -14,6 +14,7 @@ export * from './profile-edit-security';
 export * from './tour';
 export * from './tours';
 export * from './tour-edit-about';
+export * from './tour-edit-amenities';
 export * from './tour-edit-details';
 export * from './tour-edit-geography';
 export * from './tour-edit-prices';

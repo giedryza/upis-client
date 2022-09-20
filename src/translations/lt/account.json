@@ -290,6 +290,24 @@
         }
       }
     },
+    "amenities": {
+      "title": "Patogumai",
+      "form": {
+        "amenities": {
+          "label": "Pasirinkite patogumus"
+        },
+        "amount": {
+          "display": "Kaina"
+        }
+      },
+      "texts": {
+        "empty": {
+          "title": "Tuščia",
+          "message": "Norėdami pasirinkti maršruto patogumus, spauskite 'redaguoti'."
+        },
+        "info": "Pasirinkti galite tuos patogumus, kurie priklauso įmonei. <0>Spauskite čia</0> norėdami įmonei pridėti daugiau patogumų."
+      }
+    },
     "settings": {
       "title": "Nustatymai"
     },

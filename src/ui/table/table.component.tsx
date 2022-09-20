@@ -16,7 +16,7 @@ export const Table: VFC<Props> = ({ rows, columns }) => {
           <tr>
             {columns.map(({ accessor, label, align = 'left' }) => {
               return (
-                <th className={styles[`-align-${align}`]} key={`${accessor}`}>
+                <th className={styles[`-align-${align}`]} key={accessor}>
                   {label}
                 </th>
               );
@@ -30,10 +30,7 @@ export const Table: VFC<Props> = ({ rows, columns }) => {
                 <tr key={row.id}>
                   {columns.map(({ accessor, align = 'left' }) => {
                     return (
-                      <td
-                        className={styles[`-align-${align}`]}
-                        key={`${accessor}`}
-                      >
+                      <td className={styles[`-align-${align}`]} key={accessor}>
                         {row.content[accessor]}
                       </td>
                     );

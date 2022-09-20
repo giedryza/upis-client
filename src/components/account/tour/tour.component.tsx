@@ -1,6 +1,6 @@
 import { VFC } from 'react';
 
-import { About, Details, Prices, Actions, Geography } from './atoms';
+import { About, Details, Prices, Actions, Geography, Amenities } from './atoms';
 import styles from './tour.module.scss';
 
 export const Tour: VFC = () => {
@@ -13,6 +13,8 @@ export const Tour: VFC = () => {
       <Prices />
 
       <Geography />
+
+      <Amenities />
 
       <Actions />
     </div>

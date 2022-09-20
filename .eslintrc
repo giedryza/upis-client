@@ -134,6 +134,15 @@
     "arrow-body-style": "off",
     "default-param-last": "off",
     "prefer-template": "error",
+    "no-implicit-coercion": [
+      "error",
+      {
+        "boolean": false,
+        "number": true,
+        "string": true,
+        "disallowTemplateShorthand": true
+      }
+    ],
     "no-useless-concat": "error"
   },
   "overrides": [

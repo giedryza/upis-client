@@ -44,6 +44,13 @@ interface UpdateTourGeography {
   };
 }
 
+interface UpdateTourAmenities {
+  id: string;
+  form: {
+    amenities: string[];
+  };
+}
+
 interface DeleteTour {
   id: string;
 }
@@ -78,6 +85,11 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       }).patch(),
     updateTourGeography: ({ id, form }: UpdateTourGeography) =>
       new Request<Tour>(endpoints.tours.one.geography.replace(':id', id), {
+        body: getJsonBody(form),
+        locale,
+      }).patch(),
+    updateTourAmenities: ({ id, form }: UpdateTourAmenities) =>
+      new Request<Tour>(endpoints.tours.one.amenities.replace(':id', id), {
         body: getJsonBody(form),
         locale,
       }).patch(),
