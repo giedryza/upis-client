@@ -290,6 +290,20 @@
         }
       }
     },
+    "amenities": {
+      "title": "Amenities",
+      "form": {
+        "amount": {
+          "display": "Price"
+        }
+      },
+      "texts": {
+        "empty": {
+          "title": "Empty",
+          "message": "Click 'edit' to select amenities for the tour."
+        }
+      }
+    },
     "settings": {
       "title": "Settings"
     },

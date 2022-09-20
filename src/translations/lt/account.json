@@ -290,6 +290,20 @@
         }
       }
     },
+    "amenities": {
+      "title": "Patogumai",
+      "form": {
+        "amount": {
+          "display": "Kaina"
+        }
+      },
+      "texts": {
+        "empty": {
+          "title": "Tuščia",
+          "message": "Norėdami pasirinkti maršruto patogumus, spauskite 'redaguoti'."
+        }
+      }
+    },
     "settings": {
       "title": "Nustatymai"
     },
