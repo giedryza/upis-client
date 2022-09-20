@@ -34,10 +34,10 @@ export const Radio = forwardRef<HTMLInputElement, Props>(
     return (
       <label
         className={clsx(styles.radio, {
-          [`${styles.selected}`]: state.selectedValue === value,
-          [`${styles.focus}`]: isFocusVisible,
-          [`${styles.disabled}`]: state.isDisabled || disabled,
-          [`${styles.readonly}`]: state.isReadOnly,
+          [String(styles.selected)]: state.selectedValue === value,
+          [String(styles.focus)]: isFocusVisible,
+          [String(styles.disabled)]: state.isDisabled || disabled,
+          [String(styles.readonly)]: state.isReadOnly,
         })}
       >
         <input
