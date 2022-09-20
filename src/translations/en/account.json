@@ -293,6 +293,9 @@
     "amenities": {
       "title": "Amenities",
       "form": {
+        "amenities": {
+          "label": "Select amenities"
+        },
         "amount": {
           "display": "Price"
         }
@@ -301,7 +304,8 @@
         "empty": {
           "title": "Empty",
           "message": "Click 'edit' to select amenities for the tour."
-        }
+        },
+        "info": "You can select amenities that belong to the company. <0>Click here</0> to add more amenities to the company."
       }
     },
     "settings": {

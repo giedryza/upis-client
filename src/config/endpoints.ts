@@ -22,6 +22,7 @@ export const endpoints = {
       index: 'tours/:id',
       price: 'tours/:id/price',
       geography: 'tours/:id/geography',
+      amenities: 'tours/:id/amenities',
     },
   },
   socialLinks: {
