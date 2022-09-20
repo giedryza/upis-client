@@ -20,7 +20,7 @@ export const Amenities: VFC = () => {
       title={t('account:tours.amenities.title')}
       icon="link"
       columns={2}
-      editPage={routes.account.tours.one.about.replace(':id', tour._id)}
+      editPage={routes.account.tours.one.amenities.replace(':id', tour._id)}
     >
       {tour.amenities.length ? (
         tour.amenities.map((amenity) => (
