@@ -1,0 +1,21 @@
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 500;
+
+  &.hidden {
+    animation-name: hiding;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes hiding {
+  to {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+}
