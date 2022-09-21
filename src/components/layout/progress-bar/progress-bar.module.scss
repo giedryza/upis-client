@@ -2,8 +2,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
   z-index: 500;
+
+  width: 100%;
 
   &.hidden {
     animation-name: hiding;
@@ -14,8 +15,9 @@
 
 @keyframes hiding {
   to {
-    visibility: hidden;
     width: 0;
     height: 0;
+
+    visibility: hidden;
   }
 }
