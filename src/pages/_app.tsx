@@ -14,6 +14,7 @@ import { AppLayout } from 'layouts';
 import { Alerts } from 'components/alerts';
 import { ModalSlot } from 'components/modal-slot';
 import { ConfirmationModal } from 'components/modals';
+import { ProgressBar } from 'components/layout';
 
 import 'styles/index.scss';
 
@@ -34,6 +35,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                   <AppLayout>
                     <Component {...pageProps} />
 
+                    <ProgressBar />
                     <Alerts />
                     <ModalSlot
                       modalName="confirmation"

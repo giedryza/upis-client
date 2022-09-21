@@ -7,7 +7,7 @@ import { Toast } from 'ui';
 import { alerts } from 'domain/alerts';
 
 import { Props } from './alert.types';
-import { ALERT_FADE_DELAY, SAFETY_OFFSET } from './alert.constants';
+import { ALERT_FADE_DELAY } from './alert.constants';
 import styles from './alert.module.scss';
 
 export const Alert: VFC<Props> = ({ id, type, message }) => {
@@ -17,7 +17,7 @@ export const Alert: VFC<Props> = ({ id, type, message }) => {
 
   useTimeout(
     () => dispatch(alerts.actions.close(id)),
-    isFading ? ALERT_FADE_DELAY - SAFETY_OFFSET : null
+    isFading ? ALERT_FADE_DELAY : null
   );
 
   return (

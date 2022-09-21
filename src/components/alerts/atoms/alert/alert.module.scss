@@ -6,6 +6,7 @@
   animation-delay: calc(
     (var(--fade-delay, 6 * 1000) - var(--fade-duration)) * 1ms
   );
+  animation-fill-mode: forwards;
 }
 
 @keyframes fade {

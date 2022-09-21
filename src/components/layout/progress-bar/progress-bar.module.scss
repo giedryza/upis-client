@@ -1,0 +1,23 @@
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 500;
+
+  width: 100%;
+
+  &.hidden {
+    animation-name: hiding;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes hiding {
+  to {
+    width: 0; /* stylelint-disable-line plugin/no-low-performance-animation-properties */
+    height: 0; /* stylelint-disable-line plugin/no-low-performance-animation-properties */
+
+    visibility: hidden; /* stylelint-disable-line plugin/no-low-performance-animation-properties */
+  }
+}
