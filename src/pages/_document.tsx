@@ -21,8 +21,8 @@ class MyDocument extends Document {
         <body>
           <Main />
 
-          <div id="alerts" />
           <div id="progress-bar" />
+          <div id="alerts" />
 
           <NextScript />
         </body>
