@@ -20,6 +20,7 @@ export * from './modal';
 export * from './multi-autocomplete-input';
 export * from './number-input';
 export * from './portal';
+export * from './progress';
 export * from './radio-input';
 export * from './select-input';
 export * from './slider-input';

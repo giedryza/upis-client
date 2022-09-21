@@ -1,0 +1,47 @@
+@use 'src/styles/mixins' as *;
+
+.progress {
+  --track-size: 2px;
+
+  font-size: 1.6rem;
+  line-height: 1.9;
+
+  .label {
+    display: inline-block;
+
+    color: var(--color-grey-30);
+    font-weight: 400;
+    font-size: 0.75em;
+  }
+
+  .body {
+    display: flex;
+    align-items: center;
+
+    line-height: 1.1;
+
+    @include spacing(x, 0.5em);
+  }
+
+  .track {
+    flex: 1;
+    height: var(--track-size);
+
+    background-color: var(--color-grey-85);
+  }
+
+  .bar {
+    width: min(calc(var(--percentage, 0) * 100%), 100%);
+    height: 100%;
+
+    background-color: var(--color-grey-05);
+  }
+
+  .value {
+    display: inline-block;
+
+    color: var(--color-text);
+    font-weight: 500;
+    font-size: 0.8em;
+  }
+}
