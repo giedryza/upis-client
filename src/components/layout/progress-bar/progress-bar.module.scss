@@ -15,9 +15,9 @@
 
 @keyframes hiding {
   to {
-    width: 0;
-    height: 0;
+    width: 0; /* stylelint-disable-line plugin/no-low-performance-animation-properties */
+    height: 0; /* stylelint-disable-line plugin/no-low-performance-animation-properties */
 
-    visibility: hidden;
+    visibility: hidden; /* stylelint-disable-line plugin/no-low-performance-animation-properties */
   }
 }
