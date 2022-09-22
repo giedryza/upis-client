@@ -1,24 +1,26 @@
 import { useEffect, VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, Container, TextInput } from 'ui';
+import { Button, Container, MultiAutocompleteInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useUpdateCompany, useActiveCompany } from 'domain/companies';
+import { languages as supportedLanguages } from 'types/common';
 
 import { Values } from './company-edit-about.types';
 import { INITIAL_VALUES } from './company-edit-about.constants';
 import styles from './company-edit-about.module.scss';
 
 export const CompanyEditAbout: VFC = () => {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
   const { push } = useRouter();
 
   const {
     register,
     handleSubmit,
+    control,
     reset,
     formState: { errors, isDirty },
   } = useForm<Values>({
@@ -32,24 +34,24 @@ export const CompanyEditAbout: VFC = () => {
     reset({
       name: company?.name,
       description: company?.description,
+      languages: company?.languages,
     });
   }, [reset, company]);
 
-  const onSubmit: SubmitHandler<Values> = ({ name, description }) => {
+  const onSubmit: SubmitHandler<Values> = ({
+    name,
+    description,
+    languages,
+  }) => {
     const companyId = company?._id;
 
     if (!companyId) return;
 
     updateCompany(
-      { id: companyId, form: { name, description } },
+      { id: companyId, form: { name, description, languages } },
       {
         onSuccess: () => {
-          push(
-            routes.account.companies.one.index.replace(
-              ':id',
-              company?._id ?? ''
-            )
-          );
+          push(routes.account.companies.one.index.replace(':id', companyId));
         },
       }
     );
@@ -81,6 +83,32 @@ export const CompanyEditAbout: VFC = () => {
               type="textarea"
               rows={8}
               error={errors.description?.message}
+            />
+
+            <Controller
+              control={control}
+              name="languages"
+              render={({ field: { name, onChange, value, ref } }) => (
+                <MultiAutocompleteInput
+                  name={name}
+                  label={t('account:companies.about.form.languages.label')}
+                  placeholder={t(
+                    'account:companies.about.form.languages.placeholder'
+                  )}
+                  items={
+                    supportedLanguages.map((language) => ({
+                      label: new Intl.DisplayNames([lang], {
+                        type: 'language',
+                      }).of(language) as string,
+                      value: language,
+                    })) ?? []
+                  }
+                  value={value}
+                  onChange={onChange}
+                  error={errors.languages?.message}
+                  ref={ref}
+                />
+              )}
             />
           </fieldset>
 

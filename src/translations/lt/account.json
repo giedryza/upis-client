@@ -75,7 +75,8 @@
         },
         "languages": {
           "display": "Kalbos",
-          "label": "Pasirinkite kalbas, kuriomis kalbate"
+          "label": "Pasirinkite kalbas, kuriomis kalbate",
+          "placeholder": "Ieškoti kalbų"
         }
       }
     },

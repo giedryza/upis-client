@@ -44,7 +44,13 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       form: Partial<
         Pick<
           Company,
-          'name' | 'phone' | 'email' | 'description' | 'website' | 'address'
+          | 'name'
+          | 'phone'
+          | 'email'
+          | 'description'
+          | 'website'
+          | 'address'
+          | 'languages'
         >
       >;
     }) =>

@@ -74,7 +74,8 @@
         },
         "languages": {
           "display": "Languages",
-          "label": "Select spoken languages"
+          "label": "Select spoken languages",
+          "placeholder": "Search languages"
         }
       }
     },
