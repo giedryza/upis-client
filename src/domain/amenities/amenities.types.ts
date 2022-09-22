@@ -1,4 +1,4 @@
-import { Price } from 'types/common';
+import { BaseEntity, Price } from 'types/common';
 
 export const variants = [
   'transport',
@@ -20,8 +20,7 @@ export type Variant = typeof variants[number];
 
 export type Unit = typeof units[number];
 
-export interface Amenity {
-  _id: string;
+export interface Amenity extends BaseEntity {
   variant: Variant;
   price: Price | null;
   unit: Unit;

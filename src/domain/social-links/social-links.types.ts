@@ -1,3 +1,5 @@
+import { BaseEntity } from 'types/common';
+
 export enum SocialType {
   Facebook = 'facebook',
   Instagram = 'instagram',
@@ -6,8 +8,7 @@ export enum SocialType {
   Twitter = 'twitter',
 }
 
-export interface SocialLink {
-  _id: string;
+export interface SocialLink extends BaseEntity {
   type: SocialType;
   url: string;
   host: string;
