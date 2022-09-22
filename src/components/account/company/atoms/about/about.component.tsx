@@ -5,6 +5,7 @@ import { InfoBlock } from 'components/account/atoms';
 import { useActiveCompany } from 'domain/companies';
 import { routes } from 'config/routes';
 import { FieldDisplay } from 'ui';
+import { capitalize } from 'tools/common';
 
 export const About: VFC = () => {
   const { t, lang } = useTranslation();
@@ -41,6 +42,13 @@ export const About: VFC = () => {
               ) as string
           )
         )}
+      />
+      <FieldDisplay
+        label={t('account:companies.about.form.boats.display')}
+        value={new Intl.ListFormat(lang, {
+          style: 'long',
+          type: 'conjunction',
+        }).format(company.boats.map((boat) => t(`common:boats.${boat}`)))}
       />
     </InfoBlock>
   );
