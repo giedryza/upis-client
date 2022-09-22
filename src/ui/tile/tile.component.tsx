@@ -1,4 +1,5 @@
 import { VFC } from 'react';
+import Link from 'next/link';
 
 import { Icon, Button } from 'ui';
 
@@ -9,6 +10,7 @@ export const Tile: VFC<Props> = ({
   icon,
   title,
   subtitle,
+  url,
   heading: Heading = 'h3',
   fields = [],
   actions = [],
@@ -23,7 +25,15 @@ export const Tile: VFC<Props> = ({
 
       <div className={styles.body}>
         <div className={styles.header}>
-          <Heading className={styles.title}>{title}</Heading>
+          <Heading className={styles.title}>
+            {url ? (
+              <Link href={url}>
+                <a>{title}</a>
+              </Link>
+            ) : (
+              title
+            )}
+          </Heading>
           {!!subtitle && <div className={styles.subtitle}>{subtitle}</div>}
         </div>
 

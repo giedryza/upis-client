@@ -21,6 +21,7 @@ export const ToursList: VFC = () => {
         <Tile
           title={tour.name}
           subtitle={tour.company.name}
+          url={routes.account.tours.one.index.replace(':id', tour._id)}
           heading="h2"
           fields={[
             {
