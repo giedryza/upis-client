@@ -1,8 +1,8 @@
 import { SocialLink } from 'domain/social-links';
 import { Amenity } from 'domain/amenities';
+import { BaseEntity, Language } from 'types/common';
 
-export interface Company {
-  _id: string;
+export interface Company extends BaseEntity {
   name: string;
   phone: string;
   email: string;
@@ -13,6 +13,7 @@ export interface Company {
   user: string;
   amenities: Amenity[];
   socialLinks: SocialLink[];
+  languages: Language[];
   location: {
     coordinates: number[];
   };

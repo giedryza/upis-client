@@ -1,6 +1,6 @@
 import { Amenity } from 'domain/amenities';
 import { Company } from 'domain/companies';
-import { AppFile, Language, Price } from 'types/common';
+import { AppFile, BaseEntity, Price } from 'types/common';
 
 export const regions = [
   'aukstaitija',
@@ -240,8 +240,7 @@ export type Boat = typeof boats[number];
 
 export type Difficulty = typeof difficulty[number];
 
-export interface Tour {
-  _id: string;
+export interface Tour extends BaseEntity {
   name: string;
   slug: string;
   description: string;
@@ -259,7 +258,6 @@ export interface Tour {
   website: string;
   amenities: Amenity[];
   boats: Boat[];
-  languages: Language[];
   createdAt: Date;
   updatedAt: Date;
 }
