@@ -75,12 +75,12 @@
         },
         "languages": {
           "display": "Kalbos",
-          "label": "Pasirinkite kalbas, kuriomis kalbate",
+          "label": "Kalbos, kuriomis kalbame",
           "placeholder": "Ieškoti kalbų"
         },
         "boats": {
           "display": "Valtys",
-          "label": "Pasirinkite turimus valčių tipus"
+          "label": "Turimi valčių tipai"
         }
       }
     },

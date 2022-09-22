@@ -74,12 +74,12 @@
         },
         "languages": {
           "display": "Languages",
-          "label": "Select spoken languages",
+          "label": "Spoken languages",
           "placeholder": "Search languages"
         },
         "boats": {
           "display": "Boats",
-          "label": "Select available boat types"
+          "label": "Available boat types"
         }
       }
     },
