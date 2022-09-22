@@ -21,6 +21,7 @@ export const CompaniesList: VFC = () => {
         <Tile
           title={company.name}
           subtitle={company.address}
+          url={routes.account.companies.one.index.replace(':id', company._id)}
           heading="h2"
           fields={[
             {

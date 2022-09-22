@@ -11,6 +11,7 @@ export interface Props {
   title: string;
   icon?: IconName;
   subtitle?: string;
+  url?: string;
   heading?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   fields?: Field[];
   actions?: ButtonProps[];

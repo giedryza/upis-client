@@ -38,6 +38,15 @@
 
   .title {
     font-weight: 600;
+
+    a {
+      color: currentColor;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .subtitle {
