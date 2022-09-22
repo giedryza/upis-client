@@ -77,6 +77,10 @@
           "display": "Kalbos",
           "label": "Pasirinkite kalbas, kuriomis kalbate",
           "placeholder": "Ieškoti kalbų"
+        },
+        "boats": {
+          "display": "Valtys",
+          "label": "Pasirinkite turimus valčių tipus"
         }
       }
     },

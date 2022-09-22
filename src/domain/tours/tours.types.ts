@@ -223,20 +223,11 @@ export const rivers = [
   'zvelsa',
 ] as const;
 
-export const boats = [
-  'single-kayak',
-  'double-kayak',
-  'triple-kayak',
-  'raft',
-] as const;
-
 export const difficulty = [1, 2, 3, 4, 5] as const;
 
 export type Region = typeof regions[number];
 
 export type River = typeof rivers[number];
-
-export type Boat = typeof boats[number];
 
 export type Difficulty = typeof difficulty[number];
 
@@ -257,7 +248,6 @@ export interface Tour extends BaseEntity {
   company: Company;
   website: string;
   amenities: Amenity[];
-  boats: Boat[];
   createdAt: Date;
   updatedAt: Date;
 }

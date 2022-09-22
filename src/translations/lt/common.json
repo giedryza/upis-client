@@ -78,6 +78,12 @@
       "km": "už kilometrą"
     }
   },
+  "boats": {
+    "single-kayak": "Vienvietė baidarė",
+    "double-kayak": "Dvivietė baidarė",
+    "triple-kayak": "Trivietė baidarė",
+    "raft": "Plaustas"
+  },
   "errors": {
     "generic": "Oops! Įvyko nenumatyta klaida."
   }

@@ -2,6 +2,15 @@ import { SocialLink } from 'domain/social-links';
 import { Amenity } from 'domain/amenities';
 import { BaseEntity, Language } from 'types/common';
 
+export const boats = [
+  'single-kayak',
+  'double-kayak',
+  'triple-kayak',
+  'raft',
+] as const;
+
+export type Boat = typeof boats[number];
+
 export interface Company extends BaseEntity {
   name: string;
   phone: string;
@@ -14,6 +23,7 @@ export interface Company extends BaseEntity {
   amenities: Amenity[];
   socialLinks: SocialLink[];
   languages: Language[];
+  boats: Boat[];
   location: {
     coordinates: number[];
   };

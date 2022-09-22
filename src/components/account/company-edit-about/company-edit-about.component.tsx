@@ -3,10 +3,20 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, Container, MultiAutocompleteInput, TextInput } from 'ui';
+import {
+  Button,
+  CheckboxGroupInput,
+  Container,
+  MultiAutocompleteInput,
+  TextInput,
+} from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
-import { useUpdateCompany, useActiveCompany } from 'domain/companies';
+import {
+  useUpdateCompany,
+  useActiveCompany,
+  boats as supportedBoats,
+} from 'domain/companies';
 import { languages as supportedLanguages } from 'types/common';
 
 import { Values } from './company-edit-about.types';
@@ -35,6 +45,7 @@ export const CompanyEditAbout: VFC = () => {
       name: company?.name,
       description: company?.description,
       languages: company?.languages,
+      boats: company?.boats,
     });
   }, [reset, company]);
 
@@ -42,13 +53,14 @@ export const CompanyEditAbout: VFC = () => {
     name,
     description,
     languages,
+    boats,
   }) => {
     const companyId = company?._id;
 
     if (!companyId) return;
 
     updateCompany(
-      { id: companyId, form: { name, description, languages } },
+      { id: companyId, form: { name, description, languages, boats } },
       {
         onSuccess: () => {
           push(routes.account.companies.one.index.replace(':id', companyId));
@@ -106,6 +118,26 @@ export const CompanyEditAbout: VFC = () => {
                   value={value}
                   onChange={onChange}
                   error={errors.languages?.message}
+                  ref={ref}
+                />
+              )}
+            />
+
+            <Controller
+              control={control}
+              name="boats"
+              render={({ field: { onChange, value, ref } }) => (
+                <CheckboxGroupInput
+                  label={t('account:companies.about.form.boats.label')}
+                  items={
+                    supportedBoats.map((boat) => ({
+                      label: t(`common:boats.${boat}`),
+                      value: boat,
+                    })) ?? []
+                  }
+                  value={value}
+                  onChange={onChange}
+                  error={errors.boats?.message}
                   ref={ref}
                 />
               )}

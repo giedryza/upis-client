@@ -51,6 +51,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
           | 'website'
           | 'address'
           | 'languages'
+          | 'boats'
         >
       >;
     }) =>
