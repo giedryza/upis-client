@@ -71,6 +71,10 @@
         },
         "description": {
           "label": "Description"
+        },
+        "languages": {
+          "display": "Languages",
+          "label": "Select spoken languages"
         }
       }
     },

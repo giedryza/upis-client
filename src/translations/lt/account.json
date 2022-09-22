@@ -72,6 +72,10 @@
         },
         "description": {
           "label": "Aprašymas"
+        },
+        "languages": {
+          "display": "Kalbos",
+          "label": "Pasirinkite kalbas, kuriomis kalbate"
         }
       }
     },

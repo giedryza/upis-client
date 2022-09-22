@@ -7,7 +7,7 @@ import { routes } from 'config/routes';
 import { FieldDisplay } from 'ui';
 
 export const About: VFC = () => {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
 
   const { data: company } = useActiveCompany();
 
@@ -27,6 +27,20 @@ export const About: VFC = () => {
       <FieldDisplay
         label={t('account:companies.about.form.description.label')}
         value={company.description}
+      />
+      <FieldDisplay
+        label={t('account:companies.about.form.languages.display')}
+        value={new Intl.ListFormat(lang, {
+          style: 'long',
+          type: 'conjunction',
+        }).format(
+          company.languages.map(
+            (language) =>
+              new Intl.DisplayNames([lang], { type: 'language' }).of(
+                language
+              ) as string
+          )
+        )}
       />
     </InfoBlock>
   );
