@@ -42,6 +42,13 @@ export const About: VFC = () => {
           )
         )}
       />
+      <FieldDisplay
+        label={t('account:companies.about.form.boats.display')}
+        value={new Intl.ListFormat(lang, {
+          style: 'long',
+          type: 'conjunction',
+        }).format(company.boats.map((boat) => t(`common:boats.${boat}`)))}
+      />
     </InfoBlock>
   );
 };

@@ -78,6 +78,12 @@
       "km": "per kilometre"
     }
   },
+  "boats": {
+    "single-kayak": "Single kayak",
+    "double-kayak": "Double kayak",
+    "triple-kayak": "Triple kayak",
+    "raft": "Raft"
+  },
   "errors": {
     "generic": "Oops! Something went wrong."
   }

@@ -76,6 +76,10 @@
           "display": "Languages",
           "label": "Select spoken languages",
           "placeholder": "Search languages"
+        },
+        "boats": {
+          "display": "Boats",
+          "label": "Select available boat types"
         }
       }
     },

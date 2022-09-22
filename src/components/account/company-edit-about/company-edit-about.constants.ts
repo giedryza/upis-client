@@ -4,4 +4,5 @@ export const INITIAL_VALUES: Values = {
   name: '',
   description: '',
   languages: [],
+  boats: [],
 };
