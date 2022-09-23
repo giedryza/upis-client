@@ -35,13 +35,6 @@
     "or": "Arba",
     "free": "Nemokamai"
   },
-  "language": {
-    "lt": "Lietuvių",
-    "en": "English",
-    "lt-short": "LT",
-    "en-short": "EN",
-    "menu": "Kalbos pasirinkimas"
-  },
   "account": {
     "account": "Mano paskyra",
     "profile": "Profilis",
@@ -83,8 +76,5 @@
     "double-kayak": "Dvivietė baidarė",
     "triple-kayak": "Trivietė baidarė",
     "raft": "Plaustas"
-  },
-  "errors": {
-    "generic": "Oops! Įvyko nenumatyta klaida."
   }
 }
