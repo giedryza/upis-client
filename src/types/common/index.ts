@@ -3,6 +3,7 @@ export * from './entity';
 export * from './env';
 export * from './errors';
 export * from './files';
+export * from './geo';
 export * from './locales';
 export * from './money';
 export * from './next';

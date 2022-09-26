@@ -25,10 +25,6 @@ export const ToursList: VFC = () => {
           heading="h2"
           fields={[
             {
-              label: t('account:tours.table.trip'),
-              sublabel: [tour.departure, tour.arrival].join(' - '),
-            },
-            {
               label: t('account:tours.table.price'),
               sublabel: tour.price
                 ? formatCurrency(lang, tour.price.amount, tour.price.currency)

@@ -1,6 +1,6 @@
 import { Amenity } from 'domain/amenities';
 import { Company } from 'domain/companies';
-import { AppFile, BaseEntity, Price } from 'types/common';
+import { AppFile, BaseEntity, GeoPoint, Price } from 'types/common';
 
 export const regions = [
   'aukstaitija',
@@ -235,8 +235,8 @@ export interface Tour extends BaseEntity {
   name: string;
   slug: string;
   description: string;
-  departure: string;
-  arrival: string;
+  departure: GeoPoint;
+  arrival: GeoPoint;
   distance: number | null;
   duration: number | null;
   days: number;

@@ -1,6 +1,6 @@
 import { SocialLink } from 'domain/social-links';
 import { Amenity } from 'domain/amenities';
-import { BaseEntity, Language } from 'types/common';
+import { BaseEntity, GeoPoint, Language } from 'types/common';
 
 export const boats = [
   'single-kayak',
@@ -24,9 +24,7 @@ export interface Company extends BaseEntity {
   socialLinks: SocialLink[];
   languages: Language[];
   boats: Boat[];
-  location: {
-    coordinates: number[];
-  };
+  location: GeoPoint;
   logo: {
     location: string;
     key?: string;

@@ -192,7 +192,6 @@
     },
     "table": {
       "name": "Pavadinimas",
-      "trip": "Kelionė",
       "distance": "Atstumas",
       "duration": "Trukmė",
       "days": "Dienos",
