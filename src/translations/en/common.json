@@ -35,13 +35,6 @@
     "or": "Or",
     "free": "Free"
   },
-  "language": {
-    "lt": "Lietuvių",
-    "en": "English",
-    "lt-short": "LT",
-    "en-short": "EN",
-    "menu": "Language menu"
-  },
   "account": {
     "account": "My account",
     "profile": "Profile",
@@ -83,8 +76,5 @@
     "double-kayak": "Double kayak",
     "triple-kayak": "Triple kayak",
     "raft": "Raft"
-  },
-  "errors": {
-    "generic": "Oops! Something went wrong."
   }
 }
