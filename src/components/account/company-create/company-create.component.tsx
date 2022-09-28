@@ -35,8 +35,8 @@ export const CompanyCreate: VFC = () => {
     createCompany(
       { form: { name, email, phone, description } },
       {
-        onSuccess: () => {
-          push(routes.account.companies.index);
+        onSuccess: ({ data }) => {
+          push(routes.account.companies.one.index.replace(':id', data._id));
         },
       }
     );

@@ -191,7 +191,6 @@
     },
     "table": {
       "name": "Name",
-      "trip": "Trip",
       "distance": "Distance",
       "duration": "Duration",
       "days": "Days",

@@ -69,8 +69,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       new Request<Company>(endpoints.companies.one.index.replace(':id', id), {
         body: getJsonBody({
           address: form.address,
-          ...(form.lat &&
-            form.lng && { location: { coordinates: [form.lng, form.lat] } }),
+          ...(form.lat && form.lng && { location: [form.lng, form.lat] }),
         }),
         locale,
       }).patch(),

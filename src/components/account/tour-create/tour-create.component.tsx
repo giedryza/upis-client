@@ -33,8 +33,8 @@ export const TourCreate: VFC = () => {
     createTour(
       { form: { name, company } },
       {
-        onSuccess: () => {
-          push(routes.account.tours.index);
+        onSuccess: ({ data }) => {
+          push(routes.account.tours.one.index.replace(':id', data._id));
         },
       }
     );
