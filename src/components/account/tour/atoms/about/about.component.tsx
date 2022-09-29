@@ -18,7 +18,14 @@ export const About: VFC = () => {
       title={t('account:tours.about.title')}
       icon="info"
       columns={1}
-      editPage={routes.account.tours.one.about.replace(':id', tour._id)}
+      actions={[
+        {
+          url: routes.account.tours.one.about.replace(':id', tour._id),
+          label: t('common:actions.edit'),
+          variant: 'tertiary',
+          icon: 'pencil',
+        },
+      ]}
     >
       <FieldDisplay
         label={t('account:tours.about.form.name.label')}
