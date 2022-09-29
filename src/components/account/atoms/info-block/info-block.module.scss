@@ -33,7 +33,7 @@
   .heading {
     display: flex;
     align-items: flex-start;
-
+    flex-shrink: 0;
     color: var(--color-text);
 
     @include spacing(x, 0.75rem);
@@ -63,5 +63,11 @@
     @include mobile {
       grid-template-columns: 1fr;
     }
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
   }
 }

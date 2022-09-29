@@ -13,6 +13,7 @@ export const InfoBlock: FC<Props> = ({
   editPage,
   columns = 2,
   children,
+  actions = [],
 }) => {
   const { t } = useTranslation();
 
@@ -27,6 +28,16 @@ export const InfoBlock: FC<Props> = ({
             <Icon name={icon} className={styles.icon} />
             <h2 className={styles.title}>{title}</h2>
           </div>
+
+          {!!actions.length && (
+            <ul className={styles.actions}>
+              {actions.map((action, i) => (
+                <li key={i}>
+                  <Button {...action} size="xs" />
+                </li>
+              ))}
+            </ul>
+          )}
 
           {!!editPage && (
             <Button
