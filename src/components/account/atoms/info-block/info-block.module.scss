@@ -32,8 +32,9 @@
 
   .heading {
     display: flex;
-    align-items: flex-start;
     flex-shrink: 0;
+    align-items: flex-start;
+
     color: var(--color-text);
 
     @include spacing(x, 0.75rem);
