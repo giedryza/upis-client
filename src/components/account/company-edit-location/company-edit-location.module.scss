@@ -1,18 +1,12 @@
 @use 'styles/mixins' as *;
 
 .mapContainer {
-  @include spacing(y, 0.5rem);
+  @include spacing(y, 1rem);
 }
 
 .map {
   width: 100%;
   height: 50rem;
-}
-
-.info {
-  color: var(--color-text);
-  font-weight: 400;
-  font-size: 1.4rem;
 }
 
 .actions {

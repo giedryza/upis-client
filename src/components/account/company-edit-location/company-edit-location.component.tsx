@@ -12,6 +12,7 @@ import {
   Point,
   useSearchByCoordinates,
   DEFAULT_CENTER,
+  Toast,
 } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveCompany, useUpdateLocation } from 'domain/companies';
@@ -114,9 +115,8 @@ export const CompanyEditLocation: VFC = () => {
             )}
           </Map>
         </div>
-        <p className={styles.info}>
-          {t('account:companies.location.map.info')}
-        </p>
+
+        <Toast message={t('account:companies.location.map.info')} type="info" />
       </div>
 
       <div className={styles.actions}>
