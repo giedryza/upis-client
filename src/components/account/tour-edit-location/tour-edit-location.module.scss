@@ -1,7 +1,7 @@
 @use 'styles/mixins' as *;
 
 .mapContainer {
-  @include spacing(y, 1rem);
+  @include spacing(y, 0.5rem);
 }
 
 .map {
@@ -13,4 +13,10 @@
   text-align: right;
 
   @include spacing(x, 1rem);
+}
+
+.tooltip {
+  &::before {
+    display: none;
+  }
 }
