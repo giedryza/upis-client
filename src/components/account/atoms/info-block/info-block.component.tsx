@@ -1,22 +1,18 @@
-import { FC } from 'react';
-import useTranslation from 'next-translate/useTranslation';
 import { clsx } from 'clsx';
+import { FC } from 'react';
 
 import { Button, Card, Icon } from 'ui';
 
-import { Props } from './info-block.types';
 import styles from './info-block.module.scss';
+import { Props } from './info-block.types';
 
 export const InfoBlock: FC<Props> = ({
   title,
   icon,
-  editPage,
   columns = 2,
   children,
   actions = [],
 }) => {
-  const { t } = useTranslation();
-
   return (
     <Card>
       <section
@@ -37,16 +33,6 @@ export const InfoBlock: FC<Props> = ({
                 </li>
               ))}
             </ul>
-          )}
-
-          {!!editPage && (
-            <Button
-              label={t('common:actions.edit')}
-              variant="tertiary"
-              icon="pencil"
-              size="xs"
-              url={editPage}
-            />
           )}
         </div>
 
