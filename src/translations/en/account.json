@@ -303,7 +303,11 @@
       "map": {
         "info": "Move markers to select departure and arrival locations. The very bottom of the marker marks the exacts point that will be visible as departure or arrival location.",
         "departure": "Departure",
-        "arrival": "Arrival"
+        "arrival": "Arrival",
+        "empty": {
+          "title": "Empty",
+          "message": "Click 'edit' to select departure and arrival locations."
+        }
       }
     },
     "amenities": {

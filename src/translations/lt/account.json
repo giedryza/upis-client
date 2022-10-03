@@ -303,7 +303,11 @@
       "map": {
         "info": "Tempdami žymeklius pasirinkite išvykimo ir atvykimo lokacijas. Žymeklio apačia žymi tikslų tašką, kuris bus rodomas kaip išvykimo ir atvykimo lokacija.",
         "departure": "Išvykimas",
-        "arrival": "Atvykimas"
+        "arrival": "Atvykimas",
+        "empty": {
+          "title": "Empty",
+          "message": "Norėdami pasirinkti maršruto išvykimo ir atvykimo lokacijas, spauskite 'redaguoti'."
+        }
       }
     },
     "amenities": {

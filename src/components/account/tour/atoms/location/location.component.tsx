@@ -4,6 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { InfoBlock, MapItem } from 'components/account/atoms';
 import { useActiveTour } from 'domain/tours';
 import { routes } from 'config/routes';
+import { EmptyState } from 'ui';
 
 export const Location: VFC = () => {
   const { t } = useTranslation();
@@ -19,20 +20,28 @@ export const Location: VFC = () => {
       columns={1}
       editPage={routes.account.tours.one.location.replace(':id', tour._id)}
     >
-      <MapItem
-        markers={[
-          {
-            lat: tour.departure.coordinates[1] ?? 0,
-            lng: tour.departure.coordinates[0] ?? 0,
-            label: t('account:tours.location.map.departure'),
-          },
-          {
-            lat: tour.arrival.coordinates[1] ?? 0,
-            lng: tour.arrival.coordinates[0] ?? 0,
-            label: t('account:tours.location.map.arrival'),
-          },
-        ]}
-      />
+      {!!tour.departure.coordinates.length &&
+      !!tour.arrival.coordinates.length ? (
+        <MapItem
+          markers={[
+            {
+              lat: tour.departure.coordinates[1],
+              lng: tour.departure.coordinates[0],
+              label: t('account:tours.location.map.departure'),
+            },
+            {
+              lat: tour.arrival.coordinates[1],
+              lng: tour.arrival.coordinates[0],
+              label: t('account:tours.location.map.arrival'),
+            },
+          ]}
+        />
+      ) : (
+        <EmptyState
+          title={t('account:tours.location.map.empty.title')}
+          message={t('account:tours.location.map.empty.message')}
+        />
+      )}
     </InfoBlock>
   );
 };
