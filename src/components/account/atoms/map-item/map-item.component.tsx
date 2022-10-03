@@ -6,15 +6,6 @@ import { Props } from './map-item.types';
 import styles from './map-item.module.scss';
 
 export const MapItem: VFC<Props> = ({ markers }) => {
-  if (
-    markers
-      .map((marker) => [marker.lat, marker.lng])
-      .flat()
-      .filter((point) => point === 0).length
-  ) {
-    return null;
-  }
-
   return (
     <div className={styles.container}>
       <Map
