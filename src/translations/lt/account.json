@@ -115,7 +115,7 @@
         }
       },
       "map": {
-        "info": "Tempdami žymeklį pasirinkite lokaciją"
+        "info": "Tempdami žymeklį pasirinkite lokaciją."
       }
     },
     "amenities": {
@@ -296,6 +296,14 @@
           "display": "Upės",
           "placeholder": "Ieškoti upių"
         }
+      }
+    },
+    "location": {
+      "title": "Lokacija",
+      "map": {
+        "info": "Tempdami žymeklius pasirinkite išvykimo ir atvykimo lokacijas. Žymeklio apačia žymi tikslų tašką, kuris bus rodomas kaip išvykimo ir atvykimo lokacija.",
+        "departure": "Išvykimas",
+        "arrival": "Atvykimas"
       }
     },
     "amenities": {

@@ -27,7 +27,10 @@ interface UpdateTour {
       | 'duration'
       | 'days'
       | 'difficulty'
-    >
+    > & {
+      arrival: [number, number];
+      departure: [number, number];
+    }
   >;
 }
 

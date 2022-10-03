@@ -41,6 +41,7 @@ export const routes = {
         about: '/account/tours/:id/about',
         details: '/account/tours/:id/details',
         prices: '/account/tours/:id/prices',
+        location: '/account/tours/:id/location',
         geography: '/account/tours/:id/geography',
         amenities: '/account/tours/:id/amenities',
       },

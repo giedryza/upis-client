@@ -114,7 +114,7 @@
         }
       },
       "map": {
-        "info": "Move marker to select location"
+        "info": "Move marker to select location."
       }
     },
     "amenities": {
@@ -296,6 +296,14 @@
           "display": "Rivers",
           "placeholder": "Search rivers"
         }
+      }
+    },
+    "location": {
+      "title": "Location",
+      "map": {
+        "info": "Move markers to select departure and arrival locations. The very bottom of the marker marks the exacts point that will be visible as departure or arrival location.",
+        "departure": "Departure",
+        "arrival": "Arrival"
       }
     },
     "amenities": {
