@@ -28,10 +28,16 @@ export const Location: VFC = () => {
         value={company.address}
       />
 
-      <MapItem
-        lat={company.location.coordinates[1]}
-        lng={company.location.coordinates[0]}
-      />
+      {!!company.location.coordinates.length && (
+        <MapItem
+          markers={[
+            {
+              lat: company.location.coordinates[1],
+              lng: company.location.coordinates[0],
+            },
+          ]}
+        />
+      )}
     </InfoBlock>
   );
 };

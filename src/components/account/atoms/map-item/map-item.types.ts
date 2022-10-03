@@ -1,4 +1,3 @@
 export interface Props {
-  lat?: number;
-  lng?: number;
+  markers: { lat: number; lng: number; label?: string }[];
 }
