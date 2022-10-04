@@ -1,5 +1,5 @@
 export * from './about';
-export * from './actions';
+export * from './settings';
 export * from './amenities';
 export * from './contacts';
 export * from './location';

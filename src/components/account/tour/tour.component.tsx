@@ -4,7 +4,7 @@ import {
   About,
   Details,
   Prices,
-  Actions,
+  Settings,
   Geography,
   Amenities,
   Location,
@@ -26,7 +26,7 @@ export const Tour: VFC = () => {
 
       <Amenities />
 
-      <Actions />
+      <Settings />
     </div>
   );
 };
