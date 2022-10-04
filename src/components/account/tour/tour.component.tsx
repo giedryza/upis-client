@@ -8,6 +8,7 @@ import {
   Geography,
   Amenities,
   Location,
+  Gallery,
 } from './atoms';
 import styles from './tour.module.scss';
 
@@ -23,6 +24,8 @@ export const Tour: VFC = () => {
       <Location />
 
       <Geography />
+
+      <Gallery />
 
       <Amenities />
 
