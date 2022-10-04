@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { useActiveTour } from 'domain/tours';
 import { InfoBlock } from 'components/account/atoms';
+import { routes } from 'config/routes';
 
 export const Gallery: FC = () => {
   const { t } = useTranslation();
@@ -16,6 +17,7 @@ export const Gallery: FC = () => {
       title={t('account:tours.gallery.title')}
       columns={1}
       icon="picture"
+      editPage={routes.account.tours.one.gallery.replace(':id', tour._id)}
     >
       {null}
     </InfoBlock>

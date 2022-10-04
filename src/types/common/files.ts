@@ -34,6 +34,6 @@ export type FileTypeUnion =
 
 export interface AppFile {
   location: string;
-  key?: string;
-  contentType?: string;
+  key: string;
+  contentType: string;
 }
