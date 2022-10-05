@@ -7,7 +7,7 @@ import {
   loadersFactory,
   getFormDataBody,
 } from 'tools/services/request';
-import { Pagination, Price } from 'types/common';
+import { AppFile, Pagination, Price } from 'types/common';
 
 import { Region, River, Tour, ToursFilters } from './tours.types';
 
@@ -63,6 +63,7 @@ interface UpdateTourPhotos {
   id: string;
   form: {
     photos: File[];
+    photosToRemove: AppFile[];
   };
 }
 
@@ -110,12 +111,16 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       }).patch(),
     updateTourPhotos: ({ id, form }: UpdateTourPhotos) =>
       new Request<Tour>(endpoints.tours.one.photos.replace(':id', id), {
-        body: getFormDataBody(
-          form.photos.map((photo) => ({
+        body: getFormDataBody([
+          ...form.photos.map((photo) => ({
             field: 'photos',
             value: photo,
-          }))
-        ),
+          })),
+          ...form.photosToRemove.map((photo) => ({
+            field: 'photosToRemove',
+            value: photo.key,
+          })),
+        ]),
         locale,
       }).patch(),
     deleteTour: ({ id }: DeleteTour) =>
