@@ -20,7 +20,14 @@ export const Amenities: VFC = () => {
       title={t('account:tours.amenities.title')}
       icon="link"
       columns={2}
-      editPage={routes.account.tours.one.amenities.replace(':id', tour._id)}
+      actions={[
+        {
+          url: routes.account.tours.one.amenities.replace(':id', tour._id),
+          label: t('common:actions.edit'),
+          variant: 'tertiary',
+          icon: 'pencil',
+        },
+      ]}
     >
       {tour.amenities.length ? (
         tour.amenities.map((amenity) => (

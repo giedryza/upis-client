@@ -12,7 +12,14 @@ export const Security: VFC = () => {
     <InfoBlock
       title={t('account:profile.security.title')}
       icon="lock"
-      editPage={routes.account.profile.security}
+      actions={[
+        {
+          url: routes.account.profile.security,
+          label: t('common:actions.edit'),
+          variant: 'tertiary',
+          icon: 'pencil',
+        },
+      ]}
     >
       <FieldDisplay
         label={t('account:profile.security.form.password.label')}

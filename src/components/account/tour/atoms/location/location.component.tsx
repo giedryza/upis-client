@@ -18,7 +18,14 @@ export const Location: VFC = () => {
       title={t('account:tours.location.title')}
       icon="pin"
       columns={1}
-      editPage={routes.account.tours.one.location.replace(':id', tour._id)}
+      actions={[
+        {
+          url: routes.account.tours.one.location.replace(':id', tour._id),
+          label: t('common:actions.edit'),
+          variant: 'tertiary',
+          icon: 'pencil',
+        },
+      ]}
     >
       {!!tour.departure.coordinates.length &&
       !!tour.arrival.coordinates.length ? (
