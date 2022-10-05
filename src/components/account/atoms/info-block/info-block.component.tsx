@@ -1,10 +1,10 @@
-import { clsx } from 'clsx';
 import { FC } from 'react';
+import { clsx } from 'clsx';
 
 import { Button, Card, Icon } from 'ui';
 
-import styles from './info-block.module.scss';
 import { Props } from './info-block.types';
+import styles from './info-block.module.scss';
 
 export const InfoBlock: FC<Props> = ({
   title,
