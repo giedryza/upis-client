@@ -2,6 +2,7 @@ export const filetypes = [
   'jpg',
   'jpeg',
   'png',
+  'avif',
   'svg',
   'gif',
   'bmp',
