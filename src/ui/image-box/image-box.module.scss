@@ -11,6 +11,7 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+
     border-radius: var(--border-radius-sm);
   }
 
@@ -18,6 +19,7 @@
     position: absolute;
     top: 0;
     right: 0;
+
     display: flex;
     gap: 0.5em;
     padding: 0.5em;
@@ -25,17 +27,20 @@
 
   .label {
     position: absolute;
-    left: 1em;
     bottom: 0;
+    left: 1em;
+
     padding: 0.25em 0.75em;
+
     color: var(--color-text);
     font-weight: 500;
     border-start-start-radius: var(--border-radius-sm);
     border-start-end-radius: var(--border-radius-sm);
 
     &.status-info {
-      background-color: var(--color-primary-60);
       color: var(--color-white);
+
+      background-color: var(--color-primary-60);
     }
 
     &.status-success {
@@ -47,8 +52,9 @@
     }
 
     &.status-danger {
-      background-color: var(--color-danger-60);
       color: var(--color-white);
+
+      background-color: var(--color-danger-60);
     }
   }
 }
