@@ -17,7 +17,14 @@ export const Gallery: FC = () => {
       title={t('account:tours.gallery.title')}
       columns={1}
       icon="picture"
-      editPage={routes.account.tours.one.gallery.replace(':id', tour._id)}
+      actions={[
+        {
+          url: routes.account.tours.one.gallery.replace(':id', tour._id),
+          label: t('common:actions.edit'),
+          variant: 'tertiary',
+          icon: 'pencil',
+        },
+      ]}
     >
       {null}
     </InfoBlock>
