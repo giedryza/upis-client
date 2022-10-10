@@ -18,10 +18,17 @@ export const Location: VFC = () => {
       title={t('account:companies.location.title')}
       icon="pin"
       columns={1}
-      editPage={routes.account.companies.one.location.replace(
-        ':id',
-        company._id
-      )}
+      actions={[
+        {
+          url: routes.account.companies.one.location.replace(
+            ':id',
+            company._id
+          ),
+          label: t('common:actions.edit'),
+          variant: 'tertiary',
+          icon: 'pencil',
+        },
+      ]}
     >
       <FieldDisplay
         label={t('account:companies.location.form.address.label')}

@@ -18,7 +18,14 @@ export const Geography: VFC = () => {
       title={t('account:tours.geography.title')}
       icon="globe"
       columns={1}
-      editPage={routes.account.tours.one.geography.replace(':id', tour._id)}
+      actions={[
+        {
+          url: routes.account.tours.one.geography.replace(':id', tour._id),
+          label: t('common:actions.edit'),
+          variant: 'tertiary',
+          icon: 'pencil',
+        },
+      ]}
     >
       <FieldDisplay
         label={t('account:tours.geography.form.regions.display')}

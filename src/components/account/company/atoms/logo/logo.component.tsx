@@ -17,7 +17,14 @@ export const Logo: VFC = () => {
       title={t('account:companies.logo.title')}
       icon="picture"
       columns={1}
-      editPage={routes.account.companies.one.logo.replace(':id', company._id)}
+      actions={[
+        {
+          url: routes.account.companies.one.logo.replace(':id', company._id),
+          label: t('common:actions.edit'),
+          variant: 'tertiary',
+          icon: 'pencil',
+        },
+      ]}
     >
       <ImageItem src={company.logo.location} />
     </InfoBlock>

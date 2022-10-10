@@ -18,7 +18,14 @@ export const Details: VFC = () => {
       title={t('account:tours.details.title')}
       icon="timer"
       columns={2}
-      editPage={routes.account.tours.one.details.replace(':id', tour._id)}
+      actions={[
+        {
+          url: routes.account.tours.one.details.replace(':id', tour._id),
+          label: t('common:actions.edit'),
+          variant: 'tertiary',
+          icon: 'pencil',
+        },
+      ]}
     >
       <FieldDisplay
         label={t('account:tours.details.form.distance.display')}

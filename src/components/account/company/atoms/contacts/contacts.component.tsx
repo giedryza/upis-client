@@ -17,10 +17,17 @@ export const Contacts: VFC = () => {
     <InfoBlock
       title={t('account:companies.contacts.title')}
       icon="phone"
-      editPage={routes.account.companies.one.contacts.replace(
-        ':id',
-        company._id
-      )}
+      actions={[
+        {
+          url: routes.account.companies.one.contacts.replace(
+            ':id',
+            company._id
+          ),
+          label: t('common:actions.edit'),
+          variant: 'tertiary',
+          icon: 'pencil',
+        },
+      ]}
     >
       <FieldDisplay
         label={t('account:companies.contacts.form.email.label')}
