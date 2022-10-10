@@ -20,6 +20,8 @@
   "components": {
     "fileInput": {
       "dragAndDrop": "Drag & drop your files here",
+      "supported": "Supported files: {{filetypes}}",
+      "max": "Maximum file size: {{maxSize}}",
       "browse": "Browse files",
       "files": "Uploaded files",
       "remove": "Remove file"

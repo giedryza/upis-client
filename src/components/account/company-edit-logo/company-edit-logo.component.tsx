@@ -57,8 +57,7 @@ export const CompanyEditLogo: VFC = () => {
                   onChange={([file]) => {
                     onChange(file);
                   }}
-                  accept={['jpeg', 'jpg', 'png', 'svg', 'gif', 'bmp']}
-                  maxSize={1 * 1000 * 1000}
+                  accept={['jpeg', 'jpg', 'png', 'avif', 'svg', 'gif', 'bmp']}
                   ref={ref}
                 />
               )}

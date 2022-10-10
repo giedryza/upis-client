@@ -2,6 +2,7 @@
 
 .container {
   font-size: 1.6rem;
+  line-height: 1.6;
 
   @include spacing(y, 1em);
 
@@ -60,6 +61,11 @@
     .divider {
       width: 9em;
       max-width: 100%;
+    }
+
+    .info {
+      font-size: 0.75em;
+      margin-top: 1rem;
     }
   }
 

@@ -20,6 +20,8 @@
   "components": {
     "fileInput": {
       "dragAndDrop": "Tempdami įkelkite failą čia",
+      "supported": "Palaikomi failai: {{filetypes}}",
+      "max": "Maksimalus failo dydis: {{maxSize}}",
       "browse": "Pasirinkite failą",
       "files": "Įkelti failai",
       "remove": "Ištrinti failą"

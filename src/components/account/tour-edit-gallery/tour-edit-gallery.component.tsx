@@ -93,7 +93,6 @@ export const TourEditGallery: VFC = () => {
                     onChange(files);
                   }}
                   accept={['jpeg', 'jpg', 'png', 'avif', 'svg', 'gif', 'bmp']}
-                  maxSize={1 * 1000 * 1000}
                   maxFiles={MAX_PHOTOS}
                   disabled={
                     (tour?.photos.length ?? 0) - photosToRemove.length >=

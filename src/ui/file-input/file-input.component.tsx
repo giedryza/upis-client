@@ -12,10 +12,17 @@ import styles from './file-input.module.scss';
 
 export const FileInput = forwardRef<HTMLInputElement, Props>(
   (
-    { accept, maxSize, maxFiles = 1, name, disabled, onChange },
+    {
+      accept,
+      maxSize = 1 * 1024 * 1024,
+      maxFiles = 1,
+      name,
+      disabled,
+      onChange,
+    },
     forwardedRef
   ) => {
-    const { t } = useTranslation();
+    const { t, lang } = useTranslation();
 
     const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
 
@@ -101,6 +108,22 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
                 onClick: open,
               }}
             />
+            <div className={styles.info}>
+              {!!accept?.length && (
+                <p>
+                  {t('common:components.fileInput.supported', {
+                    filetypes: new Intl.ListFormat(lang).format(
+                      accept.map((filetype) => `.${filetype}`)
+                    ),
+                  })}
+                </p>
+              )}
+              <p>
+                {t('common:components.fileInput.max', {
+                  maxSize: formatBytes(maxSize),
+                })}
+              </p>
+            </div>
           </div>
         </div>
 

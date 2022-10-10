@@ -7,7 +7,7 @@ export default {
   component: FileInput,
   args: {
     name: 'my-file',
-    accept: ['jpg', 'jpeg', 'png', 'gif'],
+    accept: ['jpg', 'jpeg', 'png', 'avif', 'gif'],
   },
   argTypes: {
     onChange: { action: 'onChange' },
