@@ -19,7 +19,7 @@ export const Amenities: VFC = () => {
     <InfoBlock
       title={t('account:tours.amenities.title')}
       icon="link"
-      columns={2}
+      columns={tour.amenities.length ? 2 : 1}
       actions={[
         {
           url: routes.account.tours.one.amenities.replace(':id', tour._id),

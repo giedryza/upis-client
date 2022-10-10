@@ -1,7 +1,12 @@
 import { IncomingMessage } from 'http';
 
 import { endpoints } from 'config/endpoints';
-import { Request, getJsonBody, loadersFactory } from 'tools/services/request';
+import {
+  Request,
+  getJsonBody,
+  loadersFactory,
+  getFormDataBody,
+} from 'tools/services/request';
 import { Pagination, Price } from 'types/common';
 
 import { Region, River, Tour, ToursFilters } from './tours.types';
@@ -54,6 +59,14 @@ interface UpdateTourAmenities {
   };
 }
 
+interface UpdateTourPhotos {
+  id: string;
+  form: {
+    photos: File[];
+    photosToRemove: string[];
+  };
+}
+
 interface DeleteTour {
   id: string;
 }
@@ -94,6 +107,20 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
     updateTourAmenities: ({ id, form }: UpdateTourAmenities) =>
       new Request<Tour>(endpoints.tours.one.amenities.replace(':id', id), {
         body: getJsonBody(form),
+        locale,
+      }).patch(),
+    updateTourPhotos: ({ id, form }: UpdateTourPhotos) =>
+      new Request<Tour>(endpoints.tours.one.photos.replace(':id', id), {
+        body: getFormDataBody([
+          ...form.photos.map((photo) => ({
+            field: 'photos',
+            value: photo,
+          })),
+          ...form.photosToRemove.map((photo) => ({
+            field: 'photosToRemove',
+            value: photo,
+          })),
+        ]),
         locale,
       }).patch(),
     deleteTour: ({ id }: DeleteTour) =>

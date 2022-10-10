@@ -3,7 +3,7 @@ import { IncomingMessage } from 'http';
 import { endpoints } from 'config/endpoints';
 import {
   Request,
-  getFilesBody,
+  getFormDataBody,
   getJsonBody,
   loadersFactory,
 } from 'tools/services/request';
@@ -75,7 +75,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       }).patch(),
     uploadLogo: ({ id, logo }: { id: string; logo: File }) =>
       new Request<Company>(endpoints.companies.one.logo.replace(':id', id), {
-        body: getFilesBody([{ field: 'logo', file: logo }]),
+        body: getFormDataBody([{ field: 'logo', value: logo }]),
         locale,
       }).patch(),
     deleteCompany: ({ id }: { id: string }) =>

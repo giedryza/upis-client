@@ -4,10 +4,11 @@ import {
   About,
   Details,
   Prices,
-  Actions,
+  Settings,
   Geography,
   Amenities,
   Location,
+  Gallery,
 } from './atoms';
 import styles from './tour.module.scss';
 
@@ -24,9 +25,11 @@ export const Tour: VFC = () => {
 
       <Geography />
 
+      <Gallery />
+
       <Amenities />
 
-      <Actions />
+      <Settings />
     </div>
   );
 };

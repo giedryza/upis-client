@@ -63,6 +63,19 @@ export const useUpdateTourAmenities = () => {
   return mutation;
 };
 
+export const useUpdateTourPhotos = () => {
+  const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
+
+  const mutation = useMutation(loaders.updateTourPhotos, {
+    onSuccess: (_data, { id }) => {
+      queryClient.invalidateQueries(toursKeys.detail(id));
+    },
+  });
+
+  return mutation;
+};
+
 export const useDeleteTour = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();

@@ -56,12 +56,7 @@ export const CompanyEditLocation: VFC = () => {
       },
       {
         onSuccess: () => {
-          push(
-            routes.account.companies.one.index.replace(
-              ':id',
-              company?._id ?? ''
-            )
-          );
+          push(routes.account.companies.one.index.replace(':id', companyId));
         },
       }
     );

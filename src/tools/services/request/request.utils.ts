@@ -2,8 +2,6 @@ import { useRouter } from 'next/router';
 
 type JsonData = Record<string, any>;
 
-type FilesData = { field: string; file: File }[];
-
 export const stripFalsyValues = <InitialObject extends JsonData>(
   object: InitialObject,
   falsyValues: (string | number | boolean | null | undefined)[] = [
@@ -25,10 +23,12 @@ export const getJsonBody = (
   return JSON.stringify(body);
 };
 
-export const getFilesBody = (data: FilesData): FormData => {
+export const getFormDataBody = (
+  data: { field: string; value: File | string }[]
+): FormData => {
   const formData = new FormData();
 
-  data.forEach(({ field, file }) => formData.append(field, file));
+  data.forEach(({ field, value: file }) => formData.append(field, file));
 
   return formData;
 };

@@ -1,0 +1,60 @@
+.imageBox {
+  aspect-ratio: 16 / 9;
+
+  position: relative;
+
+  font-size: 1.4rem;
+
+  .image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: var(--border-radius-sm);
+  }
+
+  .actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    gap: 0.5em;
+    padding: 0.5em;
+  }
+
+  .label {
+    position: absolute;
+    bottom: 0;
+    left: 1em;
+
+    padding: 0.25em 0.75em;
+
+    color: var(--color-text);
+    font-weight: 500;
+    border-start-start-radius: var(--border-radius-sm);
+    border-start-end-radius: var(--border-radius-sm);
+
+    &.status-info {
+      color: var(--color-white);
+
+      background-color: var(--color-primary-60);
+    }
+
+    &.status-success {
+      background-color: var(--color-success-60);
+    }
+
+    &.status-warning {
+      background-color: var(--color-warning-60);
+    }
+
+    &.status-danger {
+      color: var(--color-white);
+
+      background-color: var(--color-danger-60);
+    }
+  }
+}

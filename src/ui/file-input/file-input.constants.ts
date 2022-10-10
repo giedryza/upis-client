@@ -4,6 +4,7 @@ export const MIME_TYPE_BY_FILE: Record<Filetype, string> = {
   jpg: 'image/jpeg',
   jpeg: 'image/jpeg',
   png: 'image/png',
+  avif: 'image/avif',
   svg: 'image/svg+xml',
   gif: 'image/gif',
   bmp: 'image/bmp',

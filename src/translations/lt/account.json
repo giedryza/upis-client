@@ -328,6 +328,9 @@
         "info": "Pasirinkti galite tuos patogumus, kurie priklauso įmonei. <0>Spauskite čia</0> norėdami įmonei pridėti daugiau patogumų."
       }
     },
+    "gallery": {
+      "title": "Galerija"
+    },
     "settings": {
       "title": "Nustatymai"
     },

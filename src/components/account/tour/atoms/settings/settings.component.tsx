@@ -3,50 +3,50 @@ import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
-import { Button } from 'ui';
 import { useConfirm } from 'domain/confirm';
-import { useActiveCompany, useDeleteCompany } from 'domain/companies';
+import { useActiveTour, useDeleteTour } from 'domain/tours';
+import { Button } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 
-export const CompanyActions: FC = () => {
+export const Settings: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 
   const { confirmation } = useConfirm();
 
-  const { data: company } = useActiveCompany();
-  const { mutate: deleteCompany, isLoading: isDeleteCompanyLoading } =
-    useDeleteCompany();
+  const { data: tour } = useActiveTour();
+  const { mutate: deleteTour, isLoading: isDeleteTourLoading } =
+    useDeleteTour();
 
-  if (!company) return null;
+  if (!tour) return null;
 
   return (
     <InfoBlock
-      title={t('account:companies.settings.title')}
+      title={t('account:tours.settings.title')}
       columns={1}
       icon="gear"
     >
       <div>
         <Button
-          label={t('account:companies.actions.delete')}
+          label={t('account:tours.actions.delete')}
           variant="ghost"
           icon="trash"
           size="sm"
           attributes={{
-            disabled: isDeleteCompanyLoading,
+            disabled: isDeleteTourLoading,
             onClick: async () => {
               const { confirmed } = await confirmation(
-                t('account:companies.texts.confirmDelete', {
-                  name: company.name,
+                t('account:tours.texts.confirmDelete', {
+                  name: tour.name,
                 })
               );
 
               if (confirmed) {
-                deleteCompany(
-                  { id: company._id },
+                deleteTour(
+                  { id: tour._id },
                   {
                     onSuccess: () => {
-                      push(routes.account.companies.index);
+                      push(routes.account.tours.index);
                     },
                   }
                 );
