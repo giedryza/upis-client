@@ -245,6 +245,7 @@ export interface Tour extends BaseEntity {
   difficulty: number;
   price: Price | null;
   photos: AppFile[];
+  primaryPhoto: string;
   company: Company;
   website: string;
   amenities: Amenity[];

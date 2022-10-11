@@ -32,6 +32,7 @@ interface UpdateTour {
       | 'duration'
       | 'days'
       | 'difficulty'
+      | 'primaryPhoto'
     > & {
       arrival: [number, number];
       departure: [number, number];

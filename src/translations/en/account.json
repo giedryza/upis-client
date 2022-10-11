@@ -336,8 +336,16 @@
           "info": "Photo description (alt text) helps users with physical or vision impairments to better understand your content. It also helps to optimize search engines results."
         }
       },
+      "actions": {
+        "primary": "Set as primary"
+      },
       "texts": {
-        "confirmDelete": "This action cannot be undone. It will permanently delete this image. Are you sure you want to proceed?"
+        "primary": "Primary",
+        "confirmDelete": "This action cannot be undone. It will permanently delete this image. Are you sure you want to proceed?",
+        "empty": {
+          "title": "Empty",
+          "message": "Click 'add' to fill the gallery with photos."
+        }
       }
     },
     "settings": {

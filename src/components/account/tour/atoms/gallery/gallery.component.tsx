@@ -2,9 +2,9 @@ import { FC } from 'react';
 import { useQueryClient } from 'react-query';
 import useTranslation from 'next-translate/useTranslation';
 
-import { ImageTile } from 'ui';
+import { EmptyState, ImageTile } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
-import { toursKeys, useActiveTour } from 'domain/tours';
+import { toursKeys, useActiveTour, useUpdateTour } from 'domain/tours';
 import { routes } from 'config/routes';
 import { useDeleteImage } from 'domain/images';
 import { useConfirm } from 'domain/confirm';
@@ -18,7 +18,8 @@ export const Gallery: FC = () => {
   const { confirmation } = useConfirm();
 
   const { data: tour } = useActiveTour();
-  const { mutate: deleteImage, isLoading } = useDeleteImage();
+  const { mutate: deleteImage, isLoading: isDeleting } = useDeleteImage();
+  const { mutate: updateTour } = useUpdateTour();
 
   if (!tour) return null;
 
@@ -36,42 +37,65 @@ export const Gallery: FC = () => {
         },
       ]}
     >
-      <div className={styles.gallery}>
-        {tour.photos.map((photo, i) => (
-          <ImageTile
-            image={photo.url}
-            alt={photo.description}
-            actions={[
-              {
-                icon: 'trash',
-                attributes: {
-                  title: t('common:actions.delete'),
-                  onClick: async () => {
-                    const { confirmed } = await confirmation(
-                      t('account:tours.gallery.texts.confirmDelete')
-                    );
-
-                    if (confirmed) {
-                      deleteImage(
-                        { id: photo._id },
-                        {
-                          onSuccess: () => {
-                            queryClient.invalidateQueries(
-                              toursKeys.detail(tour._id)
-                            );
-                          },
-                        }
-                      );
-                    }
+      {tour.photos.length ? (
+        <div className={styles.gallery}>
+          {tour.photos.map((photo, i) => (
+            <ImageTile
+              image={photo.url}
+              alt={photo.description}
+              {...(tour.primaryPhoto === photo._id && {
+                label: t('account:tours.gallery.texts.primary'),
+                status: 'info',
+              })}
+              actions={[
+                {
+                  icon: 'star',
+                  attributes: {
+                    title: t('account:tours.gallery.actions.primary'),
+                    onClick: () => {
+                      updateTour({
+                        id: tour._id,
+                        form: { primaryPhoto: photo._id },
+                      });
+                    },
                   },
-                  disabled: isLoading,
                 },
-              },
-            ]}
-            key={i}
-          />
-        ))}
-      </div>
+                {
+                  icon: 'trash',
+                  attributes: {
+                    title: t('common:actions.delete'),
+                    onClick: async () => {
+                      const { confirmed } = await confirmation(
+                        t('account:tours.gallery.texts.confirmDelete')
+                      );
+
+                      if (confirmed) {
+                        deleteImage(
+                          { id: photo._id },
+                          {
+                            onSuccess: () => {
+                              queryClient.invalidateQueries(
+                                toursKeys.detail(tour._id)
+                              );
+                            },
+                          }
+                        );
+                      }
+                    },
+                    disabled: isDeleting,
+                  },
+                },
+              ]}
+              key={i}
+            />
+          ))}
+        </div>
+      ) : (
+        <EmptyState
+          title={t('account:tours.gallery.texts.empty.title')}
+          message={t('account:tours.gallery.texts.empty.message')}
+        />
+      )}
     </InfoBlock>
   );
 };
