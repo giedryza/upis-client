@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, Container, FileInput } from 'ui';
+import { Button, Container, FileInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useAddTourPhoto } from 'domain/tours';
@@ -19,7 +19,8 @@ export const TourEditGallery: VFC = () => {
   const {
     handleSubmit,
     control,
-    formState: { isDirty },
+    register,
+    formState: { errors, isDirty },
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
   });
@@ -70,6 +71,13 @@ export const TourEditGallery: VFC = () => {
                   ref={ref}
                 />
               )}
+            />
+
+            <TextInput
+              {...register('description')}
+              label={t('account:tours.gallery.form.description.label')}
+              info={t('account:tours.gallery.form.description.info')}
+              error={errors.description?.message}
             />
           </fieldset>
 

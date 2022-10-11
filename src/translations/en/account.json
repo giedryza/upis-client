@@ -330,6 +330,12 @@
     },
     "gallery": {
       "title": "Gallery",
+      "form": {
+        "description": {
+          "label": "Photo description",
+          "info": "Photo description (alt text) helps users with physical or vision impairments to better understand your content. It also helps to optimize search engines results."
+        }
+      },
       "texts": {
         "confirmDelete": "This action cannot be undone. It will permanently delete this image. Are you sure you want to proceed?"
       }
