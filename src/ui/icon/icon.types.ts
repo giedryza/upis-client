@@ -29,6 +29,7 @@ export const baseIcons = [
   'plus',
   'price',
   'sleeping-bag',
+  'star',
   'tent',
   'timer',
   'trash',
