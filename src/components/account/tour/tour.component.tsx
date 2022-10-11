@@ -21,11 +21,11 @@ export const Tour: VFC = () => {
 
       <Location />
 
+      <Geography />
+
       <Prices />
 
       <Details />
-
-      <Geography />
 
       <Amenities />
 
