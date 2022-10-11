@@ -329,7 +329,10 @@
       }
     },
     "gallery": {
-      "title": "Gallery"
+      "title": "Gallery",
+      "texts": {
+        "confirmDelete": "This action cannot be undone. It will permanently delete this image. Are you sure you want to proceed?"
+      }
     },
     "settings": {
       "title": "Settings"

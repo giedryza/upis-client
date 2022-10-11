@@ -329,7 +329,10 @@
       }
     },
     "gallery": {
-      "title": "Galerija"
+      "title": "Galerija",
+      "texts": {
+        "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins šią nuotrauką. Ar tikrai norite tęsti?"
+      }
     },
     "settings": {
       "title": "Nustatymai"

@@ -1,9 +1,5 @@
 @use 'styles/mixins' as *;
 
-.container {
-  @include spacing(y, 2rem);
-}
-
 .form {
   width: 100%;
 
@@ -18,10 +14,4 @@
   text-align: right;
 
   @include spacing(x, 1rem);
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-  gap: 1rem;
 }

@@ -3,41 +3,41 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, FileInput, ImageBox } from 'ui';
+import { Button, Container, FileInput } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
-import { useActiveTour, useUpdateTourPhotos } from 'domain/tours';
+import { useActiveTour, useAddTourPhoto } from 'domain/tours';
 
 import { Values } from './tour-edit-gallery.types';
 import { INITIAL_VALUES } from './tour-edit-gallery.constants';
 import styles from './tour-edit-gallery.module.scss';
 
-const MAX_PHOTOS = 5;
-
 export const TourEditGallery: VFC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 
-  const { handleSubmit, control, setValue, watch } = useForm<Values>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isDirty },
+  } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
   });
 
   const { data: tour } = useActiveTour();
-  const { mutate: updatePhotos, isLoading } = useUpdateTourPhotos();
-
-  const [photosToRemove] = watch(['photosToRemove']);
+  const { mutate: addTourPhoto, isLoading } = useAddTourPhoto();
 
   const onSubmit: SubmitHandler<Values> = (form) => {
     const tourId = tour?._id;
 
-    if (!tourId) return;
+    if (!tourId || !form.photo) return;
 
-    updatePhotos(
+    addTourPhoto(
       {
         id: tourId,
         form: {
-          photosToRemove: form.photosToRemove,
-          photos: form.photos,
+          photo: form.photo,
+          description: form.description,
         },
       },
       {
@@ -54,50 +54,19 @@ export const TourEditGallery: VFC = () => {
       icon="picture"
       columns={1}
     >
-      <div className={styles.container}>
-        <div className={styles.gallery}>
-          {tour?.photos
-            .filter((photo) => !photosToRemove.includes(photo.key))
-            .map((photo, i) => (
-              <ImageBox
-                image={photo.location}
-                alt=""
-                actions={[
-                  {
-                    icon: 'trash',
-                    attributes: {
-                      title: t('common:actions.delete'),
-                      onClick: () => {
-                        setValue('photosToRemove', [
-                          ...photosToRemove,
-                          photo.key,
-                        ]);
-                      },
-                    },
-                  },
-                ]}
-                key={i}
-              />
-            ))}
-        </div>
-
+      <Container align="left" size="sm">
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <fieldset className={styles.fieldset} disabled={isLoading}>
             <Controller
-              name="photos"
+              name="photo"
               control={control}
               render={({ field: { name, onChange, ref } }) => (
                 <FileInput
                   name={name}
-                  onChange={(files) => {
-                    onChange(files);
+                  onChange={([file]) => {
+                    onChange(file);
                   }}
                   accept={['jpeg', 'jpg', 'png', 'avif', 'svg', 'gif', 'bmp']}
-                  maxFiles={MAX_PHOTOS}
-                  disabled={
-                    (tour?.photos.length ?? 0) - photosToRemove.length >=
-                    MAX_PHOTOS
-                  }
                   ref={ref}
                 />
               )}
@@ -121,12 +90,12 @@ export const TourEditGallery: VFC = () => {
               size="sm"
               attributes={{
                 type: 'submit',
-                disabled: isLoading,
+                disabled: !isDirty || isLoading,
               }}
             />
           </div>
         </form>
-      </div>
+      </Container>
     </InfoBlock>
   );
 };
