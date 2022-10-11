@@ -2,11 +2,11 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Container } from 'ui';
 
-import { ImageBox } from '.';
+import { ImageTile } from '.';
 
 export default {
-  title: 'UI/ImageBox',
-  component: ImageBox,
+  title: 'UI/ImageTile',
+  component: ImageTile,
   args: {
     image:
       'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
@@ -24,11 +24,11 @@ export default {
     ],
     label: 'Primary',
   },
-} as ComponentMeta<typeof ImageBox>;
+} as ComponentMeta<typeof ImageTile>;
 
-const Template: ComponentStory<typeof ImageBox> = (args) => (
+const Template: ComponentStory<typeof ImageTile> = (args) => (
   <Container size="xs">
-    <ImageBox {...args} />
+    <ImageTile {...args} />
   </Container>
 );
 

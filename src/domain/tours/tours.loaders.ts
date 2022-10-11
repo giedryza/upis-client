@@ -32,6 +32,7 @@ interface UpdateTour {
       | 'duration'
       | 'days'
       | 'difficulty'
+      | 'primaryPhoto'
     > & {
       arrival: [number, number];
       departure: [number, number];
@@ -59,11 +60,11 @@ interface UpdateTourAmenities {
   };
 }
 
-interface UpdateTourPhotos {
+interface AddTourPhoto {
   id: string;
   form: {
-    photos: File[];
-    photosToRemove: string[];
+    photo: File;
+    description: string;
   };
 }
 
@@ -109,17 +110,17 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         body: getJsonBody(form),
         locale,
       }).patch(),
-    updateTourPhotos: ({ id, form }: UpdateTourPhotos) =>
-      new Request<Tour>(endpoints.tours.one.photos.replace(':id', id), {
+    addTourPhoto: ({ id, form }: AddTourPhoto) =>
+      new Request<Tour>(endpoints.tours.one.photo.replace(':id', id), {
         body: getFormDataBody([
-          ...form.photos.map((photo) => ({
-            field: 'photos',
-            value: photo,
-          })),
-          ...form.photosToRemove.map((photo) => ({
-            field: 'photosToRemove',
-            value: photo,
-          })),
+          {
+            field: 'photo',
+            value: form.photo,
+          },
+          {
+            field: 'description',
+            value: form.description,
+          },
         ]),
         locale,
       }).patch(),

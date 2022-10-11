@@ -1,4 +1,4 @@
 export interface Values {
-  photos: File[];
-  photosToRemove: string[];
+  photo?: File;
+  description: string;
 }

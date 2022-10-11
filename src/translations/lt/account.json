@@ -329,7 +329,24 @@
       }
     },
     "gallery": {
-      "title": "Galerija"
+      "title": "Galerija",
+      "form": {
+        "description": {
+          "label": "Nuotraukos aprašymas",
+          "info": "Nuotraukos aprašymas (alt tekstas) padeda vartotojams su fiziniais ar regėjimo sutrikimais geriau suprasti jūsų turinį. Jis taip pat padeda optimizuoti paieškos sistemų rezultatus (SEO)."
+        }
+      },
+      "actions": {
+        "primary": "Nustatyti kaip pagrindinę"
+      },
+      "texts": {
+        "primary": "Pagrindinė",
+        "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins šią nuotrauką. Ar tikrai norite tęsti?",
+        "empty": {
+          "title": "Tuščia",
+          "message": "Spauskite 'pridėti' norėdami papildyti nuotraukų galeriją."
+        }
+      }
     },
     "settings": {
       "title": "Nustatymai"
