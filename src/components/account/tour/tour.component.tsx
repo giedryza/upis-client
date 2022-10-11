@@ -17,15 +17,15 @@ export const Tour: VFC = () => {
     <div className={styles.content}>
       <About />
 
-      <Details />
-
-      <Prices />
+      <Gallery />
 
       <Location />
 
-      <Geography />
+      <Prices />
 
-      <Gallery />
+      <Details />
+
+      <Geography />
 
       <Amenities />
 
