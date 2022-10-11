@@ -3,10 +3,10 @@ import { clsx } from 'clsx';
 
 import { Button } from 'ui/button';
 
-import { Props } from './image-box.types';
-import styles from './image-box.module.scss';
+import { Props } from './image-tile.types';
+import styles from './image-tile.module.scss';
 
-export const ImageBox: VFC<Props> = ({
+export const ImageTile: VFC<Props> = ({
   image,
   alt,
   actions = [],

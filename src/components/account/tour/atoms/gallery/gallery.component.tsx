@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useQueryClient } from 'react-query';
 import useTranslation from 'next-translate/useTranslation';
 
-import { ImageBox } from 'ui';
+import { ImageTile } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { toursKeys, useActiveTour } from 'domain/tours';
 import { routes } from 'config/routes';
@@ -38,7 +38,7 @@ export const Gallery: FC = () => {
     >
       <div className={styles.gallery}>
         {tour.photos.map((photo, i) => (
-          <ImageBox
+          <ImageTile
             image={photo.url}
             alt={photo.description}
             actions={[

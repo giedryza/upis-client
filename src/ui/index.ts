@@ -12,7 +12,7 @@ export * from './field-display';
 export * from './file-input';
 export * from './formatted-field';
 export * from './icon';
-export * from './image-box';
+export * from './image-tile';
 export * from './image-placeholder';
 export * from './loader';
 export * from './map';
