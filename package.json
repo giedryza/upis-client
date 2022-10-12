@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@axe-core/react": "^4.4.3",
-    "@react-aria/utils": "^3.13.2",
+    "@react-aria/utils": "^3.14.0",
     "@reduxjs/toolkit": "^1.8.3",
     "clsx": "^1.2.1",
     "downshift": "^6.1.7",
@@ -40,14 +40,14 @@
     "next-translate": "^1.4.0",
     "query-string": "^7.1.1",
     "react": "^17.0.2",
-    "react-aria": "^3.18.0",
+    "react-aria": "^3.20.0",
     "react-dom": "^17.0.2",
     "react-dropzone": "^14.2.2",
     "react-hook-form": "^7.34.0",
     "react-leaflet": "^3.2.5",
     "react-query": "^3.39.2",
     "react-redux": "^8.0.2",
-    "react-stately": "^3.16.0"
+    "react-stately": "^3.18.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",
