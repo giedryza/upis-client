@@ -22,11 +22,15 @@ export const Group: FC<Props> = ({
     onChange,
     isDisabled: disabled,
     isReadOnly: readonly,
-    'aria-errormessage': 'checkbox-group-error',
+    errorMessage: error,
+    validationState: error ? 'invalid' : 'valid',
   };
 
   const state = useCheckboxGroupState(props);
-  const { groupProps, labelProps } = useCheckboxGroup(props, state);
+  const { groupProps, labelProps, errorMessageProps } = useCheckboxGroup(
+    props,
+    state
+  );
 
   return (
     <div {...groupProps} className={styles.group}>
@@ -40,7 +44,7 @@ export const Group: FC<Props> = ({
         <div className={styles.group}>{children}</div>
       </CheckboxContextProvider>
 
-      {!!error && <small id="checkbox-group-error">{error}</small>}
+      {!!error && <small {...errorMessageProps}>{error}</small>}
     </div>
   );
 };

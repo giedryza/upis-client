@@ -18,12 +18,7 @@ export const CheckboxGroupInput = forwardRef<HTMLInputElement, Props>(
         readonly={readonly}
       >
         {items.map((item) => (
-          <Checkbox
-            {...item}
-            error={!!error}
-            ref={forwardedRef}
-            key={item.value}
-          />
+          <Checkbox {...item} ref={forwardedRef} key={item.value} />
         ))}
       </Group>
     );
