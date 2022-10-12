@@ -12,6 +12,7 @@ export const Group: FC<Props> = ({
   name,
   value,
   onChange,
+  info,
   error,
   disabled,
   readonly,
@@ -24,12 +25,14 @@ export const Group: FC<Props> = ({
     onChange,
     isDisabled: disabled,
     isReadOnly: readonly,
+    description: info,
+    errorMessage: error,
     validationState: error ? 'invalid' : 'valid',
-    'aria-errormessage': 'radio-group-error',
   };
 
   const state = useRadioGroupState(props);
-  const { radioGroupProps, labelProps } = useRadioGroup(props, state);
+  const { radioGroupProps, labelProps, descriptionProps, errorMessageProps } =
+    useRadioGroup(props, state);
 
   return (
     <div {...radioGroupProps} className={styles.group}>
@@ -43,7 +46,17 @@ export const Group: FC<Props> = ({
         <div className={styles.group}>{children}</div>
       </RadioContextProvider>
 
-      {!!error && <small id="radio-group-error">{error}</small>}
+      {!!info && (
+        <small {...descriptionProps} data-help="info">
+          {info}
+        </small>
+      )}
+
+      {!!error && (
+        <small {...errorMessageProps} data-help="error">
+          {error}
+        </small>
+      )}
     </div>
   );
 };

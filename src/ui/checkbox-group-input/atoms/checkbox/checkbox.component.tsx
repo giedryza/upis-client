@@ -15,7 +15,7 @@ import { Props } from './checkbox.types';
 import styles from './checkbox.module.scss';
 
 export const Checkbox = forwardRef<HTMLInputElement, Props>(
-  ({ label, value, error, disabled, readonly }, forwardedRef) => {
+  ({ label, value, disabled, readonly }, forwardedRef) => {
     const ref = useObjectRef(forwardedRef);
     const state = useCheckboxContext();
 
@@ -26,7 +26,6 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(
         name: value,
         isDisabled: disabled,
         isReadOnly: readonly,
-        validationState: error ? 'invalid' : 'valid',
       },
       state,
       ref

@@ -5,7 +5,7 @@ import { Checkbox, Group } from './atoms';
 
 export const CheckboxGroupInput = forwardRef<HTMLInputElement, Props>(
   (
-    { label, items, value, onChange, error, disabled, readonly },
+    { label, items, value, onChange, info, error, disabled, readonly },
     forwardedRef
   ) => {
     return (
@@ -13,17 +13,13 @@ export const CheckboxGroupInput = forwardRef<HTMLInputElement, Props>(
         label={label}
         onChange={onChange}
         value={value}
+        info={info}
         error={error}
         disabled={disabled}
         readonly={readonly}
       >
         {items.map((item) => (
-          <Checkbox
-            {...item}
-            error={!!error}
-            ref={forwardedRef}
-            key={item.value}
-          />
+          <Checkbox {...item} ref={forwardedRef} key={item.value} />
         ))}
       </Group>
     );
