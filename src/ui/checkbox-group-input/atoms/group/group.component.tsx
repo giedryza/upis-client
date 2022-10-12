@@ -11,6 +11,7 @@ export const Group: FC<Props> = ({
   label,
   value,
   onChange,
+  info,
   error,
   disabled,
   readonly,
@@ -22,15 +23,14 @@ export const Group: FC<Props> = ({
     onChange,
     isDisabled: disabled,
     isReadOnly: readonly,
+    description: info,
     errorMessage: error,
     validationState: error ? 'invalid' : 'valid',
   };
 
   const state = useCheckboxGroupState(props);
-  const { groupProps, labelProps, errorMessageProps } = useCheckboxGroup(
-    props,
-    state
-  );
+  const { groupProps, labelProps, descriptionProps, errorMessageProps } =
+    useCheckboxGroup(props, state);
 
   return (
     <div {...groupProps} className={styles.group}>
@@ -44,7 +44,17 @@ export const Group: FC<Props> = ({
         <div className={styles.group}>{children}</div>
       </CheckboxContextProvider>
 
-      {!!error && <small {...errorMessageProps}>{error}</small>}
+      {!!info && (
+        <small {...descriptionProps} data-help="info">
+          {info}
+        </small>
+      )}
+
+      {!!error && (
+        <small {...errorMessageProps} data-help="error">
+          {error}
+        </small>
+      )}
     </div>
   );
 };
