@@ -15,8 +15,6 @@ export const TextInput = forwardRef<InputElement, Props>(
       readonly,
       value,
       onChange,
-      onFocus,
-      onBlur,
       error,
       info,
       label,
@@ -58,7 +56,7 @@ export const TextInput = forwardRef<InputElement, Props>(
           <textarea
             {...mergeProps(
               inputProps,
-              { onChange, onFocus, onBlur },
+              { onChange },
               {
                 rows,
                 ref: ref as RefObject<HTMLTextAreaElement>,
@@ -69,7 +67,7 @@ export const TextInput = forwardRef<InputElement, Props>(
           <input
             {...mergeProps(
               inputProps,
-              { onChange, onFocus, onBlur },
+              { onChange },
               {
                 ref: ref as RefObject<HTMLInputElement>,
               }

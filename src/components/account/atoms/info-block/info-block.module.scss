@@ -22,17 +22,22 @@
     @include spacing(x, 0.5rem);
   }
 
-  .icon {
+  .iconContainer {
+    display: inline-flex;
     flex-shrink: 0;
+    align-items: center;
+    height: var(--container-height);
+  }
+
+  .icon {
     width: 2rem;
-    height: 3rem;
+    height: 2rem;
 
     fill: currentColor;
   }
 
   .heading {
     display: flex;
-    flex-shrink: 0;
     align-items: flex-start;
 
     color: var(--color-text);
@@ -70,5 +75,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.25rem 0.75rem;
+    justify-content: flex-end;
+    max-width: 40%;
   }
 }

@@ -21,7 +21,9 @@ export const InfoBlock: FC<Props> = ({
       >
         <div className={styles.header}>
           <div className={styles.heading}>
-            <Icon name={icon} className={styles.icon} />
+            <div className={styles.iconContainer}>
+              <Icon name={icon} className={styles.icon} />
+            </div>
             <h2 className={styles.title}>{title}</h2>
           </div>
 

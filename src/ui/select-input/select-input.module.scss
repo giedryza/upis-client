@@ -35,19 +35,10 @@
       display: none;
     }
 
-    &[multiple] {
-      padding: 0.25em 0.5em;
-
-      background-image: none;
-
-      > option {
-        padding: 0.2em;
-      }
-    }
-
     &[readonly] {
       color: var(--color-grey-25);
 
+      background-image: none;
       border-style: dashed;
       cursor: initial;
 

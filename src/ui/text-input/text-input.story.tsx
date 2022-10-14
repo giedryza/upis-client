@@ -11,8 +11,6 @@ export default {
   },
   argTypes: {
     onChange: { action: 'onChange' },
-    onFocus: { action: 'onFocus' },
-    onBlur: { action: 'onBlur' },
   },
 } as ComponentMeta<typeof TextInput>;
 
@@ -23,37 +21,4 @@ const Template: ComponentStory<typeof TextInput> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   ...Default.args,
-};
-
-export const TextArea = Template.bind({});
-TextArea.args = {
-  ...Default.args,
-  type: 'textarea',
-  rows: 10,
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  ...Default.args,
-  disabled: true,
-  value: 'Giedrius',
-};
-
-export const Readonly = Template.bind({});
-Readonly.args = {
-  ...Default.args,
-  readonly: true,
-  value: 'Giedrius',
-};
-
-export const WithInfo = Template.bind({});
-WithInfo.args = {
-  ...Default.args,
-  info: 'First name must contain letters only',
-};
-
-export const WithError = Template.bind({});
-WithError.args = {
-  ...Default.args,
-  error: 'First name is required',
 };

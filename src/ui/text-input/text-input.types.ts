@@ -1,4 +1,4 @@
-import { ChangeEvent, FocusEvent } from 'react';
+import { ChangeEvent } from 'react';
 
 export type InputElement = HTMLInputElement | HTMLTextAreaElement;
 
@@ -19,8 +19,6 @@ export interface Props {
   readonly?: boolean;
   value?: string;
   onChange?: (e: ChangeEvent<InputElement>) => void;
-  onFocus?: (e: FocusEvent<InputElement>) => void;
-  onBlur?: (e: FocusEvent<InputElement>) => void;
   error?: string;
   info?: string;
   placeholder?: string;
