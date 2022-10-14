@@ -22,7 +22,16 @@ export default {
         icon: 'trash',
       },
     ],
-    label: 'Primary',
+    tags: [
+      {
+        label: 'Primary',
+        status: 'info',
+      },
+      {
+        label: 'Alt',
+        status: 'success',
+      },
+    ],
   },
 } as ComponentMeta<typeof ImageTile>;
 

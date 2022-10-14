@@ -10,25 +10,33 @@ export const ImageTile: VFC<Props> = ({
   image,
   alt,
   actions = [],
-  label,
-  status = 'info',
+  tags = [],
 }) => {
   return (
     <div className={styles.imageBox}>
       <img className={styles.image} src={image} alt={alt} />
 
       {!!actions.length && (
-        <div className={styles.actions}>
+        <ul className={styles.actions}>
           {actions.map((action, i) => (
-            <Button {...action} variant="tertiary" size="xs" key={i} />
+            <li key={i}>
+              <Button {...action} variant="tertiary" size="xs" />
+            </li>
           ))}
-        </div>
+        </ul>
       )}
 
-      {!!label && (
-        <div className={clsx(styles.label, styles[`status-${status}`])}>
-          {label}
-        </div>
+      {!!tags.length && (
+        <ul className={styles.tags}>
+          {tags.map((tag, i) => (
+            <li
+              className={clsx(styles.tag, styles[`status-${tag.status}`])}
+              key={i}
+            >
+              {tag.label}
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );
