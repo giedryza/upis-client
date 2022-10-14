@@ -21,8 +21,6 @@ export default {
   },
   argTypes: {
     onChange: { action: 'onChange' },
-    onFocus: { action: 'onFocus' },
-    onBlur: { action: 'onBlur' },
   },
 } as ComponentMeta<typeof SelectInput>;
 
