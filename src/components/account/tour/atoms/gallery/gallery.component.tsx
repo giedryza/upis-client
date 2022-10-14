@@ -43,10 +43,16 @@ export const Gallery: FC = () => {
             <ImageTile
               image={photo.url}
               alt={photo.description}
-              {...(tour.primaryPhoto === photo._id && {
-                label: t('account:tours.gallery.texts.primary'),
-                status: 'info',
-              })}
+              tags={[
+                ...(tour.primaryPhoto === photo._id
+                  ? [
+                      {
+                        label: t('account:tours.gallery.texts.primary'),
+                        status: 'info' as const,
+                      },
+                    ]
+                  : []),
+              ]}
               actions={[
                 {
                   icon: 'star',
