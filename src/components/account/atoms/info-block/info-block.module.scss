@@ -23,10 +23,10 @@
   }
 
   .iconContainer {
-    flex-shrink: 0;
-    height: var(--container-height);
     display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
+    height: var(--container-height);
   }
 
   .icon {
