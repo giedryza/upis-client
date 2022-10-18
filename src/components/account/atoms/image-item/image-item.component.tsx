@@ -1,11 +1,11 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 
 import { ImagePlaceholder } from 'ui';
 
 import { Props } from './image-item.types';
 import styles from './image-item.module.scss';
 
-export const ImageItem: VFC<Props> = ({ src }) => {
+export const ImageItem: FC<Props> = ({ src }) => {
   return (
     <div className={styles.content}>
       {src ? (
