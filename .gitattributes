@@ -1,5 +1,7 @@
 ## GITATTRIBUTES FOR WEB PROJECTS
 #
+# https://github.com/alexkaratarakis/gitattributes/blob/master/Web.gitattributes
+#
 # These settings are for any web project.
 #
 # Details per file setting:
