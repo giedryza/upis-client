@@ -21,7 +21,7 @@ import {
 } from 'domain/amenities';
 import { useFormatNumber } from 'tools/format';
 import { currencies } from 'types/common';
-import { getRouteParam } from 'tools/common';
+import { getRouteParam, toInteger } from 'tools/common';
 
 import { Values } from './provider-edit-amenities-edit.types';
 import { INITIAL_VALUES } from './provider-edit-amenities-edit.constants';
@@ -75,7 +75,7 @@ export const ProviderEditAmenitiesEdit: VFC = () => {
         providerId,
         form: {
           variant,
-          amount: amount * 100,
+          amount: toInteger(amount * 100),
           currency,
           unit,
           info,
