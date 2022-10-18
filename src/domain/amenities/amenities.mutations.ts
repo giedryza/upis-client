@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import { companiesKeys } from 'domain/companies';
+import { providersKeys } from 'domain/providers';
 
 import { useLoaders } from './amenities.loaders';
 
@@ -10,7 +10,7 @@ export const useAddAmenity = () => {
 
   const mutation = useMutation(loaders.addAmenity, {
     onSuccess: (_, { form }) => {
-      queryClient.invalidateQueries(companiesKeys.detail(form.companyId));
+      queryClient.invalidateQueries(providersKeys.detail(form.providerId));
     },
   });
 
@@ -22,8 +22,8 @@ export const useUpdateAmenity = () => {
   const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.updateAmenity, {
-    onSuccess: (_, { companyId }) => {
-      queryClient.invalidateQueries(companiesKeys.detail(companyId));
+    onSuccess: (_, { providerId }) => {
+      queryClient.invalidateQueries(providersKeys.detail(providerId));
     },
   });
 
@@ -35,8 +35,8 @@ export const useDeleteAmenity = () => {
   const { loaders } = useLoaders();
 
   const mutation = useMutation(loaders.deleteAmenity, {
-    onSuccess: (_, { companyId }) => {
-      queryClient.invalidateQueries(companiesKeys.detail(companyId));
+    onSuccess: (_, { providerId }) => {
+      queryClient.invalidateQueries(providersKeys.detail(providerId));
     },
   });
 

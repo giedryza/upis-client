@@ -7,7 +7,7 @@ import { routes } from 'config/routes';
 import { Button, Container, SelectInput, TextInput } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useCreateTour } from 'domain/tours';
-import { useMyCompanies } from 'domain/companies';
+import { useMyProviders } from 'domain/providers';
 
 import { Values } from './tour-create.types';
 import { INITIAL_VALUES } from './tour-create.constants';
@@ -25,13 +25,12 @@ export const TourCreate: VFC = () => {
     defaultValues: INITIAL_VALUES,
   });
 
-  const { data: companies = [] } = useMyCompanies({ select: ['_id', 'name'] });
-
+  const { data: providers = [] } = useMyProviders({ select: ['_id', 'name'] });
   const { mutate: createTour, isLoading } = useCreateTour();
 
-  const onSubmit: SubmitHandler<Values> = ({ name, company }) => {
+  const onSubmit: SubmitHandler<Values> = ({ name, provider }) => {
     createTour(
-      { form: { name, company } },
+      { form: { name, provider } },
       {
         onSuccess: ({ data }) => {
           push(routes.account.tours.one.index.replace(':id', data._id));
@@ -62,19 +61,19 @@ export const TourCreate: VFC = () => {
             />
 
             <SelectInput
-              {...register('company', {
+              {...register('provider', {
                 required: {
                   value: true,
-                  message: t('account:tours.about.form.company.error.empty'),
+                  message: t('account:tours.about.form.provider.error.empty'),
                 },
               })}
-              options={companies.map((company) => ({
-                label: company.name,
-                value: company._id,
+              options={providers.map((provider) => ({
+                label: provider.name,
+                value: provider._id,
               }))}
-              label={t('account:tours.about.form.company.label')}
-              placeholder={t('account:tours.about.form.company.placeholder')}
-              error={errors.company?.message}
+              label={t('account:tours.about.form.provider.label')}
+              placeholder={t('account:tours.about.form.provider.placeholder')}
+              error={errors.provider?.message}
             />
           </fieldset>
 

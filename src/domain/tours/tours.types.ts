@@ -1,5 +1,5 @@
 import { Amenity } from 'domain/amenities';
-import { Company } from 'domain/companies';
+import { Provider } from 'domain/providers';
 import { AppFile, BaseEntity, GeoPoint, Price } from 'types/common';
 
 export const regions = [
@@ -246,7 +246,7 @@ export interface Tour extends BaseEntity {
   price: Price | null;
   photos: AppFile[];
   primaryPhoto: string;
-  company: Company;
+  provider: Provider;
   website: string;
   amenities: Amenity[];
   createdAt: Date;

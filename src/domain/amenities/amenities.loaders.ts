@@ -13,13 +13,13 @@ interface AddAmenity {
     amount: number;
     currency: Currency;
     info: string;
-    companyId: string;
+    providerId: string;
   };
 }
 
 interface UpdateAmenity {
   id: string;
-  companyId: string;
+  providerId: string;
   form: {
     variant: Amenity['variant'];
     unit: Amenity['unit'];
@@ -31,7 +31,7 @@ interface UpdateAmenity {
 
 interface DeleteAmenity {
   id: string;
-  companyId: string;
+  providerId: string;
 }
 
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({

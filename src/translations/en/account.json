@@ -44,11 +44,11 @@
       }
     }
   },
-  "companies": {
+  "providers": {
     "title": {
-      "one": "Company",
-      "other": "Companies",
-      "few": "Companies"
+      "one": "Provider",
+      "other": "Providers",
+      "few": "Providers"
     },
     "table": {
       "name": "Name",
@@ -57,8 +57,8 @@
       "website": "Website"
     },
     "empty": {
-      "title": "No companies",
-      "message": "You will be able to create tours when you add the company."
+      "title": "No providers",
+      "message": "You will be able to create tours when you add the provider."
     },
     "about": {
       "title": "About",
@@ -66,7 +66,7 @@
         "name": {
           "label": "Name",
           "error": {
-            "empty": "Enter company name"
+            "empty": "Enter provider's name"
           }
         },
         "description": {
@@ -176,11 +176,11 @@
       "title": "Settings"
     },
     "texts": {
-      "confirmDelete": "This action cannot be undone. It will permanently delete company <strong>{{name}}</strong> and all its associated information. Are you sure you want to proceed?"
+      "confirmDelete": "This action cannot be undone. It will permanently delete provider <strong>{{name}}</strong> and all its associated information. Are you sure you want to proceed?"
     },
     "actions": {
-      "add": "Add company",
-      "delete": "Delete company"
+      "add": "Add provider",
+      "delete": "Delete provider"
     }
   },
   "tours": {
@@ -199,7 +199,7 @@
     },
     "empty": {
       "title": "No tours",
-      "messageCompanies": "Add company to start creating tours.",
+      "messageProviders": "Add provider to start creating tours.",
       "messageTours": "Start creating tours."
     },
     "about": {
@@ -218,11 +218,11 @@
         "website": {
           "label": "Website"
         },
-        "company": {
-          "label": "Company",
-          "placeholder": "Select company",
+        "provider": {
+          "label": "Provider",
+          "placeholder": "Select provider",
           "error": {
-            "empty": "Select company"
+            "empty": "Select provider"
           }
         }
       }
@@ -325,7 +325,7 @@
           "title": "Empty",
           "message": "Click 'edit' to select amenities for the tour."
         },
-        "info": "You can select amenities that belong to the company. <0>Click here</0> to add more amenities to the company."
+        "info": "You can select amenities that belong to the provider. <0>Click here</0> to add more amenities to the provider."
       }
     },
     "gallery": {

@@ -9,11 +9,11 @@ export const endpoints = {
       reset: 'users/reset-password',
     },
   },
-  companies: {
-    index: 'companies',
+  providers: {
+    index: 'providers',
     one: {
-      index: 'companies/:id',
-      logo: 'companies/:id/logo',
+      index: 'providers/:id',
+      logo: 'providers/:id/logo',
     },
   },
   tours: {

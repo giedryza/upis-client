@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { Card, EmptyState } from 'ui';
 import { routes } from 'config/routes';
-import { useMyCompanies } from 'domain/companies';
+import { useMyProviders } from 'domain/providers';
 import { useMyTours } from 'domain/tours';
 
 import { ToursActions, ToursList } from './atoms';
@@ -12,21 +12,21 @@ import styles from './tours.module.scss';
 export const Tours: VFC = () => {
   const { t } = useTranslation();
 
-  const { data: companies = [], isLoading: isCompaniesLoading } =
-    useMyCompanies();
+  const { data: providers = [], isLoading: isProvidersLoading } =
+    useMyProviders();
   const { data: tours = [], isLoading: isToursLoading } = useMyTours();
 
   return (
     <Card>
-      {!companies.length && !isCompaniesLoading ? (
+      {!providers.length && !isProvidersLoading ? (
         <EmptyState
           title={t('account:tours.empty.title')}
-          message={t('account:tours.empty.messageCompanies')}
+          message={t('account:tours.empty.messageProviders')}
           icon="path"
           action={{
-            label: t('account:companies.actions.add'),
+            label: t('account:providers.actions.add'),
             icon: 'plus',
-            url: routes.account.companies.create,
+            url: routes.account.providers.create,
           }}
         />
       ) : !tours.length && !isToursLoading ? (

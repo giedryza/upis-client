@@ -17,7 +17,7 @@ interface GetTours {
 }
 
 interface CreateTour {
-  form: Pick<Tour, 'name'> & { company: string };
+  form: Pick<Tour, 'name'> & { provider: string };
 }
 
 interface UpdateTour {
