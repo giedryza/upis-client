@@ -44,11 +44,11 @@
       }
     }
   },
-  "companies": {
+  "providers": {
     "title": {
-      "one": "Įmonė",
-      "other": "Įmonių",
-      "few": "Įmonės"
+      "one": "Tiekėjas",
+      "other": "Tiekėjų",
+      "few": "Tiekėjai"
     },
     "table": {
       "name": "Pavadinimas",
@@ -57,17 +57,17 @@
       "website": "Tinklapis"
     },
     "empty": {
-      "title": "Įmonių nėra",
-      "messageCompanies": "Pridėję įmonę galėsite pradėti kurti maršrutus.",
+      "title": "Tiekėjų nėra",
+      "messageProviders": "Pridėję tiekėją galėsite pradėti kurti maršrutus.",
       "messageTours": "Pradėkite kurti maršrutus."
     },
     "about": {
-      "title": "Apie įmonę",
+      "title": "Apie tiekėją",
       "form": {
         "name": {
           "label": "Pavadinimas",
           "error": {
-            "empty": "Įveskite įmonės pavadinimą"
+            "empty": "Įveskite tiekėjo pavadinimą"
           }
         },
         "description": {
@@ -177,11 +177,11 @@
       "title": "Nustatymai"
     },
     "texts": {
-      "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins įmonę <strong>{{name}}</strong> ir visą su ja susijusią informaciją. Ar tikrai norite tęsti?"
+      "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins tiekėją <strong>{{name}}</strong> ir visą su ja susijusią informaciją. Ar tikrai norite tęsti?"
     },
     "actions": {
-      "add": "Pridėti įmonę",
-      "delete": "Ištrinti įmonę"
+      "add": "Pridėti tiekėją",
+      "delete": "Ištrinti tiekėją"
     }
   },
   "tours": {
@@ -200,7 +200,7 @@
     },
     "empty": {
       "title": "Maršrutų nėra",
-      "message": "Pridėkite įmonę norėdami kurti maršrutus."
+      "message": "Pridėkite tiekėją norėdami kurti maršrutus."
     },
     "about": {
       "title": "Apie maršrutą",
@@ -218,11 +218,11 @@
         "website": {
           "label": "Tinklapis"
         },
-        "company": {
-          "label": "Įmonė",
-          "placeholder": "Pasirinkite įmonę",
+        "provider": {
+          "label": "Tiekėjas",
+          "placeholder": "Pasirinkite tiekėją",
           "error": {
-            "empty": "Pasirinkite įmonę"
+            "empty": "Pasirinkite tiekėją"
           }
         }
       }
@@ -325,7 +325,7 @@
           "title": "Tuščia",
           "message": "Norėdami pasirinkti maršruto patogumus, spauskite 'redaguoti'."
         },
-        "info": "Pasirinkti galite tuos patogumus, kurie priklauso įmonei. <0>Spauskite čia</0> norėdami įmonei pridėti daugiau patogumų."
+        "info": "Pasirinkti galite tuos patogumus, kurie priklauso tiekėjui. <0>Spauskite čia</0> norėdami tiekėjui pridėti daugiau patogumų."
       }
     },
     "gallery": {

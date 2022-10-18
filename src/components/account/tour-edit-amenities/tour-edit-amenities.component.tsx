@@ -65,9 +65,9 @@ export const TourEditAmenities: VFC = () => {
                 i18nKey="account:tours.amenities.texts.info"
                 components={[
                   <a
-                    href={routes.account.companies.one.amenities.add.replace(
+                    href={routes.account.providers.one.amenities.add.replace(
                       ':id',
-                      tour?.company._id ?? ''
+                      tour?.provider._id ?? ''
                     )}
                     className="link"
                     rel="noreferrer"
@@ -89,7 +89,7 @@ export const TourEditAmenities: VFC = () => {
                 <CheckboxGroupInput
                   label={t('account:tours.amenities.form.amenities.label')}
                   items={
-                    tour?.company.amenities.map((amenity) => ({
+                    tour?.provider.amenities.map((amenity) => ({
                       label: `${t(
                         `common:amenities.variants.${amenity.variant}`
                       )} (${

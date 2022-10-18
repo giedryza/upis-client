@@ -11,7 +11,7 @@ export default {
     },
   },
   args: {
-    message: 'Invalid company name. Try another.',
+    message: 'Invalid provider name. Try another.',
   },
   argTypes: {
     onClose: { action: 'onClose' },

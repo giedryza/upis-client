@@ -40,8 +40,8 @@ export const About: VFC = () => {
         value={tour.website}
       />
       <FieldDisplay
-        label={t('account:tours.about.form.company.label')}
-        value={tour.company.name}
+        label={t('account:tours.about.form.provider.label')}
+        value={tour.provider.name}
       />
     </InfoBlock>
   );

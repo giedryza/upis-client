@@ -15,10 +15,10 @@ export const Default = Template.bind({});
 Default.args = {
   ...Default.args,
   title: 'No tours',
-  message: 'Add company to start creating tours.',
+  message: 'Add provider to start creating tours.',
   icon: 'bell',
   action: {
-    label: 'Add company',
+    label: 'Add provider',
     icon: 'plus',
   },
 };

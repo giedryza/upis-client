@@ -37,7 +37,7 @@ export const Amenities: VFC = () => {
             icon={ICON_BY_VARIANT[amenity.variant]}
             fields={[
               {
-                label: t('account:companies.amenities.form.amount.display'),
+                label: t('account:providers.amenities.form.amount.display'),
                 sublabel: amenity.price
                   ? `${formatCurrency(
                       lang,
