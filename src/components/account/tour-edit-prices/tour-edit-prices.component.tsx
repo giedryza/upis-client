@@ -9,7 +9,7 @@ import { currencies } from 'types/common';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTourPrice } from 'domain/tours';
 import { useFormatNumber } from 'tools/format';
-import { toInteger } from 'tools/common';
+import { toCents } from 'tools/common';
 
 import { Values } from './tour-edit-prices.types';
 import { INITIAL_VALUES } from './tour-edit-prices.constants';
@@ -50,7 +50,7 @@ export const TourEditPrices: VFC = () => {
       {
         id: tourId,
         form: {
-          amount: toInteger(amount * 100),
+          amount: toCents(amount),
           currency,
         },
       },

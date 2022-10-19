@@ -1,1 +1,1 @@
-export const toInteger = (number: number): number => Number(number.toFixed(2));
+export const toInteger = (number: number): number => Number(number.toFixed(0));

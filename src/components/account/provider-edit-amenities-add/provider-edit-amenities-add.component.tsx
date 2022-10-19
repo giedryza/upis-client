@@ -16,7 +16,7 @@ import { InfoBlock } from 'components/account/atoms';
 import { units, useAddAmenity, variants } from 'domain/amenities';
 import { useFormatNumber } from 'tools/format';
 import { currencies } from 'types/common';
-import { getRouteParam, toInteger } from 'tools/common';
+import { getRouteParam, toCents } from 'tools/common';
 
 import { Values } from './provider-edit-amenities-add.types';
 import { INITIAL_VALUES } from './provider-edit-amenities-add.constants';
@@ -56,7 +56,7 @@ export const ProviderEditAmenitiesAdd: VFC = () => {
       {
         form: {
           variant,
-          amount: toInteger(amount * 100),
+          amount: toCents(amount),
           currency,
           unit,
           info,
