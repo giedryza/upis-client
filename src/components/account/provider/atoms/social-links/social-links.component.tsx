@@ -7,7 +7,7 @@ import { Tile } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useSocialLinks, useDeleteSocialLink } from 'domain/social-links';
 import { useConfirm } from 'domain/confirm';
-import { getRouteParam } from 'tools/common';
+import { getRouteParam, toExternalLink } from 'tools/common';
 
 import { ICON_BY_SOCIAL_LINK_TYPE } from './social-links.constants';
 
@@ -50,7 +50,7 @@ export const SocialLinks: VFC = () => {
               label: t('account:providers.socialLinks.table.url'),
               sublabel: socialLink.url ? (
                 <a
-                  href={socialLink.url}
+                  href={toExternalLink(socialLink.url)}
                   className="link"
                   target="_blank"
                   rel="noreferrer"

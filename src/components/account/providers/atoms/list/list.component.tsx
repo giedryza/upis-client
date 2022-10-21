@@ -5,6 +5,7 @@ import { routes } from 'config/routes';
 import { Tile } from 'ui';
 import { useMyProviders, useDeleteProvider } from 'domain/providers';
 import { useConfirm } from 'domain/confirm';
+import { toExternalLink } from 'tools/common';
 
 export const ProvidersList: VFC = () => {
   const { t } = useTranslation();
@@ -46,7 +47,7 @@ export const ProvidersList: VFC = () => {
               label: t('account:providers.table.website'),
               sublabel: provider.website ? (
                 <a
-                  href={provider.website}
+                  href={toExternalLink(provider.website)}
                   className="link"
                   target="_blank"
                   rel="noreferrer"
