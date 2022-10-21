@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider } from 'domain/providers';
 import { routes } from 'config/routes';
-import { Button, Tile } from 'ui';
+import { Tile } from 'ui';
 import { formatCurrency } from 'tools/format';
 import { ICON_BY_VARIANT, useDeleteAmenity } from 'domain/amenities';
 import { useConfirm } from 'domain/confirm';
@@ -24,6 +24,17 @@ export const Amenities: VFC = () => {
       title={t('account:providers.amenities.title')}
       icon="link"
       columns={2}
+      actions={[
+        {
+          url: routes.account.providers.one.amenities.add.replace(
+            ':id',
+            provider._id
+          ),
+          label: t('common:actions.add'),
+          variant: 'tertiary',
+          icon: 'plus',
+        },
+      ]}
     >
       {provider.amenities.map((amenity) => (
         <Tile
@@ -77,19 +88,6 @@ export const Amenities: VFC = () => {
           key={amenity._id}
         />
       ))}
-
-      <div>
-        <Button
-          label={t('common:actions.add')}
-          variant="tertiary"
-          icon="plus"
-          size="xs"
-          url={routes.account.providers.one.amenities.add.replace(
-            ':id',
-            provider._id
-          )}
-        />
-      </div>
     </InfoBlock>
   );
 };

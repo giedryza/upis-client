@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
-import { Button, Tile } from 'ui';
+import { Tile } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useSocialLinks, useDeleteSocialLink } from 'domain/social-links';
 import { useConfirm } from 'domain/confirm';
@@ -29,6 +29,17 @@ export const SocialLinks: VFC = () => {
       title={t('account:providers.socialLinks.title')}
       icon="network"
       columns={2}
+      actions={[
+        {
+          url: routes.account.providers.one.socialLinks.add.replace(
+            ':id',
+            providerId
+          ),
+          label: t('common:actions.add'),
+          variant: 'tertiary',
+          icon: 'plus',
+        },
+      ]}
     >
       {socialLinks.map((socialLink) => (
         <Tile
@@ -84,19 +95,6 @@ export const SocialLinks: VFC = () => {
           key={socialLink._id}
         />
       ))}
-
-      <div>
-        <Button
-          label={t('common:actions.add')}
-          variant="tertiary"
-          icon="plus"
-          size="xs"
-          url={routes.account.providers.one.socialLinks.add.replace(
-            ':id',
-            providerId
-          )}
-        />
-      </div>
     </InfoBlock>
   );
 };
