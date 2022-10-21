@@ -6,5 +6,6 @@ declare module 'csstype' {
     '--grid-columns'?: number;
     '--fade-delay'?: number;
     '--percentage'?: number;
+    '--spacing'?: number;
   }
 }
