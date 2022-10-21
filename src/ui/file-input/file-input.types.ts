@@ -9,4 +9,5 @@ export interface Props {
   name?: string;
   disabled?: boolean;
   onChange?: (files: File[]) => void;
+  previews?: boolean;
 }

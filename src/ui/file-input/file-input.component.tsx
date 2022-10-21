@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState, forwardRef } from 'react';
+import { useCallback, useMemo, useState, forwardRef, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
@@ -20,15 +20,24 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
       name,
       disabled,
       onChange,
+      previews = false,
     },
     forwardedRef
   ) => {
     const { t, lang } = useTranslation();
 
-    const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+    const [uploadedFiles, setUploadedFiles] = useState<
+      (File & { preview: string })[]
+    >([]);
 
     const handleChange = (files: File[]) => {
-      setUploadedFiles(files);
+      setUploadedFiles(
+        files.map((file) =>
+          Object.assign(file, {
+            preview: previews ? URL.createObjectURL(file) : '',
+          })
+        )
+      );
       onChange?.(files);
     };
 
@@ -68,6 +77,14 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
         ? 'active'
         : 'inactive';
     }, [isDragAccept, isDragReject, isDragActive]);
+
+    useEffect(() => {
+      return () => {
+        if (previews) {
+          uploadedFiles.forEach((file) => URL.revokeObjectURL(file.preview));
+        }
+      };
+    }, [uploadedFiles, previews]);
 
     return (
       <section className={styles.container}>
@@ -141,8 +158,23 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
             <h4>{t('common:components.fileInput.files')}</h4>
             <ul className={styles.filesList}>
               {uploadedFiles.map((file, i) => (
-                <li className={styles.fileContainer} key={i}>
-                  <FileIcon type={getFiletype(file.name)} />
+                <li
+                  className={styles.fileContainer}
+                  style={{
+                    '--spacing': previews ? 1 : 2,
+                  }}
+                  key={i}
+                >
+                  {previews && file.type.split('/')[0]?.includes('image') ? (
+                    <img
+                      src={file.preview}
+                      alt={file.name}
+                      className={styles.preview}
+                      onLoad={() => URL.revokeObjectURL(file.preview)}
+                    />
+                  ) : (
+                    <FileIcon type={getFiletype(file.name)} />
+                  )}
 
                   <div className={styles.fileInfo}>
                     <h6>{file.name}</h6>

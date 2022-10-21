@@ -66,8 +66,8 @@
     .info {
       margin-top: 1rem;
 
-      font-size: 0.75em;
       font-weight: 400;
+      font-size: 0.75em;
 
       span {
         font-weight: 500;
@@ -94,7 +94,7 @@
     display: flex;
     align-items: center;
 
-    @include spacing(x, 2em);
+    @include spacing(x, calc(var(--spacing, 2) * 1em));
 
     > *:first-child {
       flex-shrink: 0;
@@ -106,6 +106,8 @@
   }
 
   .fileInfo {
+    flex: 1;
+
     > h6 {
       color: var(--color-text);
       font-weight: 600;
@@ -117,5 +119,18 @@
       font-weight: 300;
       font-size: 0.8em;
     }
+  }
+
+  .preview {
+    --width: 7.5em;
+
+    display: block;
+    width: var(--width);
+    height: calc(var(--width) * 0.5625);
+    object-fit: contain;
+    object-position: center;
+
+    border: 1px dashed var(--color-grey-60);
+    border-radius: var(--border-radius-sm);
   }
 }

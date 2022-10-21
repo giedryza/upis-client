@@ -68,6 +68,7 @@ export const TourEditGallery: VFC = () => {
                     onChange(file);
                   }}
                   accept={['jpeg', 'jpg', 'png', 'avif', 'svg', 'gif', 'bmp']}
+                  previews
                   ref={ref}
                 />
               )}
