@@ -166,12 +166,13 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
                   key={i}
                 >
                   {previews && file.type.split('/')[0]?.includes('image') ? (
-                    <img
-                      src={file.preview}
-                      alt={file.name}
-                      className={styles.preview}
-                      onLoad={() => URL.revokeObjectURL(file.preview)}
-                    />
+                    <div className={styles.preview}>
+                      <img
+                        src={file.preview}
+                        alt={file.name}
+                        onLoad={() => URL.revokeObjectURL(file.preview)}
+                      />
+                    </div>
                   ) : (
                     <FileIcon type={getFiletype(file.name)} />
                   )}
