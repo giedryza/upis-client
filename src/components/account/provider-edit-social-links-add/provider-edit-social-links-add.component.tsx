@@ -79,7 +79,6 @@ export const ProviderEditSocialLinksAdd: VFC = () => {
               })}
               label={t('account:providers.socialLinks.form.url.label')}
               placeholder="https://upis.lt"
-              type="url"
               error={errors.url?.message}
             />
           </fieldset>

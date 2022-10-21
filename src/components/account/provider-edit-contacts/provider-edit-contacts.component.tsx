@@ -93,7 +93,6 @@ export const ProviderEditContacts: VFC = () => {
               {...register('website')}
               label={t('account:providers.contacts.form.website.label')}
               placeholder="https://upis.lt"
-              type="url"
               error={errors.website?.message}
             />
           </fieldset>

@@ -79,7 +79,6 @@ export const TourEditAbout: VFC = () => {
               {...register('website')}
               label={t('account:tours.about.form.name.label')}
               placeholder="https://upis.lt/zeimenos-upe"
-              type="url"
               error={errors.website?.message}
             />
           </fieldset>
