@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState, forwardRef } from 'react';
 import { useDropzone } from 'react-dropzone';
 import useTranslation from 'next-translate/useTranslation';
+import Trans from 'next-translate/Trans';
 
 import { Button, Icon, Divider } from 'ui';
 import { getFiletype, formatBytes } from 'tools/common';
@@ -110,19 +111,27 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
             />
             <div className={styles.info}>
               {!!accept?.length && (
-                <p>
-                  {t('common:components.fileInput.supported', {
-                    filetypes: new Intl.ListFormat(lang).format(
-                      accept.map((filetype) => `.${filetype}`)
-                    ),
-                  })}
-                </p>
+                <div>
+                  <Trans
+                    i18nKey="common:components.fileInput.supported"
+                    values={{
+                      filetypes: new Intl.ListFormat(lang).format(
+                        accept.map((filetype) => `.${filetype}`)
+                      ),
+                    }}
+                    components={[<span key="0" />]}
+                  />
+                </div>
               )}
-              <p>
-                {t('common:components.fileInput.max', {
-                  maxSize: formatBytes(maxSize),
-                })}
-              </p>
+              <div>
+                <Trans
+                  i18nKey="common:components.fileInput.max"
+                  values={{
+                    maxSize: formatBytes(maxSize),
+                  }}
+                  components={[<span key="0" />]}
+                />
+              </div>
             </div>
           </div>
         </div>
