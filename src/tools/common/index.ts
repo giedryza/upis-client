@@ -7,4 +7,5 @@ export * from './get-route-param';
 export * from './is-defined';
 export * from './is-server';
 export * from './to-cents';
+export * from './to-external-link';
 export * from './to-integer';
