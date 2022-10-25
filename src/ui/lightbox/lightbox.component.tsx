@@ -1,5 +1,6 @@
 import { useRef, FC, useState } from 'react';
 import { clsx } from 'clsx';
+import useTranslation from 'next-translate/useTranslation';
 import {
   FocusScope,
   mergeProps,
@@ -24,6 +25,8 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
   images,
   currentImageId,
 }) => {
+  const { t } = useTranslation();
+
   const ref = useRef<HTMLDivElement>(null);
 
   const [index, setIndex] = useState(
@@ -86,7 +89,7 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
                     size="sm"
                     attributes={{
                       onClick: () => document.exitFullscreen(),
-                      title: 'Exit full screen',
+                      title: t('common:components.lightbox.fullscreen.exit'),
                     }}
                   />
                 ) : (
@@ -96,7 +99,7 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
                     size="sm"
                     attributes={{
                       onClick: () => ref.current?.requestFullscreen?.(),
-                      title: 'Full screen',
+                      title: t('common:components.lightbox.fullscreen.enter'),
                     }}
                   />
                 )}
@@ -107,7 +110,7 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
                   size="sm"
                   attributes={{
                     onClick: onClose,
-                    title: 'Close',
+                    title: t('common:actions.close'),
                   }}
                 />
               </div>
@@ -121,7 +124,7 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
                     variant="tertiary"
                     size="lg"
                     attributes={{
-                      title: 'Previous photo',
+                      title: t('common:components.lightbox.previous'),
                       onClick: onPrevious,
                     }}
                   />
@@ -132,7 +135,7 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
                     variant="tertiary"
                     size="lg"
                     attributes={{
-                      title: 'Next photo',
+                      title: t('common:components.lightbox.next'),
                       onClick: onNext,
                     }}
                   />

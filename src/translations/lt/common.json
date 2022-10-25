@@ -31,6 +31,14 @@
     },
     "confirm": {
       "title": "Ar tikrai?"
+    },
+    "lightbox": {
+      "fullscreen": {
+        "enter": "Atidaryti per visą ekraną",
+        "exit": "Uždaryti per visą ekraną"
+      },
+      "previous": "Buvusi nuotrauka",
+      "next": "Sekanti nuotrauka"
     }
   },
   "texts": {

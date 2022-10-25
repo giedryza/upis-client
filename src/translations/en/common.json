@@ -31,6 +31,14 @@
     },
     "confirm": {
       "title": "Are you sure?"
+    },
+    "lightbox": {
+      "fullscreen": {
+        "enter": "Enter fullscreen",
+        "exit": "Exit fullscreen"
+      },
+      "previous": "Previous photo",
+      "next": "Next photo"
     }
   },
   "texts": {
