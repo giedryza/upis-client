@@ -93,26 +93,27 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
                     }}
                   />
                 ) : (
-                  <Button
-                    icon="arrows-out"
-                    variant="tertiary"
-                    size="sm"
-                    attributes={{
-                      onClick: () => ref.current?.requestFullscreen?.(),
-                      title: t('common:components.lightbox.fullscreen.enter'),
-                    }}
-                  />
+                  <>
+                    <Button
+                      icon="arrows-out"
+                      variant="tertiary"
+                      size="sm"
+                      attributes={{
+                        onClick: () => ref.current?.requestFullscreen?.(),
+                        title: t('common:components.lightbox.fullscreen.enter'),
+                      }}
+                    />
+                    <Button
+                      icon="close"
+                      variant="tertiary"
+                      size="sm"
+                      attributes={{
+                        onClick: onClose,
+                        title: t('common:actions.close'),
+                      }}
+                    />
+                  </>
                 )}
-
-                <Button
-                  icon="close"
-                  variant="tertiary"
-                  size="sm"
-                  attributes={{
-                    onClick: onClose,
-                    title: t('common:actions.close'),
-                  }}
-                />
               </div>
             </div>
 
