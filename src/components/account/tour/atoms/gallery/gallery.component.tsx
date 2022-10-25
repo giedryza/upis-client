@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useQueryClient } from 'react-query';
+import { useDispatch } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
 import { EmptyState, ImageTile } from 'ui';
@@ -8,11 +9,13 @@ import { toursKeys, useActiveTour, useUpdateTour } from 'domain/tours';
 import { routes } from 'config/routes';
 import { useDeleteImage } from 'domain/images';
 import { useConfirm } from 'domain/confirm';
+import { lightbox } from 'domain/lightbox';
 
 import styles from './gallery.module.scss';
 
 export const Gallery: FC = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const queryClient = useQueryClient();
 
   const { confirmation } = useConfirm();
@@ -54,6 +57,24 @@ export const Gallery: FC = () => {
                   : []),
               ]}
               actions={[
+                {
+                  icon: 'magnifying-glass',
+                  attributes: {
+                    title: t('common:actions.zoom'),
+                    onClick: () => {
+                      dispatch(
+                        lightbox.actions.open({
+                          images: tour.photos.map((pic) => ({
+                            id: pic._id,
+                            url: pic.url,
+                            alt: pic.description,
+                          })),
+                          currentImage: photo._id,
+                        })
+                      );
+                    },
+                  },
+                },
                 {
                   icon: 'star',
                   attributes: {
