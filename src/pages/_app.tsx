@@ -15,6 +15,7 @@ import { Alerts } from 'components/alerts';
 import { ModalSlot } from 'components/modal-slot';
 import { ConfirmationModal } from 'components/modals';
 import { ProgressBar } from 'components/layout';
+import { LightboxContainer } from 'components/lightbox-container';
 
 import 'styles/index.scss';
 
@@ -41,6 +42,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                       modalName="confirmation"
                       slot={<ConfirmationModal />}
                     />
+                    <LightboxContainer />
                   </AppLayout>
                 </Modal.Provider>
               </I18nProvider>

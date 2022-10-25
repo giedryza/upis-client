@@ -3,10 +3,14 @@ export interface Props extends React.SVGAttributes<SVGElement> {
 }
 
 export const baseIcons = [
+  'arrows-in',
+  'arrows-out',
   'baby',
   'bag',
   'bell',
   'camera',
+  'chevron-left',
+  'chevron-right',
   'close',
   'compass',
   'exit',
@@ -18,6 +22,7 @@ export const baseIcons = [
   'kayak',
   'link',
   'lock',
+  'magnifying-glass',
   'mobile',
   'network',
   'path',
