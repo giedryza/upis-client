@@ -22,6 +22,7 @@ export const baseIcons = [
   'kayak',
   'link',
   'lock',
+  'magnifying-glass',
   'mobile',
   'network',
   'path',
