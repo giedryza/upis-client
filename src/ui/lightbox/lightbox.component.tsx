@@ -121,50 +121,51 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
               </div>
             </div>
 
-            <div className={clsx([styles.slider, styles.snap])} ref={sliderRef}>
-              {sorted.map((image, i) => (
-                <div className={styles.body} key={image.id}>
-                  <div className={styles.imageContainer}>
-                    <div className={clsx([styles.sidebar, styles['-left']])}>
-                      <Button
-                        icon="chevron-left"
-                        variant="tertiary"
-                        size="lg"
-                        attributes={{
-                          title: t('common:components.lightbox.previous'),
-                          onClick: onPrevious,
-                        }}
-                      />
-                    </div>
-                    <div className={clsx([styles.sidebar, styles['-right']])}>
-                      <Button
-                        icon="chevron-right"
-                        variant="tertiary"
-                        size="lg"
-                        attributes={{
-                          title: t('common:components.lightbox.next'),
-                          onClick: onNext,
-                        }}
-                      />
-                    </div>
+            <div className={clsx([styles.sidebar, styles['-left']])}>
+              <Button
+                icon="chevron-left"
+                variant="tertiary"
+                size="lg"
+                attributes={{
+                  title: t('common:components.lightbox.previous'),
+                  onClick: onPrevious,
+                }}
+              />
+            </div>
+            <div className={clsx([styles.sidebar, styles['-right']])}>
+              <Button
+                icon="chevron-right"
+                variant="tertiary"
+                size="lg"
+                attributes={{
+                  title: t('common:components.lightbox.next'),
+                  onClick: onNext,
+                }}
+              />
+            </div>
 
-                    <img
-                      className={styles.image}
-                      src={image.url}
-                      alt={image.alt}
-                    />
-                  </div>
-
-                  <div className={styles.meta}>
-                    <h2 {...titleProps} className={styles.title}>
-                      {image.alt}
-                    </h2>
-                    <span className={styles.step}>
-                      {i + 1}/{images.length}
-                    </span>
-                  </div>
+            <div
+              className={clsx([styles.slider, styles.snap, 'scrollbar-hidden'])}
+              ref={sliderRef}
+            >
+              {sorted.map((image) => (
+                <div className={styles.slide} key={image.id}>
+                  <img
+                    className={styles.image}
+                    src={image.url}
+                    alt={image.alt}
+                  />
                 </div>
               ))}
+            </div>
+
+            <div className={styles.meta}>
+              <h2 {...titleProps} className={styles.title}>
+                {sorted.at(index)?.alt}
+              </h2>
+              <span className={styles.step}>
+                {index + 1}/{images.length}
+              </span>
             </div>
           </div>
         </FocusScope>
