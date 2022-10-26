@@ -39,6 +39,25 @@
     }
   }
 
+  .slider {
+    height: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    position: relative;
+  }
+
+  .snap {
+    scroll-snap-type: inline mandatory;
+
+    > * {
+      scroll-snap-align: start;
+    }
+  }
+
   .body {
     display: flex;
     flex-direction: column;

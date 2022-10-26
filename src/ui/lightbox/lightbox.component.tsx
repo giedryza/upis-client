@@ -1,4 +1,4 @@
-import { useRef, FC, useState } from 'react';
+import { useRef, FC, useState, useEffect, useMemo } from 'react';
 import { clsx } from 'clsx';
 import useTranslation from 'next-translate/useTranslation';
 import {
@@ -28,15 +28,9 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
   const { t } = useTranslation();
 
   const ref = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
-  const [index, setIndex] = useState(
-    currentImageId
-      ? Math.max(
-          images.findIndex((image) => image.id === currentImageId),
-          0
-        )
-      : 0
-  );
+  const [index, setIndex] = useState(0);
 
   const { overlayProps, underlayProps } = useOverlay(
     {
@@ -70,7 +64,19 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
     );
   };
 
-  const currentImage = images.at(index);
+  const sorted = useMemo(() => {
+    return [...images].sort((image) => -Number(image.id === currentImageId));
+  }, [currentImageId, images]);
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+
+    if (!slider) return;
+
+    slider.scroll({
+      left: index * slider.clientWidth,
+    });
+  }, [index, isFullscreen]);
 
   return (
     <OverlayContainer>
@@ -115,46 +121,50 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
               </div>
             </div>
 
-            <div className={styles.body}>
-              <div className={styles.imageContainer}>
-                <div className={clsx([styles.sidebar, styles['-left']])}>
-                  <Button
-                    icon="chevron-left"
-                    variant="tertiary"
-                    size="lg"
-                    attributes={{
-                      title: t('common:components.lightbox.previous'),
-                      onClick: onPrevious,
-                    }}
-                  />
-                </div>
-                <div className={clsx([styles.sidebar, styles['-right']])}>
-                  <Button
-                    icon="chevron-right"
-                    variant="tertiary"
-                    size="lg"
-                    attributes={{
-                      title: t('common:components.lightbox.next'),
-                      onClick: onNext,
-                    }}
-                  />
-                </div>
+            <div className={clsx([styles.slider, styles.snap])} ref={sliderRef}>
+              {sorted.map((image, i) => (
+                <div className={styles.body} key={image.id}>
+                  <div className={styles.imageContainer}>
+                    <div className={clsx([styles.sidebar, styles['-left']])}>
+                      <Button
+                        icon="chevron-left"
+                        variant="tertiary"
+                        size="lg"
+                        attributes={{
+                          title: t('common:components.lightbox.previous'),
+                          onClick: onPrevious,
+                        }}
+                      />
+                    </div>
+                    <div className={clsx([styles.sidebar, styles['-right']])}>
+                      <Button
+                        icon="chevron-right"
+                        variant="tertiary"
+                        size="lg"
+                        attributes={{
+                          title: t('common:components.lightbox.next'),
+                          onClick: onNext,
+                        }}
+                      />
+                    </div>
 
-                <img
-                  className={styles.image}
-                  src={currentImage?.url}
-                  alt={currentImage?.alt}
-                />
-              </div>
+                    <img
+                      className={styles.image}
+                      src={image.url}
+                      alt={image.alt}
+                    />
+                  </div>
 
-              <div className={styles.meta}>
-                <h2 {...titleProps} className={styles.title}>
-                  {currentImage?.alt}
-                </h2>
-                <span className={styles.step}>
-                  {index + 1}/{images.length}
-                </span>
-              </div>
+                  <div className={styles.meta}>
+                    <h2 {...titleProps} className={styles.title}>
+                      {image.alt}
+                    </h2>
+                    <span className={styles.step}>
+                      {i + 1}/{images.length}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </FocusScope>
