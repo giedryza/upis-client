@@ -28,7 +28,7 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
   const { t } = useTranslation();
 
   const ref = useRef<HTMLDivElement>(null);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLUListElement>(null);
 
   const [index, setIndex] = useState(0);
 
@@ -64,7 +64,7 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
     );
   };
 
-  const onScroll = ({ currentTarget }: UIEvent<HTMLDivElement>) => {
+  const onScroll = ({ currentTarget }: UIEvent<HTMLUListElement>) => {
     if (!sliderRef.current?.clientWidth) {
       return;
     }
@@ -154,21 +154,21 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
               />
             </div>
 
-            <div
+            <ul
               className={clsx([styles.slider, styles.snap, 'scrollbar-hidden'])}
               onScroll={onScroll}
               ref={sliderRef}
             >
               {sorted.map((image) => (
-                <div className={styles.slide} key={image.id}>
+                <li className={styles.slide} key={image.id}>
                   <img
                     className={styles.image}
                     src={image.url}
                     alt={image.alt}
                   />
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
 
             <div className={styles.meta}>
               <h2 {...titleProps} className={styles.title}>
