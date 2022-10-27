@@ -1,4 +1,4 @@
-import { useRef, FC, useState, useEffect, useMemo } from 'react';
+import { useRef, FC, useState, useEffect, useMemo, UIEvent } from 'react';
 import { clsx } from 'clsx';
 import useTranslation from 'next-translate/useTranslation';
 import {
@@ -62,6 +62,16 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
     setIndex((prevIndex) =>
       prevIndex + 1 >= images.length ? 0 : prevIndex + 1
     );
+  };
+
+  const onScroll = ({ currentTarget }: UIEvent<HTMLDivElement>) => {
+    if (!sliderRef.current?.clientWidth) {
+      return;
+    }
+
+    if (currentTarget.scrollLeft % sliderRef.current.clientWidth === 0) {
+      setIndex(currentTarget.scrollLeft / sliderRef.current.clientWidth);
+    }
   };
 
   const sorted = useMemo(() => {
@@ -146,6 +156,7 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
 
             <div
               className={clsx([styles.slider, styles.snap, 'scrollbar-hidden'])}
+              onScroll={onScroll}
               ref={sliderRef}
             >
               {sorted.map((image) => (
