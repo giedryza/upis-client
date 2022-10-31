@@ -1,5 +1,3 @@
-import { OverlayProvider } from 'react-aria';
-
 interface Image {
   id: string;
   url: string;
@@ -12,8 +10,4 @@ export interface Props {
   onClose: () => void;
   images: Image[];
   currentImageId?: string;
-}
-
-export interface LightboxComposition {
-  Provider: typeof OverlayProvider;
 }

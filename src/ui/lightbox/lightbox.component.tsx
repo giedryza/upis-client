@@ -1,11 +1,10 @@
-import { useRef, FC, useState } from 'react';
+import { useRef, FC, useState, useEffect, useMemo, UIEvent } from 'react';
 import { clsx } from 'clsx';
 import useTranslation from 'next-translate/useTranslation';
 import {
   FocusScope,
   mergeProps,
   OverlayContainer,
-  OverlayProvider,
   useDialog,
   useModal,
   useOverlay,
@@ -13,12 +12,13 @@ import {
 } from 'react-aria';
 
 import { Button } from 'ui';
+import { useEventListener } from 'tools/hooks';
 
-import { LightboxComposition, Props } from './lightbox.types';
+import { Props } from './lightbox.types';
 import { useFullscreen } from './lightbox.hooks';
 import styles from './lightbox.module.scss';
 
-export const Lightbox: FC<Props> & LightboxComposition = ({
+export const Lightbox: FC<Props> = ({
   id,
   isOpen,
   onClose,
@@ -28,15 +28,9 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
   const { t } = useTranslation();
 
   const ref = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLUListElement>(null);
 
-  const [index, setIndex] = useState(
-    currentImageId
-      ? Math.max(
-          images.findIndex((image) => image.id === currentImageId),
-          0
-        )
-      : 0
-  );
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const { overlayProps, underlayProps } = useOverlay(
     {
@@ -55,22 +49,52 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
     ref
   );
 
-  usePreventScroll();
-  const { isFullscreen } = useFullscreen();
-
-  const onPrevious = () => {
-    setIndex((prevIndex) =>
-      prevIndex <= 0 ? images.length - 1 : prevIndex - 1
+  const onPrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex <= 0 ? prevIndex : prevIndex - 1
     );
   };
 
   const onNext = () => {
-    setIndex((prevIndex) =>
-      prevIndex + 1 >= images.length ? 0 : prevIndex + 1
+    setCurrentIndex((prevIndex) =>
+      prevIndex + 1 >= images.length ? prevIndex : prevIndex + 1
     );
   };
 
-  const currentImage = images.at(index);
+  const onScroll = ({ currentTarget }: UIEvent<HTMLUListElement>) => {
+    if (!sliderRef.current?.clientWidth) {
+      return;
+    }
+
+    if (currentTarget.scrollLeft % sliderRef.current.clientWidth === 0) {
+      setCurrentIndex(currentTarget.scrollLeft / sliderRef.current.clientWidth);
+    }
+  };
+
+  const onKeyup = (e: KeyboardEvent) => {
+    if (e.key === 'ArrowRight') onNext();
+
+    if (e.key === 'ArrowLeft') onPrev();
+  };
+
+  const sorted = useMemo(
+    () => [...images].sort((image) => -Number(image.id === currentImageId)),
+    [currentImageId, images]
+  );
+
+  usePreventScroll();
+  useEventListener('keyup', onKeyup);
+  const { isFullscreen } = useFullscreen();
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+
+    if (!slider) return;
+
+    slider.scroll({
+      left: currentIndex * slider.clientWidth,
+    });
+  }, [currentIndex, isFullscreen]);
 
   return (
     <OverlayContainer>
@@ -115,46 +139,52 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
               </div>
             </div>
 
-            <div className={styles.body}>
-              <div className={styles.imageContainer}>
-                <div className={clsx([styles.sidebar, styles['-left']])}>
-                  <Button
-                    icon="chevron-left"
-                    variant="tertiary"
-                    size="lg"
-                    attributes={{
-                      title: t('common:components.lightbox.previous'),
-                      onClick: onPrevious,
-                    }}
-                  />
-                </div>
-                <div className={clsx([styles.sidebar, styles['-right']])}>
-                  <Button
-                    icon="chevron-right"
-                    variant="tertiary"
-                    size="lg"
-                    attributes={{
-                      title: t('common:components.lightbox.next'),
-                      onClick: onNext,
-                    }}
-                  />
-                </div>
+            <div className={clsx([styles.sidebar, styles['-left']])}>
+              <Button
+                icon="chevron-left"
+                variant="tertiary"
+                size="lg"
+                attributes={{
+                  title: t('common:components.lightbox.previous'),
+                  onClick: onPrev,
+                }}
+              />
+            </div>
+            <div className={clsx([styles.sidebar, styles['-right']])}>
+              <Button
+                icon="chevron-right"
+                variant="tertiary"
+                size="lg"
+                attributes={{
+                  title: t('common:components.lightbox.next'),
+                  onClick: onNext,
+                }}
+              />
+            </div>
 
-                <img
-                  className={styles.image}
-                  src={currentImage?.url}
-                  alt={currentImage?.alt}
-                />
-              </div>
+            <ul
+              className={clsx([styles.slider, styles.snap, 'scrollbar-hidden'])}
+              onScroll={onScroll}
+              ref={sliderRef}
+            >
+              {sorted.map((image) => (
+                <li className={styles.slide} key={image.id}>
+                  <img
+                    className={styles.image}
+                    src={image.url}
+                    alt={image.alt}
+                  />
+                </li>
+              ))}
+            </ul>
 
-              <div className={styles.meta}>
-                <h2 {...titleProps} className={styles.title}>
-                  {currentImage?.alt}
-                </h2>
-                <span className={styles.step}>
-                  {index + 1}/{images.length}
-                </span>
-              </div>
+            <div className={styles.meta}>
+              <h2 {...titleProps} className={styles.title}>
+                {sorted.at(currentIndex)?.alt}
+              </h2>
+              <span className={styles.step}>
+                {currentIndex + 1}/{images.length}
+              </span>
             </div>
           </div>
         </FocusScope>
@@ -162,5 +192,3 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
     </OverlayContainer>
   );
 };
-
-Lightbox.Provider = OverlayProvider;
