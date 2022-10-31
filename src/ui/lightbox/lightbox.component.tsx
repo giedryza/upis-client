@@ -5,7 +5,6 @@ import {
   FocusScope,
   mergeProps,
   OverlayContainer,
-  OverlayProvider,
   useDialog,
   useModal,
   useOverlay,
@@ -15,11 +14,11 @@ import {
 import { Button } from 'ui';
 import { useEventListener } from 'tools/hooks';
 
-import { LightboxComposition, Props } from './lightbox.types';
+import { Props } from './lightbox.types';
 import { useFullscreen } from './lightbox.hooks';
 import styles from './lightbox.module.scss';
 
-export const Lightbox: FC<Props> & LightboxComposition = ({
+export const Lightbox: FC<Props> = ({
   id,
   isOpen,
   onClose,
@@ -193,5 +192,3 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
     </OverlayContainer>
   );
 };
-
-Lightbox.Provider = OverlayProvider;
