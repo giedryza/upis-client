@@ -27,8 +27,8 @@ export const Tile: VFC<Props> = ({
         <div className={styles.header}>
           <Heading className={styles.title}>
             {url ? (
-              <Link href={url}>
-                <a>{title}</a>
+              <Link href={url} legacyBehavior={false}>
+                {title}
               </Link>
             ) : (
               title

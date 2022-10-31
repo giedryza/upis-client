@@ -35,19 +35,19 @@ export const Navigation: VFC = () => {
       <ul className={styles.list}>
         {links.map((link) => (
           <li key={link.label}>
-            <Link href={link.url}>
-              <a
-                className={styles.link}
-                {...(pathname.includes(link.url) && { 'aria-current': 'page' })}
-              >
-                <Icon
-                  name={link.icon}
-                  className={styles.icon}
-                  focusable={false}
-                  aria-hidden
-                />
-                <span>{link.label}</span>
-              </a>
+            <Link
+              href={link.url}
+              className={styles.link}
+              legacyBehavior={false}
+              {...(pathname.includes(link.url) && { 'aria-current': 'page' })}
+            >
+              <Icon
+                name={link.icon}
+                className={styles.icon}
+                focusable={false}
+                aria-hidden
+              />
+              <span>{link.label}</span>
             </Link>
           </li>
         ))}

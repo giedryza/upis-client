@@ -11,10 +11,13 @@ import { AccountMenu } from './account-menu/account-menu.component';
 export const Header: VFC = () => {
   return (
     <header className={styles.header}>
-      <Link href={routes.home}>
-        <a className={styles.logo} aria-label="Upis home">
-          <Logo focusable={false} aria-hidden />
-        </a>
+      <Link
+        href={routes.home}
+        className={styles.logo}
+        legacyBehavior={false}
+        aria-label="Home"
+      >
+        <Logo focusable={false} aria-hidden />
       </Link>
       <nav className={styles.nav}>
         <ul>
