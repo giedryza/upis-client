@@ -13,6 +13,7 @@ import {
 } from 'react-aria';
 
 import { Button } from 'ui';
+import { useEventListener } from 'tools/hooks';
 
 import { LightboxComposition, Props } from './lightbox.types';
 import { useFullscreen } from './lightbox.hooks';
@@ -30,7 +31,7 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
   const ref = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLUListElement>(null);
 
-  const [index, setIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const { overlayProps, underlayProps } = useOverlay(
     {
@@ -49,18 +50,15 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
     ref
   );
 
-  usePreventScroll();
-  const { isFullscreen } = useFullscreen();
-
-  const onPrevious = () => {
-    setIndex((prevIndex) =>
-      prevIndex <= 0 ? images.length - 1 : prevIndex - 1
+  const onPrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex <= 0 ? prevIndex : prevIndex - 1
     );
   };
 
   const onNext = () => {
-    setIndex((prevIndex) =>
-      prevIndex + 1 >= images.length ? 0 : prevIndex + 1
+    setCurrentIndex((prevIndex) =>
+      prevIndex + 1 >= images.length ? prevIndex : prevIndex + 1
     );
   };
 
@@ -70,13 +68,24 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
     }
 
     if (currentTarget.scrollLeft % sliderRef.current.clientWidth === 0) {
-      setIndex(currentTarget.scrollLeft / sliderRef.current.clientWidth);
+      setCurrentIndex(currentTarget.scrollLeft / sliderRef.current.clientWidth);
     }
   };
 
-  const sorted = useMemo(() => {
-    return [...images].sort((image) => -Number(image.id === currentImageId));
-  }, [currentImageId, images]);
+  const onKeyup = (e: KeyboardEvent) => {
+    if (e.key === 'ArrowRight') onNext();
+
+    if (e.key === 'ArrowLeft') onPrev();
+  };
+
+  const sorted = useMemo(
+    () => [...images].sort((image) => -Number(image.id === currentImageId)),
+    [currentImageId, images]
+  );
+
+  usePreventScroll();
+  useEventListener('keyup', onKeyup);
+  const { isFullscreen } = useFullscreen();
 
   useEffect(() => {
     const slider = sliderRef.current;
@@ -84,9 +93,9 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
     if (!slider) return;
 
     slider.scroll({
-      left: index * slider.clientWidth,
+      left: currentIndex * slider.clientWidth,
     });
-  }, [index, isFullscreen]);
+  }, [currentIndex, isFullscreen]);
 
   return (
     <OverlayContainer>
@@ -138,7 +147,7 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
                 size="lg"
                 attributes={{
                   title: t('common:components.lightbox.previous'),
-                  onClick: onPrevious,
+                  onClick: onPrev,
                 }}
               />
             </div>
@@ -172,10 +181,10 @@ export const Lightbox: FC<Props> & LightboxComposition = ({
 
             <div className={styles.meta}>
               <h2 {...titleProps} className={styles.title}>
-                {sorted.at(index)?.alt}
+                {sorted.at(currentIndex)?.alt}
               </h2>
               <span className={styles.step}>
-                {index + 1}/{images.length}
+                {currentIndex + 1}/{images.length}
               </span>
             </div>
           </div>
