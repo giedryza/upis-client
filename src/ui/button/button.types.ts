@@ -23,7 +23,7 @@ export interface ButtonProps extends BaseProps {
 
 export interface LinkProps extends BaseProps {
   url: NextLinkProps | string;
-  attributes?: Omit<LinkAttributes, 'className' | 'href'>;
+  attributes?: Omit<LinkAttributes, 'className' | 'href' | 'ref'>;
 }
 
 export type Attributes = ButtonProps['attributes'] & LinkProps['attributes'];

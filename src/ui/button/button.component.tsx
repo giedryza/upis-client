@@ -64,10 +64,13 @@ export const Button: VFC<Props> = ({
   );
 
   return url ? (
-    <Link {...(typeof url === 'string' ? { href: url } : url)}>
-      <a className={className} {...(attributes as LinkProps['attributes'])}>
-        {content}
-      </a>
+    <Link
+      {...(typeof url === 'string' ? { href: url } : url)}
+      {...(attributes as LinkProps['attributes'])}
+      className={className}
+      legacyBehavior={false}
+    >
+      {content}
     </Link>
   ) : (
     <button
