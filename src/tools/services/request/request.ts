@@ -1,4 +1,4 @@
-import { getSession } from 'next-auth/react';
+import { getSession, signOut } from 'next-auth/react';
 import { stringifyUrl } from 'query-string';
 
 import { isServer } from 'tools/common';
@@ -77,6 +77,10 @@ export class Request<ResponseData = any, ResponseMeta = any> {
     const init = await this.#init();
 
     const response = await fetch(this.url, init);
+
+    if (response.status === 401) {
+      await signOut({ redirect: false });
+    }
 
     if (response.status === 204) {
       return {} as ApiResponse<ResponseData, ResponseMeta>;
