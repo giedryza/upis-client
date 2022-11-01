@@ -1,4 +1,4 @@
-export type NodeEnv = 'production' | 'development' | 'test';
+type NodeEnv = 'production' | 'development' | 'test';
 
 export interface Env {
   NODE_ENV: NodeEnv;

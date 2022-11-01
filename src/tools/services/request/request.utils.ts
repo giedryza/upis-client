@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 
 type JsonData = Record<string, any>;
 
-export const stripFalsyValues = <InitialObject extends JsonData>(
+const stripFalsyValues = <InitialObject extends JsonData>(
   object: InitialObject,
   falsyValues: (string | number | boolean | null | undefined)[] = [
     NaN,

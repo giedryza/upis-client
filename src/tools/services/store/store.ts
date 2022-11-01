@@ -5,7 +5,7 @@ import { modal } from 'domain/modal';
 import { lightbox } from 'domain/lightbox';
 import { alerts } from 'domain/alerts';
 
-export const makeStore = () =>
+const makeStore = () =>
   configureStore({
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({

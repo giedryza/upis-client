@@ -26,13 +26,6 @@ export const filetypes = [
 
 export type Filetype = typeof filetypes[number];
 
-export type FileTypeUnion =
-  | 'image/*'
-  | 'video/*'
-  | 'audio/*'
-  | 'text/*'
-  | 'application/*';
-
 export interface AppFile {
   _id: string;
   url: string;

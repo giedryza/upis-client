@@ -2,7 +2,9 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Button } from 'ui';
 
-import { Table, TableProps } from '.';
+import { Props } from './table.types';
+
+import { Table } from '.';
 
 type Columns = 'name' | 'age' | 'is_manager' | 'start_date' | 'actions';
 
@@ -66,7 +68,7 @@ const MOCK_DATA = [
   },
 ];
 
-const rows: TableProps<Columns>['rows'] = MOCK_DATA.map((item) => ({
+const rows: Props<Columns>['rows'] = MOCK_DATA.map((item) => ({
   id: item.id,
   content: {
     name: item.name,
@@ -92,7 +94,7 @@ const rows: TableProps<Columns>['rows'] = MOCK_DATA.map((item) => ({
   },
 }));
 
-const columns: TableProps<Columns>['columns'] = [
+const columns: Props<Columns>['columns'] = [
   { accessor: 'name', label: 'Name' },
   { accessor: 'age', label: 'Age', align: 'right' },
   {
