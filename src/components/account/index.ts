@@ -17,6 +17,7 @@ export * from './tour-edit-about';
 export * from './tour-edit-amenities';
 export * from './tour-edit-details';
 export * from './tour-edit-gallery';
+export * from './tour-edit-gallery-edit';
 export * from './tour-edit-geography';
 export * from './tour-edit-location';
 export * from './tour-edit-prices';

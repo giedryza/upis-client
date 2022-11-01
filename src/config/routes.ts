@@ -43,7 +43,10 @@ export const routes = {
         prices: '/account/tours/:id/prices',
         location: '/account/tours/:id/location',
         geography: '/account/tours/:id/geography',
-        gallery: '/account/tours/:id/gallery',
+        gallery: {
+          add: '/account/tours/:id/gallery/add',
+          one: '/account/tours/:id/gallery/:imageId',
+        },
         amenities: '/account/tours/:id/amenities',
       },
     },
