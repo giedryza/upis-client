@@ -33,7 +33,7 @@ export const Gallery: FC = () => {
       icon="picture"
       actions={[
         {
-          url: routes.account.tours.one.gallery.replace(':id', tour._id),
+          url: routes.account.tours.one.gallery.add.replace(':id', tour._id),
           label: t('common:actions.add'),
           variant: 'tertiary',
           icon: 'plus',
@@ -85,6 +85,15 @@ export const Gallery: FC = () => {
                         form: { primaryPhoto: photo._id },
                       });
                     },
+                  },
+                },
+                {
+                  icon: 'pencil',
+                  url: routes.account.tours.one.gallery.one
+                    .replace(':id', tour._id)
+                    .replace(':imageId', photo._id),
+                  attributes: {
+                    title: t('common:actions.edit'),
                   },
                 },
                 {

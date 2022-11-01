@@ -49,6 +49,12 @@ export const Lightbox: FC<Props> = ({
     ref
   );
 
+  const sorted = useMemo(
+    () => [...images].sort((image) => -Number(image.id === currentImageId)),
+    [currentImageId, images]
+  );
+  const scrollable = images.length > 1;
+
   const onPrev = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex <= 0 ? prevIndex : prevIndex - 1
@@ -62,6 +68,8 @@ export const Lightbox: FC<Props> = ({
   };
 
   const onScroll = ({ currentTarget }: UIEvent<HTMLUListElement>) => {
+    if (!scrollable) return;
+
     if (!sliderRef.current?.clientWidth) {
       return;
     }
@@ -72,21 +80,20 @@ export const Lightbox: FC<Props> = ({
   };
 
   const onKeyup = (e: KeyboardEvent) => {
+    if (!scrollable) return;
+
     if (e.key === 'ArrowRight') onNext();
 
     if (e.key === 'ArrowLeft') onPrev();
   };
-
-  const sorted = useMemo(
-    () => [...images].sort((image) => -Number(image.id === currentImageId)),
-    [currentImageId, images]
-  );
 
   usePreventScroll();
   useEventListener('keyup', onKeyup);
   const { isFullscreen } = useFullscreen();
 
   useEffect(() => {
+    if (!scrollable) return;
+
     const slider = sliderRef.current;
 
     if (!slider) return;
@@ -94,7 +101,7 @@ export const Lightbox: FC<Props> = ({
     slider.scroll({
       left: currentIndex * slider.clientWidth,
     });
-  }, [currentIndex, isFullscreen]);
+  }, [currentIndex, isFullscreen, scrollable]);
 
   return (
     <OverlayContainer>
@@ -139,28 +146,32 @@ export const Lightbox: FC<Props> = ({
               </div>
             </div>
 
-            <div className={clsx([styles.sidebar, styles['-left']])}>
-              <Button
-                icon="chevron-left"
-                variant="tertiary"
-                size="lg"
-                attributes={{
-                  title: t('common:components.lightbox.previous'),
-                  onClick: onPrev,
-                }}
-              />
-            </div>
-            <div className={clsx([styles.sidebar, styles['-right']])}>
-              <Button
-                icon="chevron-right"
-                variant="tertiary"
-                size="lg"
-                attributes={{
-                  title: t('common:components.lightbox.next'),
-                  onClick: onNext,
-                }}
-              />
-            </div>
+            {scrollable && (
+              <>
+                <div className={clsx([styles.sidebar, styles['-left']])}>
+                  <Button
+                    icon="chevron-left"
+                    variant="tertiary"
+                    size="lg"
+                    attributes={{
+                      title: t('common:components.lightbox.previous'),
+                      onClick: onPrev,
+                    }}
+                  />
+                </div>
+                <div className={clsx([styles.sidebar, styles['-right']])}>
+                  <Button
+                    icon="chevron-right"
+                    variant="tertiary"
+                    size="lg"
+                    attributes={{
+                      title: t('common:components.lightbox.next'),
+                      onClick: onNext,
+                    }}
+                  />
+                </div>
+              </>
+            )}
 
             <ul
               className={clsx([styles.slider, styles.snap, 'scrollbar-hidden'])}

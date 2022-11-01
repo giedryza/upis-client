@@ -9,10 +9,10 @@ import { useProtectedPage } from 'tools/hooks';
 import { getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { TourEditGallery } from 'components/account';
-import { toursKeys, getLoaders } from 'domain/tours';
+import { TourEditGalleryEdit } from 'components/account';
+import { imagesKeys, getLoaders } from 'domain/images';
 
-const TourEditGalleryPage: NextPage = () => {
+const TourEditGalleryEditPage: NextPage = () => {
   const { t } = useTranslation();
   const { query } = useRouter();
 
@@ -44,7 +44,7 @@ const TourEditGalleryPage: NextPage = () => {
           />
 
           <AccountLayout>
-            <TourEditGallery />
+            <TourEditGalleryEdit />
           </AccountLayout>
         </PageLayout>
       </MainLayout>
@@ -69,11 +69,11 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const queryClient = new QueryClient();
-  const id = getRouteParam(params?.id);
+  const id = getRouteParam(params?.imageId);
   const { loaders } = getLoaders(locale);
 
-  await queryClient.prefetchQuery(toursKeys.detail(id), () =>
-    loaders.getTour({ req, id })
+  await queryClient.prefetchQuery(imagesKeys.detail(id), () =>
+    loaders.getImage({ req, id })
   );
 
   return {
@@ -84,4 +84,4 @@ export const getServerSideProps: GetServerSideProps = async ({
   };
 };
 
-export default TourEditGalleryPage;
+export default TourEditGalleryEditPage;
