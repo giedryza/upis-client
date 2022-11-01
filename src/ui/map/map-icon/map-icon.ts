@@ -1,15 +1,15 @@
 import { IconOptions } from 'leaflet';
 
+type MapIconName = 'pin';
+
 interface Options {
   size: number;
   name: MapIconName;
 }
 
-export type MapIconName = 'pin';
-
 const ICONS_PATH = '/map/icons/';
 
-export const MAP_ICON_BY_NAME: Record<MapIconName, string> = {
+const MAP_ICON_BY_NAME: Record<MapIconName, string> = {
   pin: 'pin.svg',
 };
 

@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 
-export interface DropdownOption {
+interface DropdownOption {
   label: string;
   value: string;
 }

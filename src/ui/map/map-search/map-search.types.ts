@@ -27,7 +27,7 @@ export interface MapDragendEvent extends L.LeafletEvent {
   };
 }
 
-export interface SearchResult<RawResult = any> {
+interface SearchResult<RawResult = any> {
   x: number;
   y: number;
   label: string;

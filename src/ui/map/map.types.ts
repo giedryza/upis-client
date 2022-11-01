@@ -3,7 +3,7 @@ export interface Point {
   lng: number;
 }
 
-export type PointTuple = [number, number];
+type PointTuple = [number, number];
 
 export type BoundsTuple = [PointTuple, PointTuple];
 

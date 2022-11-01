@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Icon, baseIcons, utilIcons, flagIcons, logoIcons } from '.';
+import { baseIcons, utilIcons, flagIcons, logoIcons } from './icon.types';
+
+import { Icon } from '.';
 
 export default {
   title: 'UI/Icon',
