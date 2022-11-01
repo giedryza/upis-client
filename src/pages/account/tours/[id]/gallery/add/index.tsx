@@ -9,7 +9,7 @@ import { useProtectedPage } from 'tools/hooks';
 import { getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { TourEditGallery } from 'components/account';
+import { TourEditGalleryAdd } from 'components/account';
 import { toursKeys, getLoaders } from 'domain/tours';
 
 const TourEditGalleryPage: NextPage = () => {
@@ -44,7 +44,7 @@ const TourEditGalleryPage: NextPage = () => {
           />
 
           <AccountLayout>
-            <TourEditGallery />
+            <TourEditGalleryAdd />
           </AccountLayout>
         </PageLayout>
       </MainLayout>

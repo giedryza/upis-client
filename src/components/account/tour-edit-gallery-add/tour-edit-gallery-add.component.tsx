@@ -8,11 +8,11 @@ import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useAddTourPhoto } from 'domain/tours';
 
-import { Values } from './tour-edit-gallery.types';
-import { INITIAL_VALUES } from './tour-edit-gallery.constants';
-import styles from './tour-edit-gallery.module.scss';
+import { Values } from './tour-edit-gallery-add.types';
+import { INITIAL_VALUES } from './tour-edit-gallery-add.constants';
+import styles from './tour-edit-gallery-add.module.scss';
 
-export const TourEditGallery: VFC = () => {
+export const TourEditGalleryAdd: VFC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 
