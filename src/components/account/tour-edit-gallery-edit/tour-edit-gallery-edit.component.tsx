@@ -3,11 +3,14 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, Container, TextInput } from 'ui';
+import { Button, Container, ImageTile, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
-import { useImage, useUpdateImage } from 'domain/images';
+import { useDeleteImage, useImage, useUpdateImage } from 'domain/images';
+import { useAppDispatch } from 'tools/services/store';
+import { lightbox } from 'domain/lightbox';
+import { useConfirm } from 'domain/confirm';
 
 import { Values } from './tour-edit-gallery-edit.types';
 import { INITIAL_VALUES } from './tour-edit-gallery-edit.constants';
@@ -15,7 +18,10 @@ import styles from './tour-edit-gallery-edit.module.scss';
 
 export const TourEditGalleryEdit: VFC = () => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
   const { query, push } = useRouter();
+
+  const { confirmation } = useConfirm();
 
   const id = getRouteParam(query.imageId);
   const tourId = getRouteParam(query.id);
@@ -31,6 +37,7 @@ export const TourEditGalleryEdit: VFC = () => {
 
   const { data: image } = useImage(id);
   const { mutate: updateImage, isLoading } = useUpdateImage();
+  const { mutate: deleteImage, isLoading: isDeleting } = useDeleteImage();
 
   useEffect(() => {
     reset({
@@ -58,6 +65,8 @@ export const TourEditGalleryEdit: VFC = () => {
     );
   };
 
+  if (!image) return null;
+
   return (
     <InfoBlock
       title={t('account:tours.gallery.title')}
@@ -67,6 +76,60 @@ export const TourEditGalleryEdit: VFC = () => {
       <Container align="left" size="sm">
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <fieldset className={styles.fieldset} disabled={isLoading}>
+            <ImageTile
+              image={image.url}
+              alt={image.description}
+              actions={[
+                {
+                  icon: 'magnifying-glass',
+                  attributes: {
+                    title: t('common:actions.zoom'),
+                    onClick: () => {
+                      dispatch(
+                        lightbox.actions.open({
+                          images: [
+                            {
+                              id: image._id,
+                              url: image.url,
+                              alt: image.description,
+                            },
+                          ],
+                        })
+                      );
+                    },
+                  },
+                },
+                {
+                  icon: 'trash',
+                  attributes: {
+                    title: t('common:actions.delete'),
+                    onClick: async () => {
+                      const { confirmed } = await confirmation(
+                        t('account:tours.gallery.texts.confirmDelete')
+                      );
+
+                      if (confirmed) {
+                        deleteImage(
+                          { id: image._id },
+                          {
+                            onSuccess: () => {
+                              push(
+                                routes.account.tours.one.index.replace(
+                                  ':id',
+                                  tourId
+                                )
+                              );
+                            },
+                          }
+                        );
+                      }
+                    },
+                    disabled: isDeleting,
+                  },
+                },
+              ]}
+            />
+
             <TextInput
               {...register('description')}
               label={t('account:tours.gallery.form.description.label')}
