@@ -15,7 +15,6 @@
     "start:storybook": "start-storybook -p 6006",
     "build": "next build",
     "build:storybook": "build-storybook",
-    "deploy:storybook": "npx chromatic --project-token=798f600808bc --build-script-name=build:storybook",
     "compile": "tsc",
     "browserslist": "npx browserslist",
     "update": "npx npm-check-updates",
