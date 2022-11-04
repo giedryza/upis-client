@@ -28,6 +28,8 @@ const Template: ComponentStory<typeof Button> = (args) => (
       <Button {...args} label="secondary" variant="secondary" />
       <Button {...args} label="tertiary" variant="tertiary" />
       <Button {...args} label="ghost" variant="ghost" />
+      <Button {...args} label="text" variant="text" />
+      <Button {...args} label="link" variant="link" />
     </div>
     <div
       style={{
@@ -37,8 +39,12 @@ const Template: ComponentStory<typeof Button> = (args) => (
         flexWrap: 'wrap',
       }}
     >
-      <Button {...args} label="text" variant="text" />
-      <Button {...args} label="link" variant="link" />
+      <Button {...args} label="primary" variant="primary" icon="pencil" />
+      <Button {...args} label="secondary" variant="secondary" icon="pencil" />
+      <Button {...args} label="tertiary" variant="tertiary" icon="pencil" />
+      <Button {...args} label="ghost" variant="ghost" icon="pencil" />
+      <Button {...args} label="text" variant="text" icon="pencil" />
+      <Button {...args} label="link" variant="link" icon="pencil" />
     </div>
   </div>
 );
@@ -46,12 +52,6 @@ const Template: ComponentStory<typeof Button> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   ...Default.args,
-};
-
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  ...Default.args,
-  icon: 'pencil',
 };
 
 export const Disabled = Template.bind({});
