@@ -1,0 +1,14 @@
+.card {
+  --serp-card-height: 20rem;
+  --aspect-ratio: 4 / 3;
+
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-default);
+  height: var(--serp-card-height);
+  width: 100%;
+
+  .image {
+    height: var(--serp-card-height);
+    width: calc(var(--serp-card-height) * var(--aspect-ratio));
+  }
+}

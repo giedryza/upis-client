@@ -1,0 +1,8 @@
+.container {
+  margin-top: var(--header-height);
+  display: flex;
+
+  > * {
+    flex: 1;
+  }
+}
