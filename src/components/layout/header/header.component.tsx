@@ -4,9 +4,8 @@ import Link from 'next/link';
 import Logo from 'components/logo/logo-horizontal.svg';
 import { routes } from 'config/routes';
 
+import { LanguageSelect, AccountMenu } from './atoms';
 import styles from './header.module.scss';
-import { LanguageSelect } from './language-select/language-select.component';
-import { AccountMenu } from './account-menu/account-menu.component';
 
 export const Header: VFC = () => {
   return (

@@ -12,8 +12,7 @@ import { axe } from 'tools/services/a11y';
 import { Modal } from 'ui';
 import { AppLayout } from 'layouts';
 import { Alerts } from 'components/alerts';
-import { ModalSlot } from 'components/modal-slot';
-import { ConfirmationModal } from 'components/modals';
+import { ModalSlot, ConfirmationModal } from 'components/modals';
 import { ProgressBar } from 'components/layout';
 import { LightboxContainer } from 'components/lightbox-container';
 
