@@ -1,6 +1,12 @@
+@use 'styles/mixins' as *;
+
 .map {
   position: sticky;
   top: var(--header-height);
   width: 100%;
   height: calc(100vh - var(--header-height));
+
+  @include desktop {
+    display: none;
+  }
 }

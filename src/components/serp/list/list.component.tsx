@@ -9,7 +9,7 @@ export const SerpList: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.list}>
-        {Array.from({ length: 2 }).map((_, i) => (
+        {Array.from({ length: 15 }).map((_, i) => (
           <SerpCard id={String(i)} key={i} />
         ))}
       </div>
