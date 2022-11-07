@@ -41,10 +41,26 @@ export const SerpCard: FC<Props> = ({ id }) => {
           <div>
             <h3 className={styles.subtitle}>
               <Icon name="pin" className={styles.icon} aria-hidden />
-              <span>Merkys, Agluana, Nemunas</span>
-              {separator}
-              <span>Aukštaitija</span>
+              <span>{['Aukštaitija', 'Dzūkija'].join(', ')}</span>
             </h3>
+
+            <h3 className={styles.subtitle}>
+              <Icon name="wave" className={styles.icon} aria-hidden />
+              <span>
+                {[
+                  'Merkys',
+                  'Agluona',
+                  'Nemunas',
+                  'Šventoji',
+                  'Neris',
+                  'Minija',
+                  'Musė',
+                  'Karaliaus Vilhelmo kanalas',
+                  'Danė',
+                ].join(', ')}
+              </span>
+            </h3>
+
             <h3 className={styles.subtitle}>
               <Icon name="timer" className={styles.icon} aria-hidden />
               <span>45km</span>

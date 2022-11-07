@@ -31,9 +31,8 @@
   .title {
     font-size: 1.6rem;
     font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+
+    @include ellipsis();
   }
 
   .subtitle {
@@ -41,6 +40,8 @@
     font-weight: 500;
     color: var(--color-grey-45);
     line-height: 1.6;
+
+    @include ellipsis();
 
     > * {
       vertical-align: middle;
