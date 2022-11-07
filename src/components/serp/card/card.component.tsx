@@ -9,7 +9,7 @@ import styles from './card.module.scss';
 
 const titles = [
   'The salt of the Wicked',
-  'Secret of the Silent Porter in the middle of no where',
+  'Secret of the Silent Porter in the middle of somewhere strangeSecret of the Silent Porter in the middle of somewhere strange',
   'Burning Dreamer',
   'The King of the Magician',
   'The Trembling Silk',

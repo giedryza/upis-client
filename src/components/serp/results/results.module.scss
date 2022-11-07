@@ -1,5 +1,11 @@
+@use 'styles/mixins' as *;
+
 .container {
   margin-top: var(--header-height);
   display: grid;
-  grid-template-columns: 80rem 1fr;
+  grid-template-columns: var(--serp-list) 1fr;
+
+  @include laptop {
+    grid-template-columns: 1fr;
+  }
 }

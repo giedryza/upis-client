@@ -8,6 +8,7 @@
   box-shadow: var(--shadow-default);
   height: var(--serp-card-height);
   width: 100%;
+  min-width: 0;
   display: flex;
 
   .image {
@@ -20,6 +21,7 @@
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    min-width: 0;
   }
 
   .header {
@@ -29,6 +31,9 @@
   .title {
     font-size: 1.6rem;
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .subtitle {
