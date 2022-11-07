@@ -6,9 +6,9 @@ import styles from './results.module.scss';
 
 export const SerpResults: FC = () => {
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <SerpList />
       <SerpMap />
-    </div>
+    </main>
   );
 };
