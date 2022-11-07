@@ -1,8 +1,5 @@
 .container {
   margin-top: var(--header-height);
-  display: flex;
-
-  > * {
-    flex: 1;
-  }
+  display: grid;
+  grid-template-columns: 80rem 1fr;
 }
