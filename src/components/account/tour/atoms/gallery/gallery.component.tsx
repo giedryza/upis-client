@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { useQueryClient } from 'react-query';
-import { useDispatch } from 'react-redux';
 import useTranslation from 'next-translate/useTranslation';
 
 import { EmptyState, ImageTile } from 'ui';
+import { useAppDispatch } from 'tools/services/store';
 import { InfoBlock } from 'components/account/atoms';
 import { toursKeys, useActiveTour, useUpdateTour } from 'domain/tours';
 import { routes } from 'config/routes';
@@ -15,7 +15,7 @@ import styles from './gallery.module.scss';
 
 export const Gallery: FC = () => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const queryClient = useQueryClient();
 
   const { confirmation } = useConfirm();
