@@ -1,9 +1,9 @@
 @use 'styles/mixins' as *;
 
 .container {
-  margin-top: var(--header-height);
   display: grid;
   grid-template-columns: var(--serp-list) 1fr;
+  margin-top: var(--header-height);
 
   @include laptop {
     grid-template-columns: 1fr;

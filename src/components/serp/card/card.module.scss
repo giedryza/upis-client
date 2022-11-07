@@ -3,25 +3,25 @@
 .card {
   --serp-card-height: 20rem;
   --aspect-ratio: 4 / 3;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  height: var(--serp-card-height);
 
   background-color: var(--color-white);
   box-shadow: var(--shadow-default);
-  height: var(--serp-card-height);
-  width: 100%;
-  min-width: 0;
-  display: flex;
 
   .image {
-    height: var(--serp-card-height);
     width: calc(var(--serp-card-height) * var(--aspect-ratio));
+    height: var(--serp-card-height);
   }
 
   .content {
-    flex: 1;
-    padding: 1rem;
     display: flex;
+    flex: 1;
     flex-direction: column;
     min-width: 0;
+    padding: 1rem;
   }
 
   .header {
@@ -29,16 +29,16 @@
   }
 
   .title {
-    font-size: 1.6rem;
     font-weight: 600;
+    font-size: 1.6rem;
 
     @include ellipsis();
   }
 
   .subtitle {
-    font-size: 1.3rem;
-    font-weight: 500;
     color: var(--color-grey-45);
+    font-weight: 500;
+    font-size: 1.3rem;
     line-height: 1.6;
 
     @include ellipsis();
@@ -50,6 +50,7 @@
 
     .icon {
       width: 1.5rem;
+
       fill: currentColor;
     }
 
@@ -64,17 +65,17 @@
 
   .footer {
     display: flex;
-    justify-content: space-between;
     align-items: flex-end;
+    justify-content: space-between;
   }
 
   .price {
-    font-size: 1.2rem;
     font-weight: 400;
+    font-size: 1.2rem;
 
     .em {
-      font-size: 1.6rem;
       font-weight: 600;
+      font-size: 1.6rem;
     }
   }
 }
