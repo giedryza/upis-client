@@ -11,8 +11,8 @@
   background-color: var(--color-white);
   box-shadow: var(--shadow-default);
 
-  .image {
-    width: calc(var(--serp-card-height) * var(--aspect-ratio));
+  .gallery {
+    width: calc((var(--serp-card-height) * var(--aspect-ratio)) * var(--round));
     height: var(--serp-card-height);
   }
 
