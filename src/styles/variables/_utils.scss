@@ -4,4 +4,12 @@
   --transition-duration-lg: 350ms;
 
   --header-height: 5rem;
+
+  --serp-list: 80rem;
+
+  // https://stackoverflow.com/a/64921523
+  // -322: toFixed(2)
+  // -323: toFixed(1)
+  // -324: toFixed(0)
+  --shf: 4.9406564584124654e-324;
 }

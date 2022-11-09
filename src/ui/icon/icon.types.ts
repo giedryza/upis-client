@@ -41,6 +41,7 @@ export const baseIcons = [
   'truck',
   'user',
   'vest',
+  'wave',
 ] as const;
 
 export const utilIcons = ['util-folder-close', 'util-folder-open'] as const;

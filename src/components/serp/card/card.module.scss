@@ -1,0 +1,83 @@
+@use 'styles/mixins' as *;
+
+.card {
+  --serp-card-height: 20rem;
+  --aspect-ratio: 4 / 3;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  height: var(--serp-card-height);
+
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-default);
+
+  .gallery {
+    width: calc(
+      (var(--serp-card-height) * var(--aspect-ratio)) * var(--shf) / var(--shf)
+    );
+    height: var(--serp-card-height);
+  }
+
+  .content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    padding: 1rem;
+  }
+
+  .header {
+    @include spacing(y, 1rem);
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: 1.6rem;
+
+    @include ellipsis();
+  }
+
+  .subtitle {
+    color: var(--color-grey-45);
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 1.6;
+
+    @include ellipsis();
+
+    > * {
+      vertical-align: middle;
+      margin-inline-end: 0.5rem;
+    }
+
+    .icon {
+      width: 1.5rem;
+
+      fill: currentColor;
+    }
+
+    .em {
+      font-weight: 600;
+    }
+  }
+
+  .body {
+    flex: 1;
+  }
+
+  .footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .price {
+    font-weight: 400;
+    font-size: 1.2rem;
+
+    .em {
+      font-weight: 600;
+      font-size: 1.6rem;
+    }
+  }
+}

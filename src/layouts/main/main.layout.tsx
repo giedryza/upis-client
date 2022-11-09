@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Footer } from 'components/footer/footer.component';
+import { Footer } from 'components/layout';
 
 import styles from './main.module.scss';
 

@@ -97,10 +97,7 @@
     border-radius: var(--border-radius-xs);
 
     span {
-      overflow: hidden;
-
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      @include ellipsis();
     }
 
     @include spacing(x, 0.5em);
@@ -171,12 +168,10 @@
   .item {
     width: 100%;
     padding: 0.35em;
-    overflow: hidden;
-
-    white-space: nowrap;
-    text-overflow: ellipsis;
 
     cursor: pointer;
+
+    @include ellipsis();
 
     &:hover,
     &.active {
