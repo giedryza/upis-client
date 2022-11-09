@@ -2,6 +2,7 @@ export * from './app-head';
 export * from './breadcrumbs';
 export * from './button';
 export * from './card';
+export * from './carousel';
 export * from './checkbox-group-input';
 export * from './checkbox-input';
 export * from './container';
