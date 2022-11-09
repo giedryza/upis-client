@@ -29,7 +29,7 @@ export default {
       size: 'sm',
       keyboard: false,
     },
-    meta: true,
+    meta: false,
   },
 } as ComponentMeta<typeof Carousel>;
 

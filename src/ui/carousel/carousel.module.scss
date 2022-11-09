@@ -1,8 +1,6 @@
 .carousel {
   position: relative;
 
-  display: flex;
-  flex-direction: column;
   width: 100%;
   height: 100%;
 
@@ -18,14 +16,23 @@
     font-size: 1.6rem;
   }
 
+  &:hover {
+    .sidebar,
+    .meta {
+      opacity: 1;
+    }
+  }
+
   .sidebar {
     position: absolute;
     top: 50%;
     z-index: 5;
 
     padding: 0.75em;
+    opacity: 0;
 
     transform: translateY(-50%);
+    transition: var(--transition-duration-md) opacity;
 
     &.-left {
       left: 0;
@@ -38,11 +45,12 @@
 
   .slider {
     display: grid;
-    flex: 1;
     grid-auto-columns: 100%;
     grid-auto-flow: column;
     overflow-x: auto;
     overscroll-behavior-inline: contain;
+    width: 100%;
+    height: 100%;
   }
 
   .snap {
@@ -79,6 +87,12 @@
   .meta {
     padding: 0.75em;
     background-color: hsla(var(--color-grey-h), var(--color-grey-s), 5%, 95%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: var(--transition-duration-md) opacity;
   }
 
   .title {
