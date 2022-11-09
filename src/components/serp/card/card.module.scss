@@ -12,7 +12,9 @@
   box-shadow: var(--shadow-default);
 
   .gallery {
-    width: calc((var(--serp-card-height) * var(--aspect-ratio)) * var(--round));
+    width: calc(
+      (var(--serp-card-height) * var(--aspect-ratio)) * var(--shf) / var(--shf)
+    );
     height: var(--serp-card-height);
   }
 

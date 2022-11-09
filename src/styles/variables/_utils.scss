@@ -12,5 +12,4 @@
   // -323: toFixed(1)
   // -324: toFixed(0)
   --shf: 4.9406564584124654e-322;
-  --round: calc(var(--shf) / var(--shf));
 }
