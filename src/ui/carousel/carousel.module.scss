@@ -29,9 +29,10 @@
     z-index: 5;
 
     padding: 0.5em;
-    opacity: 0;
 
     transform: translateY(-50%);
+    opacity: 0;
+
     transition: var(--transition-duration-md) opacity;
 
     &.-left {
@@ -47,10 +48,10 @@
     display: grid;
     grid-auto-columns: 100%;
     grid-auto-flow: column;
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
     width: 100%;
     height: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
   }
 
   .snap {
@@ -85,13 +86,16 @@
   }
 
   .meta {
-    padding: 0.75em;
-    background-color: hsla(var(--color-grey-h), var(--color-grey-s), 5%, 95%);
     position: absolute;
     bottom: 0;
     left: 0;
+
     width: 100%;
+    padding: 0.75em;
+
+    background-color: hsla(var(--color-grey-h), var(--color-grey-s), 5%, 95%);
     opacity: 0;
+
     transition: var(--transition-duration-md) opacity;
   }
 
