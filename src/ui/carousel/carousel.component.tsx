@@ -26,17 +26,19 @@ export const Carousel: VFC<Props> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const scrollable = images.length > 1;
+  const hasNext = currentIndex + 1 < images.length;
+  const hasPrev = currentIndex > 0;
 
   const onPrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex <= 0 ? prevIndex : prevIndex - 1
-    );
+    if (!hasPrev) return;
+
+    setCurrentIndex((prevIndex) => prevIndex - 1);
   };
 
   const onNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex + 1 >= images.length ? prevIndex : prevIndex + 1
-    );
+    if (!hasNext) return;
+
+    setCurrentIndex((prevIndex) => prevIndex + 1);
   };
 
   const onScroll = ({ target }: Event) => {
@@ -77,28 +79,32 @@ export const Carousel: VFC<Props> = ({
     <div className={clsx(styles.carousel, styles[`-size-${size}`])}>
       {scrollable && (
         <>
-          <div className={clsx([styles.sidebar, styles['-left']])}>
-            <Button
-              icon="chevron-left"
-              variant="tertiary"
-              size={size}
-              attributes={{
-                title: t('common:components.lightbox.previous'),
-                onClick: onPrev,
-              }}
-            />
-          </div>
-          <div className={clsx([styles.sidebar, styles['-right']])}>
-            <Button
-              icon="chevron-right"
-              variant="tertiary"
-              size={size}
-              attributes={{
-                title: t('common:components.lightbox.next'),
-                onClick: onNext,
-              }}
-            />
-          </div>
+          {hasPrev && (
+            <div className={clsx([styles.sidebar, styles['-left']])}>
+              <Button
+                icon="chevron-left"
+                variant="tertiary"
+                size={size}
+                attributes={{
+                  title: t('common:components.lightbox.previous'),
+                  onClick: onPrev,
+                }}
+              />
+            </div>
+          )}
+          {hasNext && (
+            <div className={clsx([styles.sidebar, styles['-right']])}>
+              <Button
+                icon="chevron-right"
+                variant="tertiary"
+                size={size}
+                attributes={{
+                  title: t('common:components.lightbox.next'),
+                  onClick: onNext,
+                }}
+              />
+            </div>
+          )}
         </>
       )}
 
