@@ -8,11 +8,11 @@ import styles from './list.module.scss';
 export const SerpList: FC = () => {
   return (
     <div className={styles.container}>
-      <ul className={styles.list}>
+      <div className={styles.list}>
         {Array.from({ length: 15 }).map((_, i) => (
           <SerpCard id={String(i)} key={i} />
         ))}
-      </ul>
+      </div>
 
       <Footer />
     </div>

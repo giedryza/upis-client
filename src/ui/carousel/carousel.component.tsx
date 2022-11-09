@@ -1,4 +1,4 @@
-import { useRef, useState, VFC, UIEvent, useEffect } from 'react';
+import { useRef, useState, VFC, useEffect } from 'react';
 import { clsx } from 'clsx';
 import useTranslation from 'next-translate/useTranslation';
 
@@ -39,15 +39,17 @@ export const Carousel: VFC<Props> = ({
     );
   };
 
-  const onScroll = ({ currentTarget }: UIEvent<HTMLUListElement>) => {
+  const onScroll = ({ target }: Event) => {
     if (!scrollable) return;
 
-    if (!sliderRef.current?.clientWidth) {
-      return;
-    }
+    // @ts-expect-error
+    const { clientWidth, scrollLeft } = target;
 
-    if (currentTarget.scrollLeft % sliderRef.current.clientWidth === 0) {
-      setCurrentIndex(currentTarget.scrollLeft / sliderRef.current.clientWidth);
+    if (typeof clientWidth !== 'number' || typeof scrollLeft !== 'number')
+      return;
+
+    if (scrollLeft % clientWidth === 0) {
+      setCurrentIndex(scrollLeft / clientWidth);
     }
   };
 
@@ -60,6 +62,7 @@ export const Carousel: VFC<Props> = ({
   };
 
   useEventListener('keyup', onKeyup);
+  useEventListener('scroll', onScroll, sliderRef);
 
   useEffect(() => {
     if (!scrollable) return;
@@ -101,7 +104,6 @@ export const Carousel: VFC<Props> = ({
 
       <ul
         className={clsx([styles.slider, styles.snap, 'scrollbar-hidden'])}
-        onScroll={onScroll}
         ref={sliderRef}
       >
         {images.map((image) => (

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { Button, Icon } from 'ui';
+import { Button, Carousel, Icon } from 'ui';
 import { formatCurrency } from 'tools/format';
 
 import { Props } from './card.types';
@@ -26,11 +26,18 @@ export const SerpCard: FC<Props> = ({ id }) => {
 
   return (
     <article className={styles.card}>
-      <img
-        className={styles.image}
-        src={`https://picsum.photos/400/300?random=${id}`}
-        alt=""
-      />
+      <div className={styles.gallery}>
+        <Carousel
+          images={Array.from({ length: 5 }).map((_, i) => ({
+            id: `${id}-${String(i)}`,
+            url: `https://picsum.photos/400/300?random=${id + i}`,
+            alt: '',
+          }))}
+          options={{
+            size: 'sm',
+          }}
+        />
+      </div>
 
       <div className={styles.content}>
         <header className={styles.header}>
