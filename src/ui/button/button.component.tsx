@@ -68,7 +68,6 @@ export const Button: VFC<Props> = ({
       {...(typeof url === 'string' ? { href: url } : url)}
       {...(attributes as LinkProps['attributes'])}
       className={className}
-      legacyBehavior={false}
     >
       {content}
     </Link>
