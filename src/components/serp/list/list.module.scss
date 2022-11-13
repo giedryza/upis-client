@@ -5,13 +5,7 @@
   flex-direction: column;
 
   .list {
-    --gap: 1.5rem;
-
-    display: grid;
-    flex-grow: 1;
-    grid-auto-rows: min-content;
-    grid-template-columns: repeat(1, 1fr);
-    gap: var(--gap);
-    padding: var(--gap);
+    flex: 1;
+    padding: 0 calc(var(--spacing, 15) * 1px);
   }
 }
