@@ -1,7 +1,13 @@
 {
   "parser": "@typescript-eslint/parser",
   "plugins": ["react", "@typescript-eslint", "prettier"],
-  "extends": ["plugin:react/recommended", "airbnb", "airbnb/hooks", "prettier"],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "airbnb/hooks",
+    "next",
+    "prettier"
+  ],
   "settings": {
     "react": {
       "version": "detect"
@@ -143,7 +149,9 @@
         "disallowTemplateShorthand": true
       }
     ],
-    "no-useless-concat": "error"
+    "no-useless-concat": "error",
+    "import/no-cycle": "off",
+    "@next/next/no-img-element": "off"
   },
   "overrides": [
     {
