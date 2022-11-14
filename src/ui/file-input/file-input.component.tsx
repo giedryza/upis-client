@@ -107,8 +107,8 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
             <Icon
               name={
                 ['accept', 'active'].includes(dragState)
-                  ? 'util-folder-open'
-                  : 'util-folder-close'
+                  ? 'folder-open'
+                  : 'folder-close'
               }
               className={styles.icon}
             />

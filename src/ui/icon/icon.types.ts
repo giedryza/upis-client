@@ -15,6 +15,8 @@ export const baseIcons = [
   'compass',
   'exit',
   'file',
+  'folder-close',
+  'folder-open',
   'gear',
   'globe',
   'grill',
@@ -23,6 +25,8 @@ export const baseIcons = [
   'link',
   'lock',
   'magnifying-glass',
+  'magnifying-glass-minus',
+  'magnifying-glass-plus',
   'mobile',
   'network',
   'path',
@@ -44,8 +48,6 @@ export const baseIcons = [
   'wave',
 ] as const;
 
-export const utilIcons = ['util-folder-close', 'util-folder-open'] as const;
-
 export const flagIcons = ['flag-en', 'flag-lt'] as const;
 
 export const logoIcons = [
@@ -59,6 +61,5 @@ export const logoIcons = [
 
 export type IconName =
   | typeof baseIcons[number]
-  | typeof utilIcons[number]
   | typeof flagIcons[number]
   | typeof logoIcons[number];
