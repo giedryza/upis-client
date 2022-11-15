@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { useRadioGroup } from 'react-aria';
 import { useRadioGroupState } from 'react-stately';
 
@@ -7,7 +7,7 @@ import { RadioContextProvider } from '../../radio-input.context';
 import { Props } from './group.types';
 import styles from './group.module.scss';
 
-export const Group: FC<Props> = ({
+export const Group: FC<PropsWithChildren<Props>> = ({
   label,
   name,
   value,

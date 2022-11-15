@@ -1,9 +1,9 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, PropsWithChildren, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import { Props } from './portal.types';
 
-export const Portal: FC<Props> = ({ children, id }) => {
+export const Portal: FC<PropsWithChildren<Props>> = ({ children, id }) => {
   const [element, setElement] = useState<Element | null>(null);
 
   useEffect(() => {

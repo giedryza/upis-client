@@ -13,7 +13,7 @@ type Props = ConsumerProps<{
   leaflet: typeof L;
   custom: { SearchBar: typeof MapSearch };
 }> &
-  ReactLeaflet.MapContainerProps;
+  Omit<ReactLeaflet.MapContainerProps, 'children'>;
 
 const MapWrapper = ({ children, ...rest }: Props) => {
   return (

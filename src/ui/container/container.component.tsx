@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { clsx } from 'clsx';
 
 import { Props } from './container.types';
 import styles from './container.module.scss';
 
-export const Container: FC<Props> = ({
+export const Container: FC<PropsWithChildren<Props>> = ({
   children,
   size = 'lg',
   align = 'center',

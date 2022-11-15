@@ -1,11 +1,15 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
 import { Button } from 'ui';
 
 import { Props } from './modal-content.types';
 import styles from './modal-content.module.scss';
 
-export const ModalContent: FC<Props> = ({ children, title, actions = [] }) => {
+export const ModalContent: FC<PropsWithChildren<Props>> = ({
+  children,
+  title,
+  actions = [],
+}) => {
   return (
     <div className={styles.content}>
       <h2 className={styles.title}>{title}</h2>
