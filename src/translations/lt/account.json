@@ -119,7 +119,7 @@
       }
     },
     "amenities": {
-      "title": "Patogumai",
+      "title": "Ypatumai",
       "form": {
         "variant": {
           "label": "Kategorija",
@@ -146,7 +146,7 @@
         }
       },
       "texts": {
-        "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins patogumą <strong>{{name}}</strong>. Ar tikrai norite tęsti?"
+        "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins ypatumą <strong>{{name}}</strong>. Ar tikrai norite tęsti?"
       }
     },
     "socialLinks": {
@@ -311,10 +311,10 @@
       }
     },
     "amenities": {
-      "title": "Patogumai",
+      "title": "Ypatumai",
       "form": {
         "amenities": {
-          "label": "Pasirinkite patogumus"
+          "label": "Pasirinkite ypatumus"
         },
         "amount": {
           "display": "Kaina"
@@ -323,9 +323,9 @@
       "texts": {
         "empty": {
           "title": "Tuščia",
-          "message": "Norėdami pasirinkti maršruto patogumus, spauskite 'redaguoti'."
+          "message": "Norėdami pasirinkti maršruto ypatumus, spauskite 'redaguoti'."
         },
-        "info": "Pasirinkti galite tuos patogumus, kurie priklauso tiekėjui. <0>Spauskite čia</0> norėdami tiekėjui pridėti daugiau patogumų."
+        "info": "Pasirinkti galite tuos ypatumus, kurie priklauso tiekėjui. <0>Spauskite čia</0> norėdami tiekėjui pridėti daugiau ypatumų."
       }
     },
     "gallery": {
