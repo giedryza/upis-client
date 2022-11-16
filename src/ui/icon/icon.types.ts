@@ -11,6 +11,8 @@ export const baseIcons = [
   'camera',
   'chevron-left',
   'chevron-right',
+  'chevron-down',
+  'chevron-up',
   'close',
   'compass',
   'exit',
