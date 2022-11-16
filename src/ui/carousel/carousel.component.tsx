@@ -77,9 +77,9 @@ export const Carousel: VFC<Props> = ({
 
   return (
     <div className={clsx(styles.carousel, styles[`-size-${size}`])}>
-      {scrollable && (
+      {scrollable ? (
         <>
-          {hasPrev && (
+          {hasPrev ? (
             <div className={clsx([styles.sidebar, styles['-left']])}>
               <Button
                 icon="chevron-left"
@@ -91,8 +91,8 @@ export const Carousel: VFC<Props> = ({
                 }}
               />
             </div>
-          )}
-          {hasNext && (
+          ) : null}
+          {hasNext ? (
             <div className={clsx([styles.sidebar, styles['-right']])}>
               <Button
                 icon="chevron-right"
@@ -104,9 +104,9 @@ export const Carousel: VFC<Props> = ({
                 }}
               />
             </div>
-          )}
+          ) : null}
         </>
-      )}
+      ) : null}
 
       <ul
         className={clsx([styles.slider, styles.snap, 'scrollbar-hidden'])}
@@ -123,14 +123,14 @@ export const Carousel: VFC<Props> = ({
         ))}
       </ul>
 
-      {meta && (
+      {meta ? (
         <div className={styles.meta}>
           <h2 className={styles.title}>{images.at(currentIndex)?.alt}</h2>
           <span className={styles.step}>
             {currentIndex + 1}/{images.length}
           </span>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

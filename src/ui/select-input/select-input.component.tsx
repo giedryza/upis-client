@@ -36,14 +36,14 @@ export const SelectInput = forwardRef<HTMLSelectElement, Props>(
 
     return (
       <div className={styles.select}>
-        {label && <label htmlFor={name}>{label}</label>}
+        {label ? <label htmlFor={name}>{label}</label> : null}
 
         <select {...attributes} ref={ref}>
-          {placeholder && (
+          {placeholder ? (
             <option value="" disabled>
               {placeholder}
             </option>
-          )}
+          ) : null}
 
           {options.map((option) => (
             <option value={option.value} key={option.value}>
@@ -52,7 +52,7 @@ export const SelectInput = forwardRef<HTMLSelectElement, Props>(
           ))}
         </select>
 
-        {withInfo && <small id={infoId}>{error || info}</small>}
+        {withInfo ? <small id={infoId}>{error || info}</small> : null}
       </div>
     );
   }

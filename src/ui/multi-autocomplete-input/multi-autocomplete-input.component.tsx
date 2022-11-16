@@ -142,20 +142,21 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
               'visually-hidden': !isOpen || !filteredItems.length,
             })}
           >
-            {isOpen &&
-              filteredItems.map((item, i) => (
-                <li
-                  className={clsx(
-                    styles.item,
-                    highlightedIndex === i && styles.active,
-                    selectedItem === item && styles.selected
-                  )}
-                  key={item.value}
-                  {...getItemProps({ item, index: i })}
-                >
-                  <span>{item.label}</span>
-                </li>
-              ))}
+            {isOpen
+              ? filteredItems.map((item, i) => (
+                  <li
+                    className={clsx(
+                      styles.item,
+                      highlightedIndex === i && styles.active,
+                      selectedItem === item && styles.selected
+                    )}
+                    key={item.value}
+                    {...getItemProps({ item, index: i })}
+                  >
+                    <span>{item.label}</span>
+                  </li>
+                ))
+              : null}
           </ul>
         </div>
 

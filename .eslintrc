@@ -56,6 +56,10 @@
       { "props": "never", "children": "never" }
     ],
     "react/jsx-key": ["error", { "checkFragmentShorthand": true }],
+    "react/jsx-no-leaked-render": [
+      "error",
+      { "validStrategies": ["ternary", "coerce"] }
+    ],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
