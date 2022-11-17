@@ -54,7 +54,7 @@ export const ProviderEditContacts: VFC = () => {
   return (
     <InfoBlock
       title={t('account:providers.contacts.title')}
-      icon="phone"
+      icon="contacts"
       columns={1}
     >
       <Container align="left" size="sm">

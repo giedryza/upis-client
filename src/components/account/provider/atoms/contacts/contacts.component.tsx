@@ -16,7 +16,7 @@ export const Contacts: VFC = () => {
   return (
     <InfoBlock
       title={t('account:providers.contacts.title')}
-      icon="phone"
+      icon="contacts"
       actions={[
         {
           url: routes.account.providers.one.contacts.replace(
