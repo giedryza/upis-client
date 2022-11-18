@@ -27,6 +27,7 @@ const options: NextAuthOptions = {
 
           return {
             ...data.user,
+            id: data.user._id,
             token: data.token,
           };
         } catch (error) {
