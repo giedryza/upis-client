@@ -22,31 +22,31 @@ export const Button: VFC<Props> = ({
   const content = useMemo(
     () => (
       <>
-        {icon && ['left', 'top'].includes(iconPlacement) && (
+        {icon && ['left', 'top'].includes(iconPlacement) ? (
           <Icon
             name={icon}
             className={styles.icon}
             focusable={false}
             aria-hidden
           />
-        )}
+        ) : null}
 
-        {label && <span>{label}</span>}
+        {label ? <span>{label}</span> : null}
 
-        {icon && ['right', 'bottom'].includes(iconPlacement) && (
+        {icon && ['right', 'bottom'].includes(iconPlacement) ? (
           <Icon
             name={icon}
             className={styles.icon}
             focusable={false}
             aria-hidden
           />
-        )}
+        ) : null}
 
-        {withDropdown && (
+        {withDropdown ? (
           <span className={styles.arrow} aria-hidden>
             &#x25BC;
           </span>
-        )}
+        ) : null}
       </>
     ),
     [label, icon, iconPlacement, withDropdown]
@@ -68,7 +68,6 @@ export const Button: VFC<Props> = ({
       {...(typeof url === 'string' ? { href: url } : url)}
       {...(attributes as LinkProps['attributes'])}
       className={className}
-      legacyBehavior={false}
     >
       {content}
     </Link>

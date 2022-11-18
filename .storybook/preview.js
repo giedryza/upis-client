@@ -1,8 +1,19 @@
 import '../src/styles/index.scss';
 
 import I18nProvider from 'next-translate/I18nProvider';
+import * as NextLink from 'next/link';
 
 import i18nConfig from '../i18n';
+
+const OriginalLink = NextLink.default;
+Object.defineProperty(NextLink, 'default', {
+  configurable: true,
+  value: (props) => (
+    <OriginalLink {...props}>
+      <a {...props}>{props.children}</a>
+    </OriginalLink>
+  ),
+});
 
 const namespaces = [...new Set(Object.values(i18nConfig.pages).flat())];
 const translations = Object.assign(

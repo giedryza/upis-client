@@ -1,4 +1,4 @@
-import { useRef, FC } from 'react';
+import { useRef, FC, PropsWithChildren } from 'react';
 import {
   FocusScope,
   mergeProps,
@@ -16,7 +16,7 @@ import { ModalContent } from './atoms';
 import { ModalComposition, Props } from './modal.types';
 import styles from './modal.module.scss';
 
-export const Modal: FC<Props> & ModalComposition = ({
+export const Modal: FC<PropsWithChildren<Props>> & ModalComposition = ({
   id,
   isOpen,
   onClose,

@@ -27,13 +27,7 @@ export const BreadcrumbItem: VFC<Props> = ({
       {label}
     </Heading>
   ) : (
-    <Link
-      {...itemProps}
-      href={url}
-      className={styles.link}
-      legacyBehavior={false}
-      ref={ref}
-    >
+    <Link {...itemProps} href={url} className={styles.link} ref={ref}>
       {label}
     </Link>
   );

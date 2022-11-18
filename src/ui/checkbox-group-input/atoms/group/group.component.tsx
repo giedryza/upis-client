@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { useCheckboxGroup } from 'react-aria';
 import { useCheckboxGroupState } from 'react-stately';
 
@@ -7,7 +7,7 @@ import { CheckboxContextProvider } from '../../checkbox-group-input.context';
 import { Props } from './group.types';
 import styles from './group.module.scss';
 
-export const Group: FC<Props> = ({
+export const Group: FC<PropsWithChildren<Props>> = ({
   label,
   value,
   onChange,

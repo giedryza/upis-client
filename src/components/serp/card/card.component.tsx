@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { Button, Carousel, Icon } from 'ui';
@@ -19,7 +19,7 @@ const titles = [
   'Year in the Theft',
 ];
 
-export const SerpCard: FC<Props> = ({ id }) => {
+export const SerpCard: FC<Props> = memo(({ id }) => {
   const { lang } = useTranslation();
 
   const separator = <span> &bull; </span>;
@@ -98,4 +98,6 @@ export const SerpCard: FC<Props> = ({ id }) => {
       </div>
     </article>
   );
-};
+});
+
+SerpCard.displayName = 'SerpCard';

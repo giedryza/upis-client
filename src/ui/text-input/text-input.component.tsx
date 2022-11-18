@@ -75,16 +75,16 @@ export const TextInput = forwardRef<InputElement, Props>(
           />
         )}
 
-        {info && (
+        {info ? (
           <small {...descriptionProps} data-help="info">
             {info}
           </small>
-        )}
-        {error && (
+        ) : null}
+        {error ? (
           <small {...errorMessageProps} data-help="error">
             {error}
           </small>
-        )}
+        ) : null}
       </div>
     );
   }

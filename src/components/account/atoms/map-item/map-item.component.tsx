@@ -1,11 +1,11 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 
 import { Map, mapIcon } from 'ui';
 
 import { Props } from './map-item.types';
 import styles from './map-item.module.scss';
 
-export const MapItem: VFC<Props> = ({ markers }) => {
+export const MapItem: FC<Props> = ({ markers }) => {
   return (
     <div className={styles.container}>
       <Map

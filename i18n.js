@@ -7,7 +7,10 @@ module.exports = {
     'rgx:^/account': ['account', 'rivers'],
     'rgx:^/auth': ['auth'],
   },
-  loadLocaleFrom: (locale, namespace) =>
+  loadLocaleFrom: (locale, namespace) => {
     // eslint-disable-next-line import/no-dynamic-require
-    require(`./src/translations/${locale}/${namespace}`),
+    const m = require(`./src/translations/${locale}/${namespace}`);
+
+    return Promise.resolve(m);
+  },
 };

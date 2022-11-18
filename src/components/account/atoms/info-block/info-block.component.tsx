@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { clsx } from 'clsx';
 
 import { Button, Card, Icon } from 'ui';
@@ -6,7 +6,7 @@ import { Button, Card, Icon } from 'ui';
 import { Props } from './info-block.types';
 import styles from './info-block.module.scss';
 
-export const InfoBlock: FC<Props> = ({
+export const InfoBlock: FC<PropsWithChildren<Props>> = ({
   title,
   icon,
   columns = 2,

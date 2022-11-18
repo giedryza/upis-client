@@ -38,7 +38,6 @@ export const Navigation: VFC = () => {
             <Link
               href={link.url}
               className={styles.link}
-              legacyBehavior={false}
               {...(pathname.includes(link.url) && { 'aria-current': 'page' })}
             >
               <Icon

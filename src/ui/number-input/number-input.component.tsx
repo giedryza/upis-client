@@ -82,7 +82,7 @@ export const NumberInput = forwardRef<HTMLInputElement, Props>(
         </label>
 
         <div className={styles.inputContainer} {...groupProps}>
-          {stepper && (
+          {stepper ? (
             <button
               className={styles.stepper}
               {...decrementProps}
@@ -91,14 +91,14 @@ export const NumberInput = forwardRef<HTMLInputElement, Props>(
             >
               -
             </button>
-          )}
+          ) : null}
           <input
             className={clsx(styles.input, styles[`align-${textAlign}`])}
             {...inputProps}
             name={name}
             ref={inputRef}
           />
-          {stepper && (
+          {stepper ? (
             <button
               className={styles.stepper}
               {...incrementProps}
@@ -107,19 +107,19 @@ export const NumberInput = forwardRef<HTMLInputElement, Props>(
             >
               +
             </button>
-          )}
+          ) : null}
         </div>
 
-        {info && (
+        {info ? (
           <small {...descriptionProps} data-help="info">
             {info}
           </small>
-        )}
-        {error && (
+        ) : null}
+        {error ? (
           <small {...errorMessageProps} data-help="error">
             {error}
           </small>
-        )}
+        ) : null}
       </div>
     );
   }
