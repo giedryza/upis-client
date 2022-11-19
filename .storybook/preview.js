@@ -2,6 +2,7 @@ import '../src/styles/index.scss';
 
 import I18nProvider from 'next-translate/I18nProvider';
 import * as NextLink from 'next/link';
+import * as NextImage from 'next/image';
 
 import i18nConfig from '../i18n';
 
@@ -12,6 +13,18 @@ Object.defineProperty(NextLink, 'default', {
     <OriginalLink {...props}>
       <a {...props}>{props.children}</a>
     </OriginalLink>
+  ),
+});
+
+const OriginalNextImage = NextImage.default;
+Object.defineProperty(NextImage, 'default', {
+  configurable: true,
+  value: (props) => (
+    <OriginalNextImage
+      {...props}
+      unoptimized
+      blurDataURL="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAbEAADAAMBAQAAAAAAAAAAAAABAgMABAURUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAECEf/aAAwDAQACEQMRAD8Anz9voy1dCI2mectSE5ioFCqia+KCwJ8HzGMZPqJb1oPEf//Z"
+    />
   ),
 });
 

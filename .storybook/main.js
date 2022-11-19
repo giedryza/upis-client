@@ -1,4 +1,5 @@
 const path = require('path');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
   typescript: {
@@ -20,6 +21,8 @@ module.exports = {
       extensions: ['.js', '.ts', '.tsx', '.scss'],
       modules: [path.resolve(__dirname, '..', 'src'), 'node_modules'],
     };
+
+    config.plugins.push(new NodePolyfillPlugin());
 
     config.module.rules.push({
       test: /\.scss$/,
