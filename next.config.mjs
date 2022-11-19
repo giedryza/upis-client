@@ -4,7 +4,7 @@ import nextTranslate from 'next-translate';
 const nextConfig = {
   // reactStrictMode: true,
   images: {
-    domains: ['upis.s3.eu-central-1.amazonaws.com'],
+    domains: ['upis.s3.eu-central-1.amazonaws.com', 'picsum.photos'],
   },
   webpack: (config) => {
     config.module.rules.push({

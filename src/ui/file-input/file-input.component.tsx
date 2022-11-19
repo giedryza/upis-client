@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState, forwardRef, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
+import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 
@@ -167,9 +168,11 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
                 >
                   {previews && file.type.split('/')[0]?.includes('image') ? (
                     <div className={styles.preview}>
-                      <img
+                      <Image
                         src={file.preview}
                         alt={file.name}
+                        fill
+                        style={{ objectFit: 'contain' }}
                         onLoad={() => URL.revokeObjectURL(file.preview)}
                       />
                     </div>

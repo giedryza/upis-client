@@ -1,9 +1,10 @@
 import { VFC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { ImageItem, InfoBlock } from 'components/account/atoms';
+import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider } from 'domain/providers';
 import { routes } from 'config/routes';
+import { Container, ImagePlaceholder, ImageTile } from 'ui';
 
 export const Logo: VFC = () => {
   const { t } = useTranslation();
@@ -26,7 +27,17 @@ export const Logo: VFC = () => {
         },
       ]}
     >
-      <ImageItem src={provider.logo.location} />
+      <Container size="xs" align="left">
+        {provider.logo.location ? (
+          <ImageTile
+            image={provider.logo.location}
+            alt="logo"
+            objectFit="contain"
+          />
+        ) : (
+          <ImagePlaceholder />
+        )}
+      </Container>
     </InfoBlock>
   );
 };

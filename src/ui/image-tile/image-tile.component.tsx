@@ -1,20 +1,28 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { clsx } from 'clsx';
+import Image from 'next/image';
 
 import { Button } from 'ui/button';
 
 import { Props } from './image-tile.types';
 import styles from './image-tile.module.scss';
 
-export const ImageTile: VFC<Props> = ({
+export const ImageTile: FC<Props> = ({
   image,
   alt,
+  objectFit = 'cover',
   actions = [],
   tags = [],
 }) => {
   return (
     <div className={styles.imageBox}>
-      <img className={styles.image} src={image} alt={alt} />
+      <Image
+        className={styles.image}
+        fill
+        src={image}
+        alt={alt}
+        style={{ objectFit }}
+      />
 
       {!!actions.length && (
         <ul className={styles.actions}>

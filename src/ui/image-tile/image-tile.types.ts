@@ -9,6 +9,7 @@ interface Tag {
 export interface Props {
   image: string;
   alt: string;
+  objectFit?: 'contain' | 'cover';
   actions?: ButtonProps[];
   tags?: Tag[];
 }

@@ -154,8 +154,7 @@
       }
     ],
     "no-useless-concat": "error",
-    "import/no-cycle": "off",
-    "@next/next/no-img-element": "off"
+    "import/no-cycle": "off"
   },
   "overrides": [
     {
