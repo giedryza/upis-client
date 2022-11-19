@@ -1,4 +1,4 @@
-import { useRef, useState, FC, useEffect } from 'react';
+import { useRef, useState, FC, useEffect, useMemo } from 'react';
 import { clsx } from 'clsx';
 import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
@@ -21,11 +21,14 @@ export const Carousel: FC<Props> = ({ images, meta = false, options = {} }) => {
 
   const sliderRef = useRef<HTMLUListElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [imagesToPreload, setImagesToPreload] = useState<number[]>([]);
 
   const scrollable = images.length > 1;
   const hasNext = currentIndex + 1 < images.length;
   const hasPrev = currentIndex > 0;
+  const toPreload = useMemo(
+    () => [currentIndex - 1, currentIndex, currentIndex + 1],
+    [currentIndex]
+  );
 
   const onPrev = () => {
     if (!hasPrev) return;
@@ -86,8 +89,6 @@ export const Carousel: FC<Props> = ({ images, meta = false, options = {} }) => {
                 attributes={{
                   title: t('common:components.lightbox.previous'),
                   onClick: onPrev,
-                  onMouseEnter: () => setImagesToPreload([currentIndex - 1]),
-                  onMouseLeave: () => setImagesToPreload([]),
                 }}
               />
             </div>
@@ -101,8 +102,6 @@ export const Carousel: FC<Props> = ({ images, meta = false, options = {} }) => {
                 attributes={{
                   title: t('common:components.lightbox.next'),
                   onClick: onNext,
-                  onMouseEnter: () => setImagesToPreload([currentIndex + 1]),
-                  onMouseLeave: () => setImagesToPreload([]),
                 }}
               />
             </div>
@@ -121,7 +120,7 @@ export const Carousel: FC<Props> = ({ images, meta = false, options = {} }) => {
               fill
               src={image.url}
               alt={image.alt}
-              priority={imagesToPreload.includes(i)}
+              priority={toPreload.includes(i)}
             />
           </li>
         ))}
