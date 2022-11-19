@@ -16,7 +16,8 @@
     font-size: 1.6rem;
   }
 
-  &:hover {
+  &:hover,
+  &:focus-within {
     .sidebar,
     .meta {
       opacity: 1;

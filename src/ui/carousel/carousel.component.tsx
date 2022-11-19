@@ -1,5 +1,6 @@
-import { useRef, useState, VFC, useEffect } from 'react';
+import { useRef, useState, FC, useEffect } from 'react';
 import { clsx } from 'clsx';
+import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
 
 import { Button } from 'ui';
@@ -8,11 +9,7 @@ import { useEventListener } from 'tools/hooks';
 import { Props } from './carousel.types';
 import styles from './carousel.module.scss';
 
-export const Carousel: VFC<Props> = ({
-  images,
-  meta = false,
-  options = {},
-}) => {
+export const Carousel: FC<Props> = ({ images, meta = false, options = {} }) => {
   const {
     fit = 'cover',
     behavior = 'smooth',
@@ -24,6 +21,7 @@ export const Carousel: VFC<Props> = ({
 
   const sliderRef = useRef<HTMLUListElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [imagesToPreload, setImagesToPreload] = useState<number[]>([]);
 
   const scrollable = images.length > 1;
   const hasNext = currentIndex + 1 < images.length;
@@ -88,6 +86,8 @@ export const Carousel: VFC<Props> = ({
                 attributes={{
                   title: t('common:components.lightbox.previous'),
                   onClick: onPrev,
+                  onMouseEnter: () => setImagesToPreload([currentIndex - 1]),
+                  onMouseLeave: () => setImagesToPreload([]),
                 }}
               />
             </div>
@@ -101,6 +101,8 @@ export const Carousel: VFC<Props> = ({
                 attributes={{
                   title: t('common:components.lightbox.next'),
                   onClick: onNext,
+                  onMouseEnter: () => setImagesToPreload([currentIndex + 1]),
+                  onMouseLeave: () => setImagesToPreload([]),
                 }}
               />
             </div>
@@ -112,12 +114,14 @@ export const Carousel: VFC<Props> = ({
         className={clsx([styles.slider, styles.snap, 'scrollbar-hidden'])}
         ref={sliderRef}
       >
-        {images.map((image) => (
+        {images.map((image, i) => (
           <li className={styles.slide} key={image.id}>
-            <img
+            <Image
               className={clsx(styles.image, styles[`-fit-${fit}`])}
+              fill
               src={image.url}
               alt={image.alt}
+              priority={imagesToPreload.includes(i)}
             />
           </li>
         ))}
