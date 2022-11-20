@@ -6,6 +6,6 @@
 
   .list {
     flex: 1;
-    padding: 0 calc(var(--spacing, 15) * 1px);
+    padding: 0 calc(var(--spacing) * 0.1rem);
   }
 }

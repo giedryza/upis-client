@@ -7,6 +7,10 @@ interface Image {
 export interface Props {
   images: Image[];
   meta?: boolean;
+  imageSize?: {
+    width: number;
+    height: number;
+  };
   options?: {
     fit?: 'contain' | 'cover';
     behavior?: 'auto' | 'smooth';

@@ -1,25 +1,25 @@
 import { FC } from 'react';
 import { useWindowVirtualizer } from '@tanstack/react-virtual';
 
+import { app } from 'config/app';
 import { SerpCard } from 'components/serp';
 import { Footer } from 'components/layout';
 
 import styles from './list.module.scss';
 
 const COUNT = 40;
-const GAP = 15;
 
 export const SerpList: FC = () => {
   const virtualizer = useWindowVirtualizer({
     count: COUNT,
-    estimateSize: () => 200 + GAP,
+    estimateSize: () => app.serp.cardHeight + app.serp.gridGap,
     overscan: 3,
-    paddingStart: GAP,
+    paddingStart: app.serp.gridGap,
     // getItemKey
   });
 
   return (
-    <div className={styles.container} style={{ '--spacing': GAP }}>
+    <div className={styles.container} style={{ '--spacing': app.serp.gridGap }}>
       <div className={styles.list}>
         <div
           style={{

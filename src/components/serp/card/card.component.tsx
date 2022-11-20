@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { Button, Carousel, Icon } from 'ui';
 import { formatCurrency } from 'tools/format';
+import { app } from 'config/app';
 
 import { Props } from './card.types';
 import styles from './card.module.scss';
@@ -19,6 +20,11 @@ const titles = [
   'Year in the Theft',
 ];
 
+const CAROUSEL_WIDTH = Math.round(
+  (app.serp.cardHeight * app.serp.carouselAspectRatio[0]) /
+    app.serp.carouselAspectRatio[1]
+);
+
 export const SerpCard: FC<Props> = memo(({ id }) => {
   const { lang } = useTranslation();
 
@@ -26,7 +32,13 @@ export const SerpCard: FC<Props> = memo(({ id }) => {
 
   return (
     <article className={styles.card}>
-      <div className={styles.gallery}>
+      <div
+        className={styles.gallery}
+        style={{
+          '--width': CAROUSEL_WIDTH,
+          '--height': app.serp.cardHeight,
+        }}
+      >
         <Carousel
           images={Array.from({ length: 5 }).map((_, i) => ({
             id: `${id}-${String(i)}`,
@@ -36,6 +48,7 @@ export const SerpCard: FC<Props> = memo(({ id }) => {
           options={{
             size: 'sm',
           }}
+          imageSize={{ width: CAROUSEL_WIDTH, height: app.serp.cardHeight }}
         />
       </div>
 

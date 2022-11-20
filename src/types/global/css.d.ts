@@ -3,6 +3,8 @@ import * as CSS from 'csstype';
 
 declare module 'csstype' {
   interface Properties {
+    '--width'?: number;
+    '--height'?: number;
     '--grid-columns'?: number;
     '--fade-delay'?: number;
     '--percentage'?: number;
