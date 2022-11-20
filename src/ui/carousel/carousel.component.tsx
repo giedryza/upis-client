@@ -9,7 +9,12 @@ import { useEventListener } from 'tools/hooks';
 import { Props } from './carousel.types';
 import styles from './carousel.module.scss';
 
-export const Carousel: FC<Props> = ({ images, meta = false, options = {} }) => {
+export const Carousel: FC<Props> = ({
+  images,
+  imageSize,
+  meta = false,
+  options = {},
+}) => {
   const {
     fit = 'cover',
     behavior = 'smooth',
@@ -117,10 +122,12 @@ export const Carousel: FC<Props> = ({ images, meta = false, options = {} }) => {
           <li className={styles.slide} key={image.id}>
             <Image
               className={clsx(styles.image, styles[`-fit-${fit}`])}
-              fill
               src={image.url}
               alt={image.alt}
               priority={toPreload.includes(i)}
+              {...(imageSize
+                ? { width: imageSize.width, height: imageSize.height }
+                : { fill: true })}
             />
           </li>
         ))}
