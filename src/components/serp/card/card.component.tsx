@@ -2,7 +2,7 @@ import { FC, memo } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { Button, Carousel, Icon } from 'ui';
-import { formatCurrency } from 'tools/format';
+import { formatCurrency, formatNumber } from 'tools/format';
 import { app } from 'config/app';
 
 import { Props } from './card.types';
@@ -83,11 +83,11 @@ export const SerpCard: FC<Props> = memo(({ id }) => {
 
             <h3 className={styles.subtitle}>
               <Icon name="timer" className={styles.icon} aria-hidden />
-              <span>45km</span>
+              <span>{formatNumber(lang, 45, 'kilometer')}</span>
               {separator}
-              <span>1 day</span>
+              <span>{formatNumber(lang, 1, 'day')}</span>
               {separator}
-              <span>8.5h</span>
+              <span>{formatNumber(lang, 8.5, 'hour')}</span>
             </h3>
           </div>
         </header>
