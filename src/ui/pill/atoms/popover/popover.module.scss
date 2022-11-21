@@ -8,9 +8,8 @@
   .arrow {
     position: absolute;
     fill: var(--color-white);
-    stroke: var(--color-grey-95);
-    width: 1em;
-    height: 1em;
+    width: 1.5em;
+    height: 1.5em;
 
     &[data-placement='top'] {
       top: 100%;

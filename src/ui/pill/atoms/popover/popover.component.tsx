@@ -14,7 +14,7 @@ export const Popover: FC<PropsWithChildren<Props>> = ({
     {
       triggerRef,
       popoverRef,
-      offset: 7.5,
+      offset: 10,
       containerPadding: 0,
     },
     state
@@ -27,6 +27,7 @@ export const Popover: FC<PropsWithChildren<Props>> = ({
           {...arrowProps}
           className={styles.arrow}
           data-placement={placement}
+          viewBox="0 0 12 12"
         >
           <path d="M0 0,L6 6,L12 0" />
         </svg>
