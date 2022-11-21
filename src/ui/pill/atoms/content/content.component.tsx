@@ -11,6 +11,7 @@ export const Content: FC<PropsWithChildren<Props & AriaDialogProps>> = ({
   title,
   onClose,
   children,
+  actions = [],
   ...ariaDialogProps
 }) => {
   const { t } = useTranslation();
@@ -38,6 +39,22 @@ export const Content: FC<PropsWithChildren<Props & AriaDialogProps>> = ({
       </header>
 
       <div className={styles.body}>{children}</div>
+
+      {!!actions.length && (
+        <ul className={styles.footer}>
+          {actions.map(({ closable, ...action }, i) => (
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+            <li
+              onClick={() => {
+                if (closable && onClose) onClose();
+              }}
+              key={i}
+            >
+              <Button {...action} size="xs" />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

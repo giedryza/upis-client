@@ -16,6 +16,17 @@ export default {
         <button type="button">but3</button>
       </div>
     ),
+    actions: [
+      {
+        label: 'Clear',
+        variant: 'ghost',
+      },
+      {
+        label: 'Apply',
+        variant: 'primary',
+        closable: true,
+      },
+    ],
   },
 } as ComponentMeta<typeof Pill>;
 
