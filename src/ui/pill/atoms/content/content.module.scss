@@ -1,0 +1,24 @@
+.content {
+  font-size: 1.4rem;
+  color: var(--color-text);
+  max-width: 35rem;
+  outline: none;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25em;
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: 1em;
+    line-height: 1.3;
+    padding: 0 1em;
+  }
+
+  .body {
+    padding: 1.25em;
+  }
+}

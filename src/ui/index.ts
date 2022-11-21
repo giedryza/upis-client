@@ -22,6 +22,7 @@ export * from './meter';
 export * from './modal';
 export * from './multi-autocomplete-input';
 export * from './number-input';
+export * from './pill';
 export * from './portal';
 export * from './progress';
 export * from './radio-input';

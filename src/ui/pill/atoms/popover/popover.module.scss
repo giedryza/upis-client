@@ -1,0 +1,35 @@
+.popover {
+  font-size: 1.4rem;
+  color: var(--color-grey-90);
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-secondary);
+
+  .arrow {
+    position: absolute;
+    fill: var(--color-white);
+    stroke: var(--color-grey-95);
+    width: 1em;
+    height: 1em;
+
+    &[data-placement='top'] {
+      top: 100%;
+      transform: translateX(-50%);
+    }
+
+    &[data-placement='bottom'] {
+      bottom: 100%;
+      transform: translateX(-50%) rotate(180deg);
+    }
+
+    &[data-placement='left'] {
+      left: 100%;
+      transform: translateY(-50%) rotate(-90deg);
+    }
+
+    &[data-placement='right'] {
+      right: 100%;
+      transform: translateY(-50%) rotate(90deg);
+    }
+  }
+}
