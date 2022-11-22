@@ -1,17 +1,17 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { FieldDisplay } from '.';
+import { LabeledValue } from '.';
 
 export default {
-  title: 'UI/FieldDisplay',
-  component: FieldDisplay,
+  title: 'UI/LabeledValue',
+  component: LabeledValue,
   args: {
     label: 'Description',
   },
-} as ComponentMeta<typeof FieldDisplay>;
+} as ComponentMeta<typeof LabeledValue>;
 
-const Template: ComponentStory<typeof FieldDisplay> = (args) => (
-  <FieldDisplay {...args} />
+const Template: ComponentStory<typeof LabeledValue> = (args) => (
+  <LabeledValue {...args} />
 );
 
 export const Default = Template.bind({});

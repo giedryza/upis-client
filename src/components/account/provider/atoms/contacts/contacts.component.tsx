@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider } from 'domain/providers';
-import { FieldDisplay } from 'ui';
+import { LabeledValue } from 'ui';
 
 export const Contacts: VFC = () => {
   const { t } = useTranslation();
@@ -29,15 +29,15 @@ export const Contacts: VFC = () => {
         },
       ]}
     >
-      <FieldDisplay
+      <LabeledValue
         label={t('account:providers.contacts.form.email.label')}
         value={provider.email}
       />
-      <FieldDisplay
+      <LabeledValue
         label={t('account:providers.contacts.form.phone.label')}
         value={provider.phone}
       />
-      <FieldDisplay
+      <LabeledValue
         label={t('account:providers.contacts.form.website.label')}
         value={provider.website}
       />

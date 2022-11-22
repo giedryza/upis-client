@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { InfoBlock } from 'components/account/atoms';
 import { routes } from 'config/routes';
-import { FieldDisplay } from 'ui';
+import { LabeledValue } from 'ui';
 
 export const Security: VFC = () => {
   const { t } = useTranslation();
@@ -21,7 +21,7 @@ export const Security: VFC = () => {
         },
       ]}
     >
-      <FieldDisplay
+      <LabeledValue
         label={t('account:profile.security.form.password.label')}
         value={t('account:profile.security.form.password.placeholder')}
       />

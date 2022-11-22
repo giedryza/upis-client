@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour } from 'domain/tours';
 import { routes } from 'config/routes';
-import { FieldDisplay } from 'ui';
+import { LabeledValue } from 'ui';
 
 export const Geography: VFC = () => {
   const { t } = useTranslation();
@@ -27,7 +27,7 @@ export const Geography: VFC = () => {
         },
       ]}
     >
-      <FieldDisplay
+      <LabeledValue
         label={t('account:tours.geography.form.regions.display')}
         value={tour.regions
           .map((region) =>
@@ -35,7 +35,7 @@ export const Geography: VFC = () => {
           )
           .join(', ')}
       />
-      <FieldDisplay
+      <LabeledValue
         label={t('account:tours.geography.form.rivers.display')}
         value={tour.rivers.map((river) => t(`rivers:${river}`)).join(', ')}
       />

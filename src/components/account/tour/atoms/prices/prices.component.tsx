@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour } from 'domain/tours';
 import { routes } from 'config/routes';
-import { FieldDisplay } from 'ui';
+import { LabeledValue } from 'ui';
 
 export const Prices: VFC = () => {
   const { t } = useTranslation();
@@ -27,7 +27,7 @@ export const Prices: VFC = () => {
         },
       ]}
     >
-      <FieldDisplay
+      <LabeledValue
         label={t('account:tours.prices.form.price.display')}
         value={tour.price?.amount ? tour.price.amount / 100 : null}
         formatOptions={{

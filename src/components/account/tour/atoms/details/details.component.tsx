@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour } from 'domain/tours';
 import { routes } from 'config/routes';
-import { FieldDisplay, Meter } from 'ui';
+import { LabeledValue, Meter } from 'ui';
 
 export const Details: VFC = () => {
   const { t } = useTranslation();
@@ -27,7 +27,7 @@ export const Details: VFC = () => {
         },
       ]}
     >
-      <FieldDisplay
+      <LabeledValue
         label={t('account:tours.details.form.distance.display')}
         value={tour.distance}
         formatOptions={{
@@ -35,7 +35,7 @@ export const Details: VFC = () => {
           unit: 'kilometer',
         }}
       />
-      <FieldDisplay
+      <LabeledValue
         label={t('account:tours.details.form.duration.display')}
         value={tour.duration}
         formatOptions={{
@@ -43,7 +43,7 @@ export const Details: VFC = () => {
           unit: 'hour',
         }}
       />
-      <FieldDisplay
+      <LabeledValue
         label={t('account:tours.details.form.days.display')}
         value={tour.days}
         formatOptions={{

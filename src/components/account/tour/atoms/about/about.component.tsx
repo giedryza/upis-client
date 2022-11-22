@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour } from 'domain/tours';
 import { routes } from 'config/routes';
-import { FieldDisplay } from 'ui';
+import { LabeledValue } from 'ui';
 
 export const About: VFC = () => {
   const { t } = useTranslation();
@@ -27,19 +27,19 @@ export const About: VFC = () => {
         },
       ]}
     >
-      <FieldDisplay
+      <LabeledValue
         label={t('account:tours.about.form.name.label')}
         value={tour.name}
       />
-      <FieldDisplay
+      <LabeledValue
         label={t('account:tours.about.form.description.label')}
         value={tour.description}
       />
-      <FieldDisplay
+      <LabeledValue
         label={t('account:tours.about.form.website.label')}
         value={tour.website}
       />
-      <FieldDisplay
+      <LabeledValue
         label={t('account:tours.about.form.provider.label')}
         value={tour.provider.name}
       />
