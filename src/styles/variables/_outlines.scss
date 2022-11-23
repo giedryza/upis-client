@@ -1,6 +1,6 @@
 :root {
-  --outline-button: inset 0 0 0 1px var(--color-white),
-    0 0 0 2px var(--color-primary-60);
+  --outline-button: 0 0 0 1px var(--color-white),
+    0 0 0 3px var(--color-primary-60);
   --outline-input: 0 0 3px 2px
     hsla(var(--color-primary-h), var(--color-primary-s), 85%, 0.75);
   --outline-input-error: 0 0 3px 2px
