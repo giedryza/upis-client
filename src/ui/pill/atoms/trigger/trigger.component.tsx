@@ -15,17 +15,25 @@ import styles from './trigger.module.scss';
 export const Trigger: FC<Props & AriaButtonProps<'button'>> = ({
   label,
   isOpen,
+  active,
   buttonRef,
-  ...rest
+  ...ariaButtonProps
 }) => {
-  const { buttonProps } = useButton({ children: label, ...rest }, buttonRef);
+  const { buttonProps } = useButton(
+    { children: label, ...ariaButtonProps },
+    buttonRef
+  );
   const { isFocusVisible, focusProps } = useFocusRing();
 
   return (
     <button
       {...buttonProps}
       {...mergeProps(buttonProps, focusProps)}
-      className={clsx(styles.trigger, isFocusVisible && styles['-focus'])}
+      className={clsx(
+        styles.trigger,
+        isFocusVisible && styles['-focus'],
+        active && styles['-active']
+      )}
       type="button"
       ref={buttonRef}
     >

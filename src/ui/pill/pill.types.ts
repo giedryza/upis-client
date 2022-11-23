@@ -5,6 +5,7 @@ import { ButtonProps } from 'ui';
 export interface Props {
   label: string;
   title: string;
-  actions?: (ButtonProps & { closable?: boolean })[];
   popover: ReactNode;
+  active?: boolean;
+  actions?: (ButtonProps & { closable?: boolean })[];
 }

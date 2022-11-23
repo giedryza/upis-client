@@ -6,7 +6,7 @@ import { Trigger, Popover } from '..';
 
 import { Props } from './container.types';
 
-export const Container: FC<Props> = ({ label, children }) => {
+export const Container: FC<Props> = ({ label, active, children }) => {
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   const state = useOverlayTriggerState({});
@@ -21,6 +21,7 @@ export const Container: FC<Props> = ({ label, children }) => {
       <Trigger
         {...triggerProps}
         label={label}
+        active={active}
         isOpen={state.isOpen}
         buttonRef={triggerRef}
       />

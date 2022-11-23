@@ -6,15 +6,15 @@ export default {
   title: 'UI/Pill',
   component: Pill,
   args: {
-    label: 'Open Popover',
-    title: 'Popover title',
+    label: 'Amenities',
+    title: 'Amenities',
     popover: (
-      <div>
-        This is the content of the popover.
-        <button type="button">but1</button>
-        <button type="button">but2</button>
-        <button type="button">but3</button>
-      </div>
+      <p>
+        In publishing and graphic design, Lorem ipsum is a placeholder text
+        commonly used to demonstrate the visual form of a document or a typeface
+        without relying on meaningful content. Lorem ipsum may be used as a
+        placeholder before final copy is available.
+      </p>
     ),
     actions: [
       {
@@ -30,7 +30,12 @@ export default {
   },
 } as ComponentMeta<typeof Pill>;
 
-const Template: ComponentStory<typeof Pill> = (args) => <Pill {...args} />;
+const Template: ComponentStory<typeof Pill> = (args) => (
+  <div style={{ display: 'flex', gap: 10 }}>
+    <Pill {...args} />
+    <Pill {...args} label="Rivers" title="Rivers" active />
+  </div>
+);
 
 export const Default = Template.bind({});
 Default.args = {
