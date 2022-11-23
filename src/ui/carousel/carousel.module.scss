@@ -102,21 +102,25 @@
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
+
     display: flex;
     gap: 0.5em;
     padding: 0.5em;
 
+    transform: translateX(-50%);
+
     .dot {
       width: 0.5em;
       height: 0.5em;
+
       background-color: var(--color-white);
       border-radius: 50%;
-      opacity: 0.5;
-      transition-duration: var(--transition-duration-md);
-      transition-property: transform opacity;
       box-shadow: var(--shadow-default);
       cursor: pointer;
+      opacity: 0.5;
+
+      transition-duration: var(--transition-duration-md);
+      transition-property: transform opacity;
 
       &:hover,
       &.-active {
