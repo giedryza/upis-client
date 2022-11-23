@@ -9,6 +9,7 @@ import {
   useOverlay,
   usePreventScroll,
 } from 'react-aria';
+import useTranslation from 'next-translate/useTranslation';
 
 import { Button } from 'ui';
 
@@ -22,6 +23,7 @@ export const Modal: FC<PropsWithChildren<Props>> & ModalComposition = ({
   onClose,
   children,
 }) => {
+  const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
 
   const { overlayProps, underlayProps } = useOverlay(
@@ -57,7 +59,7 @@ export const Modal: FC<PropsWithChildren<Props>> & ModalComposition = ({
                 variant="ghost"
                 attributes={{
                   onClick: onClose,
-                  'aria-label': 'Close',
+                  'aria-label': t('common:actions.close'),
                 }}
               />
             </div>

@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider } from 'domain/providers';
 import { routes } from 'config/routes';
-import { FieldDisplay } from 'ui';
+import { LabeledValue } from 'ui';
 
 export const About: VFC = () => {
   const { t, lang } = useTranslation();
@@ -27,15 +27,15 @@ export const About: VFC = () => {
         },
       ]}
     >
-      <FieldDisplay
+      <LabeledValue
         label={t('account:providers.about.form.name.label')}
         value={provider.name}
       />
-      <FieldDisplay
+      <LabeledValue
         label={t('account:providers.about.form.description.label')}
         value={provider.description}
       />
-      <FieldDisplay
+      <LabeledValue
         label={t('account:providers.about.form.languages.display')}
         value={new Intl.ListFormat(lang, {
           style: 'long',
@@ -49,7 +49,7 @@ export const About: VFC = () => {
           )
         )}
       />
-      <FieldDisplay
+      <LabeledValue
         label={t('account:providers.about.form.boats.display')}
         value={new Intl.ListFormat(lang, {
           style: 'long',

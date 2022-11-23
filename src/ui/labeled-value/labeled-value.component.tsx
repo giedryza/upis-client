@@ -1,10 +1,10 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { useNumberFormatter } from 'react-aria';
 
-import { Props } from './field-display.types';
-import styles from './field-display.module.scss';
+import { Props } from './labeled-value.types';
+import styles from './labeled-value.module.scss';
 
-export const FieldDisplay: VFC<Props> = ({
+export const LabeledValue: FC<Props> = ({
   label,
   value,
   fallback = '-',

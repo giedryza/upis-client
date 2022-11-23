@@ -1,0 +1,41 @@
+.popover {
+  color: var(--color-grey-90);
+  font-size: 1.4rem;
+
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-secondary);
+
+  .arrow {
+    position: absolute;
+
+    width: 1.5em;
+    height: 1.5em;
+
+    fill: var(--color-white);
+
+    &[data-placement='top'] {
+      top: 100%;
+
+      transform: translateX(-50%);
+    }
+
+    &[data-placement='bottom'] {
+      bottom: 100%;
+
+      transform: translateX(-50%) rotate(180deg);
+    }
+
+    &[data-placement='left'] {
+      left: 100%;
+
+      transform: translateY(-50%) rotate(-90deg);
+    }
+
+    &[data-placement='right'] {
+      right: 100%;
+
+      transform: translateY(-50%) rotate(90deg);
+    }
+  }
+}

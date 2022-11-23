@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { routes } from 'config/routes';
 import { InfoBlock, MapItem } from 'components/account/atoms';
 import { useActiveProvider } from 'domain/providers';
-import { FieldDisplay } from 'ui';
+import { LabeledValue } from 'ui';
 
 export const Location: VFC = () => {
   const { t } = useTranslation();
@@ -30,7 +30,7 @@ export const Location: VFC = () => {
         },
       ]}
     >
-      <FieldDisplay
+      <LabeledValue
         label={t('account:providers.location.form.address.label')}
         value={provider.address}
       />
