@@ -20,6 +20,7 @@ export const Carousel: FC<Props> = ({
     behavior = 'smooth',
     size = 'md',
     keyboard = false,
+    focusable = true,
   } = options;
 
   const { t } = useTranslation();
@@ -119,7 +120,7 @@ export const Carousel: FC<Props> = ({
       <ul
         className={clsx([styles.slider, styles.snap, 'scrollbar-hidden'])}
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-        tabIndex={0}
+        tabIndex={focusable ? 0 : -1}
         ref={sliderRef}
       >
         {images.map((image, i) => (
