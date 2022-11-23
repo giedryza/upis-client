@@ -16,8 +16,7 @@
     font-size: 1.6rem;
   }
 
-  &:hover,
-  &:focus-within {
+  &:hover {
     .sidebar,
     .meta {
       opacity: 1;
@@ -53,6 +52,19 @@
     height: 100%;
     overflow-x: auto;
     overscroll-behavior-inline: contain;
+
+    &:focus {
+      outline: 2px solid transparent;
+      box-shadow: var(--outline-button);
+
+      &:not(:focus-visible) {
+        box-shadow: none;
+      }
+    }
+
+    &:focus-visible {
+      box-shadow: var(--outline-button);
+    }
   }
 
   .snap {
@@ -83,6 +95,38 @@
 
     &.-fit-cover {
       object-fit: cover;
+    }
+  }
+
+  .dots {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+
+    display: flex;
+    gap: 0.5em;
+    padding: 0.5em;
+
+    transform: translateX(-50%);
+
+    .dot {
+      width: 0.5em;
+      height: 0.5em;
+
+      background-color: var(--color-white);
+      border-radius: 50%;
+      box-shadow: var(--shadow-default);
+      cursor: pointer;
+      opacity: 0.5;
+
+      transition-duration: var(--transition-duration-md);
+      transition-property: transform opacity;
+
+      &:hover,
+      &.-active {
+        transform: scale(1.2);
+        opacity: 1;
+      }
     }
   }
 

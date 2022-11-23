@@ -20,6 +20,7 @@ export const Carousel: FC<Props> = ({
     behavior = 'smooth',
     size = 'md',
     keyboard = false,
+    focusable = true,
   } = options;
 
   const { t } = useTranslation();
@@ -94,6 +95,7 @@ export const Carousel: FC<Props> = ({
                 attributes={{
                   title: t('common:components.lightbox.previous'),
                   onClick: onPrev,
+                  tabIndex: -1,
                 }}
               />
             </div>
@@ -107,6 +109,7 @@ export const Carousel: FC<Props> = ({
                 attributes={{
                   title: t('common:components.lightbox.next'),
                   onClick: onNext,
+                  tabIndex: -1,
                 }}
               />
             </div>
@@ -116,6 +119,8 @@ export const Carousel: FC<Props> = ({
 
       <ul
         className={clsx([styles.slider, styles.snap, 'scrollbar-hidden'])}
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={focusable ? 0 : -1}
         ref={sliderRef}
       >
         {images.map((image, i) => (
@@ -140,7 +145,24 @@ export const Carousel: FC<Props> = ({
             {currentIndex + 1}/{images.length}
           </span>
         </div>
-      ) : null}
+      ) : (
+        <ul className={styles.dots}>
+          {images.map((_, i) => (
+            <li key={i}>
+              <button
+                className={clsx(
+                  styles.dot,
+                  currentIndex === i && styles['-active']
+                )}
+                type="button"
+                aria-label={String(i)}
+                tabIndex={-1}
+                onClick={() => setCurrentIndex(i)}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

@@ -16,5 +16,6 @@ export interface Props {
     behavior?: 'auto' | 'smooth';
     size?: 'sm' | 'md' | 'lg';
     keyboard?: boolean;
+    focusable?: boolean;
   };
 }

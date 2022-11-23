@@ -55,7 +55,7 @@ export const Lightbox: FC<Props> = ({
   return (
     <OverlayContainer>
       <div className={styles.lightbox} {...underlayProps}>
-        <FocusScope contain restoreFocus autoFocus={false}>
+        <FocusScope contain restoreFocus autoFocus>
           <div
             {...mergeProps(overlayProps, dialogProps, modalProps, { ref })}
             className={styles.box}
@@ -102,6 +102,7 @@ export const Lightbox: FC<Props> = ({
                 behavior: 'auto',
                 size: 'lg',
                 keyboard: true,
+                focusable: false,
               }}
               meta
             />
