@@ -1,16 +1,18 @@
 .trigger {
-  font-size: 1.4rem;
-  font-weight: 400;
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
   padding: 0.5em 1em;
+
+  color: var(--color-text);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.2;
+
+  background-color: var(--color-grey-95);
   border: 0;
   border-radius: 100rem;
-  color: var(--color-text);
-  line-height: 1.2;
-  background-color: var(--color-grey-95);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
 
   @media screen and (-ms-high-contrast: active) {
     border: 2px solid currentcolor;
@@ -29,14 +31,16 @@
   }
 
   &.-active {
-    background-color: var(--color-primary-90);
-    font-weight: 500;
     color: var(--color-primary-50);
+    font-weight: 500;
+
+    background-color: var(--color-primary-90);
   }
 
   .icon {
     width: 0.75em;
     height: 0.75em;
+
     fill: currentColor;
   }
 }
