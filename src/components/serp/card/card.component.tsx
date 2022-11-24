@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { Button, Carousel, Icon } from 'ui';
 import { formatCurrency, formatNumber } from 'tools/format';
-import { app } from 'config/app';
+import { APP } from 'config/app';
 
 import { Props } from './card.types';
 import styles from './card.module.scss';
@@ -21,8 +21,8 @@ const titles = [
 ];
 
 const CAROUSEL_WIDTH = Math.round(
-  (app.serp.cardHeight * app.serp.carouselAspectRatio[0]) /
-    app.serp.carouselAspectRatio[1]
+  (APP.serp.cardHeight * APP.serp.carouselAspectRatio[0]) /
+    APP.serp.carouselAspectRatio[1]
 );
 
 export const SerpCard: FC<Props> = memo(({ id }) => {
@@ -36,7 +36,7 @@ export const SerpCard: FC<Props> = memo(({ id }) => {
         className={styles.gallery}
         style={{
           '--width': CAROUSEL_WIDTH,
-          '--height': app.serp.cardHeight,
+          '--height': APP.serp.cardHeight,
         }}
       >
         <Carousel
@@ -48,7 +48,7 @@ export const SerpCard: FC<Props> = memo(({ id }) => {
           options={{
             size: 'sm',
           }}
-          imageSize={{ width: CAROUSEL_WIDTH, height: app.serp.cardHeight }}
+          imageSize={{ width: CAROUSEL_WIDTH, height: APP.serp.cardHeight }}
         />
       </div>
 

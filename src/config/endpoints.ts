@@ -37,4 +37,4 @@ export const endpoints = {
   images: {
     one: 'images/:id',
   },
-};
+} as const;

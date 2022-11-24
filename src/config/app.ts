@@ -1,4 +1,4 @@
-export const app = {
+export const APP = {
   serp: {
     carouselAspectRatio: [4, 3],
     cardHeight: 200,
