@@ -1,6 +1,6 @@
 @use 'sass:map';
-@import 'styles/variables/breakpoints';
-@import 'styles/mixins/utils';
+@use 'styles/variables/breakpoints' as *;
+@use 'styles/mixins/utils' as *;
 
 @mixin mobile {
   @media screen and (max-width: px-to-em(map.get($breakpoints, 'xs'))) {
