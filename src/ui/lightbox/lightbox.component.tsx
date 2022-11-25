@@ -11,6 +11,7 @@ import {
 } from 'react-aria';
 
 import { Button, Carousel } from 'ui';
+import { APP } from 'config/app';
 
 import { Props } from './lightbox.types';
 import { useFullscreen } from './lightbox.hooks';
@@ -103,6 +104,13 @@ export const Lightbox: FC<Props> = ({
                 size: 'lg',
                 keyboard: true,
                 focusable: false,
+              }}
+              sizes={{
+                xs: APP.breakpoints.xs,
+                sm: APP.breakpoints.sm,
+                md: APP.breakpoints.md,
+                lg: APP.breakpoints.lg,
+                default: 2000,
               }}
               meta
             />

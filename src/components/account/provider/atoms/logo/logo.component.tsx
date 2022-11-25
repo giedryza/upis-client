@@ -33,6 +33,7 @@ export const Logo: VFC = () => {
             image={provider.logo.location}
             alt="logo"
             objectFit="contain"
+            sizes={{ width: 400, height: 225 }}
           />
         ) : (
           <ImagePlaceholder />

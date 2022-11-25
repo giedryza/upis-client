@@ -46,6 +46,10 @@
     "property-no-vendor-prefix": [true, { "ignoreProperties": ["box-orient"] }],
     "selector-no-qualifying-type": [true, { "ignore": ["attribute", "class"] }],
     "selector-max-compound-selectors": [5],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      { "ignorePseudoClasses": ["export"] }
+    ],
     "plugin/rational-order": [
       true,
       {

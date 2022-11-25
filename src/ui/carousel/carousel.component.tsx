@@ -1,9 +1,8 @@
 import { useRef, useState, FC, useEffect, useMemo } from 'react';
 import { clsx } from 'clsx';
-import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
 
-import { Button } from 'ui';
+import { Button, Image } from 'ui';
 import { useEventListener } from 'tools/hooks';
 
 import { Props } from './carousel.types';
@@ -11,7 +10,7 @@ import styles from './carousel.module.scss';
 
 export const Carousel: FC<Props> = ({
   images,
-  imageSize,
+  sizes,
   meta = false,
   options = {},
 }) => {
@@ -130,9 +129,7 @@ export const Carousel: FC<Props> = ({
               src={image.url}
               alt={image.alt}
               priority={toPreload.includes(i)}
-              {...(imageSize
-                ? { width: imageSize.width, height: imageSize.height }
-                : { fill: true })}
+              sizes={sizes}
             />
           </li>
         ))}

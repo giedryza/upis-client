@@ -1,8 +1,7 @@
 import { FC } from 'react';
 import { clsx } from 'clsx';
-import Image from 'next/image';
 
-import { Button } from 'ui/button';
+import { Button, Image } from 'ui';
 
 import { Props } from './image-tile.types';
 import styles from './image-tile.module.scss';
@@ -10,6 +9,7 @@ import styles from './image-tile.module.scss';
 export const ImageTile: FC<Props> = ({
   image,
   alt,
+  sizes,
   objectFit = 'cover',
   actions = [],
   tags = [],
@@ -18,7 +18,7 @@ export const ImageTile: FC<Props> = ({
     <div className={styles.imageBox}>
       <Image
         className={styles.image}
-        fill
+        sizes={sizes}
         src={image}
         alt={alt}
         style={{ objectFit }}

@@ -1,0 +1,7 @@
+@import 'styles/variables/breakpoints';
+
+:export {
+  @each $name, $value in $breakpoints {
+    #{$name}Breakpoint: $value;
+  }
+}

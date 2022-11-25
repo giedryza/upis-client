@@ -1,3 +1,5 @@
+import { ImageSizes } from 'ui/image';
+
 interface Image {
   id: string;
   url: string;
@@ -6,11 +8,8 @@ interface Image {
 
 export interface Props {
   images: Image[];
+  sizes: ImageSizes;
   meta?: boolean;
-  imageSize?: {
-    width: number;
-    height: number;
-  };
   options?: {
     fit?: 'contain' | 'cover';
     behavior?: 'auto' | 'smooth';

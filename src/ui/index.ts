@@ -12,6 +12,7 @@ export * from './empty-state';
 export * from './file-input';
 export * from './formatted-field';
 export * from './icon';
+export * from './image';
 export * from './image-placeholder';
 export * from './image-tile';
 export * from './labeled-value';

@@ -4,3 +4,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+@function px-to-em($pixels, $base-font-size: 16) {
+  @return #{$pixels/$base-font-size}em;
+}
