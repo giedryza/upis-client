@@ -122,6 +122,7 @@ export const Gallery: FC = () => {
                   },
                 },
               ]}
+              sizes={{ xs: 509, sm: 509, md: 380, lg: 320, default: 320 }}
               key={i}
             />
           ))}

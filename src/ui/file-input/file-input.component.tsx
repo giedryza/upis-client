@@ -1,10 +1,9 @@
 import { useCallback, useMemo, useState, forwardRef, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
-import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 
-import { Button, Icon, Divider } from 'ui';
+import { Button, Icon, Divider, Image } from 'ui';
 import { getFiletype, formatBytes } from 'tools/common';
 
 import { FileIcon } from './atoms';
@@ -171,7 +170,7 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
                       <Image
                         src={file.preview}
                         alt={file.name}
-                        fill
+                        sizes={{ width: 118, height: 65.5 }}
                         style={{ objectFit: 'contain' }}
                         onLoad={() => URL.revokeObjectURL(file.preview)}
                       />

@@ -1,5 +1,6 @@
 import { Status } from 'types/common';
 import { ButtonProps } from 'ui/button';
+import { ImageSizes } from 'ui/image';
 
 interface Tag {
   label: string;
@@ -9,6 +10,7 @@ interface Tag {
 export interface Props {
   image: string;
   alt: string;
+  sizes: ImageSizes;
   objectFit?: 'contain' | 'cover';
   actions?: ButtonProps[];
   tags?: Tag[];

@@ -48,7 +48,7 @@ export const SerpCard: FC<Props> = memo(({ id }) => {
           options={{
             size: 'sm',
           }}
-          imageSize={{ width: CAROUSEL_WIDTH, height: APP.serp.cardHeight }}
+          sizes={{ width: CAROUSEL_WIDTH, height: APP.serp.cardHeight }}
         />
       </div>
 

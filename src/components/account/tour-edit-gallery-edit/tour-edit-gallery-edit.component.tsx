@@ -79,6 +79,7 @@ export const TourEditGalleryEdit: VFC = () => {
             <ImageTile
               image={image.url}
               alt={image.description}
+              sizes={{ width: 540, height: 304 }}
               actions={[
                 {
                   icon: 'magnifying-glass',
