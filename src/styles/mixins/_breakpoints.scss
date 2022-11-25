@@ -1,25 +1,27 @@
+@use 'sass:map';
 @import 'styles/variables/breakpoints';
+@import 'styles/mixins/utils';
 
 @mixin mobile {
-  @media screen and (max-width: $breakpoint-xs) {
+  @media screen and (max-width: px-to-em(map.get($breakpoints, 'xs'))) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media screen and (max-width: $breakpoint-sm) {
+  @media screen and (max-width: px-to-em(map.get($breakpoints, 'sm'))) {
     @content;
   }
 }
 
 @mixin laptop {
-  @media screen and (max-width: $breakpoint-md) {
+  @media screen and (max-width: px-to-em(map.get($breakpoints, 'md'))) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media screen and (max-width: $breakpoint-lg) {
+  @media screen and (max-width: px-to-em(map.get($breakpoints, 'lg'))) {
     @content;
   }
 }
