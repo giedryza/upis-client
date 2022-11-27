@@ -1,10 +1,10 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 
 import { useAppDispatch, useAppSelector } from 'tools/services/store';
 import { Lightbox } from 'ui';
 import { lightbox, selectLightbox } from 'domain/lightbox';
 
-export const LightboxContainer: VFC = () => {
+export const LightboxContainer: FC = () => {
   const dispatch = useAppDispatch();
 
   const { isOpen, images, currentImage } = useAppSelector(selectLightbox);

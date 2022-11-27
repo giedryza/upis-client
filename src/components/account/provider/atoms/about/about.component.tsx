@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { InfoBlock } from 'components/account/atoms';
@@ -6,7 +6,7 @@ import { useActiveProvider } from 'domain/providers';
 import { routes } from 'config/routes';
 import { LabeledValue } from 'ui';
 
-export const About: VFC = () => {
+export const About: FC = () => {
   const { t, lang } = useTranslation();
 
   const { data: provider } = useActiveProvider();

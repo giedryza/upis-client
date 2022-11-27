@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { clsx } from 'clsx';
 
 import { Icon, Button } from 'ui';
@@ -6,7 +6,7 @@ import { Icon, Button } from 'ui';
 import { Props } from './toast.types';
 import styles from './toast.module.scss';
 
-export const Toast: VFC<Props> = ({
+export const Toast: FC<Props> = ({
   type = 'info',
   message,
   onClose,

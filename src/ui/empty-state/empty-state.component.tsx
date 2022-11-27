@@ -1,11 +1,11 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 
 import { Icon, Button } from 'ui';
 
 import { Props } from './empty-state.types';
 import styles from './empty-state.module.scss';
 
-export const EmptyState: VFC<Props> = ({
+export const EmptyState: FC<Props> = ({
   title,
   message,
   icon,

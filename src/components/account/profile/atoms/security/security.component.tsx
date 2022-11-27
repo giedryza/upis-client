@@ -1,11 +1,11 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { InfoBlock } from 'components/account/atoms';
 import { routes } from 'config/routes';
 import { LabeledValue } from 'ui';
 
-export const Security: VFC = () => {
+export const Security: FC = () => {
   const { t } = useTranslation();
 
   return (

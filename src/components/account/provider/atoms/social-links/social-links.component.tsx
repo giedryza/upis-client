@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
@@ -11,7 +11,7 @@ import { getRouteParam, toExternalLink } from 'tools/common';
 
 import { ICON_BY_SOCIAL_LINK_TYPE } from './social-links.constants';
 
-export const SocialLinks: VFC = () => {
+export const SocialLinks: FC = () => {
   const { t } = useTranslation();
   const { query } = useRouter();
   const { confirmation } = useConfirm();

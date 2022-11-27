@@ -1,4 +1,4 @@
-import { useEffect, VFC } from 'react';
+import { useEffect, FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -12,7 +12,7 @@ import { Values } from './tour-edit-about.types';
 import { INITIAL_VALUES } from './tour-edit-about.constants';
 import styles from './tour-edit-about.module.scss';
 
-export const TourEditAbout: VFC = () => {
+export const TourEditAbout: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 

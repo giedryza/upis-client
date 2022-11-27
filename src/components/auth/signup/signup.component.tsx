@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
@@ -14,7 +14,7 @@ import {
 } from './signup.constants';
 import styles from './signup.module.scss';
 
-export const Signup: VFC = () => {
+export const Signup: FC = () => {
   const { t } = useTranslation();
 
   const { mutate: signup, isLoading } = useSignup();

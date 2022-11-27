@@ -1,10 +1,10 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { useProgressBar } from 'react-aria';
 
 import { Props } from './progress.types';
 import styles from './progress.module.scss';
 
-export const Progress: VFC<Props> = ({
+export const Progress: FC<Props> = ({
   label,
   ariaLabel,
   valueLabel,

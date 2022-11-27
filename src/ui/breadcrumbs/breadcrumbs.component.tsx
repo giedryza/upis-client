@@ -1,11 +1,11 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { useBreadcrumbs } from 'react-aria';
 
 import { BreadcrumbItem } from './atoms';
 import { Props } from './breadcrumbs.types';
 import styles from './breadcrumbs.module.scss';
 
-export const Breadcrumbs: VFC<Props> = ({ items, heading }) => {
+export const Breadcrumbs: FC<Props> = ({ items, heading }) => {
   const breadcrumbItems = items.map((item, i) => (
     <BreadcrumbItem
       url={item.url}

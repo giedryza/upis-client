@@ -1,4 +1,4 @@
-import { useRef, useState, VFC, KeyboardEvent } from 'react';
+import { useRef, useState, FC, KeyboardEvent } from 'react';
 import { clsx } from 'clsx';
 
 import { useOnClickOutside } from 'tools/hooks';
@@ -7,7 +7,7 @@ import { Button } from 'ui';
 import { Props } from './dropdown-menu.types';
 import styles from './dropdown-menu.module.scss';
 
-export const DropdownMenu: VFC<Props> = ({
+export const DropdownMenu: FC<Props> = ({
   id,
   menuButton,
   position = 'bottom-left',

@@ -1,4 +1,4 @@
-import { useState, VFC } from 'react';
+import { useState, FC } from 'react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
@@ -19,7 +19,7 @@ import {
 } from './reset.constants';
 import styles from './reset.module.scss';
 
-export const PasswordReset: VFC = () => {
+export const PasswordReset: FC = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { query } = useRouter();

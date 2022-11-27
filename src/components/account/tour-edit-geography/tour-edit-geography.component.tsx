@@ -1,4 +1,4 @@
-import { useEffect, VFC } from 'react';
+import { useEffect, FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -22,7 +22,7 @@ import { Values } from './tour-edit-geography.types';
 import { INITIAL_VALUES } from './tour-edit-geography.constants';
 import styles from './tour-edit-geography.module.scss';
 
-export const TourEditGeography: VFC = () => {
+export const TourEditGeography: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 

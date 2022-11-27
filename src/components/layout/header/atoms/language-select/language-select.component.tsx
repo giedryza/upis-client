@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { useRouter } from 'next/router';
 
 import { CookieName } from 'config/cookies';
@@ -12,7 +12,7 @@ const iconByLocale: Record<Locale, IconName> = {
   [Locale.En]: 'flag-en',
 };
 
-export const LanguageSelect: VFC = () => {
+export const LanguageSelect: FC = () => {
   const { locale: currentLocale, asPath } = useRouter();
 
   const items: DropdownMenuItem[] = Object.values(Locale).map((locale) => ({

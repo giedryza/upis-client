@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
@@ -7,7 +7,7 @@ import { useDeleteTour, useMyTours } from 'domain/tours';
 import { useConfirm } from 'domain/confirm';
 import { formatCurrency } from 'tools/format';
 
-export const ToursList: VFC = () => {
+export const ToursList: FC = () => {
   const { t, lang } = useTranslation();
 
   const { confirmation } = useConfirm();

@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Link from 'next/link';
 
 import Logo from 'components/logo/logo-horizontal.svg';
@@ -7,7 +7,7 @@ import { routes } from 'config/routes';
 import { LanguageSelect, AccountMenu } from './atoms';
 import styles from './header.module.scss';
 
-export const Header: VFC = () => {
+export const Header: FC = () => {
   return (
     <header className={styles.header}>
       <Link href={routes.home} className={styles.logo} aria-label="Home">

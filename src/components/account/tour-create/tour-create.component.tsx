@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -13,7 +13,7 @@ import { Values } from './tour-create.types';
 import { INITIAL_VALUES } from './tour-create.constants';
 import styles from './tour-create.module.scss';
 
-export const TourCreate: VFC = () => {
+export const TourCreate: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 

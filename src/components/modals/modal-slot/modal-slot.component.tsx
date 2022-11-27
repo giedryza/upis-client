@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 
 import { useAppDispatch, useAppSelector } from 'tools/services/store';
 import { Modal } from 'ui';
@@ -6,7 +6,7 @@ import { modal, selectIsModalActive } from 'domain/modal';
 
 import { Props } from './modal-slot.types';
 
-export const ModalSlot: VFC<Props> = ({ modalName, slot }) => {
+export const ModalSlot: FC<Props> = ({ modalName, slot }) => {
   const dispatch = useAppDispatch();
 
   const isOpen = useAppSelector(selectIsModalActive(modalName));

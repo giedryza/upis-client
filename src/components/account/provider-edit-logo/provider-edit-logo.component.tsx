@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -11,7 +11,7 @@ import { useActiveProvider, useUploadLogo } from 'domain/providers';
 import { Values } from './provider-edit-logo.types';
 import styles from './provider-edit-logo.module.scss';
 
-export const ProviderEditLogo: VFC = () => {
+export const ProviderEditLogo: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 

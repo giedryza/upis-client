@@ -1,4 +1,4 @@
-import { useState, VFC } from 'react';
+import { useState, FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
@@ -11,7 +11,7 @@ import { Values } from './forgot.types';
 import { INITIAL_VALUES } from './forgot.constants';
 import styles from './forgot.module.scss';
 
-export const PasswordForgot: VFC = () => {
+export const PasswordForgot: FC = () => {
   const { t } = useTranslation();
 
   const [isSuccess, setIsSuccess] = useState(false);

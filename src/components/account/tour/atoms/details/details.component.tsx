@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { InfoBlock } from 'components/account/atoms';
@@ -6,7 +6,7 @@ import { useActiveTour } from 'domain/tours';
 import { routes } from 'config/routes';
 import { LabeledValue, Meter } from 'ui';
 
-export const Details: VFC = () => {
+export const Details: FC = () => {
   const { t } = useTranslation();
 
   const { data: tour } = useActiveTour();

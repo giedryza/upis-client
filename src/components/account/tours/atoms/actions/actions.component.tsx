@@ -1,10 +1,10 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
 import { Button } from 'ui';
 
-export const ToursActions: VFC = () => {
+export const ToursActions: FC = () => {
   const { t } = useTranslation();
 
   return (

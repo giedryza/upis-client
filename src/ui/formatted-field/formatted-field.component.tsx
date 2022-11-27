@@ -1,9 +1,9 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { useNumberFormatter } from 'react-aria';
 
 import { Props } from './formatted-field.types';
 
-export const FormattedField: VFC<Props> = ({
+export const FormattedField: FC<Props> = ({
   value,
   fallback = '-',
   formatOptions,

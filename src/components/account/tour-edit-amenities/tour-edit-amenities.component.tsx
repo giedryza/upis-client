@@ -1,4 +1,4 @@
-import { useEffect, VFC } from 'react';
+import { useEffect, FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import { useRouter } from 'next/router';
@@ -14,7 +14,7 @@ import { Values } from './tour-edit-amenities.types';
 import { INITIAL_VALUES } from './tour-edit-amenities.constants';
 import styles from './tour-edit-amenities.module.scss';
 
-export const TourEditAmenities: VFC = () => {
+export const TourEditAmenities: FC = () => {
   const { t, lang } = useTranslation();
   const { push } = useRouter();
 

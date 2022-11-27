@@ -1,4 +1,4 @@
-import { VFC, useMemo } from 'react';
+import { FC, useMemo } from 'react';
 import Link from 'next/link';
 import { clsx } from 'clsx';
 
@@ -7,7 +7,7 @@ import { Icon } from 'ui';
 import styles from './button.module.scss';
 import { Props, LinkProps, ButtonProps } from './button.types';
 
-export const Button: VFC<Props> = ({
+export const Button: FC<Props> = ({
   label,
   url,
   icon,

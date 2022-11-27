@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 
 import { useAppSelector } from 'tools/services/store';
 import { Portal } from 'ui';
@@ -7,7 +7,7 @@ import { selectAlerts } from 'domain/alerts';
 import { Alert } from './atoms';
 import styles from './alerts.module.scss';
 
-export const Alerts: VFC = () => {
+export const Alerts: FC = () => {
   const alerts = useAppSelector(selectAlerts);
 
   return (

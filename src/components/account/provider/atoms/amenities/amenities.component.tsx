@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { InfoBlock } from 'components/account/atoms';
@@ -9,7 +9,7 @@ import { formatCurrency } from 'tools/format';
 import { ICON_BY_VARIANT, useDeleteAmenity } from 'domain/amenities';
 import { useConfirm } from 'domain/confirm';
 
-export const Amenities: VFC = () => {
+export const Amenities: FC = () => {
   const { t, lang } = useTranslation();
 
   const { confirmation } = useConfirm();

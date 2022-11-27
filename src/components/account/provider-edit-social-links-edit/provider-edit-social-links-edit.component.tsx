@@ -1,4 +1,4 @@
-import { useEffect, VFC } from 'react';
+import { useEffect, FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -17,7 +17,7 @@ import { Values } from './provider-edit-social-links-edit.types';
 import { INITIAL_VALUES } from './provider-edit-social-links-edit.constants';
 import styles from './provider-edit-social-links-edit.module.scss';
 
-export const ProviderEditSocialLinksEdit: VFC = () => {
+export const ProviderEditSocialLinksEdit: FC = () => {
   const { t } = useTranslation();
   const { query, push } = useRouter();
 

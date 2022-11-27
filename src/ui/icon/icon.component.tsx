@@ -1,11 +1,11 @@
-import { useMemo, VFC } from 'react';
+import { useMemo, FC } from 'react';
 import dynamic from 'next/dynamic';
 
 import { Loader } from 'ui';
 
 import { Props } from './icon.types';
 
-export const Icon: VFC<Props> = ({ name, ...svgProps }) => {
+export const Icon: FC<Props> = ({ name, ...svgProps }) => {
   const loader = useMemo(
     () => (
       <span className={svgProps.className}>
