@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
@@ -6,7 +6,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { Props } from './app-head.types';
 import { APP_NAME, HOST } from './app-head.constants';
 
-export const AppHead: VFC<Props> = ({ title }) => {
+export const AppHead: FC<Props> = ({ title }) => {
   const { locales = [], defaultLocale, pathname } = useRouter();
   const { t } = useTranslation();
 

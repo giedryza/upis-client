@@ -1,4 +1,4 @@
-import { useEffect, VFC } from 'react';
+import { useEffect, FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -12,7 +12,7 @@ import { Values } from './provider-edit-contacts.types';
 import { INITIAL_VALUES } from './provider-edit-contacts.constants';
 import styles from './provider-edit-contacts.module.scss';
 
-export const ProviderEditContacts: VFC = () => {
+export const ProviderEditContacts: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 

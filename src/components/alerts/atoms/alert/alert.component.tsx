@@ -1,4 +1,4 @@
-import { useState, VFC } from 'react';
+import { useState, FC } from 'react';
 import { clsx } from 'clsx';
 
 import { useAppDispatch } from 'tools/services/store';
@@ -10,7 +10,7 @@ import { Props } from './alert.types';
 import { ALERT_FADE_DELAY } from './alert.constants';
 import styles from './alert.module.scss';
 
-export const Alert: VFC<Props> = ({ id, type, message }) => {
+export const Alert: FC<Props> = ({ id, type, message }) => {
   const dispatch = useAppDispatch();
 
   const [isFading, setIsFading] = useState(true);

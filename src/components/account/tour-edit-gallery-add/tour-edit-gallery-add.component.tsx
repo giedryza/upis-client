@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -12,7 +12,7 @@ import { Values } from './tour-edit-gallery-add.types';
 import { INITIAL_VALUES } from './tour-edit-gallery-add.constants';
 import styles from './tour-edit-gallery-add.module.scss';
 
-export const TourEditGalleryAdd: VFC = () => {
+export const TourEditGalleryAdd: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 

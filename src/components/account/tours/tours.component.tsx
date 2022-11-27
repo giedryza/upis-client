@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { Card, EmptyState } from 'ui';
@@ -9,7 +9,7 @@ import { useMyTours } from 'domain/tours';
 import { ToursActions, ToursList } from './atoms';
 import styles from './tours.module.scss';
 
-export const Tours: VFC = () => {
+export const Tours: FC = () => {
   const { t } = useTranslation();
 
   const { data: providers = [], isLoading: isProvidersLoading } =

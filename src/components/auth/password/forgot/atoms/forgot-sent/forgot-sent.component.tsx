@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 
@@ -8,7 +8,7 @@ import { Button, Container, Card } from 'ui';
 import { Props } from './forgot-sent.types';
 import styles from './forgot-sent.module.scss';
 
-export const PasswordForgotSent: VFC<Props> = ({ onRetry }) => {
+export const PasswordForgotSent: FC<Props> = ({ onRetry }) => {
   const { t } = useTranslation();
 
   return (

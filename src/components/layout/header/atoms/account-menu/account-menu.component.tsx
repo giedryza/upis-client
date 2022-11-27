@@ -1,11 +1,11 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useSession, signOut } from 'next-auth/react';
 
 import { routes } from 'config/routes';
 import { Button, DropdownMenu } from 'ui';
 
-export const AccountMenu: VFC = () => {
+export const AccountMenu: FC = () => {
   const { t } = useTranslation();
 
   const { status } = useSession();

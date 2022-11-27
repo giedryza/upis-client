@@ -1,11 +1,11 @@
-import { useRef, VFC } from 'react';
+import { useRef, FC } from 'react';
 import Link from 'next/link';
 import { useBreadcrumbItem } from 'react-aria';
 
 import { Props } from './breadcrumb-item.types';
 import styles from './breadcrumb-item.module.scss';
 
-export const BreadcrumbItem: VFC<Props> = ({
+export const BreadcrumbItem: FC<Props> = ({
   isCurrent,
   label,
   url = '/',

@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
@@ -6,7 +6,7 @@ import { Button, Container, Card } from 'ui';
 
 import styles from './reset-success.module.scss';
 
-export const PasswordResetSuccess: VFC = () => {
+export const PasswordResetSuccess: FC = () => {
   const { t } = useTranslation();
 
   return (

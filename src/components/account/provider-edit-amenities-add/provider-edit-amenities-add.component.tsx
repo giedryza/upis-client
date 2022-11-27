@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -22,7 +22,7 @@ import { Values } from './provider-edit-amenities-add.types';
 import { INITIAL_VALUES } from './provider-edit-amenities-add.constants';
 import styles from './provider-edit-amenities-add.module.scss';
 
-export const ProviderEditAmenitiesAdd: VFC = () => {
+export const ProviderEditAmenitiesAdd: FC = () => {
   const { t } = useTranslation();
   const { push, query } = useRouter();
 

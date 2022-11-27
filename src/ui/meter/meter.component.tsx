@@ -1,10 +1,10 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { useMeter } from 'react-aria';
 
 import { Props } from './meter.types';
 import styles from './meter.module.scss';
 
-export const Meter: VFC<Props> = ({
+export const Meter: FC<Props> = ({
   label,
   ariaLabel,
   valueLabel,

@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { InfoBlock } from 'components/account/atoms';
@@ -6,7 +6,7 @@ import { useActiveProvider } from 'domain/providers';
 import { routes } from 'config/routes';
 import { Container, ImagePlaceholder, ImageTile } from 'ui';
 
-export const Logo: VFC = () => {
+export const Logo: FC = () => {
   const { t } = useTranslation();
 
   const { data: provider } = useActiveProvider();

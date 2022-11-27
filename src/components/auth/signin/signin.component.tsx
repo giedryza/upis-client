@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { signIn } from 'next-auth/react';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -11,7 +11,7 @@ import { Values } from './signin.types';
 import { INITIAL_VALUES } from './signin.constants';
 import styles from './signin.module.scss';
 
-export const Signin: VFC = () => {
+export const Signin: FC = () => {
   const { t } = useTranslation();
 
   const onSubmit: SubmitHandler<Values> = async ({ email, password }) => {

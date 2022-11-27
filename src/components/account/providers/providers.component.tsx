@@ -1,5 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
-import { VFC } from 'react';
+import { FC } from 'react';
 
 import { Card, EmptyState } from 'ui';
 import { routes } from 'config/routes';
@@ -8,7 +8,7 @@ import { useMyProviders } from 'domain/providers';
 import { ProvidersActions, ProvidersList } from './atoms';
 import styles from './providers.module.scss';
 
-export const Providers: VFC = () => {
+export const Providers: FC = () => {
   const { t } = useTranslation();
 
   const { data: providers = [], isLoading } = useMyProviders();

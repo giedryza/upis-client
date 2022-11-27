@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -16,7 +16,7 @@ import {
 import { Values } from './profile-edit-security.types';
 import styles from './profile-edit-security.module.scss';
 
-export const ProfileEditSecurity: VFC = () => {
+export const ProfileEditSecurity: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 

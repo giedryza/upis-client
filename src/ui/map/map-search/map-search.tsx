@@ -1,11 +1,11 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 
 import 'leaflet-geosearch/dist/geosearch.css';
 
 import { useInitControl, useMapSearch, useOnChange } from './map-search.hooks';
 import { Props } from './map-search.types';
 
-export const MapSearch: VFC<Props> = ({ useMap, onChange }) => {
+export const MapSearch: FC<Props> = ({ useMap, onChange }) => {
   const map = useMap();
 
   useInitControl(map);

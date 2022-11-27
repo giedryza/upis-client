@@ -1,11 +1,11 @@
-import { useEffect, VFC } from 'react';
+import { useEffect, FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { useAppDispatch, useAppSelector } from 'tools/services/store';
 import { Modal } from 'ui';
 import { confirm, selectConfirm } from 'domain/confirm';
 
-export const ConfirmationModal: VFC = () => {
+export const ConfirmationModal: FC = () => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 

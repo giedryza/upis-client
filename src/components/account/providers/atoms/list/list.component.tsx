@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
@@ -7,7 +7,7 @@ import { useMyProviders, useDeleteProvider } from 'domain/providers';
 import { useConfirm } from 'domain/confirm';
 import { toExternalLink } from 'tools/common';
 
-export const ProvidersList: VFC = () => {
+export const ProvidersList: FC = () => {
   const { t } = useTranslation();
 
   const { confirmation } = useConfirm();

@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 
@@ -19,7 +19,7 @@ import { useActiveProvider, useUpdateLocation } from 'domain/providers';
 
 import styles from './provider-edit-location.module.scss';
 
-export const ProviderEditLocation: VFC = () => {
+export const ProviderEditLocation: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 

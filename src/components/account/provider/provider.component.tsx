@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 
 import {
   About,
@@ -11,7 +11,7 @@ import {
 } from './atoms';
 import styles from './provider.module.scss';
 
-export const Provider: VFC = () => {
+export const Provider: FC = () => {
   return (
     <div className={styles.content}>
       <About />

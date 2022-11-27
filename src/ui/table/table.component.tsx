@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { Icon } from 'ui';
@@ -6,7 +6,7 @@ import { Icon } from 'ui';
 import { Props } from './table.types';
 import styles from './table.module.scss';
 
-export const Table: VFC<Props> = ({ rows, columns }) => {
+export const Table: FC<Props> = ({ rows, columns }) => {
   const { t } = useTranslation();
 
   return (

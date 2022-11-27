@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -12,7 +12,7 @@ import { Values } from './provider-create.types';
 import { INITIAL_VALUES } from './provider-create.constants';
 import styles from './provider-create.module.scss';
 
-export const ProviderCreate: VFC = () => {
+export const ProviderCreate: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 

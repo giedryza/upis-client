@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 
 import {
   About,
@@ -12,7 +12,7 @@ import {
 } from './atoms';
 import styles from './tour.module.scss';
 
-export const Tour: VFC = () => {
+export const Tour: FC = () => {
   return (
     <div className={styles.content}>
       <About />

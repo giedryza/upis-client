@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Link from 'next/link';
 
 import { Icon, Button } from 'ui';
@@ -6,7 +6,7 @@ import { Icon, Button } from 'ui';
 import { Props } from './tile.types';
 import styles from './tile.module.scss';
 
-export const Tile: VFC<Props> = ({
+export const Tile: FC<Props> = ({
   icon,
   title,
   subtitle,

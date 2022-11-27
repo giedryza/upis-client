@@ -1,11 +1,11 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useSession } from 'next-auth/react';
 
 import { InfoBlock } from 'components/account/atoms';
 import { LabeledValue } from 'ui';
 
-export const General: VFC = () => {
+export const General: FC = () => {
   const { t } = useTranslation();
 
   const { data: session } = useSession();

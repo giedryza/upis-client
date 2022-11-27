@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
@@ -18,7 +18,7 @@ import { useActiveTour, useUpdateTour } from 'domain/tours';
 
 import styles from './tour-edit-location.module.scss';
 
-export const TourEditLocation: VFC = () => {
+export const TourEditLocation: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 

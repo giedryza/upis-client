@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -8,7 +8,7 @@ import { Icon, IconName } from 'ui';
 
 import styles from './navigation.module.scss';
 
-export const Navigation: VFC = () => {
+export const Navigation: FC = () => {
   const { t } = useTranslation();
   const { pathname } = useRouter();
 

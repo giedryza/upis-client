@@ -1,9 +1,9 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 
 import { Props } from './file-icon.types';
 import styles from './file-icon.module.scss';
 
-export const FileIcon: VFC<Props> = ({ type }) => {
+export const FileIcon: FC<Props> = ({ type }) => {
   return (
     <svg className={styles.container} viewBox="0 0 349.34 385.67">
       <path
