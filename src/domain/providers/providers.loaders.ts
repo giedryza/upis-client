@@ -8,6 +8,7 @@ import {
   loadersFactory,
 } from 'tools/services/request';
 import { Pagination } from 'types/common';
+import { generateRoute } from 'tools/common';
 
 import { ProvidersFilters, Provider } from './providers.types';
 
@@ -17,14 +18,17 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       req,
       params,
     }: { req?: IncomingMessage; params?: ProvidersFilters } = {}) =>
-      new Request<Provider[], Pagination>(endpoints.providers.index, {
-        req,
-        params,
-        locale,
-      }).get(),
+      new Request<Provider[], Pagination>(
+        generateRoute(endpoints.providers.index),
+        {
+          req,
+          params,
+          locale,
+        }
+      ).get(),
     getProvider: ({ req, id }: { req?: IncomingMessage; id: string }) =>
       new Request<Provider | null>(
-        endpoints.providers.one.index.replace(':id', id),
+        generateRoute(endpoints.providers.one.index, { id }),
         { req, locale }
       ).get(),
     createProvider: ({
@@ -32,7 +36,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
     }: {
       form: Pick<Provider, 'name' | 'phone' | 'email' | 'description'>;
     }) =>
-      new Request<Provider>(endpoints.providers.index, {
+      new Request<Provider>(generateRoute(endpoints.providers.index), {
         body: getJsonBody(form),
         locale,
       }).post(),
@@ -55,10 +59,13 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         >
       >;
     }) =>
-      new Request<Provider>(endpoints.providers.one.index.replace(':id', id), {
-        body: getJsonBody(form),
-        locale,
-      }).patch(),
+      new Request<Provider>(
+        generateRoute(endpoints.providers.one.index, { id }),
+        {
+          body: getJsonBody(form),
+          locale,
+        }
+      ).patch(),
     updateLocation: ({
       id,
       form,
@@ -66,20 +73,26 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       id: string;
       form: { lat: number; lng: number; address: string };
     }) =>
-      new Request<Provider>(endpoints.providers.one.index.replace(':id', id), {
-        body: getJsonBody({
-          address: form.address,
-          ...(form.lat && form.lng && { location: [form.lng, form.lat] }),
-        }),
-        locale,
-      }).patch(),
+      new Request<Provider>(
+        generateRoute(endpoints.providers.one.index, { id }),
+        {
+          body: getJsonBody({
+            address: form.address,
+            ...(form.lat && form.lng && { location: [form.lng, form.lat] }),
+          }),
+          locale,
+        }
+      ).patch(),
     uploadLogo: ({ id, logo }: { id: string; logo: File }) =>
-      new Request<Provider>(endpoints.providers.one.logo.replace(':id', id), {
-        body: getFormDataBody([{ field: 'logo', value: logo }]),
-        locale,
-      }).patch(),
+      new Request<Provider>(
+        generateRoute(endpoints.providers.one.logo, { id }),
+        {
+          body: getFormDataBody([{ field: 'logo', value: logo }]),
+          locale,
+        }
+      ).patch(),
     deleteProvider: ({ id }: { id: string }) =>
-      new Request(endpoints.providers.one.index.replace(':id', id), {
+      new Request(generateRoute(endpoints.providers.one.index, { id }), {
         locale,
       }).delete(),
   },

@@ -1,4 +1,5 @@
 import { endpoints } from 'config/endpoints';
+import { generateRoute } from 'tools/common';
 import { Request, getJsonBody, loadersFactory } from 'tools/services/request';
 
 import { Session } from './users.types';
@@ -38,7 +39,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         locale,
       }).post(),
     signup: ({ email, password, confirmPassword }: Signup) =>
-      new Request<Session>(endpoints.users.signup, {
+      new Request<Session>(generateRoute(endpoints.users.signup), {
         body: getJsonBody({
           email,
           password,
@@ -51,7 +52,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       newPassword,
       confirmPassword,
     }: UpdatePassword) =>
-      new Request(endpoints.users.password.update, {
+      new Request(generateRoute(endpoints.users.password.update), {
         body: getJsonBody({
           currentPassword,
           newPassword,
@@ -60,14 +61,14 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         locale,
       }).patch(),
     forgotPassword: ({ email }: ForgotPassword) =>
-      new Request(endpoints.users.password.forgot, {
+      new Request(generateRoute(endpoints.users.password.forgot), {
         body: getJsonBody({
           email,
         }),
         locale,
       }).post(),
     resetPassword: ({ userId, token, password }: ResetPassword) =>
-      new Request(endpoints.users.password.reset, {
+      new Request(generateRoute(endpoints.users.password.reset), {
         body: getJsonBody({
           userId,
           token,
