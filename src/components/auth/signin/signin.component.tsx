@@ -4,6 +4,7 @@ import { signIn } from 'next-auth/react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { routes } from 'config/routes';
+import { generateRoute } from 'tools/common';
 import { Button, Container, Card, Divider, TextInput } from 'ui';
 import { handleError } from 'tools/errors';
 
@@ -72,7 +73,7 @@ export const Signin: FC = () => {
                 label={t('auth:actions.forgot-pass')}
                 variant="link"
                 size="xs"
-                url={routes.auth.password.forgot}
+                url={generateRoute(routes.auth.password.forgot)}
               />
             </fieldset>
 
@@ -101,7 +102,7 @@ export const Signin: FC = () => {
               label={t('auth:actions.signup')}
               variant="link"
               size="xs"
-              url={routes.auth.signup}
+              url={generateRoute(routes.auth.signup)}
             />
           </div>
         </div>

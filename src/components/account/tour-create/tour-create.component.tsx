@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { routes } from 'config/routes';
+import { generateRoute } from 'tools/common';
 import { Button, Container, SelectInput, TextInput } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useCreateTour } from 'domain/tours';
@@ -33,7 +34,7 @@ export const TourCreate: FC = () => {
       { form: { name, provider } },
       {
         onSuccess: ({ data }) => {
-          push(routes.account.tours.one.index.replace(':id', data._id));
+          push(generateRoute(routes.account.tours.one.index, { id: data._id }));
         },
       }
     );
@@ -82,7 +83,7 @@ export const TourCreate: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.tours.index}
+              url={generateRoute(routes.account.tours.index)}
             />
 
             <Button

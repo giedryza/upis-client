@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
 import { Button } from 'ui';
+import { generateRoute } from 'tools/common';
 
 export const ProvidersActions: FC = () => {
   const { t } = useTranslation();
@@ -14,7 +15,7 @@ export const ProvidersActions: FC = () => {
         variant="tertiary"
         icon="plus"
         size="xs"
-        url={routes.account.providers.create}
+        url={generateRoute(routes.account.providers.create)}
       />
     </div>
   );

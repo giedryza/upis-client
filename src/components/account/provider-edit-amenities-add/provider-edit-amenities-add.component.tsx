@@ -16,7 +16,7 @@ import { InfoBlock } from 'components/account/atoms';
 import { units, useAddAmenity, variants } from 'domain/amenities';
 import { useFormatNumber } from 'tools/format';
 import { currencies } from 'types/common';
-import { getRouteParam, toCents } from 'tools/common';
+import { generateRoute, getRouteParam, toCents } from 'tools/common';
 
 import { Values } from './provider-edit-amenities-add.types';
 import { INITIAL_VALUES } from './provider-edit-amenities-add.constants';
@@ -65,7 +65,11 @@ export const ProviderEditAmenitiesAdd: FC = () => {
       },
       {
         onSuccess: () => {
-          push(routes.account.providers.one.index.replace(':id', providerId));
+          push(
+            generateRoute(routes.account.providers.one.index, {
+              id: providerId,
+            })
+          );
         },
       }
     );
@@ -170,10 +174,9 @@ export const ProviderEditAmenitiesAdd: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.providers.one.index.replace(
-                ':id',
-                providerId
-              )}
+              url={generateRoute(routes.account.providers.one.index, {
+                id: providerId,
+              })}
             />
 
             <Button

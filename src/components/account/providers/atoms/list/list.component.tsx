@@ -5,7 +5,7 @@ import { routes } from 'config/routes';
 import { Tile } from 'ui';
 import { useMyProviders, useDeleteProvider } from 'domain/providers';
 import { useConfirm } from 'domain/confirm';
-import { toExternalLink } from 'tools/common';
+import { generateRoute, toExternalLink } from 'tools/common';
 
 export const ProvidersList: FC = () => {
   const { t } = useTranslation();
@@ -21,7 +21,9 @@ export const ProvidersList: FC = () => {
         <Tile
           title={provider.name}
           subtitle={provider.address}
-          url={routes.account.providers.one.index.replace(':id', provider._id)}
+          url={generateRoute(routes.account.providers.one.index, {
+            id: provider._id,
+          })}
           heading="h2"
           fields={[
             {
@@ -64,10 +66,9 @@ export const ProvidersList: FC = () => {
               label: t('common:actions.edit'),
               icon: 'pencil',
               variant: 'secondary',
-              url: routes.account.providers.one.index.replace(
-                ':id',
-                provider._id
-              ),
+              url: generateRoute(routes.account.providers.one.index, {
+                id: provider._id,
+              }),
             },
             {
               label: t('common:actions.delete'),

@@ -5,6 +5,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, NumberInput, SliderInput } from 'ui';
 import { routes } from 'config/routes';
+import { generateRoute } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTour } from 'domain/tours';
 import { useFormatNumber } from 'tools/format';
@@ -53,7 +54,7 @@ export const TourEditDetails: FC = () => {
       { id: tourId, form },
       {
         onSuccess: () => {
-          push(routes.account.tours.one.index.replace(':id', tourId));
+          push(generateRoute(routes.account.tours.one.index, { id: tourId }));
         },
       }
     );
@@ -171,10 +172,9 @@ export const TourEditDetails: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.tours.one.index.replace(
-                ':id',
-                tour?._id ?? ''
-              )}
+              url={generateRoute(routes.account.tours.one.index, {
+                id: tour?._id ?? '',
+              })}
             />
 
             <Button

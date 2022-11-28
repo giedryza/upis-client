@@ -8,6 +8,7 @@ import { Tile } from 'ui';
 import { formatCurrency } from 'tools/format';
 import { ICON_BY_VARIANT, useDeleteAmenity } from 'domain/amenities';
 import { useConfirm } from 'domain/confirm';
+import { generateRoute } from 'tools/common';
 
 export const Amenities: FC = () => {
   const { t, lang } = useTranslation();
@@ -26,10 +27,9 @@ export const Amenities: FC = () => {
       columns={2}
       actions={[
         {
-          url: routes.account.providers.one.amenities.add.replace(
-            ':id',
-            provider._id
-          ),
+          url: generateRoute(routes.account.providers.one.amenities.add, {
+            id: provider._id,
+          }),
           label: t('common:actions.add'),
           variant: 'tertiary',
           icon: 'plus',
@@ -58,9 +58,10 @@ export const Amenities: FC = () => {
               label: t('common:actions.edit'),
               icon: 'pencil',
               variant: 'secondary',
-              url: routes.account.providers.one.amenities.one
-                .replace(':id', provider._id)
-                .replace(':amenityId', amenity._id),
+              url: generateRoute(routes.account.providers.one.amenities.one, {
+                id: provider._id,
+                amenityId: amenity._id,
+              }),
             },
             {
               label: t('common:actions.delete'),

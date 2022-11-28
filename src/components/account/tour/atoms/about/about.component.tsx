@@ -5,6 +5,7 @@ import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour } from 'domain/tours';
 import { routes } from 'config/routes';
 import { LabeledValue } from 'ui';
+import { generateRoute } from 'tools/common';
 
 export const About: FC = () => {
   const { t } = useTranslation();
@@ -20,7 +21,7 @@ export const About: FC = () => {
       columns={1}
       actions={[
         {
-          url: routes.account.tours.one.about.replace(':id', tour._id),
+          url: generateRoute(routes.account.tours.one.about, { id: tour._id }),
           label: t('common:actions.edit'),
           variant: 'tertiary',
           icon: 'pencil',

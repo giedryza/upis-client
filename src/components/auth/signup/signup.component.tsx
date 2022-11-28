@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { routes } from 'config/routes';
+import { generateRoute } from 'tools/common';
 import { Button, Container, Divider, TextInput, Card } from 'ui';
 import { useSignup } from 'domain/users';
 
@@ -131,7 +132,7 @@ export const Signup: FC = () => {
               label={t('auth:actions.signin')}
               variant="link"
               size="xs"
-              url={routes.auth.signin}
+              url={generateRoute(routes.auth.signin)}
             />
           </div>
         </div>

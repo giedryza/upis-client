@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { routes } from 'config/routes';
+import { generateRoute } from 'tools/common';
 import { Button, Container, TextInput } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useCreateProvider } from 'domain/providers';
@@ -36,7 +37,9 @@ export const ProviderCreate: FC = () => {
       { form: { name, email, phone, description } },
       {
         onSuccess: ({ data }) => {
-          push(routes.account.providers.one.index.replace(':id', data._id));
+          push(
+            generateRoute(routes.account.providers.one.index, { id: data._id })
+          );
         },
       }
     );
@@ -106,7 +109,7 @@ export const ProviderCreate: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.providers.index}
+              url={generateRoute(routes.account.providers.index)}
             />
 
             <Button

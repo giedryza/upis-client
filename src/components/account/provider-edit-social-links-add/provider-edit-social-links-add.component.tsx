@@ -7,7 +7,7 @@ import { Button, Container, SelectInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useAddSocialLink, SocialType } from 'domain/social-links';
-import { getRouteParam } from 'tools/common';
+import { generateRoute, getRouteParam } from 'tools/common';
 
 import { Values } from './provider-edit-social-links-add.types';
 import { INITIAL_VALUES } from './provider-edit-social-links-add.constants';
@@ -36,7 +36,11 @@ export const ProviderEditSocialLinksAdd: FC = () => {
       { hostId: providerId, form: { type, url } },
       {
         onSuccess: () => {
-          push(routes.account.providers.one.index.replace(':id', providerId));
+          push(
+            generateRoute(routes.account.providers.one.index, {
+              id: providerId,
+            })
+          );
         },
       }
     );
@@ -88,10 +92,9 @@ export const ProviderEditSocialLinksAdd: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.providers.one.index.replace(
-                ':id',
-                providerId
-              )}
+              url={generateRoute(routes.account.providers.one.index, {
+                id: providerId,
+              })}
             />
 
             <Button

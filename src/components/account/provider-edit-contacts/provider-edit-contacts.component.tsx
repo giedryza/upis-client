@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, TextInput } from 'ui';
+import { generateRoute } from 'tools/common';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider, useUpdateProvider } from 'domain/providers';
@@ -45,7 +46,11 @@ export const ProviderEditContacts: FC = () => {
       { id: providerId, form: { email, phone, website } },
       {
         onSuccess: () => {
-          push(routes.account.providers.one.index.replace(':id', providerId));
+          push(
+            generateRoute(routes.account.providers.one.index, {
+              id: providerId,
+            })
+          );
         },
       }
     );
@@ -102,10 +107,9 @@ export const ProviderEditContacts: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.providers.one.index.replace(
-                ':id',
-                provider?._id ?? ''
-              )}
+              url={generateRoute(routes.account.providers.one.index, {
+                id: provider?._id ?? '',
+              })}
             />
 
             <Button

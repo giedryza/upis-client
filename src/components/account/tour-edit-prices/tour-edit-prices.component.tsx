@@ -9,7 +9,7 @@ import { currencies } from 'types/common';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTourPrice } from 'domain/tours';
 import { useFormatNumber } from 'tools/format';
-import { toCents } from 'tools/common';
+import { generateRoute, toCents } from 'tools/common';
 
 import { Values } from './tour-edit-prices.types';
 import { INITIAL_VALUES } from './tour-edit-prices.constants';
@@ -56,7 +56,7 @@ export const TourEditPrices: FC = () => {
       },
       {
         onSuccess: () => {
-          push(routes.account.tours.one.index.replace(':id', tourId));
+          push(generateRoute(routes.account.tours.one.index, { id: tourId }));
         },
       }
     );
@@ -116,10 +116,9 @@ export const TourEditPrices: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.tours.one.index.replace(
-                ':id',
-                tour?._id ?? ''
-              )}
+              url={generateRoute(routes.account.tours.one.index, {
+                id: tour?._id ?? '',
+              })}
             />
 
             <Button
