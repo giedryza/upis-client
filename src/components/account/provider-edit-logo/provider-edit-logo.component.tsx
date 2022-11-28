@@ -7,6 +7,7 @@ import { Button, Container, FileInput } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider, useUploadLogo } from 'domain/providers';
+import { generateRoute } from 'tools/common';
 
 import { Values } from './provider-edit-logo.types';
 import styles from './provider-edit-logo.module.scss';
@@ -33,7 +34,11 @@ export const ProviderEditLogo: FC = () => {
       { id: providerId, logo },
       {
         onSuccess: () => {
-          push(routes.account.providers.one.index.replace(':id', providerId));
+          push(
+            generateRoute(routes.account.providers.one.index, {
+              id: providerId,
+            })
+          );
         },
       }
     );
@@ -70,10 +75,9 @@ export const ProviderEditLogo: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.providers.one.index.replace(
-                ':id',
-                provider?._id ?? ''
-              )}
+              url={generateRoute(routes.account.providers.one.index, {
+                id: provider?._id ?? '',
+              })}
             />
 
             <Button

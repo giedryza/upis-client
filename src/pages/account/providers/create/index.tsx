@@ -7,6 +7,7 @@ import { useProtectedPage } from 'tools/hooks';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { AppHead, Breadcrumbs } from 'ui';
 import { ProviderCreate } from 'components/account';
+import { generateRoute } from 'tools/common';
 
 const ProviderCreatePage: NextPage = () => {
   const { t } = useTranslation();
@@ -21,10 +22,13 @@ const ProviderCreatePage: NextPage = () => {
         <PageLayout>
           <Breadcrumbs
             items={[
-              { label: t('account:title'), url: routes.account.profile.index },
+              {
+                label: t('account:title'),
+                url: generateRoute(routes.account.profile.index),
+              },
               {
                 label: t('account:providers.title', { count: 2 }),
-                url: routes.account.providers.index,
+                url: generateRoute(routes.account.providers.index),
               },
               {
                 label: t('common:actions.create'),
@@ -47,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   if (!session) {
     return {
       redirect: {
-        destination: routes.home,
+        destination: generateRoute(routes.home),
         permanent: false,
       },
     };

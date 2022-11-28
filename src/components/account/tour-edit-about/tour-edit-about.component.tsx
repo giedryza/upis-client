@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
+import { generateRoute } from 'tools/common';
 import { Button, Container, TextInput } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
@@ -45,7 +46,7 @@ export const TourEditAbout: FC = () => {
       { id: tourId, form: { name, description, website } },
       {
         onSuccess: () => {
-          push(routes.account.tours.one.index.replace(':id', tourId));
+          push(generateRoute(routes.account.tours.one.index, { id: tourId }));
         },
       }
     );
@@ -88,10 +89,9 @@ export const TourEditAbout: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.tours.one.index.replace(
-                ':id',
-                tour?._id ?? ''
-              )}
+              url={generateRoute(routes.account.tours.one.index, {
+                id: tour?._id ?? '',
+              })}
             />
 
             <Button

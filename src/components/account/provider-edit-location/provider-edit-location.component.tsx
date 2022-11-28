@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 
 import { routes } from 'config/routes';
+import { generateRoute } from 'tools/common';
 import {
   Button,
   Map,
@@ -56,7 +57,11 @@ export const ProviderEditLocation: FC = () => {
       },
       {
         onSuccess: () => {
-          push(routes.account.providers.one.index.replace(':id', providerId));
+          push(
+            generateRoute(routes.account.providers.one.index, {
+              id: providerId,
+            })
+          );
         },
       }
     );
@@ -119,10 +124,9 @@ export const ProviderEditLocation: FC = () => {
           label={t('common:actions.cancel')}
           variant="ghost"
           size="sm"
-          url={routes.account.providers.one.index.replace(
-            ':id',
-            provider?._id ?? ''
-          )}
+          url={generateRoute(routes.account.providers.one.index, {
+            id: provider?._id ?? '',
+          })}
         />
 
         <Button

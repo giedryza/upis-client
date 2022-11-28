@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import { routes } from 'config/routes';
+import { generateRoute } from 'tools/common';
 import { Icon, IconName } from 'ui';
 
 import styles from './navigation.module.scss';
@@ -16,17 +17,17 @@ export const Navigation: FC = () => {
     {
       label: t('account:profile.title'),
       icon: 'user',
-      url: routes.account.profile.index,
+      url: generateRoute(routes.account.profile.index),
     },
     {
       label: t('account:providers.title', { count: 2 }),
       icon: 'kayak',
-      url: routes.account.providers.index,
+      url: generateRoute(routes.account.providers.index),
     },
     {
       label: t('account:tours.title', { count: 2 }),
       icon: 'path',
-      url: routes.account.tours.index,
+      url: generateRoute(routes.account.tours.index),
     },
   ];
 

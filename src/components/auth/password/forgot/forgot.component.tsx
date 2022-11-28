@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { routes } from 'config/routes';
+import { generateRoute } from 'tools/common';
 import { Button, Container, Card, TextInput } from 'ui';
 import { useForgotPassword } from 'domain/users';
 
@@ -92,7 +93,7 @@ export const PasswordForgot: FC = () => {
               label={t('auth:actions.signup')}
               variant="link"
               size="xs"
-              url={routes.auth.signup}
+              url={generateRoute(routes.auth.signup)}
             />
           </div>
         </div>

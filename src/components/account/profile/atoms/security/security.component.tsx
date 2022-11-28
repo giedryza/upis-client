@@ -4,6 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { InfoBlock } from 'components/account/atoms';
 import { routes } from 'config/routes';
 import { LabeledValue } from 'ui';
+import { generateRoute } from 'tools/common';
 
 export const Security: FC = () => {
   const { t } = useTranslation();
@@ -14,7 +15,7 @@ export const Security: FC = () => {
       icon="lock"
       actions={[
         {
-          url: routes.account.profile.security,
+          url: generateRoute(routes.account.profile.security),
           label: t('common:actions.edit'),
           variant: 'tertiary',
           icon: 'pencil',

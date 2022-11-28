@@ -6,7 +6,7 @@ import { dehydrate, QueryClient } from 'react-query';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { getRouteParam } from 'tools/common';
+import { generateRoute, getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Provider } from 'components/account';
@@ -28,10 +28,13 @@ const ProviderPage: NextPage = () => {
         <PageLayout>
           <Breadcrumbs
             items={[
-              { label: t('account:title'), url: routes.account.profile.index },
+              {
+                label: t('account:title'),
+                url: generateRoute(routes.account.profile.index),
+              },
               {
                 label: t('account:providers.title', { count: 2 }),
-                url: routes.account.providers.index,
+                url: generateRoute(routes.account.providers.index),
               },
               { label: id },
             ]}
@@ -56,7 +59,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   if (!session) {
     return {
       redirect: {
-        destination: routes.home,
+        destination: generateRoute(routes.home),
         permanent: false,
       },
     };

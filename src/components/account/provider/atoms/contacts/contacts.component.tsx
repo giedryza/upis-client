@@ -5,6 +5,7 @@ import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider } from 'domain/providers';
 import { LabeledValue } from 'ui';
+import { generateRoute } from 'tools/common';
 
 export const Contacts: FC = () => {
   const { t } = useTranslation();
@@ -19,10 +20,9 @@ export const Contacts: FC = () => {
       icon="contacts"
       actions={[
         {
-          url: routes.account.providers.one.contacts.replace(
-            ':id',
-            provider._id
-          ),
+          url: generateRoute(routes.account.providers.one.contacts, {
+            id: provider._id,
+          }),
           label: t('common:actions.edit'),
           variant: 'tertiary',
           icon: 'pencil',

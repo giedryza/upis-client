@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, FileInput, TextInput } from 'ui';
+import { generateRoute } from 'tools/common';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useAddTourPhoto } from 'domain/tours';
@@ -43,7 +44,7 @@ export const TourEditGalleryAdd: FC = () => {
       },
       {
         onSuccess: () => {
-          push(routes.account.tours.one.index.replace(':id', tourId));
+          push(generateRoute(routes.account.tours.one.index, { id: tourId }));
         },
       }
     );
@@ -87,10 +88,9 @@ export const TourEditGalleryAdd: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.tours.one.index.replace(
-                ':id',
-                tour?._id ?? ''
-              )}
+              url={generateRoute(routes.account.tours.one.index, {
+                id: tour?._id ?? '',
+              })}
             />
 
             <Button

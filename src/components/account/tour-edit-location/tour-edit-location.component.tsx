@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
+import { generateRoute } from 'tools/common';
 import {
   Button,
   Toast,
@@ -64,7 +65,7 @@ export const TourEditLocation: FC = () => {
       },
       {
         onSuccess: () => {
-          push(routes.account.tours.one.index.replace(':id', tourId));
+          push(generateRoute(routes.account.tours.one.index, { id: tourId }));
         },
       }
     );
@@ -147,7 +148,9 @@ export const TourEditLocation: FC = () => {
           label={t('common:actions.cancel')}
           variant="ghost"
           size="sm"
-          url={routes.account.tours.one.index.replace(':id', tour?._id ?? '')}
+          url={generateRoute(routes.account.tours.one.index, {
+            id: tour?._id ?? '',
+          })}
         />
 
         <Button

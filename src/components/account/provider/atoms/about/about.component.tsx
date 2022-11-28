@@ -5,6 +5,7 @@ import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider } from 'domain/providers';
 import { routes } from 'config/routes';
 import { LabeledValue } from 'ui';
+import { generateRoute } from 'tools/common';
 
 export const About: FC = () => {
   const { t, lang } = useTranslation();
@@ -20,7 +21,9 @@ export const About: FC = () => {
       columns={1}
       actions={[
         {
-          url: routes.account.providers.one.about.replace(':id', provider._id),
+          url: generateRoute(routes.account.providers.one.about, {
+            id: provider._id,
+          }),
           label: t('common:actions.edit'),
           variant: 'tertiary',
           icon: 'pencil',

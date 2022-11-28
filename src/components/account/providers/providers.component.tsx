@@ -3,6 +3,7 @@ import { FC } from 'react';
 
 import { Card, EmptyState } from 'ui';
 import { routes } from 'config/routes';
+import { generateRoute } from 'tools/common';
 import { useMyProviders } from 'domain/providers';
 
 import { ProvidersActions, ProvidersList } from './atoms';
@@ -23,7 +24,7 @@ export const Providers: FC = () => {
           action={{
             label: t('account:providers.actions.add'),
             icon: 'plus',
-            url: routes.account.providers.create,
+            url: generateRoute(routes.account.providers.create),
           }}
         />
       ) : (

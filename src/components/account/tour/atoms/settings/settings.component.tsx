@@ -7,6 +7,7 @@ import { useConfirm } from 'domain/confirm';
 import { useActiveTour, useDeleteTour } from 'domain/tours';
 import { Button } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
+import { generateRoute } from 'tools/common';
 
 export const Settings: FC = () => {
   const { t } = useTranslation();
@@ -46,7 +47,7 @@ export const Settings: FC = () => {
                   { id: tour._id },
                   {
                     onSuccess: () => {
-                      push(routes.account.tours.index);
+                      push(generateRoute(routes.account.tours.index));
                     },
                   }
                 );

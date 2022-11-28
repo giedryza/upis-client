@@ -21,7 +21,7 @@ import {
 } from 'domain/amenities';
 import { useFormatNumber } from 'tools/format';
 import { currencies } from 'types/common';
-import { getRouteParam, toCents } from 'tools/common';
+import { generateRoute, getRouteParam, toCents } from 'tools/common';
 
 import { Values } from './provider-edit-amenities-edit.types';
 import { INITIAL_VALUES } from './provider-edit-amenities-edit.constants';
@@ -83,7 +83,11 @@ export const ProviderEditAmenitiesEdit: FC = () => {
       },
       {
         onSuccess: () => {
-          push(routes.account.providers.one.index.replace(':id', providerId));
+          push(
+            generateRoute(routes.account.providers.one.index, {
+              id: providerId,
+            })
+          );
         },
       }
     );
@@ -188,10 +192,9 @@ export const ProviderEditAmenitiesEdit: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.providers.one.index.replace(
-                ':id',
-                providerId
-              )}
+              url={generateRoute(routes.account.providers.one.index, {
+                id: providerId,
+              })}
             />
 
             <Button

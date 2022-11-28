@@ -10,6 +10,7 @@ import {
   MultiAutocompleteInput,
 } from 'ui';
 import { routes } from 'config/routes';
+import { generateRoute } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import {
   regions,
@@ -57,7 +58,7 @@ export const TourEditGeography: FC = () => {
       },
       {
         onSuccess: () => {
-          push(routes.account.tours.one.index.replace(':id', tourId));
+          push(generateRoute(routes.account.tours.one.index, { id: tourId }));
         },
       }
     );
@@ -124,10 +125,9 @@ export const TourEditGeography: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={routes.account.tours.one.index.replace(
-                ':id',
-                tour?._id ?? ''
-              )}
+              url={generateRoute(routes.account.tours.one.index, {
+                id: tour?._id ?? '',
+              })}
             />
 
             <Button
