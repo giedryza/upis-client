@@ -12,9 +12,8 @@ export const generateRoute = <Route extends string>(
 ) => {
   if (!params) return url;
 
-  return Object.keys(params).reduce(
-    (acc, key) =>
-      acc.replace(`:${key}`, String(params[key as keyof typeof params])),
+  return Object.entries(params).reduce<string>(
+    (acc, [key, value]) => acc.replace(`:${key}`, String(value)),
     url
   );
 };
