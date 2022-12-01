@@ -43,6 +43,7 @@ export const SerpCard: FC<Props> = memo(({ id }) => {
           images={Array.from({ length: 5 }).map((_, i) => ({
             id: `${id}-${String(i)}`,
             url: `https://picsum.photos/400/300?random=${id + i}`,
+            placeholder: `https://picsum.photos/8/6?random=${id + i}`,
             alt: '',
           }))}
           options={{

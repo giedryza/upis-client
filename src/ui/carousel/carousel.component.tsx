@@ -128,6 +128,7 @@ export const Carousel: FC<Props> = ({
               className={clsx(styles.image, styles[`-fit-${fit}`])}
               src={image.url}
               alt={image.alt}
+              placeholder={image.placeholder}
               priority={toPreload.includes(i)}
               sizes={sizes}
             />

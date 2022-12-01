@@ -4,6 +4,7 @@ interface Image {
   id: string;
   url: string;
   alt: string;
+  placeholder?: string;
 }
 
 export interface Props {
