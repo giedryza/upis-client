@@ -6,4 +6,5 @@ export type Sizes =
 
 export interface Props {
   sizes: Sizes;
+  placeholder?: string;
 }
