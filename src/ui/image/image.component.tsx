@@ -46,6 +46,7 @@ export const Image: FC<
           src={placeholder}
           alt={imageProps.alt}
           className={styles.placeholder}
+          aria-hidden
         />
       ) : null}
     </div>
