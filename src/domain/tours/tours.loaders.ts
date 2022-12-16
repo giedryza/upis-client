@@ -7,7 +7,8 @@ import {
   loadersFactory,
   getFormDataBody,
 } from 'tools/services/request';
-import { Pagination, Price } from 'types/common';
+import { Price } from 'types/common';
+import { Pagination } from 'types/api';
 import { generateRoute } from 'tools/common';
 
 import { Region, River, Tour, ToursFilters } from './tours.types';
