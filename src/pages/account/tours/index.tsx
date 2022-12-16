@@ -57,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const queryClient = new QueryClient();
-  const filters: ToursFilters = { user: session.user.id };
+  const filters: Partial<ToursFilters> = { user: session.user.id };
   const { loaders } = getLoaders(locale);
 
   await queryClient.prefetchQuery(toursKeys.list(filters), () =>

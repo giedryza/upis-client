@@ -10,11 +10,11 @@ import { useLoaders } from './tours.loaders';
 import { converters } from './tours.converters';
 
 interface UseTours {
-  filters?: ToursFilters;
+  filters?: Partial<ToursFilters>;
   enabled?: boolean;
 }
 
-export const useTours = ({ filters = {}, enabled = true }: UseTours) => {
+export const useTours = ({ filters = {}, enabled = true }: UseTours = {}) => {
   const { loaders } = useLoaders();
 
   const query = useQuery(
@@ -29,7 +29,7 @@ export const useTours = ({ filters = {}, enabled = true }: UseTours) => {
   return query;
 };
 
-export const useMyTours = (filters: ToursFilters = {}) => {
+export const useMyTours = (filters: Partial<ToursFilters> = {}) => {
   const { data: session } = useSession();
 
   const query = useTours({

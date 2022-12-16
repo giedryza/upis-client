@@ -15,7 +15,7 @@ import { Region, River, Tour, ToursFilters } from './tours.types';
 
 interface GetTours {
   req?: IncomingMessage;
-  params?: ToursFilters;
+  params?: Partial<ToursFilters>;
 }
 
 interface CreateTour {
