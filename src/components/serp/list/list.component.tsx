@@ -6,20 +6,25 @@ import { SerpCard } from 'components/serp';
 import { Footer } from 'components/layout';
 import { useInfiniteTours } from 'domain/tours';
 
+import { EndRow } from './atoms';
 import styles from './list.module.scss';
 
 export const SerpList: FC = () => {
-  const { data } = useInfiniteTours();
+  const { data, hasNextPage, fetchNextPage } = useInfiniteTours({ limit: 15 });
 
   const tours = data ? data.pages.flat() : [];
 
   const virtualizer = useWindowVirtualizer({
-    count: tours.length,
+    count: hasNextPage ? tours.length + 1 : tours.length,
     estimateSize: () => APP.serp.cardHeight + APP.serp.gridGap,
     overscan: 3,
     paddingStart: APP.serp.gridGap,
     getItemKey: (index) => tours[index]?._id ?? index,
   });
+
+  const onEndReached = () => {
+    if (hasNextPage) fetchNextPage();
+  };
 
   return (
     <div className={styles.container} style={{ '--spacing': APP.serp.gridGap }}>
@@ -32,6 +37,7 @@ export const SerpList: FC = () => {
           }}
         >
           {virtualizer.getVirtualItems().map((row) => {
+            const isLast = row.index > tours.length - 1;
             const tour = tours[row.index];
 
             return (
@@ -46,7 +52,11 @@ export const SerpList: FC = () => {
                   transform: `translateY(${row.start}px)`,
                 }}
               >
-                {tour ? <SerpCard tour={tour} /> : null}
+                {isLast ? (
+                  <EndRow onInView={onEndReached} />
+                ) : tour ? (
+                  <SerpCard tour={tour} />
+                ) : null}
               </div>
             );
           })}
