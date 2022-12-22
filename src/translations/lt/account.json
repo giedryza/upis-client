@@ -282,14 +282,7 @@
       "form": {
         "regions": {
           "label": "Regionai",
-          "display": "Regionai",
-          "values": {
-            "aukstaitija": "Aukštaitija",
-            "dzukija": "Dzūkija",
-            "mazoji-lietuva": "Mažoji Lietuva",
-            "suvalkija": "Suvalkija",
-            "zemaitija": "Žemaitija"
-          }
+          "display": "Regionai"
         },
         "rivers": {
           "label": "Upės",

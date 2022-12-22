@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react';
-import { useQuery } from 'react-query';
+import { useInfiniteQuery, useQuery } from 'react-query';
 import { useRouter } from 'next/router';
 
 import { getRouteParam } from 'tools/common';
@@ -10,11 +10,11 @@ import { useLoaders } from './tours.loaders';
 import { converters } from './tours.converters';
 
 interface UseTours {
-  filters?: ToursFilters;
+  filters?: Partial<ToursFilters>;
   enabled?: boolean;
 }
 
-export const useTours = ({ filters = {}, enabled = true }: UseTours) => {
+export const useTours = ({ filters = {}, enabled = true }: UseTours = {}) => {
   const { loaders } = useLoaders();
 
   const query = useQuery(
@@ -29,7 +29,30 @@ export const useTours = ({ filters = {}, enabled = true }: UseTours) => {
   return query;
 };
 
-export const useMyTours = (filters: ToursFilters = {}) => {
+export const useInfiniteTours = (filters: Partial<ToursFilters> = {}) => {
+  const { loaders } = useLoaders();
+
+  const query = useInfiniteQuery(
+    toursKeys.list(filters),
+    ({ pageParam }) =>
+      loaders.getTours({ params: { ...filters, page: pageParam } }),
+    {
+      getNextPageParam: ({ meta }) => {
+        if (!meta) return undefined;
+
+        return meta.page < meta.pages ? meta.page + 1 : undefined;
+      },
+      select: ({ pages, pageParams }) => ({
+        pages: pages.map((page) => converters.getTours(page)),
+        pageParams,
+      }),
+    }
+  );
+
+  return query;
+};
+
+export const useMyTours = (filters: Partial<ToursFilters> = {}) => {
   const { data: session } = useSession();
 
   const query = useTours({

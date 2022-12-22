@@ -12,6 +12,7 @@
     "create": "Create",
     "edit": "Edit",
     "delete": "Delete",
+    "view": "View",
     "next": "Next",
     "continue": "Continue",
     "zoom": "Zoom",
@@ -44,7 +45,9 @@
   },
   "texts": {
     "or": "Or",
-    "free": "Free"
+    "free": "Free",
+    "from": "From",
+    "to": "To"
   },
   "account": {
     "account": "My account",

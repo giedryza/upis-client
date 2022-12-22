@@ -1,6 +1,6 @@
 import { Amenity } from 'domain/amenities';
 import { Provider } from 'domain/providers';
-import { AppFile, BaseEntity, GeoPoint, Price } from 'types/common';
+import { AppFile, BaseEntity, GeoPoint, Pagination, Price } from 'types/common';
 
 export const regions = [
   'aukstaitija',
@@ -253,7 +253,7 @@ export interface Tour extends BaseEntity {
   updatedAt: Date;
 }
 
-export interface ToursFilters {
-  user?: string;
-  select?: (keyof Tour)[];
+export interface ToursFilters extends Pagination {
+  user: string;
+  select: (keyof Tour)[];
 }

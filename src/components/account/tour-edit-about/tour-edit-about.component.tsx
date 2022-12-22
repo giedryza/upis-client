@@ -78,7 +78,7 @@ export const TourEditAbout: FC = () => {
 
             <TextInput
               {...register('website')}
-              label={t('account:tours.about.form.name.label')}
+              label={t('account:tours.about.form.website.label')}
               placeholder="https://upis.lt/zeimenos-upe"
               error={errors.website?.message}
             />

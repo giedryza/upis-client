@@ -7,7 +7,7 @@ import {
   getJsonBody,
   loadersFactory,
 } from 'tools/services/request';
-import { Pagination } from 'types/common';
+import { Pagination } from 'types/api';
 import { generateRoute } from 'tools/common';
 
 import { ProvidersFilters, Provider } from './providers.types';

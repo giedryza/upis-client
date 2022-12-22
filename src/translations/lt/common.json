@@ -12,6 +12,7 @@
     "create": "Sukurti",
     "edit": "Redaguoti",
     "delete": "Ištrinti",
+    "view": "Žiūrėti",
     "next": "Toliau",
     "continue": "Tęsti",
     "zoom": "Padidinti",
@@ -44,7 +45,9 @@
   },
   "texts": {
     "or": "Arba",
-    "free": "Nemokamai"
+    "free": "Nemokamai",
+    "from": "Nuo",
+    "to": "Iki"
   },
   "account": {
     "account": "Mano paskyra",

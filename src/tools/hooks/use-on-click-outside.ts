@@ -1,9 +1,13 @@
 import { useEffect, RefObject } from 'react';
 
+import { useStableHandler } from 'tools/hooks';
+
 export const useOnClickOutside = <T extends HTMLElement>(
   ref: RefObject<T>,
-  handler: () => void
+  onClickOutside: () => void
 ) => {
+  const handler = useStableHandler(onClickOutside);
+
   useEffect(() => {
     const listener = <E extends Event>(e: E) => {
       if (
@@ -14,7 +18,7 @@ export const useOnClickOutside = <T extends HTMLElement>(
         return;
       }
 
-      handler();
+      handler.current();
     };
 
     document.addEventListener('mousedown', listener);
