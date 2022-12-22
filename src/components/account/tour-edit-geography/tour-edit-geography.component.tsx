@@ -81,9 +81,7 @@ export const TourEditGeography: FC = () => {
                   label={t('account:tours.geography.form.regions.label')}
                   items={
                     regions.map((region) => ({
-                      label: t(
-                        `account:tours.geography.form.regions.values.${region}`
-                      ),
+                      label: t(`regions:${region}`),
                       value: region,
                     })) ?? []
                   }

@@ -32,11 +32,7 @@ export const Geography: FC = () => {
     >
       <LabeledValue
         label={t('account:tours.geography.form.regions.display')}
-        value={tour.regions
-          .map((region) =>
-            t(`account:tours.geography.form.regions.values.${region}`)
-          )
-          .join(', ')}
+        value={tour.regions.map((region) => t(`regions:${region}`)).join(', ')}
       />
       <LabeledValue
         label={t('account:tours.geography.form.rivers.display')}
