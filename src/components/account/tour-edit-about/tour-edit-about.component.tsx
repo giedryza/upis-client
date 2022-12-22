@@ -43,7 +43,10 @@ export const TourEditAbout: FC = () => {
     if (!tourId) return;
 
     updateTour(
-      { id: tourId, form: { name, description, website } },
+      {
+        id: tourId,
+        form: { name, description, website: website || undefined },
+      },
       {
         onSuccess: () => {
           push(generateRoute(routes.account.tours.one.index, { id: tourId }));
