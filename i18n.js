@@ -3,8 +3,8 @@ module.exports = {
   defaultLocale: 'lt',
   pages: {
     '*': ['common'],
-    '/': ['home'],
-    'rgx:^/account': ['account', 'rivers'],
+    '/': ['home', 'serp', 'rivers', 'regions'],
+    'rgx:^/account': ['account', 'rivers', 'regions'],
     'rgx:^/auth': ['auth'],
   },
   loadLocaleFrom: (locale, namespace) => {

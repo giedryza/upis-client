@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC, Fragment, memo } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { Button, Carousel, Icon } from 'ui';
@@ -8,27 +8,14 @@ import { APP } from 'config/app';
 import { Props } from './card.types';
 import styles from './card.module.scss';
 
-const titles = [
-  'The salt of the Wicked',
-  'Secret of the Silent Porter in the middle of somewhere strangeSecret of the Silent Porter in the middle of somewhere strange',
-  'Burning Dreamer',
-  'The King of the Magician',
-  'The Trembling Silk',
-  'Dreamer of Prophecy',
-  "The Secrets's Shores",
-  'The Doors of the Serpent',
-  'Year in the Theft',
-];
-
 const CAROUSEL_WIDTH = Math.round(
   (APP.serp.cardHeight * APP.serp.carouselAspectRatio[0]) /
     APP.serp.carouselAspectRatio[1]
 );
 
-export const SerpCard: FC<Props> = memo(({ id }) => {
+export const SerpCard: FC<Props> = memo(({ tour }) => {
+  const { t } = useTranslation();
   const { lang } = useTranslation();
-
-  const separator = <span> &bull; </span>;
 
   return (
     <article className={styles.card}>
@@ -40,55 +27,66 @@ export const SerpCard: FC<Props> = memo(({ id }) => {
         }}
       >
         <Carousel
-          images={Array.from({ length: 5 }).map((_, i) => ({
-            id: `${id}-${String(i)}`,
-            url: `https://picsum.photos/400/300?random=${id + i}`,
-            placeholder: `https://picsum.photos/8/6?random=${id + i}`,
-            alt: '',
+          images={tour.photos.map((photo) => ({
+            id: photo._id,
+            url: photo.url,
+            // TODO
+            // placeholder: photo.url,
+            alt: photo.description,
           }))}
-          options={{
-            size: 'sm',
-          }}
+          options={{ size: 'sm' }}
           sizes={{ width: CAROUSEL_WIDTH, height: APP.serp.cardHeight }}
         />
       </div>
 
       <div className={styles.content}>
         <header className={styles.header}>
-          <h2 className={styles.title}>
-            {titles[Number(id)] ?? 'Lorem Ipsum'}
-          </h2>
+          <h2 className={styles.title}>{tour.name}</h2>
 
           <div>
-            <h3 className={styles.subtitle}>
-              <Icon name="pin" className={styles.icon} aria-hidden />
-              <span>{['Aukštaitija', 'Dzūkija'].join(', ')}</span>
-            </h3>
+            {tour.regions.length ? (
+              <h3 className={styles.subtitle}>
+                <Icon name="pin" className={styles.icon} aria-hidden />
+                <span>
+                  {tour.regions
+                    .map((region) => t(`regions:${region}`))
+                    .join(', ')}
+                </span>
+              </h3>
+            ) : null}
 
-            <h3 className={styles.subtitle}>
-              <Icon name="wave" className={styles.icon} aria-hidden />
-              <span>
-                {[
-                  'Merkys',
-                  'Agluona',
-                  'Nemunas',
-                  'Šventoji',
-                  'Neris',
-                  'Minija',
-                  'Musė',
-                  'Karaliaus Vilhelmo kanalas',
-                  'Danė',
-                ].join(', ')}
-              </span>
-            </h3>
+            {tour.rivers.length ? (
+              <h3 className={styles.subtitle}>
+                <Icon name="wave" className={styles.icon} aria-hidden />
+                <span>
+                  {tour.rivers.map((river) => t(`rivers:${river}`)).join(', ')}
+                </span>
+              </h3>
+            ) : null}
 
             <h3 className={styles.subtitle}>
               <Icon name="timer" className={styles.icon} aria-hidden />
-              <span>{formatNumber(lang, 45, 'kilometer')}</span>
-              {separator}
-              <span>{formatNumber(lang, 1, 'day')}</span>
-              {separator}
-              <span>{formatNumber(lang, 8.5, 'hour')}</span>
+              {[
+                {
+                  label: formatNumber(lang, tour.distance ?? 0, 'kilometer'),
+                  value: tour.distance,
+                },
+                {
+                  label: formatNumber(lang, tour.days, 'day'),
+                  value: tour.days,
+                },
+                {
+                  label: formatNumber(lang, tour.duration ?? 0, 'hour'),
+                  value: tour.duration,
+                },
+              ]
+                .filter((item) => Boolean(item.value))
+                .map((item, i, self) => (
+                  <Fragment key={i}>
+                    <span>{item.label}</span>
+                    {i < self.length - 1 ? <span> &bull; </span> : null}
+                  </Fragment>
+                ))}
             </h3>
           </div>
         </header>
@@ -97,17 +95,26 @@ export const SerpCard: FC<Props> = memo(({ id }) => {
 
         <footer className={styles.footer}>
           <div className={styles.price}>
-            <div>
-              <span>From </span>
-              <span className={styles.em}>
-                {formatCurrency(lang, 4500, 'EUR')}
-              </span>
-            </div>
-            <div>
-              <span>per person, per day</span>
-            </div>
+            {tour.price ? (
+              <>
+                <div>
+                  <span>{t('common:texts.from')} </span>
+                  <span className={styles.em}>
+                    {formatCurrency(
+                      lang,
+                      tour.price.amount,
+                      tour.price.currency
+                    )}
+                  </span>
+                </div>
+                <div>
+                  <span>{t('serp:card.texts.pricePer')}</span>
+                </div>
+              </>
+            ) : null}
           </div>
-          <Button label="View" size="sm" />
+
+          <Button label={t('common:actions.view')} size="sm" />
         </footer>
       </div>
     </article>

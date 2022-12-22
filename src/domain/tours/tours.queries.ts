@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react';
-import { useQuery } from 'react-query';
+import { useInfiniteQuery, useQuery } from 'react-query';
 import { useRouter } from 'next/router';
 
 import { getRouteParam } from 'tools/common';
@@ -23,6 +23,29 @@ export const useTours = ({ filters = {}, enabled = true }: UseTours = {}) => {
     {
       select: converters.getTours,
       enabled,
+    }
+  );
+
+  return query;
+};
+
+export const useInfiniteTours = (filters: Partial<ToursFilters> = {}) => {
+  const { loaders } = useLoaders();
+
+  const query = useInfiniteQuery(
+    toursKeys.list(filters),
+    ({ pageParam }) =>
+      loaders.getTours({ params: { ...filters, page: pageParam } }),
+    {
+      getNextPageParam: ({ meta }) => {
+        if (!meta) return undefined;
+
+        return meta.page < meta.pages ? meta.page + 1 : undefined;
+      },
+      select: ({ pages, pageParams }) => ({
+        pages: pages.map((page) => converters.getTours(page)),
+        pageParams,
+      }),
     }
   );
 

@@ -4,18 +4,21 @@ import { useWindowVirtualizer } from '@tanstack/react-virtual';
 import { APP } from 'config/app';
 import { SerpCard } from 'components/serp';
 import { Footer } from 'components/layout';
+import { useInfiniteTours } from 'domain/tours';
 
 import styles from './list.module.scss';
 
-const COUNT = 40;
-
 export const SerpList: FC = () => {
+  const { data } = useInfiniteTours();
+
+  const tours = data ? data.pages.flat() : [];
+
   const virtualizer = useWindowVirtualizer({
-    count: COUNT,
+    count: tours.length,
     estimateSize: () => APP.serp.cardHeight + APP.serp.gridGap,
     overscan: 3,
     paddingStart: APP.serp.gridGap,
-    // getItemKey
+    getItemKey: (index) => tours[index]?._id ?? index,
   });
 
   return (
@@ -28,21 +31,25 @@ export const SerpList: FC = () => {
             position: 'relative',
           }}
         >
-          {virtualizer.getVirtualItems().map((row) => (
-            <div
-              key={row.key}
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                height: row.size,
-                transform: `translateY(${row.start}px)`,
-              }}
-            >
-              <SerpCard id={String(row.key)} />
-            </div>
-          ))}
+          {virtualizer.getVirtualItems().map((row) => {
+            const tour = tours[row.index];
+
+            return (
+              <div
+                key={row.key}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: row.size,
+                  transform: `translateY(${row.start}px)`,
+                }}
+              >
+                {tour ? <SerpCard tour={tour} /> : null}
+              </div>
+            );
+          })}
         </div>
       </div>
 

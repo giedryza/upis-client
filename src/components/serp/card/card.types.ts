@@ -1,3 +1,5 @@
+import { Tour } from 'domain/tours';
+
 export interface Props {
-  id: string;
+  tour: Tour;
 }
