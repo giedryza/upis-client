@@ -298,7 +298,7 @@
         "departure": "Išvykimas",
         "arrival": "Atvykimas",
         "empty": {
-          "title": "Empty",
+          "title": "Tuščia",
           "message": "Norėdami pasirinkti maršruto išvykimo ir atvykimo lokacijas, spauskite 'redaguoti'."
         }
       }
