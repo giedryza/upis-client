@@ -15,7 +15,8 @@ export const APP = {
     lg: Number(styles.lgBreakpoint),
   } satisfies Record<Breakpoint, number>,
   cloudinary: {
-    url: 'https://res.cloudinary.com/:cloud_name/:asset_type/:delivery_type/:transformations/:public_id.:extension'
+    //    https://res.cloudinary.com/upis/image/upload/w_200,h_150,c_fill/upis/development/e96c5cad-bfda-4409-888b-7135a1b82336.avif
+    url: 'https://res.cloudinary.com/:cloud_name/:asset_type/:delivery_type/:transformations/:public_id'
       .replace(':cloud_name', 'upis')
       .replace(':asset_type', 'image')
       .replace(':delivery_type', 'upload'),

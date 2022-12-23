@@ -30,8 +30,14 @@ export const SerpCard: FC<Props> = memo(({ tour }) => {
           images={tour.photos.map((photo) => ({
             id: photo._id,
             url: photo.url,
-            // TODO
-            // placeholder: photo.url,
+            placeholder: APP.cloudinary.url
+              .replace(
+                ':transformations',
+                `w_${APP.serp.carouselAspectRatio[0] * 2},h_${
+                  APP.serp.carouselAspectRatio[1] * 2
+                },c_fill`
+              )
+              .replace(':public_id', photo.key),
             alt: photo.description,
           }))}
           options={{ size: 'sm' }}
