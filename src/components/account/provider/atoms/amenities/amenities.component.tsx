@@ -8,7 +8,7 @@ import { Tile } from 'ui';
 import { formatCurrency } from 'tools/format';
 import { ICON_BY_VARIANT, useDeleteAmenity } from 'domain/amenities';
 import { useConfirm } from 'domain/confirm';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 export const Amenities: FC = () => {
   const { t, lang } = useTranslation();
@@ -27,7 +27,7 @@ export const Amenities: FC = () => {
       columns={2}
       actions={[
         {
-          url: generateRoute(routes.account.providers.one.amenities.add, {
+          url: generateUrl(routes.account.providers.one.amenities.add, {
             id: provider._id,
           }),
           label: t('common:actions.add'),
@@ -58,7 +58,7 @@ export const Amenities: FC = () => {
               label: t('common:actions.edit'),
               icon: 'pencil',
               variant: 'secondary',
-              url: generateRoute(routes.account.providers.one.amenities.one, {
+              url: generateUrl(routes.account.providers.one.amenities.one, {
                 id: provider._id,
                 amenityId: amenity._id,
               }),

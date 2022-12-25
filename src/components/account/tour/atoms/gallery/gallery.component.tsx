@@ -3,7 +3,7 @@ import { useQueryClient } from 'react-query';
 import useTranslation from 'next-translate/useTranslation';
 
 import { EmptyState, ImageTile } from 'ui';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 import { useAppDispatch } from 'tools/services/store';
 import { InfoBlock } from 'components/account/atoms';
 import { toursKeys, useActiveTour, useUpdateTour } from 'domain/tours';
@@ -34,7 +34,7 @@ export const Gallery: FC = () => {
       icon="picture"
       actions={[
         {
-          url: generateRoute(routes.account.tours.one.gallery.add, {
+          url: generateUrl(routes.account.tours.one.gallery.add, {
             id: tour._id,
           }),
           label: t('common:actions.add'),
@@ -92,7 +92,7 @@ export const Gallery: FC = () => {
                 },
                 {
                   icon: 'pencil',
-                  url: generateRoute(routes.account.tours.one.gallery.one, {
+                  url: generateUrl(routes.account.tours.one.gallery.one, {
                     id: tour._id,
                     imageId: photo._id,
                   }),

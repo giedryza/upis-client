@@ -6,7 +6,7 @@ import { FormattedField, Tile } from 'ui';
 import { useDeleteTour, useMyTours } from 'domain/tours';
 import { useConfirm } from 'domain/confirm';
 import { formatCurrency } from 'tools/format';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 export const ToursList: FC = () => {
   const { t, lang } = useTranslation();
@@ -22,7 +22,7 @@ export const ToursList: FC = () => {
         <Tile
           title={tour.name}
           subtitle={tour.provider.name}
-          url={generateRoute(routes.account.tours.one.index, { id: tour._id })}
+          url={generateUrl(routes.account.tours.one.index, { id: tour._id })}
           heading="h2"
           fields={[
             {
@@ -73,7 +73,7 @@ export const ToursList: FC = () => {
               label: t('common:actions.edit'),
               icon: 'pencil',
               variant: 'secondary',
-              url: generateRoute(routes.account.tours.one.index, {
+              url: generateUrl(routes.account.tours.one.index, {
                 id: tour._id,
               }),
             },

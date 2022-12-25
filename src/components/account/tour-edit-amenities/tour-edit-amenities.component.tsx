@@ -6,7 +6,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, CheckboxGroupInput, Container, Toast } from 'ui';
 import { routes } from 'config/routes';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTourAmenities } from 'domain/tours';
 import { formatCurrency } from 'tools/format';
@@ -46,7 +46,7 @@ export const TourEditAmenities: FC = () => {
       { id: tourId, form: { amenities } },
       {
         onSuccess: () => {
-          push(generateRoute(routes.account.tours.one.index, { id: tourId }));
+          push(generateUrl(routes.account.tours.one.index, { id: tourId }));
         },
       }
     );
@@ -66,7 +66,7 @@ export const TourEditAmenities: FC = () => {
                 i18nKey="account:tours.amenities.texts.info"
                 components={[
                   <a
-                    href={generateRoute(
+                    href={generateUrl(
                       routes.account.providers.one.amenities.add,
                       { id: tour?.provider._id ?? '' }
                     )}
@@ -119,7 +119,7 @@ export const TourEditAmenities: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={generateRoute(routes.account.tours.one.index, {
+              url={generateUrl(routes.account.tours.one.index, {
                 id: tour?._id ?? '',
               })}
             />

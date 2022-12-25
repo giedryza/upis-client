@@ -2,7 +2,7 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 import { Button, Container, Card } from 'ui';
 
 import styles from './reset-success.module.scss';
@@ -22,7 +22,7 @@ export const PasswordResetSuccess: FC = () => {
             label={t('auth:actions.signin')}
             variant="primary"
             width="full"
-            url={generateRoute(routes.auth.signin)}
+            url={generateUrl(routes.auth.signin)}
           />
 
           <div className={styles.footer}>
@@ -31,7 +31,7 @@ export const PasswordResetSuccess: FC = () => {
               label={t('auth:actions.signup')}
               variant="link"
               size="xs"
-              url={generateRoute(routes.auth.signup)}
+              url={generateUrl(routes.auth.signup)}
             />
           </div>
         </div>

@@ -7,7 +7,7 @@ import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { ProfileEditSecurity } from 'components/account';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 const ProfileEditSecurityPage: NextPage = () => {
   const { t } = useTranslation();
@@ -24,11 +24,11 @@ const ProfileEditSecurityPage: NextPage = () => {
             items={[
               {
                 label: t('account:title'),
-                url: generateRoute(routes.account.profile.index),
+                url: generateUrl(routes.account.profile.index),
               },
               {
                 label: t('account:profile.title'),
-                url: generateRoute(routes.account.profile.index),
+                url: generateUrl(routes.account.profile.index),
               },
               {
                 label: t('account:profile.security.title'),
@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   if (!session) {
     return {
       redirect: {
-        destination: generateRoute(routes.home),
+        destination: generateUrl(routes.home),
         permanent: false,
       },
     };

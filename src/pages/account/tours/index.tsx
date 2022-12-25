@@ -9,7 +9,7 @@ import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Tours } from 'components/account';
 import { getLoaders, ToursFilters, toursKeys } from 'domain/tours';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 const ToursPage: NextPage = () => {
   const { t } = useTranslation();
@@ -26,7 +26,7 @@ const ToursPage: NextPage = () => {
             items={[
               {
                 label: t('account:title'),
-                url: generateRoute(routes.account.profile.index),
+                url: generateUrl(routes.account.profile.index),
               },
               { label: t('account:tours.title', { count: 2 }) },
             ]}
@@ -50,7 +50,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   if (!session) {
     return {
       redirect: {
-        destination: generateRoute(routes.home),
+        destination: generateUrl(routes.home),
         permanent: false,
       },
     };

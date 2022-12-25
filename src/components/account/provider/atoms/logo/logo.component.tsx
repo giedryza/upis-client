@@ -5,7 +5,7 @@ import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider } from 'domain/providers';
 import { routes } from 'config/routes';
 import { Container, ImagePlaceholder, ImageTile } from 'ui';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 export const Logo: FC = () => {
   const { t } = useTranslation();
@@ -21,7 +21,7 @@ export const Logo: FC = () => {
       columns={1}
       actions={[
         {
-          url: generateRoute(routes.account.providers.one.logo, {
+          url: generateUrl(routes.account.providers.one.logo, {
             id: provider._id,
           }),
           label: t('common:actions.edit'),
@@ -39,7 +39,7 @@ export const Logo: FC = () => {
             sizes={{ width: 400, height: 225 }}
           />
         ) : (
-          <ImagePlaceholder />
+          <ImagePlaceholder radius="md" />
         )}
       </Container>
     </InfoBlock>

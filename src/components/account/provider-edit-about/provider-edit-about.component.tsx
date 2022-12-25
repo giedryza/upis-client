@@ -18,7 +18,7 @@ import {
   boats as supportedBoats,
 } from 'domain/providers';
 import { languages as supportedLanguages } from 'types/common';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 import { Values } from './provider-edit-about.types';
 import { INITIAL_VALUES } from './provider-edit-about.constants';
@@ -65,7 +65,7 @@ export const ProviderEditAbout: FC = () => {
       {
         onSuccess: () => {
           push(
-            generateRoute(routes.account.providers.one.index, {
+            generateUrl(routes.account.providers.one.index, {
               id: providerId,
             })
           );
@@ -154,7 +154,7 @@ export const ProviderEditAbout: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={generateRoute(routes.account.providers.one.index, {
+              url={generateUrl(routes.account.providers.one.index, {
                 id: provider?._id ?? '',
               })}
             />

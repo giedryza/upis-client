@@ -1,3 +1,4 @@
 export interface Props {
-  width?: number;
+  fit?: 'fixed' | 'fluid';
+  radius?: 'none' | 'xs' | 'sm' | 'md' | 'full';
 }

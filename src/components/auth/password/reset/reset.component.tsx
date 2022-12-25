@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { routes } from 'config/routes';
 import { useAppDispatch } from 'tools/services/store';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 import { Button, Container, Card, TextInput } from 'ui';
 import { useResetPassword } from 'domain/users';
 import { alerts } from 'domain/alerts';
@@ -44,7 +44,7 @@ export const PasswordReset: FC = () => {
                   label={t('common:actions.tryAgain')}
                   size="sm"
                   variant="link"
-                  url={generateRoute(routes.auth.password.forgot)}
+                  url={generateUrl(routes.auth.password.forgot)}
                   key="try-again"
                 />,
               ]}
@@ -170,7 +170,7 @@ export const PasswordReset: FC = () => {
               label={t('auth:actions.signup')}
               variant="link"
               size="xs"
-              url={generateRoute(routes.auth.signup)}
+              url={generateUrl(routes.auth.signup)}
             />
           </div>
         </div>

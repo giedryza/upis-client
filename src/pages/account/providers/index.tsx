@@ -9,7 +9,7 @@ import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Providers } from 'components/account';
 import { providersKeys, getLoaders, ProvidersFilters } from 'domain/providers';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 const ProvidersPage: NextPage = () => {
   const { t } = useTranslation();
@@ -26,7 +26,7 @@ const ProvidersPage: NextPage = () => {
             items={[
               {
                 label: t('account:title'),
-                url: generateRoute(routes.account.profile.index),
+                url: generateUrl(routes.account.profile.index),
               },
               { label: t('account:providers.title', { count: 2 }) },
             ]}
@@ -50,7 +50,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   if (!session) {
     return {
       redirect: {
-        destination: generateRoute(routes.home),
+        destination: generateUrl(routes.home),
         permanent: false,
       },
     };

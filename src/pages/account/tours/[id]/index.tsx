@@ -6,7 +6,7 @@ import { dehydrate, QueryClient } from 'react-query';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { generateRoute, getRouteParam } from 'tools/common';
+import { generateUrl, getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Tour } from 'components/account';
@@ -30,11 +30,11 @@ const TourPage: NextPage = () => {
             items={[
               {
                 label: t('account:title'),
-                url: generateRoute(routes.account.profile.index),
+                url: generateUrl(routes.account.profile.index),
               },
               {
                 label: t('account:tours.title', { count: 2 }),
-                url: generateRoute(routes.account.tours.index),
+                url: generateUrl(routes.account.tours.index),
               },
               { label: id },
             ]}
@@ -59,7 +59,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   if (!session) {
     return {
       redirect: {
-        destination: generateRoute(routes.home),
+        destination: generateUrl(routes.home),
         permanent: false,
       },
     };

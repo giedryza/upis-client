@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { Card, EmptyState } from 'ui';
 import { routes } from 'config/routes';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 import { useMyProviders } from 'domain/providers';
 import { useMyTours } from 'domain/tours';
 
@@ -27,7 +27,7 @@ export const Tours: FC = () => {
           action={{
             label: t('account:providers.actions.add'),
             icon: 'plus',
-            url: generateRoute(routes.account.providers.create),
+            url: generateUrl(routes.account.providers.create),
           }}
         />
       ) : !tours.length && !isToursLoading ? (
@@ -38,7 +38,7 @@ export const Tours: FC = () => {
           action={{
             label: t('account:tours.actions.add'),
             icon: 'plus',
-            url: generateRoute(routes.account.tours.create),
+            url: generateUrl(routes.account.tours.create),
           }}
         />
       ) : (

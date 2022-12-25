@@ -1,9 +1,10 @@
 import { FC, Fragment, memo } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { Button, Carousel, Icon } from 'ui';
+import { Button, Carousel, Icon, ImagePlaceholder } from 'ui';
 import { formatCurrency, formatNumber } from 'tools/format';
 import { APP } from 'config/app';
+import { generateImageUrl } from 'tools/common';
 
 import { Props } from './card.types';
 import styles from './card.module.scss';
@@ -26,23 +27,28 @@ export const SerpCard: FC<Props> = memo(({ tour }) => {
           '--height': APP.serp.cardHeight,
         }}
       >
-        <Carousel
-          images={tour.photos.map((photo) => ({
-            id: photo._id,
-            url: photo.url,
-            placeholder: APP.cloudinary.url
-              .replace(
-                ':transformations',
-                `w_${APP.serp.carouselAspectRatio[0] * 2},h_${
-                  APP.serp.carouselAspectRatio[1] * 2
-                },c_fill`
-              )
-              .replace(':public_id', photo.key),
-            alt: photo.description,
-          }))}
-          options={{ size: 'sm' }}
-          sizes={{ width: CAROUSEL_WIDTH, height: APP.serp.cardHeight }}
-        />
+        {tour.photos.length ? (
+          <Carousel
+            images={tour.photos.map((photo) => ({
+              id: photo._id,
+              url: generateImageUrl({
+                id: photo.key,
+                width: CAROUSEL_WIDTH * 2,
+                height: APP.serp.cardHeight * 2,
+              }),
+              placeholder: generateImageUrl({
+                id: photo.key,
+                width: APP.serp.carouselAspectRatio[0] * 2,
+                height: APP.serp.carouselAspectRatio[1] * 2,
+              }),
+              alt: photo.description,
+            }))}
+            options={{ size: 'sm' }}
+            sizes={{ width: CAROUSEL_WIDTH, height: APP.serp.cardHeight }}
+          />
+        ) : (
+          <ImagePlaceholder fit="fluid" />
+        )}
       </div>
 
       <div className={styles.content}>

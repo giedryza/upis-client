@@ -3,7 +3,7 @@ export * from './context-factory';
 export * from './files';
 export * from './format-bytes';
 export * from './get-route-param';
-export * from './route';
+export * from './url';
 export * from './is-defined';
 export * from './is-server';
 export * from './to-cents';

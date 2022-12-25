@@ -7,7 +7,7 @@ import { routes } from 'config/routes';
 import { EmptyState, Tile } from 'ui';
 import { ICON_BY_VARIANT } from 'domain/amenities';
 import { formatCurrency } from 'tools/format';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 export const Amenities: FC = () => {
   const { t, lang } = useTranslation();
@@ -23,7 +23,7 @@ export const Amenities: FC = () => {
       columns={tour.amenities.length ? 2 : 1}
       actions={[
         {
-          url: generateRoute(routes.account.tours.one.amenities, {
+          url: generateUrl(routes.account.tours.one.amenities, {
             id: tour._id,
           }),
           label: t('common:actions.edit'),
