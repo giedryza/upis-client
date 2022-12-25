@@ -4,7 +4,7 @@ import { useSession, signOut } from 'next-auth/react';
 
 import { routes } from 'config/routes';
 import { Button, DropdownMenu } from 'ui';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 export const AccountMenu: FC = () => {
   const { t } = useTranslation();
@@ -30,7 +30,7 @@ export const AccountMenu: FC = () => {
         {
           label: t('common:account.profile'),
           icon: 'user',
-          url: generateRoute(routes.account.profile.index),
+          url: generateUrl(routes.account.profile.index),
         },
         {
           label: t('common:account.signout'),
@@ -45,7 +45,7 @@ export const AccountMenu: FC = () => {
       icon="user"
       variant="ghost"
       size="sm"
-      url={generateRoute(routes.auth.signin)}
+      url={generateUrl(routes.auth.signin)}
     />
   );
 };

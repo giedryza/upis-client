@@ -8,7 +8,7 @@ import {
   loadersFactory,
 } from 'tools/services/request';
 import { Pagination } from 'types/api';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 import { ProvidersFilters, Provider } from './providers.types';
 
@@ -19,7 +19,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       params,
     }: { req?: IncomingMessage; params?: ProvidersFilters } = {}) =>
       new Request<Provider[], Pagination>(
-        generateRoute(endpoints.providers.index),
+        generateUrl(endpoints.providers.index),
         {
           req,
           params,
@@ -28,7 +28,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       ).get(),
     getProvider: ({ req, id }: { req?: IncomingMessage; id: string }) =>
       new Request<Provider | null>(
-        generateRoute(endpoints.providers.one.index, { id }),
+        generateUrl(endpoints.providers.one.index, { id }),
         { req, locale }
       ).get(),
     createProvider: ({
@@ -36,7 +36,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
     }: {
       form: Pick<Provider, 'name' | 'phone' | 'email' | 'description'>;
     }) =>
-      new Request<Provider>(generateRoute(endpoints.providers.index), {
+      new Request<Provider>(generateUrl(endpoints.providers.index), {
         body: getJsonBody(form),
         locale,
       }).post(),
@@ -60,7 +60,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       >;
     }) =>
       new Request<Provider>(
-        generateRoute(endpoints.providers.one.index, { id }),
+        generateUrl(endpoints.providers.one.index, { id }),
         {
           body: getJsonBody(form),
           locale,
@@ -74,7 +74,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       form: { lat: number; lng: number; address: string };
     }) =>
       new Request<Provider>(
-        generateRoute(endpoints.providers.one.index, { id }),
+        generateUrl(endpoints.providers.one.index, { id }),
         {
           body: getJsonBody({
             address: form.address,
@@ -84,15 +84,12 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         }
       ).patch(),
     uploadLogo: ({ id, logo }: { id: string; logo: File }) =>
-      new Request<Provider>(
-        generateRoute(endpoints.providers.one.logo, { id }),
-        {
-          body: getFormDataBody([{ field: 'logo', value: logo }]),
-          locale,
-        }
-      ).patch(),
+      new Request<Provider>(generateUrl(endpoints.providers.one.logo, { id }), {
+        body: getFormDataBody([{ field: 'logo', value: logo }]),
+        locale,
+      }).patch(),
     deleteProvider: ({ id }: { id: string }) =>
-      new Request(generateRoute(endpoints.providers.one.index, { id }), {
+      new Request(generateUrl(endpoints.providers.one.index, { id }), {
         locale,
       }).delete(),
   },

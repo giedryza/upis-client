@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 
 import Logo from 'components/logo/logo-horizontal.svg';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 import { routes } from 'config/routes';
 
 import { LanguageSelect, AccountMenu } from './atoms';
@@ -12,7 +12,7 @@ export const Header: FC = () => {
   return (
     <header className={styles.header}>
       <Link
-        href={generateRoute(routes.home)}
+        href={generateUrl(routes.home)}
         className={styles.logo}
         aria-label="Home"
       >

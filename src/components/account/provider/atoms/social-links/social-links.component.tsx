@@ -7,7 +7,7 @@ import { Tile } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useSocialLinks, useDeleteSocialLink } from 'domain/social-links';
 import { useConfirm } from 'domain/confirm';
-import { generateRoute, getRouteParam, toExternalLink } from 'tools/common';
+import { generateUrl, getRouteParam, toExternalLink } from 'tools/common';
 
 import { ICON_BY_SOCIAL_LINK_TYPE } from './social-links.constants';
 
@@ -31,7 +31,7 @@ export const SocialLinks: FC = () => {
       columns={2}
       actions={[
         {
-          url: generateRoute(routes.account.providers.one.socialLinks.add, {
+          url: generateUrl(routes.account.providers.one.socialLinks.add, {
             id: providerId,
           }),
           label: t('common:actions.add'),
@@ -66,7 +66,7 @@ export const SocialLinks: FC = () => {
               label: t('common:actions.edit'),
               icon: 'pencil',
               variant: 'secondary',
-              url: generateRoute(routes.account.providers.one.socialLinks.one, {
+              url: generateUrl(routes.account.providers.one.socialLinks.one, {
                 id: socialLink.host,
                 socialLinkId: socialLink._id,
               }),

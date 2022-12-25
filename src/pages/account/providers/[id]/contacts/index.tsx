@@ -6,7 +6,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { generateRoute, getRouteParam } from 'tools/common';
+import { generateUrl, getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { ProviderEditContacts } from 'components/account';
@@ -30,15 +30,15 @@ const ProviderEditContactsPage: NextPage = () => {
             items={[
               {
                 label: t('account:title'),
-                url: generateRoute(routes.account.profile.index),
+                url: generateUrl(routes.account.profile.index),
               },
               {
                 label: t('account:providers.title', { count: 2 }),
-                url: generateRoute(routes.account.providers.index),
+                url: generateUrl(routes.account.providers.index),
               },
               {
                 label: id,
-                url: generateRoute(routes.account.providers.one.index, { id }),
+                url: generateUrl(routes.account.providers.one.index, { id }),
               },
               {
                 label: t('account:providers.contacts.title'),
@@ -65,7 +65,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   if (!session) {
     return {
       redirect: {
-        destination: generateRoute(routes.home),
+        destination: generateUrl(routes.home),
         permanent: false,
       },
     };

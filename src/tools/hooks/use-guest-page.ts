@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 
 import { routes } from 'config/routes';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 export const useGuestPage = () => {
   const { push } = useRouter();
@@ -12,7 +12,7 @@ export const useGuestPage = () => {
 
   useEffect(() => {
     if (status !== 'unauthenticated') {
-      push(generateRoute(routes.home));
+      push(generateUrl(routes.home));
     }
   }, [status, push]);
 };

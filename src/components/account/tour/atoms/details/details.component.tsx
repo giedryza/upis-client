@@ -5,7 +5,7 @@ import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour } from 'domain/tours';
 import { routes } from 'config/routes';
 import { LabeledValue, Meter } from 'ui';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 export const Details: FC = () => {
   const { t } = useTranslation();
@@ -21,7 +21,7 @@ export const Details: FC = () => {
       columns={2}
       actions={[
         {
-          url: generateRoute(routes.account.tours.one.details, {
+          url: generateUrl(routes.account.tours.one.details, {
             id: tour._id,
           }),
           label: t('common:actions.edit'),

@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 
 import { routes } from 'config/routes';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 import { Button, Container, Card } from 'ui';
 
 import { Props } from './forgot-sent.types';
@@ -45,7 +45,7 @@ export const PasswordForgotSent: FC<Props> = ({ onRetry }) => {
               label={t('auth:actions.signup')}
               variant="link"
               size="xs"
-              url={generateRoute(routes.auth.signup)}
+              url={generateUrl(routes.auth.signup)}
             />
           </div>
         </div>

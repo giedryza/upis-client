@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, ImageTile, TextInput } from 'ui';
 import { routes } from 'config/routes';
-import { generateRoute, getRouteParam } from 'tools/common';
+import { generateUrl, getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import { useDeleteImage, useImage, useUpdateImage } from 'domain/images';
 import { useAppDispatch } from 'tools/services/store';
@@ -59,7 +59,7 @@ export const TourEditGalleryEdit: FC = () => {
       },
       {
         onSuccess: () => {
-          push(generateRoute(routes.account.tours.one.index, { id: tourId }));
+          push(generateUrl(routes.account.tours.one.index, { id: tourId }));
         },
       }
     );
@@ -115,7 +115,7 @@ export const TourEditGalleryEdit: FC = () => {
                           {
                             onSuccess: () => {
                               push(
-                                generateRoute(routes.account.tours.one.index, {
+                                generateUrl(routes.account.tours.one.index, {
                                   id: tourId,
                                 })
                               );
@@ -143,7 +143,7 @@ export const TourEditGalleryEdit: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={generateRoute(routes.account.tours.one.index, {
+              url={generateUrl(routes.account.tours.one.index, {
                 id: tourId,
               })}
             />

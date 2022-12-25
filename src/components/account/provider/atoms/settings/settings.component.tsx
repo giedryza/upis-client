@@ -7,7 +7,7 @@ import { Button } from 'ui';
 import { useConfirm } from 'domain/confirm';
 import { useActiveProvider, useDeleteProvider } from 'domain/providers';
 import { InfoBlock } from 'components/account/atoms';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 export const Settings: FC = () => {
   const { t } = useTranslation();
@@ -46,7 +46,7 @@ export const Settings: FC = () => {
                   { id: provider._id },
                   {
                     onSuccess: () => {
-                      push(generateRoute(routes.account.providers.index));
+                      push(generateUrl(routes.account.providers.index));
                     },
                   }
                 );

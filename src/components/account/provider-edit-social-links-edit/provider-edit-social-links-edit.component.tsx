@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, SelectInput, TextInput } from 'ui';
 import { routes } from 'config/routes';
-import { generateRoute, getRouteParam } from 'tools/common';
+import { generateUrl, getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import {
   useSocialLink,
@@ -51,7 +51,7 @@ export const ProviderEditSocialLinksEdit: FC = () => {
       {
         onSuccess: () => {
           push(
-            generateRoute(routes.account.providers.one.index, {
+            generateUrl(routes.account.providers.one.index, {
               id: providerId,
             })
           );
@@ -106,7 +106,7 @@ export const ProviderEditSocialLinksEdit: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={generateRoute(routes.account.providers.one.index, {
+              url={generateUrl(routes.account.providers.one.index, {
                 id: providerId,
               })}
             />

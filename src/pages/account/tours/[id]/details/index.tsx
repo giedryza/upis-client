@@ -6,7 +6,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config/routes';
 import { useProtectedPage } from 'tools/hooks';
-import { generateRoute, getRouteParam } from 'tools/common';
+import { generateUrl, getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { TourEditDetails } from 'components/account';
@@ -30,15 +30,15 @@ const TourEditDetailsPage: NextPage = () => {
             items={[
               {
                 label: t('account:title'),
-                url: generateRoute(routes.account.profile.index),
+                url: generateUrl(routes.account.profile.index),
               },
               {
                 label: t('account:tours.title', { count: 2 }),
-                url: generateRoute(routes.account.tours.index),
+                url: generateUrl(routes.account.tours.index),
               },
               {
                 label: id,
-                url: generateRoute(routes.account.tours.one.index, { id }),
+                url: generateUrl(routes.account.tours.one.index, { id }),
               },
               {
                 label: t('account:tours.details.title'),
@@ -65,7 +65,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   if (!session) {
     return {
       redirect: {
-        destination: generateRoute(routes.home),
+        destination: generateUrl(routes.home),
         permanent: false,
       },
     };

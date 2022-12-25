@@ -7,7 +7,7 @@ import { useGuestPage } from 'tools/hooks';
 import { AppHead } from 'ui';
 import { Signin } from 'components/auth';
 import { PageLayout, MainLayout } from 'layouts';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 const SigninPage: NextPage = () => {
   const { t } = useTranslation();
@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   if (session) {
     return {
       redirect: {
-        destination: generateRoute(routes.home),
+        destination: generateUrl(routes.home),
         permanent: false,
       },
     };

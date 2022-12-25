@@ -9,7 +9,7 @@ import {
 } from 'tools/services/request';
 import { Price } from 'types/common';
 import { Pagination } from 'types/api';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 import { Region, River, Tour, ToursFilters } from './tours.types';
 
@@ -77,46 +77,43 @@ interface DeleteTour {
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
   loaders: {
     getTours: ({ req, params }: GetTours = {}) =>
-      new Request<Tour[], Pagination>(generateRoute(endpoints.tours.index), {
+      new Request<Tour[], Pagination>(generateUrl(endpoints.tours.index), {
         req,
         params,
         locale,
       }).get(),
     getTour: ({ req, id }: { req?: IncomingMessage; id: string }) =>
-      new Request<Tour | null>(
-        generateRoute(endpoints.tours.one.index, { id }),
-        {
-          req,
-          locale,
-        }
-      ).get(),
+      new Request<Tour | null>(generateUrl(endpoints.tours.one.index, { id }), {
+        req,
+        locale,
+      }).get(),
     createTour: ({ form }: CreateTour) =>
-      new Request<Tour>(generateRoute(endpoints.tours.index), {
+      new Request<Tour>(generateUrl(endpoints.tours.index), {
         body: getJsonBody(form),
         locale,
       }).post(),
     updateTour: ({ id, form }: UpdateTour) =>
-      new Request<Tour>(generateRoute(endpoints.tours.one.index, { id }), {
+      new Request<Tour>(generateUrl(endpoints.tours.one.index, { id }), {
         body: getJsonBody(form, [NaN, null, undefined]),
         locale,
       }).patch(),
     updateTourPrice: ({ id, form }: UpdateTourPrice) =>
-      new Request<Tour>(generateRoute(endpoints.tours.one.price, { id }), {
+      new Request<Tour>(generateUrl(endpoints.tours.one.price, { id }), {
         body: getJsonBody(form),
         locale,
       }).patch(),
     updateTourGeography: ({ id, form }: UpdateTourGeography) =>
-      new Request<Tour>(generateRoute(endpoints.tours.one.geography, { id }), {
+      new Request<Tour>(generateUrl(endpoints.tours.one.geography, { id }), {
         body: getJsonBody(form),
         locale,
       }).patch(),
     updateTourAmenities: ({ id, form }: UpdateTourAmenities) =>
-      new Request<Tour>(generateRoute(endpoints.tours.one.amenities, { id }), {
+      new Request<Tour>(generateUrl(endpoints.tours.one.amenities, { id }), {
         body: getJsonBody(form),
         locale,
       }).patch(),
     addTourPhoto: ({ id, form }: AddTourPhoto) =>
-      new Request<Tour>(generateRoute(endpoints.tours.one.photo, { id }), {
+      new Request<Tour>(generateUrl(endpoints.tours.one.photo, { id }), {
         body: getFormDataBody([
           {
             field: 'photo',
@@ -130,7 +127,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         locale,
       }).patch(),
     deleteTour: ({ id }: DeleteTour) =>
-      new Request(generateRoute(endpoints.tours.one.index, { id }), {
+      new Request(generateUrl(endpoints.tours.one.index, { id }), {
         locale,
       }).delete(),
   },

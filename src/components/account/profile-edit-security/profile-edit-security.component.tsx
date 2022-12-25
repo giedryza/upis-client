@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { routes } from 'config/routes';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 import { Button, Container, TextInput } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useUpdatePassword } from 'domain/users';
@@ -41,7 +41,7 @@ export const ProfileEditSecurity: FC = () => {
       { currentPassword, newPassword, confirmPassword },
       {
         onSuccess: () => {
-          push(generateRoute(routes.account.profile.index));
+          push(generateUrl(routes.account.profile.index));
         },
       }
     );
@@ -140,7 +140,7 @@ export const ProfileEditSecurity: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={generateRoute(routes.account.profile.index)}
+              url={generateUrl(routes.account.profile.index)}
             />
 
             <Button

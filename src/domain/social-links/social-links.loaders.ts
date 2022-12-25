@@ -3,7 +3,7 @@ import { IncomingMessage } from 'http';
 import { endpoints } from 'config/endpoints';
 import { Request, getJsonBody, loadersFactory } from 'tools/services/request';
 import { Pagination } from 'types/api';
-import { generateRoute } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 import {
   SocialLink,
@@ -18,7 +18,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       params,
     }: { req?: IncomingMessage; params?: SocialLinksFilters } = {}) =>
       new Request<SocialLink[], Pagination>(
-        generateRoute(endpoints.socialLinks.index),
+        generateUrl(endpoints.socialLinks.index),
         {
           req,
           params,
@@ -26,13 +26,10 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         }
       ).get(),
     getSocialLink: ({ req, id }: { req?: IncomingMessage; id: string }) =>
-      new Request<SocialLink>(
-        generateRoute(endpoints.socialLinks.one, { id }),
-        {
-          req,
-          locale,
-        }
-      ).get(),
+      new Request<SocialLink>(generateUrl(endpoints.socialLinks.one, { id }), {
+        req,
+        locale,
+      }).get(),
     addSocialLink: ({
       form,
       hostId,
@@ -40,7 +37,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       form: { url: string; type: SocialType };
       hostId: string;
     }) =>
-      new Request<SocialLink>(generateRoute(endpoints.socialLinks.index), {
+      new Request<SocialLink>(generateUrl(endpoints.socialLinks.index), {
         body: getJsonBody({ ...form, host: hostId }),
         locale,
       }).post(),
@@ -51,15 +48,12 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       form: Partial<{ url: string; type: SocialType }>;
       id: string;
     }) =>
-      new Request<SocialLink>(
-        generateRoute(endpoints.socialLinks.one, { id }),
-        {
-          body: getJsonBody(form),
-          locale,
-        }
-      ).patch(),
+      new Request<SocialLink>(generateUrl(endpoints.socialLinks.one, { id }), {
+        body: getJsonBody(form),
+        locale,
+      }).patch(),
     deleteSocialLink: ({ id }: { id: string }) =>
-      new Request(generateRoute(endpoints.socialLinks.one, { id }), {
+      new Request(generateUrl(endpoints.socialLinks.one, { id }), {
         locale,
       }).delete(),
   },
