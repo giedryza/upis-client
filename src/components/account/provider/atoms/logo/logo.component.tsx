@@ -39,7 +39,7 @@ export const Logo: FC = () => {
             sizes={{ width: 400, height: 225 }}
           />
         ) : (
-          <ImagePlaceholder />
+          <ImagePlaceholder radius="md" />
         )}
       </Container>
     </InfoBlock>
