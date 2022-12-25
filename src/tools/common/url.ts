@@ -1,3 +1,5 @@
+import { APP } from 'config/app';
+
 type Params<Url> = Url extends `${string}:${infer Param}/${infer Rest}`
   ? Param | Params<Rest>
   : Url extends `${string}:${infer Param}`
@@ -16,4 +18,18 @@ export const generateUrl = <Url extends string>(
     (acc, [key, value]) => acc.replace(`:${key}`, String(value)),
     url
   );
+};
+
+export const generateImageUrl = ({
+  id,
+  width,
+  height,
+}: {
+  id: string;
+  width: number;
+  height: number;
+}) => {
+  return APP.cloudinary.url
+    .replace(':transformations', `w_${width},h_${height},c_fill`)
+    .replace(':public_id', id);
 };
