@@ -1,14 +1,18 @@
 import { FC } from 'react';
 
-import { SerpList, SerpMap } from 'components/serp';
+import { SerpFilters, SerpList, SerpMap } from 'components/serp';
 
 import styles from './results.module.scss';
 
 export const SerpResults: FC = () => {
   return (
-    <main className={styles.container}>
-      <SerpList />
-      <SerpMap />
-    </main>
+    <div className={styles.container}>
+      <SerpFilters />
+
+      <main className={styles.main}>
+        <SerpList />
+        <SerpMap />
+      </main>
+    </div>
   );
 };
