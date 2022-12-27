@@ -5,12 +5,23 @@ import { Checkbox, Group } from './atoms';
 
 export const CheckboxGroupInput = forwardRef<HTMLInputElement, Props>(
   (
-    { label, items, value, onChange, info, error, disabled, readonly },
+    {
+      label,
+      ariaLabel,
+      items,
+      value,
+      onChange,
+      info,
+      error,
+      disabled,
+      readonly,
+    },
     forwardedRef
   ) => {
     return (
       <Group
         label={label}
+        ariaLabel={ariaLabel}
         onChange={onChange}
         value={value}
         info={info}
