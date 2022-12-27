@@ -2,9 +2,9 @@ import { FC, useEffect, useRef } from 'react';
 
 import { useIntersectionObserver, useStableHandler } from 'tools/hooks';
 
-import { Props } from './end-row.types';
+import { Props } from './in-view.types';
 
-export const EndRow: FC<Props> = ({ onInView, placeholder }) => {
+export const InView: FC<Props> = ({ onInView, placeholder }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const entry = useIntersectionObserver(ref);

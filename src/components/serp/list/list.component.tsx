@@ -2,12 +2,11 @@ import { FC } from 'react';
 import { useWindowVirtualizer } from '@tanstack/react-virtual';
 
 import { APP } from 'config/app';
-import { Loader } from 'ui';
+import { InView, Loader } from 'ui';
 import { SerpCard } from 'components/serp';
 import { Footer } from 'components/layout';
 import { useInfiniteTours } from 'domain/tours';
 
-import { EndRow } from './atoms';
 import styles from './list.module.scss';
 
 export const SerpList: FC = () => {
@@ -58,7 +57,7 @@ export const SerpList: FC = () => {
                 {isLoading ? (
                   <Loader height={APP.serp.cardHeight} />
                 ) : isLast ? (
-                  <EndRow
+                  <InView
                     onInView={onEndReached}
                     placeholder={<Loader height={APP.serp.cardHeight} />}
                   />

@@ -15,6 +15,7 @@ export * from './icon';
 export * from './image';
 export * from './image-placeholder';
 export * from './image-tile';
+export * from './in-view';
 export * from './labeled-value';
 export * from './lightbox';
 export * from './loader';
