@@ -1,6 +1,7 @@
 @use 'styles/mixins' as *;
 
 .content {
+  min-width: 25rem;
   max-width: 35rem;
 
   color: var(--color-text);
