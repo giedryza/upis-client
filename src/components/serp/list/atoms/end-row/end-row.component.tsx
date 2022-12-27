@@ -1,12 +1,10 @@
 import { FC, useEffect, useRef } from 'react';
 
-import { APP } from 'config/app';
 import { useIntersectionObserver, useStableHandler } from 'tools/hooks';
-import { Loader } from 'ui';
 
 import { Props } from './end-row.types';
 
-export const EndRow: FC<Props> = ({ onInView }) => {
+export const EndRow: FC<Props> = ({ onInView, placeholder }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const entry = useIntersectionObserver(ref);
@@ -18,5 +16,5 @@ export const EndRow: FC<Props> = ({ onInView }) => {
     }
   }, [entry?.isIntersecting, handler]);
 
-  return <Loader height={APP.serp.cardHeight} ref={ref} />;
+  return <div ref={ref}>{placeholder}</div>;
 };
