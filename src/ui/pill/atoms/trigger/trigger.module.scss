@@ -14,6 +14,8 @@
   border-radius: 100rem;
   cursor: pointer;
 
+  transition: var(--transition-duration-md) background-color;
+
   @media screen and (-ms-high-contrast: active) {
     border: 2px solid currentcolor;
   }
