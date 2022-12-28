@@ -3,5 +3,11 @@
     "texts": {
       "pricePer": "žmogui už parą"
     }
+  },
+  "filters": {
+    "title": "Filtrai",
+    "regions": {
+      "title": "Regionai"
+    }
   }
 }

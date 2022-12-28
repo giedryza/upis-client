@@ -5,6 +5,7 @@
   "actions": {
     "close": "Uždaryti",
     "cancel": "Atšaukti",
+    "clear": "Išvalyti",
     "yes": "Taip",
     "submit": "Patvirtinti",
     "save": "Išsaugoti",

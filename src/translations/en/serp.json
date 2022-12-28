@@ -3,5 +3,11 @@
     "texts": {
       "pricePer": "per person, per day"
     }
+  },
+  "filters": {
+    "title": "Filters",
+    "regions": {
+      "title": "Regions"
+    }
   }
 }

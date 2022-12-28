@@ -5,6 +5,7 @@
   "actions": {
     "close": "Close",
     "cancel": "Cancel",
+    "clear": "Clear",
     "yes": "Yes",
     "submit": "Submit",
     "save": "Save",
