@@ -8,6 +8,9 @@
     "title": "Filters",
     "regions": {
       "title": "Regions"
+    },
+    "rivers": {
+      "title": "Rivers"
     }
   }
 }

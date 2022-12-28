@@ -92,6 +92,7 @@ export const useToursFilters = () => {
     () => loaders.getFilters({ params }),
     {
       select: converters.getFilters,
+      keepPreviousData: true,
     }
   );
 

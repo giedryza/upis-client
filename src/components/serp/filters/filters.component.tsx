@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { APP } from 'config/app';
 import { Pill } from 'ui';
 
-import { FilterRegions } from './atoms';
+import { FilterRegions, FilterRivers } from './atoms';
 import styles from './filters.module.scss';
 
 export const SerpFilters: FC = () => {
@@ -24,7 +24,7 @@ export const SerpFilters: FC = () => {
           <FilterRegions />
         </li>
         <li>
-          <Pill label="Rivers" title="Rivers" popover={<div />} />
+          <FilterRivers />
         </li>
         <li>
           <Pill label="Price" title="Price" popover={<div />} />
