@@ -5,7 +5,8 @@ export interface Item {
 
 export interface Props {
   name: string;
-  label: string;
+  label?: string;
+  ariaLabel?: string;
   items: Item[];
   value: Item['value'][];
   onChange: (value: Item['value'][]) => void;

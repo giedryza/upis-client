@@ -8,7 +8,7 @@ import styles from './multi-autocomplete-input.module.scss';
 
 export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
   (
-    { name, label, items, value, onChange, placeholder, error },
+    { name, label, ariaLabel, items, value, onChange, placeholder, error },
     forwardedRef
   ) => {
     const [query, setQuery] = useState('');
@@ -89,9 +89,11 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
 
     return (
       <div className={styles.autocomplete}>
-        <label className={styles.label} {...getLabelProps()}>
-          {label}
-        </label>
+        {label ? (
+          <label className={styles.label} {...getLabelProps()}>
+            {label}
+          </label>
+        ) : null}
 
         <div className={clsx(styles.input, !!error && styles.invalid)}>
           <div className={styles.items}>
@@ -121,6 +123,7 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
                     placeholder,
                     preventKeyAction: isOpen,
                     'aria-invalid': !!error,
+                    'aria-label': ariaLabel,
                     ref: forwardedRef,
                   })
                 )}
