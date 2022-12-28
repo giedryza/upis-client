@@ -139,6 +139,8 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
     getFilters: ({ params }: GetFilters) =>
       tourFilters
         .partial()
-        .safeParseAsync(normalizeQueryParams(params, ['regions', 'rivers'])),
+        .safeParseAsync(
+          normalizeQueryParams(params, ['amenities', 'regions', 'rivers'])
+        ),
   },
 }));

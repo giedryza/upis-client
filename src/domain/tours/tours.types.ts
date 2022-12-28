@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { Amenity } from 'domain/amenities';
+import { Amenity, amenities } from 'domain/amenities';
 import { Provider } from 'domain/providers';
 import { AppFile, BaseEntity, GeoPoint, Pagination, Price } from 'types/common';
 
@@ -261,6 +261,7 @@ export interface ToursFilters extends Pagination {
 }
 
 export const tourFilters = z.object({
+  amenities: z.array(z.enum(amenities)),
   regions: z.array(z.enum(regions)),
   rivers: z.array(z.enum(rivers)),
 });

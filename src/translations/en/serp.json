@@ -6,6 +6,9 @@
   },
   "filters": {
     "title": "Filters",
+    "amenities": {
+      "title": "Amenities"
+    },
     "regions": {
       "title": "Regions"
     },
