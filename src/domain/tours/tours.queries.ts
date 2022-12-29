@@ -82,3 +82,19 @@ export const useActiveTour = () => {
 
   return query;
 };
+
+export const useToursFilters = () => {
+  const { loaders } = useLoaders();
+  const { query: params } = useRouter();
+
+  const query = useQuery(
+    toursKeys.list('filters', params),
+    () => loaders.getFilters({ params }),
+    {
+      select: converters.getFilters,
+      keepPreviousData: true,
+    }
+  );
+
+  return query;
+};

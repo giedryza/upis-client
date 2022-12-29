@@ -1,0 +1,18 @@
+.nav {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 1;
+
+  height: var(--serp-filters-height);
+  padding: 0 calc(var(--spacing) * 1px);
+
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-grey-90);
+}
+
+.list {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  height: 100%;
+}

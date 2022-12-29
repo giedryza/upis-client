@@ -9,6 +9,7 @@ import styles from './group.module.scss';
 
 export const Group: FC<PropsWithChildren<Props>> = ({
   label,
+  ariaLabel,
   value,
   onChange,
   info,
@@ -19,6 +20,7 @@ export const Group: FC<PropsWithChildren<Props>> = ({
 }) => {
   const props: Parameters<typeof useCheckboxGroup>[0] = {
     label,
+    'aria-label': ariaLabel,
     value,
     onChange,
     isDisabled: disabled,

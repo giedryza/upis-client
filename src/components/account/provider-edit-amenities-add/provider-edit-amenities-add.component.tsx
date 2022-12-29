@@ -13,7 +13,7 @@ import {
 } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
-import { units, useAddAmenity, variants } from 'domain/amenities';
+import { units, useAddAmenity, amenities } from 'domain/amenities';
 import { useFormatNumber } from 'tools/format';
 import { currencies } from 'types/common';
 import { generateUrl, getRouteParam, toCents } from 'tools/common';
@@ -97,7 +97,7 @@ export const ProviderEditAmenitiesAdd: FC = () => {
               })}
               label={t('account:providers.amenities.form.variant.label')}
               error={errors.variant?.message}
-              options={variants.map((variant) => ({
+              options={amenities.map((variant) => ({
                 label: t(`common:amenities.variants.${variant}`),
                 value: variant,
               }))}

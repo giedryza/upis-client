@@ -3,5 +3,17 @@
     "texts": {
       "pricePer": "žmogui už parą"
     }
+  },
+  "filters": {
+    "title": "Filtrai",
+    "amenities": {
+      "title": "Ypatumai"
+    },
+    "regions": {
+      "title": "Regionai"
+    },
+    "rivers": {
+      "title": "Upės"
+    }
   }
 }

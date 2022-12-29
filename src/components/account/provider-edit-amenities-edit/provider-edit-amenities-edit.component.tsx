@@ -16,7 +16,7 @@ import { InfoBlock } from 'components/account/atoms';
 import {
   useUpdateAmenity,
   useAmenity,
-  variants,
+  amenities,
   units,
 } from 'domain/amenities';
 import { useFormatNumber } from 'tools/format';
@@ -115,7 +115,7 @@ export const ProviderEditAmenitiesEdit: FC = () => {
               })}
               label={t('account:providers.amenities.form.variant.label')}
               error={errors.variant?.message}
-              options={variants.map((variant) => ({
+              options={amenities.map((variant) => ({
                 label: t(`common:amenities.variants.${variant}`),
                 value: variant,
               }))}

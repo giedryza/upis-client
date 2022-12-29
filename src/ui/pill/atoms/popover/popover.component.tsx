@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren, useRef } from 'react';
-import { DismissButton, Overlay, usePopover } from 'react-aria';
+import { DismissButton, FocusScope, usePopover } from 'react-aria';
 
 import { Props } from './popover.types';
 import styles from './popover.module.scss';
@@ -15,13 +15,13 @@ export const Popover: FC<PropsWithChildren<Props>> = ({
       triggerRef,
       popoverRef,
       offset: 10,
-      containerPadding: 0,
+      containerPadding: 10,
     },
     state
   );
 
   return (
-    <Overlay>
+    <FocusScope contain restoreFocus autoFocus={false}>
       <div {...popoverProps} ref={popoverRef} className={styles.popover}>
         <svg
           {...arrowProps}
@@ -35,6 +35,6 @@ export const Popover: FC<PropsWithChildren<Props>> = ({
         {children}
         <DismissButton onDismiss={state.close} />
       </div>
-    </Overlay>
+    </FocusScope>
   );
 };

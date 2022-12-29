@@ -1,4 +1,5 @@
 import { IncomingMessage } from 'http';
+import { Router } from 'next/router';
 
 import { endpoints } from 'config/endpoints';
 import {
@@ -6,12 +7,13 @@ import {
   getJsonBody,
   loadersFactory,
   getFormDataBody,
+  normalizeQueryParams,
 } from 'tools/services/request';
 import { Price } from 'types/common';
 import { Pagination } from 'types/api';
 import { generateUrl } from 'tools/common';
 
-import { Region, River, Tour, ToursFilters } from './tours.types';
+import { Region, River, Tour, tourFilters, ToursFilters } from './tours.types';
 
 interface GetTours {
   req?: IncomingMessage;
@@ -74,6 +76,10 @@ interface DeleteTour {
   id: string;
 }
 
+interface GetFilters {
+  params: Router['query'];
+}
+
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
   loaders: {
     getTours: ({ req, params }: GetTours = {}) =>
@@ -130,5 +136,11 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       new Request(generateUrl(endpoints.tours.one.index, { id }), {
         locale,
       }).delete(),
+    getFilters: ({ params }: GetFilters) =>
+      tourFilters
+        .partial()
+        .safeParseAsync(
+          normalizeQueryParams(params, ['amenities', 'regions', 'rivers'])
+        ),
   },
 }));

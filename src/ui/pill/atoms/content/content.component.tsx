@@ -29,7 +29,7 @@ export const Content: FC<PropsWithChildren<Props & AriaDialogProps>> = ({
           <Button
             icon="close"
             variant="ghost"
-            size="sm"
+            size="xs"
             attributes={{
               onClick: onClose,
               'aria-label': t('common:actions.close'),

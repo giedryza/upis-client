@@ -1,6 +1,6 @@
 import { BaseEntity, Price } from 'types/common';
 
-export const variants = [
+export const amenities = [
   'transport',
   'child-seat',
   'life-vest',
@@ -16,7 +16,7 @@ export const variants = [
 
 export const units = ['tour', 'person', 'day', 'h', 'km'] as const;
 
-export type Variant = typeof variants[number];
+export type Variant = typeof amenities[number];
 
 export type Unit = typeof units[number];
 

@@ -3,5 +3,17 @@
     "texts": {
       "pricePer": "per person, per day"
     }
+  },
+  "filters": {
+    "title": "Filters",
+    "amenities": {
+      "title": "Amenities"
+    },
+    "regions": {
+      "title": "Regions"
+    },
+    "rivers": {
+      "title": "Rivers"
+    }
   }
 }

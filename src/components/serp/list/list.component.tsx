@@ -2,20 +2,22 @@ import { FC } from 'react';
 import { useWindowVirtualizer } from '@tanstack/react-virtual';
 
 import { APP } from 'config/app';
+import { InView, Loader } from 'ui';
 import { SerpCard } from 'components/serp';
 import { Footer } from 'components/layout';
 import { useInfiniteTours } from 'domain/tours';
 
-import { EndRow } from './atoms';
 import styles from './list.module.scss';
 
 export const SerpList: FC = () => {
-  const { data, hasNextPage, fetchNextPage } = useInfiniteTours({ limit: 15 });
+  const { data, isLoading, hasNextPage, fetchNextPage } = useInfiniteTours({
+    limit: 15,
+  });
 
   const tours = data ? data.pages.flat() : [];
 
   const virtualizer = useWindowVirtualizer({
-    count: hasNextPage ? tours.length + 1 : tours.length,
+    count: isLoading ? 6 : hasNextPage ? tours.length + 1 : tours.length,
     estimateSize: () => APP.serp.cardHeight + APP.serp.gridGap,
     overscan: 3,
     paddingStart: APP.serp.gridGap,
@@ -52,8 +54,13 @@ export const SerpList: FC = () => {
                   transform: `translateY(${row.start}px)`,
                 }}
               >
-                {isLast ? (
-                  <EndRow onInView={onEndReached} />
+                {isLoading ? (
+                  <Loader height={APP.serp.cardHeight} />
+                ) : isLast ? (
+                  <InView
+                    onInView={onEndReached}
+                    placeholder={<Loader height={APP.serp.cardHeight} />}
+                  />
                 ) : tour ? (
                   <SerpCard tour={tour} />
                 ) : null}

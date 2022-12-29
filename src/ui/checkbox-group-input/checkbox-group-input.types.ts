@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 export interface Props {
   items: Item[];
   label?: string;
+  ariaLabel?: string;
   value?: string[];
   onChange?: (value: string[]) => void;
   info?: string;

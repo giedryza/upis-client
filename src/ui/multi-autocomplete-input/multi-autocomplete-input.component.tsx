@@ -3,12 +3,24 @@ import { forwardRef, useMemo, useState } from 'react';
 import { clsx } from 'clsx';
 import { useCombobox, useMultipleSelection } from 'downshift';
 
+import { normalizeString } from 'tools/common';
+
 import { Props, Item } from './multi-autocomplete-input.types';
 import styles from './multi-autocomplete-input.module.scss';
 
 export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
   (
-    { name, label, items, value, onChange, placeholder, error },
+    {
+      name,
+      label,
+      ariaLabel,
+      items,
+      value,
+      onChange,
+      placeholder,
+      error,
+      autofocus,
+    },
     forwardedRef
   ) => {
     const [query, setQuery] = useState('');
@@ -36,7 +48,7 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
         items
           .filter((item) => !selectedItems.includes(item))
           .filter((item) =>
-            item.label.toLowerCase().includes(query.toLowerCase())
+            normalizeString(item.label).includes(normalizeString(query))
           ),
       [query, items, selectedItems]
     );
@@ -89,9 +101,11 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
 
     return (
       <div className={styles.autocomplete}>
-        <label className={styles.label} {...getLabelProps()}>
-          {label}
-        </label>
+        {label ? (
+          <label className={styles.label} {...getLabelProps()}>
+            {label}
+          </label>
+        ) : null}
 
         <div className={clsx(styles.input, !!error && styles.invalid)}>
           <div className={styles.items}>
@@ -120,7 +134,9 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
                   getDropdownProps({
                     placeholder,
                     preventKeyAction: isOpen,
+                    autoFocus: autofocus,
                     'aria-invalid': !!error,
+                    'aria-label': ariaLabel,
                     ref: forwardedRef,
                   })
                 )}
