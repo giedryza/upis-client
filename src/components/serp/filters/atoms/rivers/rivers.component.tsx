@@ -37,6 +37,7 @@ export const FilterRivers: FC = () => {
           onChange={(value) => {
             navigateWithFilters(value as River[]);
           }}
+          autofocus
         />
       }
       actions={[

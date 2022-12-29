@@ -12,4 +12,5 @@ export interface Props {
   onChange: (value: Item['value'][]) => void;
   placeholder?: string;
   error?: string;
+  autofocus?: boolean;
 }
