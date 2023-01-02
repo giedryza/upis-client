@@ -9,9 +9,6 @@ export default {
     label: 'Agree to terms and conditions',
     name: 'agree',
   },
-  argTypes: {
-    onChange: { action: 'onChange' },
-  },
 } as ComponentMeta<typeof CheckboxInput>;
 
 const Template: ComponentStory<typeof CheckboxInput> = (args) => (

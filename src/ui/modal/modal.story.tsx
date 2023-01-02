@@ -8,9 +8,6 @@ export default {
   args: {
     id: 'LOREM_IPSUM',
   },
-  argTypes: {
-    onClose: { action: 'onClose' },
-  },
 } as ComponentMeta<typeof Modal>;
 
 const Template: ComponentStory<typeof Modal> = (args) => (

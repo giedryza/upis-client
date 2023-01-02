@@ -9,9 +9,6 @@ export default {
     name: 'first-name',
     label: 'First name',
   },
-  argTypes: {
-    onChange: { action: 'onChange' },
-  },
 } as ComponentMeta<typeof TextInput>;
 
 const Template: ComponentStory<typeof TextInput> = (args) => (

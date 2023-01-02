@@ -20,9 +20,6 @@ export default {
     ],
     value: ['2', '4'],
   },
-  argTypes: {
-    onChange: { action: 'onChange' },
-  },
 } as ComponentMeta<typeof MultiAutocompleteInput>;
 
 const Template: ComponentStory<typeof MultiAutocompleteInput> = (args) => (

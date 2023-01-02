@@ -8,9 +8,6 @@ export default {
   args: {
     label: 'Difficulty',
   },
-  argTypes: {
-    onChange: { action: 'onChange' },
-  },
 } as ComponentMeta<typeof SliderInput>;
 
 const Template: ComponentStory<typeof SliderInput> = (args) => (
