@@ -44,8 +44,8 @@
   .line {
     position: absolute;
     top: calc(var(--thumb-size) * 0.5);
-    left: 0;
     right: 0;
+    left: 0;
 
     height: var(--line-size);
 
@@ -53,8 +53,8 @@
     transform: translateY(-50%);
 
     &.-active {
-      left: max(calc(var(--left) * 100%), 0%);
       right: max(calc(var(--right) * 100%), 0%);
+      left: max(calc(var(--left) * 100%), 0%);
 
       background-color: currentColor;
     }
