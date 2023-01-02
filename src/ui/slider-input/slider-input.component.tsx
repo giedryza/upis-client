@@ -14,6 +14,7 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
   (
     {
       label,
+      ariaLabel,
       id,
       value,
       onChange,
@@ -49,7 +50,7 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
     const state = useSliderState<number[]>(sliderProps);
 
     const { groupProps, trackProps, labelProps, outputProps } = useSlider(
-      { ...sliderProps, id },
+      { ...sliderProps, id, 'aria-label': ariaLabel },
       state,
       trackRef
     );
@@ -62,9 +63,11 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
         {...groupProps}
         className={clsx(styles.slider, disabled && styles['-disabled'])}
       >
-        <label className={styles.label} {...labelProps}>
-          {label}
-        </label>
+        {label ? (
+          <label className={styles.label} {...labelProps}>
+            {label}
+          </label>
+        ) : null}
 
         <div className={styles.trackpadContainer}>
           <div {...trackProps} className={styles.trackpad} ref={trackRef}>

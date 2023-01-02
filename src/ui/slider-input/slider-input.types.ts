@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 
 export interface Props {
-  label: ReactNode;
+  label?: ReactNode;
+  ariaLabel?: string;
   id?: string;
   value?: [number, number];
   onChange?: (value: [number, number]) => void;
