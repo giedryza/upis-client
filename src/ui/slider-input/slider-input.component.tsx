@@ -30,11 +30,16 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
     const trackRef = useRef<HTMLDivElement>(null);
     const numberFormatter = useNumberFormatter(formatOptions);
 
-    const sliderProps: Parameters<typeof useSliderState>[0] = {
+    const sliderProps: Parameters<typeof useSliderState<number[]>>[0] = {
       label,
-      value: isDefined(value) ? [Number.isNaN(value) ? min : value] : undefined,
+      value: isDefined(value)
+        ? [
+            Number.isNaN(value[0]) ? min : value[0],
+            Number.isNaN(value[1]) ? max : value[1],
+          ]
+        : undefined,
       onChange: isDefined(onChange)
-        ? (v) => onChange((Array.isArray(v) ? v[0] : v) ?? 0)
+        ? (v) => onChange([v[0] ?? NaN, v[1] ?? NaN])
         : undefined,
       isDisabled: disabled,
       minValue: min,
@@ -43,7 +48,7 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
       numberFormatter,
     };
 
-    const state = useSliderState(sliderProps);
+    const state = useSliderState<number[]>(sliderProps);
 
     const { groupProps, trackProps, labelProps, outputProps } = useSlider(
       { ...sliderProps, id },

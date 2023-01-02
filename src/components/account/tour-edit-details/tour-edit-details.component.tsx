@@ -156,8 +156,8 @@ export const TourEditDetails: FC = () => {
               render={({ field: { onChange, value, ref } }) => (
                 <SliderInput
                   label={t('account:tours.details.form.difficulty.label')}
-                  value={value}
-                  onChange={onChange}
+                  value={[value, NaN]}
+                  onChange={([v]) => onChange(v)}
                   ref={ref}
                   min={0}
                   max={5}
