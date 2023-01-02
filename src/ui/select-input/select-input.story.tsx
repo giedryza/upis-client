@@ -19,9 +19,6 @@ export default {
       { label: 'Outlaw', value: 'o' },
     ],
   },
-  argTypes: {
-    onChange: { action: 'onChange' },
-  },
 } as ComponentMeta<typeof SelectInput>;
 
 const Template: ComponentStory<typeof SelectInput> = (args) => (

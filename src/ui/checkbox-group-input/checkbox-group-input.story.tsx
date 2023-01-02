@@ -15,9 +15,6 @@ export default {
       { label: 'Mažoji Lietuva', value: 'mazoji-lietuva' },
     ],
   },
-  argTypes: {
-    onChange: { action: 'onChange' },
-  },
 } as ComponentMeta<typeof CheckboxGroupInput>;
 
 const Template: ComponentStory<typeof CheckboxGroupInput> = (args) => (

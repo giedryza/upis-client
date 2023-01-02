@@ -14,6 +14,7 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
   (
     {
       label,
+      ariaLabel,
       id,
       value,
       onChange,
@@ -25,16 +26,19 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
     },
     forwardedRef
   ) => {
-    const THUMB_INDEX = 0;
-
     const trackRef = useRef<HTMLDivElement>(null);
     const numberFormatter = useNumberFormatter(formatOptions);
 
-    const sliderProps: Parameters<typeof useSliderState>[0] = {
+    const sliderProps: Parameters<typeof useSliderState<number[]>>[0] = {
       label,
-      value: isDefined(value) ? [Number.isNaN(value) ? min : value] : undefined,
+      value: isDefined(value)
+        ? [
+            Number.isNaN(value[0]) ? min : value[0],
+            Number.isNaN(value[1]) ? max : value[1],
+          ]
+        : undefined,
       onChange: isDefined(onChange)
-        ? (v) => onChange((Array.isArray(v) ? v[0] : v) ?? 0)
+        ? (v) => onChange([v[0] ?? NaN, v[1] ?? NaN])
         : undefined,
       isDisabled: disabled,
       minValue: min,
@@ -43,44 +47,61 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
       numberFormatter,
     };
 
-    const state = useSliderState(sliderProps);
+    const state = useSliderState<number[]>(sliderProps);
 
     const { groupProps, trackProps, labelProps, outputProps } = useSlider(
-      { ...sliderProps, id },
+      { ...sliderProps, id, 'aria-label': ariaLabel },
       state,
       trackRef
     );
+
+    const thumbs =
+      value?.filter((v) => !Number.isNaN(v)).map((_, i) => i) ?? [];
 
     return (
       <div
         {...groupProps}
         className={clsx(styles.slider, disabled && styles['-disabled'])}
-        style={{
-          '--percentage': state.getThumbPercent(THUMB_INDEX),
-        }}
       >
-        <label className={styles.label} {...labelProps}>
-          {label}
-        </label>
+        {label ? (
+          <label className={styles.label} {...labelProps}>
+            {label}
+          </label>
+        ) : null}
 
         <div className={styles.trackpadContainer}>
           <div {...trackProps} className={styles.trackpad} ref={trackRef}>
             <div className={styles.line} />
-            <div className={clsx(styles.line, styles['-active'])} />
 
-            <div className={styles.thumbContainer}>
-              <Thumb
-                index={THUMB_INDEX}
-                state={state}
-                trackRef={trackRef}
-                disabled={disabled}
-                forwardedRef={forwardedRef}
-              />
+            <div
+              className={clsx(styles.line, styles['-active'])}
+              style={{
+                '--left': thumbs.length > 1 ? state.getThumbPercent(0) : 0,
+                '--right': 1 - state.getThumbPercent(thumbs.length > 1 ? 1 : 0),
+              }}
+            />
 
-              <output {...outputProps} className={styles.output}>
-                {state.getThumbValueLabel(THUMB_INDEX)}
-              </output>
-            </div>
+            {thumbs.map((index) => (
+              <div
+                className={styles.thumbContainer}
+                style={{
+                  '--percentage': state.getThumbPercent(index),
+                }}
+                key={index}
+              >
+                <Thumb
+                  index={index}
+                  state={state}
+                  trackRef={trackRef}
+                  disabled={disabled}
+                  forwardedRef={forwardedRef}
+                />
+
+                <output {...outputProps} className={styles.output}>
+                  {state.getThumbValueLabel(index)}
+                </output>
+              </div>
+            ))}
           </div>
         </div>
       </div>

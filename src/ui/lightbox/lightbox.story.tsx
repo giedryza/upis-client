@@ -26,9 +26,6 @@ export default {
       },
     ],
   },
-  argTypes: {
-    onClose: { action: 'onClose' },
-  },
 } as ComponentMeta<typeof Lightbox>;
 
 const Template: ComponentStory<typeof Lightbox> = (args) => (

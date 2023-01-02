@@ -9,9 +9,6 @@ export default {
     name: 'my-file',
     accept: ['jpg', 'jpeg', 'png', 'avif', 'gif'],
   },
-  argTypes: {
-    onChange: { action: 'onChange' },
-  },
 } as ComponentMeta<typeof FileInput>;
 
 const Template: ComponentStory<typeof FileInput> = (args) => (

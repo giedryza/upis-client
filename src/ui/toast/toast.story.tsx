@@ -13,13 +13,6 @@ export default {
   args: {
     message: 'Invalid provider name. Try another.',
   },
-  argTypes: {
-    onClose: { action: 'onClose' },
-    onMouseEnter: { action: 'onMouseEnter' },
-    onMouseLeave: { action: 'onMouseLeave' },
-    onTouchStart: { action: 'onTouchStart' },
-    onTouchEnd: { action: 'onTouchEnd' },
-  },
 } as ComponentMeta<typeof Toast>;
 
 const Template: ComponentStory<typeof Toast> = (args) => <Toast {...args} />;

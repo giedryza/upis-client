@@ -5,6 +5,8 @@ declare module 'csstype' {
   interface Properties {
     '--width'?: number;
     '--height'?: number;
+    '--left'?: number;
+    '--right'?: number;
     '--grid-columns'?: number;
     '--fade-delay'?: number;
     '--percentage'?: number;

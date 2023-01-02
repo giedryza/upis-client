@@ -8,9 +8,6 @@ export default {
   args: {
     label: 'Price',
   },
-  argTypes: {
-    onChange: { action: 'onChange' },
-  },
 } as ComponentMeta<typeof NumberInput>;
 
 const Template: ComponentStory<typeof NumberInput> = (args) => (
