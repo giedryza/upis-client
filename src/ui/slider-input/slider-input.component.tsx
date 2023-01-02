@@ -25,8 +25,6 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
     },
     forwardedRef
   ) => {
-    const THUMB_INDEX = 0;
-
     const trackRef = useRef<HTMLDivElement>(null);
     const numberFormatter = useNumberFormatter(formatOptions);
 
@@ -56,13 +54,13 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
       trackRef
     );
 
+    const thumbs =
+      value?.filter((v) => !Number.isNaN(v)).map((_, i) => i) ?? [];
+
     return (
       <div
         {...groupProps}
         className={clsx(styles.slider, disabled && styles['-disabled'])}
-        style={{
-          '--percentage': state.getThumbPercent(THUMB_INDEX),
-        }}
       >
         <label className={styles.label} {...labelProps}>
           {label}
@@ -71,21 +69,36 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
         <div className={styles.trackpadContainer}>
           <div {...trackProps} className={styles.trackpad} ref={trackRef}>
             <div className={styles.line} />
-            <div className={clsx(styles.line, styles['-active'])} />
 
-            <div className={styles.thumbContainer}>
-              <Thumb
-                index={THUMB_INDEX}
-                state={state}
-                trackRef={trackRef}
-                disabled={disabled}
-                forwardedRef={forwardedRef}
-              />
+            <div
+              className={clsx(styles.line, styles['-active'])}
+              style={{
+                '--left': thumbs.length > 1 ? state.getThumbPercent(0) : 0,
+                '--right': 1 - state.getThumbPercent(thumbs.length > 1 ? 1 : 0),
+              }}
+            />
 
-              <output {...outputProps} className={styles.output}>
-                {state.getThumbValueLabel(THUMB_INDEX)}
-              </output>
-            </div>
+            {thumbs.map((index) => (
+              <div
+                className={styles.thumbContainer}
+                style={{
+                  '--percentage': state.getThumbPercent(index),
+                }}
+                key={index}
+              >
+                <Thumb
+                  index={index}
+                  state={state}
+                  trackRef={trackRef}
+                  disabled={disabled}
+                  forwardedRef={forwardedRef}
+                />
+
+                <output {...outputProps} className={styles.output}>
+                  {state.getThumbValueLabel(index)}
+                </output>
+              </div>
+            ))}
           </div>
         </div>
       </div>

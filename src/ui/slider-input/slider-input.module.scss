@@ -3,7 +3,6 @@
 .slider {
   --thumb-size: 1.25em;
   --line-size: 1px;
-  --capacity: min(calc(var(--percentage, 0) * 100%), 100%);
 
   color: var(--color-grey-05);
   font-size: 1.6rem;
@@ -46,21 +45,24 @@
     position: absolute;
     top: calc(var(--thumb-size) * 0.5);
     left: 0;
+    right: 0;
 
-    width: 100%;
     height: var(--line-size);
 
     background-color: var(--color-grey-75);
     transform: translateY(-50%);
 
     &.-active {
-      width: var(--capacity);
+      left: max(calc(var(--left) * 100%), 0%);
+      right: max(calc(var(--right) * 100%), 0%);
 
       background-color: currentColor;
     }
   }
 
   .thumbContainer {
+    --capacity: min(calc(var(--percentage, 0) * 100%), 100%);
+
     position: absolute;
     top: calc(var(--thumb-size) * 0.5);
     left: var(--capacity);
