@@ -36,7 +36,11 @@
     color: var(--color-primary-40);
     font-weight: 500;
 
-    background-color: var(--color-primary-90);
+    background-color: var(--color-primary-95);
+
+    &:hover {
+      background-color: var(--color-primary-90);
+    }
   }
 
   .icon {
