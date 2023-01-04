@@ -72,11 +72,14 @@
 
   .output {
     position: absolute;
-    top: 105%;
+    top: 125%;
     left: 50%;
 
     font-weight: 500;
     font-size: 0.75em;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-align: center;
 
     transform: translateX(-50%);
   }
