@@ -13,7 +13,14 @@ import { Price } from 'types/common';
 import { Pagination } from 'types/api';
 import { generateUrl } from 'tools/common';
 
-import { Region, River, Tour, tourFilters, ToursFilters } from './tours.types';
+import {
+  FiltersSummary,
+  Region,
+  River,
+  Tour,
+  tourFilters,
+  ToursFilters,
+} from './tours.types';
 
 interface GetTours {
   req?: IncomingMessage;
@@ -136,11 +143,15 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       new Request(generateUrl(endpoints.tours.one.index, { id }), {
         locale,
       }).delete(),
-    getFilters: ({ params }: GetFilters) =>
+    getActiveFilters: ({ params }: GetFilters) =>
       tourFilters
         .partial()
         .safeParseAsync(
           normalizeQueryParams(params, ['amenities', 'regions', 'rivers'])
         ),
+    getFiltersSummary: () =>
+      new Request<FiltersSummary>(generateUrl(endpoints.tours.filters), {
+        locale,
+      }).get(),
   },
 }));

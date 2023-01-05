@@ -83,16 +83,30 @@ export const useActiveTour = () => {
   return query;
 };
 
-export const useToursFilters = () => {
+export const useToursActiveFilters = () => {
   const { loaders } = useLoaders();
   const { query: params } = useRouter();
 
   const query = useQuery(
-    toursKeys.list('filters', params),
-    () => loaders.getFilters({ params }),
+    toursKeys.list('filters', 'active', params),
+    () => loaders.getActiveFilters({ params }),
     {
-      select: converters.getFilters,
+      select: converters.getActiveFilters,
       keepPreviousData: true,
+    }
+  );
+
+  return query;
+};
+
+export const useToursFiltersSummary = () => {
+  const { loaders } = useLoaders();
+
+  const query = useQuery(
+    toursKeys.list('filters', 'summary'),
+    () => loaders.getFiltersSummary(),
+    {
+      select: converters.getFiltersSummary,
     }
   );
 

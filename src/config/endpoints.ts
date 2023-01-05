@@ -25,6 +25,7 @@ export const endpoints = {
       amenities: 'tours/:id/amenities',
       photo: 'tours/:id/photo',
     },
+    filters: 'tours/filters',
   },
   socialLinks: {
     index: 'social-links',

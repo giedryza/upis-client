@@ -22,6 +22,7 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
       min = 0,
       max = 100,
       step = 1,
+      thumbs = 2,
       formatOptions,
     },
     forwardedRef
@@ -55,9 +56,6 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
       trackRef
     );
 
-    const thumbs =
-      value?.filter((v) => !Number.isNaN(v)).map((_, i) => i) ?? [];
-
     return (
       <div
         {...groupProps}
@@ -76,12 +74,12 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
             <div
               className={clsx(styles.line, styles['-active'])}
               style={{
-                '--left': thumbs.length > 1 ? state.getThumbPercent(0) : 0,
-                '--right': 1 - state.getThumbPercent(thumbs.length > 1 ? 1 : 0),
+                '--left': thumbs > 1 ? state.getThumbPercent(0) : 0,
+                '--right': 1 - state.getThumbPercent(thumbs > 1 ? 1 : 0),
               }}
             />
 
-            {thumbs.map((index) => (
+            {Array.from({ length: thumbs }).map((_, index) => (
               <div
                 className={styles.thumbContainer}
                 style={{

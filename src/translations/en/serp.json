@@ -9,6 +9,15 @@
     "amenities": {
       "title": "Amenities"
     },
+    "distance": {
+      "title": "Distance"
+    },
+    "duration": {
+      "title": "Duration"
+    },
+    "days": {
+      "title": "Days"
+    },
     "regions": {
       "title": "Regions"
     },

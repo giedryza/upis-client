@@ -7,4 +7,5 @@ export * from './use-intersection-observer';
 export * from './use-interval';
 export * from './use-on-click-outside';
 export * from './use-protected-page';
+export * from './use-query-navigation';
 export * from './use-timeout';

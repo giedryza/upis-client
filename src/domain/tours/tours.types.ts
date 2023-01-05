@@ -264,6 +264,14 @@ export const tourFilters = z.object({
   amenities: z.array(z.enum(amenities)),
   regions: z.array(z.enum(regions)),
   rivers: z.array(z.enum(rivers)),
+  distanceFrom: z.coerce.number(),
+  distanceTo: z.coerce.number(),
 });
 
 export type TourFilters = z.infer<typeof tourFilters>;
+
+export interface FiltersSummary {
+  distance: { min: number; max: number };
+  days: { min: number; max: number };
+  duration: { min: number; max: number };
+}

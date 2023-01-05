@@ -159,6 +159,7 @@ export const TourEditDetails: FC = () => {
                   value={[value, NaN]}
                   onChange={([v]) => onChange(v)}
                   ref={ref}
+                  thumbs={1}
                   min={0}
                   max={5}
                   step={0.5}

@@ -9,9 +9,16 @@ export const converters = {
   getTour: ({ data }: Converter<typeof getLoaders, 'getTour'>) => {
     return data;
   },
-  getFilters: (parsed: Converter<typeof getLoaders, 'getFilters'>) => {
+  getActiveFilters: (
+    parsed: Converter<typeof getLoaders, 'getActiveFilters'>
+  ) => {
     if (parsed.success) return parsed.data;
 
     return {};
+  },
+  getFiltersSummary: ({
+    data,
+  }: Converter<typeof getLoaders, 'getFiltersSummary'>) => {
+    return data;
   },
 };

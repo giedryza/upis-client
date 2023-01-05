@@ -5,6 +5,7 @@
   background-color: var(--color-white);
   border: var(--line-size) solid currentColor;
   border-radius: 50%;
+  cursor: pointer;
 
   &.-focus {
     border-color: var(--color-primary-60);
@@ -12,11 +13,16 @@
     box-shadow: var(--outline-input);
   }
 
-  &.-dragging {
+  &:hover {
     background-color: var(--color-grey-95);
+  }
+
+  &.-dragging {
+    background-color: var(--color-grey-90);
   }
 
   &.-disabled {
     background-color: var(--color-grey-95);
+    cursor: not-allowed;
   }
 }

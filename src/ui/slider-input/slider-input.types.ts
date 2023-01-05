@@ -10,5 +10,6 @@ export interface Props {
   min?: number;
   max?: number;
   step?: number;
+  thumbs?: 1 | 2;
   formatOptions?: Intl.NumberFormatOptions;
 }

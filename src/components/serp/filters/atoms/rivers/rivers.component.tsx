@@ -1,30 +1,24 @@
 import { FC, useMemo } from 'react';
-import { useRouter } from 'next/router';
 import { useForm, Controller } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
-import { River, rivers, useToursFilters } from 'domain/tours';
+import { useQueryNavigation } from 'tools/hooks';
+import { rivers, useToursActiveFilters } from 'domain/tours';
 import { MultiAutocompleteInput, Pill } from 'ui';
 
 import { Values } from './rivers.types';
 
 export const FilterRivers: FC = () => {
   const { t } = useTranslation();
-  const { push, query } = useRouter();
+  const { navigateWithQuery } = useQueryNavigation();
 
-  const { data: filters } = useToursFilters();
+  const { data: filters } = useToursActiveFilters();
 
   const values = useMemo<Values>(
     () => ({ rivers: filters?.rivers ?? [] }),
     [filters?.rivers]
   );
   const isEmpty = !values.rivers.length;
-
-  const navigateWithFilters = (value: River[]) => {
-    push({ query: { ...query, rivers: value } }, undefined, {
-      shallow: true,
-    });
-  };
 
   const {
     control,
@@ -65,7 +59,7 @@ export const FilterRivers: FC = () => {
           variant: 'secondary',
           attributes: {
             onClick: () => {
-              navigateWithFilters([]);
+              navigateWithQuery({ rivers: [] });
             },
             disabled: isEmpty,
           },
@@ -76,7 +70,7 @@ export const FilterRivers: FC = () => {
           variant: 'primary',
           attributes: {
             onClick: () => {
-              navigateWithFilters(getValues().rivers);
+              navigateWithQuery({ rivers: getValues().rivers });
             },
             disabled: !isDirty,
           },

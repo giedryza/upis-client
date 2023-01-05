@@ -9,6 +9,15 @@
     "amenities": {
       "title": "Ypatumai"
     },
+    "distance": {
+      "title": "Atstumas"
+    },
+    "duration": {
+      "title": "Trukmė"
+    },
+    "days": {
+      "title": "Dienos"
+    },
     "regions": {
       "title": "Regionai"
     },

@@ -71,8 +71,6 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
       selectedItem: null,
       stateReducer: (_state, { changes, type }) => {
         switch (type) {
-          case useCombobox.stateChangeTypes.InputKeyDownEnter:
-          case useCombobox.stateChangeTypes.ItemClick:
           case useCombobox.stateChangeTypes.InputBlur:
             return {
               ...changes,
