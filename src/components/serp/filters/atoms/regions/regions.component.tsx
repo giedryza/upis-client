@@ -1,16 +1,16 @@
 import { FC, useMemo } from 'react';
-import { useRouter } from 'next/router';
 import { useForm, Controller } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
-import { Region, regions, useToursActiveFilters } from 'domain/tours';
+import { useQueryNavigation } from 'tools/hooks';
+import { regions, useToursActiveFilters } from 'domain/tours';
 import { CheckboxGroupInput, Pill } from 'ui';
 
 import { Values } from './regions.types';
 
 export const FilterRegions: FC = () => {
   const { t } = useTranslation();
-  const { push, query } = useRouter();
+  const { navigateWithQuery } = useQueryNavigation();
 
   const { data: filters } = useToursActiveFilters();
 
@@ -19,12 +19,6 @@ export const FilterRegions: FC = () => {
     [filters?.regions]
   );
   const isEmpty = !values.regions.length;
-
-  const navigateWithFilters = (value: Region[]) => {
-    push({ query: { ...query, regions: value } }, undefined, {
-      shallow: true,
-    });
-  };
 
   const {
     control,
@@ -60,7 +54,7 @@ export const FilterRegions: FC = () => {
           variant: 'secondary',
           attributes: {
             onClick: () => {
-              navigateWithFilters([]);
+              navigateWithQuery({ regions: [] });
             },
             disabled: isEmpty,
           },
@@ -71,7 +65,7 @@ export const FilterRegions: FC = () => {
           variant: 'primary',
           attributes: {
             onClick: () => {
-              navigateWithFilters(getValues().regions);
+              navigateWithQuery({ regions: getValues().regions });
             },
             disabled: !isDirty,
           },

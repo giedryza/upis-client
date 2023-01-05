@@ -1,16 +1,16 @@
 import { FC, useMemo } from 'react';
-import { useRouter } from 'next/router';
 import { useForm, Controller } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
 import { useToursActiveFilters, useToursFiltersSummary } from 'domain/tours';
 import { Pill, SliderInput } from 'ui';
+import { useQueryNavigation } from 'tools/hooks';
 
 import { Values } from './distance.types';
 
 export const FilterDistance: FC = () => {
   const { t } = useTranslation();
-  const { push, query } = useRouter();
+  const { navigateWithQuery } = useQueryNavigation();
 
   const { data: activeFilters } = useToursActiveFilters();
   const { data: filtersSummary } = useToursFiltersSummary();
@@ -25,20 +25,6 @@ export const FilterDistance: FC = () => {
     [activeFilters?.distanceFrom, activeFilters?.distanceTo]
   );
   const isEmpty = Boolean(values.distance.filter(Number.isNaN).length);
-
-  const navigateWithFilters = ([from, to]: [number, number]) => {
-    push(
-      {
-        query: {
-          ...query,
-          distanceFrom: Number.isNaN(from) ? [] : from,
-          distanceTo: Number.isNaN(to) ? [] : to,
-        },
-      },
-      undefined,
-      { shallow: true }
-    );
-  };
 
   const {
     control,
@@ -79,7 +65,7 @@ export const FilterDistance: FC = () => {
           variant: 'secondary',
           attributes: {
             onClick: () => {
-              navigateWithFilters([NaN, NaN]);
+              navigateWithQuery({ distanceFrom: NaN, distanceTo: NaN });
             },
             disabled: isEmpty,
           },
@@ -90,7 +76,8 @@ export const FilterDistance: FC = () => {
           variant: 'primary',
           attributes: {
             onClick: () => {
-              navigateWithFilters(getValues().distance);
+              const [from, to] = getValues().distance;
+              navigateWithQuery({ distanceFrom: from, distanceTo: to });
             },
             disabled: !isDirty,
           },

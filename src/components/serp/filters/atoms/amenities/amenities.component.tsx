@@ -1,17 +1,17 @@
 import { FC, useMemo } from 'react';
-import { useRouter } from 'next/router';
 import { useForm, Controller } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
 import { CheckboxGroupInput, Pill } from 'ui';
+import { useQueryNavigation } from 'tools/hooks';
 import { useToursActiveFilters } from 'domain/tours';
-import { amenities, Variant as Amenity } from 'domain/amenities';
+import { amenities } from 'domain/amenities';
 
 import { Values } from './amenities.types';
 
 export const FilterAmenities: FC = () => {
   const { t } = useTranslation();
-  const { push, query } = useRouter();
+  const { navigateWithQuery } = useQueryNavigation();
 
   const { data: filters } = useToursActiveFilters();
 
@@ -20,12 +20,6 @@ export const FilterAmenities: FC = () => {
     [filters?.amenities]
   );
   const isEmpty = !values.amenities.length;
-
-  const navigateWithFilters = (value: Amenity[]) => {
-    push({ query: { ...query, amenities: value } }, undefined, {
-      shallow: true,
-    });
-  };
 
   const {
     control,
@@ -61,7 +55,7 @@ export const FilterAmenities: FC = () => {
           variant: 'secondary',
           attributes: {
             onClick: () => {
-              navigateWithFilters([]);
+              navigateWithQuery({ amenities: [] });
             },
             disabled: isEmpty,
           },
@@ -72,7 +66,7 @@ export const FilterAmenities: FC = () => {
           variant: 'primary',
           attributes: {
             onClick: () => {
-              navigateWithFilters(getValues().amenities);
+              navigateWithQuery({ amenities: getValues().amenities });
             },
             disabled: !isDirty,
           },
