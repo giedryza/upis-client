@@ -4,7 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
 import { CheckboxGroupInput, Pill } from 'ui';
-import { useToursFilters } from 'domain/tours';
+import { useToursActiveFilters } from 'domain/tours';
 import { amenities, Variant as Amenity } from 'domain/amenities';
 
 import { Values } from './amenities.types';
@@ -13,7 +13,7 @@ export const FilterAmenities: FC = () => {
   const { t } = useTranslation();
   const { push, query } = useRouter();
 
-  const { data: filters } = useToursFilters();
+  const { data: filters } = useToursActiveFilters();
 
   const values = useMemo<Values>(
     () => ({ amenities: filters?.amenities ?? [] }),

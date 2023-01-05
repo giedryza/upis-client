@@ -2,9 +2,13 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { APP } from 'config/app';
-import { Pill } from 'ui';
 
-import { FilterAmenities, FilterRegions, FilterRivers } from './atoms';
+import {
+  FilterAmenities,
+  FilterDistance,
+  FilterRegions,
+  FilterRivers,
+} from './atoms';
 import styles from './filters.module.scss';
 
 export const SerpFilters: FC = () => {
@@ -27,7 +31,7 @@ export const SerpFilters: FC = () => {
           <FilterRivers />
         </li>
         <li>
-          <Pill label="Price" title="Price" popover={<div />} />
+          <FilterDistance />
         </li>
       </ul>
     </nav>

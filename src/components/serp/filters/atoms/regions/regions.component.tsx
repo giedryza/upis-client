@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useForm, Controller } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
-import { Region, regions, useToursFilters } from 'domain/tours';
+import { Region, regions, useToursActiveFilters } from 'domain/tours';
 import { CheckboxGroupInput, Pill } from 'ui';
 
 import { Values } from './regions.types';
@@ -12,7 +12,7 @@ export const FilterRegions: FC = () => {
   const { t } = useTranslation();
   const { push, query } = useRouter();
 
-  const { data: filters } = useToursFilters();
+  const { data: filters } = useToursActiveFilters();
 
   const values = useMemo<Values>(
     () => ({ regions: filters?.regions ?? [] }),

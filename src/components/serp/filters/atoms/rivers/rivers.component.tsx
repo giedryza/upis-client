@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useForm, Controller } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
-import { River, rivers, useToursFilters } from 'domain/tours';
+import { River, rivers, useToursActiveFilters } from 'domain/tours';
 import { MultiAutocompleteInput, Pill } from 'ui';
 
 import { Values } from './rivers.types';
@@ -12,7 +12,7 @@ export const FilterRivers: FC = () => {
   const { t } = useTranslation();
   const { push, query } = useRouter();
 
-  const { data: filters } = useToursFilters();
+  const { data: filters } = useToursActiveFilters();
 
   const values = useMemo<Values>(
     () => ({ rivers: filters?.rivers ?? [] }),
