@@ -18,6 +18,9 @@
     "days": {
       "title": "Dienos"
     },
+    "difficulty": {
+      "title": "Sudėtingumas"
+    },
     "regions": {
       "title": "Regionai"
     },

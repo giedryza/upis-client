@@ -270,6 +270,8 @@ export const tourFilters = z.object({
   durationTo: z.coerce.number(),
   daysFrom: z.coerce.number(),
   daysTo: z.coerce.number(),
+  difficultyFrom: z.coerce.number(),
+  difficultyTo: z.coerce.number(),
 });
 
 export type TourFilters = z.infer<typeof tourFilters>;
@@ -278,4 +280,5 @@ export interface FiltersSummary {
   distance: { min: number; max: number };
   days: { min: number; max: number };
   duration: { min: number; max: number };
+  difficulty: { min: number; max: number };
 }

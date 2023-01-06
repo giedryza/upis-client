@@ -6,6 +6,7 @@ import { APP } from 'config/app';
 import {
   FilterAmenities,
   FilterDays,
+  FilterDifficulty,
   FilterDistance,
   FilterDuration,
   FilterRegions,
@@ -40,6 +41,9 @@ export const SerpFilters: FC = () => {
         </li>
         <li>
           <FilterDistance />
+        </li>
+        <li>
+          <FilterDifficulty />
         </li>
       </ul>
     </nav>

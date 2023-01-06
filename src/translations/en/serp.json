@@ -18,6 +18,9 @@
     "days": {
       "title": "Days"
     },
+    "difficulty": {
+      "title": "Difficulty"
+    },
     "regions": {
       "title": "Regions"
     },
