@@ -6,6 +6,7 @@ import { APP } from 'config/app';
 import {
   FilterAmenities,
   FilterDistance,
+  FilterDuration,
   FilterRegions,
   FilterRivers,
 } from './atoms';
@@ -32,6 +33,9 @@ export const SerpFilters: FC = () => {
         </li>
         <li>
           <FilterDistance />
+        </li>
+        <li>
+          <FilterDuration />
         </li>
       </ul>
     </nav>
