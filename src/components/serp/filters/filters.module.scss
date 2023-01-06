@@ -10,9 +10,18 @@
   border-bottom: 1px solid var(--color-grey-90);
 }
 
+.swiper {
+  height: 100%;
+  overflow-x: auto;
+}
+
 .list {
   display: flex;
   gap: 1rem;
   align-items: center;
   height: 100%;
+
+  > * {
+    flex-shrink: 0;
+  }
 }
