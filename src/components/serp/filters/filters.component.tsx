@@ -5,6 +5,7 @@ import { APP } from 'config/app';
 
 import {
   FilterAmenities,
+  FilterDays,
   FilterDistance,
   FilterDuration,
   FilterRegions,
@@ -32,10 +33,13 @@ export const SerpFilters: FC = () => {
           <FilterRivers />
         </li>
         <li>
-          <FilterDistance />
+          <FilterDays />
         </li>
         <li>
           <FilterDuration />
+        </li>
+        <li>
+          <FilterDistance />
         </li>
       </ul>
     </nav>

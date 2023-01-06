@@ -6,9 +6,9 @@ import { useToursActiveFilters, useToursFiltersSummary } from 'domain/tours';
 import { Pill, SliderInput } from 'ui';
 import { useQueryNavigation } from 'tools/hooks';
 
-import { Values } from './duration.types';
+import { Values } from './days.types';
 
-export const FilterDuration: FC = () => {
+export const FilterDays: FC = () => {
   const { t } = useTranslation();
   const { navigateWithQuery } = useQueryNavigation();
 
@@ -17,14 +17,11 @@ export const FilterDuration: FC = () => {
 
   const values = useMemo<Values>(
     () => ({
-      duration: [
-        activeFilters?.durationFrom ?? NaN,
-        activeFilters?.durationTo ?? NaN,
-      ],
+      days: [activeFilters?.daysFrom ?? NaN, activeFilters?.daysTo ?? NaN],
     }),
-    [activeFilters?.durationFrom, activeFilters?.durationTo]
+    [activeFilters?.daysFrom, activeFilters?.daysTo]
   );
-  const isEmpty = Boolean(values.duration.filter(Number.isNaN).length);
+  const isEmpty = Boolean(values.days.filter(Number.isNaN).length);
 
   const {
     control,
@@ -34,25 +31,25 @@ export const FilterDuration: FC = () => {
 
   return (
     <Pill
-      label={t('serp:filters.duration.title')}
-      title={t('serp:filters.duration.title')}
+      label={t('serp:filters.days.title')}
+      title={t('serp:filters.days.title')}
       active={!isEmpty}
       popover={
         <div style={{ minWidth: 300 }}>
           <Controller
             control={control}
-            name="duration"
+            name="days"
             render={({ field: { onChange, value } }) => (
               <SliderInput
-                ariaLabel={t('serp:filters.duration.title')}
-                min={filtersSummary?.duration.min}
-                max={filtersSummary?.duration.max}
+                ariaLabel={t('serp:filters.days.title')}
+                min={filtersSummary?.days.min}
+                max={filtersSummary?.days.max}
                 thumbs={2}
                 value={value}
                 onChange={onChange}
                 formatOptions={{
                   style: 'unit',
-                  unit: 'hour',
+                  unit: 'day',
                 }}
               />
             )}
@@ -65,7 +62,7 @@ export const FilterDuration: FC = () => {
           variant: 'secondary',
           attributes: {
             onClick: () => {
-              navigateWithQuery({ durationFrom: NaN, durationTo: NaN });
+              navigateWithQuery({ daysFrom: NaN, daysTo: NaN });
             },
             disabled: isEmpty,
           },
@@ -76,8 +73,8 @@ export const FilterDuration: FC = () => {
           variant: 'primary',
           attributes: {
             onClick: () => {
-              const [from, to] = getValues().duration;
-              navigateWithQuery({ durationFrom: from, durationTo: to });
+              const [from, to] = getValues().days;
+              navigateWithQuery({ daysFrom: from, daysTo: to });
             },
             disabled: !isDirty,
           },
