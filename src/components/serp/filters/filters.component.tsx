@@ -1,11 +1,17 @@
-import { FC } from 'react';
+import { FC, useRef } from 'react';
+import { clsx } from 'clsx';
 import useTranslation from 'next-translate/useTranslation';
 
 import { APP } from 'config/app';
+import { useOverflowDimensions } from 'tools/hooks';
+import { Button } from 'ui';
 
 import {
   FilterAmenities,
+  FilterDays,
+  FilterDifficulty,
   FilterDistance,
+  FilterDuration,
   FilterRegions,
   FilterRivers,
 } from './atoms';
@@ -13,27 +19,73 @@ import styles from './filters.module.scss';
 
 export const SerpFilters: FC = () => {
   const { t } = useTranslation();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const { containerWidth, totalWidth, offsetLeft, offsetRight } =
+    useOverflowDimensions(scrollContainerRef);
+
+  const items = [
+    <FilterAmenities key="amenities" />,
+    <FilterRegions key="regions" />,
+    <FilterRivers key="rivers" />,
+    <FilterDays key="days" />,
+    <FilterDuration key="duration" />,
+    <FilterDistance key="distance" />,
+    <FilterDifficulty key="difficulty" />,
+  ] as const;
+
+  const handleScroll = (direction: 'left' | 'right') => {
+    scrollContainerRef.current?.scrollBy({
+      left: containerWidth * 0.5 * (direction === 'left' ? -1 : 1),
+      behavior: 'smooth',
+    });
+  };
 
   return (
-    <nav
-      className={styles.nav}
-      style={{ '--spacing': APP.serp.gridGap }}
-      aria-label={t('serp:filters.title')}
-    >
-      <ul className={styles.list}>
-        <li>
-          <FilterAmenities />
-        </li>
-        <li>
-          <FilterRegions />
-        </li>
-        <li>
-          <FilterRivers />
-        </li>
-        <li>
-          <FilterDistance />
-        </li>
-      </ul>
-    </nav>
+    <div className={styles.container} style={{ '--spacing': APP.serp.gridGap }}>
+      <nav className={styles.nav} aria-label={t('serp:filters.title')}>
+        <div
+          className={clsx(styles.swiper, 'scrollbar-hidden')}
+          ref={scrollContainerRef}
+        >
+          <ul className={styles.list}>
+            {items.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        {containerWidth < totalWidth ? (
+          <>
+            {offsetLeft ? (
+              <div className={clsx(styles.controls, styles['-left'])}>
+                <Button
+                  icon="chevron-left"
+                  size="xs"
+                  variant="secondary"
+                  attributes={{
+                    onClick: () => handleScroll('left'),
+                    'aria-label': t('common:actions.forward'),
+                  }}
+                />
+              </div>
+            ) : null}
+            {offsetRight ? (
+              <div className={clsx(styles.controls, styles['-right'])}>
+                <Button
+                  icon="chevron-right"
+                  size="xs"
+                  variant="secondary"
+                  attributes={{
+                    onClick: () => handleScroll('right'),
+                    'aria-label': t('common:actions.back'),
+                  }}
+                />
+              </div>
+            ) : null}
+          </>
+        ) : null}
+      </nav>
+    </div>
   );
 };

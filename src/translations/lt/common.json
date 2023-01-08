@@ -16,6 +16,8 @@
     "view": "Žiūrėti",
     "apply": "Pritaikyti",
     "next": "Toliau",
+    "forward": "Pirmyn",
+    "back": "Atgal",
     "continue": "Tęsti",
     "zoom": "Padidinti",
     "tryAgain": "Bandyti iš naujo",
@@ -42,7 +44,7 @@
         "enter": "Atidaryti per visą ekraną",
         "exit": "Uždaryti per visą ekraną"
       },
-      "previous": "Buvusi nuotrauka",
+      "previous": "Ankstesnė nuotrauka",
       "next": "Sekanti nuotrauka"
     }
   },
