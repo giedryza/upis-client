@@ -16,6 +16,8 @@
     "view": "View",
     "apply": "Apply",
     "next": "Next",
+    "forward": "Forward",
+    "back": "Back",
     "continue": "Continue",
     "zoom": "Zoom",
     "tryAgain": "Try again",
