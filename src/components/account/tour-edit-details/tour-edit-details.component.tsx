@@ -1,4 +1,4 @@
-import { useEffect, FC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -20,30 +20,28 @@ export const TourEditDetails: FC = () => {
 
   const { formatter: numberFormatter } = useFormatNumber();
 
+  const { data: tour } = useActiveTour();
+  const { mutate: updateTour, isLoading } = useUpdateTour();
+
   const {
     watch,
     setValue,
     handleSubmit,
-    reset,
     control,
     formState: { errors },
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
+    values: tour
+      ? {
+          distance: tour.distance ?? NaN,
+          duration: tour.duration ?? NaN,
+          days: tour.days ?? 1,
+          difficulty: tour.difficulty ?? NaN,
+        }
+      : undefined,
   });
 
   const [days] = watch(['days']);
-
-  const { data: tour } = useActiveTour();
-  const { mutate: updateTour, isLoading } = useUpdateTour();
-
-  useEffect(() => {
-    reset({
-      distance: tour?.distance ?? NaN,
-      duration: tour?.duration ?? NaN,
-      days: tour?.days ?? 1,
-      difficulty: tour?.difficulty ?? NaN,
-    });
-  }, [reset, tour]);
 
   const onSubmit: SubmitHandler<Values> = (form) => {
     const tourId = tour?._id;

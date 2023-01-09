@@ -1,4 +1,4 @@
-import { useEffect, FC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -27,24 +27,22 @@ export const TourEditGeography: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 
+  const { data: tour } = useActiveTour();
+  const { mutate: updateTourGeography, isLoading } = useUpdateTourGeography();
+
   const {
     handleSubmit,
-    reset,
     control,
     formState: { errors },
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
+    values: tour
+      ? {
+          regions: tour.regions,
+          rivers: tour.rivers,
+        }
+      : undefined,
   });
-
-  const { data: tour } = useActiveTour();
-  const { mutate: updateTourGeography, isLoading } = useUpdateTourGeography();
-
-  useEffect(() => {
-    reset({
-      regions: tour?.regions ?? [],
-      rivers: tour?.rivers ?? [],
-    });
-  }, [reset, tour]);
 
   const onSubmit: SubmitHandler<Values> = (form) => {
     const tourId = tour?._id;

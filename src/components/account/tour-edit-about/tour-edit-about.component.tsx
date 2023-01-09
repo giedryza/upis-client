@@ -1,4 +1,4 @@
-import { useEffect, FC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -17,25 +17,23 @@ export const TourEditAbout: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isDirty },
-  } = useForm<Values>({
-    defaultValues: INITIAL_VALUES,
-  });
-
   const { data: tour } = useActiveTour();
   const { mutate: updateTour, isLoading } = useUpdateTour();
 
-  useEffect(() => {
-    reset({
-      name: tour?.name,
-      description: tour?.description,
-      website: tour?.website,
-    });
-  }, [reset, tour]);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isDirty },
+  } = useForm<Values>({
+    defaultValues: INITIAL_VALUES,
+    values: tour
+      ? {
+          name: tour.name,
+          description: tour.description,
+          website: tour.website,
+        }
+      : undefined,
+  });
 
   const onSubmit: SubmitHandler<Values> = ({ name, description, website }) => {
     const tourId = tour?._id;

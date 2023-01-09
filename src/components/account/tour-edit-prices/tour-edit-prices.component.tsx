@@ -1,4 +1,4 @@
-import { useEffect, FC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -21,25 +21,23 @@ export const TourEditPrices: FC = () => {
 
   const { formatter: numberFormatter } = useFormatNumber();
 
+  const { data: tour } = useActiveTour();
+  const { mutate: updateTourPrice, isLoading } = useUpdateTourPrice();
+
   const {
     register,
     handleSubmit,
-    reset,
     control,
     formState: { errors },
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
+    values: tour
+      ? {
+          amount: tour.price?.amount ? tour.price.amount / 100 : NaN,
+          currency: tour.price?.currency ?? 'EUR',
+        }
+      : undefined,
   });
-
-  const { data: tour } = useActiveTour();
-  const { mutate: updateTourPrice, isLoading } = useUpdateTourPrice();
-
-  useEffect(() => {
-    reset({
-      amount: tour?.price?.amount ? tour.price.amount / 100 : NaN,
-      currency: tour?.price?.currency ?? 'EUR',
-    });
-  }, [reset, tour]);
 
   const onSubmit: SubmitHandler<Values> = ({ amount, currency }) => {
     const tourId = tour?._id;

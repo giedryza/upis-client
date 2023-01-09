@@ -1,4 +1,4 @@
-import { useEffect, FC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -24,24 +24,22 @@ export const ProviderEditSocialLinksEdit: FC = () => {
   const id = getRouteParam(query.socialLinkId);
   const providerId = getRouteParam(query.id);
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isDirty },
-  } = useForm<Values>({
-    defaultValues: INITIAL_VALUES,
-  });
-
   const { data: socialLink } = useSocialLink(id);
   const { mutate: updateSocialLink, isLoading } = useUpdateSocialLink();
 
-  useEffect(() => {
-    reset({
-      type: socialLink?.type,
-      url: socialLink?.url,
-    });
-  }, [reset, socialLink]);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isDirty },
+  } = useForm<Values>({
+    defaultValues: INITIAL_VALUES,
+    values: socialLink
+      ? {
+          type: socialLink.type,
+          url: socialLink.url,
+        }
+      : undefined,
+  });
 
   const onSubmit: SubmitHandler<Values> = ({ type, url }) => {
     if (!id) return;

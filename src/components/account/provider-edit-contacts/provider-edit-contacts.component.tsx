@@ -1,4 +1,4 @@
-import { useEffect, FC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -17,25 +17,23 @@ export const ProviderEditContacts: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isDirty },
-  } = useForm<Values>({
-    defaultValues: INITIAL_VALUES,
-  });
-
   const { data: provider } = useActiveProvider();
   const { mutate: updateProvider, isLoading } = useUpdateProvider();
 
-  useEffect(() => {
-    reset({
-      email: provider?.email,
-      phone: provider?.phone,
-      website: provider?.website,
-    });
-  }, [reset, provider]);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isDirty },
+  } = useForm<Values>({
+    defaultValues: INITIAL_VALUES,
+    values: provider
+      ? {
+          email: provider.email,
+          phone: provider.phone,
+          website: provider.website,
+        }
+      : undefined,
+  });
 
   const onSubmit: SubmitHandler<Values> = ({ email, phone, website }) => {
     const providerId = provider?._id;
