@@ -1,4 +1,4 @@
-import { useEffect, FC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -26,24 +26,22 @@ export const TourEditGalleryEdit: FC = () => {
   const id = getRouteParam(query.imageId);
   const tourId = getRouteParam(query.id);
 
-  const {
-    handleSubmit,
-    register,
-    reset,
-    formState: { errors, isDirty },
-  } = useForm<Values>({
-    defaultValues: INITIAL_VALUES,
-  });
-
   const { data: image } = useImage(id);
   const { mutate: updateImage, isLoading } = useUpdateImage();
   const { mutate: deleteImage, isLoading: isDeleting } = useDeleteImage();
 
-  useEffect(() => {
-    reset({
-      description: image?.description ?? '',
-    });
-  }, [reset, image]);
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isDirty },
+  } = useForm<Values>({
+    defaultValues: INITIAL_VALUES,
+    values: image
+      ? {
+          description: image?.description ?? '',
+        }
+      : undefined,
+  });
 
   const onSubmit: SubmitHandler<Values> = (form) => {
     const imageId = image?._id;

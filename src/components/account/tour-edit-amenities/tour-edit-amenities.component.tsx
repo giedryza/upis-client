@@ -1,4 +1,4 @@
-import { useEffect, FC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import { useRouter } from 'next/router';
@@ -19,23 +19,19 @@ export const TourEditAmenities: FC = () => {
   const { t, lang } = useTranslation();
   const { push } = useRouter();
 
+  const { data: tour } = useActiveTour();
+  const { mutate: updateTourAmenities, isLoading } = useUpdateTourAmenities();
+
   const {
     handleSubmit,
-    reset,
     formState: { errors, isDirty },
     control,
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
+    values: tour
+      ? { amenities: tour.amenities.map(({ _id }) => _id) }
+      : undefined,
   });
-
-  const { data: tour } = useActiveTour();
-  const { mutate: updateTourAmenities, isLoading } = useUpdateTourAmenities();
-
-  useEffect(() => {
-    reset({
-      amenities: tour?.amenities.map(({ _id }) => _id),
-    });
-  }, [reset, tour]);
 
   const onSubmit: SubmitHandler<Values> = ({ amenities }) => {
     const tourId = tour?._id;

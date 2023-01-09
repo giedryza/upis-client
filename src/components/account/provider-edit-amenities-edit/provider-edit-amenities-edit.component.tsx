@@ -1,4 +1,4 @@
-import { useEffect, FC } from 'react';
+import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -36,31 +36,29 @@ export const ProviderEditAmenitiesEdit: FC = () => {
 
   const { formatter: numberFormatter } = useFormatNumber();
 
+  const { data: amenity } = useAmenity(id);
+  const { mutate: updateAmenity, isLoading } = useUpdateAmenity();
+
   const {
     register,
     handleSubmit,
     setValue,
     watch,
-    reset,
     control,
     formState: { errors, isDirty },
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
+    values: amenity
+      ? {
+          variant: amenity.variant,
+          amount: amenity.price ? amenity.price.amount / 100 : 0,
+          currency: amenity.price?.currency ?? 'EUR',
+          unit: amenity.unit,
+          info: amenity.info,
+          isFree: !amenity.price,
+        }
+      : undefined,
   });
-
-  const { data: amenity } = useAmenity(id);
-  const { mutate: updateAmenity, isLoading } = useUpdateAmenity();
-
-  useEffect(() => {
-    reset({
-      variant: amenity?.variant,
-      amount: amenity?.price ? amenity.price.amount / 100 : 0,
-      currency: amenity?.price?.currency ?? 'EUR',
-      unit: amenity?.unit,
-      info: amenity?.info,
-      isFree: !amenity?.price,
-    });
-  }, [reset, amenity]);
 
   const onSubmit: SubmitHandler<Values> = ({
     variant,
