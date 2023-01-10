@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from 'tools/services/store';
 import { Lightbox } from 'ui';
 import { lightbox, selectLightbox } from 'domain/lightbox';
 
-export const LightboxContainer: FC = () => {
+export const LightboxOutlet: FC = () => {
   const dispatch = useAppDispatch();
 
   const { isOpen, images, currentImage } = useAppSelector(selectLightbox);
