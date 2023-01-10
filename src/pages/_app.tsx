@@ -11,10 +11,11 @@ import { store } from 'tools/services/store';
 import { axe } from 'tools/services/a11y';
 import { Modal } from 'ui';
 import { AppLayout } from 'layouts';
-import { Alerts } from 'components/alerts';
-import { ModalSlot, ConfirmationModal } from 'components/modals';
 import { ProgressBar } from 'components/layout';
+import { Alerts } from 'components/alerts';
 import { LightboxOutlet } from 'components/lightbox-outlet';
+import { ModalOutlet } from 'components/modal-outlet';
+import { ConfirmationModal } from 'components/modals';
 
 import 'styles/index.scss';
 
@@ -37,7 +38,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
                     <ProgressBar />
                     <Alerts />
-                    <ModalSlot
+                    <ModalOutlet
                       modalName="confirmation"
                       slot={<ConfirmationModal />}
                     />

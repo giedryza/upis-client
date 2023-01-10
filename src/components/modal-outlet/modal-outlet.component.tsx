@@ -4,9 +4,9 @@ import { useAppDispatch, useAppSelector } from 'tools/services/store';
 import { Modal } from 'ui';
 import { modal, selectIsModalActive } from 'domain/modal';
 
-import { Props } from './modal-slot.types';
+import { Props } from './modal-outlet.types';
 
-export const ModalSlot: FC<Props> = ({ modalName, slot }) => {
+export const ModalOutlet: FC<Props> = ({ modalName, slot }) => {
   const dispatch = useAppDispatch();
 
   const isOpen = useAppSelector(selectIsModalActive(modalName));
