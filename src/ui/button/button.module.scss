@@ -5,7 +5,7 @@
   align-items: center;
   min-width: 8ch;
   min-height: 2.5em;
-  padding: 0.25em 0.75em;
+  padding: 0.25em 1em;
 
   font-weight: 500;
   line-height: 1.2;
@@ -14,7 +14,7 @@
 
   background-color: transparent;
   border: 0;
-  border-radius: var(--border-radius-sm);
+  border-radius: 20rem;
   cursor: pointer;
 
   transition-duration: var(--transition-duration-md);
