@@ -33,7 +33,7 @@ export const Amenities: FC = () => {
       ]}
     >
       {tour.amenities.length ? (
-        tour.amenities.map((amenity) => (
+        tour.amenities.map(({ _id: amenity }) => (
           <Tile
             title={t(`common:amenities.variants.${amenity.variant}`)}
             subtitle={amenity.info}

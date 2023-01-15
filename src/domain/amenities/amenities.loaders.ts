@@ -22,7 +22,6 @@ interface UpdateAmenity {
   id: string;
   providerId: string;
   form: {
-    variant: Amenity['variant'];
     unit: Amenity['unit'];
     amount: number;
     currency: Currency;

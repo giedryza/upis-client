@@ -13,12 +13,7 @@ import {
 } from 'ui';
 import { routes } from 'config/routes';
 import { InfoBlock } from 'components/account/atoms';
-import {
-  useUpdateAmenity,
-  useAmenity,
-  amenities,
-  units,
-} from 'domain/amenities';
+import { useUpdateAmenity, useAmenity, units } from 'domain/amenities';
 import { useFormatNumber } from 'tools/format';
 import { currencies } from 'types/common';
 import { generateUrl, getRouteParam, toCents } from 'tools/common';
@@ -50,7 +45,6 @@ export const ProviderEditAmenitiesEdit: FC = () => {
     defaultValues: INITIAL_VALUES,
     values: amenity
       ? {
-          variant: amenity.variant,
           amount: amenity.price ? amenity.price.amount / 100 : 0,
           currency: amenity.price?.currency ?? 'EUR',
           unit: amenity.unit,
@@ -61,7 +55,6 @@ export const ProviderEditAmenitiesEdit: FC = () => {
   });
 
   const onSubmit: SubmitHandler<Values> = ({
-    variant,
     amount,
     currency,
     unit,
@@ -72,7 +65,6 @@ export const ProviderEditAmenitiesEdit: FC = () => {
         id,
         providerId,
         form: {
-          variant,
           amount: toCents(amount),
           currency,
           unit,
@@ -102,21 +94,11 @@ export const ProviderEditAmenitiesEdit: FC = () => {
       <Container align="left" size="sm">
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <fieldset className={styles.fieldset} disabled={isLoading}>
-            <SelectInput
-              {...register('variant', {
-                required: {
-                  value: true,
-                  message: t(
-                    'account:providers.amenities.form.variant.error.empty'
-                  ),
-                },
-              })}
+            <TextInput
               label={t('account:providers.amenities.form.variant.label')}
-              error={errors.variant?.message}
-              options={amenities.map((variant) => ({
-                label: t(`common:amenities.variants.${variant}`),
-                value: variant,
-              }))}
+              value={t(`common:amenities.variants.${amenity?.variant}`)}
+              name="amenity"
+              readonly
             />
 
             <div className={styles.price}>

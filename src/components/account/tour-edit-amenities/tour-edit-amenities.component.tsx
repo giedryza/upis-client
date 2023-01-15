@@ -29,7 +29,7 @@ export const TourEditAmenities: FC = () => {
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
     values: tour
-      ? { amenities: tour.amenities.map(({ _id }) => _id) }
+      ? { amenities: tour.amenities.map(({ _id }) => _id._id) }
       : undefined,
   });
 
