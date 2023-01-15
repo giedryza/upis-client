@@ -17,7 +17,12 @@ type Props = ConsumerProps<{
 
 const MapWrapper = ({ children, ...rest }: Props) => {
   return (
-    <ReactLeaflet.MapContainer {...rest} className={styles.mapContainer}>
+    <ReactLeaflet.MapContainer
+      {...rest}
+      className={styles.mapContainer}
+      worldCopyJump
+      minZoom={3}
+    >
       <ReactLeaflet.TileLayer
         attribution='&copy; <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
