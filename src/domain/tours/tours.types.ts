@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { Amenity, amenities } from 'domain/amenities';
+import { Amenity, amenities, Variant } from 'domain/amenities';
 import { Provider } from 'domain/providers';
 import { AppFile, BaseEntity, GeoPoint, Pagination, Price } from 'types/common';
 
@@ -250,7 +250,7 @@ export interface Tour extends BaseEntity {
   primaryPhoto: string;
   provider: Provider;
   website: string;
-  amenities: Amenity[];
+  amenities: { _id: Amenity; variant: Variant }[];
   createdAt: Date;
   updatedAt: Date;
 }
