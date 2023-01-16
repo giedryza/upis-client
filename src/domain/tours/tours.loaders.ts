@@ -19,12 +19,12 @@ import {
   River,
   Tour,
   tourFilters,
-  ToursFilters,
+  TourFilters,
 } from './tours.types';
 
 interface GetTours {
   req?: IncomingMessage;
-  params?: Partial<ToursFilters>;
+  params?: Partial<TourFilters>;
 }
 
 interface CreateTour {
@@ -147,7 +147,13 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       tourFilters
         .partial()
         .safeParseAsync(
-          normalizeQueryParams(params, ['amenities', 'regions', 'rivers'])
+          normalizeQueryParams(params, [
+            'amenities',
+            'regions',
+            'rivers',
+            'select',
+            'populate',
+          ])
         ),
     getFiltersSummary: () =>
       new Request<FiltersSummary>(generateUrl(endpoints.tours.filters), {

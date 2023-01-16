@@ -255,10 +255,10 @@ export interface Tour extends BaseEntity {
   updatedAt: Date;
 }
 
-export interface ToursFilters extends Pagination {
-  user: string;
-  select: (keyof Tour)[];
-}
+export const queryUtils = {
+  select: ['_id', 'name'],
+  populate: ['provider', 'provider.amenities', 'amenities', 'photos'],
+} as const;
 
 export const tourFilters = z.object({
   amenities: z.array(z.enum(amenities)),
@@ -272,9 +272,12 @@ export const tourFilters = z.object({
   daysTo: z.coerce.number(),
   difficultyFrom: z.coerce.number(),
   difficultyTo: z.coerce.number(),
+  user: z.coerce.string(),
+  select: z.array(z.enum(queryUtils.select)),
+  populate: z.array(z.enum(queryUtils.populate)),
 });
 
-export type TourFilters = z.infer<typeof tourFilters>;
+export type TourFilters = z.infer<typeof tourFilters> & Pagination;
 
 export interface FiltersSummary {
   distance: { min: number; max: number };
