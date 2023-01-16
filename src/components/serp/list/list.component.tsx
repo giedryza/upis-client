@@ -5,12 +5,15 @@ import { APP } from 'config/app';
 import { InView, Loader } from 'ui';
 import { SerpCard } from 'components/serp';
 import { Footer } from 'components/layout';
-import { useInfiniteTours } from 'domain/tours';
+import { useInfiniteTours, useToursActiveFilters } from 'domain/tours';
 
 import styles from './list.module.scss';
 
 export const SerpList: FC = () => {
+  const { data: filters } = useToursActiveFilters();
   const { data, isLoading, hasNextPage, fetchNextPage } = useInfiniteTours({
+    ...filters,
+    populate: ['photos'],
     limit: 10,
   });
 
