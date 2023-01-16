@@ -1,3 +1,4 @@
+export * from './tours.converters';
 export * from './tours.loaders';
 export * from './tours.keys';
 export * from './tours.mutations';

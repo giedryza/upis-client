@@ -11,11 +11,8 @@ import styles from './list.module.scss';
 
 export const SerpList: FC = () => {
   const { data: filters } = useToursActiveFilters();
-  const { data, isLoading, hasNextPage, fetchNextPage } = useInfiniteTours({
-    ...filters,
-    populate: ['photos'],
-    limit: 10,
-  });
+  const { data, isLoading, hasNextPage, fetchNextPage } =
+    useInfiniteTours(filters);
 
   const tours = data ? data.pages.flat() : [];
 

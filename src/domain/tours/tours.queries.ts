@@ -35,7 +35,12 @@ export const useInfiniteTours = (filters: Partial<TourFilters> = {}) => {
   const query = useInfiniteQuery(
     toursKeys.list(filters),
     ({ pageParam }) =>
-      loaders.getTours({ params: { ...filters, page: pageParam } }),
+      loaders.getTours({
+        params: {
+          ...filters,
+          page: pageParam,
+        },
+      }),
     {
       getNextPageParam: ({ meta }) => {
         if (!meta) return undefined;
