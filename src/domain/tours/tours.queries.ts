@@ -37,8 +37,6 @@ export const useInfiniteTours = (filters: Partial<TourFilters> = {}) => {
     ({ pageParam }) =>
       loaders.getTours({
         params: {
-          populate: ['photos'],
-          limit: 10,
           ...filters,
           page: pageParam,
         },

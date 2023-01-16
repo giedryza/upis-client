@@ -92,7 +92,11 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
     getTours: ({ req, params }: GetTours = {}) =>
       new Request<Tour[], Pagination>(generateUrl(endpoints.tours.index), {
         req,
-        params,
+        params: {
+          populate: ['photos'],
+          limit: 10,
+          ...params,
+        },
         locale,
       }).get(),
     getTour: ({ req, id }: { req?: IncomingMessage; id: string }) =>

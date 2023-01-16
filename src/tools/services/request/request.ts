@@ -30,6 +30,7 @@ export class Request<ResponseData = any, ResponseMeta = any> {
       },
       {
         arrayFormat: 'bracket',
+        skipNull: true,
       }
     );
   }
