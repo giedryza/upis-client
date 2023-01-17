@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { Button, Carousel, Icon, ImagePlaceholder } from 'ui';
 import { formatCurrency, formatNumber } from 'tools/format';
 import { APP } from 'config/app';
-import { generateImageUrl } from 'tools/common';
+import { generateImageUrl, isLast } from 'tools/common';
 
 import { Props } from './card.types';
 import styles from './card.module.scss';
@@ -96,7 +96,7 @@ export const SerpCard: FC<Props> = memo(({ tour }) => {
                 .map((item, i, self) => (
                   <Fragment key={i}>
                     <span>{item.label}</span>
-                    {i < self.length - 1 ? <span> &bull; </span> : null}
+                    {!isLast(self, i) ? <span> &bull; </span> : null}
                   </Fragment>
                 ))}
             </h3>

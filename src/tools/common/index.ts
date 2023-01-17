@@ -5,6 +5,7 @@ export * from './format-bytes';
 export * from './get-route-param';
 export * from './url';
 export * from './is-defined';
+export * from './is-last';
 export * from './is-server';
 export * from './normalize-string';
 export * from './to-cents';
