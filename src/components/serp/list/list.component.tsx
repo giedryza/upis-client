@@ -7,6 +7,7 @@ import { SerpCard } from 'components/serp';
 import { Footer } from 'components/layout';
 import { useInfiniteTours, useToursActiveFilters } from 'domain/tours';
 
+import { ListEmpty } from './atoms';
 import styles from './list.module.scss';
 
 export const SerpList: FC = () => {
@@ -17,7 +18,7 @@ export const SerpList: FC = () => {
   const tours = data ? data.pages.flat() : [];
 
   const virtualizer = useWindowVirtualizer({
-    count: isLoading ? 6 : hasNextPage ? tours.length + 1 : tours.length,
+    count: isLoading ? 5 : hasNextPage ? tours.length + 1 : tours.length,
     estimateSize: () => APP.serp.cardHeight + APP.serp.gridGap,
     overscan: 3,
     paddingStart: APP.serp.gridGap,
@@ -69,6 +70,8 @@ export const SerpList: FC = () => {
           })}
         </div>
       </div>
+
+      {!tours.length && !isLoading ? <ListEmpty /> : null}
 
       <Footer />
     </div>

@@ -27,5 +27,12 @@
     "rivers": {
       "title": "Rivers"
     }
+  },
+  "list": {
+    "empty": {
+      "title": "No tours found",
+      "description": "We couldn't find any tours matching search criteria. Change or clear the filters to try again.",
+      "clear": "Clear filters"
+    }
   }
 }

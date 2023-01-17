@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Balancer from 'react-wrap-balancer';
 
 import { Icon, Button } from 'ui';
 
@@ -17,7 +18,11 @@ export const EmptyState: FC<Props> = ({
       <div className={styles.body}>
         {!!icon && <Icon name={icon} className={styles.icon} />}
         <Heading className={styles.title}>{title}</Heading>
-        {!!message && <p className={styles.message}>{message}</p>}
+        {!!message && (
+          <p className={styles.message}>
+            <Balancer>{message}</Balancer>
+          </p>
+        )}
       </div>
 
       {!!action && (
