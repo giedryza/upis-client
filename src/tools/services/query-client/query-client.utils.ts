@@ -9,5 +9,5 @@ export const keyFactory = (key: string) => {
     list: (...deps: any[]) => [...lists, ...deps] as const,
     details,
     detail: (id: string, ...deps: any[]) => [...details, id, ...deps] as const,
-  };
+  } as const;
 };

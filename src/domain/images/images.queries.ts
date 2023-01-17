@@ -7,14 +7,12 @@ import { converters } from './images.converters';
 export const useImage = (id: string) => {
   const { loaders } = useLoaders();
 
-  const query = useQuery(
-    imagesKeys.detail(id),
-    () => loaders.getImage({ id }),
-    {
-      enabled: !!id,
-      select: converters.getImage,
-    }
-  );
+  const query = useQuery({
+    queryKey: imagesKeys.detail(id),
+    queryFn: () => loaders.getImage({ id }),
+    enabled: !!id,
+    select: converters.getImage,
+  });
 
   return query;
 };

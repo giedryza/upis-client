@@ -7,14 +7,12 @@ import { converters } from './amenities.converters';
 export const useAmenity = (id: string) => {
   const { loaders } = useLoaders();
 
-  const query = useQuery(
-    amenitiesKeys.detail(id),
-    () => loaders.getAmenity({ id }),
-    {
-      enabled: !!id,
-      select: converters.getAmenity,
-    }
-  );
+  const query = useQuery({
+    queryKey: amenitiesKeys.detail(id),
+    queryFn: () => loaders.getAmenity({ id }),
+    enabled: !!id,
+    select: converters.getAmenity,
+  });
 
   return query;
 };
