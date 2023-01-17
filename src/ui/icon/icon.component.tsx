@@ -5,7 +5,12 @@ import { Props } from './icon.types';
 
 export const Icon: FC<Props> = ({ name, ...svgProps }) => {
   const loader = useMemo(
-    () => <span className={svgProps.className} />,
+    () => (
+      <span
+        className={svgProps.className}
+        style={{ display: 'inline-block' }}
+      />
+    ),
     [svgProps.className]
   );
 
