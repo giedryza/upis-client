@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { Container, EmptyState } from 'ui';
 
 import styles from './empty.module.scss';
 
-export const ListEmpty: FC = () => {
+export const ListEmpty: FC = memo(() => {
   const { t } = useTranslation();
 
   return (
@@ -20,4 +20,6 @@ export const ListEmpty: FC = () => {
       </Container>
     </div>
   );
-};
+});
+
+ListEmpty.displayName = 'ListEmpty';
