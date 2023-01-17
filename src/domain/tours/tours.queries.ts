@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react';
-import { useInfiniteQuery, useQuery } from 'react-query';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 
 import { getRouteParam } from 'tools/common';

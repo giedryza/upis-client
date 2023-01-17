@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { imagesKeys } from './images.keys';
 import { useLoaders } from './images.loaders';

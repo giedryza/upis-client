@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { socialLinksKeys } from './social-links.keys';
 import { useLoaders } from './social-links.loaders';

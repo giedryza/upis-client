@@ -1,6 +1,6 @@
 import type { AppProps as NextAppProps } from 'next/app';
 import { Session } from 'next-auth';
-import { DehydratedState } from 'react-query';
+import { DehydratedState } from '@tanstack/react-query';
 
 interface PageProps {
   dehydratedState: DehydratedState;
