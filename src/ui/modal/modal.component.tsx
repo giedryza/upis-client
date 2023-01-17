@@ -48,7 +48,7 @@ export const Modal: FC<PropsWithChildren<Props>> & ModalComposition = ({
   return (
     <OverlayContainer>
       <div className={styles.modal} {...underlayProps}>
-        <FocusScope contain restoreFocus autoFocus={false}>
+        <FocusScope contain restoreFocus autoFocus>
           <div
             {...mergeProps(overlayProps, dialogProps, modalProps, { ref })}
             className={styles.box}
