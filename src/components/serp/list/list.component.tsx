@@ -1,18 +1,16 @@
 import { FC } from 'react';
 import { useWindowVirtualizer } from '@tanstack/react-virtual';
-import useTranslation from 'next-translate/useTranslation';
 
 import { APP } from 'config/app';
-import { Container, EmptyState, InView, Loader } from 'ui';
+import { InView, Loader } from 'ui';
 import { SerpCard } from 'components/serp';
 import { Footer } from 'components/layout';
 import { useInfiniteTours, useToursActiveFilters } from 'domain/tours';
 
+import { ListEmpty } from './atoms';
 import styles from './list.module.scss';
 
 export const SerpList: FC = () => {
-  const { t } = useTranslation();
-
   const { data: filters } = useToursActiveFilters();
   const { data, isLoading, hasNextPage, fetchNextPage } =
     useInfiniteTours(filters);
@@ -73,18 +71,7 @@ export const SerpList: FC = () => {
         </div>
       </div>
 
-      {!tours.length && !isLoading ? (
-        <div className={styles.empty}>
-          <Container size="xs">
-            <EmptyState
-              title={t('serp:list.empty.title')}
-              message={t('serp:list.empty.description')}
-              action={{ label: t('serp:list.empty.clear') }}
-              icon="path"
-            />
-          </Container>
-        </div>
-      ) : null}
+      {!tours.length && !isLoading ? <ListEmpty /> : null}
 
       <Footer />
     </div>
