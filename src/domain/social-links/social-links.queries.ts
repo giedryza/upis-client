@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { socialLinksKeys } from './social-links.keys';
 import { useLoaders } from './social-links.loaders';
@@ -8,14 +8,12 @@ import { SocialLinksFilters } from './social-links.types';
 export const useSocialLinks = (filters: SocialLinksFilters) => {
   const { loaders } = useLoaders();
 
-  const query = useQuery(
-    socialLinksKeys.list(filters),
-    () => loaders.getSocialLinks({ params: filters }),
-    {
-      enabled: !!filters.host,
-      select: converters.getSocialLinks,
-    }
-  );
+  const query = useQuery({
+    queryKey: socialLinksKeys.list(filters),
+    queryFn: () => loaders.getSocialLinks({ params: filters }),
+    select: converters.getSocialLinks,
+    enabled: !!filters.host,
+  });
 
   return query;
 };
@@ -23,14 +21,12 @@ export const useSocialLinks = (filters: SocialLinksFilters) => {
 export const useSocialLink = (id: string) => {
   const { loaders } = useLoaders();
 
-  const query = useQuery(
-    socialLinksKeys.detail(id),
-    () => loaders.getSocialLink({ id }),
-    {
-      enabled: !!id,
-      select: converters.getSocialLink,
-    }
-  );
+  const query = useQuery({
+    queryKey: socialLinksKeys.detail(id),
+    queryFn: () => loaders.getSocialLink({ id }),
+    select: converters.getSocialLink,
+    enabled: !!id,
+  });
 
   return query;
 };

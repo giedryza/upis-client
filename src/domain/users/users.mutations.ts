@@ -1,4 +1,4 @@
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 import { signIn } from 'next-auth/react';
 
 import { useLoaders } from './users.loaders';

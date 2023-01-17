@@ -1,4 +1,4 @@
-import { QueryCache, QueryClientConfig } from 'react-query';
+import { QueryCache, QueryClientConfig } from '@tanstack/react-query';
 
 import { handleErrors } from 'tools/errors';
 

@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { imagesKeys } from './images.keys';
 import { useLoaders } from './images.loaders';

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useQueryClient } from 'react-query';
+import { useQueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 
 import { EmptyState, ImageTile } from 'ui';

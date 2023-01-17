@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { Provider } from 'react-redux';
-import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import { SessionProvider } from 'next-auth/react';
 import { SSRProvider, I18nProvider } from 'react-aria';

@@ -1,7 +1,8 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": ["@tanstack/query", "react", "@typescript-eslint", "prettier"],
   "extends": [
+    "plugin:@tanstack/eslint-plugin-query/recommended",
     "plugin:react/recommended",
     "airbnb",
     "airbnb/hooks",

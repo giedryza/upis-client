@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
@@ -20,14 +20,12 @@ export const useProviders = ({
 }: UseProviders) => {
   const { loaders } = useLoaders();
 
-  const query = useQuery(
-    providersKeys.list(filters),
-    () => loaders.getProviders({ params: filters }),
-    {
-      select: converters.getProviders,
-      enabled,
-    }
-  );
+  const query = useQuery({
+    queryKey: providersKeys.list(filters),
+    queryFn: () => loaders.getProviders({ params: filters }),
+    select: converters.getProviders,
+    enabled,
+  });
 
   return query;
 };
@@ -46,14 +44,12 @@ export const useMyProviders = (filters: ProvidersFilters = {}) => {
 export const useProvider = (id: string) => {
   const { loaders } = useLoaders();
 
-  const query = useQuery(
-    providersKeys.detail(id),
-    () => loaders.getProvider({ id }),
-    {
-      enabled: !!id,
-      select: converters.getProvider,
-    }
-  );
+  const query = useQuery({
+    queryKey: providersKeys.detail(id),
+    queryFn: () => loaders.getProvider({ id }),
+    select: converters.getProvider,
+    enabled: !!id,
+  });
 
   return query;
 };

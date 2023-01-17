@@ -1,5 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next';
-import { dehydrate, QueryClient } from 'react-query';
+import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { getSession } from 'next-auth/react';
 
 import { AppHead } from 'ui';

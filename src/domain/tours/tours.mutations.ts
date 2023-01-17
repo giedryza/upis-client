@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { toursKeys } from './tours.keys';
 import { useLoaders } from './tours.loaders';

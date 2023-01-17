@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react';
-import { useInfiniteQuery, useQuery } from 'react-query';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 
 import { getRouteParam } from 'tools/common';
@@ -17,14 +17,12 @@ interface UseTours {
 export const useTours = ({ filters = {}, enabled = true }: UseTours = {}) => {
   const { loaders } = useLoaders();
 
-  const query = useQuery(
-    toursKeys.list(filters),
-    () => loaders.getTours({ params: filters }),
-    {
-      select: converters.getTours,
-      enabled,
-    }
-  );
+  const query = useQuery({
+    queryKey: toursKeys.list(filters),
+    queryFn: () => loaders.getTours({ params: filters }),
+    select: converters.getTours,
+    enabled,
+  });
 
   return query;
 };
@@ -71,9 +69,11 @@ export const useMyTours = (filters: Partial<TourFilters> = {}) => {
 export const useTour = (id: string) => {
   const { loaders } = useLoaders();
 
-  const query = useQuery(toursKeys.detail(id), () => loaders.getTour({ id }), {
-    enabled: !!id,
+  const query = useQuery({
+    queryKey: toursKeys.detail(id),
+    queryFn: () => loaders.getTour({ id }),
     select: converters.getTour,
+    enabled: !!id,
   });
 
   return query;
@@ -92,14 +92,12 @@ export const useToursActiveFilters = () => {
   const { loaders } = useLoaders();
   const { query: params } = useRouter();
 
-  const query = useQuery(
-    toursKeys.list('filters', 'active', params),
-    () => loaders.getActiveFilters({ params }),
-    {
-      select: converters.getActiveFilters,
-      keepPreviousData: true,
-    }
-  );
+  const query = useQuery({
+    queryKey: toursKeys.list('filters', 'active', params),
+    queryFn: () => loaders.getActiveFilters({ params }),
+    select: converters.getActiveFilters,
+    keepPreviousData: true,
+  });
 
   return query;
 };
@@ -107,13 +105,11 @@ export const useToursActiveFilters = () => {
 export const useToursFiltersSummary = () => {
   const { loaders } = useLoaders();
 
-  const query = useQuery(
-    toursKeys.list('filters', 'summary'),
-    () => loaders.getFiltersSummary(),
-    {
-      select: converters.getFiltersSummary,
-    }
-  );
+  const query = useQuery({
+    queryKey: toursKeys.list('filters', 'summary'),
+    queryFn: () => loaders.getFiltersSummary(),
+    select: converters.getFiltersSummary,
+  });
 
   return query;
 };
