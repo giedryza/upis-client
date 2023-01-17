@@ -14,6 +14,7 @@ import {
   FilterDuration,
   FilterRegions,
   FilterRivers,
+  FiltersClear,
 } from './atoms';
 import styles from './filters.module.scss';
 
@@ -32,6 +33,7 @@ export const SerpFilters: FC = () => {
     <FilterDuration key="duration" />,
     <FilterDistance key="distance" />,
     <FilterDifficulty key="difficulty" />,
+    <FiltersClear key="clear" />,
   ] as const;
 
   const handleScroll = (direction: 'left' | 'right') => {

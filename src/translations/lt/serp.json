@@ -1,4 +1,7 @@
 {
+  "actions": {
+    "clear-filters": "Išvalyti filtrus"
+  },
   "card": {
     "texts": {
       "pricePer": "žmogui už parą"
@@ -31,8 +34,7 @@
   "list": {
     "empty": {
       "title": "Maršrutų nėra",
-      "description": "Neradome maršrutų, atitinkančių paieškos kriterijus. Pakeiskite arba išvalykite filtrus norėdami bandyti dar kartą.",
-      "clear": "Išvalyti filtrus"
+      "description": "Neradome maršrutų, atitinkančių paieškos kriterijus. Pakeiskite arba išvalykite filtrus norėdami bandyti dar kartą."
     }
   }
 }

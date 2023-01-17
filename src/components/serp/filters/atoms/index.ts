@@ -1,4 +1,5 @@
 export * from './amenities';
+export * from './clear';
 export * from './days';
 export * from './difficulty';
 export * from './distance';

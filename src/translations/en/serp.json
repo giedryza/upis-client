@@ -1,4 +1,7 @@
 {
+  "actions": {
+    "clear-filters": "Clear filters"
+  },
   "card": {
     "texts": {
       "pricePer": "per person, per day"
@@ -31,8 +34,7 @@
   "list": {
     "empty": {
       "title": "No tours found",
-      "description": "We couldn't find any tours matching search criteria. Change or clear the filters to try again.",
-      "clear": "Clear filters"
+      "description": "We couldn't find any tours matching search criteria. Change or clear the filters to try again."
     }
   }
 }
