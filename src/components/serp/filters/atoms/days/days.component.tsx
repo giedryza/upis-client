@@ -35,26 +35,24 @@ export const FilterDays: FC = () => {
       title={t('serp:filters.days.title')}
       active={!isEmpty}
       popover={
-        <div style={{ minWidth: 300 }}>
-          <Controller
-            control={control}
-            name="days"
-            render={({ field: { onChange, value } }) => (
-              <SliderInput
-                ariaLabel={t('serp:filters.days.title')}
-                min={filtersSummary?.days.min}
-                max={filtersSummary?.days.max}
-                thumbs={2}
-                value={value}
-                onChange={onChange}
-                formatOptions={{
-                  style: 'unit',
-                  unit: 'day',
-                }}
-              />
-            )}
-          />
-        </div>
+        <Controller
+          control={control}
+          name="days"
+          render={({ field: { onChange, value } }) => (
+            <SliderInput
+              ariaLabel={t('serp:filters.days.title')}
+              min={filtersSummary?.days.min}
+              max={filtersSummary?.days.max}
+              thumbs={2}
+              value={value}
+              onChange={onChange}
+              formatOptions={{
+                style: 'unit',
+                unit: 'day',
+              }}
+            />
+          )}
+        />
       }
       actions={[
         {
@@ -74,7 +72,11 @@ export const FilterDays: FC = () => {
           attributes: {
             onClick: () => {
               const [from, to] = getValues().days;
-              navigateWithQuery({ daysFrom: from, daysTo: to });
+              navigateWithQuery({
+                daysFrom: from,
+                daysTo: to,
+                ...(from > 1 && { durationFrom: NaN, durationTo: NaN }),
+              });
             },
             disabled: !isDirty,
           },

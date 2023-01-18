@@ -7,6 +7,7 @@ import { Pill, SliderInput } from 'ui';
 import { useQueryNavigation } from 'tools/hooks';
 
 import { Values } from './duration.types';
+import styles from './duration.module.scss';
 
 export const FilterDuration: FC = () => {
   const { t } = useTranslation();
@@ -35,10 +36,10 @@ export const FilterDuration: FC = () => {
   return (
     <Pill
       label={t('serp:filters.duration.title')}
-      title={t('serp:filters.duration.title')}
+      title={`${t('serp:filters.duration.title')} *`}
       active={!isEmpty}
       popover={
-        <div style={{ minWidth: 300 }}>
+        <div className={styles.container}>
           <Controller
             control={control}
             name="duration"
@@ -57,6 +58,7 @@ export const FilterDuration: FC = () => {
               />
             )}
           />
+          <p className={styles.info}>* {t('serp:filters.duration.info')}</p>
         </div>
       }
       actions={[
@@ -77,7 +79,14 @@ export const FilterDuration: FC = () => {
           attributes: {
             onClick: () => {
               const [from, to] = getValues().duration;
-              navigateWithQuery({ durationFrom: from, durationTo: to });
+              navigateWithQuery({
+                durationFrom: from,
+                durationTo: to,
+                ...((activeFilters?.daysFrom || activeFilters?.daysTo) && {
+                  daysFrom: 1,
+                  daysTo: 1,
+                }),
+              });
             },
             disabled: !isDirty,
           },
