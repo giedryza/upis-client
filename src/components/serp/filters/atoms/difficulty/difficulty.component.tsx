@@ -38,23 +38,21 @@ export const FilterDifficulty: FC = () => {
       title={t('serp:filters.difficulty.title')}
       active={!isEmpty}
       popover={
-        <div style={{ minWidth: 300 }}>
-          <Controller
-            control={control}
-            name="difficulty"
-            render={({ field: { onChange, value } }) => (
-              <SliderInput
-                ariaLabel={t('serp:filters.difficulty.title')}
-                min={filtersSummary?.difficulty.min}
-                max={filtersSummary?.difficulty.max}
-                step={0.5}
-                thumbs={2}
-                value={value}
-                onChange={onChange}
-              />
-            )}
-          />
-        </div>
+        <Controller
+          control={control}
+          name="difficulty"
+          render={({ field: { onChange, value } }) => (
+            <SliderInput
+              ariaLabel={t('serp:filters.difficulty.title')}
+              min={filtersSummary?.difficulty.min}
+              max={filtersSummary?.difficulty.max}
+              step={0.5}
+              thumbs={2}
+              value={value}
+              onChange={onChange}
+            />
+          )}
+        />
       }
       actions={[
         {

@@ -38,26 +38,24 @@ export const FilterDistance: FC = () => {
       title={t('serp:filters.distance.title')}
       active={!isEmpty}
       popover={
-        <div style={{ minWidth: 300 }}>
-          <Controller
-            control={control}
-            name="distance"
-            render={({ field: { onChange, value } }) => (
-              <SliderInput
-                ariaLabel={t('serp:filters.distance.title')}
-                min={filtersSummary?.distance.min}
-                max={filtersSummary?.distance.max}
-                thumbs={2}
-                value={value}
-                onChange={onChange}
-                formatOptions={{
-                  style: 'unit',
-                  unit: 'kilometer',
-                }}
-              />
-            )}
-          />
-        </div>
+        <Controller
+          control={control}
+          name="distance"
+          render={({ field: { onChange, value } }) => (
+            <SliderInput
+              ariaLabel={t('serp:filters.distance.title')}
+              min={filtersSummary?.distance.min}
+              max={filtersSummary?.distance.max}
+              thumbs={2}
+              value={value}
+              onChange={onChange}
+              formatOptions={{
+                style: 'unit',
+                unit: 'kilometer',
+              }}
+            />
+          )}
+        />
       }
       actions={[
         {

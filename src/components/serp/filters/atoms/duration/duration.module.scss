@@ -1,0 +1,10 @@
+@use 'styles/mixins' as *;
+
+.container {
+  @include spacing(y, 1.5rem);
+
+  .info {
+    font-weight: 400;
+    font-size: 1.2rem;
+  }
+}

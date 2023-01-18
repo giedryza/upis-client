@@ -16,7 +16,8 @@
       "title": "Distance"
     },
     "duration": {
-      "title": "Duration"
+      "title": "Duration",
+      "info": "Only valid for single day tours."
     },
     "days": {
       "title": "Days"

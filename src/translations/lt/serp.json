@@ -16,7 +16,8 @@
       "title": "Atstumas"
     },
     "duration": {
-      "title": "Trukmė"
+      "title": "Trukmė",
+      "info": "Galioja tik vienos dienos maršrutams."
     },
     "days": {
       "title": "Dienos"
