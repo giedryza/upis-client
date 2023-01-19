@@ -1,7 +1,6 @@
 export * from './breakpoints';
 export * from './converter';
 export * from './entity';
-export * from './env';
 export * from './errors';
 export * from './files';
 export * from './geo';
