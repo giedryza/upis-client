@@ -1,3 +1,6 @@
+import { signIn } from 'next-auth/react';
+import getT from 'next-translate/getT';
+
 import { endpoints } from 'config/endpoints';
 import { generateUrl } from 'tools/common';
 import { Request, getJsonBody, loadersFactory } from 'tools/services/request';
@@ -5,6 +8,11 @@ import { Request, getJsonBody, loadersFactory } from 'tools/services/request';
 import { Session } from './users.types';
 
 interface Signin {
+  email: string;
+  password: string;
+}
+
+interface SigninWithCredentials {
   email: string;
   password: string;
 }
@@ -38,6 +46,22 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         body: getJsonBody({ email, password }),
         locale,
       }).post(),
+    signinWithCredentials: async ({
+      email,
+      password,
+    }: SigninWithCredentials) => {
+      const response = await signIn<'credentials'>('credentials', {
+        redirect: false,
+        email,
+        password,
+      });
+
+      if (response?.error) {
+        const t = await getT(locale, 'auth');
+
+        throw new Error(t('auth:errors.invalid-credentials'));
+      }
+    },
     signup: ({ email, password, confirmPassword }: Signup) =>
       new Request<Session>(generateUrl(endpoints.users.signup), {
         body: getJsonBody({
