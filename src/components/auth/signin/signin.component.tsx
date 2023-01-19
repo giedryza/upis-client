@@ -14,7 +14,8 @@ import styles from './signin.module.scss';
 export const Signin: FC = () => {
   const { t } = useTranslation();
 
-  const { mutate: signinWithCredentials } = useSigninWithCredentials();
+  const { mutate: signinWithCredentials, isLoading } =
+    useSigninWithCredentials();
 
   const onSubmit: SubmitHandler<Values> = ({ email, password }) => {
     signinWithCredentials({ email, password });
@@ -76,6 +77,7 @@ export const Signin: FC = () => {
               width="full"
               attributes={{
                 type: 'submit',
+                disabled: isLoading,
               }}
             />
           </form>
