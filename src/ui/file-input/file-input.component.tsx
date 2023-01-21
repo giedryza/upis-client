@@ -5,6 +5,7 @@ import Trans from 'next-translate/Trans';
 
 import { Button, Icon, Divider, Image } from 'ui';
 import { getFiletype, formatBytes } from 'tools/common';
+import { formatList } from 'tools/format';
 
 import { FileIcon } from './atoms';
 import { DragState, Props } from './file-input.types';
@@ -132,7 +133,8 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
                   <Trans
                     i18nKey="common:components.fileInput.supported"
                     values={{
-                      filetypes: new Intl.ListFormat(lang).format(
+                      filetypes: formatList(
+                        lang,
                         accept.map((filetype) => `.${filetype}`)
                       ),
                     }}
