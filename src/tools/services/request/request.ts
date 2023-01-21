@@ -1,6 +1,7 @@
 import { getSession, signOut } from 'next-auth/react';
 import { stringifyUrl } from 'query-string';
 
+import { APP } from 'config/app';
 import { isServer } from 'tools/common';
 
 import {
@@ -16,7 +17,7 @@ export class Request<ResponseData = any, ResponseMeta = any> {
 
   #version: ApiVersion = 'v1';
 
-  #baseUrl: string = `${process.env.NEXT_PUBLIC_HOST_API}/api/${this.#version}`;
+  #baseUrl: string = `${APP.host.api}/api/${this.#version}`;
 
   constructor(private endpoint: string, private config: Config = {}) {}
 

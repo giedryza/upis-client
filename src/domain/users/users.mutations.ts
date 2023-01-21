@@ -3,6 +3,14 @@ import { signIn } from 'next-auth/react';
 
 import { useLoaders } from './users.loaders';
 
+export const useSigninWithCredentials = () => {
+  const { loaders } = useLoaders();
+
+  const mutation = useMutation(loaders.signinWithCredentials);
+
+  return mutation;
+};
+
 export const useSignup = () => {
   const { loaders } = useLoaders();
 
