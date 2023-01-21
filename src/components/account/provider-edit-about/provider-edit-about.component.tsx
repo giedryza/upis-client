@@ -19,6 +19,7 @@ import {
 } from 'domain/providers';
 import { languages as supportedLanguages } from 'types/common';
 import { generateUrl } from 'tools/common';
+import { formatLanguage } from 'tools/format';
 
 import { Values } from './provider-edit-about.types';
 import { INITIAL_VALUES } from './provider-edit-about.constants';
@@ -112,9 +113,7 @@ export const ProviderEditAbout: FC = () => {
                   )}
                   items={
                     supportedLanguages.map((language) => ({
-                      label: new Intl.DisplayNames([lang], {
-                        type: 'language',
-                      }).of(language) as string,
+                      label: formatLanguage(lang, language),
                       value: language,
                     })) ?? []
                   }
