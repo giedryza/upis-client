@@ -6,6 +6,7 @@ import { useActiveProvider } from 'domain/providers';
 import { routes } from 'config/routes';
 import { LabeledValue } from 'ui';
 import { generateUrl } from 'tools/common';
+import { formatLanguage, formatList } from 'tools/format';
 
 export const About: FC = () => {
   const { t, lang } = useTranslation();
@@ -40,24 +41,17 @@ export const About: FC = () => {
       />
       <LabeledValue
         label={t('account:providers.about.form.languages.display')}
-        value={new Intl.ListFormat(lang, {
-          style: 'long',
-          type: 'conjunction',
-        }).format(
-          provider.languages.map(
-            (language) =>
-              new Intl.DisplayNames([lang], { type: 'language' }).of(
-                language
-              ) as string
-          )
+        value={formatList(
+          lang,
+          provider.languages.map((language) => formatLanguage(lang, language))
         )}
       />
       <LabeledValue
         label={t('account:providers.about.form.boats.display')}
-        value={new Intl.ListFormat(lang, {
-          style: 'long',
-          type: 'conjunction',
-        }).format(provider.boats.map((boat) => t(`common:boats.${boat}`)))}
+        value={formatList(
+          lang,
+          provider.boats.map((boat) => t(`common:boats.${boat}`))
+        )}
       />
     </InfoBlock>
   );
