@@ -1,8 +1,9 @@
+import { APP } from 'config/app';
 import { isServer } from 'tools/common';
 
 class Axe {
   private get isAvailable() {
-    return !isServer() && process.env.NODE_ENV === 'development';
+    return !isServer() && APP.env === 'development';
   }
 
   private start = async () => {

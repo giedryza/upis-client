@@ -1,3 +1,5 @@
-export const HOST = process.env.NEXT_PUBLIC_HOST_CLIENT;
+import { APP } from 'config/app';
+
+export const HOST = APP.host.client;
 
 export const APP_NAME = 'Upis.lt';

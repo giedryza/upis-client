@@ -2,6 +2,11 @@ import { Breakpoint } from 'types/common';
 import styles from 'styles/utils/export.module.scss';
 
 export const APP = {
+  env: process.env.NODE_ENV,
+  host: {
+    client: process.env.NEXT_PUBLIC_HOST_CLIENT,
+    api: process.env.NEXT_PUBLIC_HOST_API,
+  },
   serp: {
     carouselAspectRatio: [4, 3],
     cardHeight: 200,
