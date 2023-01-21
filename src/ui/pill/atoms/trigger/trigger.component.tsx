@@ -27,7 +27,6 @@ export const Trigger: FC<Props & AriaButtonProps<'button'>> = ({
 
   return (
     <button
-      {...buttonProps}
       {...mergeProps(buttonProps, focusProps)}
       className={clsx(
         styles.trigger,
