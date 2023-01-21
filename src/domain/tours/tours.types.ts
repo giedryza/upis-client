@@ -227,11 +227,11 @@ export const rivers = [
 
 export const difficulty = [1, 2, 3, 4, 5] as const;
 
-export type Region = typeof regions[number];
+export type Region = (typeof regions)[number];
 
-export type River = typeof rivers[number];
+export type River = (typeof rivers)[number];
 
-export type Difficulty = typeof difficulty[number];
+export type Difficulty = (typeof difficulty)[number];
 
 export interface Tour extends BaseEntity {
   name: string;

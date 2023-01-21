@@ -16,9 +16,9 @@ export const amenities = [
 
 export const units = ['tour', 'person', 'day', 'h', 'km'] as const;
 
-export type Variant = typeof amenities[number];
+export type Variant = (typeof amenities)[number];
 
-export type Unit = typeof units[number];
+export type Unit = (typeof units)[number];
 
 export interface Amenity extends BaseEntity {
   variant: Variant;
