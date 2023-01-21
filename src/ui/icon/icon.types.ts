@@ -62,6 +62,6 @@ export const logoIcons = [
 ] as const;
 
 export type IconName =
-  | typeof baseIcons[number]
-  | typeof flagIcons[number]
-  | typeof logoIcons[number];
+  | (typeof baseIcons)[number]
+  | (typeof flagIcons)[number]
+  | (typeof logoIcons)[number];

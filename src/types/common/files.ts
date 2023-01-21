@@ -24,7 +24,7 @@ export const filetypes = [
   'xlsx',
 ] as const;
 
-export type Filetype = typeof filetypes[number];
+export type Filetype = (typeof filetypes)[number];
 
 export interface AppFile {
   _id: string;

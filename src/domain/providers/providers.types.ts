@@ -9,7 +9,7 @@ export const boats = [
   'raft',
 ] as const;
 
-export type Boat = typeof boats[number];
+export type Boat = (typeof boats)[number];
 
 export interface Provider extends BaseEntity {
   name: string;
