@@ -51,7 +51,11 @@ export class Request<ResponseData = any, ResponseMeta = any> {
   private get serverHeaders(): Record<string, string> {
     const { req } = this.config;
 
-    const headers = req && isServer() ? req.headers : {};
+    if (!req || !isServer()) return {};
+
+    // TODO: 'connection' header throws error. remove this extraction when next removes it internally or node starts supporting it.
+    // https://github.com/nodejs/undici/issues/1307
+    const { connection, ...headers } = req.headers;
 
     return headers as Record<string, string>;
   }
