@@ -16,6 +16,7 @@ export const Icon: FC<Props> = memo(({ name, ...svgProps }) => {
 
   const DynamicIcon = dynamic(() => import(`./svgs/${name}.svg`), {
     loading: () => loader,
+    ssr: false,
   });
 
   return <DynamicIcon {...svgProps} />;
