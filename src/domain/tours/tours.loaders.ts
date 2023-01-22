@@ -87,6 +87,10 @@ interface GetFilters {
   params: Router['query'];
 }
 
+interface GetFiltersSummary {
+  req?: IncomingMessage;
+}
+
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
   loaders: {
     getTours: ({ req, params }: GetTours = {}) =>
@@ -159,8 +163,9 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
             'populate',
           ])
         ),
-    getFiltersSummary: () =>
+    getFiltersSummary: ({ req }: GetFiltersSummary = {}) =>
       new Request<FiltersSummary>(generateUrl(endpoints.tours.filters), {
+        req,
         locale,
       }).get(),
   },

@@ -32,10 +32,10 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   await Promise.all([
     queryClient.prefetchInfiniteQuery(toursKeys.list(filters), () =>
-      loaders.getTours({ params: filters })
+      loaders.getTours({ req, params: filters })
     ),
     queryClient.prefetchQuery(toursKeys.list('filters', 'summary'), () =>
-      loaders.getFiltersSummary()
+      loaders.getFiltersSummary({ req })
     ),
     queryClient.prefetchQuery(toursKeys.list('filters', 'active', query), () =>
       loaders.getActiveFilters({ params: query })
