@@ -1,28 +1,26 @@
 import { useEffect, useRef } from 'react';
 
+import { useStableHandler } from 'tools/hooks';
+
 export const useTimeout = (
   callback: () => void,
   delay: number | null
-): { id: number | null } => {
-  const timeout = useRef<number | null>(null);
-  const savedCallback = useRef<() => void>();
+): { id: ReturnType<typeof setTimeout> | null } => {
+  const timeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const handler = useStableHandler(callback);
 
   useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
-
-  useEffect(() => {
-    const tick = () => savedCallback.current?.();
+    const tick = () => handler.current?.();
 
     if (delay !== null) {
-      const id = window.setTimeout(tick, delay);
+      const id = setTimeout(tick, delay);
       timeout.current = id;
 
       return () => {
-        window.clearTimeout(id);
+        clearTimeout(id);
       };
     }
-  }, [delay]);
+  }, [delay, handler]);
 
   return {
     id: timeout.current,
