@@ -13,7 +13,7 @@ export const ToursList: FC = () => {
 
   const { confirmation } = useConfirm();
 
-  const { data: tours = [] } = useMyTours();
+  const { data: tours = [] } = useMyTours({ limit: 50 });
   const { mutate: deleteTour, isLoading: isDeleting } = useDeleteTour();
 
   return (
