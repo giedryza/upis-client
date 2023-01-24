@@ -251,6 +251,7 @@ export interface Tour extends BaseEntity {
   provider: Provider;
   website: string;
   amenities: { _id: Amenity; variant: Variant }[];
+  score: number;
   createdAt: Date;
   updatedAt: Date;
 }
