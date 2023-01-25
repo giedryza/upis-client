@@ -19,7 +19,7 @@ export const SerpList: FC = () => {
 
   const virtualizer = useWindowVirtualizer({
     count: isLoading ? 5 : hasNextPage ? tours.length + 1 : tours.length,
-    estimateSize: () => APP.serp.cardHeight + APP.serp.gridGap,
+    estimateSize: () => APP.serp.card.image.height + APP.serp.gridGap,
     overscan: 3,
     paddingStart: APP.serp.gridGap,
     getItemKey: (index) => tours[index]?._id ?? index,
@@ -56,11 +56,11 @@ export const SerpList: FC = () => {
                 }}
               >
                 {isLoading ? (
-                  <Loader height={APP.serp.cardHeight} />
+                  <Loader height={APP.serp.card.image.height} />
                 ) : isLast ? (
                   <InView
                     onInView={onEndReached}
-                    placeholder={<Loader height={APP.serp.cardHeight} />}
+                    placeholder={<Loader height={APP.serp.card.image.height} />}
                   />
                 ) : tour ? (
                   <SerpCard tour={tour} />

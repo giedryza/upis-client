@@ -1,6 +1,13 @@
 import { Breakpoint } from 'types/common';
 import styles from 'styles/utils/export.module.scss';
 
+const SERP_CONFIG = {
+  cardImageAspectRatio: [4, 3],
+  cardHeight: 200,
+  infoboxImageAspectRatio: [4, 3],
+  infoboxHeight: 150,
+} as const;
+
 export const APP = {
   env: process.env.NODE_ENV,
   host: {
@@ -8,8 +15,26 @@ export const APP = {
     api: process.env.NEXT_PUBLIC_HOST_API,
   },
   serp: {
-    carouselAspectRatio: [4, 3],
-    cardHeight: 200,
+    card: {
+      image: {
+        aspectRatio: SERP_CONFIG.cardImageAspectRatio,
+        height: SERP_CONFIG.cardHeight,
+        width: Math.round(
+          (SERP_CONFIG.cardHeight * SERP_CONFIG.cardImageAspectRatio[0]) /
+            SERP_CONFIG.cardImageAspectRatio[1]
+        ),
+      },
+    },
+    infobox: {
+      image: {
+        aspectRatio: SERP_CONFIG.infoboxImageAspectRatio,
+        height: SERP_CONFIG.infoboxHeight,
+        width: Math.round(
+          (SERP_CONFIG.infoboxHeight * SERP_CONFIG.infoboxImageAspectRatio[0]) /
+            SERP_CONFIG.infoboxImageAspectRatio[1]
+        ),
+      },
+    },
     gridGap: 15,
   },
   scss: styles,

@@ -9,11 +9,6 @@ import { generateImageUrl, isLast } from 'tools/common';
 import { Props } from './card.types';
 import styles from './card.module.scss';
 
-const CAROUSEL_WIDTH = Math.round(
-  (APP.serp.cardHeight * APP.serp.carouselAspectRatio[0]) /
-    APP.serp.carouselAspectRatio[1]
-);
-
 export const SerpCard: FC<Props> = memo(({ tour }) => {
   const { t } = useTranslation();
   const { lang } = useTranslation();
@@ -23,8 +18,8 @@ export const SerpCard: FC<Props> = memo(({ tour }) => {
       <div
         className={styles.gallery}
         style={{
-          '--width': CAROUSEL_WIDTH,
-          '--height': APP.serp.cardHeight,
+          '--width': APP.serp.card.image.width,
+          '--height': APP.serp.card.image.height,
         }}
       >
         {tour.photos.length ? (
@@ -33,18 +28,21 @@ export const SerpCard: FC<Props> = memo(({ tour }) => {
               id: photo._id,
               url: generateImageUrl({
                 id: photo.key,
-                width: CAROUSEL_WIDTH * 2,
-                height: APP.serp.cardHeight * 2,
+                width: APP.serp.card.image.width * 2,
+                height: APP.serp.card.image.height * 2,
               }),
               placeholder: generateImageUrl({
                 id: photo.key,
-                width: APP.serp.carouselAspectRatio[0] * 2,
-                height: APP.serp.carouselAspectRatio[1] * 2,
+                width: APP.serp.card.image.aspectRatio[0] * 2,
+                height: APP.serp.card.image.aspectRatio[1] * 2,
               }),
               alt: photo.description,
             }))}
             options={{ size: 'sm' }}
-            sizes={{ width: CAROUSEL_WIDTH, height: APP.serp.cardHeight }}
+            sizes={{
+              width: APP.serp.card.image.width,
+              height: APP.serp.card.image.height,
+            }}
           />
         ) : (
           <ImagePlaceholder fit="fluid" />
