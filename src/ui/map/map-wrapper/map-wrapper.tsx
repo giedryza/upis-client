@@ -4,6 +4,8 @@ import * as ReactLeaflet from 'react-leaflet';
 
 import 'leaflet/dist/leaflet.css';
 
+import { APP } from 'config/app';
+
 import { MapSearch } from '../map-search/map-search';
 
 import styles from './map-wrapper.module.scss';
@@ -20,6 +22,7 @@ const MapWrapper = ({ children, ...rest }: Props) => {
     <ReactLeaflet.MapContainer
       {...rest}
       className={styles.mapContainer}
+      style={{ '--spacing': APP.serp.gridGap }}
       worldCopyJump
       minZoom={3}
     >

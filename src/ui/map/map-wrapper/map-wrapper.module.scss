@@ -10,8 +10,8 @@
   font-family: inherit;
 
   [class~='leaflet-control-zoom'] {
-    margin-top: 1.5rem;
-    margin-left: 1.5rem;
+    margin-top: calc(var(--spacing) * 0.1rem);
+    margin-left: calc(var(--spacing) * 0.1rem);
 
     border: 0;
     border-radius: 0;
