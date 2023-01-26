@@ -20,6 +20,7 @@
       color: var(--color-text);
       font-weight: 500;
 
+      background-color: var(--color-white);
       box-shadow: var(--shadow-primary);
 
       &:first-of-type {
@@ -31,6 +32,10 @@
 
       &:last-of-type {
         border-radius: 0;
+      }
+
+      &:hover {
+        background-color: var(--color-grey-95);
       }
     }
   }

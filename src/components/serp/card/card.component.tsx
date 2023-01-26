@@ -10,8 +10,7 @@ import { Props } from './card.types';
 import styles from './card.module.scss';
 
 export const SerpCard: FC<Props> = memo(({ tour }) => {
-  const { t } = useTranslation();
-  const { lang } = useTranslation();
+  const { t, lang } = useTranslation();
 
   return (
     <article className={styles.card}>
