@@ -3,7 +3,7 @@
     "clear-filters": "Clear filters"
   },
   "list": {
-    "title": "Kayak tours",
+    "title": "Kayak tours search results",
     "empty": {
       "title": "No tours found",
       "description": "We couldn't find any tours matching search criteria. Change or clear the filters to try again."
