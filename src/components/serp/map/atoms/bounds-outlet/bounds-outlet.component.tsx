@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from 'react';
+import { FC, useEffect } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 
 import { useQueryNavigation } from 'tools/hooks';
@@ -9,15 +9,14 @@ export const BoundsOutlet: FC<Props> = ({
   useMap,
   useMapEvents,
   coordinates,
+  updateOnMapMove,
 }) => {
   const map = useMap();
   const { navigateWithQuery } = useQueryNavigation();
-  const isLoaded = useRef(false);
 
   useEffect(() => {
-    if (coordinates.length && isLoaded.current === false) {
+    if (coordinates.length) {
       map.fitBounds(coordinates);
-      isLoaded.current = true;
     }
   }, [coordinates, map]);
 
@@ -39,7 +38,9 @@ export const BoundsOutlet: FC<Props> = ({
 
   useMapEvents({
     moveend: () => {
-      debouncedSetBounds();
+      if (updateOnMapMove) {
+        debouncedSetBounds();
+      }
     },
   });
 

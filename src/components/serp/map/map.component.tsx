@@ -4,11 +4,12 @@ import { DEFAULT_CENTER, Map, mapIcon } from 'ui';
 import { Infobox } from 'components/serp';
 import { useTours, useToursActiveFilters } from 'domain/tours';
 
-import { BoundsOutlet } from './atoms';
+import { BoundsOutlet, UpdatesControl } from './atoms';
 import styles from './map.module.scss';
 
 export const SerpMap: FC = () => {
   const [activeInfobox, setActiveInfobox] = useState('');
+  const [updateOnMapMove, setUpdateOnMapMove] = useState(false);
 
   const { data: filters } = useToursActiveFilters();
   const { data: tours = [] } = useTours({
@@ -38,7 +39,7 @@ export const SerpMap: FC = () => {
   );
 
   return (
-    <div className={styles.map}>
+    <section className={styles.map}>
       <Map
         center={{ lat: DEFAULT_CENTER.lat, lng: DEFAULT_CENTER.lng }}
         zoom={10}
@@ -52,6 +53,12 @@ export const SerpMap: FC = () => {
               useMap={useMap}
               useMapEvents={useMapEvents}
               coordinates={bounds}
+              updateOnMapMove={updateOnMapMove}
+            />
+
+            <UpdatesControl
+              updateOnMapMove={updateOnMapMove}
+              onChange={setUpdateOnMapMove}
             />
 
             {tours.map((tour) => {
@@ -94,6 +101,6 @@ export const SerpMap: FC = () => {
           </>
         )}
       </Map>
-    </div>
+    </section>
   );
 };

@@ -14,6 +14,11 @@
       "pricePer": "žmogui už parą"
     }
   },
+  "map": {
+    "actions": {
+      "update-on-move": "Atnaujinti rezultatus žemėlapiui judant"
+    }
+  },
   "filters": {
     "title": "Filtrai",
     "amenities": {

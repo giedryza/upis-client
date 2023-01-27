@@ -2,9 +2,12 @@
 
 .infobox {
   position: relative;
-  color: var(--color-text);
-  background-color: var(--color-white);
+
   width: calc(var(--width) * 0.1rem);
+
+  color: var(--color-text);
+
+  background-color: var(--color-white);
 
   .actions {
     position: absolute;
