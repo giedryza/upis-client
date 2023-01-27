@@ -33,7 +33,10 @@ export const SerpList: FC = () => {
   };
 
   return (
-    <div className={styles.container} style={{ '--spacing': APP.serp.gridGap }}>
+    <section
+      className={styles.container}
+      style={{ '--spacing': APP.serp.gridGap }}
+    >
       <h1 className="visually-hidden">{t('serp:list.title')}</h1>
       <div className={styles.list}>
         <div
@@ -78,6 +81,6 @@ export const SerpList: FC = () => {
       {!tours.length && !isLoading ? <ListEmpty /> : null}
 
       <Footer />
-    </div>
+    </section>
   );
 };
