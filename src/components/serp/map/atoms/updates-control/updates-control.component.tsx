@@ -13,6 +13,7 @@ export const UpdatesControl: FC<Props> = ({ updateOnMapMove, onChange }) => {
     <div className={styles.container}>
       <CheckboxInput
         label={t('serp:map.actions.update-on-move')}
+        variant="primary"
         checked={updateOnMapMove}
         onChange={onChange}
       />
