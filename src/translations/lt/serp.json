@@ -16,7 +16,7 @@
   },
   "map": {
     "actions": {
-      "update-on-move": "Atnaujinti rezultatus žemėlapiui judant"
+      "update-on-move": "Atnaujinti rezultatus žemėlapiui keičiantis"
     }
   },
   "filters": {

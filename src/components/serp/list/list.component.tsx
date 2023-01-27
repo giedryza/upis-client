@@ -21,7 +21,7 @@ export const SerpList: FC = () => {
   const tours = data ? data.pages.flat() : [];
 
   const virtualizer = useWindowVirtualizer({
-    count: isLoading ? 5 : hasNextPage ? tours.length + 1 : tours.length,
+    count: isLoading ? 6 : hasNextPage ? tours.length + 1 : tours.length,
     estimateSize: () => APP.serp.card.image.height + APP.serp.gridGap,
     overscan: 3,
     paddingStart: APP.serp.gridGap,
