@@ -2,6 +2,13 @@
   "actions": {
     "clear-filters": "Išvalyti filtrus"
   },
+  "list": {
+    "title": "Baidarių maršrutai",
+    "empty": {
+      "title": "Maršrutų nėra",
+      "description": "Neradome maršrutų, atitinkančių paieškos kriterijus. Pakeiskite arba išvalykite filtrus norėdami bandyti dar kartą."
+    }
+  },
   "card": {
     "texts": {
       "pricePer": "žmogui už parą"
@@ -30,12 +37,6 @@
     },
     "rivers": {
       "title": "Upės"
-    }
-  },
-  "list": {
-    "empty": {
-      "title": "Maršrutų nėra",
-      "description": "Neradome maršrutų, atitinkančių paieškos kriterijus. Pakeiskite arba išvalykite filtrus norėdami bandyti dar kartą."
     }
   }
 }

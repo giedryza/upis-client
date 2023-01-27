@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useWindowVirtualizer } from '@tanstack/react-virtual';
+import useTranslation from 'next-translate/useTranslation';
 
 import { APP } from 'config/app';
 import { InView, Loader } from 'ui';
@@ -11,6 +12,8 @@ import { ListEmpty } from './atoms';
 import styles from './list.module.scss';
 
 export const SerpList: FC = () => {
+  const { t } = useTranslation();
+
   const { data: filters } = useToursActiveFilters();
   const { data, isLoading, hasNextPage, fetchNextPage } =
     useInfiniteTours(filters);
@@ -31,6 +34,7 @@ export const SerpList: FC = () => {
 
   return (
     <div className={styles.container} style={{ '--spacing': APP.serp.gridGap }}>
+      <h1 className="visually-hidden">{t('serp:list.title')}</h1>
       <div className={styles.list}>
         <div
           style={{
