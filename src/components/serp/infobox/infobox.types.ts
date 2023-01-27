@@ -1,5 +1,10 @@
 import { useMap } from 'react-leaflet';
 
-export interface Props {
+import { Tour } from 'domain/tours';
+
+export type Props = {
   useMap: typeof useMap;
-}
+} & Pick<
+  Tour,
+  '_id' | 'name' | 'photos' | 'distance' | 'days' | 'duration' | 'price'
+>;

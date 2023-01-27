@@ -21,6 +21,7 @@ export const useTours = ({ filters = {}, enabled = true }: UseTours = {}) => {
     queryKey: toursKeys.list(filters),
     queryFn: () => loaders.getTours({ params: filters }),
     select: converters.getTours,
+    keepPreviousData: true,
     enabled,
   });
 
