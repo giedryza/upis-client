@@ -9,7 +9,7 @@ import styles from './map.module.scss';
 
 export const SerpMap: FC = () => {
   const [activeInfobox, setActiveInfobox] = useState('');
-  const [updateOnMapMove, setUpdateOnMapMove] = useState(false);
+  const [updateOnMapMove, setUpdateOnMapMove] = useState(true);
 
   const { data: filters } = useToursActiveFilters();
   const { data: tours = [] } = useTours({
