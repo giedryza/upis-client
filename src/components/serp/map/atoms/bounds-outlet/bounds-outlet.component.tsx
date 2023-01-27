@@ -1,4 +1,7 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useRef } from 'react';
+import { useDebouncedCallback } from 'use-debounce';
+
+import { useQueryNavigation } from 'tools/hooks';
 
 import { Props } from './bounds-outlet.types';
 
@@ -8,19 +11,35 @@ export const BoundsOutlet: FC<Props> = ({
   coordinates,
 }) => {
   const map = useMap();
+  const { navigateWithQuery } = useQueryNavigation();
+  const isLoaded = useRef(false);
 
   useEffect(() => {
-    if (coordinates.length) {
+    if (coordinates.length && isLoaded.current === false) {
       map.fitBounds(coordinates);
+      isLoaded.current = true;
     }
   }, [coordinates, map]);
 
+  const setBounds = () => {
+    const bounds = map.getBounds();
+    const [north, east, south, west] = [
+      bounds.getNorth(),
+      bounds.getEast(),
+      bounds.getSouth(),
+      bounds.getWest(),
+    ];
+
+    navigateWithQuery({
+      bounds: [north, east, south, west],
+    });
+  };
+
+  const debouncedSetBounds = useDebouncedCallback(setBounds, 100);
+
   useMapEvents({
     moveend: () => {
-      const bounds = map.getBounds();
-      const northEast = bounds.getNorthEast();
-      const southWest = bounds.getSouthWest();
-      console.log([northEast.lat, northEast.lng, southWest.lat, southWest.lng]);
+      debouncedSetBounds();
     },
   });
 

@@ -283,6 +283,12 @@ export const tourFilters = z.object({
   difficultyFrom: z.coerce.number(),
   difficultyTo: z.coerce.number(),
   user: z.coerce.string(),
+  bounds: z.tuple([
+    z.coerce.number(),
+    z.coerce.number(),
+    z.coerce.number(),
+    z.coerce.number(),
+  ]),
 });
 
 interface TourUtilFilters {
