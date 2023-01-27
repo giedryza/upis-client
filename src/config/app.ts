@@ -15,6 +15,9 @@ export const APP = {
     api: process.env.NEXT_PUBLIC_HOST_API,
   },
   serp: {
+    list: {
+      placeholdersCount: 6,
+    },
     card: {
       image: {
         aspectRatio: SERP_CONFIG.cardImageAspectRatio,
