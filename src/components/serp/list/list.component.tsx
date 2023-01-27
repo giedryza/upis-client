@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useWindowVirtualizer } from '@tanstack/react-virtual';
+import useTranslation from 'next-translate/useTranslation';
 
 import { APP } from 'config/app';
 import { InView, Loader } from 'ui';
@@ -11,6 +12,8 @@ import { ListEmpty } from './atoms';
 import styles from './list.module.scss';
 
 export const SerpList: FC = () => {
+  const { t } = useTranslation();
+
   const { data: filters } = useToursActiveFilters();
   const { data, isLoading, hasNextPage, fetchNextPage } =
     useInfiniteTours(filters);
@@ -19,7 +22,7 @@ export const SerpList: FC = () => {
 
   const virtualizer = useWindowVirtualizer({
     count: isLoading ? 5 : hasNextPage ? tours.length + 1 : tours.length,
-    estimateSize: () => APP.serp.cardHeight + APP.serp.gridGap,
+    estimateSize: () => APP.serp.card.image.height + APP.serp.gridGap,
     overscan: 3,
     paddingStart: APP.serp.gridGap,
     getItemKey: (index) => tours[index]?._id ?? index,
@@ -30,7 +33,11 @@ export const SerpList: FC = () => {
   };
 
   return (
-    <div className={styles.container} style={{ '--spacing': APP.serp.gridGap }}>
+    <section
+      className={styles.container}
+      style={{ '--spacing': APP.serp.gridGap }}
+    >
+      <h1 className="visually-hidden">{t('serp:list.title')}</h1>
       <div className={styles.list}>
         <div
           style={{
@@ -56,11 +63,11 @@ export const SerpList: FC = () => {
                 }}
               >
                 {isLoading ? (
-                  <Loader height={APP.serp.cardHeight} />
+                  <Loader height={APP.serp.card.image.height} />
                 ) : isLast ? (
                   <InView
                     onInView={onEndReached}
-                    placeholder={<Loader height={APP.serp.cardHeight} />}
+                    placeholder={<Loader height={APP.serp.card.image.height} />}
                   />
                 ) : tour ? (
                   <SerpCard tour={tour} />
@@ -74,6 +81,6 @@ export const SerpList: FC = () => {
       {!tours.length && !isLoading ? <ListEmpty /> : null}
 
       <Footer />
-    </div>
+    </section>
   );
 };

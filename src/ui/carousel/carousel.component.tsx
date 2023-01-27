@@ -93,7 +93,10 @@ export const Carousel: FC<Props> = ({
                 size={size}
                 attributes={{
                   title: t('common:components.lightbox.previous'),
-                  onClick: onPrev,
+                  onClick: (e) => {
+                    e.stopPropagation();
+                    onPrev();
+                  },
                   tabIndex: -1,
                 }}
               />
@@ -107,7 +110,10 @@ export const Carousel: FC<Props> = ({
                 size={size}
                 attributes={{
                   title: t('common:components.lightbox.next'),
-                  onClick: onNext,
+                  onClick: (e) => {
+                    e.stopPropagation();
+                    onNext();
+                  },
                   tabIndex: -1,
                 }}
               />

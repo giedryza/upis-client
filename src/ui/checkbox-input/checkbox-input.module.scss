@@ -3,6 +3,14 @@
 .checkbox {
   --box-size: 1.2em;
 
+  &.-variant-primary {
+    --base-color: var(--color-primary-60);
+  }
+
+  &.-variant-neutral {
+    --base-color: var(--color-grey-05);
+  }
+
   display: flex;
 
   color: var(--color-text);
@@ -16,7 +24,7 @@
 
   &.selected {
     > .box {
-      background-color: var(--color-grey-05);
+      background-color: var(--base-color);
 
       &::after {
         opacity: 1;

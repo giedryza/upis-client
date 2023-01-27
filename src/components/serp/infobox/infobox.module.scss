@@ -1,0 +1,106 @@
+@use 'styles/mixins' as *;
+
+.infobox {
+  position: relative;
+
+  width: calc(var(--width) * 0.1rem);
+
+  color: var(--color-text);
+
+  background-color: var(--color-white);
+
+  .actions {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 0.25rem);
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem;
+
+      background-color: var(--color-white);
+      border: 0;
+      cursor: pointer;
+
+      transition-duration: var(--transition-duration-md);
+      transition-property: background-color, box-shadow;
+
+      @media screen and (-ms-high-contrast: active) {
+        border: 2px solid currentcolor;
+      }
+
+      &:focus {
+        outline: 2px solid transparent;
+        box-shadow: var(--outline-button);
+
+        &:not(:focus-visible) {
+          box-shadow: none;
+        }
+      }
+
+      &:focus-visible {
+        box-shadow: var(--outline-button);
+      }
+
+      &:hover {
+        background-color: var(--color-grey-95);
+      }
+    }
+
+    .icon {
+      width: 1.5rem;
+      height: 1.5rem;
+
+      color: currentColor;
+    }
+  }
+
+  .gallery {
+    width: 100%;
+    height: calc(var(--height) * 0.1rem);
+  }
+
+  .body {
+    min-width: 0;
+    padding: 0.75rem;
+
+    @include spacing(y, 0.5rem);
+  }
+
+  .title {
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 1.25;
+  }
+
+  .subtitle {
+    color: var(--color-grey-45);
+    font-weight: 500;
+    font-size: 1.2rem;
+
+    > * {
+      vertical-align: middle;
+      margin-inline-end: 0.5rem;
+    }
+  }
+
+  .footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-block-start: 0.75rem;
+    padding-block-start: 0.75rem;
+    border-block-start: 1px solid var(--color-grey-90);
+  }
+
+  .price {
+    font-weight: 400;
+    font-size: 1.2rem;
+
+    .em {
+      font-weight: 600;
+      font-size: 1.4rem;
+    }
+  }
+}

@@ -2,9 +2,21 @@
   "actions": {
     "clear-filters": "Clear filters"
   },
+  "list": {
+    "title": "Kayak tours",
+    "empty": {
+      "title": "No tours found",
+      "description": "We couldn't find any tours matching search criteria. Change or clear the filters to try again."
+    }
+  },
   "card": {
     "texts": {
       "pricePer": "per person, per day"
+    }
+  },
+  "map": {
+    "actions": {
+      "update-on-move": "Update results when map moves"
     }
   },
   "filters": {
@@ -30,12 +42,6 @@
     },
     "rivers": {
       "title": "Rivers"
-    }
-  },
-  "list": {
-    "empty": {
-      "title": "No tours found",
-      "description": "We couldn't find any tours matching search criteria. Change or clear the filters to try again."
     }
   }
 }

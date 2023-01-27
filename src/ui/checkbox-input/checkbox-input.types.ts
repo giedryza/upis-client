@@ -5,4 +5,5 @@ export interface Props {
   onChange?: (checked: boolean) => void;
   disabled?: boolean;
   readonly?: boolean;
+  variant?: 'primary' | 'neutral';
 }

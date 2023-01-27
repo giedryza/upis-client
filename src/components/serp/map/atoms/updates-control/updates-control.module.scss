@@ -1,0 +1,17 @@
+.container {
+  --zoom-control-size: 30px;
+
+  position: absolute;
+  top: 0;
+  top: calc(var(--spacing) * 0.1rem);
+  left: 0;
+  left: calc(2 * var(--spacing) * 0.1rem + var(--zoom-control-size));
+  z-index: 500;
+
+  min-height: var(--zoom-control-size);
+  margin-right: calc(var(--spacing) * 0.1rem);
+  padding: 0.6rem;
+
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-primary);
+}
