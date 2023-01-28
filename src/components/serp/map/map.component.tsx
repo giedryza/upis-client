@@ -2,7 +2,7 @@ import { FC, useMemo, useState } from 'react';
 
 import { DEFAULT_CENTER, Map, mapIcon } from 'ui';
 import { Infobox } from 'components/serp';
-import { useTours, useToursActiveFilters } from 'domain/tours';
+import { useToursActiveFilters, useInfiniteTours } from 'domain/tours';
 
 import { BoundsOutlet, UpdatesControl } from './atoms';
 import styles from './map.module.scss';
@@ -12,31 +12,27 @@ export const SerpMap: FC = () => {
   const [updateOnMapMove, setUpdateOnMapMove] = useState(false);
 
   const { data: filters } = useToursActiveFilters();
-  const { data: tours = [] } = useTours({
-    filters: {
-      ...filters,
-      departure: true,
-      select: [
-        '_id',
-        'name',
-        'distance',
-        'days',
-        'duration',
-        'price',
-        'departure',
-      ],
-      limit: 25,
-    },
-  });
+  const { data } = useInfiniteTours(filters);
 
-  const bounds = useMemo<Array<[number, number]>>(
+  const tours = useMemo(
     () =>
-      tours.map((tour) => [
-        tour.departure.coordinates[1] || 0,
-        tour.departure.coordinates[0] || 0,
-      ]),
-    [tours]
+      data
+        ? data.pages
+            .flat()
+            .filter(
+              (tour) =>
+                tour.departure.coordinates[0] && tour.departure.coordinates[1]
+            )
+        : [],
+    [data]
   );
+
+  const bounds = useMemo<Array<[number, number]>>(() => {
+    return tours.map((tour) => [
+      tour.departure.coordinates[1] || 0,
+      tour.departure.coordinates[0] || 0,
+    ]);
+  }, [tours]);
 
   return (
     <section className={styles.map}>
@@ -62,9 +58,7 @@ export const SerpMap: FC = () => {
             />
 
             {tours.map((tour) => {
-              const [lng, lat] = tour.departure.coordinates;
-
-              if (!lat || !lng) return null;
+              const [lng = 0, lat = 0] = tour.departure.coordinates;
 
               return (
                 <Marker
