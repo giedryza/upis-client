@@ -4,6 +4,7 @@ export * from './entity';
 export * from './errors';
 export * from './files';
 export * from './geo';
+export * from './functions';
 export * from './locales';
 export * from './money';
 export * from './next';
