@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 
 import { useIsomorphicLayoutEffect } from 'tools/hooks';
+import { AnyFunction } from 'types/common';
 
-export const useStableHandler = <Handler extends (...args: any) => any>(
+export const useStableHandler = <Handler extends AnyFunction>(
   handler: Handler
 ) => {
   const savedHandler = useRef(handler);
