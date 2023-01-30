@@ -1,7 +1,8 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 
 import { useQueryNavigation } from 'tools/hooks';
+import { useToursActiveFilters } from 'domain/tours';
 
 import { Props } from './bounds-outlet.types';
 
@@ -14,11 +15,26 @@ export const BoundsOutlet: FC<Props> = ({
   const map = useMap();
   const { navigateWithQuery } = useQueryNavigation();
 
+  const isInitialLoad = useRef(true);
+
+  const { data: filters, isPreviousData } = useToursActiveFilters();
+
   useEffect(() => {
-    if (coordinates.length) {
-      map.fitBounds(coordinates);
+    if (!coordinates.length) {
+      return;
     }
-  }, [coordinates, map]);
+
+    if (isInitialLoad.current) {
+      map.fitBounds(coordinates, { animate: false });
+      isInitialLoad.current = false;
+
+      return;
+    }
+
+    if (!filters?.bounds && !isPreviousData) {
+      map.fitBounds(coordinates, { animate: false });
+    }
+  }, [map, coordinates, filters?.bounds, isPreviousData]);
 
   const setBounds = () => {
     const bounds = map.getBounds();
@@ -34,13 +50,30 @@ export const BoundsOutlet: FC<Props> = ({
     });
   };
 
-  const debouncedSetBounds = useDebouncedCallback(setBounds, 100);
+  const debouncedSetBounds = useDebouncedCallback(setBounds, 200);
+
+  const onInteractionStart = () => {
+    map.closePopup();
+  };
+
+  const onInteractionEnd = () => {
+    if (updateOnMapMove) {
+      debouncedSetBounds();
+    }
+  };
 
   useMapEvents({
-    moveend: () => {
-      if (updateOnMapMove) {
-        debouncedSetBounds();
-      }
+    dragstart: () => {
+      onInteractionStart();
+    },
+    zoomstart: () => {
+      onInteractionStart();
+    },
+    dragend: () => {
+      onInteractionEnd();
+    },
+    zoomend: () => {
+      onInteractionEnd();
     },
   });
 

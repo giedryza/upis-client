@@ -50,6 +50,7 @@ export const useInfiniteTours = (filters: Partial<TourFilters> = {}) => {
         pages: pages.map((page) => converters.getTours(page)),
         pageParams,
       }),
+      keepPreviousData: true,
     }
   );
 
