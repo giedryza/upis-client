@@ -75,7 +75,7 @@ export const SerpMap: FC = () => {
                     closeButton={false}
                     offset={point(0, 15)}
                   >
-                    {activeInfobox ? (
+                    {activeInfobox === tour._id ? (
                       <Infobox
                         useMap={useMap}
                         _id={tour._id}
