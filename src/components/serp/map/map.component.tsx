@@ -74,7 +74,6 @@ export const SerpMap: FC = () => {
                     className={styles.popup}
                     closeButton={false}
                     offset={point(0, 15)}
-                    autoPan={false}
                   >
                     {activeInfobox ? (
                       <Infobox

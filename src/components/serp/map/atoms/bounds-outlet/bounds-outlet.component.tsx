@@ -25,7 +25,7 @@ export const BoundsOutlet: FC<Props> = ({
     }
 
     if (isInitialLoad.current) {
-      map.fitBounds(coordinates);
+      map.fitBounds(coordinates, { animate: false });
       isInitialLoad.current = false;
 
       return;
@@ -52,16 +52,28 @@ export const BoundsOutlet: FC<Props> = ({
 
   const debouncedSetBounds = useDebouncedCallback(setBounds, 200);
 
+  const onInteractionStart = () => {
+    map.closePopup();
+  };
+
+  const onInteractionEnd = () => {
+    if (updateOnMapMove) {
+      debouncedSetBounds();
+    }
+  };
+
   useMapEvents({
+    dragstart: () => {
+      onInteractionStart();
+    },
+    zoomstart: () => {
+      onInteractionStart();
+    },
     dragend: () => {
-      if (updateOnMapMove) {
-        debouncedSetBounds();
-      }
+      onInteractionEnd();
     },
     zoomend: () => {
-      if (updateOnMapMove) {
-        debouncedSetBounds();
-      }
+      onInteractionEnd();
     },
   });
 
