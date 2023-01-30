@@ -16,7 +16,6 @@ export const BoundsOutlet: FC<Props> = ({
   const { navigateWithQuery } = useQueryNavigation();
 
   const isInitialLoad = useRef(true);
-  const isFittingBounds = useRef(false);
 
   const { data: filters, isPreviousData } = useToursActiveFilters();
 
@@ -26,16 +25,14 @@ export const BoundsOutlet: FC<Props> = ({
     }
 
     if (isInitialLoad.current) {
-      map.fitBounds(coordinates, { noMoveStart: true });
+      map.fitBounds(coordinates);
       isInitialLoad.current = false;
-      isFittingBounds.current = true;
 
       return;
     }
 
     if (!filters?.bounds && !isPreviousData) {
-      map.fitBounds(coordinates, { noMoveStart: true });
-      isFittingBounds.current = true;
+      map.fitBounds(coordinates, { animate: false });
     }
   }, [map, coordinates, filters?.bounds, isPreviousData]);
 
@@ -56,12 +53,15 @@ export const BoundsOutlet: FC<Props> = ({
   const debouncedSetBounds = useDebouncedCallback(setBounds, 200);
 
   useMapEvents({
-    moveend: () => {
-      if (updateOnMapMove && !isFittingBounds.current) {
+    dragend: () => {
+      if (updateOnMapMove) {
         debouncedSetBounds();
       }
-
-      isFittingBounds.current = false;
+    },
+    zoomend: () => {
+      if (updateOnMapMove) {
+        debouncedSetBounds();
+      }
     },
   });
 
