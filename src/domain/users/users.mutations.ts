@@ -6,7 +6,7 @@ import { useLoaders } from './users.loaders';
 export const useSigninWithCredentials = () => {
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.signinWithCredentials);
+  const mutation = useMutation({ mutationFn: loaders.signinWithCredentials });
 
   return mutation;
 };
@@ -14,7 +14,8 @@ export const useSigninWithCredentials = () => {
 export const useSignup = () => {
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.signup, {
+  const mutation = useMutation({
+    mutationFn: loaders.signup,
     onSuccess: (_data, { email, password }) => {
       signIn<'credentials'>('credentials', {
         redirect: false,
@@ -30,7 +31,7 @@ export const useSignup = () => {
 export const useUpdatePassword = () => {
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.updatePassword);
+  const mutation = useMutation({ mutationFn: loaders.updatePassword });
 
   return mutation;
 };
@@ -38,7 +39,7 @@ export const useUpdatePassword = () => {
 export const useForgotPassword = () => {
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.forgotPassword);
+  const mutation = useMutation({ mutationFn: loaders.forgotPassword });
 
   return mutation;
 };
@@ -46,7 +47,7 @@ export const useForgotPassword = () => {
 export const useResetPassword = () => {
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.resetPassword);
+  const mutation = useMutation({ mutationFn: loaders.resetPassword });
 
   return mutation;
 };

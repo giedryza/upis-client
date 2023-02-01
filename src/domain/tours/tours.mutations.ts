@@ -6,7 +6,7 @@ import { useLoaders } from './tours.loaders';
 export const useCreateTour = () => {
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.createTour);
+  const mutation = useMutation({ mutationFn: loaders.createTour });
 
   return mutation;
 };
@@ -15,7 +15,8 @@ export const useUpdateTour = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.updateTour, {
+  const mutation = useMutation({
+    mutationFn: loaders.updateTour,
     onSuccess: (_data, { id }) => {
       queryClient.invalidateQueries(toursKeys.detail(id));
     },
@@ -28,7 +29,8 @@ export const useUpdateTourPrice = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.updateTourPrice, {
+  const mutation = useMutation({
+    mutationFn: loaders.updateTourPrice,
     onSuccess: (_data, { id }) => {
       queryClient.invalidateQueries(toursKeys.detail(id));
     },
@@ -41,7 +43,8 @@ export const useUpdateTourGeography = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.updateTourGeography, {
+  const mutation = useMutation({
+    mutationFn: loaders.updateTourGeography,
     onSuccess: (_data, { id }) => {
       queryClient.invalidateQueries(toursKeys.detail(id));
     },
@@ -54,7 +57,8 @@ export const useUpdateTourAmenities = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.updateTourAmenities, {
+  const mutation = useMutation({
+    mutationFn: loaders.updateTourAmenities,
     onSuccess: (_data, { id }) => {
       queryClient.invalidateQueries(toursKeys.detail(id));
     },
@@ -67,7 +71,8 @@ export const useAddTourPhoto = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.addTourPhoto, {
+  const mutation = useMutation({
+    mutationFn: loaders.addTourPhoto,
     onSuccess: (_data, { id }) => {
       queryClient.invalidateQueries(toursKeys.detail(id));
     },
@@ -80,7 +85,8 @@ export const useDeleteTour = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.deleteTour, {
+  const mutation = useMutation({
+    mutationFn: loaders.deleteTour,
     onSuccess: () => {
       queryClient.invalidateQueries(toursKeys.lists);
     },

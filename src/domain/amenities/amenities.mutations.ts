@@ -8,7 +8,8 @@ export const useAddAmenity = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.addAmenity, {
+  const mutation = useMutation({
+    mutationFn: loaders.addAmenity,
     onSuccess: (_, { form }) => {
       queryClient.invalidateQueries(providersKeys.detail(form.providerId));
     },
@@ -21,7 +22,8 @@ export const useUpdateAmenity = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.updateAmenity, {
+  const mutation = useMutation({
+    mutationFn: loaders.updateAmenity,
     onSuccess: (_, { providerId }) => {
       queryClient.invalidateQueries(providersKeys.detail(providerId));
     },
@@ -34,7 +36,8 @@ export const useDeleteAmenity = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.deleteAmenity, {
+  const mutation = useMutation({
+    mutationFn: loaders.deleteAmenity,
     onSuccess: (_, { providerId }) => {
       queryClient.invalidateQueries(providersKeys.detail(providerId));
     },

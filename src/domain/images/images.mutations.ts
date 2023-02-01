@@ -7,7 +7,8 @@ export const useUpdateImage = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.updateImage, {
+  const mutation = useMutation({
+    mutationFn: loaders.updateImage,
     onSuccess: (_data, { id }) => {
       queryClient.invalidateQueries(imagesKeys.detail(id));
     },
@@ -19,7 +20,7 @@ export const useUpdateImage = () => {
 export const useDeleteImage = () => {
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.deleteImage);
+  const mutation = useMutation({ mutationFn: loaders.deleteImage });
 
   return mutation;
 };
