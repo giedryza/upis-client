@@ -56,7 +56,6 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       'next/router': 'next-router-mock',
-      'next/dist/client/router': 'next-router-mock',
     };
 
     return config;

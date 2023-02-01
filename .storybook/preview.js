@@ -1,20 +1,9 @@
 import '../src/styles/index.scss';
 
 import I18nProvider from 'next-translate/I18nProvider';
-import * as NextLink from 'next/link';
 import * as NextImage from 'next/image';
 
 import i18nConfig from '../i18n';
-
-const OriginalLink = NextLink.default;
-Object.defineProperty(NextLink, 'default', {
-  configurable: true,
-  value: (props) => (
-    <OriginalLink {...props}>
-      <a {...props}>{props.children}</a>
-    </OriginalLink>
-  ),
-});
 
 const OriginalNextImage = NextImage.default;
 Object.defineProperty(NextImage, 'default', {

@@ -2,6 +2,9 @@
   "app": {
     "description": "Baidarių nuoma ir maršrutai Lietuvoje"
   },
+  "header": {
+    "addTour": "Pridėti maršrutą"
+  },
   "actions": {
     "close": "Uždaryti",
     "cancel": "Atšaukti",

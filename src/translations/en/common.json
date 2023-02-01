@@ -2,6 +2,9 @@
   "app": {
     "description": "Kayak rentals and tours in Lithuania"
   },
+  "header": {
+    "addTour": "Add tour"
+  },
   "actions": {
     "close": "Close",
     "cancel": "Cancel",

@@ -1,25 +1,18 @@
 import { FC } from 'react';
-import Link from 'next/link';
 
-import Logo from 'components/logo/logo-horizontal.svg';
-import { generateUrl } from 'tools/common';
-import { routes } from 'config/routes';
-
-import { LanguageSelect, AccountMenu } from './atoms';
+import { AddTour, AccountMenu, LanguageSelect, Logo } from './atoms';
 import styles from './header.module.scss';
 
 export const Header: FC = () => {
   return (
     <header className={styles.header}>
-      <Link
-        href={generateUrl(routes.home)}
-        className={styles.logo}
-        aria-label="Home"
-      >
-        <Logo focusable={false} aria-hidden />
-      </Link>
+      <Logo />
+
       <nav className={styles.nav}>
         <ul>
+          <li>
+            <AddTour />
+          </li>
           <li>
             <LanguageSelect />
           </li>

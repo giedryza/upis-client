@@ -1,0 +1,19 @@
+@import 'styles/mixins';
+
+.logo {
+  padding: 0.25rem;
+
+  border-radius: var(--border-radius-sm);
+
+  @include focus-button;
+
+  &:hover {
+    background-color: var(--button-ghost-background-hover);
+  }
+
+  svg {
+    height: 3.25rem;
+
+    fill: var(--color-text);
+  }
+}

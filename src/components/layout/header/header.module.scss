@@ -19,24 +19,6 @@
   border-bottom: 1px solid var(--color-grey-90);
 }
 
-.logo {
-  padding: 0.25em;
-
-  border-radius: var(--border-radius-sm);
-
-  @include focus-button;
-
-  &:hover {
-    background-color: var(--button-ghost-background-hover);
-  }
-
-  svg {
-    height: 3.25em;
-
-    fill: var(--color-text);
-  }
-}
-
 .nav {
   > ul {
     display: flex;
