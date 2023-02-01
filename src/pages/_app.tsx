@@ -18,8 +18,7 @@ import { AppLayout } from 'layouts';
 import { ProgressBar } from 'components/layout';
 import { Alerts } from 'components/alerts';
 import { LightboxOutlet } from 'components/lightbox-outlet';
-import { ModalOutlet } from 'components/modal-outlet';
-import { ConfirmationModal } from 'components/modals';
+import { ModalProvider } from 'domain/modal';
 
 import 'styles/index.scss';
 
@@ -36,19 +35,18 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <SessionProvider session={pageProps.session}>
             <SSRProvider>
               <I18nProvider locale={locale}>
-                <Modal.Provider>
-                  <AppLayout>
-                    <Component {...pageProps} />
+                <Modal.OverlayProvider>
+                  <ModalProvider>
+                    <AppLayout>
+                      <Component {...pageProps} />
 
-                    <ProgressBar />
-                    <Alerts />
-                    <ModalOutlet
-                      modalName="confirmation"
-                      slot={<ConfirmationModal />}
-                    />
-                    <LightboxOutlet />
-                  </AppLayout>
-                </Modal.Provider>
+                      <ProgressBar />
+                      <Alerts />
+
+                      <LightboxOutlet />
+                    </AppLayout>
+                  </ModalProvider>
+                </Modal.OverlayProvider>
               </I18nProvider>
             </SSRProvider>
           </SessionProvider>
