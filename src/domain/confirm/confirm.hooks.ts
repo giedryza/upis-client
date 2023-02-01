@@ -1,36 +1,21 @@
-import { useEffect } from 'react';
-
-import { useAppDispatch, useAppSelector } from 'tools/services/store';
-import { modal } from 'domain/modal';
-
-import { confirm } from './confirm.slice';
-import { selectConfirm } from './confirm.selectors';
+import { useModalContext } from 'domain/modal';
+import { ConfirmationModal } from 'components/modals';
 
 export const useConfirm = () => {
-  const dispatch = useAppDispatch();
+  const { openModal } = useModalContext();
 
-  const { cancel } = useAppSelector(selectConfirm);
-
-  const confirmation = (prompt: string): Promise<{ confirmed: boolean }> => {
-    const promise = new Promise<void>((resolve, reject) => {
-      dispatch(modal.actions.open('confirmation'));
-
-      dispatch(confirm.actions.setPrompt(prompt));
-      dispatch(confirm.actions.setProceed(resolve));
-      dispatch(confirm.actions.setCancel(reject));
+  const confirmation = async (
+    prompt: string
+  ): Promise<{ confirmed: boolean }> => {
+    const { action } = await openModal({
+      component: ConfirmationModal,
+      props: { prompt },
     });
 
-    return promise
-      .then(() => ({ confirmed: true }))
-      .catch(() => ({ confirmed: false }))
-      .finally(() => dispatch(modal.actions.close()));
-  };
+    if (action === 'CONFIRM') return { confirmed: true };
 
-  useEffect(() => {
-    return () => {
-      cancel?.();
-    };
-  }, [cancel]);
+    return { confirmed: false };
+  };
 
   return {
     confirmation,

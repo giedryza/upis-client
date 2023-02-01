@@ -72,5 +72,5 @@ export const Modal: FC<PropsWithChildren<Props>> & ModalComposition = ({
   );
 };
 
-Modal.Provider = OverlayProvider;
+Modal.OverlayProvider = OverlayProvider;
 Modal.Content = ModalContent;

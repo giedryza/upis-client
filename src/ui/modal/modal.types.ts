@@ -9,6 +9,6 @@ export interface Props {
 }
 
 export interface ModalComposition {
-  Provider: typeof OverlayProvider;
+  OverlayProvider: typeof OverlayProvider;
   Content: typeof ModalContent;
 }
