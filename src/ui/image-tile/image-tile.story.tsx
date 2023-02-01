@@ -44,4 +44,5 @@ const Template: ComponentStory<typeof ImageTile> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   ...Default.args,
+  sizes: { width: 800, height: 450 },
 };
