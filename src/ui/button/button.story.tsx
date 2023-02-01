@@ -1,5 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { variants } from './button.types';
+
 import { Button } from '.';
 
 export default {
@@ -24,12 +26,9 @@ const Template: ComponentStory<typeof Button> = (args) => (
         flexWrap: 'wrap',
       }}
     >
-      <Button {...args} label="primary" variant="primary" />
-      <Button {...args} label="secondary" variant="secondary" />
-      <Button {...args} label="tertiary" variant="tertiary" />
-      <Button {...args} label="ghost" variant="ghost" />
-      <Button {...args} label="text" variant="text" />
-      <Button {...args} label="link" variant="link" />
+      {variants.map((variant) => (
+        <Button {...args} label={variant} variant={variant} key={variant} />
+      ))}
     </div>
     <div
       style={{
@@ -39,12 +38,27 @@ const Template: ComponentStory<typeof Button> = (args) => (
         flexWrap: 'wrap',
       }}
     >
-      <Button {...args} label="primary" variant="primary" icon="pencil" />
-      <Button {...args} label="secondary" variant="secondary" icon="pencil" />
-      <Button {...args} label="tertiary" variant="tertiary" icon="pencil" />
-      <Button {...args} label="ghost" variant="ghost" icon="pencil" />
-      <Button {...args} label="text" variant="text" icon="pencil" />
-      <Button {...args} label="link" variant="link" icon="pencil" />
+      {variants.map((variant) => (
+        <Button
+          {...args}
+          label={variant}
+          variant={variant}
+          icon="pencil"
+          key={variant}
+        />
+      ))}
+    </div>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 15,
+        flexWrap: 'wrap',
+      }}
+    >
+      {variants.map((variant) => (
+        <Button {...args} variant={variant} icon="pencil" key={variant} />
+      ))}
     </div>
   </div>
 );

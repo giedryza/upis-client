@@ -5,11 +5,21 @@ import { IconName } from 'ui';
 type ButtonAttributes = JSX.IntrinsicElements['button'];
 type LinkAttributes = JSX.IntrinsicElements['a'];
 
+export const variants = [
+  'primary',
+  'secondary',
+  'tertiary',
+  'outline',
+  'ghost',
+  'text',
+  'link',
+] as const;
+
 interface BaseProps {
   label?: string;
   icon?: IconName;
   iconPlacement?: 'top' | 'right' | 'bottom' | 'left';
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'text' | 'link';
+  variant?: (typeof variants)[number];
   size?: 'xs' | 'sm' | 'md' | 'lg';
   width?: 'normal' | 'full';
   textAlign?: 'left' | 'right' | 'center';
