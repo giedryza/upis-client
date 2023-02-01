@@ -42,4 +42,5 @@ const Template: ComponentStory<typeof Carousel> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   ...Default.args,
+  sizes: { width: 800, height: 600 },
 };
