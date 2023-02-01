@@ -1,4 +1,4 @@
-import { Breakpoint } from 'types/common';
+// import { Breakpoint } from 'types/common';
 import styles from 'styles/utils/export.module.scss';
 
 const SERP_CONFIG = {
@@ -46,7 +46,8 @@ export const APP = {
     sm: Number(styles.smBreakpoint),
     md: Number(styles.mdBreakpoint),
     lg: Number(styles.lgBreakpoint),
-  } satisfies Record<Breakpoint, number>,
+    // TODO when storybook 7 launches, replace with: } satisfies Record<Breakpoint, number>,
+  },
   cloudinary: {
     //    https://res.cloudinary.com/upis/image/upload/w_200,h_150,c_fill/upis/development/e96c5cad-bfda-4409-888b-7135a1b82336.avif
     url: 'https://res.cloudinary.com/:cloud_name/:asset_type/:delivery_type/:transformations/:public_id'
