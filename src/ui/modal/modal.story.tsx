@@ -11,7 +11,7 @@ export default {
 } as ComponentMeta<typeof Modal>;
 
 const Template: ComponentStory<typeof Modal> = (args) => (
-  <Modal.Provider>
+  <Modal.OverlayProvider>
     <Modal {...args}>
       <Modal.Content
         title="Lorem ipsum"
@@ -26,7 +26,7 @@ const Template: ComponentStory<typeof Modal> = (args) => (
         </p>
       </Modal.Content>
     </Modal>
-  </Modal.Provider>
+  </Modal.OverlayProvider>
 );
 
 export const Default = Template.bind({});
