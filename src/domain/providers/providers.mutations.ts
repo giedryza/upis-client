@@ -7,7 +7,8 @@ export const useUpdateProvider = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.updateProvider, {
+  const mutation = useMutation({
+    mutationFn: loaders.updateProvider,
     onSuccess: () => {
       queryClient.invalidateQueries(providersKeys.details);
     },
@@ -20,7 +21,8 @@ export const useCreateProvider = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.createProvider, {
+  const mutation = useMutation({
+    mutationFn: loaders.createProvider,
     onSuccess: () => {
       queryClient.invalidateQueries(providersKeys.details);
     },
@@ -33,7 +35,8 @@ export const useUpdateLocation = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.updateLocation, {
+  const mutation = useMutation({
+    mutationFn: loaders.updateLocation,
     onSuccess: () => {
       queryClient.invalidateQueries(providersKeys.details);
     },
@@ -46,7 +49,8 @@ export const useUploadLogo = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.uploadLogo, {
+  const mutation = useMutation({
+    mutationFn: loaders.uploadLogo,
     onSuccess: () => {
       queryClient.invalidateQueries(providersKeys.details);
     },
@@ -59,7 +63,8 @@ export const useDeleteProvider = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();
 
-  const mutation = useMutation(loaders.deleteProvider, {
+  const mutation = useMutation({
+    mutationFn: loaders.deleteProvider,
     onSuccess: () => {
       queryClient.invalidateQueries(providersKeys.lists);
     },
