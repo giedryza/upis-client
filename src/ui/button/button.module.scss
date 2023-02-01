@@ -88,6 +88,7 @@
     &:active {
       &:not([disabled]) {
         color: var(--button-outline-color-hover);
+
         background-color: var(--button-outline-background-hover);
       }
     }
