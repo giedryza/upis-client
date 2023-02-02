@@ -40,6 +40,23 @@
     }
   }
 
+  [class~='leaflet-popup-content-wrapper'] {
+    padding: 0;
+
+    background-color: var(--color-white);
+    border-radius: 0;
+    box-shadow: var(--shadow-primary);
+  }
+
+  [class~='leaflet-popup-content'] {
+    width: auto !important;
+    margin: 0;
+  }
+
+  [class~='leaflet-popup-tip-container'] {
+    display: none;
+  }
+
   [class~='leaflet-control-geosearch'] {
     form {
       padding: 0;
@@ -70,15 +87,13 @@
         }
       }
 
-      a {
-        &[class~='reset'] {
-          color: var(--color-grey-40);
-          font-weight: 500;
-          font-size: 2rem;
+      [class~='reset'] {
+        color: var(--color-grey-40);
+        font-weight: 500;
+        font-size: 2rem;
 
-          background-color: transparent;
-          border-radius: var(--border-radius-sm);
-        }
+        background-color: transparent;
+        border-radius: 0;
       }
 
       [class~='results'] {

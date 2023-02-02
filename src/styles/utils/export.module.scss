@@ -1,7 +1,10 @@
+@import 'styles/variables/base';
 @import 'styles/variables/breakpoints';
 
 :export {
   @each $name, $value in $breakpoints {
     #{$name}Breakpoint: $value;
   }
+  /* stylelint-disable-next-line property-no-unknown */
+  fontSize: $fontSize;
 }

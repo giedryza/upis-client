@@ -21,6 +21,13 @@
   },
   "filters": {
     "title": "Filters",
+    "viewToggle": {
+      "title": "View toggle",
+      "items": {
+        "map": "Map",
+        "list": "List"
+      }
+    },
     "amenities": {
       "title": "Amenities"
     },

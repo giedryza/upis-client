@@ -1,3 +1,5 @@
+@import 'styles/variables/base';
+
 @mixin ellipsis {
   overflow: hidden;
 
@@ -5,6 +7,6 @@
   text-overflow: ellipsis;
 }
 
-@function px-to-em($pixels, $base-font-size: 16) {
+@function px-to-em($pixels, $base-font-size: $fontSize) {
   @return #{$pixels/$base-font-size}em;
 }

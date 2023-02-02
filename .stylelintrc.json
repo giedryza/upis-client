@@ -56,6 +56,7 @@
         "border-in-box-model": false,
         "empty-line-between-groups": true
       }
-    ]
+    ],
+    "scss/dollar-variable-pattern": null
   }
 }

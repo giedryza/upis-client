@@ -21,6 +21,13 @@
   },
   "filters": {
     "title": "Filtrai",
+    "viewToggle": {
+      "title": "Vaizdo keitimas",
+      "items": {
+        "map": "Žemėlapis",
+        "list": "Sąrašas"
+      }
+    },
     "amenities": {
       "title": "Ypatumai"
     },

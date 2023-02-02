@@ -83,7 +83,7 @@ export const ProviderEditLocation: FC = () => {
             zoom={point.lat && point.lng ? 18 : 7}
           >
             {({
-              leaflet: { icon },
+              leaflet: { icon, point: p },
               reactLeaflet: { Marker, Popup, useMap },
               custom: { SearchBar },
             }) => (
@@ -106,9 +106,11 @@ export const ProviderEditLocation: FC = () => {
                     },
                   }}
                 >
-                  <Popup>
-                    {location?.display_name ??
-                      t('account:providers.location.map.info')}
+                  <Popup offset={p(0, 15)}>
+                    <div className={styles.popup}>
+                      {location?.display_name ??
+                        t('account:providers.location.map.info')}
+                    </div>
                   </Popup>
                 </Marker>
               </>
