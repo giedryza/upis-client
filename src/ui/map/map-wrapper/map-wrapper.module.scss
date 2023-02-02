@@ -87,15 +87,13 @@
         }
       }
 
-      a {
-        &[class~='reset'] {
-          color: var(--color-grey-40);
-          font-weight: 500;
-          font-size: 2rem;
+      [class~='reset'] {
+        color: var(--color-grey-40);
+        font-weight: 500;
+        font-size: 2rem;
 
-          background-color: transparent;
-          border-radius: var(--border-radius-sm);
-        }
+        background-color: transparent;
+        border-radius: 0;
       }
 
       [class~='results'] {
