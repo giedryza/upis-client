@@ -1,0 +1,69 @@
+@use 'src/styles/mixins' as *;
+
+.button {
+  display: flex;
+  align-items: center;
+  padding: 0.65em 1.1em;
+
+  color: var(--color-text);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1;
+
+  background-color: var(--color-grey-95);
+  cursor: pointer;
+
+  transition-duration: var(--transition-duration-sm);
+  transition-property: background-color;
+
+  @include spacing(x, 0.5em);
+
+  &:first-of-type {
+    border-start-start-radius: 20rem;
+    border-end-start-radius: 20rem;
+  }
+
+  &:last-of-type {
+    border-end-end-radius: 20rem;
+    border-start-end-radius: 20rem;
+  }
+
+  &:hover {
+    &:not(.disabled) {
+      color: var(--color-white);
+
+      background-color: var(--color-primary-60);
+    }
+  }
+
+  &.selected {
+    color: var(--color-white);
+
+    background-color: var(--color-primary-60);
+
+    &:hover {
+      &:not(.disabled) {
+        background-color: var(--color-primary-50);
+      }
+    }
+  }
+
+  &.focus {
+    z-index: 1;
+
+    outline: 2px solid transparent;
+    box-shadow: var(--outline-button);
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .icon {
+    width: 1em;
+    height: 1em;
+
+    fill: currentColor;
+  }
+}

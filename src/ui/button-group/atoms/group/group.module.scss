@@ -1,0 +1,32 @@
+@use 'src/styles/mixins' as *;
+
+.container {
+  font-size: 1.6rem;
+  line-height: 1.9;
+
+  @include spacing(y, 0.35em);
+
+  .label {
+    display: inline-block;
+
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 0.8em;
+  }
+
+  .group {
+    display: flex;
+    gap: 1px;
+  }
+
+  small {
+    display: block;
+
+    font-weight: 400;
+    font-size: 0.7em;
+
+    &[data-help='error'] {
+      color: var(--color-danger-60);
+    }
+  }
+}
