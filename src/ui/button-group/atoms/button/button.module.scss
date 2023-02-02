@@ -13,7 +13,7 @@
   background-color: var(--color-grey-95);
   cursor: pointer;
 
-  transition-duration: var(--transition-duration-sm);
+  transition-duration: var(--transition-duration-md);
   transition-property: background-color;
 
   @include spacing(x, 0.5em);
@@ -30,9 +30,7 @@
 
   &:hover {
     &:not(.disabled) {
-      color: var(--color-white);
-
-      background-color: var(--color-primary-60);
+      background-color: var(--color-grey-90);
     }
   }
 
