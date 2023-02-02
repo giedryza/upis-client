@@ -26,17 +26,8 @@ export const useBreakpoints = (): Record<Breakpoint, boolean> => {
   );
 
   useEffect(() => {
-    setBreakpoints((prevState) => ({ ...prevState, xs }));
-  }, [xs]);
-  useEffect(() => {
-    setBreakpoints((prevState) => ({ ...prevState, sm }));
-  }, [sm]);
-  useEffect(() => {
-    setBreakpoints((prevState) => ({ ...prevState, md }));
-  }, [md]);
-  useEffect(() => {
-    setBreakpoints((prevState) => ({ ...prevState, lg }));
-  }, [lg]);
+    setBreakpoints((prevState) => ({ ...prevState, xs, sm, md, lg }));
+  }, [lg, md, sm, xs]);
 
   return breakpoints;
 };
