@@ -41,6 +41,7 @@ export const APP = {
     gridGap: 15,
   },
   scss: styles,
+  fontSize: Number(styles.fontSize),
   breakpoints: {
     xs: Number(styles.xsBreakpoint),
     sm: Number(styles.smBreakpoint),
