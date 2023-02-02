@@ -15,6 +15,7 @@ import {
   FilterRegions,
   FilterRivers,
   FiltersClear,
+  ViewToggle,
 } from './atoms';
 import styles from './filters.module.scss';
 
@@ -26,6 +27,7 @@ export const SerpFilters: FC = () => {
     useOverflowDimensions(scrollContainerRef);
 
   const items = [
+    <ViewToggle key="view-toggle" />,
     <FilterAmenities key="amenities" />,
     <FilterRegions key="regions" />,
     <FilterRivers key="rivers" />,
