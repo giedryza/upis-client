@@ -1,4 +1,7 @@
 import { useEffect, useLayoutEffect } from 'react';
 
-export const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+import { isServer } from 'tools/common';
+
+export const useIsomorphicLayoutEffect = !isServer()
+  ? useLayoutEffect
+  : useEffect;
