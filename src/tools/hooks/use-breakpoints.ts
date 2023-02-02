@@ -1,8 +1,17 @@
+import { useEffect, useState } from 'react';
+
 import { APP } from 'config/app';
 import { useMediaQuery } from 'tools/hooks/use-media-query';
 import { Breakpoint } from 'types/common';
 
 export const useBreakpoints = (): Record<Breakpoint, boolean> => {
+  const [breakpoints, setBreakpoints] = useState<Record<Breakpoint, boolean>>({
+    xs: false,
+    sm: false,
+    md: false,
+    lg: false,
+  });
+
   const { matches: xs } = useMediaQuery(
     `(max-width: ${APP.breakpoints.xs / APP.fontSize}em)`
   );
@@ -16,5 +25,18 @@ export const useBreakpoints = (): Record<Breakpoint, boolean> => {
     `(max-width: ${APP.breakpoints.lg / APP.fontSize}em)`
   );
 
-  return { xs, sm, md, lg };
+  useEffect(() => {
+    setBreakpoints((prevState) => ({ ...prevState, xs }));
+  }, [xs]);
+  useEffect(() => {
+    setBreakpoints((prevState) => ({ ...prevState, sm }));
+  }, [sm]);
+  useEffect(() => {
+    setBreakpoints((prevState) => ({ ...prevState, md }));
+  }, [md]);
+  useEffect(() => {
+    setBreakpoints((prevState) => ({ ...prevState, lg }));
+  }, [lg]);
+
+  return breakpoints;
 };
