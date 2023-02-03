@@ -5,30 +5,35 @@ import { Button, Carousel, Icon, ImagePlaceholder } from 'ui';
 import { formatCurrency, formatNumber } from 'tools/format';
 import { APP } from 'config/app';
 import { generateImageUrl, isLast } from 'tools/common';
+import { useBreakpoints } from 'tools/hooks';
 
 import { Props } from './card.types';
 import styles from './card.module.scss';
 
+const IMAGE_QUALITY = 3;
+
 export const SerpCard: FC<Props> = memo(({ tour }) => {
   const { t, lang } = useTranslation();
+  const { xs } = useBreakpoints();
 
   return (
-    <article className={styles.card}>
-      <div
-        className={styles.gallery}
-        style={{
-          '--width': APP.serp.card.image.width,
-          '--height': APP.serp.card.image.height,
-        }}
-      >
+    <article
+      className={styles.card}
+      style={{
+        '--width': APP.serp.card.image.width,
+        '--height': APP.serp.card.image.height,
+        '--ratio': xs ? 1.25 : 1,
+      }}
+    >
+      <div className={styles.gallery}>
         {tour.photos.length ? (
           <Carousel
             images={tour.photos.map((photo) => ({
               id: photo._id,
               url: generateImageUrl({
                 id: photo.key,
-                width: APP.serp.card.image.width * 2,
-                height: APP.serp.card.image.height * 2,
+                width: APP.serp.card.image.width * IMAGE_QUALITY,
+                height: APP.serp.card.image.height * IMAGE_QUALITY,
               }),
               placeholder: generateImageUrl({
                 id: photo.key,

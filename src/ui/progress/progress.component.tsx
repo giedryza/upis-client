@@ -32,7 +32,7 @@ export const Progress: FC<Props> = ({
       {...progressBarProps}
       className={styles.progress}
       style={{
-        '--percentage': (value - min) / (max - min),
+        '--ratio': (value - min) / (max - min),
       }}
     >
       {!!label && (

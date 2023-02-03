@@ -31,7 +31,7 @@ export const Meter: FC<Props> = ({
       {...meterProps}
       className={styles.meter}
       style={{
-        '--percentage': (value - min) / (max - min),
+        '--ratio': (value - min) / (max - min),
       }}
     >
       {!!label && (

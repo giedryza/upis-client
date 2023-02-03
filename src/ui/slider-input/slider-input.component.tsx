@@ -83,7 +83,7 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
               <div
                 className={styles.thumbContainer}
                 style={{
-                  '--percentage': state.getThumbPercent(index),
+                  '--ratio': state.getThumbPercent(index),
                 }}
                 key={index}
               >
