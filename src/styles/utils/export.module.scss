@@ -1,5 +1,4 @@
-@import 'styles/variables/base';
-@import 'styles/variables/breakpoints';
+@import 'styles/variables';
 
 :export {
   @each $name, $value in $breakpoints {
