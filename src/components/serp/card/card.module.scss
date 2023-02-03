@@ -4,14 +4,23 @@
   display: flex;
   width: 100%;
   min-width: 0;
-  height: calc(var(--height) * 0.1rem);
+  height: 100%;
 
   background-color: var(--color-white);
   box-shadow: var(--shadow-primary);
 
+  @include mobile {
+    flex-direction: column;
+  }
+
   .gallery {
     width: calc(var(--width) * 0.1rem);
-    height: calc(var(--height) * 0.1rem);
+    height: 100%;
+
+    @include mobile {
+      width: 100%;
+      height: calc(var(--ratio) * var(--height) * 0.1rem);
+    }
   }
 
   .content {

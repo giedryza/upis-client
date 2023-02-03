@@ -7,18 +7,21 @@ import { InView, Loader } from 'ui';
 import { SerpCard } from 'components/serp';
 import { Footer } from 'components/layout';
 import { useInfiniteTours, useToursActiveFilters } from 'domain/tours';
+import { useBreakpoints } from 'tools/hooks';
 
 import { ListEmpty } from './atoms';
 import styles from './list.module.scss';
 
 export const SerpList: FC = () => {
   const { t } = useTranslation();
+  const { xs } = useBreakpoints();
 
   const { data: filters } = useToursActiveFilters();
   const { data, isLoading, hasNextPage, fetchNextPage } =
     useInfiniteTours(filters);
 
   const tours = data ? data.pages.flat() : [];
+  const heightRatio = xs ? 2.25 : 1;
 
   const virtualizer = useWindowVirtualizer({
     count: isLoading
@@ -26,7 +29,8 @@ export const SerpList: FC = () => {
       : hasNextPage
       ? tours.length + 1
       : tours.length,
-    estimateSize: () => APP.serp.card.image.height + APP.serp.gridGap,
+    estimateSize: () =>
+      heightRatio * APP.serp.card.image.height + APP.serp.gridGap,
     overscan: 3,
     paddingStart: APP.serp.gridGap,
     getItemKey: (index) => tours[index]?._id ?? index,
@@ -64,14 +68,19 @@ export const SerpList: FC = () => {
                   right: 0,
                   height: row.size,
                   transform: `translateY(${row.start}px)`,
+                  paddingBottom: APP.serp.gridGap,
                 }}
               >
                 {isLoading ? (
-                  <Loader height={APP.serp.card.image.height} />
+                  <Loader height={heightRatio * APP.serp.card.image.height} />
                 ) : isLast ? (
                   <InView
                     onInView={onEndReached}
-                    placeholder={<Loader height={APP.serp.card.image.height} />}
+                    placeholder={
+                      <Loader
+                        height={heightRatio * APP.serp.card.image.height}
+                      />
+                    }
                   />
                 ) : tour ? (
                   <SerpCard tour={tour} />

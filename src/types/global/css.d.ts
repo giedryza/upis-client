@@ -9,7 +9,7 @@ declare module 'csstype' {
     '--right'?: number;
     '--grid-columns'?: number;
     '--fade-delay'?: number;
-    '--percentage'?: number;
     '--spacing'?: number;
+    '--ratio'?: number;
   }
 }
