@@ -6,7 +6,7 @@ import {
   getFormDataBody,
   getJsonBody,
   loadersFactory,
-} from 'tools/services/request';
+} from 'tools/services';
 import { Pagination } from 'types/api';
 import { generateUrl } from 'tools/common';
 

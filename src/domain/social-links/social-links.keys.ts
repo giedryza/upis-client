@@ -1,3 +1,3 @@
-import { keyFactory } from 'tools/services/query-client';
+import { keyFactory } from 'tools/services';
 
 export const socialLinksKeys = keyFactory('social-links');

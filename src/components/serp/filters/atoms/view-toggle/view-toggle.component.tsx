@@ -2,7 +2,7 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { ButtonGroup } from 'ui';
-import { useAppDispatch, useAppSelector } from 'tools/services/store';
+import { useAppDispatch, useAppSelector } from 'tools/services';
 import { selectSerpState, serp, SerpView } from 'domain/serp';
 import { useBreakpoints } from 'tools/hooks';
 

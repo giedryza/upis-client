@@ -2,7 +2,7 @@ import { IncomingMessage } from 'http';
 
 import { endpoints } from 'config/endpoints';
 import { generateUrl } from 'tools/common';
-import { Request, loadersFactory, getJsonBody } from 'tools/services/request';
+import { Request, loadersFactory, getJsonBody } from 'tools/services';
 
 import { Image } from './images.types';
 

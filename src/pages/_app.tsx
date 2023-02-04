@@ -10,10 +10,7 @@ import { SessionProvider } from 'next-auth/react';
 import { SSRProvider, I18nProvider } from 'react-aria';
 
 import { AppProps } from 'types/common';
-import { queryClientConfig } from 'tools/services/query-client';
-import { store } from 'tools/services/store';
-import { axe } from 'tools/services/a11y';
-import { font } from 'tools/services/font';
+import { font, axe, store, queryClientConfig } from 'tools/services';
 import { Modal } from 'ui';
 import { AppLayout } from 'layouts';
 import { ProgressBar } from 'components/layout';

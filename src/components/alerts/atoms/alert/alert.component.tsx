@@ -1,7 +1,7 @@
 import { useState, FC } from 'react';
 import { clsx } from 'clsx';
 
-import { useAppDispatch } from 'tools/services/store';
+import { useAppDispatch } from 'tools/services';
 import { useTimeout } from 'tools/hooks';
 import { Toast } from 'ui';
 import { alerts } from 'domain/alerts';

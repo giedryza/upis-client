@@ -3,7 +3,7 @@ import getT from 'next-translate/getT';
 
 import { endpoints } from 'config/endpoints';
 import { generateUrl } from 'tools/common';
-import { Request, getJsonBody, loadersFactory } from 'tools/services/request';
+import { Request, getJsonBody, loadersFactory } from 'tools/services';
 
 import { Session } from './users.types';
 
