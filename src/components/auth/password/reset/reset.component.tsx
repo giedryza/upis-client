@@ -5,7 +5,7 @@ import Trans from 'next-translate/Trans';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { routes } from 'config/routes';
-import { useAppDispatch } from 'tools/services/store';
+import { useAppDispatch } from 'tools/services';
 import { generateUrl } from 'tools/common';
 import { Button, Container, Card, TextInput } from 'ui';
 import { useResetPassword } from 'domain/users';

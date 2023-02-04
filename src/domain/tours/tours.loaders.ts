@@ -8,7 +8,7 @@ import {
   loadersFactory,
   getFormDataBody,
   normalizeQueryParams,
-} from 'tools/services/request';
+} from 'tools/services';
 import { Price } from 'types/common';
 import { Pagination } from 'types/api';
 import { generateUrl } from 'tools/common';
@@ -100,6 +100,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
           populate: ['photos'],
           limit: 10,
           ...params,
+          bounds: [],
         },
         locale,
       }).get(),

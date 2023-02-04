@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { useAppDispatch, useAppSelector } from 'tools/services/store';
+import { useAppDispatch, useAppSelector } from 'tools/services';
 import { Lightbox } from 'ui';
 import { lightbox, selectLightbox } from 'domain/lightbox';
 

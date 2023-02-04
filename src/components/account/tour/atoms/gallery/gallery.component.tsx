@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { EmptyState, ImageTile } from 'ui';
 import { generateUrl } from 'tools/common';
-import { useAppDispatch } from 'tools/services/store';
+import { useAppDispatch } from 'tools/services';
 import { InfoBlock } from 'components/account/atoms';
 import { toursKeys, useActiveTour, useUpdateTour } from 'domain/tours';
 import { routes } from 'config/routes';

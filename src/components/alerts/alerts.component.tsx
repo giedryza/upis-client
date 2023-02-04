@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { useAppSelector } from 'tools/services/store';
+import { useAppSelector } from 'tools/services';
 import { Portal } from 'ui';
 import { selectAlerts } from 'domain/alerts';
 

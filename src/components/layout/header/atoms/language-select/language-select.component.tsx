@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { CookieName } from 'config/cookies';
 import { Locale } from 'types/common';
 import { capitalize } from 'tools/common';
-import { cookies } from 'tools/services/cookies';
+import { cookies } from 'tools/services';
 import { IconName, DropdownMenu, DropdownMenuItem } from 'ui';
 import { formatLanguage } from 'tools/format';
 

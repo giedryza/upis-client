@@ -271,24 +271,26 @@ const queryUtils = {
 } as const;
 
 export const tourFilters = z.object({
-  amenities: z.array(z.enum(amenities)),
-  regions: z.array(z.enum(regions)),
-  rivers: z.array(z.enum(rivers)),
-  distanceFrom: z.coerce.number().min(1).catch(1),
-  distanceTo: z.coerce.number().min(1),
-  durationFrom: z.coerce.number().min(1).catch(1),
-  durationTo: z.coerce.number().min(1),
-  daysFrom: z.coerce.number().int().min(1).catch(1),
-  daysTo: z.coerce.number().int().min(1),
-  difficultyFrom: z.coerce.number().min(0).max(5).catch(0),
-  difficultyTo: z.coerce.number().min(0).max(5).catch(5),
+  amenities: z.array(z.enum(amenities)).catch([]),
+  regions: z.array(z.enum(regions)).catch([]),
+  rivers: z.array(z.enum(rivers)).catch([]),
+  distanceFrom: z.coerce.number().finite().min(1).catch(1),
+  distanceTo: z.coerce.number().finite().min(1).catch(1),
+  durationFrom: z.coerce.number().finite().min(1).catch(1),
+  durationTo: z.coerce.number().finite().min(1).catch(1),
+  daysFrom: z.coerce.number().finite().int().min(1).catch(1),
+  daysTo: z.coerce.number().finite().int().min(1).catch(1),
+  difficultyFrom: z.coerce.number().finite().min(0).max(5).catch(0),
+  difficultyTo: z.coerce.number().finite().min(0).max(5).catch(5),
   user: z.coerce.string(),
-  bounds: z.tuple([
-    z.coerce.number(),
-    z.coerce.number(),
-    z.coerce.number(),
-    z.coerce.number(),
-  ]),
+  bounds: z
+    .tuple([
+      z.coerce.number().finite(),
+      z.coerce.number().finite(),
+      z.coerce.number().finite(),
+      z.coerce.number().finite(),
+    ])
+    .catch([NaN, NaN, NaN, NaN]),
 });
 
 interface TourUtilFilters {

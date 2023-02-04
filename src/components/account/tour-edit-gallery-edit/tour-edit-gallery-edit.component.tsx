@@ -8,7 +8,7 @@ import { routes } from 'config/routes';
 import { generateUrl, getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import { useDeleteImage, useImage, useUpdateImage } from 'domain/images';
-import { useAppDispatch } from 'tools/services/store';
+import { useAppDispatch } from 'tools/services';
 import { lightbox } from 'domain/lightbox';
 import { useConfirm } from 'domain/confirm';
 

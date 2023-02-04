@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 
-import { useAppSelector } from 'tools/services/store';
+import { useAppSelector } from 'tools/services';
 import { selectSerpState, SerpView } from 'domain/serp';
 import { useBreakpoints } from 'tools/hooks';
 import { SerpFilters, SerpList, SerpMap } from 'components/serp';

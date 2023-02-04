@@ -1,7 +1,7 @@
 import { IncomingMessage } from 'http';
 
 import { endpoints } from 'config/endpoints';
-import { Request, getJsonBody, loadersFactory } from 'tools/services/request';
+import { Request, getJsonBody, loadersFactory } from 'tools/services';
 import { Currency } from 'types/common';
 import { generateUrl } from 'tools/common';
 
