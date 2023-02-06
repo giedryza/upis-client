@@ -7,6 +7,14 @@
 
   @include spacing(y, 0.35em);
 
+  &.-variant-primary {
+    --base-color: var(--color-primary-60);
+  }
+
+  &.-variant-neutral {
+    --base-color: var(--color-grey-05);
+  }
+
   .input {
     position: relative;
 
@@ -93,7 +101,7 @@
     color: var(--color-white);
     font-size: 0.75em;
 
-    background-color: var(--color-grey-05);
+    background-color: var(--base-color);
     border-radius: var(--border-radius-xs);
 
     span {
@@ -123,7 +131,7 @@
     transition-property: color, background-color;
 
     &:hover {
-      color: var(--color-grey-05);
+      color: var(--base-color);
 
       background-color: var(--color-white);
     }
@@ -132,7 +140,7 @@
       &:hover {
         color: var(--color-white);
 
-        background-color: var(--color-grey-05);
+        background-color: var(--base-color);
       }
     }
   }
