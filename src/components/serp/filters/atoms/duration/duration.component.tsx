@@ -55,6 +55,7 @@ export const FilterDuration: FC = () => {
                   style: 'unit',
                   unit: 'hour',
                 }}
+                variant="primary"
               />
             )}
           />

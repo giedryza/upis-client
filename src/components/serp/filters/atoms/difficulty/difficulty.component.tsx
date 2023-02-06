@@ -50,6 +50,7 @@ export const FilterDifficulty: FC = () => {
               thumbs={2}
               value={value}
               onChange={onChange}
+              variant="primary"
             />
           )}
         />

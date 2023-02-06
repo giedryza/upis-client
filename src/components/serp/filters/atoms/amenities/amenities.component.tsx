@@ -45,6 +45,7 @@ export const FilterAmenities: FC = () => {
               }))}
               value={value}
               onChange={onChange}
+              variant="primary"
             />
           )}
         />

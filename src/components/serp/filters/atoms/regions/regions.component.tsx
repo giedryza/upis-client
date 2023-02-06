@@ -44,6 +44,7 @@ export const FilterRegions: FC = () => {
               }))}
               value={value}
               onChange={onChange}
+              variant="primary"
             />
           )}
         />

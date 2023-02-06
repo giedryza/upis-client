@@ -49,6 +49,7 @@ export const FilterRivers: FC = () => {
               value={value}
               onChange={onChange}
               autofocus
+              variant="primary"
             />
           )}
         />

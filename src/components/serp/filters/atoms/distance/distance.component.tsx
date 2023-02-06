@@ -53,6 +53,7 @@ export const FilterDistance: FC = () => {
                 style: 'unit',
                 unit: 'kilometer',
               }}
+              variant="primary"
             />
           )}
         />
