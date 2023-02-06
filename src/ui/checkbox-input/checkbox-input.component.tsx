@@ -10,7 +10,7 @@ import styles from './checkbox-input.module.scss';
 
 export const CheckboxInput = forwardRef<HTMLInputElement, Props>(
   (
-    { label, name, checked, onChange, disabled, readonly, variant },
+    { label, name, checked, onChange, disabled, readonly, variant = 'neutral' },
     forwardedRef
   ) => {
     const ref = useObjectRef(forwardedRef);

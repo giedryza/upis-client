@@ -12,6 +12,16 @@
 
   @include spacing(x, 0.5em);
 
+  &.-variant-primary {
+    --base-color: var(--color-primary-60);
+    --accent-color: var(--color-primary-80);
+  }
+
+  &.-variant-neutral {
+    --base-color: var(--color-grey-05);
+    --accent-color: var(--color-grey-60);
+  }
+
   &.selected {
     > .box {
       &::after {
@@ -65,7 +75,7 @@
     height: var(--box-size);
 
     background-color: var(--color-white);
-    border: 1px solid var(--color-grey-60);
+    border: 1px solid var(--accent-color);
     border-radius: 50%;
 
     &::after {
@@ -77,7 +87,7 @@
       width: calc(var(--box-size) * 0.5);
       height: calc(var(--box-size) * 0.5);
 
-      background-color: var(--color-grey-05);
+      background-color: var(--base-color);
       border-radius: 50%;
 
       transform: translate(-50%, -50%);

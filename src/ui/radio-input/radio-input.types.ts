@@ -10,6 +10,7 @@ export interface Props {
   error?: string;
   disabled?: boolean;
   readonly?: boolean;
+  variant?: 'primary' | 'neutral';
 }
 
 interface Item {
