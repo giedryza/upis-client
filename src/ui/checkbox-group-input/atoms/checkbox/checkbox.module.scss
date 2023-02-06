@@ -14,9 +14,19 @@
 
   @include spacing(x, 0.5em);
 
+  &.-variant-primary {
+    --base-color: var(--color-primary-60);
+    --accent-color: var(--color-primary-80);
+  }
+
+  &.-variant-neutral {
+    --base-color: var(--color-grey-05);
+    --accent-color: var(--color-grey-60);
+  }
+
   &.selected {
     > .box {
-      background-color: var(--color-grey-05);
+      background-color: var(--base-color);
 
       &::after {
         opacity: 1;
@@ -73,7 +83,7 @@
     height: var(--box-size);
 
     background-color: var(--color-white);
-    border: 1px solid var(--color-grey-60);
+    border: 1px solid var(--accent-color);
     border-radius: var(--border-radius-xs);
 
     &::after {
