@@ -15,7 +15,7 @@ import { Props } from './checkbox.types';
 import styles from './checkbox.module.scss';
 
 export const Checkbox = forwardRef<HTMLInputElement, Props>(
-  ({ label, value, disabled, readonly }, forwardedRef) => {
+  ({ label, value, disabled, readonly, variant = 'neutral' }, forwardedRef) => {
     const ref = useObjectRef(forwardedRef);
     const state = useCheckboxContext();
 
@@ -35,7 +35,7 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(
 
     return (
       <label
-        className={clsx(styles.checkbox, {
+        className={clsx(styles.checkbox, styles[`-variant-${variant}`], {
           [String(styles.selected)]: state.isSelected(value),
           [String(styles.focus)]: isFocusVisible,
           [String(styles.disabled)]: state.isDisabled || disabled,

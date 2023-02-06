@@ -11,5 +11,6 @@ export interface Props {
   max?: number;
   step?: number;
   thumbs?: 1 | 2;
+  variant?: 'primary' | 'neutral';
   formatOptions?: Intl.NumberFormatOptions;
 }

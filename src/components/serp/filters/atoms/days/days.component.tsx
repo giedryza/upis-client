@@ -50,6 +50,7 @@ export const FilterDays: FC = () => {
                 style: 'unit',
                 unit: 'day',
               }}
+              variant="primary"
             />
           )}
         />

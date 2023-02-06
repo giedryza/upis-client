@@ -20,6 +20,7 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
       placeholder,
       error,
       autofocus,
+      variant = 'neutral',
     },
     forwardedRef
   ) => {
@@ -98,7 +99,7 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
     });
 
     return (
-      <div className={styles.autocomplete}>
+      <div className={clsx(styles.autocomplete, styles[`-variant-${variant}`])}>
         {label ? (
           <label className={styles.label} {...getLabelProps()}>
             {label}

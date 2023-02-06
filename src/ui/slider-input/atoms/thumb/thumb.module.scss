@@ -3,7 +3,7 @@
   height: var(--thumb-size);
 
   background-color: var(--color-white);
-  border: var(--line-size) solid currentColor;
+  border: var(--line-size) solid var(--base-color);
   border-radius: 50%;
   cursor: pointer;
 

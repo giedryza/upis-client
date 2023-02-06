@@ -15,7 +15,7 @@ import { Props } from './radio.types';
 import styles from './radio.module.scss';
 
 export const Radio = forwardRef<HTMLInputElement, Props>(
-  ({ label, value, disabled }, forwardedRef) => {
+  ({ label, value, disabled, variant = 'neutral' }, forwardedRef) => {
     const ref = useObjectRef(forwardedRef);
     const state = useRadioContext();
 
@@ -33,7 +33,7 @@ export const Radio = forwardRef<HTMLInputElement, Props>(
 
     return (
       <label
-        className={clsx(styles.radio, {
+        className={clsx(styles.radio, styles[`-variant-${variant}`], {
           [String(styles.selected)]: state.selectedValue === value,
           [String(styles.focus)]: isFocusVisible,
           [String(styles.disabled)]: state.isDisabled || disabled,

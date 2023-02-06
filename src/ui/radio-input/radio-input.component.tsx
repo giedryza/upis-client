@@ -5,7 +5,18 @@ import { Radio, Group } from './atoms';
 
 export const RadioInput = forwardRef<HTMLInputElement, Props>(
   (
-    { label, name, items, value, onChange, info, error, disabled, readonly },
+    {
+      label,
+      name,
+      items,
+      value,
+      onChange,
+      info,
+      error,
+      disabled,
+      readonly,
+      variant,
+    },
     forwardedRef
   ) => {
     return (
@@ -20,7 +31,12 @@ export const RadioInput = forwardRef<HTMLInputElement, Props>(
         readonly={readonly}
       >
         {items.map((item) => (
-          <Radio {...item} ref={forwardedRef} key={item.value} />
+          <Radio
+            {...item}
+            variant={variant}
+            ref={forwardedRef}
+            key={item.value}
+          />
         ))}
       </Group>
     );
