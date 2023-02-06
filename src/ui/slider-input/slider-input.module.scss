@@ -12,6 +12,16 @@
 
   @include spacing(y, 0.35em);
 
+  &.-variant-primary {
+    --base-color: var(--color-primary-60);
+    --accent-color: var(--color-primary-80);
+  }
+
+  &.-variant-neutral {
+    --base-color: var(--color-grey-05);
+    --accent-color: var(--color-grey-60);
+  }
+
   &.-disabled {
     color: var(--color-grey-40);
 
@@ -49,14 +59,14 @@
 
     height: var(--line-size);
 
-    background-color: var(--color-grey-75);
+    background-color: var(--accent-color);
     transform: translateY(-50%);
 
     &.-active {
       right: max(calc(var(--right) * 100%), 0%);
       left: max(calc(var(--left) * 100%), 0%);
 
-      background-color: currentColor;
+      background-color: var(--base-color);
     }
   }
 

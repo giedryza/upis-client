@@ -23,6 +23,7 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
       max = 100,
       step = 1,
       thumbs = 2,
+      variant = 'neutral',
       formatOptions,
     },
     forwardedRef
@@ -59,7 +60,11 @@ export const SliderInput = forwardRef<HTMLInputElement, Props>(
     return (
       <div
         {...groupProps}
-        className={clsx(styles.slider, disabled && styles['-disabled'])}
+        className={clsx(
+          styles.slider,
+          styles[`-variant-${variant}`],
+          disabled && styles['-disabled']
+        )}
       >
         {label ? (
           <label className={styles.label} {...labelProps}>
