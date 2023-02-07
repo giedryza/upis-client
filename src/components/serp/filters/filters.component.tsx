@@ -3,7 +3,7 @@ import { clsx } from 'clsx';
 import useTranslation from 'next-translate/useTranslation';
 
 import { APP } from 'config/app';
-import { useOverflowDimensions } from 'tools/hooks';
+import { useBreakpoints, useOverflowDimensions } from 'tools/hooks';
 import { Button } from 'ui';
 
 import {
@@ -15,6 +15,7 @@ import {
   FilterRegions,
   FilterRivers,
   FiltersClear,
+  FiltersModalTrigger,
   ViewToggle,
 } from './atoms';
 import styles from './filters.module.scss';
@@ -22,19 +23,24 @@ import styles from './filters.module.scss';
 export const SerpFilters: FC = () => {
   const { t } = useTranslation();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-
+  const { xs } = useBreakpoints();
   const { containerWidth, totalWidth, offsetLeft, offsetRight } =
     useOverflowDimensions(scrollContainerRef);
 
   const items = [
     <ViewToggle key="view-toggle" />,
-    <FilterAmenities key="amenities" />,
-    <FilterRegions key="regions" />,
-    <FilterRivers key="rivers" />,
-    <FilterDays key="days" />,
-    <FilterDuration key="duration" />,
-    <FilterDistance key="distance" />,
-    <FilterDifficulty key="difficulty" />,
+
+    ...(xs
+      ? [<FiltersModalTrigger key="modal-trigger" />]
+      : [
+          <FilterAmenities key="amenities" />,
+          <FilterRegions key="regions" />,
+          <FilterRivers key="rivers" />,
+          <FilterDays key="days" />,
+          <FilterDuration key="duration" />,
+          <FilterDistance key="distance" />,
+          <FilterDifficulty key="difficulty" />,
+        ]),
     <FiltersClear key="clear" />,
   ] as const;
 
