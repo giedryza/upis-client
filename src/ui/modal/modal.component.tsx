@@ -64,7 +64,7 @@ export const Modal: FC<PropsWithChildren<Props>> & ModalComposition = ({
               />
             </div>
 
-            <div>{children}</div>
+            {children}
           </div>
         </FocusScope>
       </div>

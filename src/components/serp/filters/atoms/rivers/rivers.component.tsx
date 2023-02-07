@@ -35,17 +35,15 @@ export const FilterRivers: FC = () => {
         <Controller
           control={control}
           name="rivers"
-          render={({ field: { onChange, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <MultiAutocompleteInput
-              name="rivers"
+              name={name}
               ariaLabel={t('serp:filters.rivers.title')}
               placeholder={t('common:actions.search')}
-              items={
-                rivers.map((river) => ({
-                  label: t(`rivers:${river}`),
-                  value: river,
-                })) ?? []
-              }
+              items={rivers.map((river) => ({
+                label: t(`rivers:${river}`),
+                value: river,
+              }))}
               value={value}
               onChange={onChange}
               autofocus

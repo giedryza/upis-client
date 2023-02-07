@@ -1,7 +1,11 @@
 import { RefObject, useCallback, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 
-import { useEventListener, useIsomorphicLayoutEffect } from 'tools/hooks';
+import {
+  useBreakpoints,
+  useEventListener,
+  useIsomorphicLayoutEffect,
+} from 'tools/hooks';
 
 interface Dimensions {
   containerWidth: number;
@@ -13,6 +17,7 @@ interface Dimensions {
 export const useOverflowDimensions = <T extends HTMLElement>(
   ref: RefObject<T>
 ): Dimensions => {
+  const breakpoints = useBreakpoints();
   const [dimensions, setDimensions] = useState<Dimensions>({
     containerWidth: 0,
     totalWidth: 0,
@@ -27,19 +32,17 @@ export const useOverflowDimensions = <T extends HTMLElement>(
 
     const { offsetWidth, scrollWidth, scrollLeft } = ref.current;
 
-    setTimeout(() => {
-      debouncedSetDimensions({
-        containerWidth: offsetWidth,
-        totalWidth: scrollWidth,
-        offsetLeft: scrollLeft,
-        offsetRight: scrollWidth - (offsetWidth + scrollLeft),
-      });
-    }, 1);
+    debouncedSetDimensions({
+      containerWidth: offsetWidth,
+      totalWidth: scrollWidth,
+      offsetLeft: scrollLeft,
+      offsetRight: scrollWidth - (offsetWidth + scrollLeft),
+    });
   }, [debouncedSetDimensions, ref]);
 
   useIsomorphicLayoutEffect(() => {
     handleDimensions();
-  }, [handleDimensions]);
+  }, [handleDimensions, breakpoints]);
 
   useEventListener('resize', handleDimensions);
   useEventListener('scroll', handleDimensions, ref);

@@ -1,4 +1,5 @@
 import { FC, PropsWithChildren } from 'react';
+import { clsx } from 'clsx';
 
 import { Button } from 'ui';
 
@@ -11,10 +12,10 @@ export const ModalContent: FC<PropsWithChildren<Props>> = ({
   actions = [],
 }) => {
   return (
-    <div className={styles.content}>
+    <div className={clsx(styles.content, 'scrollbar-hidden')}>
       <h2 className={styles.title}>{title}</h2>
 
-      <div>{children}</div>
+      <div className={styles.body}>{children}</div>
 
       {!!actions.length && (
         <div className={styles.footer}>
