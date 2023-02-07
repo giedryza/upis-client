@@ -4,7 +4,6 @@ import useTranslation from 'next-translate/useTranslation';
 
 import {
   CheckboxGroupInput,
-  Divider,
   Modal,
   MultiAutocompleteInput,
   SliderInput,
@@ -115,8 +114,6 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
           )}
         />
 
-        <Divider />
-
         <Controller
           control={control}
           name="regions"
@@ -133,8 +130,6 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
             />
           )}
         />
-
-        <Divider />
 
         <Controller
           control={control}
@@ -154,8 +149,6 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
             />
           )}
         />
-
-        <Divider />
 
         <Controller
           control={control}
@@ -180,8 +173,6 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
           )}
         />
 
-        <Divider />
-
         <Controller
           control={control}
           name="duration"
@@ -205,8 +196,6 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
           )}
         />
 
-        <Divider />
-
         <Controller
           control={control}
           name="distance"
@@ -226,8 +215,6 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
             />
           )}
         />
-
-        <Divider />
 
         <Controller
           control={control}
