@@ -49,6 +49,14 @@
       },
       "previous": "Ankstesnė nuotrauka",
       "next": "Sekanti nuotrauka"
+    },
+    "pagination": {
+      "title": "Puslapiavimas",
+      "page": "puslapis",
+      "prev": "Ankstesnis puslapis",
+      "next": "Sekantis puslapis",
+      "first": "Pirmas puslapis",
+      "last": "Paskutinis puslapis"
     }
   },
   "texts": {
