@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-const range = (start: number, end: number) =>
+const getRange = (start: number, end: number) =>
   Array.from({ length: end - start + 1 }, (_, i) => i + start);
 
 interface UsePagination {
@@ -9,12 +9,12 @@ interface UsePagination {
   siblingCount?: number;
 }
 
-export const usePagination = ({
+export const usePaginationRange = ({
   totalPages,
   currentPage,
   siblingCount = 1,
-}: UsePagination): number[] => {
-  const paginationRange = useMemo(() => {
+}: UsePagination): { range: number[] } => {
+  const range = useMemo(() => {
     // Pages count is determined as siblingCount + firstPage + lastPage + currentPage + 2*DOTS
     const totalPageNumbers = siblingCount + 5;
 
@@ -24,7 +24,7 @@ export const usePagination = ({
       paginationComponent, we return the range [1..totalPageCount]
     */
     if (totalPageNumbers >= totalPages) {
-      return range(1, totalPages);
+      return getRange(1, totalPages);
     }
 
     /*
@@ -47,7 +47,7 @@ export const usePagination = ({
     */
     if (!shouldShowLeftDots && shouldShowRightDots) {
       const leftItemCount = 3 + 2 * siblingCount;
-      const leftRange = range(1, leftItemCount);
+      const leftRange = getRange(1, leftItemCount);
 
       return [...leftRange, NaN, totalPages];
     }
@@ -57,7 +57,7 @@ export const usePagination = ({
     */
     if (shouldShowLeftDots && !shouldShowRightDots) {
       const rightItemCount = 3 + 2 * siblingCount;
-      const rightRange = range(totalPages - rightItemCount + 1, totalPages);
+      const rightRange = getRange(totalPages - rightItemCount + 1, totalPages);
 
       return [firstPageIndex, NaN, ...rightRange];
     }
@@ -66,7 +66,7 @@ export const usePagination = ({
     	Case 4: Both left and right dots to be shown
     */
     if (shouldShowLeftDots && shouldShowRightDots) {
-      const middleRange = range(leftSiblingIndex, rightSiblingIndex);
+      const middleRange = getRange(leftSiblingIndex, rightSiblingIndex);
 
       return [firstPageIndex, NaN, ...middleRange, NaN, lastPageIndex];
     }
@@ -74,5 +74,5 @@ export const usePagination = ({
     return [];
   }, [currentPage, siblingCount, totalPages]);
 
-  return paginationRange;
+  return { range };
 };
