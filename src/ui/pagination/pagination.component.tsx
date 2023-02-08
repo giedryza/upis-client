@@ -8,9 +8,18 @@ import { Icon } from 'ui';
 import { Props } from './pagination.types';
 import styles from './pagination.module.scss';
 
-export const Pagination: FC<Props> = ({ totalPages, currentPage, onLink }) => {
+export const Pagination: FC<Props> = ({
+  totalPages,
+  currentPage,
+  onLink,
+  siblingCount = 1,
+}) => {
   const { t } = useTranslation();
-  const { range } = usePaginationRange({ totalPages, currentPage });
+  const { range } = usePaginationRange({
+    totalPages,
+    currentPage,
+    siblingCount,
+  });
 
   if (range.length <= 1) {
     return null;

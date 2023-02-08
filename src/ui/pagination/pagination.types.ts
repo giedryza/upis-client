@@ -4,4 +4,5 @@ export interface Props {
   totalPages: number;
   currentPage: number;
   onLink: (page: number) => LinkProps['href'];
+  siblingCount?: number;
 }
