@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 
 import { usePaginationRange } from 'tools/hooks';
+import { Icon } from 'ui';
 
 import { Props } from './pagination.types';
 import styles from './pagination.module.scss';
@@ -18,8 +19,18 @@ export const Pagination: FC<Props> = ({ totalPages, currentPage, onLink }) => {
       <ul className={styles.list}>
         {currentPage === 1 ? null : (
           <li>
-            <Link href={onLink(currentPage - 1)} shallow>
-              Previous <span className="visually-hidden">page</span>
+            <Link
+              href={onLink(currentPage - 1)}
+              className={styles.link}
+              aria-label="Previous page"
+              shallow
+            >
+              <Icon
+                name="chevron-left"
+                className={styles.icon}
+                focusable={false}
+                aria-hidden
+              />
             </Link>
           </li>
         )}
@@ -31,6 +42,7 @@ export const Pagination: FC<Props> = ({ totalPages, currentPage, onLink }) => {
             ) : (
               <Link
                 href={onLink(page)}
+                className={styles.link}
                 shallow
                 {...(page === currentPage
                   ? {
@@ -59,8 +71,18 @@ export const Pagination: FC<Props> = ({ totalPages, currentPage, onLink }) => {
 
         {currentPage === range.at(-1) ? null : (
           <li>
-            <Link href={onLink(currentPage + 1)} shallow>
-              Next <span className="visually-hidden">page</span>
+            <Link
+              href={onLink(currentPage + 1)}
+              className={styles.link}
+              aria-label="Next page"
+              shallow
+            >
+              <Icon
+                name="chevron-right"
+                className={styles.icon}
+                focusable={false}
+                aria-hidden
+              />
             </Link>
           </li>
         )}
