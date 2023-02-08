@@ -49,6 +49,14 @@
       },
       "previous": "Previous photo",
       "next": "Next photo"
+    },
+    "pagination": {
+      "title": "Pagination",
+      "page": "page",
+      "prev": "Previous page",
+      "next": "Next page",
+      "first": "First page",
+      "last": "Last page"
     }
   },
   "texts": {

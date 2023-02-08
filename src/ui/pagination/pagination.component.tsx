@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
+import useTranslation from 'next-translate/useTranslation';
 
 import { usePaginationRange } from 'tools/hooks';
 import { Icon } from 'ui';
@@ -8,6 +9,7 @@ import { Props } from './pagination.types';
 import styles from './pagination.module.scss';
 
 export const Pagination: FC<Props> = ({ totalPages, currentPage, onLink }) => {
+  const { t } = useTranslation();
   const { range } = usePaginationRange({ totalPages, currentPage });
 
   if (range.length <= 1) {
@@ -15,14 +17,17 @@ export const Pagination: FC<Props> = ({ totalPages, currentPage, onLink }) => {
   }
 
   return (
-    <nav aria-label="pagination" className={styles.pagination}>
+    <nav
+      aria-label={t('common:components.pagination.title')}
+      className={styles.pagination}
+    >
       <ul className={styles.list}>
         {currentPage === 1 ? null : (
           <li>
             <Link
               href={onLink(currentPage - 1)}
               className={styles.link}
-              aria-label="Previous page"
+              aria-label={t('common:components.pagination.prev')}
               shallow
             >
               <Icon
@@ -46,7 +51,9 @@ export const Pagination: FC<Props> = ({ totalPages, currentPage, onLink }) => {
                 shallow
                 {...(page === currentPage
                   ? {
-                      'aria-label': `Page ${page}`,
+                      'aria-label': `${page} ${t(
+                        'common:components.pagination.page'
+                      )}`,
                       'aria-current': 'page',
                     }
                   : {})}
@@ -54,15 +61,19 @@ export const Pagination: FC<Props> = ({ totalPages, currentPage, onLink }) => {
                 {page}
                 {page === currentPage ? null : (
                   <span className="visually-hidden" key={page}>
-                    page
+                    {t('common:components.pagination.page')}
                   </span>
                 )}
 
                 {page === 1 ? (
-                  <span className="visually-hidden">(first page)</span>
+                  <span className="visually-hidden">
+                    ({t('common:components.pagination.first')})
+                  </span>
                 ) : null}
                 {page === range.at(-1) ? (
-                  <span className="visually-hidden">(last page)</span>
+                  <span className="visually-hidden">
+                    ({t('common:components.pagination.last')})
+                  </span>
                 ) : null}
               </Link>
             )}
@@ -74,7 +85,7 @@ export const Pagination: FC<Props> = ({ totalPages, currentPage, onLink }) => {
             <Link
               href={onLink(currentPage + 1)}
               className={styles.link}
-              aria-label="Next page"
+              aria-label={t('common:components.pagination.next')}
               shallow
             >
               <Icon
