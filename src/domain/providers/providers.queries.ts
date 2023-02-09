@@ -10,9 +10,24 @@ import { converters } from './providers.converters';
 import { ProvidersFilters } from './providers.types';
 
 interface UseProviders {
-  filters?: ProvidersFilters;
+  filters?: Partial<ProvidersFilters>;
   enabled?: boolean;
 }
+
+export const useProvidersActiveFilters = () => {
+  const { loaders } = useLoaders();
+  const { query: params } = useRouter();
+
+  const query = useQuery({
+    queryKey: providersKeys.list('filters', 'active', params),
+    queryFn: () => loaders.getActiveFilters({ params }),
+    select: converters.getActiveFilters,
+    keepPreviousData: true,
+    refetchOnWindowFocus: false,
+  });
+
+  return query;
+};
 
 export const useProviders = ({
   filters = {},
@@ -30,7 +45,7 @@ export const useProviders = ({
   return query;
 };
 
-export const useMyProviders = (filters: ProvidersFilters = {}) => {
+export const useMyProviders = (filters: Partial<ProvidersFilters> = {}) => {
   const { data: session } = useSession();
 
   const query = useProviders({

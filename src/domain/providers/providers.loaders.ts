@@ -1,4 +1,5 @@
 import { IncomingMessage } from 'http';
+import { Router } from 'next/router';
 
 import { endpoints } from 'config/endpoints';
 import {
@@ -6,59 +7,91 @@ import {
   getFormDataBody,
   getJsonBody,
   loadersFactory,
+  normalizeQueryParams,
 } from 'tools/services';
 import { Pagination } from 'types/api';
 import { generateUrl } from 'tools/common';
 
-import { ProvidersFilters, Provider } from './providers.types';
+import {
+  ProvidersFilters,
+  Provider,
+  providersFilters,
+} from './providers.types';
+
+interface GetProviders {
+  req?: IncomingMessage;
+  params?: Partial<ProvidersFilters>;
+}
+
+interface GetProvider {
+  req?: IncomingMessage;
+  id: string;
+}
+
+interface CreateProvider {
+  form: Pick<Provider, 'name' | 'phone' | 'email' | 'description'>;
+}
+
+interface UpdateProvider {
+  id: string;
+  form: Partial<
+    Pick<
+      Provider,
+      | 'name'
+      | 'phone'
+      | 'email'
+      | 'description'
+      | 'website'
+      | 'address'
+      | 'languages'
+      | 'boats'
+    >
+  >;
+}
+
+interface UpdateLocation {
+  id: string;
+  form: { lat: number; lng: number; address: string };
+}
+
+interface UploadLogo {
+  id: string;
+  logo: File;
+}
+
+interface DeleteProvider {
+  id: string;
+}
+
+interface GetFilters {
+  params: Router['query'];
+}
 
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
   loaders: {
-    getProviders: ({
-      req,
-      params,
-    }: { req?: IncomingMessage; params?: ProvidersFilters } = {}) =>
+    getProviders: ({ req, params }: GetProviders = {}) =>
       new Request<Provider[], Pagination>(
         generateUrl(endpoints.providers.index),
         {
           req,
-          params,
+          params: {
+            limit: 15,
+            ...params,
+          },
           locale,
         }
       ).get(),
-    getProvider: ({ req, id }: { req?: IncomingMessage; id: string }) =>
+    getProvider: ({ req, id }: GetProvider) =>
       new Request<Provider | null>(
         generateUrl(endpoints.providers.one.index, { id }),
         { req, locale }
       ).get(),
-    createProvider: ({
-      form,
-    }: {
-      form: Pick<Provider, 'name' | 'phone' | 'email' | 'description'>;
-    }) =>
+    createProvider: ({ form }: CreateProvider) =>
       new Request<Provider>(generateUrl(endpoints.providers.index), {
         body: getJsonBody(form),
         locale,
       }).post(),
-    updateProvider: ({
-      id,
-      form,
-    }: {
-      id: string;
-      form: Partial<
-        Pick<
-          Provider,
-          | 'name'
-          | 'phone'
-          | 'email'
-          | 'description'
-          | 'website'
-          | 'address'
-          | 'languages'
-          | 'boats'
-        >
-      >;
-    }) =>
+    updateProvider: ({ id, form }: UpdateProvider) =>
       new Request<Provider>(
         generateUrl(endpoints.providers.one.index, { id }),
         {
@@ -66,13 +99,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
           locale,
         }
       ).patch(),
-    updateLocation: ({
-      id,
-      form,
-    }: {
-      id: string;
-      form: { lat: number; lng: number; address: string };
-    }) =>
+    updateLocation: ({ id, form }: UpdateLocation) =>
       new Request<Provider>(
         generateUrl(endpoints.providers.one.index, { id }),
         {
@@ -83,14 +110,18 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
           locale,
         }
       ).patch(),
-    uploadLogo: ({ id, logo }: { id: string; logo: File }) =>
+    uploadLogo: ({ id, logo }: UploadLogo) =>
       new Request<Provider>(generateUrl(endpoints.providers.one.logo, { id }), {
         body: getFormDataBody([{ field: 'logo', value: logo }]),
         locale,
       }).patch(),
-    deleteProvider: ({ id }: { id: string }) =>
+    deleteProvider: ({ id }: DeleteProvider) =>
       new Request(generateUrl(endpoints.providers.one.index, { id }), {
         locale,
       }).delete(),
+    getActiveFilters: ({ params }: GetFilters) =>
+      providersFilters
+        .partial()
+        .safeParseAsync(normalizeQueryParams(params, ['select'])),
   },
 }));

@@ -43,6 +43,18 @@ export const useTours = ({ filters = {}, enabled = true }: UseTours = {}) => {
   return query;
 };
 
+export const useMyTours = (filters: Partial<TourFilters> = {}) => {
+  const { data: session } = useSession();
+  const { data: activeFilters } = useToursActiveFilters();
+
+  const query = useTours({
+    filters: { ...activeFilters, ...filters, user: session?.user.id },
+    enabled: !!session?.user.id,
+  });
+
+  return query;
+};
+
 export const useInfiniteTours = (filters: Partial<TourFilters> = {}) => {
   const { loaders } = useLoaders();
 
@@ -70,18 +82,6 @@ export const useInfiniteTours = (filters: Partial<TourFilters> = {}) => {
       keepPreviousData: true,
     }
   );
-
-  return query;
-};
-
-export const useMyTours = (filters: Partial<TourFilters> = {}) => {
-  const { data: session } = useSession();
-  const { data: activeFilters } = useToursActiveFilters();
-
-  const query = useTours({
-    filters: { ...activeFilters, ...filters, user: session?.user.id },
-    enabled: !!session?.user.id,
-  });
 
   return query;
 };

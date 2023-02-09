@@ -8,7 +8,7 @@ import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Providers } from 'components/account';
-import { providersKeys, getLoaders, ProvidersFilters } from 'domain/providers';
+import { providersKeys, getLoaders, converters } from 'domain/providers';
 import { generateUrl } from 'tools/common';
 
 const ProvidersPage: NextPage = () => {
@@ -43,6 +43,7 @@ const ProvidersPage: NextPage = () => {
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
+  query,
   locale,
 }) => {
   const session = await getSession({ req });
@@ -57,11 +58,16 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const queryClient = new QueryClient();
-  const filters: ProvidersFilters = { user: session.user.id };
   const { loaders } = getLoaders(locale);
 
-  await queryClient.prefetchQuery(providersKeys.list(filters), () =>
-    loaders.getProviders({ params: filters })
+  const filters = await loaders
+    .getActiveFilters({ params: query })
+    .then(converters.getActiveFilters);
+
+  await queryClient.prefetchQuery(
+    providersKeys.list({ ...filters, user: session.user.id }),
+    () =>
+      loaders.getProviders({ params: { ...filters, user: session.user.id } })
   );
 
   return {

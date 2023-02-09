@@ -9,4 +9,11 @@ export const converters = {
   getProvider: ({ data }: Converter<typeof getLoaders, 'getProvider'>) => {
     return data;
   },
+  getActiveFilters: (
+    parsed: Converter<typeof getLoaders, 'getActiveFilters'>
+  ) => {
+    if (parsed.success) return parsed.data;
+
+    return {};
+  },
 };
