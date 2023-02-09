@@ -8,6 +8,5 @@ export * from './functions';
 export * from './locales';
 export * from './money';
 export * from './next';
-export * from './pagination';
 export * from './promise';
 export * from './status';

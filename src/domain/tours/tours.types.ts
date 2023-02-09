@@ -2,7 +2,8 @@ import { z } from 'zod';
 
 import { Amenity, amenities, Variant } from 'domain/amenities';
 import { Provider } from 'domain/providers';
-import { AppFile, BaseEntity, GeoPoint, Pagination, Price } from 'types/common';
+import { AppFile, BaseEntity, GeoPoint, Price } from 'types/common';
+import { paginationFilters } from 'domain/pagination';
 
 export const regions = [
   'aukstaitija',
@@ -270,38 +271,39 @@ const queryUtils = {
   populate: ['provider', 'provider.amenities', 'amenities', 'photos'],
 } as const;
 
-export const tourFilters = z.object({
-  amenities: z.array(z.enum(amenities)).catch([]),
-  regions: z.array(z.enum(regions)).catch([]),
-  rivers: z.array(z.enum(rivers)).catch([]),
-  distanceFrom: z.coerce.number().finite().min(1).catch(1),
-  distanceTo: z.coerce.number().finite().min(1).catch(1),
-  durationFrom: z.coerce.number().finite().min(1).catch(1),
-  durationTo: z.coerce.number().finite().min(1).catch(1),
-  daysFrom: z.coerce.number().finite().int().min(1).catch(1),
-  daysTo: z.coerce.number().finite().int().min(1).catch(1),
-  difficultyFrom: z.coerce.number().finite().min(0).max(5).catch(0),
-  difficultyTo: z.coerce.number().finite().min(0).max(5).catch(5),
-  user: z.coerce.string(),
-  bounds: z
-    .tuple([
-      z.coerce.number().finite(),
-      z.coerce.number().finite(),
-      z.coerce.number().finite(),
-      z.coerce.number().finite(),
-    ])
-    .catch([NaN, NaN, NaN, NaN]),
+const utilsFilters = z.object({
+  departure: z.coerce.boolean().catch(false),
+  select: z.array(z.enum(queryUtils.select)).catch([]),
+  populate: z.array(z.enum(queryUtils.populate)).catch([]),
 });
 
-interface TourUtilFilters {
-  departure: boolean;
-  select: Array<(typeof queryUtils.select)[number]>;
-  populate: Array<(typeof queryUtils.populate)[number]>;
-}
+export const tourFilters = z
+  .object({
+    amenities: z.array(z.enum(amenities)).catch([]),
+    regions: z.array(z.enum(regions)).catch([]),
+    rivers: z.array(z.enum(rivers)).catch([]),
+    distanceFrom: z.coerce.number().finite().min(1).catch(1),
+    distanceTo: z.coerce.number().finite().min(1).catch(1),
+    durationFrom: z.coerce.number().finite().min(1).catch(1),
+    durationTo: z.coerce.number().finite().min(1).catch(1),
+    daysFrom: z.coerce.number().finite().int().min(1).catch(1),
+    daysTo: z.coerce.number().finite().int().min(1).catch(1),
+    difficultyFrom: z.coerce.number().finite().min(0).max(5).catch(0),
+    difficultyTo: z.coerce.number().finite().min(0).max(5).catch(5),
+    user: z.coerce.string(),
+    bounds: z
+      .tuple([
+        z.coerce.number().finite(),
+        z.coerce.number().finite(),
+        z.coerce.number().finite(),
+        z.coerce.number().finite(),
+      ])
+      .catch([NaN, NaN, NaN, NaN]),
+  })
+  .merge(utilsFilters)
+  .merge(paginationFilters);
 
-export type TourFilters = z.infer<typeof tourFilters> &
-  TourUtilFilters &
-  Pagination;
+export type TourFilters = z.infer<typeof tourFilters>;
 
 export interface FiltersSummary {
   distance: { min: number; max: number };

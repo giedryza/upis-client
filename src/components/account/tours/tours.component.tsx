@@ -7,7 +7,7 @@ import { generateUrl } from 'tools/common';
 import { useMyProviders } from 'domain/providers';
 import { useMyTours } from 'domain/tours';
 
-import { ToursActions, ToursList } from './atoms';
+import { ToursHeader, ToursFooter, ToursList } from './atoms';
 import styles from './tours.module.scss';
 
 export const Tours: FC = () => {
@@ -43,8 +43,9 @@ export const Tours: FC = () => {
         />
       ) : (
         <div className={styles.content}>
-          <ToursActions />
+          <ToursHeader />
           <ToursList />
+          <ToursFooter />
         </div>
       )}
     </Card>
