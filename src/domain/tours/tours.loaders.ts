@@ -100,7 +100,6 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
           populate: ['photos'],
           limit: 15,
           ...params,
-          bounds: [],
         },
         locale,
       }).get(),
@@ -160,6 +159,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
             'amenities',
             'regions',
             'rivers',
+            'bounds',
             'select',
             'populate',
           ])
