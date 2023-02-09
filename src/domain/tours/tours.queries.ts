@@ -47,7 +47,9 @@ export const useInfiniteTours = (filters: Partial<TourFilters> = {}) => {
         return meta.page < meta.pages ? meta.page + 1 : undefined;
       },
       select: ({ pages, pageParams }) => ({
-        pages: pages.map((page) => converters.getTours(page)),
+        pages: pages
+          .map((page) => converters.getTours(page))
+          .map((page) => page.items),
         pageParams,
       }),
       keepPreviousData: true,

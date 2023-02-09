@@ -22,8 +22,11 @@ const convertTour = (tour: Tour): Tour => {
 };
 
 export const converters = {
-  getTours: ({ data }: Converter<typeof getLoaders, 'getTours'>) => {
-    return data.map(convertTour);
+  getTours: ({ data, meta }: Converter<typeof getLoaders, 'getTours'>) => {
+    return {
+      items: data.map(convertTour),
+      meta,
+    };
   },
   getTour: ({ data }: Converter<typeof getLoaders, 'getTour'>) => {
     return data ? convertTour(data) : null;

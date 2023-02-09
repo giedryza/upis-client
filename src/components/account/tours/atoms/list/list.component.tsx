@@ -13,12 +13,12 @@ export const ToursList: FC = () => {
 
   const { confirmation } = useConfirm();
 
-  const { data: tours = [] } = useMyTours();
+  const { data: tours } = useMyTours();
   const { mutate: deleteTour, isLoading: isDeleting } = useDeleteTour();
 
   return (
     <>
-      {tours.map((tour) => (
+      {tours?.items.map((tour) => (
         <Tile
           title={tour.name}
           subtitle={tour.provider.name}

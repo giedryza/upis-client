@@ -15,7 +15,7 @@ export const Tours: FC = () => {
 
   const { data: providers = [], isLoading: isProvidersLoading } =
     useMyProviders();
-  const { data: tours = [], isLoading: isToursLoading } = useMyTours();
+  const { data: tours, isLoading: isToursLoading } = useMyTours();
 
   return (
     <Card>
@@ -30,7 +30,7 @@ export const Tours: FC = () => {
             url: generateUrl(routes.account.providers.create),
           }}
         />
-      ) : !tours.length && !isToursLoading ? (
+      ) : !tours?.items.length && !isToursLoading ? (
         <EmptyState
           title={t('account:tours.empty.title')}
           message={t('account:tours.empty.messageTours')}
