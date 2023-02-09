@@ -13,13 +13,12 @@ import styles from './tours.module.scss';
 export const Tours: FC = () => {
   const { t } = useTranslation();
 
-  const { data: providers = [], isLoading: isProvidersLoading } =
-    useMyProviders();
+  const { data: providers, isLoading: isProvidersLoading } = useMyProviders();
   const { data: tours, isLoading: isToursLoading } = useMyTours();
 
   return (
     <Card>
-      {!providers.length && !isProvidersLoading ? (
+      {!providers?.items.length && !isProvidersLoading ? (
         <EmptyState
           title={t('account:tours.empty.title')}
           message={t('account:tours.empty.messageProviders')}

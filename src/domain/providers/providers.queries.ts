@@ -40,6 +40,7 @@ export const useProviders = ({
     queryFn: () => loaders.getProviders({ params: filters }),
     select: converters.getProviders,
     enabled,
+    keepPreviousData: true,
   });
 
   return query;
@@ -47,9 +48,10 @@ export const useProviders = ({
 
 export const useMyProviders = (filters: Partial<ProvidersFilters> = {}) => {
   const { data: session } = useSession();
+  const { data: activeFilters } = useProvidersActiveFilters();
 
   const query = useProviders({
-    filters: { ...filters, user: session?.user.id },
+    filters: { ...activeFilters, ...filters, user: session?.user.id },
     enabled: !!session?.user.id,
   });
 

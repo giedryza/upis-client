@@ -12,12 +12,12 @@ export const ProvidersList: FC = () => {
 
   const { confirmation } = useConfirm();
 
-  const { data: providers = [] } = useMyProviders();
+  const { data: providers } = useMyProviders();
   const { mutate: deleteProvider, isLoading: isDeleting } = useDeleteProvider();
 
   return (
     <>
-      {providers.map((provider) => (
+      {providers?.items.map((provider) => (
         <Tile
           title={provider.name}
           subtitle={provider.address}
