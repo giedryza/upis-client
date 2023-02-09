@@ -6,17 +6,17 @@ import { routes } from 'config/routes';
 import { generateUrl } from 'tools/common';
 import { useMyProviders } from 'domain/providers';
 
-import { ProvidersActions, ProvidersList } from './atoms';
+import { ProvidersFooter, ProvidersHeader, ProvidersList } from './atoms';
 import styles from './providers.module.scss';
 
 export const Providers: FC = () => {
   const { t } = useTranslation();
 
-  const { data: providers = [], isLoading } = useMyProviders();
+  const { data: providers, isLoading } = useMyProviders();
 
   return (
     <Card>
-      {!providers.length && !isLoading ? (
+      {!providers?.items.length && !isLoading ? (
         <EmptyState
           title={t('account:providers.empty.title')}
           message={t('account:providers.empty.message')}
@@ -29,8 +29,9 @@ export const Providers: FC = () => {
         />
       ) : (
         <div className={styles.content}>
-          <ProvidersActions />
+          <ProvidersHeader />
           <ProvidersList />
+          <ProvidersFooter />
         </div>
       )}
     </Card>

@@ -1,6 +1,9 @@
+import { z } from 'zod';
+
 import { SocialLink } from 'domain/social-links';
 import { Amenity } from 'domain/amenities';
 import { BaseEntity, GeoPoint, Language } from 'types/common';
+import { paginationFilters } from 'domain/pagination';
 
 export const boats = [
   'single-kayak',
@@ -34,7 +37,19 @@ export interface Provider extends BaseEntity {
   updatedAt: string;
 }
 
-export interface ProvidersFilters {
-  user?: string;
-  select?: (keyof Provider)[];
-}
+const queryUtils = {
+  select: ['_id', 'name'],
+} as const;
+
+const utilsFilters = z.object({
+  select: z.array(z.enum(queryUtils.select)).catch([]),
+});
+
+export const providersFilters = z
+  .object({
+    user: z.coerce.string(),
+  })
+  .merge(utilsFilters)
+  .merge(paginationFilters);
+
+export type ProvidersFilters = z.infer<typeof providersFilters>;

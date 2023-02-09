@@ -7,19 +7,18 @@ import { generateUrl } from 'tools/common';
 import { useMyProviders } from 'domain/providers';
 import { useMyTours } from 'domain/tours';
 
-import { ToursActions, ToursList } from './atoms';
+import { ToursHeader, ToursFooter, ToursList } from './atoms';
 import styles from './tours.module.scss';
 
 export const Tours: FC = () => {
   const { t } = useTranslation();
 
-  const { data: providers = [], isLoading: isProvidersLoading } =
-    useMyProviders();
-  const { data: tours = [], isLoading: isToursLoading } = useMyTours();
+  const { data: providers, isLoading: isProvidersLoading } = useMyProviders();
+  const { data: tours, isLoading: isToursLoading } = useMyTours();
 
   return (
     <Card>
-      {!providers.length && !isProvidersLoading ? (
+      {!providers?.items.length && !isProvidersLoading ? (
         <EmptyState
           title={t('account:tours.empty.title')}
           message={t('account:tours.empty.messageProviders')}
@@ -30,7 +29,7 @@ export const Tours: FC = () => {
             url: generateUrl(routes.account.providers.create),
           }}
         />
-      ) : !tours.length && !isToursLoading ? (
+      ) : !tours?.items.length && !isToursLoading ? (
         <EmptyState
           title={t('account:tours.empty.title')}
           message={t('account:tours.empty.messageTours')}
@@ -43,8 +42,9 @@ export const Tours: FC = () => {
         />
       ) : (
         <div className={styles.content}>
-          <ToursActions />
+          <ToursHeader />
           <ToursList />
+          <ToursFooter />
         </div>
       )}
     </Card>

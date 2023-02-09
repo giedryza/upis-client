@@ -5,17 +5,17 @@ import { routes } from 'config/routes';
 import { Button } from 'ui';
 import { generateUrl } from 'tools/common';
 
-export const ProvidersActions: FC = () => {
+export const ToursHeader: FC = () => {
   const { t } = useTranslation();
 
   return (
     <div>
       <Button
-        label={t('account:providers.actions.add')}
+        label={t('account:tours.actions.add')}
         variant="tertiary"
         icon="plus"
         size="xs"
-        url={generateUrl(routes.account.providers.create)}
+        url={generateUrl(routes.account.tours.create)}
       />
     </div>
   );

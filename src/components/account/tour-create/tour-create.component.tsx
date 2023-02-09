@@ -26,7 +26,7 @@ export const TourCreate: FC = () => {
     defaultValues: INITIAL_VALUES,
   });
 
-  const { data: providers = [] } = useMyProviders({ select: ['_id', 'name'] });
+  const { data: providers } = useMyProviders({ select: ['_id', 'name'] });
   const { mutate: createTour, isLoading } = useCreateTour();
 
   const onSubmit: SubmitHandler<Values> = ({ name, provider }) => {
@@ -68,10 +68,12 @@ export const TourCreate: FC = () => {
                   message: t('account:tours.about.form.provider.error.empty'),
                 },
               })}
-              options={providers.map((provider) => ({
-                label: provider.name,
-                value: provider._id,
-              }))}
+              options={
+                providers?.items.map((provider) => ({
+                  label: provider.name,
+                  value: provider._id,
+                })) ?? []
+              }
               label={t('account:tours.about.form.provider.label')}
               placeholder={t('account:tours.about.form.provider.placeholder')}
               error={errors.provider?.message}

@@ -58,8 +58,7 @@
     },
     "empty": {
       "title": "Tiekėjų nėra",
-      "messageProviders": "Pridėję tiekėją galėsite pradėti kurti maršrutus.",
-      "messageTours": "Pradėkite kurti maršrutus."
+      "message": "Pridėję tiekėją galėsite pradėti kurti maršrutus."
     },
     "about": {
       "title": "Apie tiekėją",
@@ -200,7 +199,8 @@
     },
     "empty": {
       "title": "Maršrutų nėra",
-      "message": "Pridėkite tiekėją norėdami kurti maršrutus."
+      "messageProviders": "Pridėkite tiekėją norėdami kurti maršrutus.",
+      "messageTours": "Pradėkite kurti maršrutus."
     },
     "about": {
       "title": "Apie maršrutą",
