@@ -6,7 +6,7 @@ import { routes } from 'config/routes';
 import { generateUrl } from 'tools/common';
 import { useMyProviders } from 'domain/providers';
 
-import { ProvidersActions, ProvidersList } from './atoms';
+import { ProvidersHeader, ProvidersList } from './atoms';
 import styles from './providers.module.scss';
 
 export const Providers: FC = () => {
@@ -29,7 +29,7 @@ export const Providers: FC = () => {
         />
       ) : (
         <div className={styles.content}>
-          <ProvidersActions />
+          <ProvidersHeader />
           <ProvidersList />
         </div>
       )}

@@ -1,2 +1,2 @@
-export * from './actions';
+export * from './header';
 export * from './list';

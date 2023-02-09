@@ -5,7 +5,7 @@ import { routes } from 'config/routes';
 import { Button } from 'ui';
 import { generateUrl } from 'tools/common';
 
-export const ProvidersActions: FC = () => {
+export const ProvidersHeader: FC = () => {
   const { t } = useTranslation();
 
   return (
