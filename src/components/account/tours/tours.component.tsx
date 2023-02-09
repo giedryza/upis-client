@@ -13,7 +13,9 @@ import styles from './tours.module.scss';
 export const Tours: FC = () => {
   const { t } = useTranslation();
 
-  const { data: providers, isLoading: isProvidersLoading } = useMyProviders();
+  const { data: providers, isLoading: isProvidersLoading } = useMyProviders({
+    page: 1,
+  });
   const { data: tours, isLoading: isToursLoading } = useMyTours();
 
   return (
