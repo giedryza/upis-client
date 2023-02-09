@@ -277,7 +277,7 @@ const utilsFilters = z.object({
   populate: z.array(z.enum(queryUtils.populate)).catch([]),
 });
 
-export const tourFilters = z
+export const toursFilters = z
   .object({
     amenities: z.array(z.enum(amenities)).catch([]),
     regions: z.array(z.enum(regions)).catch([]),
@@ -303,7 +303,7 @@ export const tourFilters = z
   .merge(utilsFilters)
   .merge(paginationFilters);
 
-export type TourFilters = z.infer<typeof tourFilters>;
+export type ToursFilters = z.infer<typeof toursFilters>;
 
 export interface FiltersSummary {
   distance: { min: number; max: number };

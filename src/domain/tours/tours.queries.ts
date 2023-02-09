@@ -5,12 +5,12 @@ import { useRouter } from 'next/router';
 import { getRouteParam } from 'tools/common';
 
 import { toursKeys } from './tours.keys';
-import { TourFilters } from './tours.types';
+import { ToursFilters } from './tours.types';
 import { useLoaders } from './tours.loaders';
 import { converters } from './tours.converters';
 
 interface UseTours {
-  filters?: Partial<TourFilters>;
+  filters?: Partial<ToursFilters>;
   enabled?: boolean;
 }
 
@@ -43,7 +43,7 @@ export const useTours = ({ filters = {}, enabled = true }: UseTours = {}) => {
   return query;
 };
 
-export const useMyTours = (filters: Partial<TourFilters> = {}) => {
+export const useMyTours = (filters: Partial<ToursFilters> = {}) => {
   const { data: session } = useSession();
   const { data: activeFilters } = useToursActiveFilters();
 
@@ -55,7 +55,7 @@ export const useMyTours = (filters: Partial<TourFilters> = {}) => {
   return query;
 };
 
-export const useInfiniteTours = (filters: Partial<TourFilters> = {}) => {
+export const useInfiniteTours = (filters: Partial<ToursFilters> = {}) => {
   const { loaders } = useLoaders();
 
   const query = useInfiniteQuery(

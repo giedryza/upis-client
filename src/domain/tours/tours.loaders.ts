@@ -18,13 +18,13 @@ import {
   Region,
   River,
   Tour,
-  tourFilters,
-  TourFilters,
+  toursFilters,
+  ToursFilters,
 } from './tours.types';
 
 interface GetTours {
   req?: IncomingMessage;
-  params?: Partial<TourFilters>;
+  params?: Partial<ToursFilters>;
 }
 
 interface CreateTour {
@@ -153,7 +153,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         locale,
       }).delete(),
     getActiveFilters: ({ params }: GetFilters) =>
-      tourFilters
+      toursFilters
         .partial()
         .safeParseAsync(
           normalizeQueryParams(params, [

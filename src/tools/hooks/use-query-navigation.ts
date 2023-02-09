@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 
-import { TourFilters } from 'domain/tours';
+import { ToursFilters } from 'domain/tours';
 
-interface Params extends TourFilters {}
+interface Params extends ToursFilters {}
 
 export const useQueryNavigation = () => {
   const { push, query } = useRouter();

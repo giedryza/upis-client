@@ -1,20 +1,20 @@
 import { ModalProps } from 'domain/modal';
-import { TourFilters } from 'domain/tours';
+import { ToursFilters } from 'domain/tours';
 
 export interface Values {
-  amenities: TourFilters['amenities'];
-  regions: TourFilters['regions'];
-  rivers: TourFilters['rivers'];
-  days: [number, number];
-  duration: [number, number];
-  distance: [number, number];
-  difficulty: [number, number];
+  amenities: ToursFilters['amenities'];
+  regions: ToursFilters['regions'];
+  rivers: ToursFilters['rivers'];
+  days: [ToursFilters['daysFrom'], ToursFilters['daysTo']];
+  duration: [ToursFilters['durationFrom'], ToursFilters['durationFrom']];
+  distance: [ToursFilters['distanceFrom'], ToursFilters['distanceFrom']];
+  difficulty: [ToursFilters['difficultyFrom'], ToursFilters['difficultyFrom']];
 }
 
 export interface Props extends ModalProps {
   closeModal: (
     param?:
       | { action: 'CLOSE' }
-      | { action: 'APPLY'; payload: Partial<TourFilters> }
+      | { action: 'APPLY'; payload: Partial<ToursFilters> }
   ) => void;
 }
