@@ -8,7 +8,7 @@ import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Tours } from 'components/account';
-import { getLoaders, TourFilters, toursKeys } from 'domain/tours';
+import { converters, getLoaders, toursKeys } from 'domain/tours';
 import { generateUrl } from 'tools/common';
 
 const ToursPage: NextPage = () => {
@@ -43,6 +43,7 @@ const ToursPage: NextPage = () => {
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
+  query,
   locale,
 }) => {
   const session = await getSession({ req });
@@ -57,11 +58,16 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const queryClient = new QueryClient();
-  const filters: Partial<TourFilters> = { user: session.user.id };
   const { loaders } = getLoaders(locale);
 
-  await queryClient.prefetchQuery(toursKeys.list(filters), () =>
-    loaders.getTours({ params: filters })
+  const filters = await loaders
+    .getActiveFilters({ params: query })
+    .then(converters.getActiveFilters);
+
+  await queryClient.prefetchQuery(
+    toursKeys.list({ ...filters, user: session.user.id }),
+    () =>
+      loaders.getTours({ req, params: { ...filters, user: session.user.id } })
   );
 
   return {
