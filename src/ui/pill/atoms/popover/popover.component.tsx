@@ -1,5 +1,6 @@
 import { FC, PropsWithChildren, useRef } from 'react';
 import { DismissButton, FocusScope, usePopover } from 'react-aria';
+import { clsx } from 'clsx';
 
 import { Props } from './popover.types';
 import styles from './popover.module.scss';
@@ -23,7 +24,11 @@ export const Popover: FC<PropsWithChildren<Props>> = ({
 
   return (
     <FocusScope contain restoreFocus autoFocus={false}>
-      <div {...popoverProps} ref={popoverRef} className={styles.popover}>
+      <div
+        {...popoverProps}
+        ref={popoverRef}
+        className={clsx(styles.popover, 'scrollbar-hidden')}
+      >
         <svg
           {...arrowProps}
           className={styles.arrow}
@@ -34,7 +39,6 @@ export const Popover: FC<PropsWithChildren<Props>> = ({
         </svg>
         <DismissButton onDismiss={state.close} />
         {children}
-        <DismissButton onDismiss={state.close} />
       </div>
     </FocusScope>
   );

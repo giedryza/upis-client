@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 import { Icon } from 'ui/icon';
 
