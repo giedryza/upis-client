@@ -20,7 +20,9 @@ const SigninPage: NextPage = () => {
 
       <MainLayout>
         <PageLayout>
-          <Signin />
+          <main>
+            <Signin />
+          </main>
         </PageLayout>
       </MainLayout>
     </>

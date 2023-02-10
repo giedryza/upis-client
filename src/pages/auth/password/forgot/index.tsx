@@ -20,7 +20,9 @@ const PasswordForgotPage: NextPage = () => {
 
       <MainLayout>
         <PageLayout>
-          <PasswordForgot />
+          <main>
+            <PasswordForgot />
+          </main>
         </PageLayout>
       </MainLayout>
     </>
