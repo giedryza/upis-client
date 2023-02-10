@@ -21,7 +21,9 @@
   }
 
   &:hover {
-    background-color: var(--color-grey-90);
+    &:not([disabled]) {
+      background-color: var(--color-grey-90);
+    }
   }
 
   &:focus {
@@ -39,8 +41,14 @@
     background-color: var(--color-primary-95);
 
     &:hover {
-      background-color: var(--color-primary-90);
+      &:not([disabled]) {
+        background-color: var(--color-primary-90);
+      }
     }
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
   }
 
   .icon {

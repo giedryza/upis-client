@@ -16,11 +16,12 @@ export const Trigger: FC<Props & AriaButtonProps<'button'>> = ({
   label,
   isOpen,
   active,
+  disabled,
   buttonRef,
   ...ariaButtonProps
 }) => {
   const { buttonProps } = useButton(
-    { children: label, ...ariaButtonProps },
+    { children: label, isDisabled: disabled, ...ariaButtonProps },
     buttonRef
   );
   const { isFocusVisible, focusProps } = useFocusRing();
