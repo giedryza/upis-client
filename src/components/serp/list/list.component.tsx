@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useWindowVirtualizer } from '@tanstack/react-virtual';
+import { useSession } from 'next-auth/react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { APP } from 'config/app';
@@ -16,6 +17,7 @@ export const SerpList: FC = () => {
   const { t } = useTranslation();
   const { xs } = useBreakpoints();
 
+  const { data: session } = useSession();
   const { data: filters } = useToursActiveFilters();
   const { data, isLoading, hasNextPage, fetchNextPage } =
     useInfiniteTours(filters);
@@ -83,7 +85,7 @@ export const SerpList: FC = () => {
                     }
                   />
                 ) : tour ? (
-                  <SerpCard tour={tour} />
+                  <SerpCard tour={tour} userId={session?.user.id} />
                 ) : null}
               </div>
             );

@@ -4,7 +4,8 @@ import useTranslation from 'next-translate/useTranslation';
 import { Button, Carousel, Icon, ImagePlaceholder } from 'ui';
 import { formatCurrency, formatNumber } from 'tools/format';
 import { APP } from 'config/app';
-import { generateImageUrl, isLast } from 'tools/common';
+import { routes } from 'config/routes';
+import { generateImageUrl, generateUrl, isLast } from 'tools/common';
 import { useBreakpoints } from 'tools/hooks';
 
 import { Props } from './card.types';
@@ -12,7 +13,7 @@ import styles from './card.module.scss';
 
 const IMAGE_QUALITY = 3;
 
-export const SerpCard: FC<Props> = memo(({ tour }) => {
+export const SerpCard: FC<Props> = memo(({ tour, userId }) => {
   const { t, lang } = useTranslation();
   const { xs } = useBreakpoints();
 
@@ -128,7 +129,22 @@ export const SerpCard: FC<Props> = memo(({ tour }) => {
             ) : null}
           </div>
 
-          <Button label={t('common:actions.view')} size="sm" />
+          <div className={styles.actions}>
+            {userId === tour.user ? (
+              <Button
+                icon="pencil"
+                size="xs"
+                variant="ghost"
+                attributes={{
+                  title: t('common:actions.edit'),
+                }}
+                url={generateUrl(routes.account.tours.one.index, {
+                  id: tour._id,
+                })}
+              />
+            ) : null}
+            <Button label={t('common:actions.view')} size="sm" />
+          </div>
         </footer>
       </div>
     </article>
