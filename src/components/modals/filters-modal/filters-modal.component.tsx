@@ -15,6 +15,7 @@ import {
   useToursFiltersSummary,
 } from 'domain/tours';
 import { amenities } from 'domain/amenities';
+import { useProviders } from 'domain/providers';
 
 import { Props, Values } from './filters-modal.types';
 import { INITIAL_VALUES, FORM_ID } from './filters-modal.constants';
@@ -25,6 +26,9 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
 
   const { data: filters } = useToursActiveFilters();
   const { data: filtersSummary } = useToursFiltersSummary();
+  const { data: providers, isLoading: isProvidersLoading } = useProviders({
+    filters: { select: ['_id', 'name'], limit: 200 },
+  });
 
   const {
     control,
@@ -48,6 +52,7 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
         filters?.difficultyFrom ?? NaN,
         filters?.difficultyTo ?? NaN,
       ],
+      providers: filters?.providers ?? [],
     });
   }, [filters, reset]);
 
@@ -66,6 +71,7 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
         distanceTo: values.distance[1],
         difficultyFrom: values.difficulty[0],
         difficultyTo: values.difficulty[1],
+        providers: values.providers,
       },
     });
   };
@@ -228,6 +234,26 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
               thumbs={2}
               value={value}
               onChange={onChange}
+              variant="primary"
+            />
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="providers"
+          render={({ field: { onChange, value } }) => (
+            <CheckboxGroupInput
+              label={t('serp:filters.providers.title')}
+              items={
+                providers?.items.map((provider) => ({
+                  label: provider.name,
+                  value: provider._id,
+                })) ?? []
+              }
+              value={value}
+              onChange={onChange}
+              disabled={isProvidersLoading}
               variant="primary"
             />
           )}

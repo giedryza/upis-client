@@ -41,6 +41,7 @@ export const useProviders = ({
     select: converters.getProviders,
     enabled,
     keepPreviousData: true,
+    refetchOnWindowFocus: false,
   });
 
   return query;

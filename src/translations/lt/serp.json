@@ -49,6 +49,9 @@
     },
     "rivers": {
       "title": "Upės"
+    },
+    "providers": {
+      "title": "Tiekėjai"
     }
   }
 }

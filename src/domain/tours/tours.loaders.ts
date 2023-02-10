@@ -160,6 +160,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
             'regions',
             'rivers',
             'bounds',
+            'providers',
             'select',
             'populate',
           ])

@@ -291,6 +291,7 @@ export const toursFilters = z
     difficultyFrom: z.coerce.number().finite().min(0).max(5).catch(0),
     difficultyTo: z.coerce.number().finite().min(0).max(5).catch(5),
     user: z.coerce.string(),
+    providers: z.array(z.coerce.string()).catch([]),
     bounds: z
       .tuple([
         z.coerce.number().finite(),

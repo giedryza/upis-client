@@ -12,6 +12,7 @@ import {
   FilterDifficulty,
   FilterDistance,
   FilterDuration,
+  FilterProviders,
   FilterRegions,
   FilterRivers,
   FiltersClear,
@@ -40,6 +41,7 @@ export const SerpFilters: FC = () => {
           <FilterDuration key="duration" />,
           <FilterDistance key="distance" />,
           <FilterDifficulty key="difficulty" />,
+          <FilterProviders key="providers" />,
         ]),
     <FiltersClear key="clear" />,
   ] as const;
