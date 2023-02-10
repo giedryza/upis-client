@@ -2,7 +2,7 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { Card, EmptyState } from 'ui';
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { generateUrl } from 'tools/common';
 import { useMyProviders } from 'domain/providers';
 import { useMyTours } from 'domain/tours';

@@ -3,8 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { Button, Carousel, Icon, ImagePlaceholder } from 'ui';
 import { formatCurrency, formatNumber } from 'tools/format';
-import { APP } from 'config/app';
-import { routes } from 'config/routes';
+import { routes, APP } from 'config';
 import { generateImageUrl, generateUrl, isLast } from 'tools/common';
 import { useBreakpoints } from 'tools/hooks';
 

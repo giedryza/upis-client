@@ -3,7 +3,7 @@ import { useWindowVirtualizer } from '@tanstack/react-virtual';
 import { useSession } from 'next-auth/react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { APP } from 'config/app';
+import { APP } from 'config';
 import { InView, Loader } from 'ui';
 import { SerpCard } from 'components/serp';
 import { Footer } from 'components/layout';

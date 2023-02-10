@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
 
-import { routes } from 'config/routes';
+import { routes } from 'config';
 
 const REDIRECT_LOCATIONS: Record<string, { route: string }> = {
   'password-reset': {

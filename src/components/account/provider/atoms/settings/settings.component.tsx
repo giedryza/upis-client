@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { Button } from 'ui';
 import { useConfirm } from 'domain/confirm';
 import { useActiveProvider, useDeleteProvider } from 'domain/providers';

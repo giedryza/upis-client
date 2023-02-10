@@ -1,4 +1,4 @@
-import { APP } from 'config/app';
+import { APP } from 'config';
 
 type Params<Url> = Url extends `${string}:${infer Param}/${infer Rest}`
   ? Param | Params<Rest>

@@ -1,7 +1,7 @@
 import { getSession, signOut } from 'next-auth/react';
 import { stringifyUrl } from 'query-string';
 
-import { APP } from 'config/app';
+import { APP } from 'config';
 import { isServer } from 'tools/common';
 
 import {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { APP } from 'config/app';
+import { APP } from 'config';
 import { useMediaQuery } from 'tools/hooks/use-media-query';
 import { Breakpoint } from 'types/common';
 

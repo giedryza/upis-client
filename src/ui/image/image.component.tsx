@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import NextImage, { ImageProps } from 'next/image';
 
 import { breakpoints } from 'types/common';
-import { APP } from 'config/app';
+import { APP } from 'config';
 
 import { Props } from './image.types';
 import styles from './image.module.scss';

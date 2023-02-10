@@ -1,6 +1,6 @@
 import { IncomingMessage } from 'http';
 
-import { endpoints } from 'config/endpoints';
+import { endpoints } from 'config';
 import { generateUrl } from 'tools/common';
 import { Request, loadersFactory, getJsonBody } from 'tools/services';
 

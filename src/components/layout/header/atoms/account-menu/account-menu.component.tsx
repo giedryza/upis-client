@@ -2,7 +2,7 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useSession, signOut } from 'next-auth/react';
 
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { Button, DropdownMenu } from 'ui';
 import { generateUrl } from 'tools/common';
 

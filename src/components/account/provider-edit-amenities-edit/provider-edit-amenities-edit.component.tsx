@@ -11,7 +11,7 @@ import {
   SelectInput,
   TextInput,
 } from 'ui';
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { InfoBlock } from 'components/account/atoms';
 import { useUpdateAmenity, useAmenity, units } from 'domain/amenities';
 import { useFormatNumber } from 'tools/format';

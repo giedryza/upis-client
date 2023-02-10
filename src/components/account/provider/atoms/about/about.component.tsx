@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider } from 'domain/providers';
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { LabeledValue } from 'ui';
 import { generateUrl } from 'tools/common';
 import { formatLanguage, formatList } from 'tools/format';

@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider } from 'domain/providers';
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { Tile } from 'ui';
 import { formatCurrency } from 'tools/format';
 import { ICON_BY_VARIANT, useDeleteAmenity } from 'domain/amenities';

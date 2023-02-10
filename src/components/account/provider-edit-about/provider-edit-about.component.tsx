@@ -10,7 +10,7 @@ import {
   MultiAutocompleteInput,
   TextInput,
 } from 'ui';
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { InfoBlock } from 'components/account/atoms';
 import {
   useUpdateProvider,

@@ -1,7 +1,7 @@
 import { IncomingMessage } from 'http';
 import { Router } from 'next/router';
 
-import { endpoints } from 'config/endpoints';
+import { endpoints } from 'config';
 import {
   Request,
   getFormDataBody,
