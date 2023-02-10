@@ -10,4 +10,5 @@ export const INITIAL_VALUES: Values = {
   duration: [NaN, NaN],
   distance: [NaN, NaN],
   difficulty: [NaN, NaN],
+  providers: [],
 };

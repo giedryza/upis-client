@@ -5,4 +5,5 @@ export interface Props {
   isOpen: boolean;
   buttonRef: RefObject<HTMLButtonElement>;
   active?: boolean;
+  disabled?: boolean;
 }

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider } from 'domain/providers';
 import { LabeledValue } from 'ui';

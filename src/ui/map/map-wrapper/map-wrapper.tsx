@@ -4,7 +4,7 @@ import * as ReactLeaflet from 'react-leaflet';
 
 import 'leaflet/dist/leaflet.css';
 
-import { APP } from 'config/app';
+import { APP } from 'config';
 
 import { MapSearch } from '../map-search/map-search';
 

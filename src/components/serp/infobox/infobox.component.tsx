@@ -1,7 +1,7 @@
 import { FC, Fragment } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { APP } from 'config/app';
+import { APP } from 'config';
 import { generateImageUrl, isLast } from 'tools/common';
 import { formatCurrency, formatNumber } from 'tools/format';
 import { Button, Carousel, Icon } from 'ui';

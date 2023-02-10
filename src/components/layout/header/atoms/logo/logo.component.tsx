@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { generateUrl } from 'tools/common';
 import LogoSvg from 'components/logo/logo-horizontal.svg';
 

@@ -3,7 +3,7 @@ import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { useProtectedPage } from 'tools/hooks';
 import { generateUrl, getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';

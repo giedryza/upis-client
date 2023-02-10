@@ -7,7 +7,7 @@ import { generateUrl } from 'tools/common';
 import { useAppDispatch } from 'tools/services';
 import { InfoBlock } from 'components/account/atoms';
 import { toursKeys, useActiveTour, useUpdateTour } from 'domain/tours';
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { useDeleteImage } from 'domain/images';
 import { useConfirm } from 'domain/confirm';
 import { lightbox } from 'domain/lightbox';

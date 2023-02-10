@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { generateUrl } from 'tools/common';
 import { Button, Container, TextInput } from 'ui';
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTour } from 'domain/tours';
 

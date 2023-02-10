@@ -2,7 +2,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import { getSession } from 'next-auth/react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { useGuestPage } from 'tools/hooks';
 import { AppHead } from 'ui';
 import { Signup } from 'components/auth';
@@ -20,7 +20,9 @@ const SignupPage: NextPage = () => {
 
       <MainLayout>
         <PageLayout>
-          <Signup />
+          <main>
+            <Signup />
+          </main>
         </PageLayout>
       </MainLayout>
     </>

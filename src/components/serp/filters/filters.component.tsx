@@ -2,7 +2,7 @@ import { FC, useRef } from 'react';
 import { clsx } from 'clsx';
 import useTranslation from 'next-translate/useTranslation';
 
-import { APP } from 'config/app';
+import { APP } from 'config';
 import { useBreakpoints, useOverflowDimensions } from 'tools/hooks';
 import { Button } from 'ui';
 
@@ -12,6 +12,7 @@ import {
   FilterDifficulty,
   FilterDistance,
   FilterDuration,
+  FilterProviders,
   FilterRegions,
   FilterRivers,
   FiltersClear,
@@ -40,6 +41,7 @@ export const SerpFilters: FC = () => {
           <FilterDuration key="duration" />,
           <FilterDistance key="distance" />,
           <FilterDifficulty key="difficulty" />,
+          <FilterProviders key="providers" />,
         ]),
     <FiltersClear key="clear" />,
   ] as const;

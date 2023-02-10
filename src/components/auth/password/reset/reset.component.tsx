@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { useAppDispatch } from 'tools/services';
 import { generateUrl } from 'tools/common';
 import { Button, Container, Card, TextInput } from 'ui';

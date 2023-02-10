@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { getSession } from 'next-auth/react';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';

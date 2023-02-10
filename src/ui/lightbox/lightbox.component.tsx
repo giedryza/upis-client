@@ -11,7 +11,7 @@ import {
 } from 'react-aria';
 
 import { Button, Carousel } from 'ui';
-import { APP } from 'config/app';
+import { APP } from 'config';
 
 import { Props } from './lightbox.types';
 import { useFullscreen } from './lightbox.hooks';

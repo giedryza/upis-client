@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, NumberInput, SliderInput } from 'ui';
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { generateUrl } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTour } from 'domain/tours';

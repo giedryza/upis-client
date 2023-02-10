@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, ImageTile, TextInput } from 'ui';
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { generateUrl, getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import { useDeleteImage, useImage, useUpdateImage } from 'domain/images';

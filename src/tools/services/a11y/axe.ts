@@ -1,4 +1,4 @@
-import { APP } from 'config/app';
+import { APP } from 'config';
 import { isServer } from 'tools/common';
 
 class Axe {

@@ -9,7 +9,7 @@ import {
   CheckboxGroupInput,
   MultiAutocompleteInput,
 } from 'ui';
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { generateUrl } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import {

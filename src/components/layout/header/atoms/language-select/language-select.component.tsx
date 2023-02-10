@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
 
-import { CookieName } from 'config/cookies';
+import { CookieName } from 'config';
 import { Locale } from 'types/common';
 import { capitalize } from 'tools/common';
 import { cookies } from 'tools/services';

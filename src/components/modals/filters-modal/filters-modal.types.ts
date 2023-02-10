@@ -9,6 +9,7 @@ export interface Values {
   duration: [ToursFilters['durationFrom'], ToursFilters['durationFrom']];
   distance: [ToursFilters['distanceFrom'], ToursFilters['distanceFrom']];
   difficulty: [ToursFilters['difficultyFrom'], ToursFilters['difficultyFrom']];
+  providers: ToursFilters['providers'];
 }
 
 export interface Props extends ModalProps {

@@ -49,6 +49,9 @@
     },
     "rivers": {
       "title": "Rivers"
+    },
+    "providers": {
+      "title": "Providers"
     }
   }
 }

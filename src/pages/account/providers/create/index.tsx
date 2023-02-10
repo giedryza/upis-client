@@ -2,7 +2,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import useTranslation from 'next-translate/useTranslation';
 import { getSession } from 'next-auth/react';
 
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { useProtectedPage } from 'tools/hooks';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { AppHead, Breadcrumbs } from 'ui';

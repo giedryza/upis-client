@@ -1,7 +1,7 @@
 import { IncomingMessage } from 'http';
 import { Router } from 'next/router';
 
-import { endpoints } from 'config/endpoints';
+import { endpoints } from 'config';
 import {
   Request,
   getJsonBody,
@@ -160,6 +160,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
             'regions',
             'rivers',
             'bounds',
+            'providers',
             'select',
             'populate',
           ])

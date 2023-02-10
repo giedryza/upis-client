@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { routes } from 'config/routes';
+import { routes } from 'config';
 import { generateUrl } from 'tools/common';
 import { Button, Container, TextInput } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
