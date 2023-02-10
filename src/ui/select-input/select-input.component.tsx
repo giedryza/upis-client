@@ -6,15 +6,16 @@ import { Props } from './select-input.types';
 export const SelectInput = forwardRef<HTMLSelectElement, Props>(
   (
     {
+      options,
+      label,
+      ariaLabel,
       name,
       disabled,
       readonly,
       value,
-      options,
       onChange,
       error,
       info,
-      label,
       placeholder,
     },
     ref
@@ -30,6 +31,7 @@ export const SelectInput = forwardRef<HTMLSelectElement, Props>(
       disabled,
       readOnly: readonly,
       'aria-invalid': !!error,
+      'aria-label': ariaLabel,
       ...(withInfo ? { 'aria-describedby': infoId } : {}),
       ...(readonly ? { tabIndex: -1 } : {}),
     };

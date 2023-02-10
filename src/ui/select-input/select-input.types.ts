@@ -6,10 +6,11 @@ interface DropdownOption {
 }
 
 export interface Props {
-  name: string;
   options: DropdownOption[];
+  name?: string;
   value?: string;
   label?: string;
+  ariaLabel?: string;
   placeholder?: string;
   disabled?: boolean;
   readonly?: boolean;

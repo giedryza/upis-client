@@ -14,6 +14,7 @@ export const ToursFooter: FC = () => {
   return (
     <div className={styles.footer}>
       <div />
+
       {tours?.meta && tours.meta.pages > 1 ? (
         <Pagination
           currentPage={tours.meta.page}
