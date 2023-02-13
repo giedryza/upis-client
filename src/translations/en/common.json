@@ -5,6 +5,22 @@
   "header": {
     "addTour": "Add tour"
   },
+  "footer": {
+    "slogan": "Kayak tours search engine",
+    "sections": {
+      "app": {
+        "title": "App",
+        "become_provider": "Become a provider",
+        "add_tour": "Add tour"
+      },
+      "contacts": {
+        "title": "Contacts"
+      }
+    },
+    "language": "Language",
+    "legal": "© {{year}} {{name}} | All rights reserved.",
+    "credentials": "Crafted by <0>giedrius.io</0>"
+  },
   "actions": {
     "close": "Close",
     "cancel": "Cancel",
