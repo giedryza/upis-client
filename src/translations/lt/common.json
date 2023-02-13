@@ -5,6 +5,22 @@
   "header": {
     "addTour": "Pridėti maršrutą"
   },
+  "footer": {
+    "slogan": "Baidarių maršrutų paieškos sistema",
+    "sections": {
+      "app": {
+        "title": "Aplikacija",
+        "become_provider": "Tapti tiekėju",
+        "add_tour": "Pridėti maršrutą"
+      },
+      "contacts": {
+        "title": "Kontaktai"
+      }
+    },
+    "language": "Kalba",
+    "legal": "© {{year}} {{name}} | Visos teisės saugomos.",
+    "credentials": "Sukūrė <0>giedrius.io</0>"
+  },
   "actions": {
     "close": "Uždaryti",
     "cancel": "Atšaukti",

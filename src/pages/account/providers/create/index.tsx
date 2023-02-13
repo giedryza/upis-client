@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   if (!session) {
     return {
       redirect: {
-        destination: generateUrl(routes.home),
+        destination: generateUrl(routes.auth.signin),
         permanent: false,
       },
     };

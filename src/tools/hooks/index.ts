@@ -6,6 +6,7 @@ export * from './use-event-listener';
 export * from './use-guest-page';
 export * from './use-intersection-observer';
 export * from './use-interval';
+export * from './use-is-navigating';
 export * from './use-media-query';
 export * from './use-on-click-outside';
 export * from './use-overflow-dimensions';

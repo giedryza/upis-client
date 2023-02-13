@@ -1,6 +1,107 @@
+@use 'styles/mixins' as *;
+
 .footer {
-  color: var(--color-grey-95);
+  color: var(--color-grey-05);
   text-align: center;
 
-  background-color: var(--color-grey-15);
+  background-color: var(--color-grey-90);
+
+  .body {
+    width: 100%;
+    padding: 1rem;
+
+    text-align: left;
+
+    @include spacing(y, 5rem);
+  }
+
+  .brand {
+    @include spacing(y, 0.5rem);
+  }
+
+  .slogan {
+    font-weight: 400;
+    font-size: 1.4rem;
+  }
+
+  .logo {
+    width: 9rem;
+
+    fill: currentColor;
+  }
+
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+    align-items: flex-end;
+  }
+
+  .navigation {
+    flex: 1;
+  }
+
+  .groups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+
+    @include mobile {
+      gap: 2.5rem;
+    }
+  }
+
+  .group {
+    white-space: nowrap;
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin-block-end: 1.25rem;
+  }
+
+  .links {
+    line-height: 1.75;
+  }
+
+  .link {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+
+    a {
+      color: inherit;
+      font-weight: 400;
+      font-size: 1.4rem;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .legal {
+    display: flex;
+    gap: 5rem;
+    justify-content: space-between;
+
+    font-weight: 400;
+    font-size: 1.2rem;
+
+    @include mobile {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
 }

@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { clsx } from 'clsx';
 
-import { useInterval } from 'tools/hooks';
+import { useInterval, useIsNavigating } from 'tools/hooks';
 import { Portal, Progress } from 'ui';
 
 import {
@@ -17,34 +17,31 @@ import styles from './progress-bar.module.scss';
 export const ProgressBar: FC = () => {
   const { events } = useRouter();
 
-  const [isLoading, setIsLoading] = useState(false);
   const [time, setTime] = useState(1);
 
   const reset = () => {
-    setIsLoading(false);
     setTime(1);
   };
 
   useEffect(() => {
-    events.on('routeChangeStart', () => setIsLoading(true));
-
     events.on('routeChangeComplete', reset);
     events.on('routeChangeError', reset);
   }, [events]);
 
+  const { isNavigating } = useIsNavigating();
   useInterval(
     () => {
       setTime((prev) => prev + 1);
     },
-    isLoading && time < TOTAL_PROGRESS ? INTERVAL : null
+    isNavigating && time < TOTAL_PROGRESS ? INTERVAL : null
   );
 
   return (
     <Portal id="progress-bar">
-      <div className={clsx(styles.progressBar, !isLoading && styles.hidden)}>
+      <div className={clsx(styles.progressBar, !isNavigating && styles.hidden)}>
         <Progress
           value={
-            isLoading
+            isNavigating
               ? Math.floor(
                   slowingGrowth(
                     STEP / 100,

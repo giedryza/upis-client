@@ -3,8 +3,10 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
+import { APP } from 'config';
+
 import { Props } from './app-head.types';
-import { APP_NAME, HOST } from './app-head.constants';
+import { HOST } from './app-head.constants';
 
 export const AppHead: FC<Props> = ({ title }) => {
   const { locales = [], defaultLocale, pathname } = useRouter();
@@ -12,7 +14,7 @@ export const AppHead: FC<Props> = ({ title }) => {
 
   return (
     <Head>
-      <title>{[APP_NAME, title].filter(Boolean).join(' | ')}</title>
+      <title>{[APP.name, title].filter(Boolean).join(' | ')}</title>
 
       <meta name="description" content={t('common:app.description')} />
 
