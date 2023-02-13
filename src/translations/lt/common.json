@@ -20,7 +20,7 @@
       }
     },
     "language": "Kalba",
-    "legal": "© {{year}} {{name}} | Visos teisės saugomos.",
+    "legal": "© {{year}} {{name}}",
     "credentials": "Sukūrė <0>giedrius.io</0>"
   },
   "actions": {

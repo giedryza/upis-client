@@ -20,7 +20,7 @@
       }
     },
     "language": "Language",
-    "legal": "© {{year}} {{name}} | All rights reserved.",
+    "legal": "© {{year}} {{name}}",
     "credentials": "Crafted by <0>giedrius.io</0>"
   },
   "actions": {
