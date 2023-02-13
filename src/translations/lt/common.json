@@ -3,9 +3,11 @@
     "description": "Baidarių nuoma ir maršrutai Lietuvoje"
   },
   "header": {
+    "nav": "Pagrindinė navigacija",
     "addTour": "Pridėti maršrutą"
   },
   "footer": {
+    "nav": "Papildoma navigacija",
     "slogan": "Baidarių maršrutų paieškos sistema",
     "sections": {
       "app": {

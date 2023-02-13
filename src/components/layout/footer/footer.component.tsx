@@ -49,15 +49,18 @@ export const Footer: FC = () => {
         <div className={styles.body}>
           <div className={styles.brand}>
             <LogoSvg className={styles.logo} focusable={false} aria-hidden />
-            <h5 className={styles.slogan}>{t('common:footer.slogan')}</h5>
+            <h4 className={styles.slogan}>{t('common:footer.slogan')}</h4>
           </div>
 
           <div className={styles.main}>
-            <nav className={styles.navigation}>
+            <nav
+              className={styles.navigation}
+              aria-label={t('common:footer.nav')}
+            >
               <ul className={styles.groups}>
                 {NAVIGATION.map((group, index) => (
                   <li className={styles.group} key={index}>
-                    <h6 className={styles.title}>{group.title}</h6>
+                    <h5 className={styles.title}>{group.title}</h5>
                     <ul className={styles.links}>
                       {group.links.map((link, i) => (
                         <li className={styles.link} key={i}>
@@ -73,6 +76,7 @@ export const Footer: FC = () => {
             <div className={styles.language}>
               <SelectInput
                 label={t('common:footer.language')}
+                name="language"
                 options={Object.values(Locale).map((locale) => ({
                   label: capitalize(formatLanguage(locale, locale)),
                   value: locale,

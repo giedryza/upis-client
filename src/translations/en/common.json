@@ -3,9 +3,11 @@
     "description": "Kayak rentals and tours in Lithuania"
   },
   "header": {
+    "nav": "Header navigation",
     "addTour": "Add tour"
   },
   "footer": {
+    "nav": "Footer navigation",
     "slogan": "Kayak tours search engine",
     "sections": {
       "app": {
