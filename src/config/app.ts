@@ -9,6 +9,10 @@ const SERP_CONFIG = {
 } as const;
 
 export const APP = {
+  name: 'Upis.lt',
+  mail: {
+    index: 'labas@upis.lt',
+  },
   env: process.env.NODE_ENV,
   host: {
     client: process.env.NEXT_PUBLIC_HOST_CLIENT,
