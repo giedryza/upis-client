@@ -14,4 +14,5 @@ export interface Props {
   error?: string;
   autofocus?: boolean;
   variant?: 'primary' | 'neutral';
+  expanded?: boolean;
 }
