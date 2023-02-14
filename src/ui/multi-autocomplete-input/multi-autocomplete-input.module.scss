@@ -171,6 +171,13 @@
     background-color: var(--color-white);
     border-radius: var(--border-radius-sm);
     box-shadow: var(--shadow-primary);
+
+    &.expanded {
+      position: static;
+
+      border-radius: 0;
+      box-shadow: none;
+    }
   }
 
   .item {

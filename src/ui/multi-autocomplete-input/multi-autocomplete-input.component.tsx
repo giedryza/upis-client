@@ -20,6 +20,7 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
       placeholder,
       error,
       autofocus,
+      expanded,
       variant = 'neutral',
     },
     forwardedRef
@@ -65,6 +66,7 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
       getItemProps,
       selectedItem,
     } = useCombobox<Item>({
+      isOpen: expanded,
       id: name,
       items: filteredItems,
       itemToString: (item) => item?.label ?? '',
@@ -76,6 +78,13 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
             return {
               ...changes,
               isOpen: !!changes.selectedItem,
+              inputValue: '',
+            };
+          case useCombobox.stateChangeTypes.InputKeyDownEnter:
+          case useCombobox.stateChangeTypes.ItemClick:
+            return {
+              ...changes,
+              inputValue: '',
             };
           default:
             return changes;
@@ -140,14 +149,16 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
                   })
                 )}
               />
-              <button
-                aria-label="toggle menu"
-                type="button"
-                className={clsx(styles.pressable, styles.inverted)}
-                {...getToggleButtonProps()}
-              >
-                &#8595;
-              </button>
+              {isOpen ? null : (
+                <button
+                  aria-label="toggle menu"
+                  type="button"
+                  className={clsx(styles.pressable, styles.inverted)}
+                  {...getToggleButtonProps()}
+                >
+                  &#8595;
+                </button>
+              )}
             </div>
           </div>
 
@@ -155,6 +166,7 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
             {...getMenuProps()}
             className={clsx(styles.dropdown, {
               'visually-hidden': !isOpen || !filteredItems.length,
+              [String(styles.expanded)]: expanded,
             })}
           >
             {isOpen
