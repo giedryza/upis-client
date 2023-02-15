@@ -12,7 +12,7 @@ export const ModalContent: FC<PropsWithChildren<Props>> = ({
   actions = [],
 }) => {
   return (
-    <div className={clsx(styles.content, 'scrollbar-hidden')}>
+    <div className={clsx(styles.content, 'scrollbar-primary')}>
       <h2 className={styles.title}>{title}</h2>
 
       <div className={styles.body}>{children}</div>

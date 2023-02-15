@@ -27,7 +27,7 @@ export const Popover: FC<PropsWithChildren<Props>> = ({
       <div
         {...popoverProps}
         ref={popoverRef}
-        className={clsx(styles.popover, 'scrollbar-hidden')}
+        className={clsx(styles.popover, 'scrollbar-primary')}
       >
         <svg
           {...arrowProps}
