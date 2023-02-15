@@ -4,14 +4,13 @@ import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import { useRouter } from 'next/router';
 
-import { Container, SelectInput } from 'ui';
+import { Container, SelectInput, Logo } from 'ui';
 import { capitalize, generateUrl } from 'tools/common';
 import { APP, CookieName, routes } from 'config';
 import { Locale } from 'types/common';
 import { formatLanguage } from 'tools/format';
 import { cookies } from 'tools/services';
 import { useIsNavigating } from 'tools/hooks';
-import LogoSvg from 'components/logo/logo-horizontal.svg';
 
 import styles from './footer.module.scss';
 
@@ -48,7 +47,12 @@ export const Footer: FC = () => {
       <Container>
         <div className={styles.body}>
           <div className={styles.brand}>
-            <LogoSvg className={styles.logo} focusable={false} aria-hidden />
+            <Logo
+              variant="horizontal"
+              className={styles.logo}
+              focusable={false}
+              aria-hidden
+            />
             <h4 className={styles.slogan}>{t('common:footer.slogan')}</h4>
           </div>
 

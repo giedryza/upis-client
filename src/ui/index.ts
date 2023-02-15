@@ -20,6 +20,7 @@ export * from './in-view';
 export * from './labeled-value';
 export * from './lightbox';
 export * from './loader';
+export * from './logo';
 export * from './map';
 export * from './meter';
 export * from './modal';
