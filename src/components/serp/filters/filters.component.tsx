@@ -24,13 +24,12 @@ import styles from './filters.module.scss';
 export const SerpFilters: FC = () => {
   const { t } = useTranslation();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const { xs } = useBreakpoints();
+  const { xs, md } = useBreakpoints();
   const { containerWidth, totalWidth, offsetLeft, offsetRight } =
     useOverflowDimensions(scrollContainerRef);
 
   const items = [
-    <ViewToggle key="view-toggle" />,
-
+    ...(md ? [<ViewToggle key="view-toggle" />] : []),
     ...(xs
       ? [<FiltersModalTrigger key="modal-trigger" />]
       : [
