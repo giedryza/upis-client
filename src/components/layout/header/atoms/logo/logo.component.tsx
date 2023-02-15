@@ -3,18 +3,18 @@ import Link from 'next/link';
 
 import { routes } from 'config';
 import { generateUrl } from 'tools/common';
-import LogoSvg from 'components/logo/logo-horizontal.svg';
+import { Logo } from 'ui';
 
 import styles from './logo.module.scss';
 
-export const Logo: FC = () => {
+export const HeaderLogo: FC = () => {
   return (
     <Link
       href={generateUrl(routes.home)}
       className={styles.logo}
       aria-label="Home"
     >
-      <LogoSvg focusable={false} aria-hidden />
+      <Logo variant="horizontal" focusable={false} aria-hidden />
     </Link>
   );
 };
