@@ -20,7 +20,7 @@ export const DropdownMenu: FC<Props> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
-    setIsOpen((prevState) => !prevState);
+    setIsOpen((prev) => !prev);
   };
 
   const handleClose = () => {

@@ -32,8 +32,8 @@ export const ModalProvider: FC<PropsWithChildren> = ({ children }) => {
   const openModal = useCallback<ModalContext['openModal']>(
     ({ component, props }) => {
       return new Promise((resolve) => {
-        setModals((prevState) => [
-          ...prevState,
+        setModals((prev) => [
+          ...prev,
           { component, props, resolve, id: nanoid(10) },
         ]);
       });
@@ -42,10 +42,10 @@ export const ModalProvider: FC<PropsWithChildren> = ({ children }) => {
   );
 
   const closeModal = useCallback<ModalContext['closeModal']>((data) => {
-    setModals((prevState) => {
-      prevState.at(-1)?.resolve(data || { action: 'CLOSE' });
+    setModals((prev) => {
+      prev.at(-1)?.resolve(data || { action: 'CLOSE' });
 
-      return prevState.slice(0, -1);
+      return prev.slice(0, -1);
     });
   }, []);
 

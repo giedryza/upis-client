@@ -38,13 +38,13 @@ export const Carousel: FC<Props> = ({
   const onPrev = () => {
     if (!hasPrev) return;
 
-    setCurrentIndex((prevIndex) => prevIndex - 1);
+    setCurrentIndex((prev) => prev - 1);
   };
 
   const onNext = () => {
     if (!hasNext) return;
 
-    setCurrentIndex((prevIndex) => prevIndex + 1);
+    setCurrentIndex((prev) => prev + 1);
   };
 
   const onScroll = ({ target }: Event) => {
