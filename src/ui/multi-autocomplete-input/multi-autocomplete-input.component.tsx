@@ -164,7 +164,7 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
 
           <ul
             {...getMenuProps()}
-            className={clsx(styles.dropdown, {
+            className={clsx(styles.dropdown, 'scrollbar-primary', {
               'visually-hidden': !isOpen || !filteredItems.length,
               [String(styles.expanded)]: expanded,
             })}
