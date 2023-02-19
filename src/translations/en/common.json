@@ -4,7 +4,7 @@
   },
   "header": {
     "nav": "Header navigation",
-    "addTour": "Add tour"
+    "add_tour": "Add a tour"
   },
   "footer": {
     "nav": "Footer navigation",
@@ -13,7 +13,7 @@
       "app": {
         "title": "App",
         "become_provider": "Become a provider",
-        "add_tour": "Add tour"
+        "add_tour": "Add a tour"
       },
       "contacts": {
         "title": "Contacts"
@@ -41,9 +41,9 @@
     "back": "Back",
     "continue": "Continue",
     "zoom": "Zoom",
-    "tryAgain": "Try again",
+    "try_again": "Try again",
     "search": "Search",
-    "enterAddress": "Search address"
+    "enter_address": "Search address"
   },
   "components": {
     "fileInput": {

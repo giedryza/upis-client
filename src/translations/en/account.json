@@ -348,7 +348,7 @@
       "confirmDelete": "This action cannot be undone. It will permanently delete tour <strong>{{name}}</strong> and all its associated information. Are you sure you want to proceed?"
     },
     "actions": {
-      "add": "Add tour",
+      "add": "Add a tour",
       "delete": "Delete tour"
     }
   }

@@ -41,7 +41,7 @@ export const PasswordReset: FC = () => {
               i18nKey="auth:passwordReset.error"
               components={[
                 <Button
-                  label={t('common:actions.tryAgain')}
+                  label={t('common:actions.try_again')}
                   size="sm"
                   variant="link"
                   url={generateUrl(routes.auth.password.forgot)}

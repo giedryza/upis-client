@@ -18,7 +18,7 @@ export const useInitControl = (map: L.Map) => {
       provider: new OpenStreetMapProvider(),
       style: 'bar',
       autoCompleteDelay: 100,
-      searchLabel: t('common:actions.enterAddress'),
+      searchLabel: t('common:actions.enter_address'),
       showMarker: false,
     };
 

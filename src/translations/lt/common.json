@@ -4,7 +4,7 @@
   },
   "header": {
     "nav": "Pagrindinė navigacija",
-    "addTour": "Pridėti maršrutą"
+    "add_tour": "Pridėti maršrutą"
   },
   "footer": {
     "nav": "Papildoma navigacija",
@@ -41,9 +41,9 @@
     "back": "Atgal",
     "continue": "Tęsti",
     "zoom": "Padidinti",
-    "tryAgain": "Bandyti iš naujo",
+    "try_again": "Bandyti iš naujo",
     "search": "Ieškoti",
-    "enterAddress": "Ieškoti adreso"
+    "enter_address": "Ieškoti adreso"
   },
   "components": {
     "fileInput": {
