@@ -1,8 +1,9 @@
 import { FC, Fragment } from 'react';
+import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 
-import { APP } from 'config';
-import { generateImageUrl, isLast } from 'tools/common';
+import { APP, routes } from 'config';
+import { generateImageUrl, generateUrl, isLast } from 'tools/common';
 import { formatCurrency, formatNumber } from 'tools/format';
 import { Button, Carousel, Icon } from 'ui';
 
@@ -11,6 +12,8 @@ import styles from './infobox.module.scss';
 
 export const Infobox: FC<Props> = ({
   useMap,
+  _id,
+  slug,
   name,
   photos,
   distance,
@@ -56,7 +59,11 @@ export const Infobox: FC<Props> = ({
         </div>
       ) : null}
       <div className={styles.body}>
-        <h3 className={styles.title}>{name}</h3>
+        <h3 className={styles.title}>
+          <Link href={generateUrl(routes.tours.one.index, { id: _id, slug })}>
+            {name}
+          </Link>
+        </h3>
 
         <h4 className={styles.subtitle}>
           {[
@@ -98,6 +105,7 @@ export const Infobox: FC<Props> = ({
             variant="primary"
             size="xs"
             label={t('common:actions.view')}
+            url={generateUrl(routes.tours.one.index, { id: _id, slug })}
           />
         </div>
       </div>

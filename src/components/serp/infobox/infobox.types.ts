@@ -6,5 +6,12 @@ export type Props = {
   useMap: typeof useMap;
 } & Pick<
   Tour,
-  '_id' | 'name' | 'photos' | 'distance' | 'days' | 'duration' | 'price'
+  | '_id'
+  | 'slug'
+  | 'name'
+  | 'photos'
+  | 'distance'
+  | 'days'
+  | 'duration'
+  | 'price'
 >;
