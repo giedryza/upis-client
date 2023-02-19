@@ -1,0 +1,44 @@
+@use 'styles/mixins' as *;
+
+.header {
+  @include spacing(y, 1rem);
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .extras {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.75rem;
+  }
+
+  .info {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .icon {
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.25rem;
+  }
+}

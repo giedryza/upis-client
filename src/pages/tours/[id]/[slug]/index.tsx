@@ -3,13 +3,16 @@ import { getSession } from 'next-auth/react';
 
 import { AppHead } from 'ui';
 import { TourDetails } from 'components/tour';
+import { MainLayout } from 'layouts';
 
 const TourPage: NextPage = () => {
   return (
     <>
       <AppHead />
 
-      <TourDetails />
+      <MainLayout>
+        <TourDetails />
+      </MainLayout>
     </>
   );
 };
