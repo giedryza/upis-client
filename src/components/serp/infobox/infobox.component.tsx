@@ -60,7 +60,10 @@ export const Infobox: FC<Props> = ({
       ) : null}
       <div className={styles.body}>
         <h3 className={styles.title}>
-          <Link href={generateUrl(routes.tours.one.index, { id: _id, slug })}>
+          <Link
+            href={generateUrl(routes.tours.one.index, { id: _id, slug })}
+            tabIndex={-1}
+          >
             {name}
           </Link>
         </h3>

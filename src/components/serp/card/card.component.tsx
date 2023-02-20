@@ -62,6 +62,7 @@ export const SerpCard: FC<Props> = memo(({ tour, userId }) => {
                 id: tour._id,
                 slug: tour.slug,
               })}
+              tabIndex={-1}
             >
               {tour.name}
             </Link>
