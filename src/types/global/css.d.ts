@@ -3,6 +3,7 @@ import * as CSS from 'csstype';
 
 declare module 'csstype' {
   interface Properties {
+    '--size'?: number;
     '--width'?: number;
     '--height'?: number;
     '--left'?: number;

@@ -1,0 +1,38 @@
+@use 'styles/mixins' as *;
+
+.provider {
+  display: flex;
+
+  .content {
+    @include spacing(y, 0.25rem);
+  }
+
+  .logo {
+    margin-inline-end: 1rem;
+    width: calc(var(--size) * 1px);
+    height: calc(var(--size) * 1px);
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .label {
+    font-size: 1.6rem;
+    font-weight: 600;
+    display: block;
+  }
+
+  .sublabel {
+    font-size: 1.2rem;
+    font-weight: 400;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
