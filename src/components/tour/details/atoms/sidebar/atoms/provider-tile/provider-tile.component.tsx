@@ -21,7 +21,12 @@ export const ProviderTile: FC<Props> = ({
     <div className={styles.provider} style={{ '--size': size }}>
       <div className={styles.logo}>
         {logo ? (
-          <Image src={logo} sizes={{ width: size, height: size }} alt={name} />
+          <Image
+            src={logo}
+            sizes={{ width: size, height: size }}
+            alt={name}
+            style={{ objectFit: 'cover' }}
+          />
         ) : (
           <ImagePlaceholder radius="full" fit="fluid" />
         )}
