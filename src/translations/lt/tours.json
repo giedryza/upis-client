@@ -1,0 +1,7 @@
+{
+  "provider": {
+    "tours_count_one": "{{count}} maršrutas",
+    "tours_count_other": "{{count}} maršrutų",
+    "tours_count_few": "{{count}} maršrutai"
+  }
+}

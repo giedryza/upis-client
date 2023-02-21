@@ -1,0 +1,6 @@
+{
+  "provider": {
+    "tours_count_one": "{{count}} tour",
+    "tours_count_other": "{{count}} tours"
+  }
+}
