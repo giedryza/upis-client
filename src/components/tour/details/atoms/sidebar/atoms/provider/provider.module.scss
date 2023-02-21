@@ -8,23 +8,25 @@
   }
 
   .logo {
-    margin-inline-end: 1rem;
+    flex-shrink: 0;
     width: calc(var(--size) * 1px);
     height: calc(var(--size) * 1px);
-    border-radius: 50%;
     overflow: hidden;
-    flex-shrink: 0;
+
+    border-radius: 50%;
+    margin-inline-end: 1rem;
   }
 
   .label {
-    font-size: 1.6rem;
-    font-weight: 600;
     display: block;
+
+    font-weight: 600;
+    font-size: 1.6rem;
   }
 
   .sublabel {
-    font-size: 1.2rem;
     font-weight: 400;
+    font-size: 1.2rem;
 
     a {
       color: inherit;
