@@ -1,0 +1,22 @@
+.contacts {
+  font-size: 1.4rem;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 2rem 0.75rem;
+
+  .contact {
+    display: contents;
+  }
+
+  .label {
+    font-weight: 600;
+  }
+
+  .icon {
+    width: 1.25em;
+    height: 1.25em;
+    flex-shrink: 0;
+    fill: var(--color-primary-60);
+    display: inline-block;
+  }
+}

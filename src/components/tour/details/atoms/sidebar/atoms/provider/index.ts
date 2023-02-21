@@ -1,1 +1,1 @@
-export { Provider } from './provider.component';
+export { SidebarProvider } from './provider.component';

@@ -2,6 +2,21 @@
   "provider": {
     "tours_count_one": "{{count}} maršrutas",
     "tours_count_other": "{{count}} maršrutų",
-    "tours_count_few": "{{count}} maršrutai"
+    "tours_count_few": "{{count}} maršrutai",
+    "phone": {
+      "title": "Telefonas"
+    },
+    "email": {
+      "title": "El. paštas"
+    },
+    "website": {
+      "title": "Tinklapis"
+    },
+    "languages": {
+      "title": "Kalbos"
+    },
+    "actions": {
+      "visit_website": "Peržiūrėti tinklapyje"
+    }
   }
 }

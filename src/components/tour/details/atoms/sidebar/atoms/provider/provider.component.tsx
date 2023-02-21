@@ -8,7 +8,13 @@ import { routes } from 'config';
 import { Props } from './provider.types';
 import styles from './provider.module.scss';
 
-export const Provider: FC<Props> = ({ id, name, logo, toursCount, size }) => {
+export const SidebarProvider: FC<Props> = ({
+  id,
+  name,
+  logo,
+  toursCount,
+  size,
+}) => {
   const { t } = useTranslation();
 
   return (
