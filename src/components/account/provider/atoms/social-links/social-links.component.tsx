@@ -5,11 +5,13 @@ import useTranslation from 'next-translate/useTranslation';
 import { routes } from 'config';
 import { Tile } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
-import { useSocialLinks, useDeleteSocialLink } from 'domain/social-links';
+import {
+  useSocialLinks,
+  useDeleteSocialLink,
+  ICON_BY_SOCIAL_LINK_TYPE,
+} from 'domain/social-links';
 import { useConfirm } from 'domain/confirm';
 import { generateUrl, getRouteParam, toExternalLink } from 'tools/common';
-
-import { ICON_BY_SOCIAL_LINK_TYPE } from './social-links.constants';
 
 export const SocialLinks: FC = () => {
   const { t } = useTranslation();

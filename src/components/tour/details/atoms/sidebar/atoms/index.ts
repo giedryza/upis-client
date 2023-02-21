@@ -1,1 +1,1 @@
-export * from './provider-tile';
+export * from './provider';

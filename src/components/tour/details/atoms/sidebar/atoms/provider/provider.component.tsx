@@ -5,16 +5,10 @@ import useTranslation from 'next-translate/useTranslation';
 import { Image, ImagePlaceholder } from 'ui';
 import { routes } from 'config';
 
-import { Props } from './provider-tile.types';
-import styles from './provider-tile.module.scss';
+import { Props } from './provider.types';
+import styles from './provider.module.scss';
 
-export const ProviderTile: FC<Props> = ({
-  id,
-  name,
-  logo,
-  toursCount,
-  size,
-}) => {
+export const Provider: FC<Props> = ({ id, name, logo, toursCount, size }) => {
   const { t } = useTranslation();
 
   return (
