@@ -1,7 +1,7 @@
 @use 'styles/mixins' as *;
 
 .main {
-  padding: calc(var(--spacing) * 1px) 0;
+  padding: calc(var(--spacing) * 1px);
 
   @include spacing(y, calc(var(--spacing) * 1px));
 

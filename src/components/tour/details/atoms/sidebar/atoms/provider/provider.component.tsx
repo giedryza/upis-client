@@ -4,18 +4,17 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { Image, ImagePlaceholder } from 'ui';
 import { routes } from 'config';
+import { useTours } from 'domain/tours';
 
 import { Props } from './provider.types';
 import styles from './provider.module.scss';
 
-export const SidebarProvider: FC<Props> = ({
-  id,
-  name,
-  logo,
-  toursCount,
-  size,
-}) => {
+export const SidebarProvider: FC<Props> = ({ id, name, logo, size }) => {
   const { t } = useTranslation();
+
+  const { data: tours, isLoading } = useTours({
+    filters: { limit: 3, providers: [id] },
+  });
 
   return (
     <div className={styles.provider} style={{ '--size': size }}>
@@ -41,7 +40,11 @@ export const SidebarProvider: FC<Props> = ({
               query: { providers: [id] },
             }}
           >
-            {t('tours:provider.tours_count', { count: toursCount })}
+            {isLoading
+              ? t('tours:provider.tours')
+              : t('tours:provider.tours_count', {
+                  count: tours?.meta?.total ?? 0,
+                })}
           </Link>
         </span>
       </div>

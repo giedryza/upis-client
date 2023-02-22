@@ -24,7 +24,6 @@ export const DetailsSidebar: FC = () => {
             id={tour.provider._id}
             name={tour.provider.name}
             logo={tour.provider.logo.location}
-            toursCount={12}
             size={PROVIDER_TILE_SIZE}
           />
 
