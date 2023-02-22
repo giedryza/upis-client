@@ -30,19 +30,19 @@ interface BaseProps {
 
 type OmittedAttributes = keyof BaseProps | 'className' | 'children';
 
-type ButtonAsButton = BaseProps &
+type AsButtonProps = BaseProps &
   Omit<ButtonHTMLAttributes<HTMLButtonElement>, OmittedAttributes> & {
     as: 'button';
   };
 
-type ButtonAsLink = BaseProps &
+type AsLinkProps = BaseProps &
   Omit<ComponentProps<typeof Link>, OmittedAttributes> & {
     as: 'link';
   };
 
-type ButtonAsExternal = BaseProps &
+type AsExternalProps = BaseProps &
   Omit<AnchorHTMLAttributes<HTMLAnchorElement>, OmittedAttributes> & {
     as: 'external';
   };
 
-export type Props = ButtonAsButton | ButtonAsLink | ButtonAsExternal;
+export type Props = AsButtonProps | AsLinkProps | AsExternalProps;
