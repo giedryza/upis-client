@@ -82,20 +82,20 @@ export const TourCreate: FC = () => {
 
           <div className={styles.actions}>
             <Button
+              as="link"
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={generateUrl(routes.account.tours.index)}
+              href={generateUrl(routes.account.tours.index)}
             />
 
             <Button
+              as="button"
               label={t('common:actions.submit')}
               variant="tertiary"
               size="sm"
-              attributes={{
-                type: 'submit',
-                disabled: !isDirty || isLoading,
-              }}
+              type="submit"
+              disabled={!isDirty || isLoading}
             />
           </div>
         </form>

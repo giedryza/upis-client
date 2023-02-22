@@ -89,22 +89,22 @@ export const ProviderEditSocialLinksAdd: FC = () => {
 
           <div className={styles.actions}>
             <Button
+              as="link"
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={generateUrl(routes.account.providers.one.index, {
+              href={generateUrl(routes.account.providers.one.index, {
                 id: providerId,
               })}
             />
 
             <Button
+              as="button"
               label={t('common:actions.add')}
               variant="tertiary"
               size="sm"
-              attributes={{
-                type: 'submit',
-                disabled: !isDirty || isLoading,
-              }}
+              type="submit"
+              disabled={!isDirty || isLoading}
             />
           </div>
         </form>

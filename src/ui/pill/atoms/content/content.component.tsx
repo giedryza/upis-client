@@ -27,13 +27,12 @@ export const Content: FC<PropsWithChildren<Props & AriaDialogProps>> = ({
         </h3>
         {!!onClose && (
           <Button
+            as="button"
             icon="close"
             variant="ghost"
             size="xs"
-            attributes={{
-              onClick: onClose,
-              'aria-label': t('common:actions.close'),
-            }}
+            onClick={onClose}
+            aria-label={t('common:actions.close')}
           />
         )}
       </header>

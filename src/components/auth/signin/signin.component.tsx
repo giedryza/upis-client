@@ -64,27 +64,28 @@ export const Signin: FC = () => {
               />
 
               <Button
+                as="link"
                 label={t('auth:actions.forgot-pass')}
                 variant="link"
                 size="xs"
-                url={generateUrl(routes.auth.password.forgot)}
+                href={generateUrl(routes.auth.password.forgot)}
               />
             </fieldset>
 
             <Button
+              as="button"
               label={t('auth:actions.signin')}
               variant="primary"
               width="full"
-              attributes={{
-                type: 'submit',
-                disabled: isLoading,
-              }}
+              type="submit"
+              disabled={isLoading}
             />
           </form>
 
           <Divider label={t('common:texts.or')} />
 
           <Button
+            as="button"
             label={t('auth:actions.signin-google')}
             icon="logo-google"
             variant="secondary"
@@ -94,10 +95,11 @@ export const Signin: FC = () => {
           <div className={styles.footer}>
             <span>{t('auth:signin.texts.not-have-account')}</span>
             <Button
+              as="link"
               label={t('auth:actions.signup')}
               variant="link"
               size="xs"
-              url={generateUrl(routes.auth.signup)}
+              href={generateUrl(routes.auth.signup)}
             />
           </div>
         </div>

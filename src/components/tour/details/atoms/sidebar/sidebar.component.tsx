@@ -37,12 +37,16 @@ export const DetailsSidebar: FC = () => {
 
           <SidebarSocials socialLinks={tour.provider.socialLinks} />
 
-          <Button
-            label={t('tours:provider.actions.visit_website')}
-            variant="outline"
-            size="sm"
-            width="full"
-          />
+          {tour.website ? (
+            <Button
+              as="external"
+              href={tour.website}
+              label={t('tours:provider.actions.visit_website')}
+              variant="outline"
+              size="sm"
+              width="full"
+            />
+          ) : null}
         </>
       ) : null}
     </aside>

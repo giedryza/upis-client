@@ -81,20 +81,18 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
       title={t('serp:filters.title')}
       actions={[
         {
+          as: 'button',
           label: t('common:actions.cancel'),
           variant: 'ghost',
-          attributes: {
-            onClick: () => closeModal({ action: 'CLOSE' }),
-          },
+          onClick: () => closeModal({ action: 'CLOSE' }),
         },
         {
+          as: 'button',
           label: t('common:actions.apply'),
           variant: 'primary',
-          attributes: {
-            type: 'submit',
-            form: FORM_ID,
-            disabled: !isDirty,
-          },
+          type: 'submit',
+          form: FORM_ID,
+          disabled: !isDirty,
         },
       ]}
     >

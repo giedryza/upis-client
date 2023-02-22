@@ -27,7 +27,8 @@ export const Amenities: FC = () => {
       columns={2}
       actions={[
         {
-          url: generateUrl(routes.account.providers.one.amenities.add, {
+          as: 'link',
+          href: generateUrl(routes.account.providers.one.amenities.add, {
             id: provider._id,
           }),
           label: t('common:actions.add'),
@@ -55,34 +56,34 @@ export const Amenities: FC = () => {
           ]}
           actions={[
             {
+              as: 'link',
               label: t('common:actions.edit'),
               icon: 'pencil',
               variant: 'secondary',
-              url: generateUrl(routes.account.providers.one.amenities.one, {
+              href: generateUrl(routes.account.providers.one.amenities.one, {
                 id: provider._id,
                 amenityId: amenity._id,
               }),
             },
             {
+              as: 'button',
               label: t('common:actions.delete'),
               icon: 'trash',
               variant: 'ghost',
-              attributes: {
-                disabled: isDeleting,
-                onClick: async () => {
-                  const { confirmed } = await confirmation(
-                    t('account:providers.amenities.texts.confirmDelete', {
-                      name: t(`common:amenities.variants.${amenity.variant}`),
-                    })
-                  );
+              disabled: isDeleting,
+              onClick: async () => {
+                const { confirmed } = await confirmation(
+                  t('account:providers.amenities.texts.confirmDelete', {
+                    name: t(`common:amenities.variants.${amenity.variant}`),
+                  })
+                );
 
-                  if (confirmed) {
-                    deleteAmenity({
-                      id: amenity._id,
-                      providerId: provider._id,
-                    });
-                  }
-                },
+                if (confirmed) {
+                  deleteAmenity({
+                    id: amenity._id,
+                    providerId: provider._id,
+                  });
+                }
               },
             },
           ]}

@@ -105,10 +105,11 @@ export const Infobox: FC<Props> = ({
           </div>
 
           <Button
+            as="link"
             variant="primary"
             size="xs"
             label={t('common:actions.view')}
-            url={generateUrl(routes.tours.one.index, { id: _id, slug })}
+            href={generateUrl(routes.tours.one.index, { id: _id, slug })}
           />
         </div>
       </div>

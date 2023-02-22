@@ -142,22 +142,22 @@ export const SerpCard: FC<Props> = memo(({ tour, userId }) => {
           <div className={styles.actions}>
             {userId === tour.user ? (
               <Button
+                as="link"
                 icon="pencil"
                 size="xs"
                 variant="ghost"
-                attributes={{
-                  title: t('common:actions.edit'),
-                }}
-                url={generateUrl(routes.account.tours.one.index, {
+                title={t('common:actions.edit')}
+                href={generateUrl(routes.account.tours.one.index, {
                   id: tour._id,
                 })}
               />
             ) : null}
             <Button
+              as="link"
               label={t('common:actions.view')}
               size="sm"
               variant="primary"
-              url={generateUrl(routes.tours.one.index, {
+              href={generateUrl(routes.tours.one.index, {
                 id: tour._id,
                 slug: tour.slug,
               })}

@@ -28,30 +28,29 @@ export const Settings: FC = () => {
     >
       <div>
         <Button
+          as="button"
           label={t('account:providers.actions.delete')}
           variant="ghost"
           icon="trash"
           size="sm"
-          attributes={{
-            disabled: isDeleting,
-            onClick: async () => {
-              const { confirmed } = await confirmation(
-                t('account:providers.texts.confirmDelete', {
-                  name: provider.name,
-                })
-              );
+          disabled={isDeleting}
+          onClick={async () => {
+            const { confirmed } = await confirmation(
+              t('account:providers.texts.confirmDelete', {
+                name: provider.name,
+              })
+            );
 
-              if (confirmed) {
-                deleteProvider(
-                  { id: provider._id },
-                  {
-                    onSuccess: () => {
-                      push(generateUrl(routes.account.providers.index));
-                    },
-                  }
-                );
-              }
-            },
+            if (confirmed) {
+              deleteProvider(
+                { id: provider._id },
+                {
+                  onSuccess: () => {
+                    push(generateUrl(routes.account.providers.index));
+                  },
+                }
+              );
+            }
           }}
         />
       </div>

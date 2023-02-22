@@ -23,7 +23,8 @@ export const Amenities: FC = () => {
       columns={tour.amenities.length ? 2 : 1}
       actions={[
         {
-          url: generateUrl(routes.account.tours.one.amenities, {
+          as: 'link',
+          href: generateUrl(routes.account.tours.one.amenities, {
             id: tour._id,
           }),
           label: t('common:actions.edit'),

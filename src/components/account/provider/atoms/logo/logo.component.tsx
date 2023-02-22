@@ -21,7 +21,8 @@ export const Logo: FC = () => {
       columns={1}
       actions={[
         {
-          url: generateUrl(routes.account.providers.one.logo, {
+          as: 'link',
+          href: generateUrl(routes.account.providers.one.logo, {
             id: provider._id,
           }),
           label: t('common:actions.edit'),

@@ -11,11 +11,12 @@ export const ToursHeader: FC = () => {
   return (
     <div>
       <Button
+        as="link"
         label={t('account:tours.actions.add')}
         variant="tertiary"
         icon="plus"
         size="xs"
-        url={generateUrl(routes.account.tours.create)}
+        href={generateUrl(routes.account.tours.create)}
       />
     </div>
   );

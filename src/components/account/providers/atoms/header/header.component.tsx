@@ -11,11 +11,12 @@ export const ProvidersHeader: FC = () => {
   return (
     <div>
       <Button
+        as="link"
         label={t('account:providers.actions.add')}
         variant="tertiary"
         icon="plus"
         size="xs"
-        url={generateUrl(routes.account.providers.create)}
+        href={generateUrl(routes.account.providers.create)}
       />
     </div>
   );

@@ -26,9 +26,10 @@ export const Tours: FC = () => {
           message={t('account:tours.empty.messageProviders')}
           icon="path"
           action={{
+            as: 'link',
             label: t('account:providers.actions.add'),
             icon: 'plus',
-            url: generateUrl(routes.account.providers.create),
+            href: generateUrl(routes.account.providers.create),
           }}
         />
       ) : !tours?.items.length && !isToursLoading ? (
@@ -37,9 +38,10 @@ export const Tours: FC = () => {
           message={t('account:tours.empty.messageTours')}
           icon="path"
           action={{
+            as: 'link',
             label: t('account:tours.actions.add'),
             icon: 'plus',
-            url: generateUrl(routes.account.tours.create),
+            href: generateUrl(routes.account.tours.create),
           }}
         />
       ) : (

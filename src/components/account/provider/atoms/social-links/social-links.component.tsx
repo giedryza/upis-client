@@ -33,7 +33,8 @@ export const SocialLinks: FC = () => {
       columns={2}
       actions={[
         {
-          url: generateUrl(routes.account.providers.one.socialLinks.add, {
+          as: 'link',
+          href: generateUrl(routes.account.providers.one.socialLinks.add, {
             id: providerId,
           }),
           label: t('common:actions.add'),
@@ -65,32 +66,32 @@ export const SocialLinks: FC = () => {
           ]}
           actions={[
             {
+              as: 'link',
               label: t('common:actions.edit'),
               icon: 'pencil',
               variant: 'secondary',
-              url: generateUrl(routes.account.providers.one.socialLinks.one, {
+              href: generateUrl(routes.account.providers.one.socialLinks.one, {
                 id: socialLink.host,
                 socialLinkId: socialLink._id,
               }),
             },
             {
+              as: 'button',
               label: t('common:actions.delete'),
               icon: 'trash',
               variant: 'ghost',
-              attributes: {
-                disabled: isDeleting,
-                onClick: async () => {
-                  const { confirmed } = await confirmation(
-                    t('account:providers.socialLinks.texts.confirmDelete', {
-                      type: t(`common:social.${socialLink.type}`),
-                      url: socialLink.url,
-                    })
-                  );
+              disabled: isDeleting,
+              onClick: async () => {
+                const { confirmed } = await confirmation(
+                  t('account:providers.socialLinks.texts.confirmDelete', {
+                    type: t(`common:social.${socialLink.type}`),
+                    url: socialLink.url,
+                  })
+                );
 
-                  if (confirmed) {
-                    deleteSocialLink({ id: socialLink._id });
-                  }
-                },
+                if (confirmed) {
+                  deleteSocialLink({ id: socialLink._id });
+                }
               },
             },
           ]}

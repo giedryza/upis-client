@@ -22,9 +22,10 @@ export const Providers: FC = () => {
           message={t('account:providers.empty.message')}
           icon="kayak"
           action={{
+            as: 'link',
             label: t('account:providers.actions.add'),
             icon: 'plus',
-            url: generateUrl(routes.account.providers.create),
+            href: generateUrl(routes.account.providers.create),
           }}
         />
       ) : (

@@ -63,31 +63,31 @@ export const ProvidersList: FC = () => {
           ]}
           actions={[
             {
+              as: 'link',
               label: t('common:actions.edit'),
               icon: 'pencil',
               variant: 'secondary',
-              url: generateUrl(routes.account.providers.one.index, {
+              href: generateUrl(routes.account.providers.one.index, {
                 id: provider._id,
               }),
             },
             {
+              as: 'button',
               label: t('common:actions.delete'),
               icon: 'trash',
               variant: 'ghost',
-              attributes: {
-                title: t('common:actions.delete'),
-                disabled: isDeleting,
-                onClick: async () => {
-                  const { confirmed } = await confirmation(
-                    t('account:providers.texts.confirmDelete', {
-                      name: provider.name,
-                    })
-                  );
+              title: t('common:actions.delete'),
+              disabled: isDeleting,
+              onClick: async () => {
+                const { confirmed } = await confirmation(
+                  t('account:providers.texts.confirmDelete', {
+                    name: provider.name,
+                  })
+                );
 
-                  if (confirmed) {
-                    deleteProvider({ id: provider._id });
-                  }
-                },
+                if (confirmed) {
+                  deleteProvider({ id: provider._id });
+                }
               },
             },
           ]}

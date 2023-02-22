@@ -107,19 +107,19 @@ export const Signup: FC = () => {
             </fieldset>
 
             <Button
+              as="button"
               label={t('auth:actions.signup')}
               variant="primary"
               width="full"
-              attributes={{
-                disabled: isLoading,
-                type: 'submit',
-              }}
+              disabled={isLoading}
+              type="submit"
             />
           </form>
 
           <Divider label={t('common:texts.or')} />
 
           <Button
+            as="button"
             label={t('auth:actions.signin-google')}
             icon="logo-google"
             variant="secondary"
@@ -129,10 +129,11 @@ export const Signup: FC = () => {
           <div className={styles.footer}>
             <span>{t('auth:signup.texts.have-account')}</span>
             <Button
+              as="link"
               label={t('auth:actions.signin')}
               variant="link"
               size="xs"
-              url={generateUrl(routes.auth.signin)}
+              href={generateUrl(routes.auth.signin)}
             />
           </div>
         </div>

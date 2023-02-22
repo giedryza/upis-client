@@ -1,13 +1,8 @@
-import { ButtonProps, ButtonAttributes } from 'ui';
-
-export type MenuItem = Pick<ButtonProps, 'label' | 'icon' | 'url'> & {
-  onClick?: () => void;
-  attributes?: ButtonAttributes;
-};
+import { ButtonProps } from 'ui';
 
 export interface Props {
   id: string;
-  menuButton: Omit<ButtonProps, 'url' | 'attributes'>;
-  items: MenuItem[];
+  menuButton: ButtonProps;
+  items: ButtonProps[];
   position?: `${'top' | 'bottom'}-${'left' | 'right'}`;
 }

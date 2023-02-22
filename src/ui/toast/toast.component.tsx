@@ -28,12 +28,11 @@ export const Toast: FC<Props> = ({
       {!!onClose && (
         <div className={styles.actions}>
           <Button
+            as="button"
             icon="close"
             variant="ghost"
             size="sm"
-            attributes={{
-              onClick: onClose,
-            }}
+            onClick={onClose}
           />
         </div>
       )}

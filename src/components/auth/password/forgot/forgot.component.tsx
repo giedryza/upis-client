@@ -77,23 +77,23 @@ export const PasswordForgot: FC = () => {
             </fieldset>
 
             <Button
+              as="button"
               label={t('common:actions.continue')}
               variant="primary"
               width="full"
-              attributes={{
-                type: 'submit',
-                disabled: isLoading,
-              }}
+              type="submit"
+              disabled={isLoading}
             />
           </form>
 
           <div className={styles.footer}>
             <span>{t('auth:signin.texts.not-have-account')}</span>
             <Button
+              as="link"
               label={t('auth:actions.signup')}
               variant="link"
               size="xs"
-              url={generateUrl(routes.auth.signup)}
+              href={generateUrl(routes.auth.signup)}
             />
           </div>
         </div>

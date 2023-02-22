@@ -60,26 +60,24 @@ export const FilterDistance: FC = () => {
       }
       actions={[
         {
+          as: 'button',
           label: t('common:actions.clear'),
           variant: 'secondary',
-          attributes: {
-            onClick: () => {
-              navigateWithQuery({ distanceFrom: NaN, distanceTo: NaN });
-            },
-            disabled: isEmpty,
+          onClick: () => {
+            navigateWithQuery({ distanceFrom: NaN, distanceTo: NaN });
           },
+          disabled: isEmpty,
           closable: true,
         },
         {
+          as: 'button',
           label: t('common:actions.apply'),
           variant: 'primary',
-          attributes: {
-            onClick: () => {
-              const [from, to] = getValues().distance;
-              navigateWithQuery({ distanceFrom: from, distanceTo: to });
-            },
-            disabled: !isDirty,
+          onClick: () => {
+            const [from, to] = getValues().distance;
+            navigateWithQuery({ distanceFrom: from, distanceTo: to });
           },
+          disabled: !isDirty,
           closable: true,
         },
       ]}

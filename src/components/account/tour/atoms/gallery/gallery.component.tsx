@@ -34,7 +34,8 @@ export const Gallery: FC = () => {
       icon="picture"
       actions={[
         {
-          url: generateUrl(routes.account.tours.one.gallery.add, {
+          as: 'link',
+          href: generateUrl(routes.account.tours.one.gallery.add, {
             id: tour._id,
           }),
           label: t('common:actions.add'),
@@ -61,69 +62,65 @@ export const Gallery: FC = () => {
               ]}
               actions={[
                 {
+                  as: 'button',
                   icon: 'magnifying-glass',
-                  attributes: {
-                    title: t('common:actions.zoom'),
-                    onClick: () => {
-                      dispatch(
-                        lightbox.actions.open({
-                          images: tour.photos.map((pic) => ({
-                            id: pic._id,
-                            url: pic.url,
-                            alt: pic.description,
-                          })),
-                          currentImage: photo._id,
-                        })
-                      );
-                    },
+                  title: t('common:actions.zoom'),
+                  onClick: () => {
+                    dispatch(
+                      lightbox.actions.open({
+                        images: tour.photos.map((pic) => ({
+                          id: pic._id,
+                          url: pic.url,
+                          alt: pic.description,
+                        })),
+                        currentImage: photo._id,
+                      })
+                    );
                   },
                 },
                 {
+                  as: 'button',
                   icon: 'star',
-                  attributes: {
-                    title: t('account:tours.gallery.actions.primary'),
-                    onClick: () => {
-                      updateTour({
-                        id: tour._id,
-                        form: { primaryPhoto: photo._id },
-                      });
-                    },
+                  title: t('account:tours.gallery.actions.primary'),
+                  onClick: () => {
+                    updateTour({
+                      id: tour._id,
+                      form: { primaryPhoto: photo._id },
+                    });
                   },
                 },
                 {
+                  as: 'link',
                   icon: 'pencil',
-                  url: generateUrl(routes.account.tours.one.gallery.one, {
+                  href: generateUrl(routes.account.tours.one.gallery.one, {
                     id: tour._id,
                     imageId: photo._id,
                   }),
-                  attributes: {
-                    title: t('common:actions.edit'),
-                  },
+                  title: t('common:actions.edit'),
                 },
                 {
+                  as: 'button',
                   icon: 'trash',
-                  attributes: {
-                    title: t('common:actions.delete'),
-                    onClick: async () => {
-                      const { confirmed } = await confirmation(
-                        t('account:tours.gallery.texts.confirmDelete')
-                      );
+                  title: t('common:actions.delete'),
+                  onClick: async () => {
+                    const { confirmed } = await confirmation(
+                      t('account:tours.gallery.texts.confirmDelete')
+                    );
 
-                      if (confirmed) {
-                        deleteImage(
-                          { id: photo._id },
-                          {
-                            onSuccess: () => {
-                              queryClient.invalidateQueries(
-                                toursKeys.detail(tour._id)
-                              );
-                            },
-                          }
-                        );
-                      }
-                    },
-                    disabled: isDeleting,
+                    if (confirmed) {
+                      deleteImage(
+                        { id: photo._id },
+                        {
+                          onSuccess: () => {
+                            queryClient.invalidateQueries(
+                              toursKeys.detail(tour._id)
+                            );
+                          },
+                        }
+                      );
+                    }
                   },
+                  disabled: isDeleting,
                 },
               ]}
               sizes={{ xs: 509, sm: 509, md: 380, lg: 320, default: 320 }}

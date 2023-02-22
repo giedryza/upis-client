@@ -15,11 +15,10 @@ export const ListEmpty: FC = () => {
           title={t('serp:list.empty.title')}
           message={t('serp:list.empty.description')}
           action={{
+            as: 'link',
             label: t('serp:actions.clear-filters'),
-            url: {
-              href: { query: {} },
-              shallow: true,
-            },
+            href: { query: {} },
+            shallow: true,
           }}
           icon="path"
         />

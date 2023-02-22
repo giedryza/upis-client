@@ -21,7 +21,8 @@ export const Geography: FC = () => {
       columns={1}
       actions={[
         {
-          url: generateUrl(routes.account.tours.one.geography, {
+          as: 'link',
+          href: generateUrl(routes.account.tours.one.geography, {
             id: tour._id,
           }),
           label: t('common:actions.edit'),

@@ -15,7 +15,8 @@ export const Security: FC = () => {
       icon="lock"
       actions={[
         {
-          url: generateUrl(routes.account.profile.security),
+          as: 'link',
+          href: generateUrl(routes.account.profile.security),
           label: t('common:actions.edit'),
           variant: 'tertiary',
           icon: 'pencil',

@@ -80,50 +80,48 @@ export const TourEditGalleryEdit: FC = () => {
               sizes={{ width: 540, height: 304 }}
               actions={[
                 {
+                  as: 'button',
                   icon: 'magnifying-glass',
-                  attributes: {
-                    title: t('common:actions.zoom'),
-                    onClick: () => {
-                      dispatch(
-                        lightbox.actions.open({
-                          images: [
-                            {
-                              id: image._id,
-                              url: image.url,
-                              alt: image.description,
-                            },
-                          ],
-                        })
-                      );
-                    },
+                  title: t('common:actions.zoom'),
+                  onClick: () => {
+                    dispatch(
+                      lightbox.actions.open({
+                        images: [
+                          {
+                            id: image._id,
+                            url: image.url,
+                            alt: image.description,
+                          },
+                        ],
+                      })
+                    );
                   },
                 },
                 {
+                  as: 'button',
                   icon: 'trash',
-                  attributes: {
-                    title: t('common:actions.delete'),
-                    onClick: async () => {
-                      const { confirmed } = await confirmation(
-                        t('account:tours.gallery.texts.confirmDelete')
-                      );
+                  title: t('common:actions.delete'),
+                  onClick: async () => {
+                    const { confirmed } = await confirmation(
+                      t('account:tours.gallery.texts.confirmDelete')
+                    );
 
-                      if (confirmed) {
-                        deleteImage(
-                          { id: image._id },
-                          {
-                            onSuccess: () => {
-                              push(
-                                generateUrl(routes.account.tours.one.index, {
-                                  id: tourId,
-                                })
-                              );
-                            },
-                          }
-                        );
-                      }
-                    },
-                    disabled: isDeleting,
+                    if (confirmed) {
+                      deleteImage(
+                        { id: image._id },
+                        {
+                          onSuccess: () => {
+                            push(
+                              generateUrl(routes.account.tours.one.index, {
+                                id: tourId,
+                              })
+                            );
+                          },
+                        }
+                      );
+                    }
                   },
+                  disabled: isDeleting,
                 },
               ]}
             />
@@ -138,22 +136,22 @@ export const TourEditGalleryEdit: FC = () => {
 
           <div className={styles.actions}>
             <Button
+              as="link"
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={generateUrl(routes.account.tours.one.index, {
+              href={generateUrl(routes.account.tours.one.index, {
                 id: tourId,
               })}
             />
 
             <Button
+              as="button"
               label={t('common:actions.save')}
               variant="tertiary"
               size="sm"
-              attributes={{
-                type: 'submit',
-                disabled: !isDirty || isLoading,
-              }}
+              type="submit"
+              disabled={!isDirty || isLoading}
             />
           </div>
         </form>

@@ -3,13 +3,13 @@ import Link from 'next/link';
 import { clsx } from 'clsx';
 
 import { Icon } from 'ui';
+import { toExternalLink } from 'tools/common';
 
+import { Props } from './button.types';
 import styles from './button.module.scss';
-import { Props, LinkProps, ButtonProps } from './button.types';
 
 export const Button: FC<Props> = ({
   label,
-  url,
   icon,
   iconPlacement = 'left',
   variant = 'primary',
@@ -17,7 +17,7 @@ export const Button: FC<Props> = ({
   width = 'normal',
   textAlign = 'center',
   withDropdown,
-  attributes = {},
+  ...rest
 }) => {
   const content = useMemo(
     () => (
@@ -63,23 +63,41 @@ export const Button: FC<Props> = ({
     icon && !label && styles.iconButton
   );
 
-  return url ? (
-    <Link
-      {...(typeof url === 'string' ? { href: url } : url)}
-      {...(attributes as LinkProps['attributes'])}
-      className={className}
-    >
-      {content}
-    </Link>
-  ) : (
-    <button
-      className={className}
-      {...{
-        type: 'button',
-        ...(attributes as ButtonProps['attributes']),
-      }}
-    >
-      {content}
-    </button>
-  );
+  if (rest.as === 'button') {
+    const { as, ...attributes } = rest;
+
+    return (
+      <button className={className} type="button" {...attributes}>
+        {content}
+      </button>
+    );
+  }
+
+  if (rest.as === 'link') {
+    const { as, ...attributes } = rest;
+
+    return (
+      <Link className={className} {...attributes}>
+        {content}
+      </Link>
+    );
+  }
+
+  if (rest.as === 'external') {
+    const { as, href = '', ...attributes } = rest;
+
+    return (
+      <a
+        className={className}
+        href={toExternalLink(href)}
+        target="_blank"
+        rel="noreferrer"
+        {...attributes}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return null;
 };

@@ -87,22 +87,22 @@ export const TourEditAbout: FC = () => {
 
           <div className={styles.actions}>
             <Button
+              as="link"
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              url={generateUrl(routes.account.tours.one.index, {
+              href={generateUrl(routes.account.tours.one.index, {
                 id: tour?._id ?? '',
               })}
             />
 
             <Button
+              as="button"
               label={t('common:actions.save')}
               variant="tertiary"
               size="sm"
-              attributes={{
-                type: 'submit',
-                disabled: !isDirty || isLoading,
-              }}
+              type="submit"
+              disabled={!isDirty || isLoading}
             />
           </div>
         </form>

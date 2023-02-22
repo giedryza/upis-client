@@ -21,7 +21,8 @@ export const Location: FC = () => {
       columns={1}
       actions={[
         {
-          url: generateUrl(routes.account.providers.one.location, {
+          as: 'link',
+          href: generateUrl(routes.account.providers.one.location, {
             id: provider._id,
           }),
           label: t('common:actions.edit'),

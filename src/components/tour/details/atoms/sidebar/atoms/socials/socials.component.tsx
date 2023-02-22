@@ -15,12 +15,11 @@ export const SidebarSocials: FC<Props> = ({ socialLinks }) => {
       {socialLinks.map((socialLink) => (
         <li key={socialLink._id}>
           <Button
+            as="external"
             icon={ICON_BY_SOCIAL_LINK_TYPE[socialLink.type]}
             variant="secondary"
-            url={socialLink.url}
-            attributes={{
-              'aria-label': t(`common:social.${socialLink.type}`),
-            }}
+            href={socialLink.url}
+            aria-label={t(`common:social.${socialLink.type}`)}
           />
         </li>
       ))}

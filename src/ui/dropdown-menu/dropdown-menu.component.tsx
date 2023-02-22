@@ -40,13 +40,11 @@ export const DropdownMenu: FC<Props> = ({
     <div onKeyDown={onKeyDown} className={styles.container} ref={containerRef}>
       <Button
         {...menuButton}
-        attributes={{
-          id: buttonId,
-          'aria-haspopup': true,
-          'aria-expanded': isOpen,
-          'aria-controls': isOpen ? menuId : undefined,
-          onClick: handleToggle,
-        }}
+        id={buttonId}
+        aria-haspopup
+        aria-expanded={isOpen}
+        aria-controls={isOpen ? menuId : undefined}
+        onClick={handleToggle}
       />
       <div className={clsx(styles.dropdown, styles[position])}>
         {items.length ? (
@@ -56,7 +54,7 @@ export const DropdownMenu: FC<Props> = ({
             role="menu"
             aria-labelledby={buttonId}
           >
-            {items.map(({ onClick, attributes, ...rest }, i) => (
+            {items.map(({ onClick, ...rest }, i) => (
               <li role="none" key={i}>
                 <Button
                   {...rest}
@@ -64,13 +62,11 @@ export const DropdownMenu: FC<Props> = ({
                   textAlign="left"
                   size="sm"
                   width="full"
-                  attributes={{
-                    ...attributes,
-                    role: 'menuitem',
-                    onClick: () => {
-                      handleClose();
-                      onClick?.();
-                    },
+                  role="menuitem"
+                  onClick={() => {
+                    handleClose();
+                    // @ts-expect-error
+                    onClick?.();
                   }}
                 />
               </li>

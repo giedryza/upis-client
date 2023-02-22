@@ -71,26 +71,24 @@ export const SerpFilters: FC = () => {
             {offsetLeft ? (
               <div className={clsx(styles.controls, styles['-left'])}>
                 <Button
+                  as="button"
                   icon="chevron-left"
                   size="xs"
                   variant="secondary"
-                  attributes={{
-                    onClick: () => handleScroll('left'),
-                    'aria-label': t('common:actions.forward'),
-                  }}
+                  onClick={() => handleScroll('left')}
+                  aria-label={t('common:actions.forward')}
                 />
               </div>
             ) : null}
             {offsetRight ? (
               <div className={clsx(styles.controls, styles['-right'])}>
                 <Button
+                  as="button"
                   icon="chevron-right"
                   size="xs"
                   variant="secondary"
-                  attributes={{
-                    onClick: () => handleScroll('right'),
-                    'aria-label': t('common:actions.back'),
-                  }}
+                  onClick={() => handleScroll('right')}
+                  aria-label={t('common:actions.back')}
                 />
               </div>
             ) : null}

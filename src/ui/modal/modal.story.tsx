@@ -16,8 +16,8 @@ const Template: ComponentStory<typeof Modal> = (args) => (
       <Modal.Content
         title="Lorem ipsum"
         actions={[
-          { label: 'Close', variant: 'ghost' },
-          { label: 'OK', variant: 'primary' },
+          { as: 'button', label: 'Close', variant: 'ghost' },
+          { as: 'button', label: 'OK', variant: 'primary' },
         ]}
       >
         <p>

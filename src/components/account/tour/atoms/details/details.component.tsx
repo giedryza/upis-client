@@ -21,7 +21,8 @@ export const Details: FC = () => {
       columns={2}
       actions={[
         {
-          url: generateUrl(routes.account.tours.one.details, {
+          as: 'link',
+          href: generateUrl(routes.account.tours.one.details, {
             id: tour._id,
           }),
           label: t('common:actions.edit'),

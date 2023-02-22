@@ -16,8 +16,7 @@ export const Settings: FC = () => {
   const { confirmation } = useConfirm();
 
   const { data: tour } = useActiveTour();
-  const { mutate: deleteTour, isLoading: isDeleteTourLoading } =
-    useDeleteTour();
+  const { mutate: deleteTour, isLoading: isDeleting } = useDeleteTour();
 
   if (!tour) return null;
 
@@ -29,30 +28,29 @@ export const Settings: FC = () => {
     >
       <div>
         <Button
+          as="button"
           label={t('account:tours.actions.delete')}
           variant="ghost"
           icon="trash"
           size="sm"
-          attributes={{
-            disabled: isDeleteTourLoading,
-            onClick: async () => {
-              const { confirmed } = await confirmation(
-                t('account:tours.texts.confirmDelete', {
-                  name: tour.name,
-                })
-              );
+          disabled={isDeleting}
+          onClick={async () => {
+            const { confirmed } = await confirmation(
+              t('account:tours.texts.confirmDelete', {
+                name: tour.name,
+              })
+            );
 
-              if (confirmed) {
-                deleteTour(
-                  { id: tour._id },
-                  {
-                    onSuccess: () => {
-                      push(generateUrl(routes.account.tours.index));
-                    },
-                  }
-                );
-              }
-            },
+            if (confirmed) {
+              deleteTour(
+                { id: tour._id },
+                {
+                  onSuccess: () => {
+                    push(generateUrl(routes.account.tours.index));
+                  },
+                }
+              );
+            }
           }}
         />
       </div>
