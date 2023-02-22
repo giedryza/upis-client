@@ -9,6 +9,8 @@ import { Button } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { generateUrl } from 'tools/common';
 
+import styles from './settings.module.scss';
+
 export const Settings: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
@@ -26,11 +28,11 @@ export const Settings: FC = () => {
       columns={1}
       icon="gear"
     >
-      <div>
+      <div className={styles.actions}>
         <Button
           as="button"
           label={t('account:tours.actions.delete')}
-          variant="ghost"
+          variant="outline"
           icon="trash"
           size="sm"
           disabled={isDeleting}
@@ -52,6 +54,18 @@ export const Settings: FC = () => {
               );
             }
           }}
+        />
+        <Button
+          as="link"
+          label={t('common:actions.preview')}
+          variant="outline"
+          // TODO: replace with eye icon
+          icon="magnifying-glass-plus"
+          size="sm"
+          href={generateUrl(routes.tours.one.index, {
+            id: tour._id,
+            slug: tour.slug,
+          })}
         />
       </div>
     </InfoBlock>

@@ -30,7 +30,7 @@ export const Settings: FC = () => {
         <Button
           as="button"
           label={t('account:providers.actions.delete')}
-          variant="ghost"
+          variant="outline"
           icon="trash"
           size="sm"
           disabled={isDeleting}
