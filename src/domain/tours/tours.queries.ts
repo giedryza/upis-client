@@ -23,7 +23,6 @@ export const useToursActiveFilters = () => {
     queryFn: () => loaders.getActiveFilters({ params }),
     select: converters.getActiveFilters,
     keepPreviousData: true,
-    refetchOnWindowFocus: false,
   });
 
   return query;
@@ -80,6 +79,7 @@ export const useInfiniteTours = (filters: Partial<ToursFilters> = {}) => {
         pageParams,
       }),
       keepPreviousData: true,
+      refetchOnWindowFocus: true,
     }
   );
 
@@ -115,7 +115,6 @@ export const useToursFiltersSummary = () => {
     queryKey: toursKeys.list('filters', 'summary'),
     queryFn: () => loaders.getFiltersSummary(),
     select: converters.getFiltersSummary,
-    refetchOnWindowFocus: false,
   });
 
   return query;
