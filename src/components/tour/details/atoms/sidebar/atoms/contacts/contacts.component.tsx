@@ -2,6 +2,7 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { formatLanguage, formatList } from 'tools/format';
+import { toExternalLink } from 'tools/common';
 import { Icon } from 'ui';
 
 import { Props } from './contacts.types';
@@ -23,7 +24,7 @@ export const SidebarContacts: FC<Props> = ({
           <span className={styles.label}>
             {t('tours:provider.phone.title')}
           </span>
-          <span>{phone}</span>
+          <a href={`tel:${phone}`}>{phone}</a>
         </li>
       ) : null}
 
@@ -33,7 +34,7 @@ export const SidebarContacts: FC<Props> = ({
           <span className={styles.label}>
             {t('tours:provider.email.title')}
           </span>
-          <span>{email}</span>
+          <a href={`mailto:${email}`}>{email}</a>
         </li>
       ) : null}
 
@@ -43,7 +44,9 @@ export const SidebarContacts: FC<Props> = ({
           <span className={styles.label}>
             {t('tours:provider.website.title')}
           </span>
-          <span>{website}</span>
+          <a href={toExternalLink(website)} target="_blank" rel="noreferrer">
+            {website}
+          </a>
         </li>
       ) : null}
 
