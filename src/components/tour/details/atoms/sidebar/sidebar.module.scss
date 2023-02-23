@@ -11,4 +11,8 @@
   box-shadow: var(--shadow-primary);
 
   @include spacing(y, 2.5rem);
+
+  @include tablet {
+    position: static;
+  }
 }
