@@ -1,7 +1,5 @@
-.section {
-  .gallery {
-    aspect-ratio: 16 / 9;
+@use 'styles/mixins' as *;
 
-    background-color: var(--color-white);
-  }
+.body {
+  @include spacing(y, 1rem);
 }
