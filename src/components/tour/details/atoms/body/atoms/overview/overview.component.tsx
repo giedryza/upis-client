@@ -108,7 +108,7 @@ export const BodyOverview: FC<Props> = ({
                 ariaLabel="Sudėtingumas"
                 min={0}
                 max={5}
-                value={2.5}
+                value={difficulty}
                 valueLabel={[difficulty, 5].join(' / ')}
                 variant="primary"
               />
