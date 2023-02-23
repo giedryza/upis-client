@@ -1,5 +1,5 @@
 @use 'styles/mixins' as *;
 
 .body {
-  @include spacing(y, 1rem);
+  @include spacing(y, 5rem);
 }

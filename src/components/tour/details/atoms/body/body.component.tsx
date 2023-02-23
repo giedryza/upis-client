@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { useActiveTour } from 'domain/tours';
 
-import { BodyGallery } from './atoms';
+import { BodyDescription, BodyGallery } from './atoms';
 import styles from './body.module.scss';
 
 export const DetailsBody: FC = () => {
@@ -11,6 +11,8 @@ export const DetailsBody: FC = () => {
   return (
     <div className={styles.body}>
       <BodyGallery photos={tour?.photos ?? []} />
+
+      <BodyDescription description={tour?.description ?? ''} />
     </div>
   );
 };

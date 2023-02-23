@@ -19,5 +19,10 @@
     "actions": {
       "visit_website": "Peržiūrėti tinklapyje"
     }
+  },
+  "details": {
+    "description": {
+      "title": "Apie maršrutą"
+    }
   }
 }

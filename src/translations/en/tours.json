@@ -18,5 +18,10 @@
     "actions": {
       "visit_website": "View on website"
     }
+  },
+  "details": {
+    "description": {
+      "title": "About the tour"
+    }
   }
 }
