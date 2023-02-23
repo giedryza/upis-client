@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useMeter } from 'react-aria';
+import { clsx } from 'clsx';
 
 import { Props } from './meter.types';
 import styles from './meter.module.scss';
@@ -12,6 +13,7 @@ export const Meter: FC<Props> = ({
   value = 0,
   min = 0,
   max = 100,
+  variant = 'neutral',
   formatOptions,
 }) => {
   const { meterProps, labelProps } = useMeter({
@@ -29,7 +31,7 @@ export const Meter: FC<Props> = ({
   return (
     <div
       {...meterProps}
-      className={styles.meter}
+      className={clsx(styles.meter, styles[`-variant-${variant}`])}
       style={{
         '--ratio': (value - min) / (max - min),
       }}

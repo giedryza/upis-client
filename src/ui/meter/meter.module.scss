@@ -6,6 +6,14 @@
   font-size: 1.6rem;
   line-height: 1.9;
 
+  &.-variant-primary {
+    --base-color: var(--color-primary-60);
+  }
+
+  &.-variant-neutral {
+    --base-color: var(--color-grey-05);
+  }
+
   .label {
     display: inline-block;
 
@@ -35,7 +43,7 @@
     width: min(calc(var(--ratio, 0) * 100%), 100%);
     height: 100%;
 
-    background-color: var(--color-grey-05);
+    background-color: var(--base-color);
     border-radius: calc(var(--track-size) * 0.5);
   }
 
