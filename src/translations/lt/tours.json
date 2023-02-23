@@ -23,6 +23,30 @@
   "details": {
     "description": {
       "title": "Apie maršrutą"
+    },
+    "overview": {
+      "title": "Apžvalga"
+    },
+    "regions": {
+      "title": "Regionai"
+    },
+    "rivers": {
+      "title": "Upės"
+    },
+    "difficulty": {
+      "title": "Sudėtingumas"
+    },
+    "distance": {
+      "title": "Atstumas"
+    },
+    "duration": {
+      "title": "Trukmė"
+    },
+    "days": {
+      "title": "Dienos"
+    },
+    "boats": {
+      "title": "Valčių tipai"
     }
   }
 }

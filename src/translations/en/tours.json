@@ -22,6 +22,30 @@
   "details": {
     "description": {
       "title": "About the tour"
+    },
+    "overview": {
+      "title": "Overview"
+    },
+    "regions": {
+      "title": "Regions"
+    },
+    "rivers": {
+      "title": "Rivers"
+    },
+    "difficulty": {
+      "title": "Difficulty"
+    },
+    "distance": {
+      "title": "Distance"
+    },
+    "duration": {
+      "title": "Duration"
+    },
+    "days": {
+      "title": "Days"
+    },
+    "boats": {
+      "title": "Boat types"
     }
   }
 }

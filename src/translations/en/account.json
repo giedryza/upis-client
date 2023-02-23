@@ -78,7 +78,7 @@
           "placeholder": "Search languages"
         },
         "boats": {
-          "display": "Boats",
+          "display": "Boat types",
           "label": "Available boat types"
         }
       }

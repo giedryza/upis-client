@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { useActiveTour } from 'domain/tours';
 
-import { BodyDescription, BodyGallery } from './atoms';
+import { BodyDescription, BodyGallery, BodyOverview } from './atoms';
 import styles from './body.module.scss';
 
 export const DetailsBody: FC = () => {
@@ -13,6 +13,16 @@ export const DetailsBody: FC = () => {
       <BodyGallery photos={tour?.photos ?? []} />
 
       <BodyDescription description={tour?.description ?? ''} />
+
+      <BodyOverview
+        regions={tour?.regions ?? []}
+        rivers={tour?.rivers ?? []}
+        difficulty={tour?.difficulty ?? NaN}
+        days={tour?.days ?? NaN}
+        distance={tour?.distance ?? NaN}
+        duration={tour?.duration ?? NaN}
+        boats={tour?.provider.boats ?? []}
+      />
     </div>
   );
 };
