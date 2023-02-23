@@ -6,6 +6,8 @@
   @include spacing(y, calc(var(--spacing) * 1px));
 
   .sections {
+    position: relative;
+
     display: flex;
     flex-wrap: wrap;
     gap: calc(var(--spacing) * 1px);

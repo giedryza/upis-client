@@ -1,6 +1,10 @@
 @use 'styles/mixins' as *;
 
 .container {
+  position: sticky;
+  top: calc(var(--header-height) + var(--spacing) * 0.1rem);
+  bottom: 0;
+
   padding: calc(var(--spacing) * 1px);
 
   background-color: var(--color-white);
