@@ -13,12 +13,15 @@ export default {
     alt: 'Mount Fuji',
     actions: [
       {
+        as: 'button',
         icon: 'price',
       },
       {
+        as: 'button',
         icon: 'camera',
       },
       {
+        as: 'button',
         icon: 'trash',
       },
     ],

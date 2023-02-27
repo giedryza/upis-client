@@ -123,7 +123,7 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
               as="button"
               label={t('common:components.fileInput.browse')}
               size="xs"
-              disabled
+              disabled={disabled}
               onClick={open}
             />
             <div className={styles.info}>

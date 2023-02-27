@@ -7,7 +7,9 @@ import { Button } from '.';
 export default {
   title: 'UI/Button',
   component: Button,
-  args: {},
+  args: {
+    as: 'button',
+  },
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => (
