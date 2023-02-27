@@ -57,6 +57,15 @@
     display: none;
   }
 
+  [class~='leaflet-tooltip'] {
+    color: var(--color-text);
+
+    background-color: var(--color-white);
+    border: 0;
+    border-radius: 0;
+    box-shadow: var(--shadow-primary);
+  }
+
   [class~='leaflet-control-geosearch'] {
     form {
       padding: 0;
