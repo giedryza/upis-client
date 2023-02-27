@@ -17,8 +17,8 @@ export default {
       },
     ],
     actions: [
-      { label: 'Edit', icon: 'pencil', variant: 'secondary' },
-      { label: 'Delete', icon: 'trash', variant: 'ghost' },
+      { as: 'button', label: 'Edit', icon: 'pencil', variant: 'secondary' },
+      { as: 'button', label: 'Delete', icon: 'trash', variant: 'ghost' },
     ],
   },
 } as ComponentMeta<typeof Tile>;

@@ -7,6 +7,7 @@ export default {
   component: DropdownMenu,
   args: {
     menuButton: {
+      as: 'button',
       icon: 'kayak',
       label: 'My account',
       withDropdown: true,
@@ -14,10 +15,12 @@ export default {
     },
     items: [
       {
+        as: 'button',
         label: 'Profile',
         icon: 'user',
       },
       {
+        as: 'button',
         label: 'Signout',
         icon: 'exit',
       },
