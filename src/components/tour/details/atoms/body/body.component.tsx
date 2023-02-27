@@ -5,6 +5,7 @@ import { useActiveTour } from 'domain/tours';
 import {
   BodyDescription,
   BodyGallery,
+  BodyLocation,
   BodyOverview,
   BodyPrices,
 } from './atoms';
@@ -30,6 +31,11 @@ export const DetailsBody: FC = () => {
       />
 
       <BodyPrices price={tour?.price ?? null} />
+
+      <BodyLocation
+        arrival={tour?.arrival ?? { coordinates: [] }}
+        departure={tour?.departure ?? { coordinates: [] }}
+      />
     </div>
   );
 };

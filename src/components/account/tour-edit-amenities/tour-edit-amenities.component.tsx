@@ -2,6 +2,7 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, CheckboxGroupInput, Container, Toast } from 'ui';
@@ -61,17 +62,16 @@ export const TourEditAmenities: FC = () => {
               <Trans
                 i18nKey="account:tours.amenities.texts.info"
                 components={[
-                  <a
+                  <Link
                     href={generateUrl(
                       routes.account.providers.one.amenities.add,
                       { id: tour?.provider._id ?? '' }
                     )}
                     className="link"
-                    rel="noreferrer"
                     key="info"
                   >
                     placeholder
-                  </a>,
+                  </Link>,
                 ]}
               />
             }

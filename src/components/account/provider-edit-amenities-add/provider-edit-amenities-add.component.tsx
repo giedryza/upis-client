@@ -36,7 +36,7 @@ export const ProviderEditAmenitiesAdd: FC = () => {
     setValue,
     watch,
     control,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
   });
@@ -186,7 +186,7 @@ export const ProviderEditAmenitiesAdd: FC = () => {
               variant="tertiary"
               size="sm"
               type="submit"
-              disabled={!isDirty || isLoading}
+              disabled={isLoading}
             />
           </div>
         </form>
