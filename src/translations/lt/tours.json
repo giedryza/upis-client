@@ -47,6 +47,11 @@
     },
     "boats": {
       "title": "Valčių tipai"
+    },
+    "prices": {
+      "title": "Kainos",
+      "pricePer": "žmogui už parą",
+      "info": "Nurodyta apytikslė kaina žmogui už parą. Ji gali kisti priklausomai nuo savaitės dienos, sezono ar kitų faktorių."
     }
   }
 }

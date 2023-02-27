@@ -15,7 +15,12 @@
     margin-block-end: 2.5rem;
   }
 
-  .description {
-    white-space: pre-line;
+  .price {
+    font-weight: 500;
+    margin-block-end: 2rem;
+
+    .em {
+      font-size: 2rem;
+    }
   }
 }

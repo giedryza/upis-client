@@ -41,7 +41,7 @@ export const DetailsSidebar: FC = () => {
               as="external"
               href={tour.website}
               label={t('tours:provider.actions.visit_website')}
-              variant="outline"
+              variant="primary"
               size="sm"
               width="full"
             />
