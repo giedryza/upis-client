@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { useActiveTour } from 'domain/tours';
 
 import {
+  BodyAmenities,
   BodyDescription,
   BodyGallery,
   BodyLocation,
@@ -35,6 +36,10 @@ export const DetailsBody: FC = () => {
       <BodyLocation
         arrival={tour?.arrival ?? { coordinates: [] }}
         departure={tour?.departure ?? { coordinates: [] }}
+      />
+
+      <BodyAmenities
+        amenities={tour?.amenities.map((amenity) => amenity._id) ?? []}
       />
     </div>
   );

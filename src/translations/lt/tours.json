@@ -57,6 +57,10 @@
       "title": "Lokacija",
       "departure": "Išvykimas",
       "arrival": "Atvykimas"
+    },
+    "amenities": {
+      "title": "Ypatumai",
+      "price": "Kaina"
     }
   }
 }
