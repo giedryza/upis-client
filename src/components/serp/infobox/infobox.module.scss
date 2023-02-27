@@ -72,6 +72,15 @@
     font-weight: 500;
     font-size: 1.4rem;
     line-height: 1.25;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .subtitle {

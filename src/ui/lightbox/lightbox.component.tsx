@@ -65,33 +65,30 @@ export const Lightbox: FC<Props> = ({
               <div className={styles.actions}>
                 {isFullscreen ? (
                   <Button
+                    as="button"
                     icon="arrows-in"
                     variant="tertiary"
                     size="sm"
-                    attributes={{
-                      onClick: () => document.exitFullscreen(),
-                      title: t('common:components.lightbox.fullscreen.exit'),
-                    }}
+                    onClick={() => document.exitFullscreen()}
+                    title={t('common:components.lightbox.fullscreen.exit')}
                   />
                 ) : (
                   <Button
+                    as="button"
                     icon="arrows-out"
                     variant="tertiary"
                     size="sm"
-                    attributes={{
-                      onClick: () => ref.current?.requestFullscreen?.(),
-                      title: t('common:components.lightbox.fullscreen.enter'),
-                    }}
+                    onClick={() => ref.current?.requestFullscreen?.()}
+                    title={t('common:components.lightbox.fullscreen.enter')}
                   />
                 )}
                 <Button
+                  as="button"
                   icon="close"
                   variant="tertiary"
                   size="sm"
-                  attributes={{
-                    onClick: onClose,
-                    title: t('common:actions.close'),
-                  }}
+                  onClick={onClose}
+                  title={t('common:actions.close')}
                 />
               </div>
             </div>

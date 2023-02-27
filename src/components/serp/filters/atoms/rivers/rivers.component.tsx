@@ -55,25 +55,23 @@ export const FilterRivers: FC = () => {
       }
       actions={[
         {
+          as: 'button',
           label: t('common:actions.clear'),
           variant: 'secondary',
-          attributes: {
-            onClick: () => {
-              navigateWithQuery({ rivers: [] });
-            },
-            disabled: isEmpty,
+          onClick: () => {
+            navigateWithQuery({ rivers: [] });
           },
+          disabled: isEmpty,
           closable: true,
         },
         {
+          as: 'button',
           label: t('common:actions.apply'),
           variant: 'primary',
-          attributes: {
-            onClick: () => {
-              navigateWithQuery({ rivers: getValues().rivers });
-            },
-            disabled: !isDirty,
+          onClick: () => {
+            navigateWithQuery({ rivers: getValues().rivers });
           },
+          disabled: !isDirty,
           closable: true,
         },
       ]}

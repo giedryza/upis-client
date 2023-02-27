@@ -1,5 +1,6 @@
 import { FC, Fragment, memo } from 'react';
 import useTranslation from 'next-translate/useTranslation';
+import Link from 'next/link';
 
 import { Button, Carousel, Icon, ImagePlaceholder } from 'ui';
 import { formatCurrency, formatNumber } from 'tools/format';
@@ -55,7 +56,17 @@ export const SerpCard: FC<Props> = memo(({ tour, userId }) => {
 
       <div className={styles.content}>
         <header className={styles.header}>
-          <h2 className={styles.title}>{tour.name}</h2>
+          <h2 className={styles.title}>
+            <Link
+              href={generateUrl(routes.tours.one.index, {
+                id: tour._id,
+                slug: tour.slug,
+              })}
+              tabIndex={-1}
+            >
+              {tour.name}
+            </Link>
+          </h2>
 
           <div>
             {tour.regions.length ? (
@@ -131,18 +142,26 @@ export const SerpCard: FC<Props> = memo(({ tour, userId }) => {
           <div className={styles.actions}>
             {userId === tour.user ? (
               <Button
+                as="link"
                 icon="pencil"
                 size="xs"
                 variant="ghost"
-                attributes={{
-                  title: t('common:actions.edit'),
-                }}
-                url={generateUrl(routes.account.tours.one.index, {
+                title={t('common:actions.edit')}
+                href={generateUrl(routes.account.tours.one.index, {
                   id: tour._id,
                 })}
               />
             ) : null}
-            <Button label={t('common:actions.view')} size="sm" />
+            <Button
+              as="link"
+              label={t('common:actions.view')}
+              size="sm"
+              variant="primary"
+              href={generateUrl(routes.tours.one.index, {
+                id: tour._id,
+                slug: tour.slug,
+              })}
+            />
           </div>
         </footer>
       </div>

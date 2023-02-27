@@ -1,0 +1,28 @@
+.section {
+  padding: calc(var(--spacing) * 1px);
+
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.4;
+
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-primary);
+
+  .title {
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 1.4;
+    margin-block-end: 2.5rem;
+  }
+
+  .amenities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 25rem), 1fr));
+    gap: calc(var(--spacing) * 1px);
+    align-items: flex-start;
+
+    > * {
+      flex-basis: 50%;
+    }
+  }
+}

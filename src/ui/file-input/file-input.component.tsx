@@ -120,12 +120,11 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
               <Divider label={t('common:texts.or')} />
             </div>
             <Button
+              as="button"
               label={t('common:components.fileInput.browse')}
               size="xs"
-              attributes={{
-                disabled,
-                onClick: open,
-              }}
+              disabled
+              onClick={open}
             />
             <div className={styles.info}>
               {!!accept?.length && (
@@ -187,19 +186,19 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
                   </div>
 
                   <Button
+                    as="button"
                     icon="close"
                     size="xs"
                     variant="secondary"
-                    attributes={{
-                      disabled,
-                      onClick: () =>
-                        handleChange(
-                          uploadedFiles.filter(
-                            (uploaded) => uploaded.name !== file.name
-                          )
-                        ),
-                      title: t('common:components.fileInput.remove'),
-                    }}
+                    disabled
+                    onClick={() =>
+                      handleChange(
+                        uploadedFiles.filter(
+                          (uploaded) => uploaded.name !== file.name
+                        )
+                      )
+                    }
+                    title={t('common:components.fileInput.remove')}
                   />
                 </li>
               ))}

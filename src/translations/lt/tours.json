@@ -1,0 +1,66 @@
+{
+  "provider": {
+    "tours": "Maršrutai",
+    "tours_count_one": "{{count}} maršrutas",
+    "tours_count_other": "{{count}} maršrutų",
+    "tours_count_few": "{{count}} maršrutai",
+    "phone": {
+      "title": "Telefonas"
+    },
+    "email": {
+      "title": "El. paštas"
+    },
+    "website": {
+      "title": "Tinklapis"
+    },
+    "languages": {
+      "title": "Kalbos"
+    },
+    "actions": {
+      "visit_website": "Peržiūrėti tinklapyje"
+    }
+  },
+  "details": {
+    "description": {
+      "title": "Apie maršrutą"
+    },
+    "overview": {
+      "title": "Apžvalga"
+    },
+    "regions": {
+      "title": "Regionai"
+    },
+    "rivers": {
+      "title": "Upės"
+    },
+    "difficulty": {
+      "title": "Sudėtingumas"
+    },
+    "distance": {
+      "title": "Atstumas"
+    },
+    "duration": {
+      "title": "Trukmė"
+    },
+    "days": {
+      "title": "Dienos"
+    },
+    "boats": {
+      "title": "Valčių tipai"
+    },
+    "prices": {
+      "title": "Kainos",
+      "pricePer": "žmogui už parą",
+      "info": "Nurodyta apytikslė kaina žmogui už parą. Ji gali kisti priklausomai nuo savaitės dienos, sezono ar kitų faktorių."
+    },
+    "location": {
+      "title": "Lokacija",
+      "departure": "Išvykimas",
+      "arrival": "Atvykimas"
+    },
+    "amenities": {
+      "title": "Ypatumai",
+      "price": "Kaina"
+    }
+  }
+}

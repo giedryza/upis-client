@@ -70,31 +70,31 @@ export const ToursList: FC = () => {
           ]}
           actions={[
             {
+              as: 'link',
               label: t('common:actions.edit'),
               icon: 'pencil',
               variant: 'secondary',
-              url: generateUrl(routes.account.tours.one.index, {
+              href: generateUrl(routes.account.tours.one.index, {
                 id: tour._id,
               }),
             },
             {
+              as: 'button',
               label: t('common:actions.delete'),
               icon: 'trash',
               variant: 'ghost',
-              attributes: {
-                title: t('common:actions.delete'),
-                disabled: isDeleting,
-                onClick: async () => {
-                  const { confirmed } = await confirmation(
-                    t('account:tours.texts.confirmDelete', {
-                      name: tour.name,
-                    })
-                  );
+              title: t('common:actions.delete'),
+              disabled: isDeleting,
+              onClick: async () => {
+                const { confirmed } = await confirmation(
+                  t('account:tours.texts.confirmDelete', {
+                    name: tour.name,
+                  })
+                );
 
-                  if (confirmed) {
-                    deleteTour({ id: tour._id });
-                  }
-                },
+                if (confirmed) {
+                  deleteTour({ id: tour._id });
+                }
               },
             },
           ]}

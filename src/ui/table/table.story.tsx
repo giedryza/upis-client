@@ -77,18 +77,8 @@ const rows: Props<Columns>['rows'] = MOCK_DATA.map((item) => ({
     start_date: item.start_date,
     actions: (
       <div style={{ display: 'inline-flex', gap: 10 }}>
-        <Button
-          icon="trash"
-          size="xs"
-          variant="secondary"
-          attributes={{ 'aria-label': 'Delete' }}
-        />
-        <Button
-          icon="pencil"
-          size="xs"
-          variant="secondary"
-          attributes={{ 'aria-label': 'Edit' }}
-        />
+        <Button as="button" icon="trash" size="xs" variant="secondary" />
+        <Button as="button" icon="pencil" size="xs" variant="secondary" />
       </div>
     ),
   },

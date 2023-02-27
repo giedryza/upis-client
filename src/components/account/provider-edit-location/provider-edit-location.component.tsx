@@ -123,22 +123,22 @@ export const ProviderEditLocation: FC = () => {
 
       <div className={styles.actions}>
         <Button
+          as="link"
           label={t('common:actions.cancel')}
           variant="ghost"
           size="sm"
-          url={generateUrl(routes.account.providers.one.index, {
+          href={generateUrl(routes.account.providers.one.index, {
             id: provider?._id ?? '',
           })}
         />
 
         <Button
+          as="button"
           label={t('common:actions.save')}
           variant="tertiary"
           size="sm"
-          attributes={{
-            disabled: isLoading,
-            onClick: onSubmit,
-          }}
+          disabled={isLoading}
+          onClick={onSubmit}
         />
       </div>
     </InfoBlock>

@@ -2,7 +2,7 @@ import { useSession } from 'next-auth/react';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 
-import { getRouteParam } from 'tools/common';
+import { parameters } from 'config';
 
 import { toursKeys } from './tours.keys';
 import { ToursFilters } from './tours.types';
@@ -23,7 +23,6 @@ export const useToursActiveFilters = () => {
     queryFn: () => loaders.getActiveFilters({ params }),
     select: converters.getActiveFilters,
     keepPreviousData: true,
-    refetchOnWindowFocus: false,
   });
 
   return query;
@@ -80,6 +79,7 @@ export const useInfiniteTours = (filters: Partial<ToursFilters> = {}) => {
         pageParams,
       }),
       keepPreviousData: true,
+      refetchOnWindowFocus: true,
     }
   );
 
@@ -101,7 +101,7 @@ export const useTour = (id: string) => {
 
 export const useActiveTour = () => {
   const { query: params } = useRouter();
-  const id = getRouteParam(params?.id);
+  const { id } = parameters.id.parse(params);
 
   const query = useTour(id);
 
@@ -115,7 +115,6 @@ export const useToursFiltersSummary = () => {
     queryKey: toursKeys.list('filters', 'summary'),
     queryFn: () => loaders.getFiltersSummary(),
     select: converters.getFiltersSummary,
-    refetchOnWindowFocus: false,
   });
 
   return query;

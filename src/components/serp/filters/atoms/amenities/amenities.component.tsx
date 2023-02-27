@@ -52,25 +52,23 @@ export const FilterAmenities: FC = () => {
       }
       actions={[
         {
+          as: 'button',
           label: t('common:actions.clear'),
           variant: 'secondary',
-          attributes: {
-            onClick: () => {
-              navigateWithQuery({ amenities: [] });
-            },
-            disabled: isEmpty,
+          onClick: () => {
+            navigateWithQuery({ amenities: [] });
           },
+          disabled: isEmpty,
           closable: true,
         },
         {
+          as: 'button',
           label: t('common:actions.apply'),
           variant: 'primary',
-          attributes: {
-            onClick: () => {
-              navigateWithQuery({ amenities: getValues().amenities });
-            },
-            disabled: !isDirty,
+          onClick: () => {
+            navigateWithQuery({ amenities: getValues().amenities });
           },
+          disabled: !isDirty,
           closable: true,
         },
       ]}

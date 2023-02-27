@@ -58,25 +58,23 @@ export const FilterProviders: FC = () => {
       }
       actions={[
         {
+          as: 'button',
           label: t('common:actions.clear'),
           variant: 'secondary',
-          attributes: {
-            onClick: () => {
-              navigateWithQuery({ providers: [] });
-            },
-            disabled: isEmpty,
+          onClick: () => {
+            navigateWithQuery({ providers: [] });
           },
+          disabled: isEmpty,
           closable: true,
         },
         {
+          as: 'button',
           label: t('common:actions.apply'),
           variant: 'primary',
-          attributes: {
-            onClick: () => {
-              navigateWithQuery({ providers: getValues().providers });
-            },
-            disabled: !isDirty,
+          onClick: () => {
+            navigateWithQuery({ providers: getValues().providers });
           },
+          disabled: !isDirty,
           closable: true,
         },
       ]}

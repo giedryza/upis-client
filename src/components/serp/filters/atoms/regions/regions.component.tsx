@@ -51,25 +51,23 @@ export const FilterRegions: FC = () => {
       }
       actions={[
         {
+          as: 'button',
           label: t('common:actions.clear'),
           variant: 'secondary',
-          attributes: {
-            onClick: () => {
-              navigateWithQuery({ regions: [] });
-            },
-            disabled: isEmpty,
+          onClick: () => {
+            navigateWithQuery({ regions: [] });
           },
+          disabled: isEmpty,
           closable: true,
         },
         {
+          as: 'button',
           label: t('common:actions.apply'),
           variant: 'primary',
-          attributes: {
-            onClick: () => {
-              navigateWithQuery({ regions: getValues().regions });
-            },
-            disabled: !isDirty,
+          onClick: () => {
+            navigateWithQuery({ regions: getValues().regions });
           },
+          disabled: !isDirty,
           closable: true,
         },
       ]}

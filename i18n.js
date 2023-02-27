@@ -6,6 +6,7 @@ module.exports = {
     '/': ['home', 'serp', 'rivers', 'regions'],
     'rgx:^/account': ['account', 'rivers', 'regions'],
     'rgx:^/auth': ['auth'],
+    'rgx:^/tours': ['tours', 'rivers', 'regions'],
   },
   loadLocaleFrom: (locale, namespace) => {
     // eslint-disable-next-line import/no-dynamic-require

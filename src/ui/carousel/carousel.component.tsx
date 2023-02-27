@@ -88,34 +88,32 @@ export const Carousel: FC<Props> = ({
           {hasPrev ? (
             <div className={clsx([styles.sidebar, styles['-left']])}>
               <Button
+                as="button"
                 icon="chevron-left"
                 variant="tertiary"
                 size={size}
-                attributes={{
-                  title: t('common:components.lightbox.previous'),
-                  onClick: (e) => {
-                    e.stopPropagation();
-                    onPrev();
-                  },
-                  tabIndex: -1,
+                title={t('common:components.lightbox.previous')}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onPrev();
                 }}
+                tabIndex={-1}
               />
             </div>
           ) : null}
           {hasNext ? (
             <div className={clsx([styles.sidebar, styles['-right']])}>
               <Button
+                as="button"
                 icon="chevron-right"
                 variant="tertiary"
                 size={size}
-                attributes={{
-                  title: t('common:components.lightbox.next'),
-                  onClick: (e) => {
-                    e.stopPropagation();
-                    onNext();
-                  },
-                  tabIndex: -1,
+                title={t('common:components.lightbox.next')}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onNext();
                 }}
+                tabIndex={-1}
               />
             </div>
           ) : null}

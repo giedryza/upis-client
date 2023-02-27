@@ -57,30 +57,28 @@ export const FilterDays: FC = () => {
       }
       actions={[
         {
+          as: 'button',
           label: t('common:actions.clear'),
           variant: 'secondary',
-          attributes: {
-            onClick: () => {
-              navigateWithQuery({ daysFrom: NaN, daysTo: NaN });
-            },
-            disabled: isEmpty,
+          onClick: () => {
+            navigateWithQuery({ daysFrom: NaN, daysTo: NaN });
           },
+          disabled: isEmpty,
           closable: true,
         },
         {
+          as: 'button',
           label: t('common:actions.apply'),
           variant: 'primary',
-          attributes: {
-            onClick: () => {
-              const [from, to] = getValues().days;
-              navigateWithQuery({
-                daysFrom: from,
-                daysTo: to,
-                ...(from > 1 && { durationFrom: NaN, durationTo: NaN }),
-              });
-            },
-            disabled: !isDirty,
+          onClick: () => {
+            const [from, to] = getValues().days;
+            navigateWithQuery({
+              daysFrom: from,
+              daysTo: to,
+              ...(from > 1 && { durationFrom: NaN, durationTo: NaN }),
+            });
           },
+          disabled: !isDirty,
           closable: true,
         },
       ]}

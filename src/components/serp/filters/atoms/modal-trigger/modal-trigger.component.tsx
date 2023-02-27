@@ -11,19 +11,18 @@ export const FiltersModalTrigger: FC = () => {
 
   return (
     <Button
+      as="button"
       variant="secondary"
       size="xs"
       label="Filters"
-      attributes={{
-        onClick: async () => {
-          const response = await openModal({
-            component: FiltersModal,
-          });
+      onClick={async () => {
+        const response = await openModal({
+          component: FiltersModal,
+        });
 
-          if (response.action === 'APPLY') {
-            navigateWithQuery(response.payload);
-          }
-        },
+        if (response.action === 'APPLY') {
+          navigateWithQuery(response.payload);
+        }
       }}
     />
   );

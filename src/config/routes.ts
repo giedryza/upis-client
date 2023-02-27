@@ -51,4 +51,9 @@ export const routes = {
       },
     },
   },
+  tours: {
+    one: {
+      index: '/tours/:id/:slug',
+    },
+  },
 } as const;

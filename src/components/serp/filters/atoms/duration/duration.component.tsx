@@ -64,33 +64,31 @@ export const FilterDuration: FC = () => {
       }
       actions={[
         {
+          as: 'button',
           label: t('common:actions.clear'),
           variant: 'secondary',
-          attributes: {
-            onClick: () => {
-              navigateWithQuery({ durationFrom: NaN, durationTo: NaN });
-            },
-            disabled: isEmpty,
+          onClick: () => {
+            navigateWithQuery({ durationFrom: NaN, durationTo: NaN });
           },
+          disabled: isEmpty,
           closable: true,
         },
         {
+          as: 'button',
           label: t('common:actions.apply'),
           variant: 'primary',
-          attributes: {
-            onClick: () => {
-              const [from, to] = getValues().duration;
-              navigateWithQuery({
-                durationFrom: from,
-                durationTo: to,
-                ...((activeFilters?.daysFrom || activeFilters?.daysTo) && {
-                  daysFrom: 1,
-                  daysTo: 1,
-                }),
-              });
-            },
-            disabled: !isDirty,
+          onClick: () => {
+            const [from, to] = getValues().duration;
+            navigateWithQuery({
+              durationFrom: from,
+              durationTo: to,
+              ...((activeFilters?.daysFrom || activeFilters?.daysTo) && {
+                daysFrom: 1,
+                daysTo: 1,
+              }),
+            });
           },
+          disabled: !isDirty,
           closable: true,
         },
       ]}

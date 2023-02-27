@@ -13,18 +13,16 @@ export const ConfirmationModal: FC<Props> = ({ prompt, closeModal }) => {
       title={t('common:components.confirm.title')}
       actions={[
         {
+          as: 'button',
           label: t('common:actions.cancel'),
           variant: 'ghost',
-          attributes: {
-            onClick: () => closeModal({ action: 'CLOSE' }),
-          },
+          onClick: () => closeModal({ action: 'CLOSE' }),
         },
         {
+          as: 'button',
           label: t('common:actions.yes'),
           variant: 'primary',
-          attributes: {
-            onClick: () => closeModal({ action: 'CONFIRM' }),
-          },
+          onClick: () => closeModal({ action: 'CONFIRM' }),
         },
       ]}
     >

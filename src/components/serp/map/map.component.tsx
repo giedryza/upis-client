@@ -79,6 +79,7 @@ export const SerpMap: FC = () => {
                       <Infobox
                         useMap={useMap}
                         _id={tour._id}
+                        slug={tour.slug}
                         name={tour.name}
                         photos={tour.photos}
                         distance={tour.distance}

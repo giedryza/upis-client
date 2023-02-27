@@ -1,0 +1,35 @@
+.section {
+  padding: calc(var(--spacing) * 1px);
+
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.4;
+
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-primary);
+
+  .title {
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 1.4;
+    margin-block-end: 2.5rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem 2rem;
+  }
+
+  .group {
+    display: contents;
+  }
+
+  .label {
+    font-weight: 500;
+  }
+
+  .value {
+    align-self: center;
+  }
+}

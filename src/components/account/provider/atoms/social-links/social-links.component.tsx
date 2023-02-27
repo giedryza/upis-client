@@ -5,11 +5,13 @@ import useTranslation from 'next-translate/useTranslation';
 import { routes } from 'config';
 import { Tile } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
-import { useSocialLinks, useDeleteSocialLink } from 'domain/social-links';
+import {
+  useSocialLinks,
+  useDeleteSocialLink,
+  ICON_BY_SOCIAL_LINK_TYPE,
+} from 'domain/social-links';
 import { useConfirm } from 'domain/confirm';
 import { generateUrl, getRouteParam, toExternalLink } from 'tools/common';
-
-import { ICON_BY_SOCIAL_LINK_TYPE } from './social-links.constants';
 
 export const SocialLinks: FC = () => {
   const { t } = useTranslation();
@@ -31,7 +33,8 @@ export const SocialLinks: FC = () => {
       columns={2}
       actions={[
         {
-          url: generateUrl(routes.account.providers.one.socialLinks.add, {
+          as: 'link',
+          href: generateUrl(routes.account.providers.one.socialLinks.add, {
             id: providerId,
           }),
           label: t('common:actions.add'),
@@ -63,32 +66,32 @@ export const SocialLinks: FC = () => {
           ]}
           actions={[
             {
+              as: 'link',
               label: t('common:actions.edit'),
               icon: 'pencil',
               variant: 'secondary',
-              url: generateUrl(routes.account.providers.one.socialLinks.one, {
+              href: generateUrl(routes.account.providers.one.socialLinks.one, {
                 id: socialLink.host,
                 socialLinkId: socialLink._id,
               }),
             },
             {
+              as: 'button',
               label: t('common:actions.delete'),
               icon: 'trash',
               variant: 'ghost',
-              attributes: {
-                disabled: isDeleting,
-                onClick: async () => {
-                  const { confirmed } = await confirmation(
-                    t('account:providers.socialLinks.texts.confirmDelete', {
-                      type: t(`common:social.${socialLink.type}`),
-                      url: socialLink.url,
-                    })
-                  );
+              disabled: isDeleting,
+              onClick: async () => {
+                const { confirmed } = await confirmation(
+                  t('account:providers.socialLinks.texts.confirmDelete', {
+                    type: t(`common:social.${socialLink.type}`),
+                    url: socialLink.url,
+                  })
+                );
 
-                  if (confirmed) {
-                    deleteSocialLink({ id: socialLink._id });
-                  }
-                },
+                if (confirmed) {
+                  deleteSocialLink({ id: socialLink._id });
+                }
               },
             },
           ]}

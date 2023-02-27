@@ -21,7 +21,8 @@ export const About: FC = () => {
       columns={1}
       actions={[
         {
-          url: generateUrl(routes.account.tours.one.about, { id: tour._id }),
+          as: 'link',
+          href: generateUrl(routes.account.tours.one.about, { id: tour._id }),
           label: t('common:actions.edit'),
           variant: 'tertiary',
           icon: 'pencil',

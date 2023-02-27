@@ -18,6 +18,7 @@ Default.args = {
   message: 'Add provider to start creating tours.',
   icon: 'bell',
   action: {
+    as: 'button',
     label: 'Add provider',
     icon: 'plus',
   },

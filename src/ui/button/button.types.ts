@@ -1,9 +1,11 @@
-import { LinkProps as NextLinkProps } from 'next/link';
+import {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ComponentProps,
+} from 'react';
+import Link from 'next/link';
 
 import { IconName } from 'ui';
-
-type ButtonAttributes = JSX.IntrinsicElements['button'];
-type LinkAttributes = JSX.IntrinsicElements['a'];
 
 export const variants = [
   'primary',
@@ -26,16 +28,21 @@ interface BaseProps {
   withDropdown?: boolean;
 }
 
-export interface ButtonProps extends BaseProps {
-  url?: undefined;
-  attributes?: Omit<ButtonAttributes, 'className'>;
-}
+type OmittedAttributes = keyof BaseProps | 'className' | 'children';
 
-export interface LinkProps extends BaseProps {
-  url: NextLinkProps | string;
-  attributes?: Omit<LinkAttributes, 'className' | 'href' | 'ref'>;
-}
+type AsButtonProps = BaseProps &
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, OmittedAttributes> & {
+    as: 'button';
+  };
 
-export type Attributes = ButtonProps['attributes'] & LinkProps['attributes'];
+type AsLinkProps = BaseProps &
+  Omit<ComponentProps<typeof Link>, OmittedAttributes> & {
+    as: 'link';
+  };
 
-export type Props = ButtonProps | LinkProps;
+type AsExternalProps = BaseProps &
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, OmittedAttributes> & {
+    as: 'external';
+  };
+
+export type Props = AsButtonProps | AsLinkProps | AsExternalProps;

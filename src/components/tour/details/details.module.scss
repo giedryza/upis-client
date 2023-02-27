@@ -1,0 +1,29 @@
+@use 'styles/mixins' as *;
+
+.main {
+  padding: calc(var(--spacing) * 1px);
+
+  @include spacing(y, calc(var(--spacing) * 1px));
+
+  .sections {
+    position: relative;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--spacing) * 1px);
+    align-items: flex-start;
+    justify-content: center;
+
+    > *:nth-child(1) {
+      flex: 1;
+    }
+
+    > *:nth-child(2) {
+      flex-basis: 32.5rem;
+
+      @include tablet {
+        flex-basis: 100%;
+      }
+    }
+  }
+}

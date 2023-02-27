@@ -57,26 +57,24 @@ export const FilterDifficulty: FC = () => {
       }
       actions={[
         {
+          as: 'button',
           label: t('common:actions.clear'),
           variant: 'secondary',
-          attributes: {
-            onClick: () => {
-              navigateWithQuery({ difficultyFrom: NaN, difficultyTo: NaN });
-            },
-            disabled: isEmpty,
+          onClick: () => {
+            navigateWithQuery({ difficultyFrom: NaN, difficultyTo: NaN });
           },
+          disabled: isEmpty,
           closable: true,
         },
         {
+          as: 'button',
           label: t('common:actions.apply'),
           variant: 'primary',
-          attributes: {
-            onClick: () => {
-              const [from, to] = getValues().difficulty;
-              navigateWithQuery({ difficultyFrom: from, difficultyTo: to });
-            },
-            disabled: !isDirty,
+          onClick: () => {
+            const [from, to] = getValues().difficulty;
+            navigateWithQuery({ difficultyFrom: from, difficultyTo: to });
           },
+          disabled: !isDirty,
           closable: true,
         },
       ]}

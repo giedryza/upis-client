@@ -8,13 +8,12 @@ export const FiltersClear: FC = () => {
 
   return (
     <Button
+      as="link"
       label={t('serp:actions.clear-filters')}
       size="xs"
       variant="ghost"
-      url={{
-        href: { query: {} },
-        shallow: true,
-      }}
+      href={{ query: {} }}
+      shallow
     />
   );
 };

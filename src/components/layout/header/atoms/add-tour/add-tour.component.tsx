@@ -10,10 +10,11 @@ export const AddTour: FC = () => {
 
   return (
     <Button
+      as="link"
       label={t('common:header.add_tour')}
       variant="outline"
       size="xs"
-      url={generateUrl(routes.account.tours.create)}
+      href={generateUrl(routes.account.tours.create)}
     />
   );
 };

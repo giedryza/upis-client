@@ -23,7 +23,6 @@ export const useProvidersActiveFilters = () => {
     queryFn: () => loaders.getActiveFilters({ params }),
     select: converters.getActiveFilters,
     keepPreviousData: true,
-    refetchOnWindowFocus: false,
   });
 
   return query;
@@ -41,7 +40,6 @@ export const useProviders = ({
     select: converters.getProviders,
     enabled,
     keepPreviousData: true,
-    refetchOnWindowFocus: false,
   });
 
   return query;

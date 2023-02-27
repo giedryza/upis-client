@@ -20,7 +20,8 @@ export const Contacts: FC = () => {
       icon="contacts"
       actions={[
         {
-          url: generateUrl(routes.account.providers.one.contacts, {
+          as: 'link',
+          href: generateUrl(routes.account.providers.one.contacts, {
             id: provider._id,
           }),
           label: t('common:actions.edit'),

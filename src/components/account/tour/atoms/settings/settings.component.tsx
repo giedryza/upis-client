@@ -9,6 +9,8 @@ import { Button } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { generateUrl } from 'tools/common';
 
+import styles from './settings.module.scss';
+
 export const Settings: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
@@ -16,8 +18,7 @@ export const Settings: FC = () => {
   const { confirmation } = useConfirm();
 
   const { data: tour } = useActiveTour();
-  const { mutate: deleteTour, isLoading: isDeleteTourLoading } =
-    useDeleteTour();
+  const { mutate: deleteTour, isLoading: isDeleting } = useDeleteTour();
 
   if (!tour) return null;
 
@@ -27,33 +28,44 @@ export const Settings: FC = () => {
       columns={1}
       icon="gear"
     >
-      <div>
+      <div className={styles.actions}>
         <Button
+          as="button"
           label={t('account:tours.actions.delete')}
-          variant="ghost"
+          variant="outline"
           icon="trash"
           size="sm"
-          attributes={{
-            disabled: isDeleteTourLoading,
-            onClick: async () => {
-              const { confirmed } = await confirmation(
-                t('account:tours.texts.confirmDelete', {
-                  name: tour.name,
-                })
-              );
+          disabled={isDeleting}
+          onClick={async () => {
+            const { confirmed } = await confirmation(
+              t('account:tours.texts.confirmDelete', {
+                name: tour.name,
+              })
+            );
 
-              if (confirmed) {
-                deleteTour(
-                  { id: tour._id },
-                  {
-                    onSuccess: () => {
-                      push(generateUrl(routes.account.tours.index));
-                    },
-                  }
-                );
-              }
-            },
+            if (confirmed) {
+              deleteTour(
+                { id: tour._id },
+                {
+                  onSuccess: () => {
+                    push(generateUrl(routes.account.tours.index));
+                  },
+                }
+              );
+            }
           }}
+        />
+        <Button
+          as="link"
+          label={t('common:actions.preview')}
+          variant="outline"
+          // TODO: replace with eye icon
+          icon="magnifying-glass-plus"
+          size="sm"
+          href={generateUrl(routes.tours.one.index, {
+            id: tour._id,
+            slug: tour.slug,
+          })}
         />
       </div>
     </InfoBlock>

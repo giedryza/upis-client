@@ -20,6 +20,7 @@ export const AccountMenu: FC = () => {
       id="account-menu"
       position="bottom-right"
       menuButton={{
+        as: 'button',
         label: t('common:account.account'),
         icon: 'user',
         variant: 'ghost',
@@ -28,11 +29,13 @@ export const AccountMenu: FC = () => {
       }}
       items={[
         {
+          as: 'link',
           label: t('common:account.profile'),
           icon: 'user',
-          url: generateUrl(routes.account.profile.index),
+          href: generateUrl(routes.account.profile.index),
         },
         {
+          as: 'button',
           label: t('common:account.signout'),
           icon: 'exit',
           onClick: signout,
@@ -41,11 +44,12 @@ export const AccountMenu: FC = () => {
     />
   ) : (
     <Button
+      as="link"
       label={t('common:account.signin')}
       icon="user"
       variant="ghost"
       size="sm"
-      url={generateUrl(routes.auth.signin)}
+      href={generateUrl(routes.auth.signin)}
     />
   );
 };

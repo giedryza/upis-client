@@ -22,7 +22,8 @@ export const About: FC = () => {
       columns={1}
       actions={[
         {
-          url: generateUrl(routes.account.providers.one.about, {
+          as: 'link',
+          href: generateUrl(routes.account.providers.one.about, {
             id: provider._id,
           }),
           label: t('common:actions.edit'),

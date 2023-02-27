@@ -7,4 +7,5 @@ export interface Props {
   min?: number;
   max?: number;
   formatOptions?: Intl.NumberFormatOptions;
+  variant?: 'primary' | 'neutral';
 }

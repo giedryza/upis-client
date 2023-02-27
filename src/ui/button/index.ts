@@ -1,5 +1,2 @@
 export { Button } from './button.component';
-export type {
-  Props as ButtonProps,
-  Attributes as ButtonAttributes,
-} from './button.types';
+export type { Props as ButtonProps } from './button.types';

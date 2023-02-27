@@ -1,0 +1,65 @@
+{
+  "provider": {
+    "tours": "Tours",
+    "tours_count_one": "{{count}} tour",
+    "tours_count_other": "{{count}} tours",
+    "phone": {
+      "title": "Phone"
+    },
+    "email": {
+      "title": "Email"
+    },
+    "website": {
+      "title": "Website"
+    },
+    "languages": {
+      "title": "Languages"
+    },
+    "actions": {
+      "visit_website": "View on website"
+    }
+  },
+  "details": {
+    "description": {
+      "title": "About the tour"
+    },
+    "overview": {
+      "title": "Overview"
+    },
+    "regions": {
+      "title": "Regions"
+    },
+    "rivers": {
+      "title": "Rivers"
+    },
+    "difficulty": {
+      "title": "Difficulty"
+    },
+    "distance": {
+      "title": "Distance"
+    },
+    "duration": {
+      "title": "Duration"
+    },
+    "days": {
+      "title": "Days"
+    },
+    "boats": {
+      "title": "Boat types"
+    },
+    "prices": {
+      "title": "Prices",
+      "pricePer": "per person, per day",
+      "info": "Provided is the approximate price per person, per tour. It may vary depending on a weekday, season etc."
+    },
+    "location": {
+      "title": "Location",
+      "departure": "Departure",
+      "arrival": "Arrival"
+    },
+    "amenities": {
+      "title": "Amenities",
+      "price": "Price"
+    }
+  }
+}

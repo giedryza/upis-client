@@ -67,10 +67,3 @@ export const Default = Template.bind({});
 Default.args = {
   ...Default.args,
 };
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  ...Default.args,
-  url: undefined,
-  attributes: { disabled: true },
-};

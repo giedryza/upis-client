@@ -55,12 +55,11 @@ export const Modal: FC<PropsWithChildren<Props>> & ModalComposition = ({
           >
             <div className={styles.header}>
               <Button
+                as="button"
                 icon="close"
                 variant="ghost"
-                attributes={{
-                  onClick: onClose,
-                  'aria-label': t('common:actions.close'),
-                }}
+                onClick={onClose}
+                aria-label={t('common:actions.close')}
               />
             </div>
 

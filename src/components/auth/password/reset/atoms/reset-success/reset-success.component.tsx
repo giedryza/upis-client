@@ -19,19 +19,21 @@ export const PasswordResetSuccess: FC = () => {
           </h1>
 
           <Button
+            as="link"
             label={t('auth:actions.signin')}
             variant="primary"
             width="full"
-            url={generateUrl(routes.auth.signin)}
+            href={generateUrl(routes.auth.signin)}
           />
 
           <div className={styles.footer}>
             <span>{t('auth:signin.texts.not-have-account')}</span>
             <Button
+              as="link"
               label={t('auth:actions.signup')}
               variant="link"
               size="xs"
-              url={generateUrl(routes.auth.signup)}
+              href={generateUrl(routes.auth.signup)}
             />
           </div>
         </div>

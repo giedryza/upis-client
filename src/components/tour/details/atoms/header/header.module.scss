@@ -1,0 +1,9 @@
+@use 'styles/mixins' as *;
+
+.header {
+  .title {
+    font-weight: 500;
+    font-size: 2.6rem;
+    line-height: 1.4;
+  }
+}

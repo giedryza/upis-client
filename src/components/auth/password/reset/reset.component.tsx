@@ -41,10 +41,11 @@ export const PasswordReset: FC = () => {
               i18nKey="auth:passwordReset.error"
               components={[
                 <Button
+                  as="link"
                   label={t('common:actions.try_again')}
                   size="sm"
                   variant="link"
-                  url={generateUrl(routes.auth.password.forgot)}
+                  href={generateUrl(routes.auth.password.forgot)}
                   key="try-again"
                 />,
               ]}
@@ -154,23 +155,23 @@ export const PasswordReset: FC = () => {
             </fieldset>
 
             <Button
+              as="button"
               label={t('common:actions.submit')}
               variant="primary"
               width="full"
-              attributes={{
-                type: 'submit',
-                disabled: isLoading,
-              }}
+              type="submit"
+              disabled={isLoading}
             />
           </form>
 
           <div className={styles.footer}>
             <span>{t('auth:signin.texts.not-have-account')}</span>
             <Button
+              as="link"
               label={t('auth:actions.signup')}
               variant="link"
               size="xs"
-              url={generateUrl(routes.auth.signup)}
+              href={generateUrl(routes.auth.signup)}
             />
           </div>
         </div>
