@@ -1,4 +1,7 @@
 {
+  "actions": {
+    "visit_website": "Visit website"
+  },
   "provider": {
     "tours": "Tours",
     "tours_count_one": "{{count}} tour",
@@ -9,14 +12,8 @@
     "email": {
       "title": "Email"
     },
-    "website": {
-      "title": "Website"
-    },
     "languages": {
       "title": "Languages"
-    },
-    "actions": {
-      "visit_website": "View on website"
     }
   },
   "details": {
