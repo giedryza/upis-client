@@ -11,23 +11,6 @@
     padding: 1rem 1.5rem;
 
     text-align: left;
-
-    @include spacing(y, 5rem);
-  }
-
-  .brand {
-    @include spacing(y, 0.5rem);
-  }
-
-  .slogan {
-    font-weight: 400;
-    font-size: 1.4rem;
-  }
-
-  .logo {
-    width: 9rem;
-
-    fill: currentColor;
   }
 
   .main {
@@ -35,6 +18,7 @@
     flex-wrap: wrap;
     gap: 5rem;
     align-items: flex-end;
+    padding: 3rem 0;
   }
 
   .navigation {
@@ -90,6 +74,7 @@
     display: flex;
     gap: 5rem;
     justify-content: space-between;
+    padding: 1rem 0;
 
     font-weight: 400;
     font-size: 1.2rem;

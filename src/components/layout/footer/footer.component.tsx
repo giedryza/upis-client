@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import { useRouter } from 'next/router';
 
-import { Container, SelectInput, Logo } from 'ui';
+import { Container, Divider, SelectInput } from 'ui';
 import { capitalize, generateUrl } from 'tools/common';
 import { APP, CookieName, routes } from 'config';
 import { Locale } from 'types/common';
@@ -46,16 +46,6 @@ export const Footer: FC = () => {
     <footer className={styles.footer}>
       <Container>
         <div className={styles.body}>
-          <div className={styles.brand}>
-            <Logo
-              variant="horizontal"
-              className={styles.logo}
-              focusable={false}
-              aria-hidden
-            />
-            <h4 className={styles.slogan}>{t('common:footer.slogan')}</h4>
-          </div>
-
           <div className={styles.main}>
             <nav
               className={styles.navigation}
@@ -94,6 +84,8 @@ export const Footer: FC = () => {
               />
             </div>
           </div>
+
+          <Divider />
 
           <div className={styles.legal}>
             <p className={styles.copy}>
