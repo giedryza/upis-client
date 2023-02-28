@@ -46,24 +46,7 @@
     transition-duration: var(--transition-duration-md);
     transition-property: background-color, box-shadow;
 
-    @media screen and (-ms-high-contrast: active) {
-      border: 2px solid currentcolor;
-    }
-
     @include spacing(y, 0.25em);
-
-    &:focus {
-      outline: 2px solid transparent;
-      box-shadow: var(--outline-button);
-
-      &:not(:focus-visible) {
-        box-shadow: none;
-      }
-    }
-
-    &:focus-visible {
-      box-shadow: var(--outline-button);
-    }
 
     &:hover,
     &:active,

@@ -11,6 +11,25 @@ body {
   background-color: var(--color-grey-95);
 }
 
+a {
+  @media screen and (-ms-high-contrast: active) {
+    border: 2px solid currentcolor;
+  }
+
+  &:focus {
+    outline: 2px solid transparent;
+    box-shadow: var(--outline-button);
+
+    &:not(:focus-visible) {
+      box-shadow: none;
+    }
+  }
+
+  &:focus-visible {
+    box-shadow: var(--outline-button);
+  }
+}
+
 ::selection {
   color: var(--color-white);
 

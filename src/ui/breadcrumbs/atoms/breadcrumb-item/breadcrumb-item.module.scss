@@ -27,19 +27,6 @@
     &:hover {
       text-decoration: underline;
     }
-
-    &:focus {
-      outline: 2px solid transparent;
-      box-shadow: var(--outline-button);
-
-      &:not(:focus-visible) {
-        box-shadow: none;
-      }
-    }
-
-    &:focus-visible {
-      box-shadow: var(--outline-button);
-    }
   }
 
   .heading {
