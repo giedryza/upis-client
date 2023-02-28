@@ -30,17 +30,16 @@ export const DetailsSidebar: FC = () => {
           <SidebarContacts
             phone={tour.provider.phone}
             email={tour.provider.email}
-            website={tour.provider.website}
             languages={tour.provider.languages}
           />
 
           <SidebarSocials socialLinks={tour.provider.socialLinks} />
 
-          {tour.website ? (
+          {tour.provider.website ? (
             <Button
               as="external"
-              href={tour.website}
-              label={t('tours:provider.actions.visit_website')}
+              href={tour.provider.website}
+              label={t('tours:actions.visit_website')}
               variant="primary"
               size="sm"
               width="full"

@@ -1,4 +1,7 @@
 {
+  "actions": {
+    "visit_website": "Peržiūrėti tinklapyje"
+  },
   "provider": {
     "tours": "Maršrutai",
     "tours_count_one": "{{count}} maršrutas",
@@ -10,14 +13,8 @@
     "email": {
       "title": "El. paštas"
     },
-    "website": {
-      "title": "Tinklapis"
-    },
     "languages": {
       "title": "Kalbos"
-    },
-    "actions": {
-      "visit_website": "Peržiūrėti tinklapyje"
     }
   },
   "details": {
