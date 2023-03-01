@@ -98,28 +98,6 @@
     "linkedin": "Linkedin",
     "twitter": "Twitter"
   },
-  "amenities": {
-    "variants": {
-      "transport": "Transport",
-      "child-seat": "Child seat",
-      "life-vest": "Life vest",
-      "phone-case": "Phone case",
-      "dry-bag": "Dry bag",
-      "tent": "Tent",
-      "sleeping-bag": "Sleeping bag",
-      "grill": "Grill",
-      "guide": "Guide services",
-      "camera": "Camera",
-      "pet-friendly": "Pet friendly"
-    },
-    "units": {
-      "tour": "per tour",
-      "person": "per person",
-      "day": "per day",
-      "h": "per hour",
-      "km": "per kilometre"
-    }
-  },
   "boats": {
     "single-kayak": "Single kayak",
     "double-kayak": "Double kayak",

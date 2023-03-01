@@ -3,10 +3,10 @@ module.exports = {
   defaultLocale: 'lt',
   pages: {
     '*': ['common'],
-    '/': ['home', 'serp', 'rivers', 'regions'],
-    'rgx:^/account': ['account', 'rivers', 'regions'],
+    '/': ['home', 'serp', 'amenities', 'rivers', 'regions'],
+    'rgx:^/account': ['account', 'amenities', 'rivers', 'regions'],
     'rgx:^/auth': ['auth'],
-    'rgx:^/tours': ['tours', 'rivers', 'regions'],
+    'rgx:^/tours': ['tours', 'amenities', 'rivers', 'regions'],
   },
   loadLocaleFrom: (locale, namespace) => {
     // eslint-disable-next-line import/no-dynamic-require

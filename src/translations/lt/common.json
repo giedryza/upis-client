@@ -98,28 +98,6 @@
     "linkedin": "Linkedin",
     "twitter": "Twitter"
   },
-  "amenities": {
-    "variants": {
-      "transport": "Transportavimas",
-      "child-seat": "Vaikiška kėdutė",
-      "life-vest": "Gelbėjimosi liemenė",
-      "phone-case": "Hermetiškas dėklas telefonui",
-      "dry-bag": "Hermetiškas maišas",
-      "tent": "Palapinė",
-      "sleeping-bag": "Miegmaišis",
-      "grill": "Grilius",
-      "guide": "Gido paslaugos",
-      "camera": "Filmavimo/fotografavimo kamera",
-      "pet-friendly": "Draugiški gyvūnams"
-    },
-    "units": {
-      "tour": "už maršrutą",
-      "person": "už asmenį",
-      "day": "už dieną",
-      "h": "už valandą",
-      "km": "už kilometrą"
-    }
-  },
   "boats": {
     "single-kayak": "Vienvietė baidarė",
     "double-kayak": "Dvivietė baidarė",

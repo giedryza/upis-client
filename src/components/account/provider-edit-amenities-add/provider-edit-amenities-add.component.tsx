@@ -98,7 +98,7 @@ export const ProviderEditAmenitiesAdd: FC = () => {
               label={t('account:providers.amenities.form.variant.label')}
               error={errors.variant?.message}
               options={amenities.map((variant) => ({
-                label: t(`common:amenities.variants.${variant}`),
+                label: t(`amenities:variants.${variant}`),
                 value: variant,
               }))}
             />
@@ -138,7 +138,7 @@ export const ProviderEditAmenitiesAdd: FC = () => {
                 label={t('account:providers.amenities.form.unit.label')}
                 error={errors.unit?.message}
                 options={units.map((unit) => ({
-                  label: t(`common:amenities.units.${unit}`),
+                  label: t(`amenities:units.${unit}`),
                   value: unit,
                 }))}
                 disabled={isFree}
