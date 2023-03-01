@@ -83,7 +83,7 @@ export const SocialLinks: FC = () => {
               disabled: isDeleting,
               onClick: async () => {
                 const { confirmed } = await confirmation(
-                  t('account:providers.socialLinks.texts.confirmDelete', {
+                  t('account:providers.socialLinks.texts.confirm_delete', {
                     type: t(`socials:${socialLink.type}`),
                     url: socialLink.url,
                   })

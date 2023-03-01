@@ -17,7 +17,7 @@
           "label": "Password",
           "placeholder": "∗∗∗∗∗∗∗∗"
         },
-        "currentPassword": {
+        "current_password": {
           "label": "Current password",
           "placeholder": "∗∗∗∗∗∗∗∗",
           "error": {
@@ -25,7 +25,7 @@
             "incorrect": "Incorrect password. Try again or click Forgot password to reset it."
           }
         },
-        "newPassword": {
+        "new_password": {
           "label": "New password",
           "placeholder": "∗∗∗∗∗∗∗∗",
           "error": {
@@ -33,12 +33,12 @@
             "length": "Use between {{minLength}} and {{maxLength}} characters for password."
           }
         },
-        "confirmPassword": {
+        "confirm_password": {
           "label": "Confirm password",
           "placeholder": "∗∗∗∗∗∗∗∗",
           "error": {
             "empty": "Confirm password.",
-            "notMatch": "Passwords didn't match. Try again."
+            "not_match": "Passwords didn't match. Try again."
           }
         }
       }
@@ -145,7 +145,7 @@
         }
       },
       "texts": {
-        "confirmDelete": "This action cannot be undone. It will permanently delete amenity <strong>{{name}}</strong>. Are you sure you want to proceed?"
+        "confirm_delete": "This action cannot be undone. It will permanently delete amenity <strong>{{name}}</strong>. Are you sure you want to proceed?"
       }
     },
     "socialLinks": {
@@ -169,14 +169,14 @@
         }
       },
       "texts": {
-        "confirmDelete": "This action cannot be undone. It will permanently delete <strong>{{type}}</strong> link <strong>{{url}}</strong>. Are you sure you want to proceed?"
+        "confirm_delete": "This action cannot be undone. It will permanently delete <strong>{{type}}</strong> link <strong>{{url}}</strong>. Are you sure you want to proceed?"
       }
     },
     "settings": {
       "title": "Settings"
     },
     "texts": {
-      "confirmDelete": "This action cannot be undone. It will permanently delete provider <strong>{{name}}</strong> and all its associated information. Are you sure you want to proceed?"
+      "confirm_delete": "This action cannot be undone. It will permanently delete provider <strong>{{name}}</strong> and all its associated information. Are you sure you want to proceed?"
     },
     "actions": {
       "add": "Add provider",
@@ -199,8 +199,8 @@
     },
     "empty": {
       "title": "No tours",
-      "messageProviders": "Add provider to start creating tours.",
-      "messageTours": "Start creating tours."
+      "message_providers": "Add provider to start creating tours.",
+      "message_tours": "Start creating tours."
     },
     "about": {
       "title": "About",
@@ -334,7 +334,7 @@
       },
       "texts": {
         "primary": "Primary",
-        "confirmDelete": "This action cannot be undone. It will permanently delete this image. Are you sure you want to proceed?",
+        "confirm_delete": "This action cannot be undone. It will permanently delete this image. Are you sure you want to proceed?",
         "empty": {
           "title": "Empty",
           "message": "Click 'add' to fill the gallery with photos."
@@ -345,7 +345,7 @@
       "title": "Settings"
     },
     "texts": {
-      "confirmDelete": "This action cannot be undone. It will permanently delete tour <strong>{{name}}</strong> and all its associated information. Are you sure you want to proceed?"
+      "confirm_delete": "This action cannot be undone. It will permanently delete tour <strong>{{name}}</strong> and all its associated information. Are you sure you want to proceed?"
     },
     "actions": {
       "add": "Add a tour",

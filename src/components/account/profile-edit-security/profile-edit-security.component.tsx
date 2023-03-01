@@ -61,13 +61,13 @@ export const ProfileEditSecurity: FC = () => {
                 required: {
                   value: true,
                   message: t(
-                    'account:profile.security.form.currentPassword.error.empty'
+                    'account:profile.security.form.current_password.error.empty'
                   ),
                 },
               })}
-              label={t('account:profile.security.form.currentPassword.label')}
+              label={t('account:profile.security.form.current_password.label')}
               placeholder={t(
-                'account:profile.security.form.currentPassword.placeholder'
+                'account:profile.security.form.current_password.placeholder'
               )}
               type="password"
               error={errors.currentPassword?.message}
@@ -78,13 +78,13 @@ export const ProfileEditSecurity: FC = () => {
                 required: {
                   value: true,
                   message: t(
-                    'account:profile.security.form.newPassword.error.empty'
+                    'account:profile.security.form.new_password.error.empty'
                   ),
                 },
                 minLength: {
                   value: PASSWORD_MIN_LENGTH,
                   message: t(
-                    'account:profile.security.form.newPassword.error.length',
+                    'account:profile.security.form.new_password.error.length',
                     {
                       minLength: PASSWORD_MIN_LENGTH,
                       maxLength: PASSWORD_MAX_LENGTH,
@@ -94,7 +94,7 @@ export const ProfileEditSecurity: FC = () => {
                 maxLength: {
                   value: PASSWORD_MAX_LENGTH,
                   message: t(
-                    'account:profile.security.form.newPassword.error.length',
+                    'account:profile.security.form.new_password.error.length',
                     {
                       minLength: PASSWORD_MIN_LENGTH,
                       maxLength: PASSWORD_MAX_LENGTH,
@@ -102,9 +102,9 @@ export const ProfileEditSecurity: FC = () => {
                   ),
                 },
               })}
-              label={t('account:profile.security.form.newPassword.label')}
+              label={t('account:profile.security.form.new_password.label')}
               placeholder={t(
-                'account:profile.security.form.newPassword.placeholder'
+                'account:profile.security.form.new_password.placeholder'
               )}
               type="password"
               error={errors.newPassword?.message}
@@ -115,20 +115,20 @@ export const ProfileEditSecurity: FC = () => {
                 required: {
                   value: true,
                   message: t(
-                    'account:profile.security.form.confirmPassword.error.empty'
+                    'account:profile.security.form.confirm_password.error.empty'
                   ),
                 },
                 validate: (value) => {
                   if (watch('newPassword') !== value) {
                     return t(
-                      'account:profile.security.form.confirmPassword.error.notMatch'
+                      'account:profile.security.form.confirm_password.error.not_match'
                     );
                   }
                 },
               })}
-              label={t('account:profile.security.form.confirmPassword.label')}
+              label={t('account:profile.security.form.confirm_password.label')}
               placeholder={t(
-                'account:profile.security.form.confirmPassword.placeholder'
+                'account:profile.security.form.confirm_password.placeholder'
               )}
               type="password"
               error={errors.confirmPassword?.message}

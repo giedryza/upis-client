@@ -73,7 +73,7 @@ export const Amenities: FC = () => {
               disabled: isDeleting,
               onClick: async () => {
                 const { confirmed } = await confirmation(
-                  t('account:providers.amenities.texts.confirmDelete', {
+                  t('account:providers.amenities.texts.confirm_delete', {
                     name: t(`amenities:variants.${amenity.variant}`),
                   })
                 );

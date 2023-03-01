@@ -104,7 +104,7 @@ export const Gallery: FC = () => {
                   title: t('common:actions.delete'),
                   onClick: async () => {
                     const { confirmed } = await confirmation(
-                      t('account:tours.gallery.texts.confirmDelete')
+                      t('account:tours.gallery.texts.confirm_delete')
                     );
 
                     if (confirmed) {

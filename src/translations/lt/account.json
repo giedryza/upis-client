@@ -17,7 +17,7 @@
           "label": "Slaptažodis",
           "placeholder": "∗∗∗∗∗∗∗∗"
         },
-        "currentPassword": {
+        "current_password": {
           "label": "Dabartinis slaptažodis",
           "placeholder": "∗∗∗∗∗∗∗∗",
           "error": {
@@ -25,7 +25,7 @@
             "incorrect": "Neteisingas slaptažodis. Bandykite dar kartą arba spauskite Pamiršai slaptažodį, kad atstatyti."
           }
         },
-        "newPassword": {
+        "new_password": {
           "label": "Naujas slaptažodis",
           "placeholder": "∗∗∗∗∗∗∗∗",
           "error": {
@@ -33,12 +33,12 @@
             "length": "Slaptažodis turi būti tarp {{minLength}} ir {{maxLength}} ženklų."
           }
         },
-        "confirmPassword": {
+        "confirm_password": {
           "label": "Patvirtinkite slaptažodį",
           "placeholder": "∗∗∗∗∗∗∗∗",
           "error": {
             "empty": "Patvirtinkite slaptažodį.",
-            "notMatch": "Slaptažodžiai nesutampa. Bandykite dar kartą."
+            "not_match": "Slaptažodžiai nesutampa. Bandykite dar kartą."
           }
         }
       }
@@ -145,7 +145,7 @@
         }
       },
       "texts": {
-        "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins ypatumą <strong>{{name}}</strong>. Ar tikrai norite tęsti?"
+        "confirm_delete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins ypatumą <strong>{{name}}</strong>. Ar tikrai norite tęsti?"
       }
     },
     "socialLinks": {
@@ -169,14 +169,14 @@
         }
       },
       "texts": {
-        "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins <strong>{{type}}</strong> nuorodą <strong>{{url}}</strong>. Ar tikrai norite tęsti?"
+        "confirm_delete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins <strong>{{type}}</strong> nuorodą <strong>{{url}}</strong>. Ar tikrai norite tęsti?"
       }
     },
     "settings": {
       "title": "Nustatymai"
     },
     "texts": {
-      "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins tiekėją <strong>{{name}}</strong> ir visą su ja susijusią informaciją. Ar tikrai norite tęsti?"
+      "confirm_delete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins tiekėją <strong>{{name}}</strong> ir visą su ja susijusią informaciją. Ar tikrai norite tęsti?"
     },
     "actions": {
       "add": "Pridėti tiekėją",
@@ -199,8 +199,8 @@
     },
     "empty": {
       "title": "Maršrutų nėra",
-      "messageProviders": "Pridėkite tiekėją norėdami kurti maršrutus.",
-      "messageTours": "Pradėkite kurti maršrutus."
+      "message_providers": "Pridėkite tiekėją norėdami kurti maršrutus.",
+      "message_tours": "Pradėkite kurti maršrutus."
     },
     "about": {
       "title": "Apie maršrutą",
@@ -334,7 +334,7 @@
       },
       "texts": {
         "primary": "Pagrindinė",
-        "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins šią nuotrauką. Ar tikrai norite tęsti?",
+        "confirm_delete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins šią nuotrauką. Ar tikrai norite tęsti?",
         "empty": {
           "title": "Tuščia",
           "message": "Spauskite 'pridėti' norėdami papildyti nuotraukų galeriją."
@@ -345,7 +345,7 @@
       "title": "Nustatymai"
     },
     "texts": {
-      "confirmDelete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins maršrutą <strong>{{name}}</strong> ir visą su juo susijusią informaciją. Ar tikrai norite tęsti?"
+      "confirm_delete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins maršrutą <strong>{{name}}</strong> ir visą su juo susijusią informaciją. Ar tikrai norite tęsti?"
     },
     "actions": {
       "add": "Pridėti maršrutą",

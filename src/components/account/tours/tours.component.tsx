@@ -23,7 +23,7 @@ export const Tours: FC = () => {
       {!providers?.items.length && !isProvidersLoading ? (
         <EmptyState
           title={t('account:tours.empty.title')}
-          message={t('account:tours.empty.messageProviders')}
+          message={t('account:tours.empty.message_providers')}
           icon="path"
           action={{
             as: 'link',
@@ -35,7 +35,7 @@ export const Tours: FC = () => {
       ) : !tours?.items.length && !isToursLoading ? (
         <EmptyState
           title={t('account:tours.empty.title')}
-          message={t('account:tours.empty.messageTours')}
+          message={t('account:tours.empty.message_tours')}
           icon="path"
           action={{
             as: 'link',

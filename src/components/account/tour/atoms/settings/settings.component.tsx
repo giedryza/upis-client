@@ -38,7 +38,7 @@ export const Settings: FC = () => {
           disabled={isDeleting}
           onClick={async () => {
             const { confirmed } = await confirmation(
-              t('account:tours.texts.confirmDelete', {
+              t('account:tours.texts.confirm_delete', {
                 name: tour.name,
               })
             );
