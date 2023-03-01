@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Container, SelectInput, TextInput } from 'ui';
 import { routes } from 'config';
 import { InfoBlock } from 'components/account/atoms';
-import { useAddSocialLink, SocialType } from 'domain/social-links';
+import { socials, useAddSocialLink } from 'domain/providers';
 import { generateUrl, getRouteParam } from 'tools/common';
 
 import { Values } from './provider-edit-social-links-add.types';
@@ -33,7 +33,7 @@ export const ProviderEditSocialLinksAdd: FC = () => {
     if (!providerId) return;
 
     addSocialLink(
-      { hostId: providerId, form: { type, url } },
+      { id: providerId, form: { type, url } },
       {
         onSuccess: () => {
           push(
@@ -48,7 +48,7 @@ export const ProviderEditSocialLinksAdd: FC = () => {
 
   return (
     <InfoBlock
-      title={t('account:providers.socialLinks.title')}
+      title={t('account:providers.socials.title')}
       icon="network"
       columns={1}
     >
@@ -59,14 +59,12 @@ export const ProviderEditSocialLinksAdd: FC = () => {
               {...register('type', {
                 required: {
                   value: true,
-                  message: t(
-                    'account:providers.socialLinks.form.type.error.empty'
-                  ),
+                  message: t('account:providers.socials.form.type.error.empty'),
                 },
               })}
-              label={t('account:providers.socialLinks.form.type.label')}
+              label={t('account:providers.socials.form.type.label')}
               error={errors.type?.message}
-              options={Object.values(SocialType).map((type) => ({
+              options={socials.map((type) => ({
                 label: t(`socials:${type}`),
                 value: type,
               }))}
@@ -76,12 +74,10 @@ export const ProviderEditSocialLinksAdd: FC = () => {
               {...register('url', {
                 required: {
                   value: true,
-                  message: t(
-                    'account:providers.socialLinks.form.url.error.empty'
-                  ),
+                  message: t('account:providers.socials.form.url.error.empty'),
                 },
               })}
-              label={t('account:providers.socialLinks.form.url.label')}
+              label={t('account:providers.socials.form.url.label')}
               placeholder="https://upis.lt"
               error={errors.url?.message}
             />

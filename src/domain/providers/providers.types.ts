@@ -1,6 +1,5 @@
 import { z } from 'zod';
 
-import { SocialLink } from 'domain/social-links';
 import { Amenity } from 'domain/amenities';
 import { BaseEntity, GeoPoint, Language } from 'types/common';
 import { paginationFilters } from 'domain/pagination';
@@ -14,6 +13,21 @@ export const boats = [
 
 export type Boat = (typeof boats)[number];
 
+export const socials = [
+  'facebook',
+  'instagram',
+  'youtube',
+  'linkedin',
+  'twitter',
+] as const;
+
+export type SocialVariant = (typeof socials)[number];
+
+export interface Social extends BaseEntity {
+  type: SocialVariant;
+  url: string;
+}
+
 export interface Provider extends BaseEntity {
   name: string;
   phone: string;
@@ -24,7 +38,7 @@ export interface Provider extends BaseEntity {
   address: string;
   user: string;
   amenities: Amenity[];
-  socialLinks: SocialLink[];
+  socials: Social[];
   languages: Language[];
   boats: Boat[];
   location: GeoPoint;

@@ -10,7 +10,7 @@ import { generateUrl, getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { ProviderEditSocialLinksEdit } from 'components/account';
-import { getLoaders, socialLinksKeys } from 'domain/social-links';
+import { getLoaders, providersKeys } from 'domain/providers';
 
 const ProviderEditSocialLinksEditPage: NextPage = () => {
   const { t } = useTranslation();
@@ -41,7 +41,7 @@ const ProviderEditSocialLinksEditPage: NextPage = () => {
                 url: generateUrl(routes.account.providers.one.index, { id }),
               },
               {
-                label: t('account:providers.socialLinks.title'),
+                label: t('account:providers.socials.title'),
               },
             ]}
           />
@@ -72,11 +72,11 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const queryClient = new QueryClient();
-  const id = getRouteParam(params?.socialLinkId);
+  const id = getRouteParam(params?.id);
   const { loaders } = getLoaders(locale);
 
-  await queryClient.prefetchQuery(socialLinksKeys.detail(id), () =>
-    loaders.getSocialLink({ req, id })
+  await queryClient.prefetchQuery(providersKeys.detail(id), () =>
+    loaders.getProvider({ req, id })
   );
 
   return {

@@ -8,10 +8,10 @@ import { routes } from 'config';
 import { generateUrl, getRouteParam } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import {
-  useSocialLink,
+  useActiveProvider,
+  socials,
   useUpdateSocialLink,
-  SocialType,
-} from 'domain/social-links';
+} from 'domain/providers';
 
 import { Values } from './provider-edit-social-links-edit.types';
 import { INITIAL_VALUES } from './provider-edit-social-links-edit.constants';
@@ -21,11 +21,15 @@ export const ProviderEditSocialLinksEdit: FC = () => {
   const { t } = useTranslation();
   const { query, push } = useRouter();
 
-  const id = getRouteParam(query.socialLinkId);
+  const socialLinkId = getRouteParam(query.socialLinkId);
   const providerId = getRouteParam(query.id);
 
-  const { data: socialLink } = useSocialLink(id);
+  const { data: provider } = useActiveProvider();
   const { mutate: updateSocialLink, isLoading } = useUpdateSocialLink();
+
+  const socialLink = provider?.socials.find(
+    (social) => social._id === socialLinkId
+  );
 
   const {
     register,
@@ -41,11 +45,11 @@ export const ProviderEditSocialLinksEdit: FC = () => {
       : undefined,
   });
 
-  const onSubmit: SubmitHandler<Values> = ({ type, url }) => {
-    if (!id) return;
+  if (!provider || !socialLink) return null;
 
+  const onSubmit: SubmitHandler<Values> = ({ type, url }) => {
     updateSocialLink(
-      { id, form: { type, url } },
+      { id: provider._id, form: { id: socialLink._id, type, url } },
       {
         onSuccess: () => {
           push(
@@ -60,7 +64,7 @@ export const ProviderEditSocialLinksEdit: FC = () => {
 
   return (
     <InfoBlock
-      title={t('account:providers.socialLinks.title')}
+      title={t('account:providers.socials.title')}
       icon="network"
       columns={1}
     >
@@ -71,14 +75,12 @@ export const ProviderEditSocialLinksEdit: FC = () => {
               {...register('type', {
                 required: {
                   value: true,
-                  message: t(
-                    'account:providers.socialLinks.form.type.error.empty'
-                  ),
+                  message: t('account:providers.socials.form.type.error.empty'),
                 },
               })}
-              label={t('account:providers.socialLinks.form.type.label')}
+              label={t('account:providers.socials.form.type.label')}
               error={errors.type?.message}
-              options={Object.values(SocialType).map((type) => ({
+              options={socials.map((type) => ({
                 label: t(`socials:${type}`),
                 value: type,
               }))}
@@ -88,12 +90,10 @@ export const ProviderEditSocialLinksEdit: FC = () => {
               {...register('url', {
                 required: {
                   value: true,
-                  message: t(
-                    'account:providers.socialLinks.form.url.error.empty'
-                  ),
+                  message: t('account:providers.socials.form.url.error.empty'),
                 },
               })}
-              label={t('account:providers.socialLinks.form.url.label')}
+              label={t('account:providers.socials.form.url.label')}
               placeholder="https://upis.lt"
               error={errors.url?.message}
             />
