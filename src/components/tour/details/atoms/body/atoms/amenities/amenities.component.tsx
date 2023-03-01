@@ -20,7 +20,7 @@ export const BodyAmenities: FC<Props> = ({ amenities }) => {
       <div className={styles.amenities}>
         {amenities.map((amenity) => (
           <Tile
-            title={t(`common:amenities.variants.${amenity.variant}`)}
+            title={t(`amenities:variants.${amenity.variant}`)}
             subtitle={amenity.info}
             icon={ICON_BY_VARIANT[amenity.variant]}
             fields={[
@@ -31,7 +31,7 @@ export const BodyAmenities: FC<Props> = ({ amenities }) => {
                       lang,
                       amenity.price.amount,
                       amenity.price.currency
-                    )} ${t(`common:amenities.units.${amenity.unit}`)}`
+                    )} ${t(`amenities:units.${amenity.unit}`)}`
                   : t('common:texts.free'),
               },
             ]}

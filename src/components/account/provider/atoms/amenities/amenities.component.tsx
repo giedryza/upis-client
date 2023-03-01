@@ -39,7 +39,7 @@ export const Amenities: FC = () => {
     >
       {provider.amenities.map((amenity) => (
         <Tile
-          title={t(`common:amenities.variants.${amenity.variant}`)}
+          title={t(`amenities:variants.${amenity.variant}`)}
           subtitle={amenity.info}
           icon={ICON_BY_VARIANT[amenity.variant]}
           fields={[
@@ -50,7 +50,7 @@ export const Amenities: FC = () => {
                     lang,
                     amenity.price.amount,
                     amenity.price.currency
-                  )} ${t(`common:amenities.units.${amenity.unit}`)}`
+                  )} ${t(`amenities:units.${amenity.unit}`)}`
                 : t('common:texts.free'),
             },
           ]}
@@ -73,8 +73,8 @@ export const Amenities: FC = () => {
               disabled: isDeleting,
               onClick: async () => {
                 const { confirmed } = await confirmation(
-                  t('account:providers.amenities.texts.confirmDelete', {
-                    name: t(`common:amenities.variants.${amenity.variant}`),
+                  t('account:providers.amenities.texts.confirm_delete', {
+                    name: t(`amenities:variants.${amenity.variant}`),
                   })
                 );
 

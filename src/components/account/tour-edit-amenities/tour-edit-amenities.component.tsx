@@ -87,15 +87,13 @@ export const TourEditAmenities: FC = () => {
                   label={t('account:tours.amenities.form.amenities.label')}
                   items={
                     tour?.provider.amenities.map((amenity) => ({
-                      label: `${t(
-                        `common:amenities.variants.${amenity.variant}`
-                      )} (${
+                      label: `${t(`amenities:variants.${amenity.variant}`)} (${
                         amenity.price
                           ? `${formatCurrency(
                               lang,
                               amenity.price.amount,
                               amenity.price.currency
-                            )} ${t(`common:amenities.units.${amenity.unit}`)}`
+                            )} ${t(`amenities:units.${amenity.unit}`)}`
                           : t('common:texts.free')
                       })`,
                       value: amenity._id,

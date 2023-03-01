@@ -96,7 +96,7 @@ export const ProviderEditAmenitiesEdit: FC = () => {
           <fieldset className={styles.fieldset} disabled={isLoading}>
             <TextInput
               label={t('account:providers.amenities.form.variant.label')}
-              value={t(`common:amenities.variants.${amenity?.variant}`)}
+              value={t(`amenities:variants.${amenity?.variant}`)}
               name="amenity"
               readonly
             />
@@ -136,7 +136,7 @@ export const ProviderEditAmenitiesEdit: FC = () => {
                 label={t('account:providers.amenities.form.unit.label')}
                 error={errors.unit?.message}
                 options={units.map((unit) => ({
-                  label: t(`common:amenities.units.${unit}`),
+                  label: t(`amenities:units.${unit}`),
                   value: unit,
                 }))}
                 disabled={isFree}

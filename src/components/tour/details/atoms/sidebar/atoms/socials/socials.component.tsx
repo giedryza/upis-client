@@ -19,7 +19,7 @@ export const SidebarSocials: FC<Props> = ({ socialLinks }) => {
             icon={ICON_BY_SOCIAL_LINK_TYPE[socialLink.type]}
             variant="secondary"
             href={socialLink.url}
-            aria-label={t(`common:social.${socialLink.type}`)}
+            aria-label={t(`socials:${socialLink.type}`)}
           />
         </li>
       ))}

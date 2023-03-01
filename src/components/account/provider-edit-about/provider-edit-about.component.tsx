@@ -133,7 +133,7 @@ export const ProviderEditAbout: FC = () => {
                   label={t('account:providers.about.form.boats.label')}
                   items={
                     supportedBoats.map((boat) => ({
-                      label: t(`common:boats.${boat}`),
+                      label: t(`boats:${boat}`),
                       value: boat,
                     })) ?? []
                   }

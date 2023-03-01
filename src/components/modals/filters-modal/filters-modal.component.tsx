@@ -108,7 +108,7 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
             <CheckboxGroupInput
               label={t('serp:filters.amenities.title')}
               items={amenities.map((variant) => ({
-                label: t(`common:amenities.variants.${variant}`),
+                label: t(`amenities:variants.${variant}`),
                 value: variant,
               }))}
               value={value}

@@ -36,7 +36,7 @@ export const Amenities: FC = () => {
       {tour.amenities.length ? (
         tour.amenities.map(({ _id: amenity }) => (
           <Tile
-            title={t(`common:amenities.variants.${amenity.variant}`)}
+            title={t(`amenities:variants.${amenity.variant}`)}
             subtitle={amenity.info}
             icon={ICON_BY_VARIANT[amenity.variant]}
             fields={[
@@ -47,7 +47,7 @@ export const Amenities: FC = () => {
                       lang,
                       amenity.price.amount,
                       amenity.price.currency
-                    )} ${t(`common:amenities.units.${amenity.unit}`)}`
+                    )} ${t(`amenities:units.${amenity.unit}`)}`
                   : t('common:texts.free'),
               },
             ]}

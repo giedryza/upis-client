@@ -79,7 +79,7 @@ export const ProviderEditSocialLinksEdit: FC = () => {
               label={t('account:providers.socialLinks.form.type.label')}
               error={errors.type?.message}
               options={Object.values(SocialType).map((type) => ({
-                label: t(`common:social.${type}`),
+                label: t(`socials:${type}`),
                 value: type,
               }))}
             />

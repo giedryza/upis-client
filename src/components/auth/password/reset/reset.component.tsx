@@ -97,13 +97,13 @@ export const PasswordReset: FC = () => {
                   required: {
                     value: true,
                     message: t(
-                      'auth:passwordReset.form.newPassword.errors.empty'
+                      'auth:passwordReset.form.new_password.errors.empty'
                     ),
                   },
                   minLength: {
                     value: PASSWORD_MIN_LENGTH,
                     message: t(
-                      'auth:passwordReset.form.newPassword.errors.length',
+                      'auth:passwordReset.form.new_password.errors.length',
                       {
                         minLength: PASSWORD_MIN_LENGTH,
                         maxLength: PASSWORD_MAX_LENGTH,
@@ -113,7 +113,7 @@ export const PasswordReset: FC = () => {
                   maxLength: {
                     value: PASSWORD_MAX_LENGTH,
                     message: t(
-                      'auth:passwordReset.form.newPassword.errors.length',
+                      'auth:passwordReset.form.new_password.errors.length',
                       {
                         minLength: PASSWORD_MIN_LENGTH,
                         maxLength: PASSWORD_MAX_LENGTH,
@@ -121,9 +121,9 @@ export const PasswordReset: FC = () => {
                     ),
                   },
                 })}
-                label={t('auth:passwordReset.form.newPassword.label')}
+                label={t('auth:passwordReset.form.new_password.label')}
                 placeholder={t(
-                  'auth:passwordReset.form.newPassword.placeholder'
+                  'auth:passwordReset.form.new_password.placeholder'
                 )}
                 type="password"
                 error={errors.newPassword?.message}
@@ -134,20 +134,20 @@ export const PasswordReset: FC = () => {
                   required: {
                     value: true,
                     message: t(
-                      'auth:passwordReset.form.confirmPassword.errors.empty'
+                      'auth:passwordReset.form.confirm_password.errors.empty'
                     ),
                   },
                   validate: (value) => {
                     if (watch('newPassword') !== value) {
                       return t(
-                        'auth:passwordReset.form.confirmPassword.errors.not-match'
+                        'auth:passwordReset.form.confirm_password.errors.not_match'
                       );
                     }
                   },
                 })}
-                label={t('auth:passwordReset.form.confirmPassword.label')}
+                label={t('auth:passwordReset.form.confirm_password.label')}
                 placeholder={t(
-                  'auth:passwordReset.form.confirmPassword.placeholder'
+                  'auth:passwordReset.form.confirm_password.placeholder'
                 )}
                 type="password"
                 error={errors.confirmPassword?.message}

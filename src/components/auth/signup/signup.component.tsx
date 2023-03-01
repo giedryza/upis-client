@@ -89,18 +89,20 @@ export const Signup: FC = () => {
                 {...register('confirmPassword', {
                   required: {
                     value: true,
-                    message: t('auth:signup.form.confirmPassword.errors.empty'),
+                    message: t(
+                      'auth:signup.form.confirm_password.errors.empty'
+                    ),
                   },
                   validate: (value) => {
                     if (watch('password') !== value) {
                       return t(
-                        'auth:signup.form.confirmPassword.errors.not-match'
+                        'auth:signup.form.confirm_password.errors.not_match'
                       );
                     }
                   },
                 })}
-                label={t('auth:signup.form.confirmPassword.label')}
-                placeholder={t('auth:signup.form.confirmPassword.placeholder')}
+                label={t('auth:signup.form.confirm_password.label')}
+                placeholder={t('auth:signup.form.confirm_password.placeholder')}
                 type="password"
                 error={errors.confirmPassword?.message}
               />

@@ -45,7 +45,7 @@ export const SocialLinks: FC = () => {
     >
       {socialLinks.map((socialLink) => (
         <Tile
-          title={t(`common:social.${socialLink.type}`)}
+          title={t(`socials:${socialLink.type}`)}
           icon={ICON_BY_SOCIAL_LINK_TYPE[socialLink.type]}
           fields={[
             {
@@ -83,8 +83,8 @@ export const SocialLinks: FC = () => {
               disabled: isDeleting,
               onClick: async () => {
                 const { confirmed } = await confirmation(
-                  t('account:providers.socialLinks.texts.confirmDelete', {
-                    type: t(`common:social.${socialLink.type}`),
+                  t('account:providers.socialLinks.texts.confirm_delete', {
+                    type: t(`socials:${socialLink.type}`),
                     url: socialLink.url,
                   })
                 );
