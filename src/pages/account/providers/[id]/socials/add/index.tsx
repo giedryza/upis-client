@@ -39,7 +39,7 @@ const ProviderEditSocialLinksAddPage: NextPage = () => {
                 url: generateUrl(routes.account.providers.one.index, { id }),
               },
               {
-                label: t('account:providers.socialLinks.title'),
+                label: t('account:providers.socials.title'),
               },
             ]}
           />

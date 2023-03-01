@@ -1,6 +1,6 @@
-import { SocialType } from 'domain/social-links';
+import { SocialVariant } from 'domain/providers';
 
 export interface Values {
-  type: SocialType;
+  type: SocialVariant;
   url: string;
 }

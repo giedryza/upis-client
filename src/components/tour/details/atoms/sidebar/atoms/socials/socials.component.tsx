@@ -2,17 +2,17 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { Button } from 'ui';
-import { ICON_BY_SOCIAL_LINK_TYPE } from 'domain/social-links';
+import { ICON_BY_SOCIAL_LINK_TYPE } from 'domain/providers';
 
 import { Props } from './socials.types';
 import styles from './socials.module.scss';
 
-export const SidebarSocials: FC<Props> = ({ socialLinks }) => {
+export const SidebarSocials: FC<Props> = ({ socials }) => {
   const { t } = useTranslation();
 
-  return socialLinks.length ? (
+  return socials.length ? (
     <ul className={styles.socials}>
-      {socialLinks.map((socialLink) => (
+      {socials.map((socialLink) => (
         <li key={socialLink._id}>
           <Button
             as="external"

@@ -16,6 +16,8 @@ import {
   ProvidersFilters,
   Provider,
   providersFilters,
+  SocialVariant,
+  Social,
 } from './providers.types';
 
 interface GetProviders {
@@ -115,6 +117,39 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         body: getFormDataBody([{ field: 'logo', value: logo }]),
         locale,
       }).patch(),
+    addSocialLink: ({
+      id,
+      form,
+    }: {
+      id: string;
+      form: { url: string; type: SocialVariant };
+    }) =>
+      new Request<Social>(
+        generateUrl(endpoints.providers.one.socials, { id }),
+        {
+          body: getJsonBody(form),
+          locale,
+        }
+      ).post(),
+    updateSocialLink: ({
+      form,
+      id,
+    }: {
+      id: string;
+      form: { id: string; url: string; type: SocialVariant };
+    }) =>
+      new Request<Social>(
+        generateUrl(endpoints.providers.one.socials, { id }),
+        {
+          body: getJsonBody(form),
+          locale,
+        }
+      ).patch(),
+    deleteSocialLink: ({ id, form }: { id: string; form: { id: string } }) =>
+      new Request(generateUrl(endpoints.providers.one.socials, { id }), {
+        body: getJsonBody(form),
+        locale,
+      }).delete(),
     deleteProvider: ({ id }: DeleteProvider) =>
       new Request(generateUrl(endpoints.providers.one.index, { id }), {
         locale,

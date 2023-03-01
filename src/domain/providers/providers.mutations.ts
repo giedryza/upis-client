@@ -59,6 +59,48 @@ export const useUploadLogo = () => {
   return mutation;
 };
 
+export const useAddSocialLink = () => {
+  const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
+
+  const mutation = useMutation({
+    mutationFn: loaders.addSocialLink,
+    onSuccess: (_, { id }) => {
+      queryClient.invalidateQueries(providersKeys.detail(id));
+    },
+  });
+
+  return mutation;
+};
+
+export const useUpdateSocialLink = () => {
+  const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
+
+  const mutation = useMutation({
+    mutationFn: loaders.updateSocialLink,
+    onSuccess: (_, { id }) => {
+      queryClient.invalidateQueries(providersKeys.detail(id));
+    },
+  });
+
+  return mutation;
+};
+
+export const useDeleteSocialLink = () => {
+  const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
+
+  const mutation = useMutation({
+    mutationFn: loaders.deleteSocialLink,
+    onSuccess: (_, { id }) => {
+      queryClient.invalidateQueries(providersKeys.detail(id));
+    },
+  });
+
+  return mutation;
+};
+
 export const useDeleteProvider = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();

@@ -148,7 +148,7 @@
         "confirm_delete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins ypatumą <strong>{{name}}</strong>. Ar tikrai norite tęsti?"
       }
     },
-    "socialLinks": {
+    "socials": {
       "title": "Socialiniai tinklai",
       "table": {
         "type": "Tinklas",

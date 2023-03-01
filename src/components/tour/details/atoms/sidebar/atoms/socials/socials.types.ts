@@ -1,5 +1,5 @@
-import { SocialLink } from 'domain/social-links';
+import { Social } from 'domain/providers';
 
 export interface Props {
-  socialLinks: SocialLink[];
+  socials: Social[];
 }

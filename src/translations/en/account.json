@@ -148,7 +148,7 @@
         "confirm_delete": "This action cannot be undone. It will permanently delete amenity <strong>{{name}}</strong>. Are you sure you want to proceed?"
       }
     },
-    "socialLinks": {
+    "socials": {
       "title": "Social networks",
       "table": {
         "type": "Network",

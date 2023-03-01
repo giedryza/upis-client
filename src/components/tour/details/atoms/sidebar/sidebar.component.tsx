@@ -33,7 +33,7 @@ export const DetailsSidebar: FC = () => {
             languages={tour.provider.languages}
           />
 
-          <SidebarSocials socialLinks={tour.provider.socialLinks} />
+          <SidebarSocials socials={tour.provider.socials} />
 
           {tour.provider.website ? (
             <Button

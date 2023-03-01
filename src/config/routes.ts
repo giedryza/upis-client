@@ -23,9 +23,9 @@ export const routes = {
         contacts: '/account/providers/:id/contacts',
         location: '/account/providers/:id/location',
         logo: '/account/providers/:id/logo',
-        socialLinks: {
-          add: '/account/providers/:id/social-links/add',
-          one: '/account/providers/:id/social-links/:socialLinkId',
+        socials: {
+          add: '/account/providers/:id/socials/add',
+          one: '/account/providers/:id/socials/:socialLinkId',
         },
         amenities: {
           add: '/account/providers/:id/amenities/add',

@@ -14,6 +14,7 @@ export const endpoints = {
     one: {
       index: 'providers/:id',
       logo: 'providers/:id/logo',
+      socials: 'providers/:id/socials',
     },
   },
   tours: {
@@ -26,10 +27,6 @@ export const endpoints = {
       photo: 'tours/:id/photo',
     },
     filters: 'tours/filters',
-  },
-  socialLinks: {
-    index: 'social-links',
-    one: 'social-links/:id',
   },
   amenities: {
     index: 'amenities',

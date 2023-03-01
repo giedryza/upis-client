@@ -41,7 +41,7 @@ export class Request<ResponseData = any, ResponseMeta = any> {
 
     const isJson =
       typeof body === 'string' &&
-      ['POST', 'PATCH', 'PUT'].includes(this.#method);
+      ['POST', 'PATCH', 'PUT', 'DELETE'].includes(this.#method);
 
     return {
       ...(isJson && { 'Content-Type': 'application/json' }),
