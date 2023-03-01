@@ -92,7 +92,7 @@ export const BodyOverview: FC<Props> = ({
             <span className={styles.value}>
               {formatList(
                 lang,
-                boats.map((boat) => t(`common:boats.${boat}`))
+                boats.map((boat) => t(`boats:${boat}`))
               )}
             </span>
           </li>

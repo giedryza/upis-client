@@ -97,11 +97,5 @@
     "youtube": "Youtube",
     "linkedin": "Linkedin",
     "twitter": "Twitter"
-  },
-  "boats": {
-    "single-kayak": "Single kayak",
-    "double-kayak": "Double kayak",
-    "triple-kayak": "Triple kayak",
-    "raft": "Raft"
   }
 }

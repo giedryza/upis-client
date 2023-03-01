@@ -51,7 +51,7 @@ export const About: FC = () => {
         label={t('account:providers.about.form.boats.display')}
         value={formatList(
           lang,
-          provider.boats.map((boat) => t(`common:boats.${boat}`))
+          provider.boats.map((boat) => t(`boats:${boat}`))
         )}
       />
     </InfoBlock>
