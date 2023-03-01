@@ -90,12 +90,5 @@
     "signin": "Prisijungti",
     "signout": "Atsijungti",
     "nav": "Paskyros navigacija"
-  },
-  "social": {
-    "facebook": "Facebook",
-    "instagram": "Instagram",
-    "youtube": "Youtube",
-    "linkedin": "Linkedin",
-    "twitter": "Twitter"
   }
 }

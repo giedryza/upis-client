@@ -5,8 +5,22 @@ module.exports = {
     '*': ['common'],
     '/': ['home', 'serp', 'amenities', 'rivers', 'regions'],
     'rgx:^/auth': ['auth'],
-    'rgx:^/account': ['account', 'amenities', 'rivers', 'regions', 'boats'],
-    'rgx:^/tours': ['tours', 'amenities', 'rivers', 'regions', 'boats'],
+    'rgx:^/account': [
+      'account',
+      'amenities',
+      'rivers',
+      'regions',
+      'boats',
+      'socials',
+    ],
+    'rgx:^/tours': [
+      'tours',
+      'amenities',
+      'rivers',
+      'regions',
+      'boats',
+      'socials',
+    ],
   },
   loadLocaleFrom: (locale, namespace) => {
     // eslint-disable-next-line import/no-dynamic-require

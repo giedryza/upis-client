@@ -90,12 +90,5 @@
     "signin": "Sign in",
     "signout": "Sign out",
     "nav": "Account navigation"
-  },
-  "social": {
-    "facebook": "Facebook",
-    "instagram": "Instagram",
-    "youtube": "Youtube",
-    "linkedin": "Linkedin",
-    "twitter": "Twitter"
   }
 }
