@@ -4,10 +4,10 @@ import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, SelectInput, TextInput } from 'ui';
-import { routes } from 'config';
+import { parameters, routes } from 'config';
 import { InfoBlock } from 'components/account/atoms';
 import { socials, useAddSocialLink } from 'domain/providers';
-import { generateUrl, getRouteParam } from 'tools/common';
+import { generateUrl } from 'tools/common';
 
 import { Values } from './provider-edit-social-links-add.types';
 import { INITIAL_VALUES } from './provider-edit-social-links-add.constants';
@@ -16,8 +16,8 @@ import styles from './provider-edit-social-links-add.module.scss';
 export const ProviderEditSocialLinksAdd: FC = () => {
   const { t } = useTranslation();
   const { push, query } = useRouter();
-
-  const providerId = getRouteParam(query.id);
+  const { id } =
+    parameters[routes.account.providers.one.socials.add].parse(query);
 
   const {
     register,
@@ -30,17 +30,11 @@ export const ProviderEditSocialLinksAdd: FC = () => {
   const { mutate: addSocialLink, isLoading } = useAddSocialLink();
 
   const onSubmit: SubmitHandler<Values> = ({ type, url }) => {
-    if (!providerId) return;
-
     addSocialLink(
-      { id: providerId, form: { type, url } },
+      { id, form: { type, url } },
       {
         onSuccess: () => {
-          push(
-            generateUrl(routes.account.providers.one.index, {
-              id: providerId,
-            })
-          );
+          push(generateUrl(routes.account.providers.one.index, { id }));
         },
       }
     );
@@ -89,9 +83,7 @@ export const ProviderEditSocialLinksAdd: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              href={generateUrl(routes.account.providers.one.index, {
-                id: providerId,
-              })}
+              href={generateUrl(routes.account.providers.one.index, { id })}
             />
 
             <Button

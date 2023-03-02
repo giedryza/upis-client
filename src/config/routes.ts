@@ -25,7 +25,7 @@ export const routes = {
         logo: '/account/providers/:id/logo',
         socials: {
           add: '/account/providers/:id/socials/add',
-          one: '/account/providers/:id/socials/:socialLinkId',
+          one: '/account/providers/:id/socials/:socialId',
         },
         amenities: {
           add: '/account/providers/:id/amenities/add',

@@ -11,12 +11,12 @@ import {
   SelectInput,
   TextInput,
 } from 'ui';
-import { routes } from 'config';
+import { parameters, routes } from 'config';
 import { InfoBlock } from 'components/account/atoms';
 import { useUpdateAmenity, useAmenity, units } from 'domain/amenities';
 import { useFormatNumber } from 'tools/format';
 import { currencies } from 'types/common';
-import { generateUrl, getRouteParam, toCents } from 'tools/common';
+import { generateUrl, toCents } from 'tools/common';
 
 import { Values } from './provider-edit-amenities-edit.types';
 import { INITIAL_VALUES } from './provider-edit-amenities-edit.constants';
@@ -25,13 +25,11 @@ import styles from './provider-edit-amenities-edit.module.scss';
 export const ProviderEditAmenitiesEdit: FC = () => {
   const { t } = useTranslation();
   const { query, push } = useRouter();
-
-  const id = getRouteParam(query.amenityId);
-  const providerId = getRouteParam(query.id);
-
   const { formatter: numberFormatter } = useFormatNumber();
+  const { id, amenityId } =
+    parameters[routes.account.providers.one.amenities.one].parse(query);
 
-  const { data: amenity } = useAmenity(id);
+  const { data: amenity } = useAmenity(amenityId);
   const { mutate: updateAmenity, isLoading } = useUpdateAmenity();
 
   const {
@@ -62,8 +60,8 @@ export const ProviderEditAmenitiesEdit: FC = () => {
   }) => {
     updateAmenity(
       {
-        id,
-        providerId,
+        id: amenityId,
+        providerId: id,
         form: {
           amount: toCents(amount),
           currency,
@@ -73,11 +71,7 @@ export const ProviderEditAmenitiesEdit: FC = () => {
       },
       {
         onSuccess: () => {
-          push(
-            generateUrl(routes.account.providers.one.index, {
-              id: providerId,
-            })
-          );
+          push(generateUrl(routes.account.providers.one.index, { id }));
         },
       }
     );
@@ -173,9 +167,7 @@ export const ProviderEditAmenitiesEdit: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              href={generateUrl(routes.account.providers.one.index, {
-                id: providerId,
-              })}
+              href={generateUrl(routes.account.providers.one.index, { id })}
             />
 
             <Button

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 
-import { routes } from 'config';
+import { parameters, routes } from 'config';
 import { useProtectedPage } from 'tools/hooks';
 import { generateUrl, getRouteParam } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
@@ -72,11 +72,12 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const queryClient = new QueryClient();
-  const id = getRouteParam(params?.imageId);
+  const { imageId } =
+    parameters[routes.account.tours.one.gallery.one].parse(params);
   const { loaders } = getLoaders(locale);
 
-  await queryClient.prefetchQuery(imagesKeys.detail(id), () =>
-    loaders.getImage({ req, id })
+  await queryClient.prefetchQuery(imagesKeys.detail(imageId), () =>
+    loaders.getImage({ req, id: imageId })
   );
 
   return {
