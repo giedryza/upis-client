@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
+import { toArray } from 'tools/common';
 import { Amenity, amenities, Variant } from 'domain/amenities';
 import { Provider } from 'domain/providers';
 import { AppFile, BaseEntity, GeoPoint, Price } from 'types/common';
@@ -274,15 +275,17 @@ const queryUtils = {
 
 const utilsFilters = z.object({
   departure: z.coerce.boolean().catch(false),
-  select: z.array(z.enum(queryUtils.select)).catch([]),
-  populate: z.array(z.enum(queryUtils.populate)).catch([]),
+  select: z.preprocess(toArray, z.array(z.enum(queryUtils.select))).catch([]),
+  populate: z
+    .preprocess(toArray, z.array(z.enum(queryUtils.populate)))
+    .catch([]),
 });
 
 export const toursFilters = z
   .object({
-    amenities: z.array(z.enum(amenities)).catch([]),
-    regions: z.array(z.enum(regions)).catch([]),
-    rivers: z.array(z.enum(rivers)).catch([]),
+    amenities: z.preprocess(toArray, z.array(z.enum(amenities))).catch([]),
+    regions: z.preprocess(toArray, z.array(z.enum(regions))).catch([]),
+    rivers: z.preprocess(toArray, z.array(z.enum(rivers))).catch([]),
     distanceFrom: z.coerce.number().finite().min(1).catch(1),
     distanceTo: z.coerce.number().finite().min(1).catch(1),
     durationFrom: z.coerce.number().finite().min(1).catch(1),
@@ -292,14 +295,17 @@ export const toursFilters = z
     difficultyFrom: z.coerce.number().finite().min(0).max(5).catch(0),
     difficultyTo: z.coerce.number().finite().min(0).max(5).catch(5),
     user: z.coerce.string(),
-    providers: z.array(z.coerce.string()).catch([]),
+    providers: z.preprocess(toArray, z.array(z.coerce.string())).catch([]),
     bounds: z
-      .tuple([
-        z.coerce.number().finite(),
-        z.coerce.number().finite(),
-        z.coerce.number().finite(),
-        z.coerce.number().finite(),
-      ])
+      .preprocess(
+        toArray,
+        z.tuple([
+          z.coerce.number().finite(),
+          z.coerce.number().finite(),
+          z.coerce.number().finite(),
+          z.coerce.number().finite(),
+        ])
+      )
       .catch([NaN, NaN, NaN, NaN]),
   })
   .merge(utilsFilters)

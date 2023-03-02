@@ -7,7 +7,6 @@ import {
   getFormDataBody,
   getJsonBody,
   loadersFactory,
-  normalizeQueryParams,
 } from 'tools/services';
 import { Pagination } from 'types/api';
 import { generateUrl } from 'tools/common';
@@ -155,8 +154,6 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         locale,
       }).delete(),
     getActiveFilters: ({ params }: GetFilters) =>
-      providersFilters
-        .partial()
-        .safeParseAsync(normalizeQueryParams(params, ['select'])),
+      providersFilters.partial().safeParseAsync(params),
   },
 }));
