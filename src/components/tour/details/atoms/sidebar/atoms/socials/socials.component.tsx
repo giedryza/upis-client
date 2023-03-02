@@ -12,14 +12,14 @@ export const SidebarSocials: FC<Props> = ({ socials }) => {
 
   return socials.length ? (
     <ul className={styles.socials}>
-      {socials.map((socialLink) => (
-        <li key={socialLink._id}>
+      {socials.map((social) => (
+        <li key={social._id}>
           <Button
             as="external"
-            icon={ICON_BY_SOCIAL_LINK_TYPE[socialLink.type]}
+            icon={ICON_BY_SOCIAL_LINK_TYPE[social.type]}
             variant="secondary"
-            href={socialLink.url}
-            aria-label={t(`socials:${socialLink.type}`)}
+            href={social.url}
+            aria-label={t(`socials:${social.type}`)}
           />
         </li>
       ))}
