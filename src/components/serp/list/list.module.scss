@@ -3,7 +3,9 @@
 .container {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - var(--header-height) - var(--serp-filters-height));
+  min-height: calc(
+    100vh - var(--header-height) - var(--header-secondary-height)
+  );
 
   .list {
     flex: 1;
