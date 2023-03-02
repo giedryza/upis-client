@@ -17,7 +17,7 @@ export const SerpResults: FC = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div>
       <SerpFilters />
 
       <main className={styles.main}>

@@ -1,7 +1,8 @@
 import { z } from 'zod';
 
-import { Amenity } from 'domain/amenities';
+import { toArray } from 'tools/common';
 import { BaseEntity, GeoPoint, Language } from 'types/common';
+import { Amenity } from 'domain/amenities';
 import { paginationFilters } from 'domain/pagination';
 
 export const boats = [
@@ -56,7 +57,7 @@ const queryUtils = {
 } as const;
 
 const utilsFilters = z.object({
-  select: z.array(z.enum(queryUtils.select)).catch([]),
+  select: z.preprocess(toArray, z.array(z.enum(queryUtils.select))).catch([]),
 });
 
 export const providersFilters = z

@@ -1,4 +1,4 @@
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 type JsonData = Record<string, any>;
 
@@ -31,26 +31,6 @@ export const getFormDataBody = (
   data.forEach(({ field, value: file }) => formData.append(field, file));
 
   return formData;
-};
-
-export const normalizeQueryParams = (
-  params: Router['query'],
-  keys: string[]
-): Router['query'] => {
-  let normalizedParams = {};
-
-  keys.forEach((key) => {
-    const value = params[key];
-
-    if (typeof value === 'string') {
-      normalizedParams = {
-        ...normalizedParams,
-        [key]: [value],
-      };
-    }
-  });
-
-  return { ...params, ...normalizedParams };
 };
 
 export const loadersFactory = <T extends {}>(

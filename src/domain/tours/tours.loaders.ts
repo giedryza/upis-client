@@ -7,7 +7,6 @@ import {
   getJsonBody,
   loadersFactory,
   getFormDataBody,
-  normalizeQueryParams,
 } from 'tools/services';
 import { Price } from 'types/common';
 import { Pagination } from 'types/api';
@@ -152,19 +151,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         locale,
       }).delete(),
     getActiveFilters: ({ params }: GetFilters) =>
-      toursFilters
-        .partial()
-        .safeParseAsync(
-          normalizeQueryParams(params, [
-            'amenities',
-            'regions',
-            'rivers',
-            'bounds',
-            'providers',
-            'select',
-            'populate',
-          ])
-        ),
+      toursFilters.partial().safeParseAsync(params),
     getFiltersSummary: ({ req }: GetFiltersSummary = {}) =>
       new Request<FiltersSummary>(generateUrl(endpoints.tours.filters), {
         req,
