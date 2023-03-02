@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, SelectInput, TextInput } from 'ui';
-import { routes } from 'config';
-import { generateUrl, getRouteParam } from 'tools/common';
+import { parameters, routes } from 'config';
+import { generateUrl } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import {
   useActiveProvider,
@@ -20,16 +20,13 @@ import styles from './provider-edit-social-links-edit.module.scss';
 export const ProviderEditSocialLinksEdit: FC = () => {
   const { t } = useTranslation();
   const { query, push } = useRouter();
-
-  const socialLinkId = getRouteParam(query.socialLinkId);
-  const providerId = getRouteParam(query.id);
+  const { id, socialId } =
+    parameters[routes.account.providers.one.socials.one].parse(query);
 
   const { data: provider } = useActiveProvider();
   const { mutate: updateSocialLink, isLoading } = useUpdateSocialLink();
 
-  const socialLink = provider?.socials.find(
-    (social) => social._id === socialLinkId
-  );
+  const social = provider?.socials.find(({ _id }) => _id === socialId);
 
   const {
     register,
@@ -37,26 +34,22 @@ export const ProviderEditSocialLinksEdit: FC = () => {
     formState: { errors, isDirty },
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
-    values: socialLink
+    values: social
       ? {
-          type: socialLink.type,
-          url: socialLink.url,
+          type: social.type,
+          url: social.url,
         }
       : undefined,
   });
 
-  if (!provider || !socialLink) return null;
+  if (!provider || !social) return null;
 
   const onSubmit: SubmitHandler<Values> = ({ type, url }) => {
     updateSocialLink(
-      { id: provider._id, form: { id: socialLink._id, type, url } },
+      { id: provider._id, form: { id: social._id, type, url } },
       {
         onSuccess: () => {
-          push(
-            generateUrl(routes.account.providers.one.index, {
-              id: providerId,
-            })
-          );
+          push(generateUrl(routes.account.providers.one.index, { id }));
         },
       }
     );
@@ -105,9 +98,7 @@ export const ProviderEditSocialLinksEdit: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              href={generateUrl(routes.account.providers.one.index, {
-                id: providerId,
-              })}
+              href={generateUrl(routes.account.providers.one.index, { id })}
             />
 
             <Button

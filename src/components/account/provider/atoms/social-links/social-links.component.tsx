@@ -39,21 +39,21 @@ export const SocialLinks: FC = () => {
         },
       ]}
     >
-      {provider.socials.map((socialLink) => (
+      {provider.socials.map((social) => (
         <Tile
-          title={t(`socials:${socialLink.type}`)}
-          icon={ICON_BY_SOCIAL_LINK_TYPE[socialLink.type]}
+          title={t(`socials:${social.type}`)}
+          icon={ICON_BY_SOCIAL_LINK_TYPE[social.type]}
           fields={[
             {
               label: t('account:providers.socials.table.url'),
-              sublabel: socialLink.url ? (
+              sublabel: social.url ? (
                 <a
-                  href={toExternalLink(socialLink.url)}
+                  href={toExternalLink(social.url)}
                   className="link"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {socialLink.url}
+                  {social.url}
                 </a>
               ) : (
                 '-'
@@ -68,7 +68,7 @@ export const SocialLinks: FC = () => {
               variant: 'secondary',
               href: generateUrl(routes.account.providers.one.socials.one, {
                 id: provider._id,
-                socialLinkId: socialLink._id,
+                socialId: social._id,
               }),
             },
             {
@@ -80,21 +80,21 @@ export const SocialLinks: FC = () => {
               onClick: async () => {
                 const { confirmed } = await confirmation(
                   t('account:providers.socials.texts.confirm_delete', {
-                    type: t(`socials:${socialLink.type}`),
-                    url: socialLink.url,
+                    type: t(`socials:${social.type}`),
+                    url: social.url,
                   })
                 );
 
                 if (confirmed) {
                   deleteSocialLink({
                     id: provider._id,
-                    form: { id: socialLink._id },
+                    form: { id: social._id },
                   });
                 }
               },
             },
           ]}
-          key={socialLink._id}
+          key={social._id}
         />
       ))}
     </InfoBlock>

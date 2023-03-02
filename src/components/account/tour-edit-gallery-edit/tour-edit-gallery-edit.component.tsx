@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, ImageTile, TextInput } from 'ui';
-import { routes } from 'config';
-import { generateUrl, getRouteParam } from 'tools/common';
+import { parameters, routes } from 'config';
+import { generateUrl } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import { useDeleteImage, useImage, useUpdateImage } from 'domain/images';
 import { useAppDispatch } from 'tools/services';
@@ -20,13 +20,11 @@ export const TourEditGalleryEdit: FC = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { query, push } = useRouter();
-
   const { confirmation } = useConfirm();
+  const { id, imageId } =
+    parameters[routes.account.tours.one.gallery.one].parse(query);
 
-  const id = getRouteParam(query.imageId);
-  const tourId = getRouteParam(query.id);
-
-  const { data: image } = useImage(id);
+  const { data: image } = useImage(imageId);
   const { mutate: updateImage, isLoading } = useUpdateImage();
   const { mutate: deleteImage, isLoading: isDeleting } = useDeleteImage();
 
@@ -44,10 +42,6 @@ export const TourEditGalleryEdit: FC = () => {
   });
 
   const onSubmit: SubmitHandler<Values> = (form) => {
-    const imageId = image?._id;
-
-    if (!imageId) return;
-
     updateImage(
       {
         id: imageId,
@@ -57,7 +51,7 @@ export const TourEditGalleryEdit: FC = () => {
       },
       {
         onSuccess: () => {
-          push(generateUrl(routes.account.tours.one.index, { id: tourId }));
+          push(generateUrl(routes.account.tours.one.index, { id }));
         },
       }
     );
@@ -113,7 +107,7 @@ export const TourEditGalleryEdit: FC = () => {
                           onSuccess: () => {
                             push(
                               generateUrl(routes.account.tours.one.index, {
-                                id: tourId,
+                                id,
                               })
                             );
                           },
@@ -140,9 +134,7 @@ export const TourEditGalleryEdit: FC = () => {
               label={t('common:actions.cancel')}
               variant="ghost"
               size="sm"
-              href={generateUrl(routes.account.tours.one.index, {
-                id: tourId,
-              })}
+              href={generateUrl(routes.account.tours.one.index, { id })}
             />
 
             <Button
