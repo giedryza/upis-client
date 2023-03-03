@@ -30,6 +30,8 @@ export const BodyLocation: FC<Props> = ({ departure, arrival }) => {
       : []),
   ];
 
+  if (!coordinates.length) return null;
+
   return (
     <section className={styles.section}>
       <h2 className={styles.title}>{t('tours:details.location.title')}</h2>
