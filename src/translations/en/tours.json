@@ -57,6 +57,9 @@
     "amenities": {
       "title": "Amenities",
       "price": "Price"
+    },
+    "tours": {
+      "title": "More from the provider"
     }
   }
 }

@@ -58,6 +58,9 @@
     "amenities": {
       "title": "Ypatumai",
       "price": "Kaina"
+    },
+    "tours": {
+      "title": "Kiti tiekėjo maršrutai"
     }
   }
 }

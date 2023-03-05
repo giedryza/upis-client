@@ -76,6 +76,11 @@
       "next": "Next page",
       "first": "First page",
       "last": "Last page"
+    },
+    "serpCard": {
+      "texts": {
+        "pricePer": "per person, per day"
+      }
     }
   },
   "texts": {
