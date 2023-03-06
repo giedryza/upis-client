@@ -24,6 +24,7 @@
 
 .scrollbar-primary {
   --scrollbar-foreground: var(--color-grey-60);
+  --scrollbar-foreground-hover: var(--color-grey-75);
   --scrollbar-background: transparent;
   --scrollbar-size: 8px;
 
@@ -37,6 +38,10 @@
   &::-webkit-scrollbar-thumb {
     background-color: var(--scrollbar-foreground);
     border-radius: calc(var(--scrollbar-size) / 2);
+
+    &:hover {
+      background-color: var(--scrollbar-foreground-hover);
+    }
   }
 
   &::-webkit-scrollbar-track {
