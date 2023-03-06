@@ -110,6 +110,8 @@
 
     color: var(--button-text-text);
 
+    border-radius: 0;
+
     &:hover,
     &:active {
       &:not([disabled]) {
@@ -122,6 +124,8 @@
     padding: 0;
 
     color: var(--button-link-text);
+
+    border-radius: 0;
 
     &:hover,
     &:active {

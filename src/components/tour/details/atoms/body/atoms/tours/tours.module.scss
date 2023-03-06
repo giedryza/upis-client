@@ -5,11 +5,12 @@
   font-size: 1.6rem;
   line-height: 1.4;
 
+  @include spacing(y, 1.5rem);
+
   .title {
     font-weight: 600;
     font-size: 2rem;
     line-height: 1.4;
-    margin-block-end: 1rem;
   }
 
   .list {

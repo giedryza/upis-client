@@ -2,10 +2,12 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useSession } from 'next-auth/react';
 
-import { APP } from 'config';
+import { APP, routes } from 'config';
 import { useTours } from 'domain/tours';
+import { Button } from 'ui';
 import { SerpCard } from 'components/serp';
 import { useBreakpoints } from 'tools/hooks';
+import { generateUrl } from 'tools/common';
 
 import { Props } from './tours.types';
 import styles from './tours.module.scss';
@@ -39,6 +41,20 @@ export const BodyTours: FC<Props> = ({ id }) => {
           </li>
         ))}
       </ul>
+
+      {tours.meta.total > 3 ? (
+        <Button
+          as="link"
+          label={t('tours:actions.view_all')}
+          variant="outline"
+          size="xs"
+          href={{
+            pathname: generateUrl(routes.home),
+            query: { providers: [id] },
+          }}
+          shallow
+        />
+      ) : null}
     </section>
   );
 };
