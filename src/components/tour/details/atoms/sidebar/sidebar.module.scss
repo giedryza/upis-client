@@ -8,14 +8,7 @@
   );
   bottom: 0;
 
-  padding: calc(var(--spacing) * 1px);
-
-  background-color: var(--color-white);
-  box-shadow: var(--shadow-primary);
-
-  @include spacing(y, 2.5rem);
-
   @include laptop {
-    position: static;
+    display: none;
   }
 }

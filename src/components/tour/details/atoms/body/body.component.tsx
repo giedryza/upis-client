@@ -10,6 +10,7 @@ import {
   BodyOverview,
   BodyPrices,
   BodyTours,
+  Provider,
 } from './atoms';
 import styles from './body.module.scss';
 
@@ -21,6 +22,10 @@ export const DetailsBody: FC = () => {
   return (
     <div className={styles.body}>
       <BodyGallery photos={tour.photos} />
+
+      <section className={styles.provider}>
+        <Provider placement="section" />
+      </section>
 
       <BodyDescription description={tour.description ?? ''} />
 
