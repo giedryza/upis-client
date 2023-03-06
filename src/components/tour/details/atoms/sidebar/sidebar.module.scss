@@ -15,7 +15,7 @@
 
   @include spacing(y, 2.5rem);
 
-  @include tablet {
+  @include laptop {
     position: static;
   }
 }
