@@ -1,0 +1,22 @@
+@use 'styles/mixins' as *;
+
+.section {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.4;
+
+  .title {
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 1.4;
+    margin-block-end: 1rem;
+  }
+
+  .list {
+    @include spacing(y, calc(var(--spacing) * 1px));
+  }
+
+  .card {
+    height: calc(var(--height) * 1px);
+  }
+}

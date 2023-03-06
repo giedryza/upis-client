@@ -13,7 +13,7 @@ export const SidebarProvider: FC<Props> = ({ id, name, logo, size }) => {
   const { t } = useTranslation();
 
   const { data: tours, isLoading } = useTours({
-    filters: { limit: 3, providers: [id] },
+    filters: { limit: 3, providers: [id], populate: ['photos'] },
   });
 
   return (

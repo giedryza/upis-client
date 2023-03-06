@@ -4,3 +4,4 @@ export * from './gallery';
 export * from './location';
 export * from './overview';
 export * from './prices';
+export * from './tours';

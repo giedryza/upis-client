@@ -9,38 +9,41 @@ import {
   BodyLocation,
   BodyOverview,
   BodyPrices,
+  BodyTours,
 } from './atoms';
 import styles from './body.module.scss';
 
 export const DetailsBody: FC = () => {
   const { data: tour } = useActiveTour();
 
+  if (!tour) return null;
+
   return (
     <div className={styles.body}>
-      <BodyGallery photos={tour?.photos ?? []} />
+      <BodyGallery photos={tour.photos} />
 
-      <BodyDescription description={tour?.description ?? ''} />
+      <BodyDescription description={tour.description ?? ''} />
 
       <BodyOverview
-        regions={tour?.regions ?? []}
-        rivers={tour?.rivers ?? []}
-        difficulty={tour?.difficulty ?? NaN}
-        days={tour?.days ?? NaN}
-        distance={tour?.distance ?? NaN}
-        duration={tour?.duration ?? NaN}
-        boats={tour?.provider.boats ?? []}
+        regions={tour.regions}
+        rivers={tour.rivers}
+        difficulty={tour.difficulty}
+        days={tour.days}
+        distance={tour.distance ?? NaN}
+        duration={tour.duration ?? NaN}
+        boats={tour.provider.boats}
       />
 
-      <BodyPrices price={tour?.price ?? null} />
+      <BodyPrices price={tour.price} />
 
       <BodyLocation
-        arrival={tour?.arrival ?? { coordinates: [] }}
-        departure={tour?.departure ?? { coordinates: [] }}
+        arrival={tour.arrival ?? { coordinates: [] }}
+        departure={tour.departure ?? { coordinates: [] }}
       />
 
-      <BodyAmenities
-        amenities={tour?.amenities.map((amenity) => amenity._id) ?? []}
-      />
+      <BodyAmenities amenities={tour.amenities.map((amenity) => amenity._id)} />
+
+      <BodyTours id={tour.provider._id} />
     </div>
   );
 };
