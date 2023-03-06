@@ -1,6 +1,7 @@
 {
   "actions": {
-    "visit_website": "Peržiūrėti tinklapyje"
+    "visit_website": "Peržiūrėti tinklapyje",
+    "view_all": "Žiūrėti visus"
   },
   "provider": {
     "tours": "Maršrutai",
@@ -58,6 +59,9 @@
     "amenities": {
       "title": "Ypatumai",
       "price": "Kaina"
+    },
+    "tours": {
+      "title": "Kiti tiekėjo maršrutai"
     }
   }
 }

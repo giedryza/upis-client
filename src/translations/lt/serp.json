@@ -9,11 +9,6 @@
       "description": "Neradome maršrutų, atitinkančių paieškos kriterijus. Pakeiskite arba išvalykite filtrus norėdami bandyti dar kartą."
     }
   },
-  "card": {
-    "texts": {
-      "pricePer": "žmogui už parą"
-    }
-  },
   "map": {
     "actions": {
       "update-on-move": "Atnaujinti rezultatus žemėlapiui keičiantis"

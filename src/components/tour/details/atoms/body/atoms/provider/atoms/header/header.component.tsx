@@ -6,10 +6,10 @@ import { Image, ImagePlaceholder } from 'ui';
 import { routes } from 'config';
 import { useTours } from 'domain/tours';
 
-import { Props } from './provider.types';
-import styles from './provider.module.scss';
+import { Props } from './header.types';
+import styles from './header.module.scss';
 
-export const SidebarProvider: FC<Props> = ({ id, name, logo, size }) => {
+export const ProviderHeader: FC<Props> = ({ id, name, logo, size }) => {
   const { t } = useTranslation();
 
   const { data: tours, isLoading } = useTours({

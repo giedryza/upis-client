@@ -1,6 +1,7 @@
 {
   "actions": {
-    "visit_website": "Visit website"
+    "visit_website": "Visit website",
+    "view_all": "View all"
   },
   "provider": {
     "tours": "Tours",
@@ -57,6 +58,9 @@
     "amenities": {
       "title": "Amenities",
       "price": "Price"
+    },
+    "tours": {
+      "title": "More from the provider"
     }
   }
 }

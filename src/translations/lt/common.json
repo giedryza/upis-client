@@ -76,6 +76,11 @@
       "next": "Sekantis puslapis",
       "first": "Pirmas puslapis",
       "last": "Paskutinis puslapis"
+    },
+    "serpCard": {
+      "texts": {
+        "pricePer": "žmogui už parą"
+      }
     }
   },
   "texts": {

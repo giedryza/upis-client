@@ -21,7 +21,7 @@
     > *:nth-child(2) {
       flex-basis: 32.5rem;
 
-      @include tablet {
+      @include laptop {
         flex-basis: 100%;
       }
     }

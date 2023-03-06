@@ -133,7 +133,7 @@ export const SerpCard: FC<Props> = memo(({ tour, userId }) => {
                   </span>
                 </div>
                 <div>
-                  <span>{t('serp:card.texts.pricePer')}</span>
+                  <span>{t('common:components.serpCard.texts.pricePer')}</span>
                 </div>
               </>
             ) : null}
