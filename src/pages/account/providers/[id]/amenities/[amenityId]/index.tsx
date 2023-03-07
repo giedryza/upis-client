@@ -1,22 +1,65 @@
-import { NextPage, GetServerSideProps } from 'next';
+import {
+  NextPage,
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+} from 'next';
+import { Session } from 'next-auth';
 import { getSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
-import { dehydrate, QueryClient } from '@tanstack/react-query';
+import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 
 import { parameters, routes } from 'config';
 import { useProtectedPage } from 'tools/hooks';
-import { generateUrl, getRouteParam } from 'tools/common';
+import { generateUrl } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { ProviderEditAmenitiesEdit } from 'components/account';
 import { amenitiesKeys, getLoaders } from 'domain/amenities';
 
-const ProviderEditAmenitiesEditPage: NextPage = () => {
-  const { t } = useTranslation();
-  const { query } = useRouter();
+interface Props {
+  session: Session;
+  dehydratedState: DehydratedState;
+  params: { id: string; amenityId: string };
+}
 
-  const id = getRouteParam(query.id);
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  req,
+  params,
+  locale,
+}) => {
+  const session = await getSession({ req });
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: generateUrl(routes.home),
+        permanent: false,
+      },
+    };
+  }
+
+  const queryClient = new QueryClient();
+  const { id, amenityId } =
+    parameters[routes.account.providers.one.amenities.one].parse(params);
+  const { loaders } = getLoaders(locale);
+
+  await queryClient.prefetchQuery(amenitiesKeys.detail(amenityId), () =>
+    loaders.getAmenity({ req, id: amenityId })
+  );
+
+  return {
+    props: {
+      session,
+      dehydratedState: dehydrate(queryClient),
+      params: { id, amenityId },
+    },
+  };
+};
+
+const ProviderEditAmenitiesEditPage: NextPage<
+  InferGetServerSidePropsType<typeof getServerSideProps>
+> = ({ params }) => {
+  const { t } = useTranslation();
 
   useProtectedPage();
 
@@ -37,8 +80,10 @@ const ProviderEditAmenitiesEditPage: NextPage = () => {
                 url: generateUrl(routes.account.providers.index),
               },
               {
-                label: id,
-                url: generateUrl(routes.account.providers.one.index, { id }),
+                label: params.id,
+                url: generateUrl(routes.account.providers.one.index, {
+                  id: params.id,
+                }),
               },
               {
                 label: t('account:providers.amenities.title'),
@@ -53,39 +98,6 @@ const ProviderEditAmenitiesEditPage: NextPage = () => {
       </MainLayout>
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async ({
-  req,
-  params,
-  locale,
-}) => {
-  const session = await getSession({ req });
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: generateUrl(routes.home),
-        permanent: false,
-      },
-    };
-  }
-
-  const queryClient = new QueryClient();
-  const { amenityId } =
-    parameters[routes.account.providers.one.amenities.one].parse(params);
-  const { loaders } = getLoaders(locale);
-
-  await queryClient.prefetchQuery(amenitiesKeys.detail(amenityId), () =>
-    loaders.getAmenity({ req, id: amenityId })
-  );
-
-  return {
-    props: {
-      session,
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
 };
 
 export default ProviderEditAmenitiesEditPage;

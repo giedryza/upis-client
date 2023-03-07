@@ -1,22 +1,64 @@
-import { GetServerSideProps, NextPage } from 'next';
+import {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  NextPage,
+} from 'next';
 import useTranslation from 'next-translate/useTranslation';
+import { Session } from 'next-auth';
 import { getSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
-import { dehydrate, QueryClient } from '@tanstack/react-query';
+import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 
-import { routes } from 'config';
+import { parameters, routes } from 'config';
 import { useProtectedPage } from 'tools/hooks';
-import { generateUrl, getRouteParam } from 'tools/common';
+import { generateUrl } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Tour } from 'components/account';
 import { toursKeys, getLoaders } from 'domain/tours';
 
-const TourPage: NextPage = () => {
-  const { t } = useTranslation();
-  const { query } = useRouter();
+interface Props {
+  session: Session;
+  dehydratedState: DehydratedState;
+  params: { id: string };
+}
 
-  const id = getRouteParam(query.id);
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  req,
+  params,
+  locale,
+}) => {
+  const session = await getSession({ req });
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: generateUrl(routes.home),
+        permanent: false,
+      },
+    };
+  }
+
+  const queryClient = new QueryClient();
+  const { id } = parameters[routes.account.tours.one.index].parse(params);
+  const { loaders } = getLoaders(locale);
+
+  await queryClient.prefetchQuery(toursKeys.detail(id), () =>
+    loaders.getTour({ req, id })
+  );
+
+  return {
+    props: {
+      session,
+      dehydratedState: dehydrate(queryClient),
+      params: { id },
+    },
+  };
+};
+
+const TourPage: NextPage<
+  InferGetServerSidePropsType<typeof getServerSideProps>
+> = ({ params }) => {
+  const { t } = useTranslation();
 
   useProtectedPage();
 
@@ -36,7 +78,7 @@ const TourPage: NextPage = () => {
                 label: t('account:tours.title', { count: 2 }),
                 url: generateUrl(routes.account.tours.index),
               },
-              { label: id },
+              { label: params.id },
             ]}
           />
 
@@ -47,38 +89,6 @@ const TourPage: NextPage = () => {
       </MainLayout>
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async ({
-  req,
-  params,
-  locale,
-}) => {
-  const session = await getSession({ req });
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: generateUrl(routes.home),
-        permanent: false,
-      },
-    };
-  }
-
-  const queryClient = new QueryClient();
-  const id = getRouteParam(params?.id);
-  const { loaders } = getLoaders(locale);
-
-  await queryClient.prefetchQuery(toursKeys.detail(id), () =>
-    loaders.getTour({ req, id })
-  );
-
-  return {
-    props: {
-      session,
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
 };
 
 export default TourPage;
