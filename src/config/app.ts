@@ -11,7 +11,7 @@ const SERP_CONFIG = {
 export const APP = {
   name: 'Upis.lt',
   mail: {
-    index: 'labas@upis.lt',
+    index: 'info@upis.lt',
   },
   env: process.env.NODE_ENV,
   host: {
