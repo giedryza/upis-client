@@ -5,7 +5,8 @@ import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { AppHead } from 'ui';
 import { TourDetails } from 'components/tour';
 import { MainLayout } from 'layouts';
-import { parameters, routes } from 'config';
+import { routes } from 'config';
+import { getParameters } from 'schemas';
 import { getLoaders, toursKeys, useActiveTour } from 'domain/tours';
 
 const TourPage: NextPage = () => {
@@ -30,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   const session = await getSession({ req });
 
   const queryClient = new QueryClient();
-  const { id } = parameters[routes.tours.one.index].parse(params);
+  const { id } = getParameters(routes.tours.one.index).parse(params);
   const { loaders } = getLoaders(locale);
 
   await queryClient.prefetchQuery(toursKeys.detail(id), () =>

@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
 import { useQueryNavigation } from 'tools/hooks';
-import { useToursActiveFilters } from 'domain/tours';
+import { useToursFilters } from 'domain/tours';
 import { CheckboxGroupInput, Pill } from 'ui';
 import { useProviders } from 'domain/providers';
 
@@ -13,14 +13,14 @@ export const FilterProviders: FC = () => {
   const { t } = useTranslation();
   const { navigateWithQuery } = useQueryNavigation();
 
-  const { data: filters } = useToursActiveFilters();
+  const filters = useToursFilters();
   const { data: providers, isLoading } = useProviders({
     filters: { select: ['_id', 'name'], limit: 200 },
   });
 
   const values = useMemo<Values>(
-    () => ({ providers: filters?.providers ?? [] }),
-    [filters?.providers]
+    () => ({ providers: filters.providers ?? [] }),
+    [filters.providers]
   );
   const isEmpty = !values.providers.length;
 

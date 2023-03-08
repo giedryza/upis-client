@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { CheckboxGroupInput, Pill } from 'ui';
 import { useQueryNavigation } from 'tools/hooks';
-import { useToursActiveFilters } from 'domain/tours';
+import { useToursFilters } from 'domain/tours';
 import { amenities } from 'domain/amenities';
 
 import { Values } from './amenities.types';
@@ -13,11 +13,11 @@ export const FilterAmenities: FC = () => {
   const { t } = useTranslation();
   const { navigateWithQuery } = useQueryNavigation();
 
-  const { data: filters } = useToursActiveFilters();
+  const filters = useToursFilters();
 
   const values = useMemo<Values>(
-    () => ({ amenities: filters?.amenities ?? [] }),
-    [filters?.amenities]
+    () => ({ amenities: filters.amenities ?? [] }),
+    [filters.amenities]
   );
   const isEmpty = !values.amenities.length;
 

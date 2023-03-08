@@ -2,7 +2,7 @@ import { FC, useMemo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
-import { useToursActiveFilters, useToursFiltersSummary } from 'domain/tours';
+import { useToursFilters, useToursFiltersSummary } from 'domain/tours';
 import { Pill, SliderInput } from 'ui';
 import { useQueryNavigation } from 'tools/hooks';
 
@@ -13,17 +13,14 @@ export const FilterDuration: FC = () => {
   const { t } = useTranslation();
   const { navigateWithQuery } = useQueryNavigation();
 
-  const { data: activeFilters } = useToursActiveFilters();
+  const filters = useToursFilters();
   const { data: filtersSummary } = useToursFiltersSummary();
 
   const values = useMemo<Values>(
     () => ({
-      duration: [
-        activeFilters?.durationFrom ?? NaN,
-        activeFilters?.durationTo ?? NaN,
-      ],
+      duration: [filters.durationFrom ?? NaN, filters.durationTo ?? NaN],
     }),
-    [activeFilters?.durationFrom, activeFilters?.durationTo]
+    [filters.durationFrom, filters.durationTo]
   );
   const isEmpty = Boolean(values.duration.filter(Number.isNaN).length);
 
@@ -82,7 +79,7 @@ export const FilterDuration: FC = () => {
             navigateWithQuery({
               durationFrom: from,
               durationTo: to,
-              ...((activeFilters?.daysFrom || activeFilters?.daysTo) && {
+              ...((filters.daysFrom || filters.daysTo) && {
                 daysFrom: 1,
                 daysTo: 1,
               }),

@@ -4,7 +4,8 @@ import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, SelectInput, TextInput } from 'ui';
-import { parameters, routes } from 'config';
+import { routes } from 'config';
+import { getParameters } from 'schemas';
 import { InfoBlock } from 'components/account/atoms';
 import { socials, useAddSocialLink } from 'domain/providers';
 import { generateUrl } from 'tools/common';
@@ -16,8 +17,9 @@ import styles from './provider-edit-social-links-add.module.scss';
 export const ProviderEditSocialLinksAdd: FC = () => {
   const { t } = useTranslation();
   const { push, query } = useRouter();
-  const { id } =
-    parameters[routes.account.providers.one.socials.add].parse(query);
+  const { id } = getParameters(routes.account.providers.one.socials.add).parse(
+    query
+  );
 
   const {
     register,

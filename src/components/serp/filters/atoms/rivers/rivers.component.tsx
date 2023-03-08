@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
 import { useQueryNavigation } from 'tools/hooks';
-import { rivers, useToursActiveFilters } from 'domain/tours';
+import { rivers, useToursFilters } from 'domain/tours';
 import { MultiAutocompleteInput, Pill } from 'ui';
 
 import { Values } from './rivers.types';
@@ -12,11 +12,11 @@ export const FilterRivers: FC = () => {
   const { t } = useTranslation();
   const { navigateWithQuery } = useQueryNavigation();
 
-  const { data: filters } = useToursActiveFilters();
+  const filters = useToursFilters();
 
   const values = useMemo<Values>(
-    () => ({ rivers: filters?.rivers ?? [] }),
-    [filters?.rivers]
+    () => ({ rivers: filters.rivers ?? [] }),
+    [filters.rivers]
   );
   const isEmpty = !values.rivers.length;
 

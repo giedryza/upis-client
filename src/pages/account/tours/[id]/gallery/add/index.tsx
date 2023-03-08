@@ -8,7 +8,8 @@ import { getSession } from 'next-auth/react';
 import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 
-import { parameters, routes } from 'config';
+import { routes } from 'config';
+import { getParameters } from 'schemas';
 import { useProtectedPage } from 'tools/hooks';
 import { generateUrl } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
@@ -39,7 +40,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   }
 
   const queryClient = new QueryClient();
-  const { id } = parameters[routes.account.tours.one.gallery.add].parse(params);
+  const { id } = getParameters(routes.account.tours.one.gallery.add).parse(
+    params
+  );
   const { loaders } = getLoaders(locale);
 
   await queryClient.prefetchQuery(toursKeys.detail(id), () =>

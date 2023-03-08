@@ -1,5 +1,4 @@
 import { IncomingMessage } from 'http';
-import { Router } from 'next/router';
 
 import { endpoints } from 'config';
 import {
@@ -17,7 +16,6 @@ import {
   Region,
   River,
   Tour,
-  toursFilters,
   ToursFilters,
 } from './tours.types';
 
@@ -80,10 +78,6 @@ interface AddTourPhoto {
 
 interface DeleteTour {
   id: string;
-}
-
-interface GetFilters {
-  params: Router['query'];
 }
 
 interface GetFiltersSummary {
@@ -150,8 +144,6 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       new Request(generateUrl(endpoints.tours.one.index, { id }), {
         locale,
       }).delete(),
-    getActiveFilters: ({ params }: GetFilters) =>
-      toursFilters.partial().safeParseAsync(params),
     getFiltersSummary: ({ req }: GetFiltersSummary = {}) =>
       new Request<FiltersSummary>(generateUrl(endpoints.tours.filters), {
         req,

@@ -2,7 +2,7 @@ import { FC, useMemo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
-import { useToursActiveFilters, useToursFiltersSummary } from 'domain/tours';
+import { useToursFilters, useToursFiltersSummary } from 'domain/tours';
 import { Pill, SliderInput } from 'ui';
 import { useQueryNavigation } from 'tools/hooks';
 
@@ -12,17 +12,14 @@ export const FilterDifficulty: FC = () => {
   const { t } = useTranslation();
   const { navigateWithQuery } = useQueryNavigation();
 
-  const { data: activeFilters } = useToursActiveFilters();
+  const filters = useToursFilters();
   const { data: filtersSummary } = useToursFiltersSummary();
 
   const values = useMemo<Values>(
     () => ({
-      difficulty: [
-        activeFilters?.difficultyFrom ?? NaN,
-        activeFilters?.difficultyTo ?? NaN,
-      ],
+      difficulty: [filters.difficultyFrom ?? NaN, filters.difficultyTo ?? NaN],
     }),
-    [activeFilters?.difficultyFrom, activeFilters?.difficultyTo]
+    [filters.difficultyFrom, filters.difficultyTo]
   );
   const isEmpty = Boolean(values.difficulty.filter(Number.isNaN).length);
 

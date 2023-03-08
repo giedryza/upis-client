@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { routes } from './routes';
+import { routes } from 'config/routes';
+import { toursFilters } from 'domain/tours/tours.schemas';
 
 const utils = {
   id: z.object({
@@ -8,8 +9,9 @@ const utils = {
   }),
 };
 
-export const parameters = {
+const parameters = {
   ...utils,
+  [routes.home]: z.object({}).merge(toursFilters),
   [routes.tours.one.index]: z
     .object({
       slug: z.coerce.string().catch(''),
@@ -46,3 +48,9 @@ export const parameters = {
   [routes.account.tours.one.location]: z.object({}).merge(utils.id),
   [routes.account.tours.one.prices]: z.object({}).merge(utils.id),
 } as const;
+
+export const getParameters = <Route extends keyof typeof parameters>(
+  route: Route
+): (typeof parameters)[Route] => {
+  return parameters[route];
+};

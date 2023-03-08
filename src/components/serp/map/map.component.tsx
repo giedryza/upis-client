@@ -2,7 +2,7 @@ import { FC, useMemo, useState } from 'react';
 
 import { DEFAULT_CENTER, Map, mapIcon } from 'ui';
 import { Infobox } from 'components/serp';
-import { useToursActiveFilters, useInfiniteTours } from 'domain/tours';
+import { useInfiniteTours, useToursFilters } from 'domain/tours';
 
 import { BoundsOutlet, UpdatesControl } from './atoms';
 import styles from './map.module.scss';
@@ -11,7 +11,7 @@ export const SerpMap: FC = () => {
   const [activeInfobox, setActiveInfobox] = useState('');
   const [updateOnMapMove, setUpdateOnMapMove] = useState(true);
 
-  const { data: filters } = useToursActiveFilters();
+  const filters = useToursFilters();
   const { data } = useInfiniteTours(filters);
 
   const tours = useMemo(

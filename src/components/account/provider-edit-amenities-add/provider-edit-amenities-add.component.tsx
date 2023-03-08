@@ -11,7 +11,8 @@ import {
   SelectInput,
   TextInput,
 } from 'ui';
-import { parameters, routes } from 'config';
+import { routes } from 'config';
+import { getParameters } from 'schemas';
 import { InfoBlock } from 'components/account/atoms';
 import { units, useAddAmenity, amenities } from 'domain/amenities';
 import { useFormatNumber } from 'tools/format';
@@ -26,8 +27,9 @@ export const ProviderEditAmenitiesAdd: FC = () => {
   const { t } = useTranslation();
   const { push, query } = useRouter();
   const { formatter: numberFormatter } = useFormatNumber();
-  const { id } =
-    parameters[routes.account.providers.one.amenities.add].parse(query);
+  const { id } = getParameters(
+    routes.account.providers.one.amenities.add
+  ).parse(query);
 
   const {
     register,

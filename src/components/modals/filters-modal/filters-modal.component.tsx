@@ -11,7 +11,7 @@ import {
 import {
   regions,
   rivers,
-  useToursActiveFilters,
+  useToursFilters,
   useToursFiltersSummary,
 } from 'domain/tours';
 import { amenities } from 'domain/amenities';
@@ -24,7 +24,7 @@ import styles from './filters-modal.module.scss';
 export const FiltersModal: FC<Props> = ({ closeModal }) => {
   const { t } = useTranslation();
 
-  const { data: filters } = useToursActiveFilters();
+  const filters = useToursFilters();
   const { data: filtersSummary } = useToursFiltersSummary();
   const { data: providers, isLoading: isProvidersLoading } = useProviders({
     filters: { select: ['_id', 'name'], limit: 200 },
@@ -42,17 +42,14 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
 
   useEffect(() => {
     reset({
-      amenities: filters?.amenities ?? [],
-      regions: filters?.regions ?? [],
-      rivers: filters?.rivers ?? [],
-      days: [filters?.daysFrom ?? NaN, filters?.daysTo ?? NaN],
-      duration: [filters?.durationFrom ?? NaN, filters?.durationTo ?? NaN],
-      distance: [filters?.distanceFrom ?? NaN, filters?.distanceTo ?? NaN],
-      difficulty: [
-        filters?.difficultyFrom ?? NaN,
-        filters?.difficultyTo ?? NaN,
-      ],
-      providers: filters?.providers ?? [],
+      amenities: filters.amenities ?? [],
+      regions: filters.regions ?? [],
+      rivers: filters.rivers ?? [],
+      days: [filters.daysFrom ?? NaN, filters.daysTo ?? NaN],
+      duration: [filters.durationFrom ?? NaN, filters.durationTo ?? NaN],
+      distance: [filters.distanceFrom ?? NaN, filters.distanceTo ?? NaN],
+      difficulty: [filters.difficultyFrom ?? NaN, filters.difficultyTo ?? NaN],
+      providers: filters.providers ?? [],
     });
   }, [filters, reset]);
 

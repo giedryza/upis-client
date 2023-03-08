@@ -3,7 +3,8 @@ import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
-import { parameters, routes } from 'config';
+import { routes } from 'config';
+import { getParameters } from 'schemas';
 import { useProtectedPage } from 'tools/hooks';
 import { generateUrl } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
@@ -14,8 +15,9 @@ const ProviderEditAmenitiesAddPage: NextPage = () => {
   const { t } = useTranslation();
   const { query } = useRouter();
 
-  const { id } =
-    parameters[routes.account.providers.one.amenities.add].parse(query);
+  const { id } = getParameters(
+    routes.account.providers.one.amenities.add
+  ).parse(query);
 
   useProtectedPage();
 
