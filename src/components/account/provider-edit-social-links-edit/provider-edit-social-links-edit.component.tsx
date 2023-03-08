@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, SelectInput, TextInput } from 'ui';
 import { routes } from 'config';
-import { getParameters } from 'schemas';
+import { getParams } from 'schemas';
 import { generateUrl } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import {
@@ -21,7 +21,7 @@ import styles from './provider-edit-social-links-edit.module.scss';
 export const ProviderEditSocialLinksEdit: FC = () => {
   const { t } = useTranslation();
   const { query, push } = useRouter();
-  const { id, socialId } = getParameters(
+  const { id, socialId } = getParams(
     routes.account.providers.one.socials.one
   ).parse(query);
 

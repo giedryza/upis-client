@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
-import { getParameters } from 'schemas';
+import { getParams } from 'schemas';
 
 import { providersKeys } from './providers.keys';
 import { useLoaders } from './providers.loaders';
@@ -72,7 +72,7 @@ export const useProvider = (id: string) => {
 
 export const useActiveProvider = () => {
   const { query: params } = useRouter();
-  const { id } = getParameters('id').parse(params);
+  const { id } = getParams('id').parse(params);
 
   const query = useProvider(id);
 

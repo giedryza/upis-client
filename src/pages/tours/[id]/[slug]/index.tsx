@@ -6,7 +6,7 @@ import { AppHead } from 'ui';
 import { TourDetails } from 'components/tour';
 import { MainLayout } from 'layouts';
 import { routes } from 'config';
-import { getParameters } from 'schemas';
+import { getParams } from 'schemas';
 import { getLoaders, toursKeys, useActiveTour } from 'domain/tours';
 
 const TourPage: NextPage = () => {
@@ -31,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   const session = await getSession({ req });
 
   const queryClient = new QueryClient();
-  const { id } = getParameters(routes.tours.one.index).parse(params);
+  const { id } = getParams(routes.tours.one.index).parse(params);
   const { loaders } = getLoaders(locale);
 
   await queryClient.prefetchQuery(toursKeys.detail(id), () =>

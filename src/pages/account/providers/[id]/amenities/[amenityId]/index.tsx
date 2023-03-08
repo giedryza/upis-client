@@ -9,7 +9,7 @@ import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
-import { getParameters } from 'schemas';
+import { getParams } from 'schemas';
 import { useProtectedPage } from 'tools/hooks';
 import { generateUrl } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
@@ -40,7 +40,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   }
 
   const queryClient = new QueryClient();
-  const { id, amenityId } = getParameters(
+  const { id, amenityId } = getParams(
     routes.account.providers.one.amenities.one
   ).parse(params);
   const { loaders } = getLoaders(locale);

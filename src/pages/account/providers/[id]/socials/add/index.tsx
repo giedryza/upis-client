@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
-import { getParameters } from 'schemas';
+import { getParams } from 'schemas';
 import { useProtectedPage } from 'tools/hooks';
 import { generateUrl } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
@@ -34,7 +34,7 @@ const ProviderEditSocialLinksAddPage: NextPage = () => {
   const { t } = useTranslation();
   const { query } = useRouter();
 
-  const { id } = getParameters(routes.account.providers.one.socials.add).parse(
+  const { id } = getParams(routes.account.providers.one.socials.add).parse(
     query
   );
 

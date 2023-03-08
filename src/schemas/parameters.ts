@@ -49,7 +49,7 @@ const parameters = {
   [routes.account.tours.one.prices]: z.object({}).merge(utils.id),
 } as const;
 
-export const getParameters = <Route extends keyof typeof parameters>(
+export const getParams = <Route extends keyof typeof parameters>(
   route: Route
 ): (typeof parameters)[Route] => {
   return parameters[route];
