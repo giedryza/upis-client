@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { useRouter } from 'next/router';
+import { UrlObject } from 'url';
 
 import { routes } from 'config/routes';
 import { toursFilters } from 'domain/tours/tours.schemas';
@@ -64,10 +65,23 @@ export const getParams = <Route extends keyof typeof parameters>(
 
   return schema.parse(query);
 };
+
 export const useParams = <Route extends keyof typeof parameters>(
   route: Route
 ): z.infer<(typeof parameters)[Route]> => {
   const { query } = useRouter();
 
   return getParams(route, query);
+};
+
+export const constructUrl = <
+  Route extends keyof typeof parameters,
+  Params extends z.infer<(typeof parameters)[Route]>
+>(
+  url: {
+    pathname: Route;
+    query: Params;
+  } & Omit<UrlObject, 'pathname' | 'query'>
+): UrlObject => {
+  return url;
 };
