@@ -3,7 +3,7 @@ import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { getSession } from 'next-auth/react';
 
 import { routes } from 'config';
-import { getParams } from 'schemas';
+import { getParams } from 'tools/services/url';
 import { AppHead } from 'ui';
 import { SerpResults } from 'components/serp';
 import { getLoaders, toursKeys } from 'domain/tours';

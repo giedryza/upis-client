@@ -2,7 +2,7 @@ import { useSession } from 'next-auth/react';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 
-import { getParams } from 'schemas';
+import { getParams } from 'tools/services/url';
 
 import { toursKeys } from './tours.keys';
 import { ToursFilters } from './tours.types';

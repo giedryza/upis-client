@@ -12,7 +12,7 @@ import {
   TextInput,
 } from 'ui';
 import { routes } from 'config';
-import { getParams } from 'schemas';
+import { getParams } from 'tools/services/url';
 import { InfoBlock } from 'components/account/atoms';
 import { units, useAddAmenity, amenities } from 'domain/amenities';
 import { useFormatNumber } from 'tools/format';

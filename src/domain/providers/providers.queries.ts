@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
-import { getParams } from 'schemas';
+import { getParams } from 'tools/services/url';
 
 import { providersKeys } from './providers.keys';
 import { useLoaders } from './providers.loaders';

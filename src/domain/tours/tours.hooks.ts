@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 
 import { routes } from 'config';
-import { getParams } from 'schemas';
+import { getParams } from 'tools/services/url';
 
 export const useToursFilters = () => {
   const { query } = useRouter();

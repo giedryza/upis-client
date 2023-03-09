@@ -6,7 +6,7 @@ import { AppHead } from 'ui';
 import { TourDetails } from 'components/tour';
 import { MainLayout } from 'layouts';
 import { routes } from 'config';
-import { getParams } from 'schemas';
+import { getParams } from 'tools/services/url';
 import { getLoaders, toursKeys, useActiveTour } from 'domain/tours';
 
 const TourPage: NextPage = () => {
