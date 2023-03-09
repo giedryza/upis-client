@@ -9,7 +9,7 @@ import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
-import { getParams } from 'tools/services/url';
+import { getParamsSchema } from 'tools/services/url';
 import { useProtectedPage } from 'tools/hooks';
 import { generateUrl } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
@@ -40,7 +40,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   }
 
   const queryClient = new QueryClient();
-  const { id } = getParams(routes.account.tours.one.prices).parse(params);
+  const { id } = getParamsSchema(routes.account.tours.one.prices).parse(params);
   const { loaders } = getLoaders(locale);
 
   await queryClient.prefetchQuery(toursKeys.detail(id), () =>

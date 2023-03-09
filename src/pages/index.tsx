@@ -3,7 +3,7 @@ import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { getSession } from 'next-auth/react';
 
 import { routes } from 'config';
-import { getParams } from 'tools/services/url';
+import { getParamsSchema } from 'tools/services/url';
 import { AppHead } from 'ui';
 import { SerpResults } from 'components/serp';
 import { getLoaders, toursKeys } from 'domain/tours';
@@ -27,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const queryClient = new QueryClient();
   const { loaders } = getLoaders(locale);
-  const filters = getParams(routes.home).parse(query);
+  const filters = getParamsSchema(routes.home).parse(query);
 
   await Promise.all([
     queryClient.prefetchInfiniteQuery(toursKeys.list(filters), () =>
