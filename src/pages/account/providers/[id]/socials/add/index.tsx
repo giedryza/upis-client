@@ -1,10 +1,9 @@
 import { NextPage, GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
-import { getParamsSchema } from 'tools/services/url';
+import { useParams } from 'tools/services/url';
 import { useProtectedPage } from 'tools/hooks';
 import { generateUrl } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
@@ -32,11 +31,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
 
 const ProviderEditSocialLinksAddPage: NextPage = () => {
   const { t } = useTranslation();
-  const { query } = useRouter();
-
-  const { id } = getParamsSchema(
-    routes.account.providers.one.socials.add
-  ).parse(query);
+  const { id } = useParams(routes.account.providers.one.socials.add);
 
   useProtectedPage();
 

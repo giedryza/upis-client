@@ -50,7 +50,7 @@ const parameters = {
   [routes.account.tours.one.prices]: z.object({}).merge(utils.id),
 } as const;
 
-export const getParamsSchema = <Route extends keyof typeof parameters>(
+const getSchema = <Route extends keyof typeof parameters>(
   route: Route
 ): (typeof parameters)[Route] => {
   return parameters[route];
@@ -60,7 +60,7 @@ export const getParams = <Route extends keyof typeof parameters>(
   route: Route,
   query: unknown
 ): z.infer<(typeof parameters)[Route]> => {
-  const schema = getParamsSchema(route);
+  const schema = getSchema(route);
 
   return schema.parse(query);
 };

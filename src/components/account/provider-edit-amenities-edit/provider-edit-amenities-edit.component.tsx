@@ -12,7 +12,7 @@ import {
   TextInput,
 } from 'ui';
 import { routes } from 'config';
-import { getParamsSchema } from 'tools/services/url';
+import { useParams } from 'tools/services/url';
 import { InfoBlock } from 'components/account/atoms';
 import { useUpdateAmenity, useAmenity, units } from 'domain/amenities';
 import { useFormatNumber } from 'tools/format';
@@ -25,11 +25,11 @@ import styles from './provider-edit-amenities-edit.module.scss';
 
 export const ProviderEditAmenitiesEdit: FC = () => {
   const { t } = useTranslation();
-  const { query, push } = useRouter();
+  const { push } = useRouter();
   const { formatter: numberFormatter } = useFormatNumber();
-  const { id, amenityId } = getParamsSchema(
+  const { id, amenityId } = useParams(
     routes.account.providers.one.amenities.one
-  ).parse(query);
+  );
 
   const { data: amenity } = useAmenity(amenityId);
   const { mutate: updateAmenity, isLoading } = useUpdateAmenity();
