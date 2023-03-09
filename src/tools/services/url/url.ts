@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { useRouter } from 'next/router';
 
 import { routes } from 'config/routes';
 import { toursFilters } from 'domain/tours/tours.schemas';
@@ -49,8 +50,24 @@ const parameters = {
   [routes.account.tours.one.prices]: z.object({}).merge(utils.id),
 } as const;
 
-export const getParams = <Route extends keyof typeof parameters>(
+export const getParamsSchema = <Route extends keyof typeof parameters>(
   route: Route
 ): (typeof parameters)[Route] => {
   return parameters[route];
+};
+
+export const getParams = <Route extends keyof typeof parameters>(
+  route: Route,
+  query: unknown
+): z.infer<(typeof parameters)[Route]> => {
+  const schema = getParamsSchema(route);
+
+  return schema.parse(query);
+};
+export const useParams = <Route extends keyof typeof parameters>(
+  route: Route
+): z.infer<(typeof parameters)[Route]> => {
+  const { query } = useRouter();
+
+  return getParams(route, query);
 };
