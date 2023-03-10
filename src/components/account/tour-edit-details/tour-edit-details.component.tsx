@@ -8,17 +8,15 @@ import { routes } from 'config';
 import { generateUrl } from 'tools/services/url';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTour } from 'domain/tours';
-import { useFormatNumber } from 'tools/format';
+import { formatNumber } from 'tools/format';
 
 import { Values } from './tour-edit-details.types';
 import { INITIAL_VALUES } from './tour-edit-details.constants';
 import styles from './tour-edit-details.module.scss';
 
 export const TourEditDetails: FC = () => {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
   const { push } = useRouter();
-
-  const { formatter: numberFormatter } = useFormatNumber();
 
   const { data: tour } = useActiveTour();
   const { mutate: updateTour, isLoading } = useUpdateTour();
@@ -116,7 +114,7 @@ export const TourEditDetails: FC = () => {
                   disabled={days > 1}
                   name={name}
                   value={value}
-                  placeholder={numberFormatter.format(4.5)}
+                  placeholder={formatNumber(lang, 4.25)}
                   onChange={onChange}
                   min={0.5}
                   step={0.5}
@@ -140,7 +138,7 @@ export const TourEditDetails: FC = () => {
                   label={t('account:tours.details.form.distance.label')}
                   name={name}
                   value={value}
-                  placeholder={numberFormatter.format(6.5)}
+                  placeholder={formatNumber(lang, 15.25)}
                   onChange={onChange}
                   min={0.01}
                   step={0.01}

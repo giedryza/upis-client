@@ -1,8 +1,14 @@
 import { Locale } from 'types/common';
 
-export const formatNumber = (language: string, amount: number): string => {
+export const formatUnit = (
+  language: string,
+  amount: number,
+  // https://unicode.org/reports/tr35/tr35-general.html#Unit_Elements
+  unit: string
+): string => {
   const options: Intl.NumberFormatOptions = {
-    style: 'decimal',
+    style: 'unit',
+    unit,
   };
 
   const locale = Object.values(Locale).includes(language as Locale)

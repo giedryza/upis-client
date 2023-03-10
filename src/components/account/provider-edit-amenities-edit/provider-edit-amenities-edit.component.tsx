@@ -15,7 +15,7 @@ import { routes } from 'config';
 import { useRouteParams, generateUrl } from 'tools/services/url';
 import { InfoBlock } from 'components/account/atoms';
 import { useUpdateAmenity, useAmenity, units } from 'domain/amenities';
-import { useFormatNumber } from 'tools/format';
+import { formatNumber } from 'tools/format';
 import { currencies } from 'types/common';
 import { toCents } from 'tools/common';
 
@@ -24,9 +24,8 @@ import { INITIAL_VALUES } from './provider-edit-amenities-edit.constants';
 import styles from './provider-edit-amenities-edit.module.scss';
 
 export const ProviderEditAmenitiesEdit: FC = () => {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
   const { push } = useRouter();
-  const { formatter: numberFormatter } = useFormatNumber();
   const { id, amenityId } = useRouteParams(
     routes.account.providers.one.amenities.one
   );
@@ -106,7 +105,7 @@ export const ProviderEditAmenitiesEdit: FC = () => {
                     label={t('account:providers.amenities.form.amount.label')}
                     name={name}
                     value={value}
-                    placeholder={numberFormatter.format(15.5)}
+                    placeholder={formatNumber(lang, 15.25)}
                     onChange={onChange}
                     step={0.01}
                     error={errors.amount?.message}
