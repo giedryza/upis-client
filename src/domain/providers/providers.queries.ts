@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
 
 import { useRouteParams } from 'tools/services/url';
 
@@ -8,25 +7,12 @@ import { providersKeys } from './providers.keys';
 import { useLoaders } from './providers.loaders';
 import { converters } from './providers.converters';
 import { ProvidersFilters } from './providers.types';
+import { useProvidersFilters } from './providers.hooks';
 
 interface UseProviders {
   filters?: Partial<ProvidersFilters>;
   enabled?: boolean;
 }
-
-export const useProvidersActiveFilters = () => {
-  const { loaders } = useLoaders();
-  const { query: params } = useRouter();
-
-  const query = useQuery({
-    queryKey: providersKeys.list('filters', 'active', params),
-    queryFn: () => loaders.getActiveFilters({ params }),
-    select: converters.getActiveFilters,
-    keepPreviousData: true,
-  });
-
-  return query;
-};
 
 export const useProviders = ({
   filters = {},
@@ -47,7 +33,7 @@ export const useProviders = ({
 
 export const useMyProviders = (filters: Partial<ProvidersFilters> = {}) => {
   const { data: session } = useSession();
-  const { data: activeFilters } = useProvidersActiveFilters();
+  const activeFilters = useProvidersFilters();
 
   const query = useProviders({
     filters: { ...activeFilters, ...filters, user: session?.user.id },

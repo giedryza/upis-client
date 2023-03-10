@@ -1,5 +1,4 @@
 import { IncomingMessage } from 'http';
-import { Router } from 'next/router';
 
 import { endpoints } from 'config';
 import {
@@ -14,7 +13,6 @@ import { generateUrl } from 'tools/common';
 import {
   ProvidersFilters,
   Provider,
-  providersFilters,
   SocialVariant,
   Social,
 } from './providers.types';
@@ -62,10 +60,6 @@ interface UploadLogo {
 
 interface DeleteProvider {
   id: string;
-}
-
-interface GetFilters {
-  params: Router['query'];
 }
 
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
@@ -153,7 +147,5 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       new Request(generateUrl(endpoints.providers.one.index, { id }), {
         locale,
       }).delete(),
-    getActiveFilters: ({ params }: GetFilters) =>
-      providersFilters.partial().safeParseAsync(params),
   },
 }));

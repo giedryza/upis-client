@@ -4,6 +4,7 @@ import { UrlObject } from 'url';
 
 import { routes } from 'config/routes';
 import { toursFilters } from 'domain/tours/tours.schemas';
+import { providersFilters } from 'domain/providers/providers.schemas';
 
 const utils = {
   query: {},
@@ -18,6 +19,8 @@ const parameters = {
   query: {
     ...utils.query,
     [routes.home]: z.object({}).merge(toursFilters),
+    [routes.account.tours.index]: z.object({}).merge(toursFilters),
+    [routes.account.providers.index]: z.object({}).merge(providersFilters),
   },
   route: {
     ...utils.route,

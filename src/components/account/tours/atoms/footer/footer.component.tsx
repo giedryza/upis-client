@@ -3,6 +3,9 @@ import { FC } from 'react';
 
 import { Pagination } from 'ui';
 import { useMyTours } from 'domain/tours';
+import { generateUrl } from 'tools/common';
+import { constructUrlWithQuery } from 'tools/services/url';
+import { routes } from 'config';
 
 import styles from './footer.module.scss';
 
@@ -19,7 +22,11 @@ export const ToursFooter: FC = () => {
         <Pagination
           currentPage={tours.meta.page}
           totalPages={tours.meta.pages}
-          onLink={(page) => ({ query: { ...query, page } })}
+          onLink={(page) =>
+            constructUrlWithQuery(routes.account.tours.index, generateUrl, {
+              query: { ...query, page },
+            })
+          }
         />
       ) : (
         <div />
