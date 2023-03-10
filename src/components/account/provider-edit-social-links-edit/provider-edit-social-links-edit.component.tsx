@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, SelectInput, TextInput } from 'ui';
-import { parameters, routes } from 'config';
-import { generateUrl } from 'tools/common';
+import { routes } from 'config';
+import { useRouteParams, generateUrl } from 'tools/services/url';
 import { InfoBlock } from 'components/account/atoms';
 import {
   useActiveProvider,
@@ -19,9 +19,10 @@ import styles from './provider-edit-social-links-edit.module.scss';
 
 export const ProviderEditSocialLinksEdit: FC = () => {
   const { t } = useTranslation();
-  const { query, push } = useRouter();
-  const { id, socialId } =
-    parameters[routes.account.providers.one.socials.one].parse(query);
+  const { push } = useRouter();
+  const { id, socialId } = useRouteParams(
+    routes.account.providers.one.socials.one
+  );
 
   const { data: provider } = useActiveProvider();
   const { mutate: updateSocialLink, isLoading } = useUpdateSocialLink();

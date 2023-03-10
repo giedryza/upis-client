@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { routes } from 'config';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 import { Button, Container, Card, TextInput } from 'ui';
 import { useForgotPassword } from 'domain/users';
 

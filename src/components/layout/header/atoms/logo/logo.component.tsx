@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 
 import { routes } from 'config';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 import { Logo } from 'ui';
 
 import styles from './logo.module.scss';

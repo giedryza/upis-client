@@ -2,14 +2,26 @@ import { ModalProps } from 'domain/modal';
 import { ToursFilters } from 'domain/tours';
 
 export interface Values {
-  amenities: ToursFilters['amenities'];
-  regions: ToursFilters['regions'];
-  rivers: ToursFilters['rivers'];
-  days: [ToursFilters['daysFrom'], ToursFilters['daysTo']];
-  duration: [ToursFilters['durationFrom'], ToursFilters['durationFrom']];
-  distance: [ToursFilters['distanceFrom'], ToursFilters['distanceFrom']];
-  difficulty: [ToursFilters['difficultyFrom'], ToursFilters['difficultyFrom']];
-  providers: ToursFilters['providers'];
+  amenities: NonNullable<ToursFilters['amenities']>;
+  regions: NonNullable<ToursFilters['regions']>;
+  rivers: NonNullable<ToursFilters['rivers']>;
+  days: [
+    NonNullable<ToursFilters['daysFrom']>,
+    NonNullable<ToursFilters['daysTo']>
+  ];
+  duration: [
+    NonNullable<ToursFilters['durationFrom']>,
+    NonNullable<ToursFilters['durationTo']>
+  ];
+  distance: [
+    NonNullable<ToursFilters['distanceFrom']>,
+    NonNullable<ToursFilters['distanceTo']>
+  ];
+  difficulty: [
+    NonNullable<ToursFilters['difficultyFrom']>,
+    NonNullable<ToursFilters['difficultyTo']>
+  ];
+  providers: NonNullable<ToursFilters['providers']>;
 }
 
 export interface Props extends ModalProps {

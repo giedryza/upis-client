@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { routes } from 'config';
 import { useAppDispatch } from 'tools/services';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 import { Button, Container, Card, TextInput } from 'ui';
 import { useResetPassword } from 'domain/users';
 import { alerts } from 'domain/alerts';

@@ -3,9 +3,10 @@ import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 
 import { Button, Carousel, Icon, ImagePlaceholder } from 'ui';
-import { formatCurrency, formatNumber } from 'tools/format';
+import { formatCurrency, formatUnit } from 'tools/format';
 import { routes, APP } from 'config';
-import { generateImageUrl, generateUrl, isLast } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
+import { generateImageUrl, isLast } from 'tools/common';
 import { useBreakpoints } from 'tools/hooks';
 
 import { Props } from './card.types';
@@ -93,15 +94,15 @@ export const SerpCard: FC<Props> = memo(({ tour, userId }) => {
               <Icon name="timer" className={styles.icon} aria-hidden />
               {[
                 {
-                  label: formatNumber(lang, tour.distance ?? 0, 'kilometer'),
+                  label: formatUnit(lang, tour.distance ?? 0, 'kilometer'),
                   value: tour.distance,
                 },
                 {
-                  label: formatNumber(lang, tour.days, 'day'),
+                  label: formatUnit(lang, tour.days, 'day'),
                   value: tour.days,
                 },
                 {
-                  label: formatNumber(lang, tour.duration ?? 0, 'hour'),
+                  label: formatUnit(lang, tour.duration ?? 0, 'hour'),
                   value: tour.duration,
                 },
               ]

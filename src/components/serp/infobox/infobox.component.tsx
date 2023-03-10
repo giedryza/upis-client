@@ -3,8 +3,9 @@ import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 
 import { APP, routes } from 'config';
-import { generateImageUrl, generateUrl, isLast } from 'tools/common';
-import { formatCurrency, formatNumber } from 'tools/format';
+import { generateUrl } from 'tools/services/url';
+import { generateImageUrl, isLast } from 'tools/common';
+import { formatCurrency, formatUnit } from 'tools/format';
 import { Button, Carousel, Icon } from 'ui';
 
 import { Props } from './infobox.types';
@@ -71,15 +72,15 @@ export const Infobox: FC<Props> = ({
         <h4 className={styles.subtitle}>
           {[
             {
-              label: formatNumber(lang, distance ?? 0, 'kilometer'),
+              label: formatUnit(lang, distance ?? 0, 'kilometer'),
               value: distance,
             },
             {
-              label: formatNumber(lang, days, 'day'),
+              label: formatUnit(lang, days, 'day'),
               value: days,
             },
             {
-              label: formatNumber(lang, duration ?? 0, 'hour'),
+              label: formatUnit(lang, duration ?? 0, 'hour'),
               value: duration,
             },
           ]

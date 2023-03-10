@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 
 import { routes } from 'config';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 import { Button, Container, Card } from 'ui';
 
 import { Props } from './forgot-sent.types';

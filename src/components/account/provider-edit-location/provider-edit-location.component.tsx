@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 
 import { routes } from 'config';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 import {
   Button,
   Map,

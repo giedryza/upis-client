@@ -8,8 +8,8 @@ import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Providers } from 'components/account';
-import { providersKeys, getLoaders, converters } from 'domain/providers';
-import { generateUrl } from 'tools/common';
+import { providersKeys, getLoaders } from 'domain/providers';
+import { generateUrl, getQueryParams } from 'tools/services/url';
 
 const ProvidersPage: NextPage = () => {
   const { t } = useTranslation();
@@ -59,10 +59,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const queryClient = new QueryClient();
   const { loaders } = getLoaders(locale);
-
-  const filters = await loaders
-    .getActiveFilters({ params: query })
-    .then(converters.getActiveFilters);
+  const filters = getQueryParams(routes.account.providers.index, query);
 
   await queryClient.prefetchQuery(
     providersKeys.list({ ...filters, user: session.user.id }),

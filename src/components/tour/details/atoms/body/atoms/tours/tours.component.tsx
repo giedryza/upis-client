@@ -7,7 +7,7 @@ import { useTours } from 'domain/tours';
 import { Button } from 'ui';
 import { SerpCard } from 'components/serp';
 import { useBreakpoints } from 'tools/hooks';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 
 import { Props } from './tours.types';
 import styles from './tours.module.scss';

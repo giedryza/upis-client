@@ -7,7 +7,7 @@ import { useProtectedPage } from 'tools/hooks';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { AppHead, Breadcrumbs } from 'ui';
 import { TourCreate } from 'components/account';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 
 const ToursCreatePage: NextPage = () => {
   const { t } = useTranslation();

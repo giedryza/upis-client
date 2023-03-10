@@ -31,13 +31,6 @@ export const converters = {
   getTour: ({ data }: Converter<typeof getLoaders, 'getTour'>) => {
     return data ? convertTour(data) : null;
   },
-  getActiveFilters: (
-    parsed: Converter<typeof getLoaders, 'getActiveFilters'>
-  ) => {
-    if (parsed.success) return parsed.data;
-
-    return {};
-  },
   getFiltersSummary: ({
     data,
   }: Converter<typeof getLoaders, 'getFiltersSummary'>) => {

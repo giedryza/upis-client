@@ -8,9 +8,9 @@ import { getSession } from 'next-auth/react';
 import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 
-import { parameters, routes } from 'config';
+import { routes } from 'config';
+import { getRouteParams, generateUrl } from 'tools/services/url';
 import { useProtectedPage } from 'tools/hooks';
-import { generateUrl } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { TourEditGeography } from 'components/account';
@@ -39,7 +39,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   }
 
   const queryClient = new QueryClient();
-  const { id } = parameters[routes.account.tours.one.geography].parse(params);
+  const { id } = getRouteParams(routes.account.tours.one.geography, params);
   const { loaders } = getLoaders(locale);
 
   await queryClient.prefetchQuery(toursKeys.detail(id), () =>
