@@ -48,7 +48,7 @@
     "prices": {
       "title": "Prices",
       "pricePer": "per person, per day",
-      "info": "Provided is the approximate price per person, per tour. It may vary depending on a weekday, season etc."
+      "info": "Provided is the approximate price per person, per day. It may vary depending on a weekday, season etc."
     },
     "location": {
       "title": "Location",
