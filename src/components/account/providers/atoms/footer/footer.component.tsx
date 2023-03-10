@@ -3,6 +3,8 @@ import { FC } from 'react';
 
 import { Pagination } from 'ui';
 import { useMyProviders } from 'domain/providers';
+import { constructUrlWithQuery, generateUrl } from 'tools/services/url';
+import { routes } from 'config';
 
 import styles from './footer.module.scss';
 
@@ -18,7 +20,11 @@ export const ProvidersFooter: FC = () => {
         <Pagination
           currentPage={providers.meta.page}
           totalPages={providers.meta.pages}
-          onLink={(page) => ({ query: { ...query, page } })}
+          onLink={(page) =>
+            constructUrlWithQuery(routes.account.providers.index, generateUrl, {
+              query: { ...query, page },
+            })
+          }
         />
       ) : (
         <div />

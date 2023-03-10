@@ -5,7 +5,8 @@ import Trans from 'next-translate/Trans';
 import { useRouter } from 'next/router';
 
 import { Container, Divider, SelectInput } from 'ui';
-import { capitalize, generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
+import { capitalize } from 'tools/common';
 import { APP, CookieName, routes } from 'config';
 import { Locale } from 'types/common';
 import { formatLanguage } from 'tools/format';

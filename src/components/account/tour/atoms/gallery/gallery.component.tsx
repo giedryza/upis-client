@@ -3,7 +3,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 
 import { EmptyState, ImageTile } from 'ui';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 import { useAppDispatch } from 'tools/services';
 import { InfoBlock } from 'components/account/atoms';
 import { toursKeys, useActiveTour, useUpdateTour } from 'domain/tours';

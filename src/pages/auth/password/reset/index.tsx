@@ -7,7 +7,7 @@ import { useGuestPage } from 'tools/hooks';
 import { AppHead } from 'ui';
 import { PasswordReset } from 'components/auth';
 import { PageLayout, MainLayout } from 'layouts';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 
 const PasswordResetPage: NextPage = () => {
   const { t } = useTranslation();

@@ -8,18 +8,17 @@ import { routes } from 'config';
 import { currencies } from 'types/common';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTourPrice } from 'domain/tours';
-import { useFormatNumber } from 'tools/format';
-import { generateUrl, toCents } from 'tools/common';
+import { formatNumber } from 'tools/format';
+import { generateUrl } from 'tools/services/url';
+import { toCents } from 'tools/common';
 
 import { Values } from './tour-edit-prices.types';
 import { INITIAL_VALUES } from './tour-edit-prices.constants';
 import styles from './tour-edit-prices.module.scss';
 
 export const TourEditPrices: FC = () => {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
   const { push } = useRouter();
-
-  const { formatter: numberFormatter } = useFormatNumber();
 
   const { data: tour } = useActiveTour();
   const { mutate: updateTourPrice, isLoading } = useUpdateTourPrice();
@@ -83,7 +82,7 @@ export const TourEditPrices: FC = () => {
                     info={t('account:tours.prices.form.price.info')}
                     name={name}
                     value={value}
-                    placeholder={numberFormatter.format(15.5)}
+                    placeholder={formatNumber(lang, 12.99)}
                     onChange={onChange}
                     step={0.01}
                     error={errors.amount?.message}

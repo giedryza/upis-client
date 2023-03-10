@@ -5,7 +5,7 @@ import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider } from 'domain/providers';
 import { routes } from 'config';
 import { Container, ImagePlaceholder, ImageTile } from 'ui';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 
 export const Logo: FC = () => {
   const { t } = useTranslation();

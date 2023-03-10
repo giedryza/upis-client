@@ -1,5 +1,6 @@
 // import { Breakpoint } from 'types/common';
 import styles from 'styles/utils/export.module.scss';
+import { Locale } from 'types/common';
 
 const SERP_CONFIG = {
   cardImageAspectRatio: [4, 3],
@@ -11,12 +12,15 @@ const SERP_CONFIG = {
 export const APP = {
   name: 'Upis.lt',
   mail: {
-    index: 'labas@upis.lt',
+    index: 'info@upis.lt',
   },
   env: process.env.NODE_ENV,
   host: {
     client: process.env.NEXT_PUBLIC_HOST_CLIENT,
     api: process.env.NEXT_PUBLIC_HOST_API,
+  },
+  locales: {
+    default: Locale.Lt,
   },
   serp: {
     list: {

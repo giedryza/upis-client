@@ -2,9 +2,11 @@ import { GetServerSideProps, NextPage } from 'next';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { getSession } from 'next-auth/react';
 
+import { routes } from 'config';
+import { getQueryParams } from 'tools/services/url';
 import { AppHead } from 'ui';
 import { SerpResults } from 'components/serp';
-import { getLoaders, toursKeys, converters } from 'domain/tours';
+import { getLoaders, toursKeys } from 'domain/tours';
 
 const Home: NextPage = () => {
   return (
@@ -25,10 +27,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const queryClient = new QueryClient();
   const { loaders } = getLoaders(locale);
-
-  const filters = await loaders
-    .getActiveFilters({ params: query })
-    .then(converters.getActiveFilters);
+  const filters = getQueryParams(routes.home, query);
 
   await Promise.all([
     queryClient.prefetchInfiniteQuery(toursKeys.list(filters), () =>
@@ -36,9 +35,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     ),
     queryClient.prefetchQuery(toursKeys.list('filters', 'summary'), () =>
       loaders.getFiltersSummary({ req })
-    ),
-    queryClient.prefetchQuery(toursKeys.list('filters', 'active', query), () =>
-      loaders.getActiveFilters({ params: query })
     ),
   ]);
 

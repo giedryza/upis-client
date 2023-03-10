@@ -8,9 +8,9 @@ import { Session } from 'next-auth';
 import { getSession } from 'next-auth/react';
 import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 
-import { parameters, routes } from 'config';
+import { routes } from 'config';
+import { getRouteParams, generateUrl } from 'tools/services/url';
 import { useProtectedPage } from 'tools/hooks';
-import { generateUrl } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Provider } from 'components/account';
@@ -39,7 +39,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   }
 
   const queryClient = new QueryClient();
-  const { id } = parameters[routes.account.providers.one.index].parse(params);
+  const { id } = getRouteParams(routes.account.providers.one.index, params);
   const { loaders } = getLoaders(locale);
 
   await queryClient.prefetchQuery(providersKeys.detail(id), () =>

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { Meter } from 'ui';
-import { formatList, formatNumber } from 'tools/format';
+import { formatList, formatUnit } from 'tools/format';
 
 import { Props } from './overview.types';
 import styles from './overview.module.scss';
@@ -57,7 +57,7 @@ export const BodyOverview: FC<Props> = ({
               {t('tours:details.distance.title')}
             </span>
             <span className={styles.value}>
-              {formatNumber(lang, distance, 'kilometer')}
+              {formatUnit(lang, distance, 'kilometer')}
             </span>
           </li>
         ) : null}
@@ -68,7 +68,7 @@ export const BodyOverview: FC<Props> = ({
               {t('tours:details.duration.title')}
             </span>
             <span className={styles.value}>
-              {formatNumber(lang, duration, 'hour')}
+              {formatUnit(lang, duration, 'hour')}
             </span>
           </li>
         ) : null}
@@ -79,7 +79,7 @@ export const BodyOverview: FC<Props> = ({
               {t('tours:details.days.title')}
             </span>
             <span className={styles.value}>
-              {formatNumber(lang, days, 'day')}
+              {formatUnit(lang, days, 'day')}
             </span>
           </li>
         ) : null}

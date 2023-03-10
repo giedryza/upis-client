@@ -5,7 +5,7 @@ import { routes } from 'config';
 import { InfoBlock, MapItem } from 'components/account/atoms';
 import { useActiveProvider } from 'domain/providers';
 import { LabeledValue } from 'ui';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 
 export const Location: FC = () => {
   const { t } = useTranslation();

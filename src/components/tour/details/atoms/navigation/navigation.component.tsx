@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react';
 
 import { Button, Container } from 'ui';
 import { useActiveTour } from 'domain/tours';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 import { routes } from 'config';
 
 import styles from './navigation.module.scss';

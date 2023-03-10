@@ -1,19 +1,14 @@
+import { APP } from 'config';
 import { Locale } from 'types/common';
 
-export const formatNumber = (
-  language: string,
-  amount: number,
-  // https://unicode.org/reports/tr35/tr35-general.html#Unit_Elements
-  unit: string
-): string => {
+export const formatNumber = (language: string, amount: number): string => {
   const options: Intl.NumberFormatOptions = {
-    style: 'unit',
-    unit,
+    style: 'decimal',
   };
 
   const locale = Object.values(Locale).includes(language as Locale)
     ? language
-    : Locale.Lt;
+    : APP.locales.default;
 
   return Intl.NumberFormat(locale, options).format(amount);
 };

@@ -2,7 +2,7 @@ import { FC, useEffect, useRef } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 
 import { useQueryNavigation } from 'tools/hooks';
-import { useToursActiveFilters } from 'domain/tours';
+import { useToursFilters } from 'domain/tours';
 
 import { Props } from './bounds-outlet.types';
 
@@ -14,10 +14,9 @@ export const BoundsOutlet: FC<Props> = ({
 }) => {
   const map = useMap();
   const { navigateWithQuery } = useQueryNavigation();
-
   const isInitialLoad = useRef(true);
 
-  const { data: filters, isPreviousData } = useToursActiveFilters();
+  const filters = useToursFilters();
 
   useEffect(() => {
     if (!coordinates.length) {
@@ -31,10 +30,10 @@ export const BoundsOutlet: FC<Props> = ({
       return;
     }
 
-    if (!filters?.bounds && !isPreviousData) {
+    if (!filters.bounds) {
       map.fitBounds(coordinates, { animate: false });
     }
-  }, [map, coordinates, filters?.bounds, isPreviousData]);
+  }, [map, coordinates, filters.bounds]);
 
   const setBounds = () => {
     const bounds = map.getBounds();

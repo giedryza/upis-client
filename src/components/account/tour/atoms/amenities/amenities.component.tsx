@@ -7,7 +7,7 @@ import { routes } from 'config';
 import { EmptyState, Tile } from 'ui';
 import { ICON_BY_VARIANT } from 'domain/amenities';
 import { formatCurrency } from 'tools/format';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 
 export const Amenities: FC = () => {
   const { t, lang } = useTranslation();

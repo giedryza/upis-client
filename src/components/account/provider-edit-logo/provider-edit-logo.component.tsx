@@ -7,7 +7,7 @@ import { Button, Container, FileInput } from 'ui';
 import { routes } from 'config';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider, useUploadLogo } from 'domain/providers';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 
 import { Values } from './provider-edit-logo.types';
 import styles from './provider-edit-logo.module.scss';

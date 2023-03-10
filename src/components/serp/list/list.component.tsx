@@ -7,7 +7,7 @@ import { APP } from 'config';
 import { InView, Loader } from 'ui';
 import { SerpCard } from 'components/serp';
 import { Footer } from 'components/layout';
-import { useInfiniteTours, useToursActiveFilters } from 'domain/tours';
+import { useInfiniteTours, useToursFilters } from 'domain/tours';
 import { useBreakpoints } from 'tools/hooks';
 
 import { ListEmpty } from './atoms';
@@ -18,7 +18,7 @@ export const SerpList: FC = () => {
   const { xs } = useBreakpoints();
 
   const { data: session } = useSession();
-  const { data: filters } = useToursActiveFilters();
+  const filters = useToursFilters();
   const { data, isLoading, hasNextPage, fetchNextPage } =
     useInfiniteTours(filters);
 

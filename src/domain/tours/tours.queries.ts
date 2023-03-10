@@ -1,32 +1,18 @@
 import { useSession } from 'next-auth/react';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
-import { useRouter } from 'next/router';
 
-import { parameters } from 'config';
+import { useRouteParams } from 'tools/services/url';
 
 import { toursKeys } from './tours.keys';
 import { ToursFilters } from './tours.types';
 import { useLoaders } from './tours.loaders';
 import { converters } from './tours.converters';
+import { useToursFilters } from './tours.hooks';
 
 interface UseTours {
   filters?: Partial<ToursFilters>;
   enabled?: boolean;
 }
-
-export const useToursActiveFilters = () => {
-  const { loaders } = useLoaders();
-  const { query: params } = useRouter();
-
-  const query = useQuery({
-    queryKey: toursKeys.list('filters', 'active', params),
-    queryFn: () => loaders.getActiveFilters({ params }),
-    select: converters.getActiveFilters,
-    keepPreviousData: true,
-  });
-
-  return query;
-};
 
 export const useTours = ({ filters = {}, enabled = true }: UseTours = {}) => {
   const { loaders } = useLoaders();
@@ -44,7 +30,7 @@ export const useTours = ({ filters = {}, enabled = true }: UseTours = {}) => {
 
 export const useMyTours = (filters: Partial<ToursFilters> = {}) => {
   const { data: session } = useSession();
-  const { data: activeFilters } = useToursActiveFilters();
+  const activeFilters = useToursFilters();
 
   const query = useTours({
     filters: { ...activeFilters, ...filters, user: session?.user.id },
@@ -100,10 +86,9 @@ export const useTour = (id: string) => {
 };
 
 export const useActiveTour = () => {
-  const { query: params } = useRouter();
-  const { id } = parameters.id.parse(params);
+  const { id } = useRouteParams('id');
 
-  const query = useTour(id);
+  const query = useTour(typeof id === 'string' ? id : '');
 
   return query;
 };

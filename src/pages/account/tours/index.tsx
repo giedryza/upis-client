@@ -4,12 +4,12 @@ import { dehydrate, QueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
+import { getQueryParams, generateUrl } from 'tools/services/url';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Tours } from 'components/account';
-import { converters, getLoaders, toursKeys } from 'domain/tours';
-import { generateUrl } from 'tools/common';
+import { getLoaders, toursKeys } from 'domain/tours';
 
 const ToursPage: NextPage = () => {
   const { t } = useTranslation();
@@ -59,10 +59,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const queryClient = new QueryClient();
   const { loaders } = getLoaders(locale);
-
-  const filters = await loaders
-    .getActiveFilters({ params: query })
-    .then(converters.getActiveFilters);
+  const filters = getQueryParams(routes.home, query);
 
   await queryClient.prefetchQuery(
     toursKeys.list({ ...filters, user: session.user.id }),
