@@ -1,3 +1,4 @@
+import { APP } from 'config';
 import { Locale } from 'types/common';
 
 export const formatNumber = (language: string, amount: number): string => {
@@ -7,7 +8,7 @@ export const formatNumber = (language: string, amount: number): string => {
 
   const locale = Object.values(Locale).includes(language as Locale)
     ? language
-    : Locale.Lt;
+    : APP.locales.default;
 
   return Intl.NumberFormat(locale, options).format(amount);
 };

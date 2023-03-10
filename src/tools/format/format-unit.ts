@@ -1,3 +1,4 @@
+import { APP } from 'config';
 import { Locale } from 'types/common';
 
 export const formatUnit = (
@@ -13,7 +14,7 @@ export const formatUnit = (
 
   const locale = Object.values(Locale).includes(language as Locale)
     ? language
-    : Locale.Lt;
+    : APP.locales.default;
 
   return Intl.NumberFormat(locale, options).format(amount);
 };
