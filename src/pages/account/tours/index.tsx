@@ -4,7 +4,7 @@ import { dehydrate, QueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
-import { getParams } from 'tools/services/url';
+import { getQueryParams } from 'tools/services/url';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
@@ -60,7 +60,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const queryClient = new QueryClient();
   const { loaders } = getLoaders(locale);
-  const filters = getParams(routes.home, query);
+  const filters = getQueryParams(routes.home, query);
 
   await queryClient.prefetchQuery(
     toursKeys.list({ ...filters, user: session.user.id }),

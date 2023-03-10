@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, ImageTile, TextInput } from 'ui';
 import { routes } from 'config';
-import { useParams } from 'tools/services/url';
+import { useRouteParams } from 'tools/services/url';
 import { generateUrl } from 'tools/common';
 import { InfoBlock } from 'components/account/atoms';
 import { useDeleteImage, useImage, useUpdateImage } from 'domain/images';
@@ -22,7 +22,7 @@ export const TourEditGalleryEdit: FC = () => {
   const dispatch = useAppDispatch();
   const { push } = useRouter();
   const { confirmation } = useConfirm();
-  const { id, imageId } = useParams(routes.account.tours.one.gallery.one);
+  const { id, imageId } = useRouteParams(routes.account.tours.one.gallery.one);
 
   const { data: image } = useImage(imageId);
   const { mutate: updateImage, isLoading } = useUpdateImage();

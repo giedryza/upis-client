@@ -1,7 +1,7 @@
 import { useSession } from 'next-auth/react';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 
-import { useParams } from 'tools/services/url';
+import { useRouteParams } from 'tools/services/url';
 
 import { toursKeys } from './tours.keys';
 import { ToursFilters } from './tours.types';
@@ -86,7 +86,7 @@ export const useTour = (id: string) => {
 };
 
 export const useActiveTour = () => {
-  const { id } = useParams('id');
+  const { id } = useRouteParams('id');
 
   const query = useTour(typeof id === 'string' ? id : '');
 

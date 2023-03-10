@@ -5,7 +5,8 @@ import useTranslation from 'next-translate/useTranslation';
 import { Image, ImagePlaceholder } from 'ui';
 import { routes } from 'config';
 import { useTours } from 'domain/tours';
-import { constructUrl } from 'tools/services/url';
+import { constructUrlWithQuery } from 'tools/services/url';
+import { generateUrl } from 'tools/common';
 
 import { Props } from './header.types';
 import styles from './header.module.scss';
@@ -36,8 +37,7 @@ export const ProviderHeader: FC<Props> = ({ id, name, logo, size }) => {
         <span className={styles.label}>{name}</span>
         <span className={styles.sublabel}>
           <Link
-            href={constructUrl({
-              pathname: routes.home,
+            href={constructUrlWithQuery(routes.home, generateUrl, {
               query: { providers: [id] },
             })}
           >

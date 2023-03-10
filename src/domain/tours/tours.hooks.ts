@@ -1,8 +1,8 @@
 import { routes } from 'config';
-import { useParams } from 'tools/services/url';
+import { useQueryParams } from 'tools/services/url';
 
 export const useToursFilters = () => {
-  const filters = useParams(routes.home);
+  const filters = useQueryParams(routes.home);
 
   return filters;
 };
