@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    name: deploy
+    name: chromatic deploy
 
     runs-on: ubuntu-latest
 
