@@ -5,8 +5,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { Image, ImagePlaceholder } from 'ui';
 import { routes } from 'config';
 import { useTours } from 'domain/tours';
-import { constructUrlWithQuery } from 'tools/services/url';
-import { generateUrl } from 'tools/common';
+import { constructUrlWithQuery, generateUrl } from 'tools/services/url';
 
 import { Props } from './header.types';
 import styles from './header.module.scss';

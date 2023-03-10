@@ -7,7 +7,7 @@ import { useConfirm } from 'domain/confirm';
 import { useActiveTour, useDeleteTour } from 'domain/tours';
 import { Button } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 
 import styles from './settings.module.scss';
 

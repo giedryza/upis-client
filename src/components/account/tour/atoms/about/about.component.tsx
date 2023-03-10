@@ -5,7 +5,7 @@ import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour } from 'domain/tours';
 import { routes } from 'config';
 import { LabeledValue } from 'ui';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 
 export const About: FC = () => {
   const { t } = useTranslation();

@@ -3,9 +3,8 @@ import { getSession } from 'next-auth/react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
-import { useRouteParams } from 'tools/services/url';
+import { useRouteParams, generateUrl } from 'tools/services/url';
 import { useProtectedPage } from 'tools/hooks';
-import { generateUrl } from 'tools/common';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { ProviderEditSocialLinksAdd } from 'components/account';

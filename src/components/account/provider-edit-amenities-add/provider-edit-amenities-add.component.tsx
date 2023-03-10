@@ -12,12 +12,12 @@ import {
   TextInput,
 } from 'ui';
 import { routes } from 'config';
-import { useRouteParams } from 'tools/services/url';
+import { useRouteParams, generateUrl } from 'tools/services/url';
 import { InfoBlock } from 'components/account/atoms';
 import { units, useAddAmenity, amenities } from 'domain/amenities';
 import { useFormatNumber } from 'tools/format';
 import { currencies } from 'types/common';
-import { generateUrl, toCents } from 'tools/common';
+import { toCents } from 'tools/common';
 
 import { Values } from './provider-edit-amenities-add.types';
 import { INITIAL_VALUES } from './provider-edit-amenities-add.constants';

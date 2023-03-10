@@ -9,8 +9,7 @@ import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Providers } from 'components/account';
 import { providersKeys, getLoaders } from 'domain/providers';
-import { generateUrl } from 'tools/common';
-import { getQueryParams } from 'tools/services/url';
+import { generateUrl, getQueryParams } from 'tools/services/url';
 
 const ProvidersPage: NextPage = () => {
   const { t } = useTranslation();

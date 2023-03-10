@@ -18,7 +18,7 @@ import {
   boats as supportedBoats,
 } from 'domain/providers';
 import { languages as supportedLanguages } from 'types/common';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 import { formatLanguage } from 'tools/format';
 
 import { Values } from './provider-edit-about.types';

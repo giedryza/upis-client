@@ -4,13 +4,12 @@ import { dehydrate, QueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
-import { getQueryParams } from 'tools/services/url';
+import { getQueryParams, generateUrl } from 'tools/services/url';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Tours } from 'components/account';
 import { getLoaders, toursKeys } from 'domain/tours';
-import { generateUrl } from 'tools/common';
 
 const ToursPage: NextPage = () => {
   const { t } = useTranslation();

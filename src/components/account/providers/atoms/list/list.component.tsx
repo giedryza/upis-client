@@ -5,7 +5,8 @@ import { routes } from 'config';
 import { Tile } from 'ui';
 import { useMyProviders, useDeleteProvider } from 'domain/providers';
 import { useConfirm } from 'domain/confirm';
-import { generateUrl, toExternalLink } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
+import { toExternalLink } from 'tools/common';
 
 export const ProvidersList: FC = () => {
   const { t } = useTranslation();

@@ -5,8 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, SelectInput, TextInput } from 'ui';
 import { routes } from 'config';
-import { useRouteParams } from 'tools/services/url';
-import { generateUrl } from 'tools/common';
+import { useRouteParams, generateUrl } from 'tools/services/url';
 import { InfoBlock } from 'components/account/atoms';
 import {
   useActiveProvider,

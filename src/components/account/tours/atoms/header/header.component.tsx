@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
 import { Button } from 'ui';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 
 export const ToursHeader: FC = () => {
   const { t } = useTranslation();

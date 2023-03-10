@@ -2,69 +2,7 @@ import { z } from 'zod';
 import { useRouter } from 'next/router';
 import { UrlObject } from 'url';
 
-import { routes } from 'config/routes';
-import { toursFilters } from 'domain/tours/tours.schemas';
-import { providersFilters } from 'domain/providers/providers.schemas';
-
-const utils = {
-  query: {},
-  route: {
-    id: z.object({
-      id: z.coerce.string().catch(''),
-    }),
-  },
-} as const;
-
-const parameters = {
-  query: {
-    ...utils.query,
-    [routes.home]: z.object({}).merge(toursFilters),
-    [routes.account.tours.index]: z.object({}).merge(toursFilters),
-    [routes.account.providers.index]: z.object({}).merge(providersFilters),
-  },
-  route: {
-    ...utils.route,
-    [routes.tours.one.index]: z
-      .object({
-        slug: z.coerce.string().catch(''),
-      })
-      .merge(utils.route.id),
-    [routes.account.providers.one.index]: z.object({}).merge(utils.route.id),
-    [routes.account.providers.one.amenities.add]: z
-      .object({})
-      .merge(utils.route.id),
-    [routes.account.providers.one.amenities.one]: z
-      .object({
-        amenityId: z.coerce.string().catch(''),
-      })
-      .merge(utils.route.id),
-    [routes.account.providers.one.socials.add]: z
-      .object({})
-      .merge(utils.route.id),
-    [routes.account.providers.one.socials.one]: z
-      .object({
-        socialId: z.coerce.string().catch(''),
-      })
-      .merge(utils.route.id),
-    [routes.account.providers.one.about]: z.object({}).merge(utils.route.id),
-    [routes.account.providers.one.contacts]: z.object({}).merge(utils.route.id),
-    [routes.account.providers.one.location]: z.object({}).merge(utils.route.id),
-    [routes.account.providers.one.logo]: z.object({}).merge(utils.route.id),
-    [routes.account.tours.one.index]: z.object({}).merge(utils.route.id),
-    [routes.account.tours.one.gallery.one]: z
-      .object({
-        imageId: z.coerce.string().catch(''),
-      })
-      .merge(utils.route.id),
-    [routes.account.tours.one.gallery.add]: z.object({}).merge(utils.route.id),
-    [routes.account.tours.one.about]: z.object({}).merge(utils.route.id),
-    [routes.account.tours.one.amenities]: z.object({}).merge(utils.route.id),
-    [routes.account.tours.one.details]: z.object({}).merge(utils.route.id),
-    [routes.account.tours.one.geography]: z.object({}).merge(utils.route.id),
-    [routes.account.tours.one.location]: z.object({}).merge(utils.route.id),
-    [routes.account.tours.one.prices]: z.object({}).merge(utils.route.id),
-  },
-};
+import { parameters } from './url.schemas';
 
 const getSchema = <
   Location extends keyof typeof parameters,
@@ -124,4 +62,24 @@ export const constructUrlWithQuery = <
     pathname: getPathname(route),
     ...url,
   };
+};
+
+type Params<Url> = Url extends `${string}:${infer Param}/${infer Rest}`
+  ? Param | Params<Rest>
+  : Url extends `${string}:${infer Param}`
+  ? Param
+  : never;
+
+export const generateUrl = <Url extends string>(
+  url: Url,
+  ...[params]: Params<Url> extends never
+    ? []
+    : [Record<Params<Url>, string | number>]
+) => {
+  if (!params) return url;
+
+  return Object.entries(params).reduce<string>(
+    (acc, [key, value]) => acc.replace(`:${key}`, String(value)),
+    url
+  );
 };

@@ -9,7 +9,7 @@ import {
 } from 'tools/services';
 import { Price } from 'types/common';
 import { Pagination } from 'types/api';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 
 import {
   FiltersSummary,

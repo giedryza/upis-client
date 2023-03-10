@@ -9,7 +9,8 @@ import { currencies } from 'types/common';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTourPrice } from 'domain/tours';
 import { useFormatNumber } from 'tools/format';
-import { generateUrl, toCents } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
+import { toCents } from 'tools/common';
 
 import { Values } from './tour-edit-prices.types';
 import { INITIAL_VALUES } from './tour-edit-prices.constants';

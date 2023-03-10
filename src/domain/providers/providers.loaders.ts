@@ -8,7 +8,7 @@ import {
   loadersFactory,
 } from 'tools/services';
 import { Pagination } from 'types/api';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 
 import {
   ProvidersFilters,

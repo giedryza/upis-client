@@ -5,10 +5,9 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, SelectInput, TextInput } from 'ui';
 import { routes } from 'config';
-import { useRouteParams } from 'tools/services/url';
+import { useRouteParams, generateUrl } from 'tools/services/url';
 import { InfoBlock } from 'components/account/atoms';
 import { socials, useAddSocialLink } from 'domain/providers';
-import { generateUrl } from 'tools/common';
 
 import { Values } from './provider-edit-social-links-add.types';
 import { INITIAL_VALUES } from './provider-edit-social-links-add.constants';

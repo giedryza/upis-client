@@ -3,7 +3,7 @@ import { FC } from 'react';
 
 import { Card, EmptyState } from 'ui';
 import { routes } from 'config';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 import { useMyProviders } from 'domain/providers';
 
 import { ProvidersFooter, ProvidersHeader, ProvidersList } from './atoms';

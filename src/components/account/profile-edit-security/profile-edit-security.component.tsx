@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { routes } from 'config';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 import { Button, Container, TextInput } from 'ui';
 import { InfoBlock } from 'components/account/atoms';
 import { useUpdatePassword } from 'domain/users';

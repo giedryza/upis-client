@@ -7,7 +7,7 @@ import { useGuestPage } from 'tools/hooks';
 import { AppHead } from 'ui';
 import { Signin } from 'components/auth';
 import { PageLayout, MainLayout } from 'layouts';
-import { generateUrl } from 'tools/common';
+import { generateUrl } from 'tools/services/url';
 
 const SigninPage: NextPage = () => {
   const { t } = useTranslation();
