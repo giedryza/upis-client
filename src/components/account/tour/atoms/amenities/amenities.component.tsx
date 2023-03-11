@@ -4,10 +4,10 @@ import useTranslation from 'next-translate/useTranslation';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour } from 'domain/tours';
 import { routes } from 'config';
+import { generateUrl } from 'tools/services';
 import { EmptyState, Tile } from 'ui';
 import { ICON_BY_VARIANT } from 'domain/amenities';
 import { formatCurrency } from 'tools/format';
-import { generateUrl } from 'tools/services/url';
 
 export const Amenities: FC = () => {
   const { t, lang } = useTranslation();

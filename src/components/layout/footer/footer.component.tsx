@@ -5,12 +5,11 @@ import Trans from 'next-translate/Trans';
 import { useRouter } from 'next/router';
 
 import { Container, Divider, SelectInput } from 'ui';
-import { generateUrl } from 'tools/services/url';
+import { cookies, generateUrl } from 'tools/services';
 import { capitalize } from 'tools/common';
 import { APP, CookieName, routes } from 'config';
 import { Locale } from 'types/common';
 import { formatLanguage } from 'tools/format';
-import { cookies } from 'tools/services';
 import { useIsNavigating } from 'tools/hooks';
 
 import styles from './footer.module.scss';

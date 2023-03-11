@@ -2,7 +2,7 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
-import { generateUrl } from 'tools/services/url';
+import { generateUrl } from 'tools/services';
 import { Button, Container, Card } from 'ui';
 
 import styles from './reset-success.module.scss';

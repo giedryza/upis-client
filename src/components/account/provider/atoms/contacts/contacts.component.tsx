@@ -5,7 +5,7 @@ import { routes } from 'config';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider } from 'domain/providers';
 import { LabeledValue } from 'ui';
-import { generateUrl } from 'tools/services/url';
+import { generateUrl } from 'tools/services';
 
 export const Contacts: FC = () => {
   const { t } = useTranslation();

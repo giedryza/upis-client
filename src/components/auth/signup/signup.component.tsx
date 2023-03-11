@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { routes } from 'config';
-import { generateUrl } from 'tools/services/url';
+import { generateUrl } from 'tools/services';
 import { Button, Container, Divider, TextInput, Card } from 'ui';
 import { useSignup } from 'domain/users';
 

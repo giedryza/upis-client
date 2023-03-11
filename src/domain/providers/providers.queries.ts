@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
 
-import { useRouteParams } from 'tools/services/url';
+import { useRouteParams } from 'tools/services';
 
 import { providersKeys } from './providers.keys';
 import { useLoaders } from './providers.loaders';

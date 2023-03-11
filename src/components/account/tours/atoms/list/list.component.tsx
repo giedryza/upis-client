@@ -6,7 +6,7 @@ import { FormattedField, Tile } from 'ui';
 import { useDeleteTour, useMyTours } from 'domain/tours';
 import { useConfirm } from 'domain/confirm';
 import { formatCurrency } from 'tools/format';
-import { generateUrl } from 'tools/services/url';
+import { generateUrl } from 'tools/services';
 
 export const ToursList: FC = () => {
   const { t, lang } = useTranslation();

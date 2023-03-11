@@ -11,10 +11,10 @@ import {
   SelectInput,
   TextInput,
 } from 'ui';
-import { routes } from 'config';
-import { useRouteParams, generateUrl } from 'tools/services/url';
+import { AMENITIES, routes } from 'config';
+import { useRouteParams, generateUrl } from 'tools/services';
 import { InfoBlock } from 'components/account/atoms';
-import { units, useAddAmenity, amenities } from 'domain/amenities';
+import { useAddAmenity } from 'domain/amenities';
 import { formatNumber } from 'tools/format';
 import { currencies } from 'types/common';
 import { toCents } from 'tools/common';
@@ -89,7 +89,7 @@ export const ProviderEditAmenitiesAdd: FC = () => {
               })}
               label={t('account:providers.amenities.form.variant.label')}
               error={errors.variant?.message}
-              options={amenities.map((variant) => ({
+              options={AMENITIES.variants.map((variant) => ({
                 label: t(`amenities:variants.${variant}`),
                 value: variant,
               }))}
@@ -129,7 +129,7 @@ export const ProviderEditAmenitiesAdd: FC = () => {
                 {...register('unit')}
                 label={t('account:providers.amenities.form.unit.label')}
                 error={errors.unit?.message}
-                options={units.map((unit) => ({
+                options={AMENITIES.units.map((unit) => ({
                   label: t(`amenities:units.${unit}`),
                   value: unit,
                 }))}

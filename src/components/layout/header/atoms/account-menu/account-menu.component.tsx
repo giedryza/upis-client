@@ -4,7 +4,7 @@ import { useSession, signOut } from 'next-auth/react';
 
 import { routes } from 'config';
 import { Button, DropdownMenu } from 'ui';
-import { generateUrl } from 'tools/services/url';
+import { generateUrl } from 'tools/services';
 
 export const AccountMenu: FC = () => {
   const { t } = useTranslation();

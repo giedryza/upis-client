@@ -3,11 +3,11 @@ import { getSession } from 'next-auth/react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
+import { generateUrl } from 'tools/services';
 import { useGuestPage } from 'tools/hooks';
 import { AppHead } from 'ui';
 import { Signup } from 'components/auth';
 import { PageLayout, MainLayout } from 'layouts';
-import { generateUrl } from 'tools/services/url';
 
 const SignupPage: NextPage = () => {
   const { t } = useTranslation();

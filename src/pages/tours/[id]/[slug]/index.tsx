@@ -2,11 +2,11 @@ import { GetServerSideProps, NextPage } from 'next';
 import { getSession } from 'next-auth/react';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 
+import { routes } from 'config';
+import { getRouteParams } from 'tools/services';
 import { AppHead } from 'ui';
 import { TourDetails } from 'components/tour';
 import { MainLayout } from 'layouts';
-import { routes } from 'config';
-import { getRouteParams } from 'tools/services/url';
 import { getLoaders, toursKeys, useActiveTour } from 'domain/tours';
 
 const TourPage: NextPage = () => {

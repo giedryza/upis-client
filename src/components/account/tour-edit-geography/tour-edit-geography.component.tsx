@@ -9,15 +9,10 @@ import {
   CheckboxGroupInput,
   MultiAutocompleteInput,
 } from 'ui';
-import { routes } from 'config';
-import { generateUrl } from 'tools/services/url';
+import { routes, TOURS } from 'config';
+import { generateUrl } from 'tools/services';
 import { InfoBlock } from 'components/account/atoms';
-import {
-  regions,
-  rivers,
-  useActiveTour,
-  useUpdateTourGeography,
-} from 'domain/tours';
+import { useActiveTour, useUpdateTourGeography } from 'domain/tours';
 
 import { Values } from './tour-edit-geography.types';
 import { INITIAL_VALUES } from './tour-edit-geography.constants';
@@ -78,7 +73,7 @@ export const TourEditGeography: FC = () => {
                 <CheckboxGroupInput
                   label={t('account:tours.geography.form.regions.label')}
                   items={
-                    regions.map((region) => ({
+                    TOURS.regions.map((region) => ({
                       label: t(`regions:${region}`),
                       value: region,
                     })) ?? []
@@ -102,7 +97,7 @@ export const TourEditGeography: FC = () => {
                     'account:tours.geography.form.rivers.placeholder'
                   )}
                   items={
-                    rivers.map((river) => ({
+                    TOURS.rivers.map((river) => ({
                       label: t(`rivers:${river}`),
                       value: river,
                     })) ?? []

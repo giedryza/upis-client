@@ -10,15 +10,11 @@ import {
   MultiAutocompleteInput,
   TextInput,
 } from 'ui';
-import { routes } from 'config';
+import { PROVIDERS, routes } from 'config';
 import { InfoBlock } from 'components/account/atoms';
-import {
-  useUpdateProvider,
-  useActiveProvider,
-  boats as supportedBoats,
-} from 'domain/providers';
+import { useUpdateProvider, useActiveProvider } from 'domain/providers';
 import { languages as supportedLanguages } from 'types/common';
-import { generateUrl } from 'tools/services/url';
+import { generateUrl } from 'tools/services';
 import { formatLanguage } from 'tools/format';
 
 import { Values } from './provider-edit-about.types';
@@ -132,7 +128,7 @@ export const ProviderEditAbout: FC = () => {
                 <CheckboxGroupInput
                   label={t('account:providers.about.form.boats.label')}
                   items={
-                    supportedBoats.map((boat) => ({
+                    PROVIDERS.boats.map((boat) => ({
                       label: t(`boats:${boat}`),
                       value: boat,
                     })) ?? []

@@ -7,7 +7,7 @@ import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { Profile } from 'components/account';
-import { generateUrl } from 'tools/services/url';
+import { generateUrl } from 'tools/services';
 
 const ProfilePage: NextPage = () => {
   const { t } = useTranslation();

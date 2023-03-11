@@ -1,9 +1,13 @@
 import { IncomingMessage } from 'http';
 
 import { endpoints } from 'config';
-import { Request, getJsonBody, loadersFactory } from 'tools/services';
+import {
+  generateUrl,
+  Request,
+  getJsonBody,
+  loadersFactory,
+} from 'tools/services';
 import { Currency } from 'types/common';
-import { generateUrl } from 'tools/services/url';
 
 import { Amenity } from './amenities.types';
 

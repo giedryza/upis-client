@@ -9,7 +9,7 @@ import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
-import { getRouteParams, generateUrl } from 'tools/services/url';
+import { getRouteParams, generateUrl } from 'tools/services';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';

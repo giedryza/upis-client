@@ -2,19 +2,14 @@ import { FC, useEffect } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
+import { AMENITIES, TOURS } from 'config';
 import {
   CheckboxGroupInput,
   Modal,
   MultiAutocompleteInput,
   SliderInput,
 } from 'ui';
-import {
-  regions,
-  rivers,
-  useToursFilters,
-  useToursFiltersSummary,
-} from 'domain/tours';
-import { amenities } from 'domain/amenities';
+import { useToursFilters, useToursFiltersSummary } from 'domain/tours';
 import { useProviders } from 'domain/providers';
 
 import { Props, Values } from './filters-modal.types';
@@ -104,7 +99,7 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
           render={({ field: { onChange, value } }) => (
             <CheckboxGroupInput
               label={t('serp:filters.amenities.title')}
-              items={amenities.map((variant) => ({
+              items={AMENITIES.variants.map((variant) => ({
                 label: t(`amenities:variants.${variant}`),
                 value: variant,
               }))}
@@ -121,7 +116,7 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
           render={({ field: { onChange, value } }) => (
             <CheckboxGroupInput
               label={t('serp:filters.regions.title')}
-              items={regions.map((region) => ({
+              items={TOURS.regions.map((region) => ({
                 label: t(`regions:${region}`),
                 value: region,
               }))}
@@ -140,7 +135,7 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
               name={name}
               label={t('serp:filters.rivers.title')}
               placeholder={t('common:actions.search')}
-              items={rivers.map((river) => ({
+              items={TOURS.rivers.map((river) => ({
                 label: t(`rivers:${river}`),
                 value: river,
               }))}

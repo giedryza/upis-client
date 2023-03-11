@@ -2,13 +2,13 @@ import { IncomingMessage } from 'http';
 
 import { endpoints } from 'config';
 import {
+  generateUrl,
   Request,
   getFormDataBody,
   getJsonBody,
   loadersFactory,
 } from 'tools/services';
 import { Pagination } from 'types/api';
-import { generateUrl } from 'tools/services/url';
 
 import {
   ProvidersFilters,

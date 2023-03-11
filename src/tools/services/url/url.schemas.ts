@@ -1,8 +1,7 @@
 import { z } from 'zod';
 
-import { routes } from 'config/routes';
-import { toursFilters } from 'domain/tours/tours.schemas';
-import { providersFilters } from 'domain/providers/providers.schemas';
+import { routes, PROVIDERS, AMENITIES, TOURS } from 'config';
+import { toArray } from 'tools/common';
 
 const utils = {
   query: {},
@@ -12,6 +11,53 @@ const utils = {
     }),
   },
 } as const;
+
+export const paginationFilters = z.object({
+  page: z.coerce.number().finite().int().min(1).catch(1),
+  limit: z.coerce.number().finite().int().min(1).catch(15),
+});
+
+export const providersFilters = z
+  .object({
+    user: z.coerce.string(),
+    select: z.preprocess(toArray, z.array(z.enum(PROVIDERS.select))).catch([]),
+  })
+  .merge(paginationFilters)
+  .partial();
+
+export const toursFilters = z
+  .object({
+    amenities: z
+      .preprocess(toArray, z.array(z.enum(AMENITIES.variants)))
+      .catch([]),
+    regions: z.preprocess(toArray, z.array(z.enum(TOURS.regions))).catch([]),
+    rivers: z.preprocess(toArray, z.array(z.enum(TOURS.rivers))).catch([]),
+    distanceFrom: z.coerce.number().finite().min(1).catch(1),
+    distanceTo: z.coerce.number().finite().min(1).catch(1),
+    durationFrom: z.coerce.number().finite().min(1).catch(1),
+    durationTo: z.coerce.number().finite().min(1).catch(1),
+    daysFrom: z.coerce.number().finite().int().min(1).catch(1),
+    daysTo: z.coerce.number().finite().int().min(1).catch(1),
+    difficultyFrom: z.coerce.number().finite().min(0).max(5).catch(0),
+    difficultyTo: z.coerce.number().finite().min(0).max(5).catch(5),
+    user: z.coerce.string(),
+    providers: z.preprocess(toArray, z.array(z.coerce.string())).catch([]),
+    bounds: z
+      .preprocess(
+        toArray,
+        z.tuple([
+          z.coerce.number().finite(),
+          z.coerce.number().finite(),
+          z.coerce.number().finite(),
+          z.coerce.number().finite(),
+        ])
+      )
+      .catch([NaN, NaN, NaN, NaN]),
+    select: z.preprocess(toArray, z.array(z.enum(TOURS.select))).catch([]),
+    populate: z.preprocess(toArray, z.array(z.enum(TOURS.populate))).catch([]),
+  })
+  .merge(paginationFilters)
+  .partial();
 
 export const parameters = {
   query: {

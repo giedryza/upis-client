@@ -1,18 +1,16 @@
 import { z } from 'zod';
 
+import { TOURS } from 'config';
 import { AppFile, BaseEntity, GeoPoint, Price } from 'types/common';
+import { toursFilters } from 'tools/services';
+import { Provider } from 'domain/providers';
+import { Amenity, Variant } from 'domain/amenities';
 
-import { Provider } from '../providers';
-import { Amenity, Variant } from '../amenities';
+export type Region = (typeof TOURS.regions)[number];
 
-import { toursFilters } from './tours.schemas';
-import { regions, rivers, difficulty } from './tours.constants';
+export type River = (typeof TOURS.rivers)[number];
 
-export type Region = (typeof regions)[number];
-
-export type River = (typeof rivers)[number];
-
-export type Difficulty = (typeof difficulty)[number];
+export type Difficulty = (typeof TOURS.difficulty)[number];
 
 export interface Tour extends BaseEntity {
   name: string;
