@@ -4,8 +4,8 @@ import useTranslation from 'next-translate/useTranslation';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour } from 'domain/tours';
 import { routes } from 'config';
+import { generateUrl } from 'tools/services';
 import { LabeledValue } from 'ui';
-import { generateUrl } from 'tools/services/url';
 
 export const Prices: FC = () => {
   const { t } = useTranslation();

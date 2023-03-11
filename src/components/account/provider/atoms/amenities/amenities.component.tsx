@@ -8,7 +8,7 @@ import { Tile } from 'ui';
 import { formatCurrency } from 'tools/format';
 import { ICON_BY_VARIANT, useDeleteAmenity } from 'domain/amenities';
 import { useConfirm } from 'domain/confirm';
-import { generateUrl } from 'tools/services/url';
+import { generateUrl } from 'tools/services';
 
 export const Amenities: FC = () => {
   const { t, lang } = useTranslation();

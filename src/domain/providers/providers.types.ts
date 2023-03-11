@@ -1,9 +1,9 @@
 import { z } from 'zod';
 
 import { PROVIDERS } from 'config';
+import { providersFilters } from 'tools/services';
 import { BaseEntity, GeoPoint, Language } from 'types/common';
 import { Amenity } from 'domain/amenities';
-import { providersFilters } from 'tools/services/url';
 
 export type Boat = (typeof PROVIDERS.boats)[number];
 

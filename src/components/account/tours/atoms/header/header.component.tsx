@@ -2,8 +2,8 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
+import { generateUrl } from 'tools/services';
 import { Button } from 'ui';
-import { generateUrl } from 'tools/services/url';
 
 export const ToursHeader: FC = () => {
   const { t } = useTranslation();

@@ -14,7 +14,7 @@ import { PROVIDERS, routes } from 'config';
 import { InfoBlock } from 'components/account/atoms';
 import { useUpdateProvider, useActiveProvider } from 'domain/providers';
 import { languages as supportedLanguages } from 'types/common';
-import { generateUrl } from 'tools/services/url';
+import { generateUrl } from 'tools/services';
 import { formatLanguage } from 'tools/format';
 
 import { Values } from './provider-edit-about.types';

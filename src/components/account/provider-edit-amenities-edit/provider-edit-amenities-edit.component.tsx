@@ -12,7 +12,7 @@ import {
   TextInput,
 } from 'ui';
 import { AMENITIES, routes } from 'config';
-import { useRouteParams, generateUrl } from 'tools/services/url';
+import { useRouteParams, generateUrl } from 'tools/services';
 import { InfoBlock } from 'components/account/atoms';
 import { useUpdateAmenity, useAmenity } from 'domain/amenities';
 import { formatNumber } from 'tools/format';

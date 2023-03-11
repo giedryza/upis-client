@@ -2,6 +2,7 @@ import { IncomingMessage } from 'http';
 
 import { endpoints } from 'config';
 import {
+  generateUrl,
   Request,
   getJsonBody,
   loadersFactory,
@@ -9,7 +10,6 @@ import {
 } from 'tools/services';
 import { Price } from 'types/common';
 import { Pagination } from 'types/api';
-import { generateUrl } from 'tools/services/url';
 
 import {
   FiltersSummary,

@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { InfoBlock } from 'components/account/atoms';
 import { routes } from 'config';
 import { LabeledValue } from 'ui';
-import { generateUrl } from 'tools/services/url';
+import { generateUrl } from 'tools/services';
 
 export const Security: FC = () => {
   const { t } = useTranslation();

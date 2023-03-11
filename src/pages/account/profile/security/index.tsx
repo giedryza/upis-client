@@ -3,11 +3,11 @@ import { getSession } from 'next-auth/react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
+import { generateUrl } from 'tools/services';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { ProfileEditSecurity } from 'components/account';
-import { generateUrl } from 'tools/services/url';
 
 const ProfileEditSecurityPage: NextPage = () => {
   const { t } = useTranslation();

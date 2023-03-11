@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, TextInput } from 'ui';
-import { generateUrl } from 'tools/services/url';
 import { routes } from 'config';
+import { generateUrl } from 'tools/services';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveProvider, useUpdateProvider } from 'domain/providers';
 

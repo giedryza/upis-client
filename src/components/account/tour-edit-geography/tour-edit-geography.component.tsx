@@ -10,7 +10,7 @@ import {
   MultiAutocompleteInput,
 } from 'ui';
 import { routes, TOURS } from 'config';
-import { generateUrl } from 'tools/services/url';
+import { generateUrl } from 'tools/services';
 import { InfoBlock } from 'components/account/atoms';
 import { useActiveTour, useUpdateTourGeography } from 'domain/tours';
 

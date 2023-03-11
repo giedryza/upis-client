@@ -3,7 +3,7 @@ import { FC } from 'react';
 
 import { Pagination } from 'ui';
 import { useMyTours } from 'domain/tours';
-import { generateUrl, constructUrlWithQuery } from 'tools/services/url';
+import { generateUrl, constructUrlWithQuery } from 'tools/services';
 import { routes } from 'config';
 
 import styles from './footer.module.scss';

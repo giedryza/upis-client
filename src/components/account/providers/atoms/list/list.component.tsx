@@ -5,7 +5,7 @@ import { routes } from 'config';
 import { Tile } from 'ui';
 import { useMyProviders, useDeleteProvider } from 'domain/providers';
 import { useConfirm } from 'domain/confirm';
-import { generateUrl } from 'tools/services/url';
+import { generateUrl } from 'tools/services';
 import { toExternalLink } from 'tools/common';
 
 export const ProvidersList: FC = () => {

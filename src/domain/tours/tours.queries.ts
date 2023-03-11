@@ -1,7 +1,7 @@
 import { useSession } from 'next-auth/react';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 
-import { useRouteParams } from 'tools/services/url';
+import { useRouteParams } from 'tools/services';
 
 import { toursKeys } from './tours.keys';
 import { ToursFilters } from './tours.types';
