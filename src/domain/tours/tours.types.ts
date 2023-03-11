@@ -2,11 +2,11 @@ import { z } from 'zod';
 
 import { TOURS } from 'config';
 import { AppFile, BaseEntity, GeoPoint, Price } from 'types/common';
+import { toursFilters } from 'tools/services/url';
 
+// TODO
 import { Provider } from '../providers';
 import { Amenity, Variant } from '../amenities';
-
-import { toursFilters } from './tours.schemas';
 
 export type Region = (typeof TOURS.regions)[number];
 

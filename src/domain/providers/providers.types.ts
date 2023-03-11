@@ -3,8 +3,7 @@ import { z } from 'zod';
 import { PROVIDERS } from 'config';
 import { BaseEntity, GeoPoint, Language } from 'types/common';
 import { Amenity } from 'domain/amenities';
-
-import { providersFilters } from './providers.schemas';
+import { providersFilters } from 'tools/services/url';
 
 export type Boat = (typeof PROVIDERS.boats)[number];
 
