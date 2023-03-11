@@ -1,4 +1,3 @@
-export * from './tours.constants';
 export * from './tours.converters';
 export * from './tours.hooks';
 export * from './tours.loaders';

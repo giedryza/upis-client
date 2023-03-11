@@ -1,16 +1,15 @@
 import { z } from 'zod';
 
+import { TOURS } from 'config';
 import { toArray } from 'tools/common';
 import { paginationFilters } from 'domain/pagination';
 import { amenities } from 'domain/amenities';
 
-import { regions, rivers, select, populate } from './tours.constants';
-
 export const toursFilters = z
   .object({
     amenities: z.preprocess(toArray, z.array(z.enum(amenities))).catch([]),
-    regions: z.preprocess(toArray, z.array(z.enum(regions))).catch([]),
-    rivers: z.preprocess(toArray, z.array(z.enum(rivers))).catch([]),
+    regions: z.preprocess(toArray, z.array(z.enum(TOURS.regions))).catch([]),
+    rivers: z.preprocess(toArray, z.array(z.enum(TOURS.rivers))).catch([]),
     distanceFrom: z.coerce.number().finite().min(1).catch(1),
     distanceTo: z.coerce.number().finite().min(1).catch(1),
     durationFrom: z.coerce.number().finite().min(1).catch(1),
@@ -32,8 +31,8 @@ export const toursFilters = z
         ])
       )
       .catch([NaN, NaN, NaN, NaN]),
-    select: z.preprocess(toArray, z.array(z.enum(select))).catch([]),
-    populate: z.preprocess(toArray, z.array(z.enum(populate))).catch([]),
+    select: z.preprocess(toArray, z.array(z.enum(TOURS.select))).catch([]),
+    populate: z.preprocess(toArray, z.array(z.enum(TOURS.populate))).catch([]),
   })
   .merge(paginationFilters)
   .partial();

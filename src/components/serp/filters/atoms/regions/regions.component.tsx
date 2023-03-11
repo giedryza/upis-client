@@ -2,8 +2,9 @@ import { FC, useMemo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
+import { TOURS } from 'config';
 import { useQueryNavigation } from 'tools/hooks';
-import { regions, useToursFilters } from 'domain/tours';
+import { useToursFilters } from 'domain/tours';
 import { CheckboxGroupInput, Pill } from 'ui';
 
 import { Values } from './regions.types';
@@ -38,7 +39,7 @@ export const FilterRegions: FC = () => {
           render={({ field: { onChange, value } }) => (
             <CheckboxGroupInput
               ariaLabel={t('serp:filters.regions.title')}
-              items={regions.map((region) => ({
+              items={TOURS.regions.map((region) => ({
                 label: t(`regions:${region}`),
                 value: region,
               }))}
