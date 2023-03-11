@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
-import { TOURS } from 'config';
+import { AMENITIES, TOURS } from 'config';
 import {
   CheckboxGroupInput,
   Modal,
@@ -10,7 +10,6 @@ import {
   SliderInput,
 } from 'ui';
 import { useToursFilters, useToursFiltersSummary } from 'domain/tours';
-import { amenities } from 'domain/amenities';
 import { useProviders } from 'domain/providers';
 
 import { Props, Values } from './filters-modal.types';
@@ -100,7 +99,7 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
           render={({ field: { onChange, value } }) => (
             <CheckboxGroupInput
               label={t('serp:filters.amenities.title')}
-              items={amenities.map((variant) => ({
+              items={AMENITIES.variants.map((variant) => ({
                 label: t(`amenities:variants.${variant}`),
                 value: variant,
               }))}

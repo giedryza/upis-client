@@ -1,13 +1,14 @@
 import { z } from 'zod';
 
-import { TOURS } from 'config';
+import { AMENITIES, TOURS } from 'config';
 import { toArray } from 'tools/common';
 import { paginationFilters } from 'domain/pagination';
-import { amenities } from 'domain/amenities';
 
 export const toursFilters = z
   .object({
-    amenities: z.preprocess(toArray, z.array(z.enum(amenities))).catch([]),
+    amenities: z
+      .preprocess(toArray, z.array(z.enum(AMENITIES.variants)))
+      .catch([]),
     regions: z.preprocess(toArray, z.array(z.enum(TOURS.regions))).catch([]),
     rivers: z.preprocess(toArray, z.array(z.enum(TOURS.rivers))).catch([]),
     distanceFrom: z.coerce.number().finite().min(1).catch(1),

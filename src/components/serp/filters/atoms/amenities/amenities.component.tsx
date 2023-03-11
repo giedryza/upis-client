@@ -5,9 +5,9 @@ import useTranslation from 'next-translate/useTranslation';
 import { CheckboxGroupInput, Pill } from 'ui';
 import { useQueryNavigation } from 'tools/hooks';
 import { useToursFilters } from 'domain/tours';
-import { amenities } from 'domain/amenities';
 
 import { Values } from './amenities.types';
+import { AMENITIES } from 'config';
 
 export const FilterAmenities: FC = () => {
   const { t } = useTranslation();
@@ -39,7 +39,7 @@ export const FilterAmenities: FC = () => {
           render={({ field: { onChange, value } }) => (
             <CheckboxGroupInput
               ariaLabel={t('serp:filters.amenities.title')}
-              items={amenities.map((variant) => ({
+              items={AMENITIES.variants.map((variant) => ({
                 label: t(`amenities:variants.${variant}`),
                 value: variant,
               }))}
