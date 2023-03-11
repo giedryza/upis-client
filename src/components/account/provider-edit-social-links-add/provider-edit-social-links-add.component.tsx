@@ -4,10 +4,10 @@ import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button, Container, SelectInput, TextInput } from 'ui';
-import { routes } from 'config';
+import { PROVIDERS, routes } from 'config';
 import { useRouteParams, generateUrl } from 'tools/services/url';
 import { InfoBlock } from 'components/account/atoms';
-import { socials, useAddSocialLink } from 'domain/providers';
+import { useAddSocialLink } from 'domain/providers';
 
 import { Values } from './provider-edit-social-links-add.types';
 import { INITIAL_VALUES } from './provider-edit-social-links-add.constants';
@@ -57,7 +57,7 @@ export const ProviderEditSocialLinksAdd: FC = () => {
               })}
               label={t('account:providers.socials.form.type.label')}
               error={errors.type?.message}
-              options={socials.map((type) => ({
+              options={PROVIDERS.socials.map((type) => ({
                 label: t(`socials:${type}`),
                 value: type,
               }))}

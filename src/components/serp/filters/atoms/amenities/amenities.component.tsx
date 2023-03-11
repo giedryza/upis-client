@@ -2,12 +2,12 @@ import { FC, useMemo } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import useTranslation from 'next-translate/useTranslation';
 
+import { AMENITIES } from 'config';
 import { CheckboxGroupInput, Pill } from 'ui';
 import { useQueryNavigation } from 'tools/hooks';
 import { useToursFilters } from 'domain/tours';
 
 import { Values } from './amenities.types';
-import { AMENITIES } from 'config';
 
 export const FilterAmenities: FC = () => {
   const { t } = useTranslation();
