@@ -1,3 +1,4 @@
+export * from './format-bytes';
 export * from './format-currency';
 export * from './format-language';
 export * from './format-list';
