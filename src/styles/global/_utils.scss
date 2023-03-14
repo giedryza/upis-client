@@ -1,5 +1,5 @@
 .visually-hidden {
-  &:not(:focus):not(:active) {
+  &:not(:focus, :active) {
     position: absolute;
 
     width: 1px;

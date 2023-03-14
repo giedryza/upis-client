@@ -21,7 +21,7 @@
   transition-property: color, background-color, box-shadow;
 
   @media screen and (-ms-high-contrast: active) {
-    border: 2px solid currentcolor;
+    border: 2px solid currentColor;
   }
 
   &:focus {
@@ -222,7 +222,7 @@
   width: 1.2em;
   height: 1.2em;
 
-  fill: currentcolor;
+  fill: currentColor;
 }
 
 .iconButton {
@@ -261,7 +261,7 @@
 
     background-image: radial-gradient(
       circle,
-      currentcolor 10%,
+      currentColor 10%,
       transparent 10%
     );
     background-repeat: no-repeat;

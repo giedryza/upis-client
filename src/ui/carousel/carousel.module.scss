@@ -138,7 +138,7 @@
     width: 100%;
     padding: 0.75em;
 
-    background-color: hsla(var(--color-grey-h), var(--color-grey-s), 5%, 95%);
+    background-color: hsla(var(--color-grey-h) var(--color-grey-s) 5% / 95%);
     opacity: 0;
 
     transition: var(--transition-duration-md) opacity;

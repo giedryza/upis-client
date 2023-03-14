@@ -27,7 +27,7 @@
       transition-property: background-color, box-shadow;
 
       @media screen and (-ms-high-contrast: active) {
-        border: 2px solid currentcolor;
+        border: 2px solid currentColor;
       }
 
       &:focus {

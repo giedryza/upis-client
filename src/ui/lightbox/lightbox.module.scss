@@ -11,7 +11,7 @@
   font-size: 1.4rem;
   line-height: 1.6;
 
-  background-color: hsla(var(--color-grey-h), var(--color-grey-s), 5%, 95%);
+  background-color: hsla(var(--color-grey-h) var(--color-grey-s) 5% / 95%);
 
   .box {
     display: flex;

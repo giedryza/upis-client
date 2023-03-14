@@ -2,7 +2,7 @@
 
 html {
   font-size: calc(10 / #{$fontSize} * 100%);
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 body {
@@ -13,7 +13,7 @@ body {
 
 a {
   @media screen and (-ms-high-contrast: active) {
-    border: 2px solid currentcolor;
+    border: 2px solid currentColor;
   }
 
   &:focus {
