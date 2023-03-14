@@ -1,9 +1,8 @@
 {
   "extends": [
-    "stylelint-config-recommended",
+    "stylelint-config-standard",
     "stylelint-config-sass-guidelines",
-    "stylelint-config-rational-order",
-    "stylelint-config-prettier"
+    "stylelint-config-rational-order"
   ],
   "plugins": [
     "stylelint-no-unsupported-browser-features",
@@ -30,7 +29,17 @@
       true,
       { "ignoreProperties": ["color", "background-color", "box-shadow"] }
     ],
+    "declaration-empty-line-before": null,
+    "value-keyword-case": ["lower", { "camelCaseSvgKeywords": true }],
+    "import-notation": "string",
+    "declaration-block-no-redundant-longhand-properties": null,
     "plugin/declaration-block-no-ignored-properties": true,
+    "declaration-property-value-no-unknown": [
+      true,
+      { "ignoreProperties": { "transition-property": "/opacity/" } }
+    ],
+    "at-rule-empty-line-before": null,
+    "custom-property-empty-line-before": null,
     "order/order": null,
     "order/properties-alphabetical-order": null,
     "order/properties-order": [
