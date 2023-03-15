@@ -22,6 +22,7 @@ export * from './lightbox';
 export * from './loader';
 export * from './logo';
 export * from './map';
+export * from './menu';
 export * from './meter';
 export * from './modal';
 export * from './multi-autocomplete-input';
