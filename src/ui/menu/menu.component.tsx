@@ -126,7 +126,7 @@ const MenuSection = <T extends object>({
   section,
   state,
 }: MenuSectionProps<T>) => {
-  const { itemProps, groupProps } = useMenuSection({
+  const { itemProps, headingProps, groupProps } = useMenuSection({
     heading: section.rendered,
     'aria-label': section['aria-label'],
   });
@@ -140,6 +140,18 @@ const MenuSection = <T extends object>({
         <li {...separatorProps} />
       )}
       <li {...itemProps}>
+        {section.rendered ? (
+          <span
+            {...headingProps}
+            style={{
+              fontWeight: 'bold',
+              fontSize: '1.1em',
+              padding: '2px 5px',
+            }}
+          >
+            {section.rendered}
+          </span>
+        ) : null}
         <ul {...groupProps}>
           {[...section.childNodes].map((node) => (
             <MenuItem key={node.key} item={node} state={state} />
@@ -209,17 +221,17 @@ const MenuButton = <T extends object>(props: MenuButtonProps<T>) => {
 export const Menu: FC<Props> = () => {
   return (
     <MenuButton label="Actions" onAction={(key) => console.log({ key })}>
-      <Section>
-        <Item key="edit">Edit…</Item>
+      <Section title="labas">
+        <Item key="edit">Edit</Item>
         <Item key="duplicate">Duplicate</Item>
       </Section>
       <Section>
-        <Item key="move">Move…</Item>
-        <Item key="rename">Rename…</Item>
+        <Item key="move">Move</Item>
+        <Item key="rename">Rename</Item>
       </Section>
       <Section>
         <Item key="archive">Archive</Item>
-        <Item key="delete">Delete…</Item>
+        <Item key="delete">Delete</Item>
       </Section>
     </MenuButton>
   );
