@@ -1,6 +1,5 @@
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/display-name */
-import { FC, forwardRef, useMemo, useRef } from 'react';
+import { FC, PropsWithChildren, useMemo, useRef } from 'react';
 import {
   MenuTriggerProps,
   OverlayTriggerState,
@@ -20,41 +19,24 @@ import {
   Overlay,
   usePopover,
   AriaPopoverProps,
-  AriaButtonProps,
   mergeProps,
   useFocusRing,
   useMenuSection,
   useSeparator,
 } from 'react-aria';
-import { useObjectRef } from '@react-aria/utils';
 import type { Node } from '@react-types/shared';
 
 import { Props } from './menu.types';
 
-interface ButtonProps extends AriaButtonProps {}
-
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, forwardedRef) => {
-    const ref = useObjectRef(forwardedRef);
-    const { buttonProps, isPressed: _isPressed } = useButton(props, ref);
-    const { focusProps, isFocusVisible: _isFocusVisible } = useFocusRing();
-
-    // const focus = isFocusVisible ? 'ring ring-offset-2 ring-blue-400' : '';
-
-    return (
-      <button {...mergeProps(buttonProps, focusProps)} type="button" ref={ref}>
-        {props.children}
-      </button>
-    );
-  }
-);
-
 interface PopoverProps extends Omit<AriaPopoverProps, 'popoverRef'> {
-  children: React.ReactNode;
   state: OverlayTriggerState;
 }
 
-const Popover = ({ children, state, ...props }: PopoverProps) => {
+const Popover: FC<PropsWithChildren<PopoverProps>> = ({
+  children,
+  state,
+  ...props
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const { popoverProps, underlayProps } = usePopover(
     {
@@ -168,16 +150,7 @@ const Dropdown = <T extends object>(props: AriaMenuProps<T>) => {
   const { menuProps } = useMenu(props, state, ref);
 
   return (
-    <ul
-      {...menuProps}
-      ref={ref}
-      style={{
-        margin: 0,
-        padding: 0,
-        listStyle: 'none',
-        width: 150,
-      }}
-    >
+    <ul {...menuProps} ref={ref}>
       {[...state.collection].map((item) =>
         item.type === 'section' ? (
           <MenuSection key={item.key} section={item} state={state} />
@@ -197,14 +170,16 @@ interface MenuButtonProps<T> extends AriaMenuProps<T>, MenuTriggerProps {
 const MenuButton = <T extends object>(props: MenuButtonProps<T>) => {
   const ref = useRef<HTMLButtonElement>(null);
 
-  const state = useMenuTriggerState({ ...props, isOpen: true });
+  const state = useMenuTriggerState({ ...props });
   const { menuTriggerProps, menuProps } = useMenuTrigger<T>({}, state, ref);
+  const { buttonProps } = useButton(menuTriggerProps, ref);
+  const { focusProps, isFocusVisible: _isFocusVisible } = useFocusRing();
 
   return (
     <>
-      <Button {...menuTriggerProps} aria-label={props.ariaLabel} ref={ref}>
+      <button {...mergeProps(buttonProps, focusProps)} type="button" ref={ref}>
         {props.label ? props.label : null}
-      </Button>
+      </button>
 
       {state.isOpen ? (
         <Popover state={state} triggerRef={ref} placement="bottom start">
