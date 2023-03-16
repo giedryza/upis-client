@@ -1,6 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/display-name */
-import { FC, forwardRef, useRef } from 'react';
+import { FC, forwardRef, useMemo, useRef } from 'react';
 import {
   MenuTriggerProps,
   OverlayTriggerState,
@@ -192,6 +192,7 @@ const Dropdown = <T extends object>(props: AriaMenuProps<T>) => {
 
 interface MenuButtonProps<T> extends AriaMenuProps<T>, MenuTriggerProps {
   label?: string;
+  ariaLabel?: string;
 }
 
 const MenuButton = <T extends object>(props: MenuButtonProps<T>) => {
@@ -202,11 +203,8 @@ const MenuButton = <T extends object>(props: MenuButtonProps<T>) => {
 
   return (
     <>
-      <Button {...menuTriggerProps} ref={ref}>
-        {props.label}
-        <span aria-hidden="true" style={{ paddingLeft: 5 }}>
-          ▼
-        </span>
+      <Button {...menuTriggerProps} aria-label={props.ariaLabel} ref={ref}>
+        {props.label ? props.label : null}
       </Button>
 
       {state.isOpen ? (
@@ -218,21 +216,34 @@ const MenuButton = <T extends object>(props: MenuButtonProps<T>) => {
   );
 };
 
-export const Menu: FC<Props> = () => {
+export const Menu: FC<Props> = ({ sections, label, ariaLabel }) => {
+  const items = useMemo(
+    () =>
+      Object.fromEntries(
+        sections
+          .map((item) => item.items)
+          .flat()
+          .map((item) => [item.id, item] as const)
+      ),
+    [sections]
+  );
+
   return (
-    <MenuButton label="Actions" onAction={(key) => console.log({ key })}>
-      <Section title="labas">
-        <Item key="edit">Edit</Item>
-        <Item key="duplicate">Duplicate</Item>
-      </Section>
-      <Section>
-        <Item key="move">Move</Item>
-        <Item key="rename">Rename</Item>
-      </Section>
-      <Section>
-        <Item key="archive">Archive</Item>
-        <Item key="delete">Delete</Item>
-      </Section>
+    <MenuButton
+      label={label}
+      ariaLabel={ariaLabel}
+      items={sections}
+      onAction={(key) => items[key]?.onClick?.()}
+    >
+      {(section) => (
+        <Section
+          items={section.items}
+          title={section.label}
+          aria-label={section.label}
+        >
+          {(item) => <Item textValue={item.label}>{item.label}</Item>}
+        </Section>
+      )}
     </MenuButton>
   );
 };

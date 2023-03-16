@@ -6,7 +6,33 @@ export default {
   title: 'UI/Menu',
   component: Menu,
   args: {
-    label: 'Actions',
+    sections: [
+      {
+        id: 'section-1',
+        label: 'Section 1',
+        items: [
+          { id: 'edit', label: 'Edit' },
+          { id: 'duplicate', label: 'Duplicate' },
+        ],
+      },
+      {
+        id: 'section-2',
+        label: 'Section 2',
+        items: [
+          { id: 'move', label: 'Move' },
+          { id: 'rename', label: 'Rename' },
+        ],
+      },
+      {
+        id: 'section-3',
+        items: [
+          { id: 'archive', label: 'Archive' },
+          { id: 'delete', label: 'Delete' },
+        ],
+      },
+    ],
+    label: 'Menu',
+    ariaLabel: 'Aria menu',
   },
 } as ComponentMeta<typeof Menu>;
 
