@@ -2,6 +2,7 @@ interface Item {
   id: string;
   label: string;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 interface Section {

@@ -91,7 +91,7 @@ interface MenuItemProps<T> {
 
 const MenuItem = <T extends object>({ item, state }: MenuItemProps<T>) => {
   const ref = useRef<HTMLLIElement>(null);
-  const { menuItemProps, isFocused, isSelected, isDisabled } = useMenuItem(
+  const { menuItemProps, isFocused, isDisabled } = useMenuItem(
     { key: item.key },
     state,
     ref
@@ -112,7 +112,6 @@ const MenuItem = <T extends object>({ item, state }: MenuItemProps<T>) => {
       }}
     >
       {item.rendered}
-      {isSelected ? <span aria-hidden="true">✅</span> : null}
     </li>
   );
 };
@@ -228,12 +227,21 @@ export const Menu: FC<Props> = ({ sections, label, ariaLabel }) => {
     [sections]
   );
 
+  const disabled = useMemo(
+    () =>
+      Object.values(items)
+        .filter((item) => item.disabled)
+        .map((item) => item.id),
+    [items]
+  );
+
   return (
     <MenuButton
       label={label}
       ariaLabel={ariaLabel}
       items={sections}
       onAction={(key) => items[key]?.onClick?.()}
+      disabledKeys={disabled}
     >
       {(section) => (
         <Section

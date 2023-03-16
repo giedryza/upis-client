@@ -20,7 +20,7 @@ export default {
         label: 'Section 2',
         items: [
           { id: 'move', label: 'Move' },
-          { id: 'rename', label: 'Rename' },
+          { id: 'rename', label: 'Rename', disabled: true },
         ],
       },
       {
