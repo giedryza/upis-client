@@ -1,15 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import { FC, PropsWithChildren, useMemo, useRef } from 'react';
 import {
-  MenuTriggerProps,
-  OverlayTriggerState,
-  Item,
-  Section,
-  useMenuTriggerState,
-  useTreeState,
-  TreeState,
-} from 'react-stately';
-import {
   AriaMenuProps,
   useMenu,
   useMenuTrigger,
@@ -24,6 +15,15 @@ import {
   useMenuSection,
   useSeparator,
 } from 'react-aria';
+import {
+  MenuTriggerProps,
+  OverlayTriggerState,
+  Item,
+  Section,
+  useMenuTriggerState,
+  useTreeState,
+  TreeState,
+} from 'react-stately';
 import type { Node } from '@react-types/shared';
 
 import { Props } from './menu.types';
@@ -39,10 +39,7 @@ const Popover: FC<PropsWithChildren<PopoverProps>> = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { popoverProps, underlayProps } = usePopover(
-    {
-      ...props,
-      popoverRef: ref,
-    },
+    { ...props, popoverRef: ref },
     state
   );
 
@@ -124,7 +121,7 @@ const MenuSection = <T extends object>({
 };
 
 const Dropdown = <T extends object>(props: AriaMenuProps<T>) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLUListElement>(null);
 
   const state = useTreeState(props);
   const { menuProps } = useMenu(props, state, ref);
