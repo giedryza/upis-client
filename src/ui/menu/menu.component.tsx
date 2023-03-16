@@ -49,15 +49,7 @@ const Popover: FC<PropsWithChildren<PopoverProps>> = ({
   return (
     <Overlay>
       <div {...underlayProps} style={{ position: 'fixed', inset: 0 }} />
-      <div
-        {...popoverProps}
-        ref={ref}
-        style={{
-          ...popoverProps.style,
-          background: 'lightgray',
-          border: '1px solid gray',
-        }}
-      >
+      <div {...popoverProps} ref={ref} style={popoverProps.style}>
         <DismissButton onDismiss={state.close} />
         {children}
         <DismissButton onDismiss={state.close} />
@@ -86,11 +78,8 @@ const MenuItem = <T extends object>({ item, state }: MenuItemProps<T>) => {
       style={{
         background: isFocused ? 'gray' : 'transparent',
         color: isDisabled ? 'gray' : isFocused ? 'white' : 'black',
-        padding: '2px 5px',
         outline: 'none',
         cursor: 'default',
-        display: 'flex',
-        justifyContent: 'space-between',
       }}
     >
       {item.rendered}
@@ -122,16 +111,7 @@ const MenuSection = <T extends object>({
       )}
       <li {...itemProps}>
         {section.rendered ? (
-          <span
-            {...headingProps}
-            style={{
-              fontWeight: 'bold',
-              fontSize: '1.1em',
-              padding: '2px 5px',
-            }}
-          >
-            {section.rendered}
-          </span>
+          <span {...headingProps}>{section.rendered}</span>
         ) : null}
         <ul {...groupProps}>
           {[...section.childNodes].map((node) => (
