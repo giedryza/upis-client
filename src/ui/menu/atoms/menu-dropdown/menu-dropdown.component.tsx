@@ -4,6 +4,8 @@ import { useTreeState } from 'react-stately';
 
 import { MenuSection, MenuItem } from '..';
 
+import styles from './menu-dropdown.module.scss';
+
 export const MenuDropdown = <T extends object>(props: AriaMenuProps<T>) => {
   const ref = useRef<HTMLUListElement>(null);
 
@@ -11,7 +13,7 @@ export const MenuDropdown = <T extends object>(props: AriaMenuProps<T>) => {
   const { menuProps } = useMenu(props, state, ref);
 
   return (
-    <ul {...menuProps} ref={ref}>
+    <ul {...menuProps} className={styles.dropdown} ref={ref}>
       {[...state.collection].map((item) =>
         item.type === 'section' ? (
           <MenuSection key={item.key} section={item} state={state} />

@@ -2,6 +2,7 @@ import { useMenuSection, useSeparator } from 'react-aria';
 
 import { MenuItem } from '..';
 
+import styles from './menu-section.module.scss';
 import { Props } from './menu-section.types';
 
 export const MenuSection = <T extends object>({ section, state }: Props<T>) => {
@@ -16,13 +17,15 @@ export const MenuSection = <T extends object>({ section, state }: Props<T>) => {
   return (
     <>
       {section.key !== state.collection.getFirstKey() && (
-        <li {...separatorProps} />
+        <li {...separatorProps} className={styles.separator} />
       )}
       <li {...itemProps}>
         {section.rendered ? (
-          <span {...headingProps}>{section.rendered}</span>
+          <div {...headingProps} className={styles.title}>
+            {section.rendered}
+          </div>
         ) : null}
-        <ul {...groupProps}>
+        <ul {...groupProps} className={styles.section}>
           {[...section.childNodes].map((node) => (
             <MenuItem key={node.key} item={node} state={state} />
           ))}

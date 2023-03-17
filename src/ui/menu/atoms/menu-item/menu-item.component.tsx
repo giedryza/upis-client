@@ -1,7 +1,11 @@
 import { useRef } from 'react';
 import { useMenuItem } from 'react-aria';
+import { clsx } from 'clsx';
+
+// import { Icon } from 'ui/icon';
 
 import { Props } from './menu-item.types';
+import styles from './menu-item.module.scss';
 
 export const MenuItem = <T extends object>({ item, state }: Props<T>) => {
   const ref = useRef<HTMLLIElement>(null);
@@ -15,14 +19,14 @@ export const MenuItem = <T extends object>({ item, state }: Props<T>) => {
     <li
       {...menuItemProps}
       ref={ref}
-      style={{
-        background: isFocused ? 'gray' : 'transparent',
-        color: isDisabled ? 'gray' : isFocused ? 'white' : 'black',
-        outline: 'none',
-        cursor: 'default',
-      }}
+      className={clsx(
+        styles.item,
+        isFocused && styles['-focus'],
+        isDisabled && styles['-disabled']
+      )}
     >
-      {item.rendered}
+      {/* {icon ? <Icon name={icon} className={styles.icon} /> : null} */}
+      <span className={styles.label}>{item.rendered}</span>
     </li>
   );
 };

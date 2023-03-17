@@ -1,0 +1,28 @@
+.item {
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--border-radius-xs);
+  outline: none;
+  cursor: default;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  &.-focus {
+    background-color: var(--color-grey-95);
+  }
+
+  &.-disabled {
+    color: var(--color-grey-60);
+  }
+
+  .label {
+    font-weight: 400;
+  }
+
+  .icon {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+  }
+}
