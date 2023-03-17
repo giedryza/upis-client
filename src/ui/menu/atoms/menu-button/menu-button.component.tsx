@@ -43,6 +43,10 @@ export const MenuButton = <T extends object>({
       >
         {icon ? <Icon name={icon} className={styles.icon} /> : null}
         {label ? <span>{label}</span> : null}
+        <Icon
+          name={state.isOpen ? 'chevron-up' : 'chevron-down'}
+          className={styles.chevron}
+        />
       </button>
 
       {state.isOpen ? (
