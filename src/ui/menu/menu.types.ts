@@ -19,4 +19,5 @@ export interface Props {
   sections: Section[];
   label?: string;
   ariaLabel?: string;
+  icon?: IconName;
 }

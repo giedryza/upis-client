@@ -1,0 +1,43 @@
+.button {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  padding: 0.5em 1em;
+
+  color: var(--color-text);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.2;
+
+  background-color: var(--color-grey-95);
+  border: 0;
+  border-radius: 100rem;
+  cursor: pointer;
+
+  transition: var(--transition-duration-md) background-color;
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 2px solid currentColor;
+  }
+
+  &:hover {
+    &:not([disabled]) {
+      background-color: var(--color-grey-90);
+    }
+  }
+
+  &:focus {
+    outline: 2px solid transparent;
+  }
+
+  &.-focus {
+    box-shadow: var(--outline-button);
+  }
+
+  .icon {
+    width: 1em;
+    height: 1em;
+
+    fill: currentColor;
+  }
+}

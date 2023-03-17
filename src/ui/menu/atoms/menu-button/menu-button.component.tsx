@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 import { useRef } from 'react';
 import {
   mergeProps,
@@ -7,23 +6,38 @@ import {
   useMenuTrigger,
 } from 'react-aria';
 import { useMenuTriggerState } from 'react-stately';
+import { clsx } from 'clsx';
+
+import { Icon } from 'ui/icon';
 
 import { MenuDropdown, Popover } from '..';
 
 import { Props } from './menu-button.types';
+import styles from './menu-button.module.scss';
 
-export const MenuButton = <T extends object>(props: Props<T>) => {
+export const MenuButton = <T extends object>({
+  label,
+  icon,
+  ...props
+}: Props<T>) => {
   const ref = useRef<HTMLButtonElement>(null);
 
   const state = useMenuTriggerState(props);
   const { menuTriggerProps, menuProps } = useMenuTrigger<T>({}, state, ref);
-  const { buttonProps } = useButton(menuTriggerProps, ref);
-  const { focusProps, isFocusVisible: _isFocusVisible } = useFocusRing();
+
+  const { buttonProps } = useButton(mergeProps(props, menuTriggerProps), ref);
+  const { focusProps, isFocusVisible } = useFocusRing();
 
   return (
     <>
-      <button {...mergeProps(buttonProps, focusProps)} type="button" ref={ref}>
-        {props.label ? props.label : null}
+      <button
+        {...mergeProps(buttonProps, focusProps)}
+        className={clsx(styles.button, isFocusVisible && styles['-focus'])}
+        type="button"
+        ref={ref}
+      >
+        {icon ? <Icon name={icon} className={styles.icon} /> : null}
+        {label ? <span>{label}</span> : null}
       </button>
 
       {state.isOpen ? (

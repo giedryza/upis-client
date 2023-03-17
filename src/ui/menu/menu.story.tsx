@@ -31,8 +31,9 @@ export default {
         ],
       },
     ],
-    label: 'Menu',
+    // label: 'Menu',
     ariaLabel: 'Aria menu',
+    icon: 'user',
   },
 } as ComponentMeta<typeof Menu>;
 
