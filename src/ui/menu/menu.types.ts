@@ -1,9 +1,9 @@
-// import { IconName } from 'ui/icon';
+import { IconName } from 'ui/icon';
 
 export interface Item {
   id: string;
   label: string;
-  // icon?: IconName;
+  icon?: IconName;
   onClick?: () => void;
   disabled?: boolean;
 }

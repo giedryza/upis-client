@@ -11,7 +11,7 @@ export default {
         id: 'section-1',
         label: 'Section 1',
         items: [
-          { id: 'edit', label: 'Edit' },
+          { id: 'edit', label: 'Edit', icon: 'pencil' },
           { id: 'duplicate', label: 'Duplicate' },
         ],
       },
@@ -26,8 +26,8 @@ export default {
       {
         id: 'section-3',
         items: [
-          { id: 'archive', label: 'Archive' },
-          { id: 'delete', label: 'Delete' },
+          { id: 'archive', label: 'Archive', icon: 'file' },
+          { id: 'delete', label: 'Delete', icon: 'trash' },
         ],
       },
     ],
