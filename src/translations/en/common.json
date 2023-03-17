@@ -92,8 +92,11 @@
   "account": {
     "account": "My account",
     "profile": "Profile",
+    "providers": "Providers",
+    "tours": "Tours",
     "signin": "Sign in",
     "signout": "Sign out",
+    "languages": "Languages",
     "nav": "Account navigation"
   }
 }

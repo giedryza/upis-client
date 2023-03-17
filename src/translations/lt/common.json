@@ -92,8 +92,11 @@
   "account": {
     "account": "Mano paskyra",
     "profile": "Profilis",
+    "providers": "Tiekėjai",
+    "tours": "Maršrutai",
     "signin": "Prisijungti",
     "signout": "Atsijungti",
+    "languages": "Kalbos",
     "nav": "Paskyros navigacija"
   }
 }

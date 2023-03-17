@@ -21,7 +21,7 @@ export const Popover: FC<PropsWithChildren<Props>> = ({
   );
 
   return (
-    <FocusScope contain restoreFocus autoFocus={false}>
+    <FocusScope restoreFocus autoFocus={false}>
       <div {...popoverProps} style={popoverProps.style} ref={ref}>
         <DismissButton onDismiss={state.close} />
         {children}
