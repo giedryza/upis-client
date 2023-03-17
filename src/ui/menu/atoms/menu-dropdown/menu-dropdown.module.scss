@@ -4,4 +4,8 @@
   background-color: var(--color-white);
   border-radius: var(--border-radius-sm);
   box-shadow: var(--shadow-secondary);
+
+  &:focus {
+    outline: none;
+  }
 }

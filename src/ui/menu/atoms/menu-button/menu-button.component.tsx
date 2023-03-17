@@ -15,7 +15,7 @@ import { Props } from './menu-button.types';
 export const MenuButton = <T extends object>(props: Props<T>) => {
   const ref = useRef<HTMLButtonElement>(null);
 
-  const state = useMenuTriggerState({ ...props, isOpen: true });
+  const state = useMenuTriggerState(props);
   const { menuTriggerProps, menuProps } = useMenuTrigger<T>({}, state, ref);
   const { buttonProps } = useButton(menuTriggerProps, ref);
   const { focusProps, isFocusVisible: _isFocusVisible } = useFocusRing();
