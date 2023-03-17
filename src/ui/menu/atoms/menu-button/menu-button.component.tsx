@@ -18,6 +18,7 @@ import styles from './menu-button.module.scss';
 export const MenuButton = <T extends object>({
   label,
   icon,
+  size = 'md',
   ...props
 }: Props<T>) => {
   const ref = useRef<HTMLButtonElement>(null);
@@ -32,7 +33,11 @@ export const MenuButton = <T extends object>({
     <>
       <button
         {...mergeProps(buttonProps, focusProps)}
-        className={clsx(styles.button, isFocusVisible && styles['-focus'])}
+        className={clsx(
+          styles.button,
+          isFocusVisible && styles['-focus'],
+          styles[`-size-${size}`]
+        )}
         type="button"
         ref={ref}
       >

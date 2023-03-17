@@ -4,7 +4,7 @@ import { Item, Section } from 'react-stately';
 import { MenuButton } from './atoms';
 import { Props } from './menu.types';
 
-export const Menu: FC<Props> = ({ sections, label, ariaLabel, icon }) => {
+export const Menu: FC<Props> = ({ sections, label, ariaLabel, icon, size }) => {
   const items = useMemo(
     () =>
       Object.fromEntries(
@@ -29,6 +29,7 @@ export const Menu: FC<Props> = ({ sections, label, ariaLabel, icon }) => {
       label={label}
       icon={icon}
       aria-label={ariaLabel}
+      size={size}
       items={sections}
       onAction={(key) => items[key]?.onClick?.()}
       disabledKeys={disabled}

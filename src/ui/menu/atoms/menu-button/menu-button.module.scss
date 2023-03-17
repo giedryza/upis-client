@@ -6,7 +6,6 @@
 
   color: var(--color-text);
   font-weight: 400;
-  font-size: 1.4rem;
   line-height: 1.2;
 
   background-color: var(--color-grey-95);
@@ -18,6 +17,14 @@
 
   @media screen and (-ms-high-contrast: active) {
     border: 2px solid currentColor;
+  }
+
+  &.-size-sm {
+    font-size: 1.4rem;
+  }
+
+  &.-size-md {
+    font-size: 1.6rem;
   }
 
   &:hover {

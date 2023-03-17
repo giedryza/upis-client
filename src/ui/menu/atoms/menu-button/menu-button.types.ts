@@ -6,4 +6,5 @@ import { IconName } from 'ui/icon';
 export interface Props<T> extends AriaMenuProps<T>, MenuTriggerProps {
   label?: string;
   icon?: IconName;
+  size?: 'sm' | 'md';
 }

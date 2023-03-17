@@ -8,7 +8,7 @@ export interface Item {
   disabled?: boolean;
 }
 
-export interface Section {
+interface Section {
   id: string;
   items: Item[];
   label?: string;
@@ -20,4 +20,5 @@ export interface Props {
   label?: string;
   ariaLabel?: string;
   icon?: IconName;
+  size?: 'sm' | 'md';
 }
