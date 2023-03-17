@@ -23,7 +23,6 @@
   > ul {
     display: flex;
     align-items: center;
-
-    @include spacing(x, 0.5em);
+    gap: 1em;
   }
 }

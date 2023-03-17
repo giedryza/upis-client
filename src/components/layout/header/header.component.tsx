@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { AddTour, AccountMenu, LanguageSelect, HeaderLogo } from './atoms';
+import { AccountMenu, LanguageSelect, HeaderLogo } from './atoms';
 import styles from './header.module.scss';
 
 export const Header: FC = () => {
@@ -13,9 +13,6 @@ export const Header: FC = () => {
 
       <nav className={styles.nav} aria-label={t('common:header.nav')}>
         <ul>
-          <li>
-            <AddTour />
-          </li>
           <li>
             <LanguageSelect />
           </li>
