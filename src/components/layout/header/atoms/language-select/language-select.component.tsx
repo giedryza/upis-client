@@ -15,11 +15,11 @@ export const LanguageSelect: FC = () => {
 
   return (
     <Menu
-      ariaLabel={t('common:account.languages')}
+      ariaLabel={t('common:layout.language.languages')}
       sections={[
         {
           id: 'languages',
-          label: t('common:account.languages'),
+          label: t('common:layout.language.languages'),
           items: Object.values(Locale).map((code) => ({
             id: code,
             label: capitalize(formatLanguage(code, code)),

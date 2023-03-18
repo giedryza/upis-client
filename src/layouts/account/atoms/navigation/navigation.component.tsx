@@ -32,7 +32,10 @@ export const Navigation: FC = () => {
   ];
 
   return (
-    <nav className={styles.navigation} aria-label={t('common:account.nav')}>
+    <nav
+      className={styles.navigation}
+      aria-label={t('common:layout.nav.account.title')}
+    >
       <ul className={styles.list}>
         {links.map((link) => (
           <li key={link.label}>

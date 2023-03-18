@@ -11,7 +11,7 @@ export const Header: FC = () => {
     <header className={styles.header}>
       <HeaderLogo />
 
-      <nav className={styles.nav} aria-label={t('common:header.nav')}>
+      <nav className={styles.nav} aria-label={t('common:layout.nav.title')}>
         <ul>
           <li>
             <LanguageSelect />
