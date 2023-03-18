@@ -8,7 +8,6 @@ export * from './checkbox-group-input';
 export * from './checkbox-input';
 export * from './container';
 export * from './divider';
-export * from './dropdown-menu';
 export * from './empty-state';
 export * from './file-input';
 export * from './formatted-field';
