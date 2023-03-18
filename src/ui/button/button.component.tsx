@@ -16,7 +16,6 @@ export const Button: FC<Props> = ({
   size = 'md',
   width = 'normal',
   textAlign = 'center',
-  withDropdown,
   ...rest
 }) => {
   const content = useMemo(
@@ -41,15 +40,9 @@ export const Button: FC<Props> = ({
             aria-hidden
           />
         ) : null}
-
-        {withDropdown ? (
-          <span className={styles.arrow} aria-hidden>
-            &#x25BC;
-          </span>
-        ) : null}
       </>
     ),
-    [label, icon, iconPlacement, withDropdown]
+    [label, icon, iconPlacement]
   );
 
   const className = clsx(
