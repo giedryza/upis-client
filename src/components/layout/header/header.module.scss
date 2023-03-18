@@ -22,8 +22,7 @@
 .nav {
   > ul {
     display: flex;
+    gap: 1em;
     align-items: center;
-
-    @include spacing(x, 0.5em);
   }
 }

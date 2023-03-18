@@ -1,28 +1,4 @@
 {
-  "app": {
-    "description": "Baidarių nuoma ir maršrutai Lietuvoje"
-  },
-  "header": {
-    "nav": "Pagrindinė navigacija",
-    "add_tour": "Pridėti maršrutą"
-  },
-  "footer": {
-    "nav": "Papildoma navigacija",
-    "slogan": "Baidarių maršrutų paieška",
-    "sections": {
-      "app": {
-        "title": "Aplikacija",
-        "become_provider": "Tapti tiekėju",
-        "add_tour": "Pridėti maršrutą"
-      },
-      "contacts": {
-        "title": "Kontaktai"
-      }
-    },
-    "language": "Kalba",
-    "legal": "© {{year}} {{name}}",
-    "credentials": "Sukūrė <0>giedrius.io</0>"
-  },
   "actions": {
     "close": "Uždaryti",
     "cancel": "Atšaukti",
@@ -45,6 +21,46 @@
     "try_again": "Bandyti iš naujo",
     "search": "Ieškoti",
     "enter_address": "Ieškoti adreso"
+  },
+  "app": {
+    "description": "Baidarių nuoma ir maršrutai Lietuvoje"
+  },
+  "layout": {
+    "nav": {
+      "title": "Pagrindinė navigacija",
+      "account": {
+        "title": "Paskyros navigacija"
+      }
+    },
+    "menu": {
+      "add_tour": "Pridėti maršrutą",
+      "account": "Mano paskyra",
+      "profile": "Profilis",
+      "providers": "Tiekėjai",
+      "tours": "Maršrutai",
+      "signin": "Prisijungti",
+      "signout": "Atsijungti"
+    },
+    "language": {
+      "languages": "Kalbos"
+    },
+    "footer": {
+      "nav": "Papildoma navigacija",
+      "slogan": "Baidarių maršrutų paieška",
+      "sections": {
+        "app": {
+          "title": "Aplikacija",
+          "become_provider": "Tapti tiekėju",
+          "add_tour": "Pridėti maršrutą"
+        },
+        "contacts": {
+          "title": "Kontaktai"
+        }
+      },
+      "language": "Kalba",
+      "legal": "© {{year}} {{name}}",
+      "credentials": "Sukūrė <0>giedrius.io</0>"
+    }
   },
   "components": {
     "fileInput": {
@@ -88,12 +104,5 @@
     "free": "Nemokamai",
     "from": "Nuo",
     "to": "Iki"
-  },
-  "account": {
-    "account": "Mano paskyra",
-    "profile": "Profilis",
-    "signin": "Prisijungti",
-    "signout": "Atsijungti",
-    "nav": "Paskyros navigacija"
   }
 }

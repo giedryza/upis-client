@@ -1,28 +1,4 @@
 {
-  "app": {
-    "description": "Kayak rentals and tours in Lithuania"
-  },
-  "header": {
-    "nav": "Header navigation",
-    "add_tour": "Add a tour"
-  },
-  "footer": {
-    "nav": "Footer navigation",
-    "slogan": "Kayak tours search engine",
-    "sections": {
-      "app": {
-        "title": "App",
-        "become_provider": "Become a provider",
-        "add_tour": "Add a tour"
-      },
-      "contacts": {
-        "title": "Contacts"
-      }
-    },
-    "language": "Language",
-    "legal": "© {{year}} {{name}}",
-    "credentials": "Crafted by <0>giedrius.io</0>"
-  },
   "actions": {
     "close": "Close",
     "cancel": "Cancel",
@@ -45,6 +21,46 @@
     "try_again": "Try again",
     "search": "Search",
     "enter_address": "Search address"
+  },
+  "app": {
+    "description": "Kayak rentals and tours in Lithuania"
+  },
+  "layout": {
+    "nav": {
+      "title": "Header navigation",
+      "account": {
+        "title": "Account navigation"
+      }
+    },
+    "menu": {
+      "add_tour": "Add a tour",
+      "account": "My account",
+      "profile": "Profile",
+      "providers": "Providers",
+      "tours": "Tours",
+      "signin": "Sign in",
+      "signout": "Sign out"
+    },
+    "language": {
+      "languages": "Languages"
+    },
+    "footer": {
+      "nav": "Footer navigation",
+      "slogan": "Kayak tours search engine",
+      "sections": {
+        "app": {
+          "title": "App",
+          "become_provider": "Become a provider",
+          "add_tour": "Add a tour"
+        },
+        "contacts": {
+          "title": "Contacts"
+        }
+      },
+      "language": "Language",
+      "legal": "© {{year}} {{name}}",
+      "credentials": "Crafted by <0>giedrius.io</0>"
+    }
   },
   "components": {
     "fileInput": {
@@ -88,12 +104,5 @@
     "free": "Free",
     "from": "From",
     "to": "To"
-  },
-  "account": {
-    "account": "My account",
-    "profile": "Profile",
-    "signin": "Sign in",
-    "signout": "Sign out",
-    "nav": "Account navigation"
   }
 }

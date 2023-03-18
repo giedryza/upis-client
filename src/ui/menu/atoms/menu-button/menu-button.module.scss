@@ -1,4 +1,4 @@
-.trigger {
+.button {
   display: flex;
   gap: 0.5em;
   align-items: center;
@@ -7,7 +7,6 @@
 
   color: var(--color-text);
   font-weight: 400;
-  font-size: 1.4rem;
   line-height: 1.2;
 
   background-color: var(--color-grey-95);
@@ -19,6 +18,14 @@
 
   @media screen and (-ms-high-contrast: active) {
     border: 2px solid currentColor;
+  }
+
+  &.-size-sm {
+    font-size: 1.4rem;
+  }
+
+  &.-size-md {
+    font-size: 1.6rem;
   }
 
   &:hover {
@@ -35,24 +42,14 @@
     box-shadow: var(--outline-button);
   }
 
-  &.-active {
-    color: var(--color-primary-40);
-    font-weight: 500;
-
-    background-color: var(--color-primary-95);
-
-    &:hover {
-      &:not([disabled]) {
-        background-color: var(--color-primary-90);
-      }
-    }
-  }
-
-  &[disabled] {
-    cursor: not-allowed;
-  }
-
   .icon {
+    width: 1em;
+    height: 1em;
+
+    fill: currentColor;
+  }
+
+  .chevron {
     width: 0.75em;
     height: 0.75em;
 

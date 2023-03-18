@@ -1,42 +1,39 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
+import useTranslation from 'next-translate/useTranslation';
 
 import { CookieName } from 'config';
 import { Locale } from 'types/common';
 import { capitalize } from 'tools/common';
 import { cookies } from 'tools/services';
-import { IconName, DropdownMenu } from 'ui';
+import { Menu } from 'ui';
 import { formatLanguage } from 'tools/format';
 
-const iconByLocale: Record<Locale, IconName> = {
-  [Locale.Lt]: 'flag-lt',
-  [Locale.En]: 'flag-en',
-};
-
 export const LanguageSelect: FC = () => {
-  const { locale: currentLocale, asPath } = useRouter();
+  const { t } = useTranslation();
+  const { push, pathname, query, asPath, locale } = useRouter();
 
   return (
-    <DropdownMenu
-      id="language-select"
-      position="bottom-right"
-      menuButton={{
-        as: 'button',
-        label: currentLocale?.toUpperCase(),
-        icon: iconByLocale[currentLocale as Locale],
-        variant: 'ghost',
-        size: 'sm',
-      }}
-      items={Object.values(Locale).map((locale) => ({
-        as: 'link',
-        label: capitalize(formatLanguage(locale, locale)),
-        icon: iconByLocale[locale],
-        onClick: () => cookies.set(CookieName.Language, locale),
-        href: asPath,
-        locale,
-        lang: locale,
-        hrefLang: locale,
-      }))}
+    <Menu
+      ariaLabel={t('common:layout.language.languages')}
+      sections={[
+        {
+          id: 'languages',
+          label: t('common:layout.language.languages'),
+          items: Object.values(Locale).map((code) => ({
+            id: code,
+            label: capitalize(formatLanguage(code, code)),
+            // TODO: replace with tick
+            icon: locale === code ? 'chevron-down' : undefined,
+            onClick: () => {
+              cookies.set(CookieName.Language, code);
+              push({ pathname, query }, asPath, { locale: code });
+            },
+          })),
+        },
+      ]}
+      icon="globe"
+      size="sm"
     />
   );
 };

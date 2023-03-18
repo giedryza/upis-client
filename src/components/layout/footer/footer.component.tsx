@@ -24,20 +24,20 @@ export const Footer: FC = () => {
     links: Array<{ label: string; url: string }>;
   }> = [
     {
-      title: t('common:footer.sections.app.title'),
+      title: t('common:layout.footer.sections.app.title'),
       links: [
         {
-          label: t('common:footer.sections.app.become_provider'),
+          label: t('common:layout.footer.sections.app.become_provider'),
           url: generateUrl(routes.account.providers.create),
         },
         {
-          label: t('common:footer.sections.app.add_tour'),
+          label: t('common:layout.footer.sections.app.add_tour'),
           url: generateUrl(routes.account.tours.create),
         },
       ],
     },
     {
-      title: t('common:footer.sections.contacts.title'),
+      title: t('common:layout.footer.sections.contacts.title'),
       links: [{ label: APP.mail.index, url: `mailto:${APP.mail.index}` }],
     },
   ];
@@ -49,7 +49,7 @@ export const Footer: FC = () => {
           <div className={styles.main}>
             <nav
               className={styles.navigation}
-              aria-label={t('common:footer.nav')}
+              aria-label={t('common:layout.footer.nav')}
             >
               <ul className={styles.groups}>
                 {NAVIGATION.map((group, index) => (
@@ -69,7 +69,7 @@ export const Footer: FC = () => {
 
             <div className={styles.language}>
               <SelectInput
-                label={t('common:footer.language')}
+                label={t('common:layout.footer.language')}
                 name="language"
                 options={Object.values(Locale).map((locale) => ({
                   label: capitalize(formatLanguage(locale, locale)),
@@ -89,14 +89,14 @@ export const Footer: FC = () => {
 
           <div className={styles.legal}>
             <p className={styles.copy}>
-              {t('common:footer.legal', {
+              {t('common:layout.footer.legal', {
                 year: new Date().getFullYear(),
                 name: APP.name,
               })}
             </p>
             <p className={styles.author}>
               <Trans
-                i18nKey="common:footer.credentials"
+                i18nKey="common:layout.footer.credentials"
                 components={[
                   <a
                     href="https://giedrius.io"

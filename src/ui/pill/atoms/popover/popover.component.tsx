@@ -15,8 +15,8 @@ export const Popover: FC<PropsWithChildren<Props>> = ({
     {
       triggerRef,
       popoverRef,
-      offset: 10,
-      containerPadding: 10,
+      offset: 5,
+      containerPadding: 5,
       isNonModal: true,
     },
     state

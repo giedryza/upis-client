@@ -25,7 +25,6 @@ interface BaseProps {
   size?: 'xs' | 'sm' | 'md' | 'lg';
   width?: 'normal' | 'full';
   textAlign?: 'left' | 'right' | 'center';
-  withDropdown?: boolean;
 }
 
 type OmittedAttributes = keyof BaseProps | 'className' | 'children';
