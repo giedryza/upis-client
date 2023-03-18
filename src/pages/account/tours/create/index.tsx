@@ -9,6 +9,31 @@ import { AppHead, Breadcrumbs } from 'ui';
 import { TourCreate } from 'components/account';
 import { generateUrl } from 'tools/services';
 
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  locale,
+  defaultLocale,
+}) => {
+  const session = await getSession({ req });
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: `${
+          locale === defaultLocale ? '' : `/${locale}`
+        }${generateUrl(routes.auth.signin)}`,
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      session,
+    },
+  };
+};
+
 const ToursCreatePage: NextPage = () => {
   const { t } = useTranslation();
 
@@ -43,25 +68,6 @@ const ToursCreatePage: NextPage = () => {
       </MainLayout>
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = await getSession({ req });
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: generateUrl(routes.auth.signin),
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {
-      session,
-    },
-  };
 };
 
 export default ToursCreatePage;

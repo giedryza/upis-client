@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import { useSession, signOut } from 'next-auth/react';
 
 import { routes } from 'config';
-import { Button, Menu } from 'ui';
 import { generateUrl } from 'tools/services';
+import { Menu } from 'ui';
 
 export const AccountMenu: FC = () => {
   const { t } = useTranslation();
@@ -61,13 +61,35 @@ export const AccountMenu: FC = () => {
       size="sm"
     />
   ) : (
-    <Button
-      as="link"
-      label={t('common:account.signin')}
+    <Menu
+      ariaLabel={t('common:account.account')}
+      sections={[
+        {
+          id: 'account',
+          label: t('common:account.account'),
+          items: [
+            {
+              id: 'profile',
+              label: t('common:account.signin'),
+              icon: 'user',
+              onClick: () => push(generateUrl(routes.auth.signin)),
+            },
+          ],
+        },
+        {
+          id: 'tour',
+          items: [
+            {
+              id: 'tour',
+              label: t('common:header.add_tour'),
+              icon: 'path',
+              onClick: () => push(generateUrl(routes.account.tours.create)),
+            },
+          ],
+        },
+      ]}
       icon="user"
-      variant="ghost"
       size="sm"
-      href={generateUrl(routes.auth.signin)}
     />
   );
 };
