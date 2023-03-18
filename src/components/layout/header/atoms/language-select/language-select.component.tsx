@@ -11,7 +11,7 @@ import { formatLanguage } from 'tools/format';
 
 export const LanguageSelect: FC = () => {
   const { t } = useTranslation();
-  const { push, pathname, query, asPath } = useRouter();
+  const { push, pathname, query, asPath, locale } = useRouter();
 
   return (
     <Menu
@@ -23,6 +23,8 @@ export const LanguageSelect: FC = () => {
           items: Object.values(Locale).map((code) => ({
             id: code,
             label: capitalize(formatLanguage(code, code)),
+            // TODO: replace with tick
+            icon: locale === code ? 'chevron-down' : undefined,
             onClick: () => {
               cookies.set(CookieName.Language, code);
               push({ pathname, query }, asPath, { locale: code });
