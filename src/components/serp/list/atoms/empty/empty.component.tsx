@@ -14,13 +14,14 @@ export const ListEmpty: FC = () => {
         <EmptyState
           title={t('serp:list.empty.title')}
           message={t('serp:list.empty.description')}
+          icon="path"
+          size="md"
           action={{
             as: 'link',
             label: t('serp:actions.clear-filters'),
             href: { query: {} },
             shallow: true,
           }}
-          icon="path"
         />
       </Container>
     </div>
