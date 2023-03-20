@@ -56,6 +56,7 @@ export const APP = {
     md: Number(styles.mdBreakpoint),
     lg: Number(styles.lgBreakpoint),
     // TODO when storybook 7 launches, replace with: } satisfies Record<Breakpoint, number>,
+    // https://github.com/storybookjs/storybook/issues/21027
   },
   cloudinary: {
     //    https://res.cloudinary.com/upis/image/upload/w_200,h_150,c_fill/upis/development/e96c5cad-bfda-4409-888b-7135a1b82336.avif
