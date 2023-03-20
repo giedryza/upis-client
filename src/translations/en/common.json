@@ -99,6 +99,13 @@
       }
     }
   },
+  "errors": {
+    "page_not_found": {
+      "title": "404 - Page Not Found",
+      "message": "Looks like that page does not exist. Check the URL and try again or explore our Home Page.",
+      "action": "Go to the Home Page"
+    }
+  },
   "texts": {
     "or": "Or",
     "free": "Free",

@@ -99,6 +99,13 @@
       }
     }
   },
+  "errors": {
+    "page_not_found": {
+      "title": "404 - Puslapis nerastas",
+      "message": "Panašu, jog šis puslapis neegzistuoja. Patikrinkite adresą ir bandykite iš naujo arba apsilankykite mūsų pagrindiniame puslapyje.",
+      "action": "Į pagrindinį puslapį"
+    }
+  },
   "texts": {
     "or": "Arba",
     "free": "Nemokamai",
