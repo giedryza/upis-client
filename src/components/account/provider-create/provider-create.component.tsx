@@ -27,14 +27,9 @@ export const ProviderCreate: FC = () => {
 
   const { mutate: createProvider, isLoading } = useCreateProvider();
 
-  const onSubmit: SubmitHandler<Values> = ({
-    name,
-    email,
-    phone,
-    description,
-  }) => {
+  const onSubmit: SubmitHandler<Values> = ({ name, email, phone }) => {
     createProvider(
-      { form: { name, email, phone, description } },
+      { form: { name, email, phone } },
       {
         onSuccess: ({ data }) => {
           push(
@@ -93,14 +88,6 @@ export const ProviderCreate: FC = () => {
               placeholder="+37065555555"
               type="phone"
               error={errors.phone?.message}
-            />
-
-            <TextInput
-              {...register('description')}
-              label={t('account:providers.about.form.description.label')}
-              type="textarea"
-              rows={8}
-              error={errors.description?.message}
             />
           </fieldset>
 
