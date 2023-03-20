@@ -28,7 +28,7 @@ interface GetProvider {
 }
 
 interface CreateProvider {
-  form: Pick<Provider, 'name' | 'phone' | 'email' | 'description'>;
+  form: Pick<Provider, 'name' | 'phone' | 'email'>;
 }
 
 interface UpdateProvider {
