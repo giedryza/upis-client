@@ -131,6 +131,7 @@ export const Gallery: FC = () => {
         <EmptyState
           title={t('account:tours.gallery.texts.empty.title')}
           message={t('account:tours.gallery.texts.empty.message')}
+          size="sm"
         />
       )}
     </InfoBlock>
