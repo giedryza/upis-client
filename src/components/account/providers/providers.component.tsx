@@ -21,6 +21,7 @@ export const Providers: FC = () => {
           title={t('account:providers.empty.title')}
           message={t('account:providers.empty.message')}
           icon="kayak"
+          size="sm"
           action={{
             as: 'link',
             label: t('account:providers.actions.add'),

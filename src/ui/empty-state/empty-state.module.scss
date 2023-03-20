@@ -3,10 +3,16 @@
 .container {
   @include spacing(y, 1.5em);
 
-  font-size: 1.6rem;
   line-height: 1.4;
-
   text-align: center;
+
+  &.-size-sm {
+    font-size: 1.6rem;
+  }
+
+  &.-size-md {
+    font-size: 1.8rem;
+  }
 
   .body {
     @include spacing(y, 0.35em);

@@ -58,6 +58,7 @@ export const Amenities: FC = () => {
         <EmptyState
           title={t('account:tours.amenities.texts.empty.title')}
           message={t('account:tours.amenities.texts.empty.message')}
+          size="sm"
         />
       )}
     </InfoBlock>

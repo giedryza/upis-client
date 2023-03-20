@@ -51,6 +51,7 @@ export const Location: FC = () => {
         <EmptyState
           title={t('account:tours.location.map.empty.title')}
           message={t('account:tours.location.map.empty.message')}
+          size="sm"
         />
       )}
     </InfoBlock>

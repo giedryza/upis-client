@@ -31,6 +31,7 @@ export const Tours: FC = () => {
             icon: 'plus',
             href: generateUrl(routes.account.providers.create),
           }}
+          size="sm"
         />
       ) : !tours?.items.length && !isToursLoading ? (
         <EmptyState
@@ -43,6 +44,7 @@ export const Tours: FC = () => {
             icon: 'plus',
             href: generateUrl(routes.account.tours.create),
           }}
+          size="sm"
         />
       ) : (
         <div className={styles.content}>
