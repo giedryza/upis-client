@@ -50,8 +50,6 @@ export const baseIcons = [
   'wave',
 ] as const;
 
-export const flagIcons = ['flag-en', 'flag-lt'] as const;
-
 export const logoIcons = [
   'logo-facebook',
   'logo-google',
@@ -61,7 +59,4 @@ export const logoIcons = [
   'logo-youtube',
 ] as const;
 
-export type IconName =
-  | (typeof baseIcons)[number]
-  | (typeof flagIcons)[number]
-  | (typeof logoIcons)[number];
+export type IconName = (typeof baseIcons)[number] | (typeof logoIcons)[number];
