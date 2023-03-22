@@ -59,10 +59,6 @@ export const APP = {
     // https://github.com/storybookjs/storybook/issues/21027
   },
   cloudinary: {
-    //    https://res.cloudinary.com/upis/image/upload/w_200,h_150,c_fill/upis/development/e96c5cad-bfda-4409-888b-7135a1b82336.avif
-    url: 'https://res.cloudinary.com/:cloud_name/:asset_type/:delivery_type/:transformations/:public_id'
-      .replace(':cloud_name', 'upis')
-      .replace(':asset_type', 'image')
-      .replace(':delivery_type', 'upload'),
+    cloudName: 'upis',
   },
 } as const;

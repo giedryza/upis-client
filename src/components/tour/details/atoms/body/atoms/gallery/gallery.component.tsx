@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Carousel, ImagePlaceholder } from 'ui';
-import { generateImageUrl } from 'tools/common';
+import { generateImageUrl } from 'tools/services';
 
 import { Props } from './gallery.types';
 import styles from './gallery.module.scss';

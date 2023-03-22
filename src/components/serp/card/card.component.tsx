@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { Button, Carousel, Icon, ImagePlaceholder } from 'ui';
 import { formatCurrency, formatUnit } from 'tools/format';
 import { routes, APP } from 'config';
-import { generateUrl } from 'tools/services';
-import { generateImageUrl, isLast } from 'tools/common';
+import { generateImageUrl, generateUrl } from 'tools/services';
+import { isLast } from 'tools/common';
 import { useBreakpoints } from 'tools/hooks';
 
 import { Props } from './card.types';
