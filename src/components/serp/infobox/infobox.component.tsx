@@ -3,8 +3,8 @@ import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 
 import { APP, routes } from 'config';
-import { generateUrl } from 'tools/services';
-import { generateImageUrl, isLast } from 'tools/common';
+import { generateImageUrl, generateUrl } from 'tools/services';
+import { isLast } from 'tools/common';
 import { formatCurrency, formatUnit } from 'tools/format';
 import { Button, Carousel, Icon } from 'ui';
 
