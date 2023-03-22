@@ -29,7 +29,7 @@ export const BodyTours: FC<Props> = ({ id }) => {
     <section
       className={styles.section}
       style={{
-        '--height': heightRatio * APP.serp.card.image.height + APP.serp.gridGap,
+        '--height': heightRatio * APP.serp.card.image.height,
       }}
     >
       <h2 className={styles.title}>{t('tours:details.tours.title')}</h2>
