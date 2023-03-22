@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@axe-core/react": "^4.6.0",
+    "@cloudinary/url-gen": "^1.9.2",
     "@next/font": "^13.1.6",
     "@react-aria/utils": "^3.15.0",
     "@reduxjs/toolkit": "^1.9.3",
