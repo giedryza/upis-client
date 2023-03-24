@@ -1,0 +1,28 @@
+.link {
+  --offset: 5px;
+
+  position: fixed;
+  top: 0%;
+  left: var(--offset);
+  z-index: 9999;
+
+  display: inline-block;
+  padding: 0.5em 1.25em;
+
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: 1.6rem;
+  text-decoration: none;
+
+  background-color: var(--color-white);
+  border: 1px dashed var(--color-text);
+  transform: translateY(-100%);
+
+  transition-duration: var(--transition-duration-sm);
+  transition-property: transform;
+
+  &:focus {
+    box-shadow: none;
+    transform: translateY(calc(0% + var(--offset)));
+  }
+}
