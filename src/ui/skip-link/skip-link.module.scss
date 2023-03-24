@@ -22,7 +22,6 @@
   transition-property: transform;
 
   &:focus {
-    box-shadow: none;
     transform: translateY(calc(0% + var(--offset)));
   }
 }
