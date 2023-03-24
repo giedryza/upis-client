@@ -60,6 +60,9 @@
       "language": "Language",
       "legal": "© {{year}} {{name}}",
       "credentials": "Crafted by <0>giedrius.io</0>"
+    },
+    "skip": {
+      "main": "Skip to main content"
     }
   },
   "components": {

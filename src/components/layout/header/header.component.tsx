@@ -11,7 +11,7 @@ export const Header: FC = () => {
 
   return (
     <>
-      <SkipLink label="Skip to main content" target="main" />
+      <SkipLink label={t('common:layout.skip.main')} target="main" />
 
       <header className={styles.header}>
         <HeaderLogo />
