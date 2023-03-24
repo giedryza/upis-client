@@ -60,6 +60,9 @@
       "language": "Kalba",
       "legal": "© {{year}} {{name}}",
       "credentials": "Sukūrė <0>giedrius.io</0>"
+    },
+    "skip": {
+      "main": "Pereiti į pagrindinį turinį"
     }
   },
   "components": {

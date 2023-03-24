@@ -10,7 +10,7 @@ export const PageNotFound: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <main className={styles.container}>
+    <main className={styles.container} id="main">
       <EmptyState
         title={t('common:errors.page_not_found.title')}
         message={t('common:errors.page_not_found.message')}

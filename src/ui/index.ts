@@ -32,6 +32,7 @@ export * from './portal';
 export * from './progress';
 export * from './radio-input';
 export * from './select-input';
+export * from './skip-link';
 export * from './slider-input';
 export * from './table';
 export * from './text-input';

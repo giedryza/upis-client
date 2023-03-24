@@ -17,7 +17,11 @@ export const TourDetails: FC = () => {
       <DetailsNavigation />
 
       <Container>
-        <main className={styles.main} style={{ '--spacing': APP.serp.gridGap }}>
+        <main
+          className={styles.main}
+          style={{ '--spacing': APP.serp.gridGap }}
+          id="main"
+        >
           <DetailsHeader />
 
           <div className={styles.sections}>
