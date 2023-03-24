@@ -20,7 +20,7 @@ const PasswordResetPage: NextPage = () => {
 
       <MainLayout>
         <PageLayout>
-          <main>
+          <main id="main">
             <PasswordReset />
           </main>
         </PageLayout>

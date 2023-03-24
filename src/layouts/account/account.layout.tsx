@@ -9,7 +9,9 @@ export const AccountLayout: FC<PropsWithChildren> = ({ children }) => {
       <aside className={styles.sidebar}>
         <Navigation />
       </aside>
-      <main className={styles.main}>{children}</main>
+      <main className={styles.main} id="main">
+        {children}
+      </main>
     </div>
   );
 };

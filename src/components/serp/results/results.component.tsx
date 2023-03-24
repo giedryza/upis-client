@@ -20,7 +20,7 @@ export const SerpResults: FC = () => {
     <div>
       <SerpFilters />
 
-      <main className={styles.main}>
+      <main className={styles.main} id="main">
         {md ? (
           RESULTS_BY_VIEW[view]
         ) : (
