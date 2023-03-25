@@ -1,5 +1,5 @@
 export * from './use-isomorphic-layout-effect';
-export * from './use-stable-handler';
+export * from './use-stable';
 
 export * from './use-breakpoints';
 export * from './use-event-listener';

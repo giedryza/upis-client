@@ -1,13 +1,13 @@
 import { useEffect, useRef } from 'react';
 
-import { useStableHandler } from 'tools/hooks';
+import { useStable } from 'tools/hooks';
 
 export const useInterval = (
   callback: () => void,
   delay: number | null
 ): { id: ReturnType<typeof setInterval> | null } => {
   const timeout = useRef<ReturnType<typeof setInterval> | null>(null);
-  const handler = useStableHandler(callback);
+  const handler = useStable(callback);
 
   useEffect(() => {
     const tick = () => handler.current?.();

@@ -1,6 +1,6 @@
 import { RefObject, useEffect } from 'react';
 
-import { useStableHandler } from 'tools/hooks';
+import { useStable } from 'tools/hooks';
 
 // MediaQueryList Event based useEventListener interface
 export function useEventListener<K extends keyof MediaQueryListEventMap>(
@@ -54,7 +54,7 @@ export function useEventListener<
   element?: RefObject<T>,
   options?: boolean | AddEventListenerOptions
 ) {
-  const handler = useStableHandler(callback);
+  const handler = useStable(callback);
 
   useEffect(() => {
     const targetElement: T | Window = element?.current ?? window;

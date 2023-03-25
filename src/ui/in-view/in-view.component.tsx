@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef } from 'react';
 
-import { useIntersectionObserver, useStableHandler } from 'tools/hooks';
+import { useIntersectionObserver, useStable } from 'tools/hooks';
 
 import { Props } from './in-view.types';
 
@@ -8,7 +8,7 @@ export const InView: FC<Props> = ({ onInView, placeholder }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const entry = useIntersectionObserver(ref);
-  const handler = useStableHandler(onInView);
+  const handler = useStable(onInView);
 
   useEffect(() => {
     if (entry?.isIntersecting) {

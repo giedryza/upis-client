@@ -1,12 +1,12 @@
 import { RefObject } from 'react';
 
-import { useEventListener, useStableHandler } from 'tools/hooks';
+import { useEventListener, useStable } from 'tools/hooks';
 
 export const useOnClickOutside = <T extends HTMLElement>(
   ref: RefObject<T>,
   onClickOutside: () => void
 ) => {
-  const handler = useStableHandler(onClickOutside);
+  const handler = useStable(onClickOutside);
 
   const listener = <E extends Event>(e: E) => {
     if (

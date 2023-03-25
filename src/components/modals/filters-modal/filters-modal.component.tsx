@@ -11,6 +11,7 @@ import {
 } from 'ui';
 import { useToursFilters, useToursFiltersSummary } from 'domain/tours';
 import { useProviders } from 'domain/providers';
+import { useStable } from 'tools/hooks';
 
 import { Props, Values } from './filters-modal.types';
 import { INITIAL_VALUES, FORM_ID } from './filters-modal.constants';
@@ -20,6 +21,8 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
   const { t } = useTranslation();
 
   const filters = useToursFilters();
+  const filtersRef = useStable(filters);
+
   const { data: filtersSummary } = useToursFiltersSummary();
   const { data: providers, isLoading: isProvidersLoading } = useProviders({
     filters: { select: ['_id', 'name'], limit: 200 },
@@ -36,17 +39,19 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
   });
 
   useEffect(() => {
+    const { current } = filtersRef;
+
     reset({
-      amenities: filters.amenities ?? [],
-      regions: filters.regions ?? [],
-      rivers: filters.rivers ?? [],
-      days: [filters.daysFrom ?? NaN, filters.daysTo ?? NaN],
-      duration: [filters.durationFrom ?? NaN, filters.durationTo ?? NaN],
-      distance: [filters.distanceFrom ?? NaN, filters.distanceTo ?? NaN],
-      difficulty: [filters.difficultyFrom ?? NaN, filters.difficultyTo ?? NaN],
-      providers: filters.providers ?? [],
+      amenities: current.amenities ?? [],
+      regions: current.regions ?? [],
+      rivers: current.rivers ?? [],
+      days: [current.daysFrom ?? NaN, current.daysTo ?? NaN],
+      duration: [current.durationFrom ?? NaN, current.durationTo ?? NaN],
+      distance: [current.distanceFrom ?? NaN, current.distanceTo ?? NaN],
+      difficulty: [current.difficultyFrom ?? NaN, current.difficultyTo ?? NaN],
+      providers: current.providers ?? [],
     });
-  }, [filters, reset]);
+  }, [filtersRef, reset]);
 
   const onSubmit: SubmitHandler<Values> = (values) => {
     closeModal({
