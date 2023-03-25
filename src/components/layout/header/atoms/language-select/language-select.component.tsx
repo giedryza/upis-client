@@ -23,8 +23,7 @@ export const LanguageSelect: FC = () => {
           items: Object.values(Locale).map((code) => ({
             id: code,
             label: capitalize(formatLanguage(code, code)),
-            // TODO: replace with tick
-            icon: locale === code ? 'chevron-down' : undefined,
+            icon: locale === code ? 'tick' : undefined,
             onClick: () => {
               cookies.set(CookieName.Language, code);
               push({ pathname, query }, asPath, { locale: code });

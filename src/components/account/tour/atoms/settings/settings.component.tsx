@@ -59,8 +59,7 @@ export const Settings: FC = () => {
           as="link"
           label={t('common:actions.preview')}
           variant="outline"
-          // TODO: replace with eye icon
-          icon="magnifying-glass-plus"
+          icon="eye"
           size="sm"
           href={generateUrl(routes.tours.one.index, {
             id: tour._id,
