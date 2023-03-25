@@ -26,8 +26,7 @@ export const DetailsHeader: FC = () => {
             >
               <span>{t('tours:actions.visit_website')}</span>
               <Icon
-                // TODO: replace with external icon
-                name="chevron-right"
+                name="external-link"
                 className={styles.icon}
                 focusable={false}
                 aria-hidden

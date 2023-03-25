@@ -10,15 +10,21 @@ export const ViewToggle: FC = () => {
   const { t } = useTranslation();
   const { view } = useAppSelector(selectSerpState);
 
-  const items: Array<{ value: SerpView; label: string }> = [
-    { value: 'list', label: t('serp:filters.viewToggle.items.list') },
-    { value: 'map', label: t('serp:filters.viewToggle.items.map') },
-  ];
-
   return (
     <ButtonGroup
       ariaLabel={t('serp:filters.viewToggle.title')}
-      items={items}
+      items={[
+        {
+          value: 'list',
+          label: t('serp:filters.viewToggle.items.list'),
+          icon: 'list',
+        },
+        {
+          value: 'map',
+          label: t('serp:filters.viewToggle.items.map'),
+          icon: 'map',
+        },
+      ]}
       value={view}
       onChange={(value) => {
         dispatch(serp.actions.setView(value as SerpView));

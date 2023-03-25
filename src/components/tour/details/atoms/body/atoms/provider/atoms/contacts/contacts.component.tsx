@@ -14,7 +14,7 @@ export const ProviderContacts: FC<Props> = ({ phone, email, languages }) => {
     <ul className={styles.contacts}>
       {phone ? (
         <li className={styles.contact}>
-          <Icon name="mobile" className={styles.icon} />
+          <Icon name="phone" className={styles.icon} />
           <span className={styles.label}>
             {t('tours:provider.phone.title')}
           </span>
@@ -24,7 +24,7 @@ export const ProviderContacts: FC<Props> = ({ phone, email, languages }) => {
 
       {email ? (
         <li className={styles.contact}>
-          <Icon name="price" className={styles.icon} />
+          <Icon name="mail" className={styles.icon} />
           <span className={styles.label}>
             {t('tours:provider.email.title')}
           </span>
@@ -34,7 +34,7 @@ export const ProviderContacts: FC<Props> = ({ phone, email, languages }) => {
 
       {languages.length ? (
         <li className={styles.contact}>
-          <Icon name="lock" className={styles.icon} />
+          <Icon name="language" className={styles.icon} />
           <span className={styles.label}>
             {t('tours:provider.languages.title')}
           </span>
