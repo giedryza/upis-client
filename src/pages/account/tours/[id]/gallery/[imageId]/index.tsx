@@ -13,7 +13,7 @@ import { getRouteParams, generateUrl } from 'tools/services';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { TourEditGalleryEdit } from 'components/account';
+import { AccountNavigation, TourEditGalleryEdit } from 'components/account';
 import { imagesKeys, getLoaders } from 'domain/images';
 
 interface Props {
@@ -70,6 +70,8 @@ const TourEditGalleryEditPage: NextPage<
       <AppHead title={t('account:tours.title', { count: 1 })} />
 
       <MainLayout>
+        <AccountNavigation />
+
         <PageLayout>
           <Breadcrumbs
             items={[

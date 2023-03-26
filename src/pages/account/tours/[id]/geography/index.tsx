@@ -13,7 +13,7 @@ import { getRouteParams, generateUrl } from 'tools/services';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { TourEditGeography } from 'components/account';
+import { AccountNavigation, TourEditGeography } from 'components/account';
 import { toursKeys, getLoaders } from 'domain/tours';
 
 interface Props {
@@ -67,6 +67,8 @@ const TourEditGeographyPage: NextPage<
       <AppHead title={t('account:tours.title', { count: 1 })} />
 
       <MainLayout>
+        <AccountNavigation />
+
         <PageLayout>
           <Breadcrumbs
             items={[

@@ -6,7 +6,7 @@ import { routes } from 'config';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { Profile } from 'components/account';
+import { AccountNavigation, Profile } from 'components/account';
 import { generateUrl } from 'tools/services';
 
 const ProfilePage: NextPage = () => {
@@ -19,6 +19,8 @@ const ProfilePage: NextPage = () => {
       <AppHead title={t('account:profile.title')} />
 
       <MainLayout>
+        <AccountNavigation />
+
         <PageLayout>
           <Breadcrumbs
             items={[

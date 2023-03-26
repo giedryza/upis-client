@@ -20,7 +20,7 @@ export const variants = [
 interface BaseProps {
   label?: string;
   icon?: IconName;
-  iconPlacement?: 'top' | 'right' | 'bottom' | 'left';
+  iconPlacement?: 'left' | 'right';
   variant?: (typeof variants)[number];
   size?: 'xs' | 'sm' | 'md' | 'lg';
   width?: 'normal' | 'full';

@@ -7,7 +7,10 @@ import { useRouteParams, generateUrl } from 'tools/services';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { ProviderEditSocialLinksAdd } from 'components/account';
+import {
+  AccountNavigation,
+  ProviderEditSocialLinksAdd,
+} from 'components/account';
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const session = await getSession({ req });
@@ -39,6 +42,8 @@ const ProviderEditSocialLinksAddPage: NextPage = () => {
       <AppHead title={t('account:providers.title', { count: 1 })} />
 
       <MainLayout>
+        <AccountNavigation />
+
         <PageLayout>
           <Breadcrumbs
             items={[

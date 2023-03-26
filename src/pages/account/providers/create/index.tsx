@@ -6,7 +6,7 @@ import { routes } from 'config';
 import { useProtectedPage } from 'tools/hooks';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { AppHead, Breadcrumbs } from 'ui';
-import { ProviderCreate } from 'components/account';
+import { AccountNavigation, ProviderCreate } from 'components/account';
 import { generateUrl } from 'tools/services';
 
 export const getServerSideProps: GetServerSideProps = async ({
@@ -44,6 +44,8 @@ const ProviderCreatePage: NextPage = () => {
       <AppHead title={t('account:providers.title', { count: 1 })} />
 
       <MainLayout>
+        <AccountNavigation />
+
         <PageLayout>
           <Breadcrumbs
             items={[

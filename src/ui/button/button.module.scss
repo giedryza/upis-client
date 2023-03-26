@@ -20,6 +20,8 @@
   transition-duration: var(--transition-duration-md);
   transition-property: color, background-color, box-shadow;
 
+  @include spacing(x, 0.5em);
+
   @media screen and (-ms-high-contrast: active) {
     border: 2px solid currentColor;
   }
@@ -146,29 +148,6 @@
     }
   }
 
-  &.icon {
-    &-left,
-    &-right {
-      @include spacing(x, 0.5em);
-    }
-
-    &-top,
-    &-bottom {
-      flex-direction: column;
-      min-width: auto;
-      padding: 0.5em;
-
-      font-weight: 600;
-
-      @include spacing(y, 0.25em);
-
-      .icon {
-        width: 2em;
-        height: 2em;
-      }
-    }
-  }
-
   &.xs {
     font-size: 1.2rem;
   }
@@ -225,7 +204,7 @@
   fill: currentColor;
 }
 
-.iconButton {
+.icon-button {
   width: 2.5em;
   min-width: auto;
   height: 2.5em;

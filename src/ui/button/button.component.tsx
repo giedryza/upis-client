@@ -21,7 +21,7 @@ export const Button: FC<Props> = ({
   const content = useMemo(
     () => (
       <>
-        {icon && ['left', 'top'].includes(iconPlacement) ? (
+        {icon && ['left'].includes(iconPlacement) ? (
           <Icon
             name={icon}
             className={styles.icon}
@@ -32,7 +32,7 @@ export const Button: FC<Props> = ({
 
         {label ? <span>{label}</span> : null}
 
-        {icon && ['right', 'bottom'].includes(iconPlacement) ? (
+        {icon && ['right'].includes(iconPlacement) ? (
           <Icon
             name={icon}
             className={styles.icon}
@@ -50,10 +50,9 @@ export const Button: FC<Props> = ({
     styles.ripple,
     styles[variant],
     styles[size],
-    styles[`icon-${iconPlacement}`],
     styles[`text-${textAlign}`],
     styles[`width-${width}`],
-    icon && !label && styles.iconButton
+    icon && !label && styles['icon-button']
   );
 
   if (rest.as === 'button') {

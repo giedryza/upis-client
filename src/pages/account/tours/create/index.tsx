@@ -6,7 +6,7 @@ import { routes } from 'config';
 import { useProtectedPage } from 'tools/hooks';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { AppHead, Breadcrumbs } from 'ui';
-import { TourCreate } from 'components/account';
+import { AccountNavigation, TourCreate } from 'components/account';
 import { generateUrl } from 'tools/services';
 
 export const getServerSideProps: GetServerSideProps = async ({
@@ -44,6 +44,8 @@ const ToursCreatePage: NextPage = () => {
       <AppHead title={t('account:tours.title', { count: 1 })} />
 
       <MainLayout>
+        <AccountNavigation />
+
         <PageLayout>
           <Breadcrumbs
             items={[

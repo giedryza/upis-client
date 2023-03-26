@@ -7,7 +7,10 @@ import { useRouteParams, generateUrl } from 'tools/services';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { ProviderEditAmenitiesAdd } from 'components/account';
+import {
+  AccountNavigation,
+  ProviderEditAmenitiesAdd,
+} from 'components/account';
 
 const ProviderEditAmenitiesAddPage: NextPage = () => {
   const { t } = useTranslation();
@@ -20,6 +23,8 @@ const ProviderEditAmenitiesAddPage: NextPage = () => {
       <AppHead title={t('account:providers.title', { count: 1 })} />
 
       <MainLayout>
+        <AccountNavigation />
+
         <PageLayout>
           <Breadcrumbs
             items={[

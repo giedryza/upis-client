@@ -1,15 +1,15 @@
 import { FC } from 'react';
-import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
 import { generateUrl } from 'tools/services';
-import { Icon, IconName } from 'ui';
+import { Container, Icon, IconName } from 'ui';
 
 import styles from './navigation.module.scss';
 
-export const Navigation: FC = () => {
+export const AccountNavigation: FC = () => {
   const { t } = useTranslation();
   const { pathname } = useRouter();
 
@@ -33,28 +33,30 @@ export const Navigation: FC = () => {
 
   return (
     <nav
-      className={styles.navigation}
+      className={styles.nav}
       aria-label={t('common:layout.nav.account.title')}
     >
-      <ul className={styles.list}>
-        {links.map((link) => (
-          <li key={link.label}>
-            <Link
-              href={link.url}
-              className={styles.link}
-              {...(pathname.includes(link.url) && { 'aria-current': 'page' })}
-            >
-              <Icon
-                name={link.icon}
-                className={styles.icon}
-                focusable={false}
-                aria-hidden
-              />
-              <span>{link.label}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <Container>
+        <ul className={styles.links}>
+          {links.map((link) => (
+            <li key={link.url} className={styles.item}>
+              <Link
+                href={link.url}
+                className={styles.link}
+                {...(pathname.includes(link.url) && { 'aria-current': 'page' })}
+              >
+                <Icon
+                  name={link.icon}
+                  className={styles.icon}
+                  focusable={false}
+                  aria-hidden
+                />
+                <span>{link.label}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Container>
     </nav>
   );
 };

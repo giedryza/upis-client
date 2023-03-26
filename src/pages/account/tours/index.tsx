@@ -8,7 +8,7 @@ import { getQueryParams, generateUrl } from 'tools/services';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { Tours } from 'components/account';
+import { AccountNavigation, Tours } from 'components/account';
 import { getLoaders, toursKeys } from 'domain/tours';
 
 const ToursPage: NextPage = () => {
@@ -21,6 +21,8 @@ const ToursPage: NextPage = () => {
       <AppHead title={t('account:tours.title', { count: 2 })} />
 
       <MainLayout>
+        <AccountNavigation />
+
         <PageLayout>
           <Breadcrumbs
             items={[

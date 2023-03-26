@@ -7,7 +7,7 @@ import { generateUrl } from 'tools/services';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { ProfileEditSecurity } from 'components/account';
+import { AccountNavigation, ProfileEditSecurity } from 'components/account';
 
 const ProfileEditSecurityPage: NextPage = () => {
   const { t } = useTranslation();
@@ -19,6 +19,8 @@ const ProfileEditSecurityPage: NextPage = () => {
       <AppHead title={t('account:profile.title')} />
 
       <MainLayout>
+        <AccountNavigation />
+
         <PageLayout>
           <Breadcrumbs
             items={[
