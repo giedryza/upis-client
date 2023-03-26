@@ -13,7 +13,10 @@ import { getRouteParams, generateUrl } from 'tools/services';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { ProviderEditAmenitiesEdit } from 'components/account';
+import {
+  AccountNavigation,
+  ProviderEditAmenitiesEdit,
+} from 'components/account';
 import { amenitiesKeys, getLoaders } from 'domain/amenities';
 
 interface Props {
@@ -70,6 +73,8 @@ const ProviderEditAmenitiesEditPage: NextPage<
       <AppHead title={t('account:providers.title', { count: 1 })} />
 
       <MainLayout>
+        <AccountNavigation />
+
         <PageLayout>
           <Breadcrumbs
             items={[

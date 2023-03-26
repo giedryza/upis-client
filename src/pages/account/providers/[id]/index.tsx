@@ -13,7 +13,7 @@ import { getRouteParams, generateUrl } from 'tools/services';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { Provider } from 'components/account';
+import { AccountNavigation, Provider } from 'components/account';
 import { providersKeys, getLoaders } from 'domain/providers';
 
 interface Props {
@@ -67,6 +67,8 @@ const ProviderPage: NextPage<
       <AppHead title={t('account:providers.title', { count: 1 })} />
 
       <MainLayout>
+        <AccountNavigation />
+
         <PageLayout>
           <Breadcrumbs
             items={[

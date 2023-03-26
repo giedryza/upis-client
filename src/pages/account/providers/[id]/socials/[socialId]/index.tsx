@@ -13,7 +13,10 @@ import { getRouteParams, generateUrl } from 'tools/services';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { ProviderEditSocialLinksEdit } from 'components/account';
+import {
+  AccountNavigation,
+  ProviderEditSocialLinksEdit,
+} from 'components/account';
 import { getLoaders, providersKeys } from 'domain/providers';
 
 interface Props {
@@ -70,6 +73,8 @@ const ProviderEditSocialLinksEditPage: NextPage<
       <AppHead title={t('account:providers.title', { count: 1 })} />
 
       <MainLayout>
+        <AccountNavigation />
+
         <PageLayout>
           <Breadcrumbs
             items={[

@@ -8,7 +8,7 @@ import { providersKeys, getLoaders } from 'domain/providers';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
-import { Providers } from 'components/account';
+import { AccountNavigation, Providers } from 'components/account';
 import { generateUrl, getQueryParams } from 'tools/services';
 
 const ProvidersPage: NextPage = () => {
@@ -21,6 +21,8 @@ const ProvidersPage: NextPage = () => {
       <AppHead title={t('account:providers.title', { count: 2 })} />
 
       <MainLayout>
+        <AccountNavigation />
+
         <PageLayout>
           <Breadcrumbs
             items={[
