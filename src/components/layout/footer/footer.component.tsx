@@ -20,7 +20,7 @@ export const Footer: FC = () => {
   const { locale: currentLocale, asPath, pathname, query, push } = useRouter();
   const { isNavigating } = useIsNavigating();
 
-  const { data: session } = useSession();
+  const { status, data: session } = useSession();
 
   const NAVIGATION: Array<{
     title: string;
@@ -29,49 +29,51 @@ export const Footer: FC = () => {
     {
       title: t('common:layout.menu.account'),
       links:
-        session?.user.role === 'user'
+        status !== 'authenticated'
           ? [
-              {
-                label: t('common:layout.menu.profile'),
-                url: generateUrl(routes.account.profile.index),
-              },
-            ]
-          : session?.user.role === 'manager'
-          ? [
-              {
-                label: t('common:layout.menu.profile'),
-                url: generateUrl(routes.account.profile.index),
-              },
-              {
-                label: t('common:layout.menu.providers'),
-                url: generateUrl(routes.account.providers.index),
-              },
-              {
-                label: t('common:layout.menu.tours'),
-                url: generateUrl(routes.account.tours.index),
-              },
-            ]
-          : session?.user.role === 'admin'
-          ? [
-              {
-                label: t('common:layout.menu.profile'),
-                url: generateUrl(routes.account.profile.index),
-              },
-              {
-                label: t('common:layout.menu.providers'),
-                url: generateUrl(routes.account.providers.index),
-              },
-              {
-                label: t('common:layout.menu.tours'),
-                url: generateUrl(routes.account.tours.index),
-              },
-            ]
-          : [
               {
                 label: t('common:layout.menu.signin'),
                 url: generateUrl(routes.auth.signin),
               },
-            ],
+            ]
+          : session.user.role === 'user'
+          ? [
+              {
+                label: t('common:layout.menu.profile'),
+                url: generateUrl(routes.account.profile.index),
+              },
+            ]
+          : session.user.role === 'manager'
+          ? [
+              {
+                label: t('common:layout.menu.profile'),
+                url: generateUrl(routes.account.profile.index),
+              },
+              {
+                label: t('common:layout.menu.providers'),
+                url: generateUrl(routes.account.providers.index),
+              },
+              {
+                label: t('common:layout.menu.tours'),
+                url: generateUrl(routes.account.tours.index),
+              },
+            ]
+          : session.user.role === 'admin'
+          ? [
+              {
+                label: t('common:layout.menu.profile'),
+                url: generateUrl(routes.account.profile.index),
+              },
+              {
+                label: t('common:layout.menu.providers'),
+                url: generateUrl(routes.account.providers.index),
+              },
+              {
+                label: t('common:layout.menu.tours'),
+                url: generateUrl(routes.account.tours.index),
+              },
+            ]
+          : [],
     },
     {
       title: t('common:layout.footer.sections.contacts.title'),

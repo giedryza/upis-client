@@ -14,10 +14,12 @@ export const AccountNavigation: FC = () => {
   const { t } = useTranslation();
   const { pathname } = useRouter();
 
-  const { data: session } = useSession();
+  const { status, data: session } = useSession();
 
   const links: { label: string; icon: IconName; url: string }[] =
-    session?.user.role === 'user'
+    status !== 'authenticated'
+      ? []
+      : session.user.role === 'user'
       ? [
           {
             label: t('account:profile.title'),
@@ -25,7 +27,7 @@ export const AccountNavigation: FC = () => {
             url: generateUrl(routes.account.profile.index),
           },
         ]
-      : session?.user.role === 'manager'
+      : session.user.role === 'manager'
       ? [
           {
             label: t('account:profile.title'),
@@ -43,7 +45,7 @@ export const AccountNavigation: FC = () => {
             url: generateUrl(routes.account.tours.index),
           },
         ]
-      : session?.user.role === 'admin'
+      : session.user.role === 'admin'
       ? [
           {
             label: t('account:profile.title'),
