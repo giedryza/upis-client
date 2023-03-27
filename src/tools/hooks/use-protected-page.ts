@@ -4,15 +4,22 @@ import { useSession } from 'next-auth/react';
 
 import { routes } from 'config';
 import { generateUrl } from 'tools/services/url';
+import { Role } from 'domain/users';
 
-export const useProtectedPage = () => {
+export const useProtectedPage = (roles: Role[]) => {
   const { push } = useRouter();
 
-  const { status } = useSession();
+  const { status, data: session } = useSession();
 
   useEffect(() => {
     if (status !== 'authenticated') {
       push(generateUrl(routes.home));
+
+      return;
     }
-  }, [status, push]);
+
+    if (!roles.includes(session.user.role)) {
+      push(generateUrl(routes.account.profile.index));
+    }
+  }, [status, push, roles, session?.user.role]);
 };

@@ -14,7 +14,7 @@ import { generateUrl, getQueryParams } from 'tools/services';
 const ProvidersPage: NextPage = () => {
   const { t } = useTranslation();
 
-  useProtectedPage();
+  useProtectedPage(['manager', 'admin']);
 
   return (
     <>

@@ -35,7 +35,7 @@ const ProviderEditSocialLinksAddPage: NextPage = () => {
   const { t } = useTranslation();
   const { id } = useRouteParams(routes.account.providers.one.socials.add);
 
-  useProtectedPage();
+  useProtectedPage(['manager', 'admin']);
 
   return (
     <>

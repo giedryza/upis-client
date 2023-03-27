@@ -60,7 +60,7 @@ const ProviderPage: NextPage<
 > = ({ params }) => {
   const { t } = useTranslation();
 
-  useProtectedPage();
+  useProtectedPage(['manager', 'admin']);
 
   return (
     <>

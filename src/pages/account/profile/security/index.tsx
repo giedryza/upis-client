@@ -12,7 +12,7 @@ import { AccountNavigation, ProfileEditSecurity } from 'components/account';
 const ProfileEditSecurityPage: NextPage = () => {
   const { t } = useTranslation();
 
-  useProtectedPage();
+  useProtectedPage(['user', 'manager', 'admin']);
 
   return (
     <>
