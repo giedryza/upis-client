@@ -1,8 +1,9 @@
 import { FC } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
-import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 
 import { Container, Divider, SelectInput } from 'ui';
 import { cookies, generateUrl } from 'tools/services';
@@ -19,22 +20,58 @@ export const Footer: FC = () => {
   const { locale: currentLocale, asPath, pathname, query, push } = useRouter();
   const { isNavigating } = useIsNavigating();
 
+  const { data: session } = useSession();
+
   const NAVIGATION: Array<{
     title: string;
     links: Array<{ label: string; url: string }>;
   }> = [
     {
-      title: t('common:layout.footer.sections.app.title'),
-      links: [
-        {
-          label: t('common:layout.footer.sections.app.become_provider'),
-          url: generateUrl(routes.account.providers.create),
-        },
-        {
-          label: t('common:layout.footer.sections.app.add_tour'),
-          url: generateUrl(routes.account.tours.create),
-        },
-      ],
+      title: t('common:layout.menu.account'),
+      links:
+        session?.user.role === 'user'
+          ? [
+              {
+                label: t('common:layout.menu.profile'),
+                url: generateUrl(routes.account.profile.index),
+              },
+            ]
+          : session?.user.role === 'manager'
+          ? [
+              {
+                label: t('common:layout.menu.profile'),
+                url: generateUrl(routes.account.profile.index),
+              },
+              {
+                label: t('common:layout.menu.providers'),
+                url: generateUrl(routes.account.providers.index),
+              },
+              {
+                label: t('common:layout.menu.tours'),
+                url: generateUrl(routes.account.tours.index),
+              },
+            ]
+          : session?.user.role === 'admin'
+          ? [
+              {
+                label: t('common:layout.menu.profile'),
+                url: generateUrl(routes.account.profile.index),
+              },
+              {
+                label: t('common:layout.menu.providers'),
+                url: generateUrl(routes.account.providers.index),
+              },
+              {
+                label: t('common:layout.menu.tours'),
+                url: generateUrl(routes.account.tours.index),
+              },
+            ]
+          : [
+              {
+                label: t('common:layout.menu.signin'),
+                url: generateUrl(routes.auth.signin),
+              },
+            ],
     },
     {
       title: t('common:layout.footer.sections.contacts.title'),

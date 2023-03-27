@@ -33,7 +33,6 @@
       }
     },
     "menu": {
-      "add_tour": "Pridėti maršrutą",
       "account": "Mano paskyra",
       "profile": "Profilis",
       "providers": "Tiekėjai",
@@ -48,11 +47,6 @@
       "nav": "Papildoma navigacija",
       "slogan": "Baidarių maršrutų paieška",
       "sections": {
-        "app": {
-          "title": "Aplikacija",
-          "become_provider": "Tapti tiekėju",
-          "add_tour": "Pridėti maršrutą"
-        },
         "contacts": {
           "title": "Kontaktai"
         }
