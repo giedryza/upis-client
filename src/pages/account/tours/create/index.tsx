@@ -37,7 +37,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 const ToursCreatePage: NextPage = () => {
   const { t } = useTranslation();
 
-  useProtectedPage();
+  useProtectedPage(['manager', 'admin']);
 
   return (
     <>

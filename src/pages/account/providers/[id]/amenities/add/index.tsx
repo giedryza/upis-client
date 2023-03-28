@@ -16,7 +16,7 @@ const ProviderEditAmenitiesAddPage: NextPage = () => {
   const { t } = useTranslation();
   const { id } = useRouteParams(routes.account.providers.one.amenities.add);
 
-  useProtectedPage();
+  useProtectedPage(['manager', 'admin']);
 
   return (
     <>

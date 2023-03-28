@@ -5,12 +5,12 @@ import { Modal } from 'ui';
 
 import { Props } from './confirmation-modal.types';
 
-export const ConfirmationModal: FC<Props> = ({ prompt, closeModal }) => {
+export const ConfirmationModal: FC<Props> = ({ prompt, title, closeModal }) => {
   const { t } = useTranslation();
 
   return (
     <Modal.Content
-      title={t('common:components.confirm.title')}
+      title={title ?? t('common:components.confirm.title')}
       actions={[
         {
           as: 'button',

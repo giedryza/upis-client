@@ -14,7 +14,7 @@ import { getLoaders, toursKeys } from 'domain/tours';
 const ToursPage: NextPage = () => {
   const { t } = useTranslation();
 
-  useProtectedPage();
+  useProtectedPage(['manager', 'admin']);
 
   return (
     <>

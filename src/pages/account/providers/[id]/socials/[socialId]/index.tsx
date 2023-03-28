@@ -66,7 +66,7 @@ const ProviderEditSocialLinksEditPage: NextPage<
 > = ({ params }) => {
   const { t } = useTranslation();
 
-  useProtectedPage();
+  useProtectedPage(['manager', 'admin']);
 
   return (
     <>

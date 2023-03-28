@@ -33,7 +33,6 @@
       }
     },
     "menu": {
-      "add_tour": "Add a tour",
       "account": "My account",
       "profile": "Profile",
       "providers": "Providers",
@@ -48,11 +47,6 @@
       "nav": "Footer navigation",
       "slogan": "Kayak tours search engine",
       "sections": {
-        "app": {
-          "title": "App",
-          "become_provider": "Become a provider",
-          "add_tour": "Add a tour"
-        },
         "contacts": {
           "title": "Contacts"
         }
@@ -63,6 +57,11 @@
     },
     "skip": {
       "main": "Skip to main content"
+    },
+    "become_provider": {
+      "action": "Become the provider",
+      "title": "Become the provider?",
+      "prompt": "As the provider you will be able to create your company profile and manage tours. After confirming go to your account where you will find all the necessary information and tools to get started."
     }
   },
   "components": {

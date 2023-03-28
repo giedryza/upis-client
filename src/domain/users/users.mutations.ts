@@ -51,3 +51,11 @@ export const useResetPassword = () => {
 
   return mutation;
 };
+
+export const useUpdateRole = () => {
+  const { loaders } = useLoaders();
+
+  const mutation = useMutation({ mutationFn: loaders.updateRole });
+
+  return mutation;
+};
