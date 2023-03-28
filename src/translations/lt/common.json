@@ -57,6 +57,11 @@
     },
     "skip": {
       "main": "Pereiti į pagrindinį turinį"
+    },
+    "become_provider": {
+      "action": "Tapti tiekėju",
+      "title": "Tapti tiekėju?",
+      "prompt": "Tapę tiekėju galėsite susikurti savo įmonės profilį ir valdyti maršrutus. Po patvirtinimo savo paskytoje rasite visą pradžiai reikalingą informaciją ir įrankius."
     }
   },
   "components": {

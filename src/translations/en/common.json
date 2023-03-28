@@ -57,6 +57,11 @@
     },
     "skip": {
       "main": "Skip to main content"
+    },
+    "become_provider": {
+      "action": "Become the provider",
+      "title": "Become the provider?",
+      "prompt": "As the provider you will be able to create your company profile and manage tours. After confirming go to your account where you will find all the necessary information and tools to get started."
     }
   },
   "components": {

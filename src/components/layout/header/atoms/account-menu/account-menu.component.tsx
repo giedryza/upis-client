@@ -6,15 +6,19 @@ import { useSession, signOut } from 'next-auth/react';
 import { routes } from 'config';
 import { generateUrl } from 'tools/services';
 import { Menu } from 'ui';
+import { useConfirm } from 'domain/confirm';
+import { useUpdateRole } from 'domain/users';
 
 export const AccountMenu: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
+  const { confirmation } = useConfirm();
 
   const { status, data: session } = useSession();
+  const { mutate: updateRole } = useUpdateRole();
 
   const signout = () => {
-    signOut({ redirect: false });
+    return signOut({ redirect: false });
   };
 
   return (
@@ -48,6 +52,29 @@ export const AccountMenu: FC = () => {
                     icon: 'user',
                     onClick: () =>
                       push(generateUrl(routes.account.profile.index)),
+                  },
+                  {
+                    id: 'become_provider',
+                    label: t('common:layout.become_provider.action'),
+                    icon: 'kayak',
+                    onClick: async () => {
+                      const { confirmed } = await confirmation(
+                        t('common:layout.become_provider.prompt'),
+                        t('common:layout.become_provider.title')
+                      );
+
+                      if (confirmed) {
+                        updateRole(
+                          { role: 'manager' },
+                          {
+                            onSuccess: async () => {
+                              await signout();
+                              push(routes.auth.signin);
+                            },
+                          }
+                        );
+                      }
+                    },
                   },
                 ],
               },

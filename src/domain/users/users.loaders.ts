@@ -9,7 +9,7 @@ import {
   loadersFactory,
 } from 'tools/services';
 
-import { Session } from './users.types';
+import { Role, Session } from './users.types';
 
 interface Signin {
   email: string;
@@ -41,6 +41,10 @@ interface ResetPassword {
   userId: string;
   token: string;
   password: string;
+}
+
+interface UpdateRole {
+  role: Role;
 }
 
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
@@ -104,5 +108,12 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         }),
         locale,
       }).post(),
+    updateRole: ({ role }: UpdateRole) =>
+      new Request(generateUrl(endpoints.users.role), {
+        body: getJsonBody({
+          role,
+        }),
+        locale,
+      }).patch(),
   },
 }));

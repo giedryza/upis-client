@@ -5,11 +5,12 @@ export const useConfirm = () => {
   const { openModal } = useModalContext();
 
   const confirmation = async (
-    prompt: string
+    prompt: string,
+    title?: string
   ): Promise<{ confirmed: boolean }> => {
     const { action } = await openModal({
       component: ConfirmationModal,
-      props: { prompt },
+      props: { prompt, title },
     });
 
     if (action === 'CONFIRM') return { confirmed: true };
