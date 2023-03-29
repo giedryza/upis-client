@@ -1,4 +1,5 @@
 export * from './a11y';
+export * from './auth';
 export * from './cookies';
 export * from './font';
 export * from './images';
