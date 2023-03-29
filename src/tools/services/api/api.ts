@@ -5,15 +5,9 @@ import { stringifyUrl } from 'query-string';
 import { APP } from 'config';
 import { isServer } from 'tools/common';
 
-import {
-  ApiVersion,
-  Config,
-  Method,
-  ApiError,
-  ApiResponse,
-} from './request.types';
+import { ApiVersion, Config, Method, ApiError, ApiResponse } from './api.types';
 
-class Request<ResponseData = any, ResponseMeta = any> {
+class Request<ResponseData, ResponseMeta> {
   #method: Method = 'GET';
 
   #version: ApiVersion = 'v1';
