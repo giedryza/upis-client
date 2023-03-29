@@ -1,5 +1,3 @@
-import { IncomingMessage } from 'http';
-
 import { endpoints } from 'config';
 import {
   generateUrl,
@@ -7,7 +5,7 @@ import {
   getJsonBody,
   loadersFactory,
 } from 'tools/services';
-import { Currency } from 'types/common';
+import { AppRequest, Currency } from 'types/common';
 
 import { Amenity } from './amenities.types';
 
@@ -40,7 +38,7 @@ interface DeleteAmenity {
 
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
   loaders: {
-    getAmenity: ({ req, id }: { req?: IncomingMessage; id: string }) =>
+    getAmenity: ({ req, id }: { req?: AppRequest; id: string }) =>
       new Request<Amenity>(generateUrl(endpoints.amenities.one, { id }), {
         req,
         locale,

@@ -1,5 +1,3 @@
-import { IncomingMessage } from 'http';
-
 import { endpoints } from 'config';
 import {
   generateUrl,
@@ -7,6 +5,7 @@ import {
   loadersFactory,
   getJsonBody,
 } from 'tools/services';
+import { AppRequest } from 'types/common';
 
 import { Image } from './images.types';
 
@@ -23,7 +22,7 @@ interface DeleteImage {
 
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
   loaders: {
-    getImage: ({ req, id }: { req?: IncomingMessage; id: string }) =>
+    getImage: ({ req, id }: { req?: AppRequest; id: string }) =>
       new Request<Image>(generateUrl(endpoints.images.one, { id }), {
         req,
         locale,
