@@ -5,11 +5,11 @@ import {
 } from 'next';
 import useTranslation from 'next-translate/useTranslation';
 import { Session } from 'next-auth';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth/next';
 import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 
 import { routes } from 'config';
-import { getRouteParams, generateUrl } from 'tools/services';
+import { getRouteParams, generateUrl, authOptions } from 'tools/services';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
@@ -24,10 +24,11 @@ interface Props {
 
 export const getServerSideProps: GetServerSideProps<Props> = async ({
   req,
+  res,
   params,
   locale,
 }) => {
-  const session = await getSession({ req });
+  const session = await getServerSession(req, res, authOptions);
 
   if (!session) {
     return {

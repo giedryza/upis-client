@@ -1,5 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth/next';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
@@ -7,7 +7,7 @@ import { useGuestPage } from 'tools/hooks';
 import { AppHead } from 'ui';
 import { PasswordReset } from 'components/auth';
 import { PageLayout, MainLayout } from 'layouts';
-import { generateUrl } from 'tools/services';
+import { authOptions, generateUrl } from 'tools/services';
 
 const PasswordResetPage: NextPage = () => {
   const { t } = useTranslation();
@@ -29,8 +29,8 @@ const PasswordResetPage: NextPage = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const session = await getServerSession(req, res, authOptions);
 
   if (session) {
     return {

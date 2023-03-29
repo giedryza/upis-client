@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next';
 import useTranslation from 'next-translate/useTranslation';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth/next';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 
 import { routes } from 'config';
@@ -9,7 +9,7 @@ import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { AccountNavigation, Providers } from 'components/account';
-import { generateUrl, getQueryParams } from 'tools/services';
+import { authOptions, generateUrl, getQueryParams } from 'tools/services';
 
 const ProvidersPage: NextPage = () => {
   const { t } = useTranslation();
@@ -45,10 +45,11 @@ const ProvidersPage: NextPage = () => {
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
+  res,
   query,
   locale,
 }) => {
-  const session = await getSession({ req });
+  const session = await getServerSession(req, res, authOptions);
 
   if (!session) {
     return {

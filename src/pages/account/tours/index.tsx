@@ -1,10 +1,10 @@
 import { GetServerSideProps, NextPage } from 'next';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth/next';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
-import { getQueryParams, generateUrl } from 'tools/services';
+import { getQueryParams, generateUrl, authOptions } from 'tools/services';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
@@ -45,10 +45,11 @@ const ToursPage: NextPage = () => {
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
+  res,
   query,
   locale,
 }) => {
-  const session = await getSession({ req });
+  const session = await getServerSession(req, res, authOptions);
 
   if (!session) {
     return {

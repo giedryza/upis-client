@@ -1,5 +1,5 @@
 import { NextPage, GetServerSideProps } from 'next';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth/next';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
@@ -7,7 +7,7 @@ import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { AccountNavigation, Profile } from 'components/account';
-import { generateUrl } from 'tools/services';
+import { generateUrl, authOptions } from 'tools/services';
 
 const ProfilePage: NextPage = () => {
   const { t } = useTranslation();
@@ -41,8 +41,8 @@ const ProfilePage: NextPage = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const session = await getServerSession(req, res, authOptions);
 
   if (!session) {
     return {

@@ -1,9 +1,9 @@
 import { GetServerSideProps, NextPage } from 'next';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth/next';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 
 import { routes } from 'config';
-import { getRouteParams } from 'tools/services';
+import { authOptions, getRouteParams } from 'tools/services';
 import { AppHead } from 'ui';
 import { TourDetails } from 'components/tour';
 import { MainLayout } from 'layouts';
@@ -25,10 +25,11 @@ const TourPage: NextPage = () => {
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
+  res,
   params,
   locale,
 }) => {
-  const session = await getSession({ req });
+  const session = await getServerSession(req, res, authOptions);
 
   const queryClient = new QueryClient();
   const { id } = getRouteParams(routes.tours.one.index, params);
