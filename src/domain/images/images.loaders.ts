@@ -1,10 +1,5 @@
 import { endpoints } from 'config';
-import {
-  generateUrl,
-  Request,
-  loadersFactory,
-  getJsonBody,
-} from 'tools/services';
+import { generateUrl, loadersFactory, getJsonBody, api } from 'tools/services';
 import { AppRequest } from 'types/common';
 
 import { Image } from './images.types';
@@ -23,18 +18,18 @@ interface DeleteImage {
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
   loaders: {
     getImage: ({ req, id }: { req?: AppRequest; id: string }) =>
-      new Request<Image>(generateUrl(endpoints.images.one, { id }), {
+      api('get')<Image>(generateUrl(endpoints.images.one, { id }), {
         req,
         locale,
-      }).get(),
+      }),
     updateImage: ({ id, form }: UpdateImage) =>
-      new Request<Image>(generateUrl(endpoints.images.one, { id }), {
+      api('patch')<Image>(generateUrl(endpoints.images.one, { id }), {
         body: getJsonBody(form),
         locale,
-      }).patch(),
+      }),
     deleteImage: ({ id }: DeleteImage) =>
-      new Request(generateUrl(endpoints.images.one, { id }), {
+      api('delete')(generateUrl(endpoints.images.one, { id }), {
         locale,
-      }).delete(),
+      }),
   },
 }));

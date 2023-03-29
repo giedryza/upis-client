@@ -13,7 +13,7 @@ import {
   ApiResponse,
 } from './request.types';
 
-export class Request<ResponseData = any, ResponseMeta = any> {
+class Request<ResponseData = any, ResponseMeta = any> {
   #method: Method = 'GET';
 
   #version: ApiVersion = 'v1';
@@ -136,3 +136,10 @@ export class Request<ResponseData = any, ResponseMeta = any> {
     return this.exec();
   };
 }
+
+export const api =
+  (method: Lowercase<Method>) =>
+  <ResponseData = any, ResponseMeta = any>(
+    ...params: ConstructorParameters<typeof Request>
+  ) =>
+    new Request<ResponseData, ResponseMeta>(...params)[method]();

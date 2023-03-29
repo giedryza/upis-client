@@ -1,10 +1,5 @@
 import { endpoints } from 'config';
-import {
-  generateUrl,
-  Request,
-  getJsonBody,
-  loadersFactory,
-} from 'tools/services';
+import { generateUrl, getJsonBody, loadersFactory, api } from 'tools/services';
 import { AppRequest, Currency } from 'types/common';
 
 import { Amenity } from './amenities.types';
@@ -39,23 +34,23 @@ interface DeleteAmenity {
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
   loaders: {
     getAmenity: ({ req, id }: { req?: AppRequest; id: string }) =>
-      new Request<Amenity>(generateUrl(endpoints.amenities.one, { id }), {
+      api('get')<Amenity>(generateUrl(endpoints.amenities.one, { id }), {
         req,
         locale,
-      }).get(),
+      }),
     addAmenity: ({ form }: AddAmenity) =>
-      new Request<Amenity>(generateUrl(endpoints.amenities.index), {
+      api('post')<Amenity>(generateUrl(endpoints.amenities.index), {
         body: getJsonBody(form),
         locale,
-      }).post(),
+      }),
     updateAmenity: ({ id, form }: UpdateAmenity) =>
-      new Request<Amenity>(generateUrl(endpoints.amenities.one, { id }), {
+      api('patch')<Amenity>(generateUrl(endpoints.amenities.one, { id }), {
         body: getJsonBody(form),
         locale,
-      }).patch(),
+      }),
     deleteAmenity: ({ id }: DeleteAmenity) =>
-      new Request(generateUrl(endpoints.amenities.one, { id }), {
+      api('delete')(generateUrl(endpoints.amenities.one, { id }), {
         locale,
-      }).delete(),
+      }),
   },
 }));

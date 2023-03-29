@@ -1,10 +1,10 @@
 import { endpoints } from 'config';
 import {
   generateUrl,
-  Request,
   getFormDataBody,
   getJsonBody,
   loadersFactory,
+  api,
 } from 'tools/services';
 import { Pagination } from 'types/api';
 import { AppRequest } from 'types/common';
@@ -64,7 +64,7 @@ interface DeleteProvider {
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
   loaders: {
     getProviders: ({ req, params }: GetProviders = {}) =>
-      new Request<Provider[], Pagination>(
+      api('get')<Provider[], Pagination>(
         generateUrl(endpoints.providers.index),
         {
           req,
@@ -74,27 +74,27 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
           },
           locale,
         }
-      ).get(),
+      ),
     getProvider: ({ req, id }: GetProvider) =>
-      new Request<Provider | null>(
+      api('get')<Provider | null>(
         generateUrl(endpoints.providers.one.index, { id }),
         { req, locale }
-      ).get(),
+      ),
     createProvider: ({ form }: CreateProvider) =>
-      new Request<Provider>(generateUrl(endpoints.providers.index), {
+      api('post')<Provider>(generateUrl(endpoints.providers.index), {
         body: getJsonBody(form),
         locale,
-      }).post(),
+      }),
     updateProvider: ({ id, form }: UpdateProvider) =>
-      new Request<Provider>(
+      api('patch')<Provider>(
         generateUrl(endpoints.providers.one.index, { id }),
         {
           body: getJsonBody(form),
           locale,
         }
-      ).patch(),
+      ),
     updateLocation: ({ id, form }: UpdateLocation) =>
-      new Request<Provider>(
+      api('patch')<Provider>(
         generateUrl(endpoints.providers.one.index, { id }),
         {
           body: getJsonBody({
@@ -103,12 +103,15 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
           }),
           locale,
         }
-      ).patch(),
+      ),
     uploadLogo: ({ id, logo }: UploadLogo) =>
-      new Request<Provider>(generateUrl(endpoints.providers.one.logo, { id }), {
-        body: getFormDataBody([{ field: 'logo', value: logo }]),
-        locale,
-      }).patch(),
+      api('patch')<Provider>(
+        generateUrl(endpoints.providers.one.logo, { id }),
+        {
+          body: getFormDataBody([{ field: 'logo', value: logo }]),
+          locale,
+        }
+      ),
     addSocialLink: ({
       id,
       form,
@@ -116,13 +119,13 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       id: string;
       form: { url: string; type: SocialVariant };
     }) =>
-      new Request<Social>(
+      api('post')<Social>(
         generateUrl(endpoints.providers.one.socials, { id }),
         {
           body: getJsonBody(form),
           locale,
         }
-      ).post(),
+      ),
     updateSocialLink: ({
       form,
       id,
@@ -130,21 +133,21 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       id: string;
       form: { id: string; url: string; type: SocialVariant };
     }) =>
-      new Request<Social>(
+      api('patch')<Social>(
         generateUrl(endpoints.providers.one.socials, { id }),
         {
           body: getJsonBody(form),
           locale,
         }
-      ).patch(),
+      ),
     deleteSocialLink: ({ id, form }: { id: string; form: { id: string } }) =>
-      new Request(generateUrl(endpoints.providers.one.socials, { id }), {
+      api('delete')(generateUrl(endpoints.providers.one.socials, { id }), {
         body: getJsonBody(form),
         locale,
-      }).delete(),
+      }),
     deleteProvider: ({ id }: DeleteProvider) =>
-      new Request(generateUrl(endpoints.providers.one.index, { id }), {
+      api('delete')(generateUrl(endpoints.providers.one.index, { id }), {
         locale,
-      }).delete(),
+      }),
   },
 }));

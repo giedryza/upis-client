@@ -2,12 +2,7 @@ import { signIn } from 'next-auth/react';
 import getT from 'next-translate/getT';
 
 import { endpoints } from 'config';
-import {
-  generateUrl,
-  Request,
-  getJsonBody,
-  loadersFactory,
-} from 'tools/services';
+import { generateUrl, getJsonBody, loadersFactory, api } from 'tools/services';
 
 import { Role, Session } from './users.types';
 
@@ -50,10 +45,10 @@ interface UpdateRole {
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
   loaders: {
     signin: ({ email, password }: Signin) =>
-      new Request<Session>(endpoints.users.signin, {
+      api('post')<Session>(endpoints.users.signin, {
         body: getJsonBody({ email, password }),
         locale,
-      }).post(),
+      }),
     signinWithCredentials: async ({
       email,
       password,
@@ -71,49 +66,49 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       }
     },
     signup: ({ email, password, confirmPassword }: Signup) =>
-      new Request<Session>(generateUrl(endpoints.users.signup), {
+      api('post')<Session>(generateUrl(endpoints.users.signup), {
         body: getJsonBody({
           email,
           password,
           confirmPassword,
         }),
         locale,
-      }).post(),
+      }),
     updatePassword: ({
       currentPassword,
       newPassword,
       confirmPassword,
     }: UpdatePassword) =>
-      new Request(generateUrl(endpoints.users.password.update), {
+      api('patch')(generateUrl(endpoints.users.password.update), {
         body: getJsonBody({
           currentPassword,
           newPassword,
           confirmPassword,
         }),
         locale,
-      }).patch(),
+      }),
     forgotPassword: ({ email }: ForgotPassword) =>
-      new Request(generateUrl(endpoints.users.password.forgot), {
+      api('post')(generateUrl(endpoints.users.password.forgot), {
         body: getJsonBody({
           email,
         }),
         locale,
-      }).post(),
+      }),
     resetPassword: ({ userId, token, password }: ResetPassword) =>
-      new Request(generateUrl(endpoints.users.password.reset), {
+      api('post')(generateUrl(endpoints.users.password.reset), {
         body: getJsonBody({
           userId,
           token,
           password,
         }),
         locale,
-      }).post(),
+      }),
     updateRole: ({ role }: UpdateRole) =>
-      new Request(generateUrl(endpoints.users.role), {
+      api('patch')(generateUrl(endpoints.users.role), {
         body: getJsonBody({
           role,
         }),
         locale,
-      }).patch(),
+      }),
   },
 }));
