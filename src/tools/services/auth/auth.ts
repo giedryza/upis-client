@@ -2,7 +2,7 @@ import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 import { endpoints } from 'config';
-import { getJsonBody, Request } from 'tools/services';
+import { api, getJsonBody } from 'tools/services';
 import { Session } from 'domain/users';
 
 export const authOptions: NextAuthOptions = {
@@ -22,9 +22,9 @@ export const authOptions: NextAuthOptions = {
         const { email, password } = credentials;
 
         try {
-          const { data } = await new Request<Session>(endpoints.users.signin, {
+          const { data } = await api('post')<Session>(endpoints.users.signin, {
             body: getJsonBody({ email, password }),
-          }).post();
+          });
 
           return {
             ...data.user,

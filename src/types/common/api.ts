@@ -5,3 +5,7 @@ export type AppRequest = IncomingMessage & {
     [key: string]: string;
   }>;
 };
+
+export interface BaseEntity {
+  _id: string;
+}
