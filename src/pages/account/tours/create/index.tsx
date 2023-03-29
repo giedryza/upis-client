@@ -1,20 +1,21 @@
 import { GetServerSideProps, NextPage } from 'next';
 import useTranslation from 'next-translate/useTranslation';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth/next';
 
 import { routes } from 'config';
 import { useProtectedPage } from 'tools/hooks';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
 import { AppHead, Breadcrumbs } from 'ui';
 import { AccountNavigation, TourCreate } from 'components/account';
-import { generateUrl } from 'tools/services';
+import { authOptions, generateUrl } from 'tools/services';
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
+  res,
   locale,
   defaultLocale,
 }) => {
-  const session = await getSession({ req });
+  const session = await getServerSession(req, res, authOptions);
 
   if (!session) {
     return {

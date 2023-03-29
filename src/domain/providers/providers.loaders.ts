@@ -1,5 +1,3 @@
-import { IncomingMessage } from 'http';
-
 import { endpoints } from 'config';
 import {
   generateUrl,
@@ -9,6 +7,7 @@ import {
   loadersFactory,
 } from 'tools/services';
 import { Pagination } from 'types/api';
+import { AppRequest } from 'types/common';
 
 import {
   ProvidersFilters,
@@ -18,12 +17,12 @@ import {
 } from './providers.types';
 
 interface GetProviders {
-  req?: IncomingMessage;
+  req?: AppRequest;
   params?: Partial<ProvidersFilters>;
 }
 
 interface GetProvider {
-  req?: IncomingMessage;
+  req?: AppRequest;
   id: string;
 }
 

@@ -1,6 +1,4 @@
-import { IncomingMessage } from 'http';
-
-import { AppErrorData } from 'types/common';
+import { AppErrorData, AppRequest } from 'types/common';
 
 export type Method = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
 
@@ -8,7 +6,7 @@ export interface Config {
   headers?: Record<string, string>;
   body?: BodyInit;
   params?: Record<string, any>;
-  req?: IncomingMessage;
+  req?: AppRequest;
   credentials?: RequestCredentials;
   locale?: string;
 }

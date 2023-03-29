@@ -1,9 +1,9 @@
 import { NextPage, GetServerSideProps } from 'next';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth/next';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
-import { useRouteParams, generateUrl } from 'tools/services';
+import { useRouteParams, generateUrl, authOptions } from 'tools/services';
 import { useProtectedPage } from 'tools/hooks';
 import { AppHead, Breadcrumbs } from 'ui';
 import { MainLayout, AccountLayout, PageLayout } from 'layouts';
@@ -55,8 +55,8 @@ const ProviderEditAmenitiesAddPage: NextPage = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const session = await getServerSession(req, res, authOptions);
 
   if (!session) {
     return {

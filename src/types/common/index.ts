@@ -9,4 +9,5 @@ export * from './locales';
 export * from './money';
 export * from './next';
 export * from './promise';
+export * from './request';
 export * from './status';

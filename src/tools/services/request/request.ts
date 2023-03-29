@@ -1,4 +1,5 @@
 import { getSession, signOut } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
 import { stringifyUrl } from 'query-string';
 
 import { APP } from 'config';
@@ -63,7 +64,8 @@ export class Request<ResponseData = any, ResponseMeta = any> {
   #init = async (): Promise<RequestInit> => {
     const { headers = {}, body, req, locale } = this.config;
 
-    const session = await getSession({ req });
+    const session =
+      req && isServer() ? await getToken({ req }) : await getSession({ req });
 
     return {
       method: this.#method,

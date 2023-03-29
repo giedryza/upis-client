@@ -1,5 +1,3 @@
-import { IncomingMessage } from 'http';
-
 import { endpoints } from 'config';
 import {
   generateUrl,
@@ -8,7 +6,7 @@ import {
   loadersFactory,
   getFormDataBody,
 } from 'tools/services';
-import { Price } from 'types/common';
+import { AppRequest, Price } from 'types/common';
 import { Pagination } from 'types/api';
 
 import {
@@ -20,7 +18,7 @@ import {
 } from './tours.types';
 
 interface GetTours {
-  req?: IncomingMessage;
+  req?: AppRequest;
   params?: Partial<ToursFilters>;
 }
 
@@ -81,7 +79,7 @@ interface DeleteTour {
 }
 
 interface GetFiltersSummary {
-  req?: IncomingMessage;
+  req?: AppRequest;
 }
 
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
@@ -96,7 +94,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         },
         locale,
       }).get(),
-    getTour: ({ req, id }: { req?: IncomingMessage; id: string }) =>
+    getTour: ({ req, id }: { req?: AppRequest; id: string }) =>
       new Request<Tour | null>(generateUrl(endpoints.tours.one.index, { id }), {
         req,
         locale,

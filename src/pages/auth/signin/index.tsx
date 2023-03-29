@@ -1,9 +1,9 @@
 import { GetServerSideProps, NextPage } from 'next';
-import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth/next';
 import useTranslation from 'next-translate/useTranslation';
 
 import { routes } from 'config';
-import { generateUrl } from 'tools/services';
+import { authOptions, generateUrl } from 'tools/services';
 import { useGuestPage } from 'tools/hooks';
 import { AppHead } from 'ui';
 import { Signin } from 'components/auth';
@@ -29,8 +29,8 @@ const SigninPage: NextPage = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const session = await getServerSession(req, res, authOptions);
 
   if (session) {
     return {
