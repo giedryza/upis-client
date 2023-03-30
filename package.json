@@ -58,7 +58,7 @@
     "react-stately": "^3.21.0",
     "react-wrap-balancer": "^0.4.0",
     "use-debounce": "^9.0.3",
-    "zod": "^3.20.6"
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",
