@@ -66,8 +66,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   await queryClient.prefetchQuery(
     toursKeys.list({ ...filters, user: session.user.id }),
-    () =>
-      loaders.getTours({ req, params: { ...filters, user: session.user.id } })
+    () => loaders.getTours({ params: { ...filters, user: session.user.id } })
   );
 
   return {
