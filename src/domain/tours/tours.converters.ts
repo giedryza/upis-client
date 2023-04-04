@@ -1,15 +1,25 @@
-import { Converter } from 'types/common';
+import { Converter, GeoPoint } from 'types/common';
 import { Tour } from 'domain/tours/tours.types';
 
 import { getLoaders } from './tours.loaders';
 
-const convertTour = (tour: Tour): Tour => {
+const convertTour = (
+  tour: Tour & { departure: GeoPoint | null; arrival: GeoPoint | null }
+): Tour => {
   return {
     ...tour,
-    departure: {
-      ...tour.departure,
-      coordinates: tour.departure.coordinates ?? [],
-    },
+    departure: tour.departure
+      ? {
+          ...tour.departure,
+          coordinates: tour.departure?.coordinates ?? [],
+        }
+      : { coordinates: [] },
+    arrival: tour.arrival
+      ? {
+          ...tour.arrival,
+          coordinates: tour.arrival?.coordinates ?? [],
+        }
+      : { coordinates: [] },
     duration: tour.days > 1 ? null : tour.duration,
     photos: tour.primaryPhoto
       ? [...tour.photos].sort(
