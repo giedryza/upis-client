@@ -36,7 +36,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   const { loaders } = getLoaders(locale);
 
   await queryClient.prefetchQuery(toursKeys.detail(id), () =>
-    loaders.getTour({ req, id })
+    loaders.getTour({ id })
   );
 
   return {
