@@ -50,7 +50,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   const { loaders } = getLoaders(locale);
 
   await queryClient.prefetchQuery(amenitiesKeys.detail(amenityId), () =>
-    loaders.getAmenity({ req, id: amenityId })
+    loaders.getAmenity({ id: amenityId })
   );
 
   return {

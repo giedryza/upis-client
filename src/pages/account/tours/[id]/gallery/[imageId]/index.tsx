@@ -47,7 +47,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   const { loaders } = getLoaders(locale);
 
   await queryClient.prefetchQuery(imagesKeys.detail(imageId), () =>
-    loaders.getImage({ req, id: imageId })
+    loaders.getImage({ id: imageId })
   );
 
   return {
