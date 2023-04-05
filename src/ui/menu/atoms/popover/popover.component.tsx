@@ -1,5 +1,7 @@
 import { FC, PropsWithChildren, useRef } from 'react';
-import { DismissButton, FocusScope, usePopover } from 'react-aria';
+import { DismissButton, Overlay, usePopover } from 'react-aria';
+
+import { useEventListener } from 'tools/hooks';
 
 import { Props } from './popover.types';
 
@@ -20,13 +22,15 @@ export const Popover: FC<PropsWithChildren<Props>> = ({
     state
   );
 
+  useEventListener('scroll', state.close);
+
   return (
-    <FocusScope restoreFocus autoFocus={false}>
+    <Overlay>
       <div {...popoverProps} style={popoverProps.style} ref={ref}>
         <DismissButton onDismiss={state.close} />
         {children}
         <DismissButton onDismiss={state.close} />
       </div>
-    </FocusScope>
+    </Overlay>
   );
 };

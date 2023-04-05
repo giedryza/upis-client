@@ -7,11 +7,10 @@ import {
 } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import { SessionProvider } from 'next-auth/react';
-import { SSRProvider, I18nProvider } from 'react-aria';
+import { SSRProvider, I18nProvider, OverlayProvider } from 'react-aria';
 
 import { AppProps } from 'types/common';
 import { font, axe, store, queryClientConfig } from 'tools/services';
-import { Modal } from 'ui';
 import { AppLayout } from 'layouts';
 import { ProgressBar } from 'components/layout';
 import { Alerts } from 'components/alerts';
@@ -32,8 +31,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <Hydrate state={pageProps.dehydratedState}>
           <SessionProvider session={pageProps.session}>
             <SSRProvider>
-              <I18nProvider locale={locale}>
-                <Modal.OverlayProvider>
+              <OverlayProvider>
+                <I18nProvider locale={locale}>
                   <ModalProvider>
                     <AppLayout>
                       <style jsx global>{`
@@ -50,8 +49,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                       <LightboxOutlet />
                     </AppLayout>
                   </ModalProvider>
-                </Modal.OverlayProvider>
-              </I18nProvider>
+                </I18nProvider>
+              </OverlayProvider>
             </SSRProvider>
           </SessionProvider>
         </Hydrate>
