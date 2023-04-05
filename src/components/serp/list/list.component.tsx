@@ -38,8 +38,8 @@ export const SerpList: FC = () => {
     getItemKey: (index) => tours[index]?._id ?? index,
   });
 
-  const onEndReached = () => {
-    if (hasNextPage) fetchNextPage();
+  const onEndReached = (isEndReached: boolean) => {
+    if (isEndReached && hasNextPage) fetchNextPage();
   };
 
   return (
@@ -83,6 +83,7 @@ export const SerpList: FC = () => {
                         height={heightRatio * APP.serp.card.image.height}
                       />
                     }
+                    focusable
                   />
                 ) : tour ? (
                   <SerpCard tour={tour} userId={session?.user.id} />

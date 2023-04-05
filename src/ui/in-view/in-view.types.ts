@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 export interface Props {
-  onInView: () => void;
-  placeholder: ReactNode;
+  onInView: (isInView: boolean) => void;
+  placeholder?: ReactNode;
+  focusable?: boolean;
 }

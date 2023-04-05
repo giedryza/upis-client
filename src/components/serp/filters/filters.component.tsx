@@ -1,10 +1,10 @@
-import { FC, useRef } from 'react';
+import { FC, useRef, useState } from 'react';
 import { clsx } from 'clsx';
 import useTranslation from 'next-translate/useTranslation';
 
 import { APP } from 'config';
-import { useBreakpoints, useOverflowDimensions } from 'tools/hooks';
-import { Button } from 'ui';
+import { useBreakpoints } from 'tools/hooks';
+import { Button, InView } from 'ui';
 
 import {
   FilterAmenities,
@@ -25,10 +25,19 @@ export const SerpFilters: FC = () => {
   const { t } = useTranslation();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const { xs, md } = useBreakpoints();
-  const { containerWidth, totalWidth, offsetLeft, offsetRight } =
-    useOverflowDimensions(scrollContainerRef);
+
+  const [isVisible, setIsVisible] = useState<{ start: boolean; end: boolean }>({
+    start: false,
+    end: false,
+  });
 
   const items = [
+    <InView
+      onInView={(isInView) =>
+        setIsVisible((prev) => ({ ...prev, start: isInView }))
+      }
+      key="start"
+    />,
     ...(md ? [<ViewToggle key="view-toggle" />] : []),
     ...(xs
       ? [<FiltersModalTrigger key="modal-trigger" />]
@@ -43,11 +52,20 @@ export const SerpFilters: FC = () => {
           <FilterProviders key="providers" />,
         ]),
     <FiltersClear key="clear" />,
+    <InView
+      onInView={(isInView) =>
+        setIsVisible((prev) => ({ ...prev, end: isInView }))
+      }
+      key="end"
+    />,
   ] as const;
 
   const handleScroll = (direction: 'left' | 'right') => {
     scrollContainerRef.current?.scrollBy({
-      left: containerWidth * 0.5 * (direction === 'left' ? -1 : 1),
+      left:
+        scrollContainerRef.current.offsetWidth *
+        0.5 *
+        (direction === 'left' ? -1 : 1),
       behavior: 'smooth',
     });
   };
@@ -55,6 +73,19 @@ export const SerpFilters: FC = () => {
   return (
     <div className={styles.container} style={{ '--spacing': APP.serp.gridGap }}>
       <nav className={styles.nav} aria-label={t('serp:filters.title')}>
+        {!isVisible.start ? (
+          <div className={clsx(styles.controls, styles['-left'])}>
+            <Button
+              as="button"
+              icon="chevron-left"
+              size="xs"
+              variant="secondary"
+              onClick={() => handleScroll('left')}
+              aria-label={t('common:actions.forward')}
+            />
+          </div>
+        ) : null}
+
         <div
           className={clsx(styles.swiper, 'scrollbar-hidden')}
           ref={scrollContainerRef}
@@ -66,33 +97,17 @@ export const SerpFilters: FC = () => {
           </ul>
         </div>
 
-        {containerWidth < totalWidth ? (
-          <>
-            {offsetLeft ? (
-              <div className={clsx(styles.controls, styles['-left'])}>
-                <Button
-                  as="button"
-                  icon="chevron-left"
-                  size="xs"
-                  variant="secondary"
-                  onClick={() => handleScroll('left')}
-                  aria-label={t('common:actions.forward')}
-                />
-              </div>
-            ) : null}
-            {offsetRight ? (
-              <div className={clsx(styles.controls, styles['-right'])}>
-                <Button
-                  as="button"
-                  icon="chevron-right"
-                  size="xs"
-                  variant="secondary"
-                  onClick={() => handleScroll('right')}
-                  aria-label={t('common:actions.back')}
-                />
-              </div>
-            ) : null}
-          </>
+        {!isVisible.end ? (
+          <div className={clsx(styles.controls, styles['-right'])}>
+            <Button
+              as="button"
+              icon="chevron-right"
+              size="xs"
+              variant="secondary"
+              onClick={() => handleScroll('right')}
+              aria-label={t('common:actions.back')}
+            />
+          </div>
         ) : null}
       </nav>
     </div>
