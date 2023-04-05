@@ -147,7 +147,6 @@ export const FiltersModal: FC<Props> = ({ closeModal }) => {
               value={value}
               onChange={onChange}
               variant="primary"
-              expanded
             />
           )}
         />
