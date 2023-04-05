@@ -33,6 +33,8 @@ export const MenuButton = <T extends object>({
     <>
       <button
         {...mergeProps(buttonProps, focusProps)}
+        // prevent weird react-aria behaviour when page gets scrolled down when opening menu with a keyboard
+        onKeyDown={undefined}
         className={clsx(
           styles.button,
           isFocusVisible && styles['-focus'],
