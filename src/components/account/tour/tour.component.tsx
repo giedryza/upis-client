@@ -23,9 +23,9 @@ export const Tour: FC = () => {
 
       <Geography />
 
-      <Prices />
-
       <Details />
+
+      <Prices />
 
       <Amenities />
 
