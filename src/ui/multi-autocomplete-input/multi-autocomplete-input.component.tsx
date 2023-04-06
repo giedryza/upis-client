@@ -61,7 +61,6 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
       getLabelProps,
       getMenuProps,
       getInputProps,
-      getComboboxProps,
       highlightedIndex,
       getItemProps,
       selectedItem,
@@ -136,7 +135,7 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
                 </button>
               </div>
             ))}
-            <div className={styles.wrapper} {...getComboboxProps()}>
+            <div className={styles.wrapper}>
               <input
                 {...getInputProps(
                   getDropdownProps({
