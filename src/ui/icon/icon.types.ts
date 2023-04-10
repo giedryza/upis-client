@@ -66,6 +66,7 @@ export const logoIcons = [
   'logo-google',
   'logo-instagram',
   'logo-linkedin',
+  'logo-tiktok',
   'logo-twitter',
   'logo-youtube',
 ] as const;
