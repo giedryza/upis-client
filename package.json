@@ -15,6 +15,7 @@
     "start:storybook": "start-storybook -p 6006",
     "build": "next build",
     "build:storybook": "build-storybook",
+    "proxy:dev": "npx localtunnel --port 3000 --subdomain upis",
     "clean": "rimraf ./.next ./node_modules",
     "compile": "tsc",
     "browserslist": "npx browserslist",
