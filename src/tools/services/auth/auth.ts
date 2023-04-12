@@ -38,7 +38,19 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    jwt: async ({ token, user }) => {
+    jwt: async ({ token, user, session, trigger }) => {
+      if (trigger === 'update') {
+        return {
+          ...token,
+          ...(!!session && {
+            jwt: session.token,
+            id: session.user._id,
+            email: session.user.email,
+            role: session.user.role,
+          }),
+        };
+      }
+
       return {
         ...token,
         ...(!!user && {

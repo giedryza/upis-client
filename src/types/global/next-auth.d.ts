@@ -8,7 +8,11 @@ declare module 'next-auth' {
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
    */
   interface Session {
-    user: AppUser;
+    user: {
+      id: string;
+      email: string;
+      role: Role;
+    };
     jwt: string;
     expires: DefaultSession['expires'];
   }
