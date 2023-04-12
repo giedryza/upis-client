@@ -14,7 +14,7 @@ export const AccountMenu: FC = () => {
   const { push } = useRouter();
   const { confirmation } = useConfirm();
 
-  const { status, data: session } = useSession();
+  const { data: session, status, update } = useSession();
   const { mutate: updateRole } = useUpdateRole();
 
   const signout = () => {
@@ -67,9 +67,8 @@ export const AccountMenu: FC = () => {
                         updateRole(
                           { role: 'manager' },
                           {
-                            onSuccess: async () => {
-                              await signout();
-                              push(routes.auth.signin);
+                            onSuccess: ({ data }) => {
+                              update({ user: data.user, token: data.token });
                             },
                           }
                         );
