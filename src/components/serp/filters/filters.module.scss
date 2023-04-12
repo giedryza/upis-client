@@ -22,13 +22,23 @@
 }
 
 .list {
+  --gap: 1rem;
+
   display: flex;
-  gap: 1rem;
+  gap: var(--gap);
   align-items: center;
   height: 100%;
 
   > * {
     flex-shrink: 0;
+
+    &:first-child {
+      margin-inline-end: calc(-1 * var(--gap));
+    }
+
+    &:last-child {
+      margin-inline-start: calc(-1 * var(--gap));
+    }
   }
 }
 
