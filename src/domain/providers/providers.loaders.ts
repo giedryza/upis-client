@@ -84,6 +84,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       api('post')<Provider>(generateUrl(endpoints.providers.index), {
         body: getJsonBody(form),
         locale,
+        auth: true,
       }),
     updateProvider: ({ id, form }: UpdateProvider) =>
       api('patch')<Provider>(
@@ -91,6 +92,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         {
           body: getJsonBody(form),
           locale,
+          auth: true,
         }
       ),
     updateLocation: ({ id, form }: UpdateLocation) =>
@@ -102,6 +104,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
             ...(form.lat && form.lng && { location: [form.lng, form.lat] }),
           }),
           locale,
+          auth: true,
         }
       ),
     uploadLogo: ({ id, logo }: UploadLogo) =>
@@ -110,6 +113,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         {
           body: getFormDataBody([{ field: 'logo', value: logo }]),
           locale,
+          auth: true,
         }
       ),
     addSocialLink: ({
@@ -124,6 +128,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         {
           body: getJsonBody(form),
           locale,
+          auth: true,
         }
       ),
     updateSocialLink: ({
@@ -138,16 +143,19 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         {
           body: getJsonBody(form),
           locale,
+          auth: true,
         }
       ),
     deleteSocialLink: ({ id, form }: { id: string; form: { id: string } }) =>
       api('delete')(generateUrl(endpoints.providers.one.socials, { id }), {
         body: getJsonBody(form),
         locale,
+        auth: true,
       }),
     deleteProvider: ({ id }: DeleteProvider) =>
       api('delete')(generateUrl(endpoints.providers.one.index, { id }), {
         locale,
+        auth: true,
       }),
   },
 }));
