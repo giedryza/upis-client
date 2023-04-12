@@ -9,6 +9,7 @@ export interface Config {
   req?: AppRequest;
   credentials?: RequestCredentials;
   locale?: string;
+  auth?: boolean;
 }
 
 export interface ApiResponse<D = any, M = any> {
