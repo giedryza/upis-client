@@ -1,6 +1,8 @@
-import { forwardRef, RefObject } from 'react';
+import { forwardRef, RefObject, useState } from 'react';
 import { useTextField, mergeProps } from 'react-aria';
 import { useObjectRef } from '@react-aria/utils';
+
+import { Button } from 'ui';
 
 import styles from './text-input.module.scss';
 import { Props, InputElement } from './text-input.types';
@@ -25,6 +27,7 @@ export const TextInput = forwardRef<InputElement, Props>(
     forwardedRef
   ) => {
     const ref = useObjectRef(forwardedRef);
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     const { labelProps, inputProps, descriptionProps, errorMessageProps } =
       useTextField<'input' | 'textarea'>(
@@ -39,7 +42,12 @@ export const TextInput = forwardRef<InputElement, Props>(
           value,
           label,
           name,
-          type,
+          type:
+            type !== 'password'
+              ? type
+              : isPasswordVisible
+              ? 'text'
+              : 'password',
           inputMode: inputmode,
           validationState: error ? 'invalid' : 'valid',
           'aria-label': label,
@@ -64,15 +72,28 @@ export const TextInput = forwardRef<InputElement, Props>(
             )}
           />
         ) : (
-          <input
-            {...mergeProps(
-              inputProps,
-              { onChange },
-              {
-                ref: ref as RefObject<HTMLInputElement>,
-              }
-            )}
-          />
+          <div className={styles['input-container']}>
+            <input
+              {...mergeProps(
+                inputProps,
+                { onChange, 'data-type': type },
+                {
+                  ref: ref as RefObject<HTMLInputElement>,
+                }
+              )}
+            />
+            {type === 'password' ? (
+              <Button
+                as="button"
+                icon={isPasswordVisible ? 'eye-crossed' : 'eye'}
+                size="xs"
+                variant="ghost"
+                onClick={() => setIsPasswordVisible((prev) => !prev)}
+                aria-hidden
+                tabIndex={-1}
+              />
+            ) : null}
+          </div>
         )}
 
         {info ? (

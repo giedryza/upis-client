@@ -7,8 +7,19 @@
 
   @include spacing(y, 0.35em);
 
-  > input,
-  > textarea {
+  .input-container {
+    position: relative;
+
+    > button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0.25em;
+    }
+  }
+
+  input,
+  textarea {
     display: block;
     width: 100%;
     padding: 0.25em 0.5em;
@@ -51,6 +62,10 @@
       }
     }
 
+    &[data-type='password'] {
+      padding-right: 2em;
+    }
+
     &:hover {
       border-color: var(--color-grey-40);
 
@@ -76,13 +91,13 @@
     }
   }
 
-  > input {
+  input {
     height: 2.25em;
 
     line-height: 1;
   }
 
-  > textarea {
+  textarea {
     line-height: 1.6;
 
     resize: vertical;
