@@ -56,8 +56,10 @@ export const Carousel: FC<Props> = ({
     if (typeof clientWidth !== 'number' || typeof scrollLeft !== 'number')
       return;
 
-    if (scrollLeft % clientWidth === 0) {
-      setCurrentIndex(scrollLeft / clientWidth);
+    const fromLeft = Math.floor(scrollLeft);
+
+    if (fromLeft % clientWidth === 0) {
+      setCurrentIndex(fromLeft / clientWidth);
     }
   };
 
