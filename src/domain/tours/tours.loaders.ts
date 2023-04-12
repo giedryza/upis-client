@@ -103,26 +103,31 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       api('post')<Tour>(generateUrl(endpoints.tours.index), {
         body: getJsonBody(form),
         locale,
+        auth: true,
       }),
     updateTour: ({ id, form }: UpdateTour) =>
       api('patch')<Tour>(generateUrl(endpoints.tours.one.index, { id }), {
         body: getJsonBody(form, [NaN, null, undefined]),
         locale,
+        auth: true,
       }),
     updateTourPrice: ({ id, form }: UpdateTourPrice) =>
       api('patch')<Tour>(generateUrl(endpoints.tours.one.price, { id }), {
         body: getJsonBody(form),
         locale,
+        auth: true,
       }),
     updateTourGeography: ({ id, form }: UpdateTourGeography) =>
       api('patch')<Tour>(generateUrl(endpoints.tours.one.geography, { id }), {
         body: getJsonBody(form),
         locale,
+        auth: true,
       }),
     updateTourAmenities: ({ id, form }: UpdateTourAmenities) =>
       api('patch')<Tour>(generateUrl(endpoints.tours.one.amenities, { id }), {
         body: getJsonBody(form),
         locale,
+        auth: true,
       }),
     addTourPhoto: ({ id, form }: AddTourPhoto) =>
       api('patch')<Tour>(generateUrl(endpoints.tours.one.photo, { id }), {
@@ -137,10 +142,12 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
           },
         ]),
         locale,
+        auth: true,
       }),
     deleteTour: ({ id }: DeleteTour) =>
       api('delete')(generateUrl(endpoints.tours.one.index, { id }), {
         locale,
+        auth: true,
       }),
     getFiltersSummary: ({ req }: GetFiltersSummary = {}) =>
       api('get')<FiltersSummary>(generateUrl(endpoints.tours.filters), {

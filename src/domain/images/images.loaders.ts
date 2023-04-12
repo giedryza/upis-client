@@ -26,10 +26,12 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       api('patch')<Image>(generateUrl(endpoints.images.one, { id }), {
         body: getJsonBody(form),
         locale,
+        auth: true,
       }),
     deleteImage: ({ id }: DeleteImage) =>
       api('delete')(generateUrl(endpoints.images.one, { id }), {
         locale,
+        auth: true,
       }),
   },
 }));

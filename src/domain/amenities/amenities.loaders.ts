@@ -42,15 +42,18 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       api('post')<Amenity>(generateUrl(endpoints.amenities.index), {
         body: getJsonBody(form),
         locale,
+        auth: true,
       }),
     updateAmenity: ({ id, form }: UpdateAmenity) =>
       api('patch')<Amenity>(generateUrl(endpoints.amenities.one, { id }), {
         body: getJsonBody(form),
         locale,
+        auth: true,
       }),
     deleteAmenity: ({ id }: DeleteAmenity) =>
       api('delete')(generateUrl(endpoints.amenities.one, { id }), {
         locale,
+        auth: true,
       }),
   },
 }));

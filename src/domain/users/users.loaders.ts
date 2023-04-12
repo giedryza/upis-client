@@ -86,6 +86,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
           confirmPassword,
         }),
         locale,
+        auth: true,
       }),
     forgotPassword: ({ email }: ForgotPassword) =>
       api('post')(generateUrl(endpoints.users.password.forgot), {
@@ -109,6 +110,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
           role,
         }),
         locale,
+        auth: true,
       }),
   },
 }));

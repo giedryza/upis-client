@@ -56,10 +56,13 @@ class Request<ResponseData, ResponseMeta> {
   }
 
   #init = async (): Promise<RequestInit> => {
-    const { headers = {}, body, req, locale } = this.config;
+    const { headers = {}, body, req, locale, auth = false } = this.config;
 
-    const session =
-      req && isServer() ? await getToken({ req }) : await getSession({ req });
+    const session = !auth
+      ? null
+      : req && isServer()
+      ? await getToken({ req })
+      : await getSession({ req });
 
     return {
       method: this.#method,
