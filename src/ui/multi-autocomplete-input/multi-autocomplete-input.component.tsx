@@ -71,7 +71,7 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
       itemToString: (item) => item?.label ?? '',
       defaultHighlightedIndex: 0,
       selectedItem: null,
-      stateReducer: (_state, { changes, type }) => {
+      stateReducer: (state, { changes, type }) => {
         switch (type) {
           case useCombobox.stateChangeTypes.InputBlur:
             return {
@@ -85,6 +85,10 @@ export const MultiAutocompleteInput = forwardRef<HTMLInputElement, Props>(
               ...changes,
               inputValue: '',
             };
+          // after selecting dropdown item with keyboard, the following first input change gets overridden with empty string from this event
+          // returning state prevents this behaviour
+          case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem:
+            return state;
           default:
             return changes;
         }
