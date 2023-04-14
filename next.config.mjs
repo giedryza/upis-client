@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/extensions
+import './env.validator.js';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import nextTranslate from 'next-translate-plugin';
 
