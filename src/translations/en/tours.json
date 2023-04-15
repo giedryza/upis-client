@@ -60,7 +60,7 @@
       "price": "Price"
     },
     "tours": {
-      "title": "More from the provider"
+      "title": "More tours by {{provider}}"
     }
   }
 }
