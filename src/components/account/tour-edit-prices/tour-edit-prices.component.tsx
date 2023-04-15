@@ -40,14 +40,12 @@ export const TourEditPrices: FC = () => {
     });
   }, [reset, tour]);
 
+  if (!tour) return null;
+
   const onSubmit: SubmitHandler<Values> = ({ amount, currency }) => {
-    const tourId = tour?._id;
-
-    if (!tourId) return;
-
     updateTourPrice(
       {
-        id: tourId,
+        id: tour._id,
         form: {
           amount: toCents(amount),
           currency,
@@ -55,7 +53,7 @@ export const TourEditPrices: FC = () => {
       },
       {
         onSuccess: () => {
-          push(generateUrl(routes.account.tours.one.index, { id: tourId }));
+          push(generateUrl(routes.account.tours.one.index, { id: tour._id }));
         },
       }
     );
@@ -117,7 +115,7 @@ export const TourEditPrices: FC = () => {
               variant="ghost"
               size="sm"
               href={generateUrl(routes.account.tours.one.index, {
-                id: tour?._id ?? '',
+                id: tour._id,
               })}
             />
 

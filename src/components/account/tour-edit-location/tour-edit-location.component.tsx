@@ -50,14 +50,12 @@ export const TourEditLocation: FC = () => {
     },
   };
 
+  if (!tour) return null;
+
   const onSubmit = () => {
-    const tourId = tour?._id;
-
-    if (!tourId) return;
-
     updateTour(
       {
-        id: tourId,
+        id: tour._id,
         form: {
           arrival: [arrivalPoint.lng, arrivalPoint.lat],
           departure: [departurePoint.lng, departurePoint.lat],
@@ -65,7 +63,7 @@ export const TourEditLocation: FC = () => {
       },
       {
         onSuccess: () => {
-          push(generateUrl(routes.account.tours.one.index, { id: tourId }));
+          push(generateUrl(routes.account.tours.one.index, { id: tour._id }));
         },
       }
     );
@@ -150,7 +148,7 @@ export const TourEditLocation: FC = () => {
           variant="ghost"
           size="sm"
           href={generateUrl(routes.account.tours.one.index, {
-            id: tour?._id ?? '',
+            id: tour._id,
           })}
         />
 
