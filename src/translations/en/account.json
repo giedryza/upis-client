@@ -294,7 +294,7 @@
     "location": {
       "title": "Location",
       "map": {
-        "info": "Move markers to select departure and arrival locations. The very bottom of the marker marks the exacts point that will be visible as departure or arrival location.",
+        "info": "Move markers or right mouse click to select departure and arrival locations. The very bottom of the marker marks the exacts point that will be visible as departure or arrival location.",
         "departure": "Departure",
         "arrival": "Arrival",
         "empty": {

@@ -294,7 +294,7 @@
     "location": {
       "title": "Lokacija",
       "map": {
-        "info": "Tempdami žymeklius pasirinkite išvykimo ir atvykimo lokacijas. Žymeklio apačia žymi tikslų tašką, kuris bus rodomas kaip išvykimo ir atvykimo lokacija.",
+        "info": "Tempdami žymeklius arba spausdami dešinį pelės mygtuką pasirinkite išvykimo ir atvykimo lokacijas. Žymeklio apačia žymi tikslų tašką, kuris bus rodomas kaip išvykimo ir atvykimo lokacija.",
         "departure": "Išvykimas",
         "arrival": "Atvykimas",
         "empty": {
