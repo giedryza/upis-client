@@ -70,11 +70,7 @@ export const SerpMap: FC = () => {
                   }}
                   key={tour._id}
                 >
-                  <Popup
-                    className={styles.popup}
-                    closeButton={false}
-                    offset={point(0, 15)}
-                  >
+                  <Popup closeButton={false} offset={point(0, 15)}>
                     {activeInfobox === tour._id ? (
                       <Infobox
                         useMap={useMap}

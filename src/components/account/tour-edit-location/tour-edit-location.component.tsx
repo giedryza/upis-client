@@ -88,56 +88,80 @@ export const TourEditLocation: FC = () => {
               padding: [50, 50],
             }}
           >
-            {({ leaflet: { icon }, reactLeaflet: { Marker, Tooltip } }) => (
-              <>
-                <Marker
-                  draggable
-                  position={center.arrival}
-                  icon={icon(mapIcon({ name: 'pin', size: 48 }))}
-                  eventHandlers={{
-                    dragend: (e) => {
-                      const { lat, lng } = (e as MapDragendEvent).target
-                        ._latlng;
+            {({
+              leaflet: { icon },
+              reactLeaflet: { Marker, Tooltip, Popup, useMapEvents },
+              custom: { ContextMenu },
+            }) => {
+              return (
+                <>
+                  <ContextMenu
+                    useMapEvents={useMapEvents}
+                    Popup={Popup}
+                    items={[
+                      {
+                        label: t(
+                          'account:tours.location.map.actions.set_departure'
+                        ),
+                        onClick: updateDeparturePoint,
+                      },
+                      {
+                        label: t(
+                          'account:tours.location.map.actions.set_arrival'
+                        ),
+                        onClick: updateArrivalPoint,
+                      },
+                    ]}
+                  />
 
-                      updateArrivalPoint({ lat, lng });
-                    },
-                  }}
-                  title="labas"
-                >
-                  <Tooltip
-                    direction="top"
-                    permanent
-                    offset={[0, -40]}
-                    className={styles.tooltip}
+                  <Marker
+                    draggable
+                    position={center.arrival}
+                    icon={icon(mapIcon({ name: 'pin', size: 48 }))}
+                    eventHandlers={{
+                      dragend: (e) => {
+                        const { lat, lng } = (e as MapDragendEvent).target
+                          ._latlng;
+
+                        updateArrivalPoint({ lat, lng });
+                      },
+                    }}
                   >
-                    {t('account:tours.location.map.arrival')}
-                  </Tooltip>
-                </Marker>
+                    <Tooltip
+                      direction="top"
+                      permanent
+                      offset={[0, -40]}
+                      className={styles.tooltip}
+                    >
+                      {t('account:tours.location.map.arrival')}
+                    </Tooltip>
+                  </Marker>
 
-                <Marker
-                  draggable
-                  position={center.departure}
-                  icon={icon(mapIcon({ name: 'pin', size: 48 }))}
-                  eventHandlers={{
-                    dragend: (e) => {
-                      const { lat, lng } = (e as MapDragendEvent).target
-                        ._latlng;
+                  <Marker
+                    draggable
+                    position={center.departure}
+                    icon={icon(mapIcon({ name: 'pin', size: 48 }))}
+                    eventHandlers={{
+                      dragend: (e) => {
+                        const { lat, lng } = (e as MapDragendEvent).target
+                          ._latlng;
 
-                      updateDeparturePoint({ lat, lng });
-                    },
-                  }}
-                >
-                  <Tooltip
-                    direction="top"
-                    permanent
-                    offset={[0, -40]}
-                    className={styles.tooltip}
+                        updateDeparturePoint({ lat, lng });
+                      },
+                    }}
                   >
-                    {t('account:tours.location.map.departure')}
-                  </Tooltip>
-                </Marker>
-              </>
-            )}
+                    <Tooltip
+                      direction="top"
+                      permanent
+                      offset={[0, -40]}
+                      className={styles.tooltip}
+                    >
+                      {t('account:tours.location.map.departure')}
+                    </Tooltip>
+                  </Marker>
+                </>
+              );
+            }}
           </Map>
         </div>
       </div>

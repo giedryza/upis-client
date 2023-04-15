@@ -300,6 +300,10 @@
         "empty": {
           "title": "Tuščia",
           "message": "Norėdami pasirinkti maršruto išvykimo ar atvykimo lokacijas, spauskite 'redaguoti'."
+        },
+        "actions": {
+          "set_departure": "Nustatyti išvykimą čia",
+          "set_arrival": "Nustatyti atvykimą čia"
         }
       }
     },

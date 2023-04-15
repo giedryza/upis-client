@@ -300,6 +300,10 @@
         "empty": {
           "title": "Empty",
           "message": "Click 'edit' to select departure and arrival locations."
+        },
+        "actions": {
+          "set_departure": "Set departure here",
+          "set_arrival": "Set arrival here"
         }
       }
     },
