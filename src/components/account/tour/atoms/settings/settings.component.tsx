@@ -30,6 +30,18 @@ export const Settings: FC = () => {
     >
       <div className={styles.actions}>
         <Button
+          as="link"
+          label={t('common:actions.preview')}
+          variant="outline"
+          icon="eye"
+          size="sm"
+          href={generateUrl(routes.tours.one.index, {
+            id: tour._id,
+            slug: tour.slug,
+          })}
+        />
+
+        <Button
           as="button"
           label={t('account:tours.actions.delete')}
           variant="outline"
@@ -54,17 +66,6 @@ export const Settings: FC = () => {
               );
             }
           }}
-        />
-        <Button
-          as="link"
-          label={t('common:actions.preview')}
-          variant="outline"
-          icon="eye"
-          size="sm"
-          href={generateUrl(routes.tours.one.index, {
-            id: tour._id,
-            slug: tour.slug,
-          })}
         />
       </div>
     </InfoBlock>

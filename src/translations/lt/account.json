@@ -228,7 +228,7 @@
       }
     },
     "details": {
-      "title": "Ypatybės",
+      "title": "Specifikacijos",
       "form": {
         "distance": {
           "label": "Atstumas, km",
@@ -262,7 +262,7 @@
       "title": "Kainos",
       "form": {
         "price": {
-          "label": "Kaina",
+          "label": "Kaina (nuo)",
           "info": "* Žmogui už parą",
           "display": "Kaina (žmogui už parą)",
           "error": {
@@ -294,12 +294,16 @@
     "location": {
       "title": "Lokacija",
       "map": {
-        "info": "Tempdami žymeklius pasirinkite išvykimo ir atvykimo lokacijas. Žymeklio apačia žymi tikslų tašką, kuris bus rodomas kaip išvykimo ir atvykimo lokacija.",
+        "info": "Tempdami žymeklius arba spausdami dešinį pelės mygtuką pasirinkite išvykimo ir atvykimo lokacijas. Žymeklio apačia žymi tikslų tašką, kuris bus rodomas kaip išvykimo ir atvykimo lokacija.",
         "departure": "Išvykimas",
         "arrival": "Atvykimas",
         "empty": {
           "title": "Tuščia",
-          "message": "Norėdami pasirinkti maršruto išvykimo ir atvykimo lokacijas, spauskite 'redaguoti'."
+          "message": "Norėdami pasirinkti maršruto išvykimo ar atvykimo lokacijas, spauskite 'redaguoti'."
+        },
+        "actions": {
+          "set_departure": "Nustatyti išvykimą čia",
+          "set_arrival": "Nustatyti atvykimą čia"
         }
       }
     },

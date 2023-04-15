@@ -61,7 +61,7 @@
       "price": "Kaina"
     },
     "tours": {
-      "title": "Kiti tiekėjo maršrutai"
+      "title": "Kiti {{provider}} maršrutai"
     }
   }
 }

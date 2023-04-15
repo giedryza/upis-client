@@ -35,19 +35,17 @@ export const TourEditAbout: FC = () => {
       : undefined,
   });
 
+  if (!tour) return null;
+
   const onSubmit: SubmitHandler<Values> = ({ name, description, website }) => {
-    const tourId = tour?._id;
-
-    if (!tourId) return;
-
     updateTour(
       {
-        id: tourId,
+        id: tour._id,
         form: { name, description, website: website || undefined },
       },
       {
         onSuccess: () => {
-          push(generateUrl(routes.account.tours.one.index, { id: tourId }));
+          push(generateUrl(routes.account.tours.one.index, { id: tour._id }));
         },
       }
     );
@@ -92,7 +90,7 @@ export const TourEditAbout: FC = () => {
               variant="ghost"
               size="sm"
               href={generateUrl(routes.account.tours.one.index, {
-                id: tour?._id ?? '',
+                id: tour._id,
               })}
             />
 

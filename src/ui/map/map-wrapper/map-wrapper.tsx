@@ -7,13 +7,14 @@ import 'leaflet/dist/leaflet.css';
 import { APP } from 'config';
 
 import { MapSearch } from '../map-search/map-search';
+import { ContextMenu } from '../context-menu';
 
 import styles from './map-wrapper.module.scss';
 
 type Props = ConsumerProps<{
   reactLeaflet: typeof ReactLeaflet;
   leaflet: typeof L;
-  custom: { SearchBar: typeof MapSearch };
+  custom: { SearchBar: typeof MapSearch; ContextMenu: typeof ContextMenu };
 }> &
   Omit<ReactLeaflet.MapContainerProps, 'children'>;
 
@@ -34,7 +35,7 @@ const MapWrapper = ({ children, ...rest }: Props) => {
       {children({
         leaflet: L,
         reactLeaflet: ReactLeaflet,
-        custom: { SearchBar: MapSearch },
+        custom: { SearchBar: MapSearch, ContextMenu },
       })}
     </ReactLeaflet.MapContainer>
   );

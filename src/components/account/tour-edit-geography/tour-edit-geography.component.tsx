@@ -39,19 +39,17 @@ export const TourEditGeography: FC = () => {
       : undefined,
   });
 
+  if (!tour) return null;
+
   const onSubmit: SubmitHandler<Values> = (form) => {
-    const tourId = tour?._id;
-
-    if (!tourId) return;
-
     updateTourGeography(
       {
-        id: tourId,
+        id: tour._id,
         form,
       },
       {
         onSuccess: () => {
-          push(generateUrl(routes.account.tours.one.index, { id: tourId }));
+          push(generateUrl(routes.account.tours.one.index, { id: tour._id }));
         },
       }
     );
@@ -118,7 +116,7 @@ export const TourEditGeography: FC = () => {
               variant="ghost"
               size="sm"
               href={generateUrl(routes.account.tours.one.index, {
-                id: tour?._id ?? '',
+                id: tour._id,
               })}
             />
 

@@ -27,6 +27,8 @@ export const TourEditAmenities: FC = () => {
     handleSubmit,
     formState: { errors, isDirty },
     control,
+    setValue,
+    watch,
   } = useForm<Values>({
     defaultValues: INITIAL_VALUES,
     values: tour
@@ -34,16 +36,14 @@ export const TourEditAmenities: FC = () => {
       : undefined,
   });
 
+  if (!tour) return null;
+
   const onSubmit: SubmitHandler<Values> = ({ amenities }) => {
-    const tourId = tour?._id;
-
-    if (!tourId) return;
-
     updateTourAmenities(
-      { id: tourId, form: { amenities } },
+      { id: tour._id, form: { amenities } },
       {
         onSuccess: () => {
-          push(generateUrl(routes.account.tours.one.index, { id: tourId }));
+          push(generateUrl(routes.account.tours.one.index, { id: tour._id }));
         },
       }
     );
@@ -65,7 +65,7 @@ export const TourEditAmenities: FC = () => {
                   <Link
                     href={generateUrl(
                       routes.account.providers.one.amenities.add,
-                      { id: tour?.provider._id ?? '' }
+                      { id: tour.provider._id }
                     )}
                     className="link"
                     key="info"
@@ -85,26 +85,42 @@ export const TourEditAmenities: FC = () => {
               render={({ field: { onChange, value, ref } }) => (
                 <CheckboxGroupInput
                   label={t('account:tours.amenities.form.amenities.label')}
-                  items={
-                    tour?.provider.amenities.map((amenity) => ({
-                      label: `${t(`amenities:variants.${amenity.variant}`)} (${
-                        amenity.price
-                          ? `${formatCurrency(
-                              lang,
-                              amenity.price.amount,
-                              amenity.price.currency
-                            )} ${t(`amenities:units.${amenity.unit}`)}`
-                          : t('common:texts.free')
-                      })`,
-                      value: amenity._id,
-                    })) ?? []
-                  }
+                  items={tour.provider.amenities.map((amenity) => ({
+                    label: `${t(`amenities:variants.${amenity.variant}`)} (${
+                      amenity.price
+                        ? `${formatCurrency(
+                            lang,
+                            amenity.price.amount,
+                            amenity.price.currency
+                          )} ${t(`amenities:units.${amenity.unit}`)}`
+                        : t('common:texts.free')
+                    })`,
+                    value: amenity._id,
+                  }))}
                   value={value}
                   onChange={onChange}
                   error={errors.amenities?.message}
                   ref={ref}
                 />
               )}
+            />
+
+            <Button
+              as="button"
+              label={t('common:actions.select_all')}
+              variant="secondary"
+              size="xs"
+              onClick={() => {
+                setValue(
+                  'amenities',
+                  tour.provider.amenities.map((amenity) => amenity._id),
+                  { shouldDirty: true }
+                );
+              }}
+              disabled={
+                tour.provider.amenities.map((amenity) => amenity._id).length ===
+                watch('amenities').length
+              }
             />
           </fieldset>
 
@@ -115,7 +131,7 @@ export const TourEditAmenities: FC = () => {
               variant="ghost"
               size="sm"
               href={generateUrl(routes.account.tours.one.index, {
-                id: tour?._id ?? '',
+                id: tour._id,
               })}
             />
 

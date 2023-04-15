@@ -29,14 +29,14 @@ export const TourEditGalleryAdd: FC = () => {
   const { data: tour } = useActiveTour();
   const { mutate: addTourPhoto, isLoading } = useAddTourPhoto();
 
-  const onSubmit: SubmitHandler<Values> = (form) => {
-    const tourId = tour?._id;
+  if (!tour) return null;
 
-    if (!tourId || !form.photo) return;
+  const onSubmit: SubmitHandler<Values> = (form) => {
+    if (!form.photo) return;
 
     addTourPhoto(
       {
-        id: tourId,
+        id: tour._id,
         form: {
           photo: form.photo,
           description: form.description,
@@ -44,7 +44,7 @@ export const TourEditGalleryAdd: FC = () => {
       },
       {
         onSuccess: () => {
-          push(generateUrl(routes.account.tours.one.index, { id: tourId }));
+          push(generateUrl(routes.account.tours.one.index, { id: tour._id }));
         },
       }
     );
@@ -90,7 +90,7 @@ export const TourEditGalleryAdd: FC = () => {
               variant="ghost"
               size="sm"
               href={generateUrl(routes.account.tours.one.index, {
-                id: tour?._id ?? '',
+                id: tour._id,
               })}
             />
 

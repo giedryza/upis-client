@@ -262,7 +262,7 @@
       "title": "Prices",
       "form": {
         "price": {
-          "label": "Price",
+          "label": "Price (from)",
           "info": "* Per person, per day",
           "display": "Price (per person, per day)",
           "error": {
@@ -294,12 +294,16 @@
     "location": {
       "title": "Location",
       "map": {
-        "info": "Move markers to select departure and arrival locations. The very bottom of the marker marks the exacts point that will be visible as departure or arrival location.",
+        "info": "Move markers or right mouse click to select departure and arrival locations. The very bottom of the marker marks the exacts point that will be visible as departure or arrival location.",
         "departure": "Departure",
         "arrival": "Arrival",
         "empty": {
           "title": "Empty",
           "message": "Click 'edit' to select departure and arrival locations."
+        },
+        "actions": {
+          "set_departure": "Set departure here",
+          "set_arrival": "Set arrival here"
         }
       }
     },

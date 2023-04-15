@@ -43,16 +43,14 @@ export const TourEditDetails: FC = () => {
 
   const [days] = watch(['days']);
 
+  if (!tour) return null;
+
   const onSubmit: SubmitHandler<Values> = (form) => {
-    const tourId = tour?._id;
-
-    if (!tourId) return;
-
     updateTour(
-      { id: tourId, form },
+      { id: tour._id, form },
       {
         onSuccess: () => {
-          push(generateUrl(routes.account.tours.one.index, { id: tourId }));
+          push(generateUrl(routes.account.tours.one.index, { id: tour._id }));
         },
       }
     );
@@ -173,7 +171,7 @@ export const TourEditDetails: FC = () => {
               variant="ghost"
               size="sm"
               href={generateUrl(routes.account.tours.one.index, {
-                id: tour?._id ?? '',
+                id: tour._id,
               })}
             />
 

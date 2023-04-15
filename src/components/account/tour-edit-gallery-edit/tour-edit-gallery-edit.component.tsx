@@ -39,12 +39,12 @@ export const TourEditGalleryEdit: FC = () => {
       : undefined,
   });
 
-  const onSubmit: SubmitHandler<Values> = (form) => {
+  const onSubmit: SubmitHandler<Values> = ({ description }) => {
     updateImage(
       {
         id: imageId,
         form: {
-          description: form.description,
+          description,
         },
       },
       {

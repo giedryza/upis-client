@@ -50,14 +50,12 @@ export const TourEditLocation: FC = () => {
     },
   };
 
+  if (!tour) return null;
+
   const onSubmit = () => {
-    const tourId = tour?._id;
-
-    if (!tourId) return;
-
     updateTour(
       {
-        id: tourId,
+        id: tour._id,
         form: {
           arrival: [arrivalPoint.lng, arrivalPoint.lat],
           departure: [departurePoint.lng, departurePoint.lat],
@@ -65,7 +63,7 @@ export const TourEditLocation: FC = () => {
       },
       {
         onSuccess: () => {
-          push(generateUrl(routes.account.tours.one.index, { id: tourId }));
+          push(generateUrl(routes.account.tours.one.index, { id: tour._id }));
         },
       }
     );
@@ -78,6 +76,8 @@ export const TourEditLocation: FC = () => {
       columns={1}
     >
       <div className={styles.mapContainer}>
+        <Toast message={t('account:tours.location.map.info')} type="info" />
+
         <div className={styles.map}>
           <Map
             bounds={[
@@ -88,59 +88,82 @@ export const TourEditLocation: FC = () => {
               padding: [50, 50],
             }}
           >
-            {({ leaflet: { icon }, reactLeaflet: { Marker, Tooltip } }) => (
-              <>
-                <Marker
-                  draggable
-                  position={center.arrival}
-                  icon={icon(mapIcon({ name: 'pin', size: 48 }))}
-                  eventHandlers={{
-                    dragend: (e) => {
-                      const { lat, lng } = (e as MapDragendEvent).target
-                        ._latlng;
+            {({
+              leaflet: { icon },
+              reactLeaflet: { Marker, Tooltip, Popup, useMapEvents },
+              custom: { ContextMenu },
+            }) => {
+              return (
+                <>
+                  <ContextMenu
+                    useMapEvents={useMapEvents}
+                    Popup={Popup}
+                    items={[
+                      {
+                        label: t(
+                          'account:tours.location.map.actions.set_departure'
+                        ),
+                        onClick: updateDeparturePoint,
+                      },
+                      {
+                        label: t(
+                          'account:tours.location.map.actions.set_arrival'
+                        ),
+                        onClick: updateArrivalPoint,
+                      },
+                    ]}
+                  />
 
-                      updateArrivalPoint({ lat, lng });
-                    },
-                  }}
-                  title="labas"
-                >
-                  <Tooltip
-                    direction="top"
-                    permanent
-                    offset={[0, -40]}
-                    className={styles.tooltip}
+                  <Marker
+                    draggable
+                    position={center.arrival}
+                    icon={icon(mapIcon({ name: 'pin', size: 48 }))}
+                    eventHandlers={{
+                      dragend: (e) => {
+                        const { lat, lng } = (e as MapDragendEvent).target
+                          ._latlng;
+
+                        updateArrivalPoint({ lat, lng });
+                      },
+                    }}
                   >
-                    {t('account:tours.location.map.arrival')}
-                  </Tooltip>
-                </Marker>
+                    <Tooltip
+                      direction="top"
+                      permanent
+                      offset={[0, -40]}
+                      className={styles.tooltip}
+                    >
+                      {t('account:tours.location.map.arrival')}
+                    </Tooltip>
+                  </Marker>
 
-                <Marker
-                  draggable
-                  position={center.departure}
-                  icon={icon(mapIcon({ name: 'pin', size: 48 }))}
-                  eventHandlers={{
-                    dragend: (e) => {
-                      const { lat, lng } = (e as MapDragendEvent).target
-                        ._latlng;
+                  <Marker
+                    draggable
+                    position={center.departure}
+                    icon={icon(mapIcon({ name: 'pin', size: 48 }))}
+                    eventHandlers={{
+                      dragend: (e) => {
+                        const { lat, lng } = (e as MapDragendEvent).target
+                          ._latlng;
 
-                      updateDeparturePoint({ lat, lng });
-                    },
-                  }}
-                >
-                  <Tooltip
-                    direction="top"
-                    permanent
-                    offset={[0, -40]}
-                    className={styles.tooltip}
+                        updateDeparturePoint({ lat, lng });
+                      },
+                    }}
                   >
-                    {t('account:tours.location.map.departure')}
-                  </Tooltip>
-                </Marker>
-              </>
-            )}
+                    <Tooltip
+                      direction="top"
+                      permanent
+                      offset={[0, -40]}
+                      className={styles.tooltip}
+                    >
+                      {t('account:tours.location.map.departure')}
+                    </Tooltip>
+                  </Marker>
+                </>
+              );
+            }}
           </Map>
         </div>
-        <Toast message={t('account:tours.location.map.info')} type="info" />
       </div>
 
       <div className={styles.actions}>
@@ -150,7 +173,7 @@ export const TourEditLocation: FC = () => {
           variant="ghost"
           size="sm"
           href={generateUrl(routes.account.tours.one.index, {
-            id: tour?._id ?? '',
+            id: tour._id,
           })}
         />
 
