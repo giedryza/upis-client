@@ -11,21 +11,25 @@ body {
   background-color: var(--color-grey-95);
 }
 
-a {
+a,
+button {
   @media screen and (-ms-high-contrast: active) {
     border: 2px solid currentColor;
   }
 
   &:focus {
+    /* focus styles @supports not (:focus-visible) */
     outline: 2px solid transparent;
     box-shadow: var(--outline-button);
 
     &:not(:focus-visible) {
+      /* undo focus styles (mouse focus) | @supports (:focus-visible) */
       box-shadow: none;
     }
   }
 
   &:focus-visible {
+    /* keyboard only focus | @supports (:focus-visible) */
     box-shadow: var(--outline-button);
   }
 }
