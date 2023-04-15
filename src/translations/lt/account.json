@@ -299,7 +299,7 @@
         "arrival": "Atvykimas",
         "empty": {
           "title": "Tuščia",
-          "message": "Norėdami pasirinkti maršruto išvykimo ir atvykimo lokacijas, spauskite 'redaguoti'."
+          "message": "Norėdami pasirinkti maršruto išvykimo ar atvykimo lokacijas, spauskite 'redaguoti'."
         }
       }
     },
