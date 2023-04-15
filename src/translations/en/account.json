@@ -262,7 +262,7 @@
       "title": "Prices",
       "form": {
         "price": {
-          "label": "Price",
+          "label": "Price (from)",
           "info": "* Per person, per day",
           "display": "Price (per person, per day)",
           "error": {

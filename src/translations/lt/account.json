@@ -262,7 +262,7 @@
       "title": "Kainos",
       "form": {
         "price": {
-          "label": "Kaina",
+          "label": "Kaina (nuo)",
           "info": "* Žmogui už parą",
           "display": "Kaina (žmogui už parą)",
           "error": {
