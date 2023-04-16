@@ -84,11 +84,24 @@ export const ProviderEditLocation: FC = () => {
           >
             {({
               leaflet: { icon, point: p },
-              reactLeaflet: { Marker, Popup, useMap },
-              custom: { SearchBar },
+              reactLeaflet: { Marker, Popup, useMap, useMapEvents },
+              custom: { SearchBar, ContextMenu },
             }) => (
               <>
                 <SearchBar useMap={useMap} onChange={updatePoint} />
+
+                <ContextMenu
+                  useMapEvents={useMapEvents}
+                  Popup={Popup}
+                  items={[
+                    {
+                      label: t(
+                        'account:providers.location.map.actions.set_location'
+                      ),
+                      onClick: updatePoint,
+                    },
+                  ]}
+                />
 
                 <Marker
                   draggable

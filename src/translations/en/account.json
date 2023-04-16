@@ -114,7 +114,10 @@
         }
       },
       "map": {
-        "info": "Move marker to select location."
+        "info": "Move marker to select location.",
+        "actions": {
+          "set_location": "Set location here"
+        }
       }
     },
     "amenities": {

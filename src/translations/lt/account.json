@@ -114,7 +114,10 @@
         }
       },
       "map": {
-        "info": "Tempdami žymeklį pasirinkite lokaciją."
+        "info": "Tempdami žymeklį pasirinkite lokaciją.",
+        "actions": {
+          "set_location": "Nustatyti lokaciją čia"
+        }
       }
     },
     "amenities": {
