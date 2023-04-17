@@ -11,6 +11,7 @@ export const ICON_BY_VARIANT: Record<Variant, IconName> = {
   tent: 'tent',
   'sleeping-bag': 'sleeping-bag',
   grill: 'grill',
+  map: 'map',
   guide: 'compass',
   camera: 'camera',
   'pet-friendly': 'paw',

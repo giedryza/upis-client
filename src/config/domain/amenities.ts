@@ -8,6 +8,7 @@ export const AMENITIES = {
     'tent',
     'sleeping-bag',
     'grill',
+    'map',
     'guide',
     'camera',
     'pet-friendly',
