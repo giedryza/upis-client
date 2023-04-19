@@ -46,6 +46,15 @@ interface UpdateTour {
   >;
 }
 
+interface UpdateTours {
+  filter: {
+    provider: string;
+  };
+  update: Partial<{
+    amenity: string;
+  }>;
+}
+
 interface UpdateTourPrice {
   id: string;
   form: Price;
@@ -108,6 +117,12 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
     updateTour: ({ id, form }: UpdateTour) =>
       api('patch')<Tour>(generateUrl(endpoints.tours.one.index, { id }), {
         body: getJsonBody(form, [NaN, null, undefined]),
+        locale,
+        auth: true,
+      }),
+    updateTours: ({ filter, update }: UpdateTours) =>
+      api('patch')<Tour>(generateUrl(endpoints.tours.index), {
+        body: getJsonBody({ filter, update }),
         locale,
         auth: true,
       }),
