@@ -16,7 +16,7 @@ export const FileInput = forwardRef<HTMLInputElement, Props>(
   (
     {
       accept,
-      maxSize = 1 * 1024 * 1024,
+      maxSize = 2 * 1024 * 1024,
       maxFiles = 1,
       name,
       disabled,
