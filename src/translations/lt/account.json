@@ -78,8 +78,8 @@
           "placeholder": "Ieškoti kalbų"
         },
         "boats": {
-          "display": "Valčių tipai",
-          "label": "Turimi valčių tipai"
+          "display": "Valčių inventorius",
+          "label": "Valčių inventorius"
         }
       }
     },
@@ -114,7 +114,7 @@
         }
       },
       "map": {
-        "info": "Tempdami žymeklį pasirinkite lokaciją.",
+        "info": "Tempdami žymeklį arba spausdami dešinį pelės mygtuką pasirinkite lokaciją.",
         "actions": {
           "set_location": "Nustatyti lokaciją čia"
         }

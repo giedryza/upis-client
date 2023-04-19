@@ -7,8 +7,9 @@
 
   @include focus-button;
 
-  &:hover {
-    background-color: var(--button-ghost-background-hover);
+  &:hover,
+  &:active {
+    background-color: var(--color-grey-95);
   }
 
   svg {

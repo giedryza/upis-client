@@ -74,6 +74,8 @@ export const ProviderEditLocation: FC = () => {
       columns={1}
     >
       <div className={styles.mapContainer}>
+        <Toast message={t('account:providers.location.map.info')} type="info" />
+
         <div className={styles.map}>
           <Map
             center={{
@@ -130,8 +132,6 @@ export const ProviderEditLocation: FC = () => {
             )}
           </Map>
         </div>
-
-        <Toast message={t('account:providers.location.map.info')} type="info" />
       </div>
 
       <div className={styles.actions}>
