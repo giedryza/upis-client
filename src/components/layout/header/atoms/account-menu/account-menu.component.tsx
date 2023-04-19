@@ -67,8 +67,12 @@ export const AccountMenu: FC = () => {
                         updateRole(
                           { role: 'manager' },
                           {
-                            onSuccess: ({ data }) => {
-                              update({ user: data.user, token: data.token });
+                            onSuccess: async ({ data }) => {
+                              await update({
+                                user: data.user,
+                                token: data.token,
+                              });
+                              push(generateUrl(routes.account.providers.index));
                             },
                           }
                         );
