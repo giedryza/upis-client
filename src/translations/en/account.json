@@ -149,6 +149,9 @@
       },
       "texts": {
         "confirm_delete": "This action cannot be undone. It will permanently delete amenity <strong>{{name}}</strong>. Are you sure you want to proceed?"
+      },
+      "actions": {
+        "add_to_all_tours": "Add to all tours"
       }
     },
     "socials": {

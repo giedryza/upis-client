@@ -9,6 +9,7 @@ import { formatCurrency } from 'tools/format';
 import { ICON_BY_VARIANT, useDeleteAmenity } from 'domain/amenities';
 import { useConfirm } from 'domain/confirm';
 import { generateUrl } from 'tools/services';
+import { useUpdateTours } from 'domain/tours';
 
 export const Amenities: FC = () => {
   const { t, lang } = useTranslation();
@@ -17,6 +18,7 @@ export const Amenities: FC = () => {
 
   const { data: provider } = useActiveProvider();
   const { mutate: deleteAmenity, isLoading: isDeleting } = useDeleteAmenity();
+  const { mutate: updateTours, isLoading: isUpdatingTours } = useUpdateTours();
 
   if (!provider) return null;
 
@@ -64,6 +66,19 @@ export const Amenities: FC = () => {
                 id: provider._id,
                 amenityId: amenity._id,
               }),
+            },
+            {
+              as: 'button',
+              label: t('account:providers.amenities.actions.add_to_all_tours'),
+              icon: 'path',
+              variant: 'secondary',
+              disabled: isUpdatingTours,
+              onClick: () => {
+                updateTours({
+                  filter: { provider: provider._id },
+                  update: { amenity: amenity._id },
+                });
+              },
             },
             {
               as: 'button',

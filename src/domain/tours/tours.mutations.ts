@@ -25,6 +25,20 @@ export const useUpdateTour = () => {
   return mutation;
 };
 
+export const useUpdateTours = () => {
+  const queryClient = useQueryClient();
+  const { loaders } = useLoaders();
+
+  const mutation = useMutation({
+    mutationFn: loaders.updateTours,
+    onSuccess: () => {
+      queryClient.invalidateQueries(toursKeys.root);
+    },
+  });
+
+  return mutation;
+};
+
 export const useUpdateTourPrice = () => {
   const queryClient = useQueryClient();
   const { loaders } = useLoaders();

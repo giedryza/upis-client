@@ -149,6 +149,9 @@
       },
       "texts": {
         "confirm_delete": "Šis veiksmas yra negrįžtamas. Jis visam laikui ištrins ypatumą <strong>{{name}}</strong>. Ar tikrai norite tęsti?"
+      },
+      "actions": {
+        "add_to_all_tours": "Pridėti prie visų maršrutų"
       }
     },
     "socials": {
