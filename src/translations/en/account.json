@@ -78,8 +78,8 @@
           "placeholder": "Search languages"
         },
         "boats": {
-          "display": "Boat types",
-          "label": "Available boat types"
+          "display": "Boat inventory",
+          "label": "Boat inventory"
         }
       }
     },
@@ -114,7 +114,7 @@
         }
       },
       "map": {
-        "info": "Move marker to select location.",
+        "info": "Move marker or right mouse click to select location.",
         "actions": {
           "set_location": "Set location here"
         }
