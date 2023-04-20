@@ -21,7 +21,9 @@
     "try_again": "Try again",
     "search": "Search",
     "enter_address": "Search address",
-    "select_all": "Select all"
+    "select_all": "Select all",
+    "show_more": "Show more",
+    "show_less": "Show less"
   },
   "app": {
     "description": "Kayak rentals and tours in Lithuania"
