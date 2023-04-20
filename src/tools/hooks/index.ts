@@ -13,3 +13,4 @@ export * from './use-pagination-range';
 export * from './use-protected-page';
 export * from './use-query-navigation';
 export * from './use-timeout';
+export * from './use-truncate';

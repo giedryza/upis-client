@@ -21,7 +21,9 @@
     "try_again": "Bandyti iš naujo",
     "search": "Ieškoti",
     "enter_address": "Ieškoti adreso",
-    "select_all": "Pažymėti viską"
+    "select_all": "Pažymėti viską",
+    "show_more": "Rodyti daugiau",
+    "show_less": "Rodyti mažiau"
   },
   "app": {
     "description": "Baidarių nuoma ir maršrutai Lietuvoje"
