@@ -23,6 +23,14 @@
     }
   }
 
+  &:focus {
+    box-shadow: none;
+  }
+
+  &.-focus {
+    box-shadow: var(--outline-button);
+  }
+
   &.-active {
     color: var(--color-primary-40);
     font-weight: 500;

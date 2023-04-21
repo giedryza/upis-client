@@ -24,12 +24,16 @@ export const Trigger: FC<Props & AriaButtonProps<'button'>> = ({
     { children: label, isDisabled: disabled, ...ariaButtonProps },
     buttonRef
   );
-  const { focusProps } = useFocusRing();
+  const { focusProps, isFocusVisible } = useFocusRing();
 
   return (
     <button
       {...mergeProps(buttonProps, focusProps)}
-      className={clsx(styles.trigger, active && styles['-active'])}
+      className={clsx(
+        styles.trigger,
+        isFocusVisible && styles['-focus'],
+        active && styles['-active']
+      )}
       type="button"
       ref={buttonRef}
     >
