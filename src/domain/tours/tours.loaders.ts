@@ -98,7 +98,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         req,
         params: {
           populate: ['photos'],
-          limit: 15,
+          limit: 30,
           ...params,
         },
         locale,

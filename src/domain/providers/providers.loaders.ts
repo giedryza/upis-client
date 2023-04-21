@@ -69,7 +69,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         {
           req,
           params: {
-            limit: 15,
+            limit: 30,
             ...params,
           },
           locale,
