@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/react';
 import { Provider } from 'react-redux';
 import {
   Hydrate,
@@ -64,6 +65,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                       <Alerts />
 
                       <LightboxOutlet />
+
+                      <Analytics />
                     </AppLayout>
                   </ModalProvider>
                 </I18nProvider>
