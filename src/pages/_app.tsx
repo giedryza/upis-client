@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/react';
 import { Provider } from 'react-redux';
 import {
   Hydrate,
@@ -9,6 +11,7 @@ import { useRouter } from 'next/router';
 import { SessionProvider } from 'next-auth/react';
 import { SSRProvider, I18nProvider, OverlayProvider } from 'react-aria';
 
+import { APP } from 'config';
 import { AppProps } from 'types/common';
 import { font, axe, store, queryClientConfig } from 'tools/services';
 import { AppLayout } from 'layouts';
@@ -35,6 +38,21 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                 <I18nProvider locale={locale}>
                   <ModalProvider>
                     <AppLayout>
+                      {/* Global site tag (gtag.js) - Google Analytics */}
+                      <Script
+                        src={`https://www.googletagmanager.com/gtag/js?id=${APP.google.measurementId}`}
+                        strategy="afterInteractive"
+                      />
+                      <Script id="google-analytics" strategy="afterInteractive">
+                        {`
+                          window.dataLayer = window.dataLayer || [];
+                          function gtag(){dataLayer.push(arguments);}
+                          gtag('js', new Date());
+                        
+                          gtag('config', '${APP.google.measurementId}');
+                        `}
+                      </Script>
+
                       <style jsx global>{`
                         html {
                           font-family: ${font.style.fontFamily};
@@ -47,6 +65,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                       <Alerts />
 
                       <LightboxOutlet />
+
+                      <Analytics />
                     </AppLayout>
                   </ModalProvider>
                 </I18nProvider>

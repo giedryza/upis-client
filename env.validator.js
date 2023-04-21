@@ -5,6 +5,7 @@ const envVariables = z.object({
   NODE_ENV: z.enum(['production', 'development', 'test']),
   NEXT_PUBLIC_HOST_CLIENT: z.string(),
   NEXT_PUBLIC_HOST_API: z.string(),
+  NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID: z.string(),
   NEXTAUTH_URL: z.string(),
   NEXTAUTH_SECRET: z.string(),
   NEXTAUTH_JWT_EXPIRES_IN_DAYS: z.string(),
