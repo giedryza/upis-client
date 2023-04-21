@@ -61,4 +61,7 @@ export const APP = {
   cloudinary: {
     cloudName: 'upis',
   },
+  google: {
+    measurementId: process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID,
+  },
 } as const;

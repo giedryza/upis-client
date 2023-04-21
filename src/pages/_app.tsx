@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import { SessionProvider } from 'next-auth/react';
 import { SSRProvider, I18nProvider, OverlayProvider } from 'react-aria';
 
+import { APP } from 'config';
 import { AppProps } from 'types/common';
 import { font, axe, store, queryClientConfig } from 'tools/services';
 import { AppLayout } from 'layouts';
@@ -38,7 +39,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                     <AppLayout>
                       {/* Global site tag (gtag.js) - Google Analytics */}
                       <Script
-                        src="https://www.googletagmanager.com/gtag/js?id=G-T2832R2XJD"
+                        src={`https://www.googletagmanager.com/gtag/js?id=${APP.google.measurementId}`}
                         strategy="afterInteractive"
                       />
                       <Script id="google-analytics" strategy="afterInteractive">
@@ -47,7 +48,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                           function gtag(){dataLayer.push(arguments);}
                           gtag('js', new Date());
                         
-                          gtag('config', 'G-T2832R2XJD');
+                          gtag('config', '${APP.google.measurementId}');
                         `}
                       </Script>
 
