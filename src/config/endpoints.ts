@@ -8,7 +8,7 @@ export const endpoints = {
       forgot: 'users/forgot-password',
       reset: 'users/reset-password',
     },
-    role: 'users/role',
+    role: 'users/become-provider',
   },
   providers: {
     index: 'providers',
