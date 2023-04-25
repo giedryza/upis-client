@@ -29,9 +29,10 @@ export const PasswordReset: FC = () => {
   const { mutate: resetPassword, isLoading } = useResetPassword();
 
   const onSubmit: SubmitHandler<Values> = async ({ newPassword }) => {
-    const { token, userId } = query;
+    // TODO: use zod
+    const { token, user } = query;
 
-    if (typeof token !== 'string' || typeof userId !== 'string') {
+    if (typeof token !== 'string' || typeof user !== 'string') {
       dispatch(
         alerts.actions.open({
           type: 'danger',
@@ -58,7 +59,7 @@ export const PasswordReset: FC = () => {
 
     resetPassword(
       {
-        userId,
+        user,
         token,
         password: newPassword,
       },

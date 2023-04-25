@@ -33,7 +33,7 @@ interface ForgotPassword {
 }
 
 interface ResetPassword {
-  userId: string;
+  user: string;
   token: string;
   password: string;
 }
@@ -95,10 +95,10 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         }),
         locale,
       }),
-    resetPassword: ({ userId, token, password }: ResetPassword) =>
+    resetPassword: ({ user, token, password }: ResetPassword) =>
       api('post')(generateUrl(endpoints.users.password.reset), {
         body: getJsonBody({
-          userId,
+          user,
           token,
           password,
         }),
