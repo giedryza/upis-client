@@ -4,7 +4,7 @@ import getT from 'next-translate/getT';
 import { endpoints } from 'config';
 import { generateUrl, getJsonBody, loadersFactory, api } from 'tools/services';
 
-import { Role, Session, User } from './users.types';
+import { Session, User } from './users.types';
 
 interface Signin {
   email: string;
@@ -36,10 +36,6 @@ interface ResetPassword {
   user: string;
   token: string;
   password: string;
-}
-
-interface UpdateRole {
-  role: Role;
 }
 
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
@@ -104,13 +100,10 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         }),
         locale,
       }),
-    updateRole: ({ role }: UpdateRole) =>
+    updateRole: () =>
       api('patch')<{ user: User; token: string }>(
         generateUrl(endpoints.users.role),
         {
-          body: getJsonBody({
-            role,
-          }),
           locale,
           auth: true,
         }

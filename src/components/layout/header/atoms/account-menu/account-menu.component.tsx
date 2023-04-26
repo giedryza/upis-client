@@ -64,18 +64,15 @@ export const AccountMenu: FC = () => {
                       );
 
                       if (confirmed) {
-                        updateRole(
-                          { role: 'manager' },
-                          {
-                            onSuccess: async ({ data }) => {
-                              await update({
-                                user: data.user,
-                                token: data.token,
-                              });
-                              push(generateUrl(routes.account.providers.index));
-                            },
-                          }
-                        );
+                        updateRole(undefined, {
+                          onSuccess: async ({ data }) => {
+                            await update({
+                              user: data.user,
+                              token: data.token,
+                            });
+                            push(generateUrl(routes.account.providers.index));
+                          },
+                        });
                       }
                     },
                   },
