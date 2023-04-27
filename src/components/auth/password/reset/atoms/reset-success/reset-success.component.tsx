@@ -15,7 +15,7 @@ export const PasswordResetSuccess: FC = () => {
       <Card>
         <div className={styles.content}>
           <h1 className={styles.title}>
-            {t('auth:passwordReset.success.title')}
+            {t('auth:password_reset.success.title')}
           </h1>
 
           <Button
@@ -27,7 +27,7 @@ export const PasswordResetSuccess: FC = () => {
           />
 
           <div className={styles.footer}>
-            <span>{t('auth:signin.texts.not-have-account')}</span>
+            <span>{t('auth:signin.texts.no_account')}</span>
             <Button
               as="link"
               label={t('auth:actions.signup')}

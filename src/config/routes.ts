@@ -8,6 +8,9 @@ export const routes = {
       forgot: '/auth/password/forgot',
       reset: '/auth/password/reset',
     },
+    email: {
+      verify: '/auth/email/verify',
+    },
   },
   account: {
     profile: {

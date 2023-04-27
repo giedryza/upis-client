@@ -65,7 +65,7 @@ export const Signin: FC = () => {
 
               <Button
                 as="link"
-                label={t('auth:actions.forgot-pass')}
+                label={t('auth:actions.forgot_password')}
                 variant="link"
                 size="xs"
                 href={generateUrl(routes.auth.password.forgot)}
@@ -86,14 +86,14 @@ export const Signin: FC = () => {
 
           <Button
             as="button"
-            label={t('auth:actions.signin-google')}
+            label={t('auth:actions.signin_google')}
             icon="logo-google"
             variant="secondary"
             width="full"
           />
 
           <div className={styles.footer}>
-            <span>{t('auth:signin.texts.not-have-account')}</span>
+            <span>{t('auth:signin.texts.no_account')}</span>
             <Button
               as="link"
               label={t('auth:actions.signup')}

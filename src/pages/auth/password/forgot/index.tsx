@@ -16,7 +16,7 @@ const PasswordForgotPage: NextPage = () => {
 
   return (
     <>
-      <AppHead title={t('auth:passwordForgot.title')} />
+      <AppHead title={t('auth:password_forgot.title')} />
 
       <MainLayout>
         <PageLayout>

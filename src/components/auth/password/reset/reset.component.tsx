@@ -38,7 +38,7 @@ export const PasswordReset: FC = () => {
           type: 'danger',
           message: (
             <Trans
-              i18nKey="auth:passwordReset.error"
+              i18nKey="auth:password_reset.error"
               components={[
                 <Button
                   as="link"
@@ -88,7 +88,7 @@ export const PasswordReset: FC = () => {
     <Container size="xs">
       <Card>
         <div className={styles.content}>
-          <h1 className={styles.title}>{t('auth:passwordReset.title')}</h1>
+          <h1 className={styles.title}>{t('auth:password_reset.title')}</h1>
 
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <fieldset className={styles.fieldset} disabled={isLoading}>
@@ -97,13 +97,13 @@ export const PasswordReset: FC = () => {
                   required: {
                     value: true,
                     message: t(
-                      'auth:passwordReset.form.new_password.errors.empty'
+                      'auth:password_reset.form.new_password.errors.empty'
                     ),
                   },
                   minLength: {
                     value: PASSWORD_MIN_LENGTH,
                     message: t(
-                      'auth:passwordReset.form.new_password.errors.length',
+                      'auth:password_reset.form.new_password.errors.length',
                       {
                         minLength: PASSWORD_MIN_LENGTH,
                         maxLength: PASSWORD_MAX_LENGTH,
@@ -113,7 +113,7 @@ export const PasswordReset: FC = () => {
                   maxLength: {
                     value: PASSWORD_MAX_LENGTH,
                     message: t(
-                      'auth:passwordReset.form.new_password.errors.length',
+                      'auth:password_reset.form.new_password.errors.length',
                       {
                         minLength: PASSWORD_MIN_LENGTH,
                         maxLength: PASSWORD_MAX_LENGTH,
@@ -121,9 +121,9 @@ export const PasswordReset: FC = () => {
                     ),
                   },
                 })}
-                label={t('auth:passwordReset.form.new_password.label')}
+                label={t('auth:password_reset.form.new_password.label')}
                 placeholder={t(
-                  'auth:passwordReset.form.new_password.placeholder'
+                  'auth:password_reset.form.new_password.placeholder'
                 )}
                 type="password"
                 error={errors.newPassword?.message}
@@ -134,20 +134,20 @@ export const PasswordReset: FC = () => {
                   required: {
                     value: true,
                     message: t(
-                      'auth:passwordReset.form.confirm_password.errors.empty'
+                      'auth:password_reset.form.confirm_password.errors.empty'
                     ),
                   },
                   validate: (value) => {
                     if (watch('newPassword') !== value) {
                       return t(
-                        'auth:passwordReset.form.confirm_password.errors.not_match'
+                        'auth:password_reset.form.confirm_password.errors.not_match'
                       );
                     }
                   },
                 })}
-                label={t('auth:passwordReset.form.confirm_password.label')}
+                label={t('auth:password_reset.form.confirm_password.label')}
                 placeholder={t(
-                  'auth:passwordReset.form.confirm_password.placeholder'
+                  'auth:password_reset.form.confirm_password.placeholder'
                 )}
                 type="password"
                 error={errors.confirmPassword?.message}
@@ -165,7 +165,7 @@ export const PasswordReset: FC = () => {
           </form>
 
           <div className={styles.footer}>
-            <span>{t('auth:signin.texts.not-have-account')}</span>
+            <span>{t('auth:signin.texts.no_account')}</span>
             <Button
               as="link"
               label={t('auth:actions.signup')}

@@ -122,14 +122,14 @@ export const Signup: FC = () => {
 
           <Button
             as="button"
-            label={t('auth:actions.signin-google')}
+            label={t('auth:actions.signin_google')}
             icon="logo-google"
             variant="secondary"
             width="full"
           />
 
           <div className={styles.footer}>
-            <span>{t('auth:signup.texts.have-account')}</span>
+            <span>{t('auth:signup.texts.have_account')}</span>
             <Button
               as="link"
               label={t('auth:actions.signin')}

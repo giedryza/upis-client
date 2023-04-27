@@ -2,26 +2,22 @@ import { GetServerSideProps, NextPage } from 'next';
 import { getServerSession } from 'next-auth/next';
 import useTranslation from 'next-translate/useTranslation';
 
-import { routes } from 'config';
-import { useGuestPage } from 'tools/hooks';
 import { AppHead } from 'ui';
-import { PasswordReset } from 'components/auth';
+import { EmailVerify } from 'components/auth';
 import { PageLayout, MainLayout } from 'layouts';
-import { authOptions, generateUrl } from 'tools/services';
+import { authOptions } from 'tools/services';
 
-const PasswordResetPage: NextPage = () => {
+const EmailVerifyPage: NextPage = () => {
   const { t } = useTranslation();
-
-  useGuestPage();
 
   return (
     <>
-      <AppHead title={t('auth:password_reset.title')} />
+      <AppHead title={t('auth:email_verify.title')} />
 
       <MainLayout>
         <PageLayout>
           <main id="main">
-            <PasswordReset />
+            <EmailVerify />
           </main>
         </PageLayout>
       </MainLayout>
@@ -32,15 +28,6 @@ const PasswordResetPage: NextPage = () => {
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getServerSession(req, res, authOptions);
 
-  if (session) {
-    return {
-      redirect: {
-        destination: generateUrl(routes.home),
-        permanent: false,
-      },
-    };
-  }
-
   return {
     props: {
       session,
@@ -48,4 +35,4 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   };
 };
 
-export default PasswordResetPage;
+export default EmailVerifyPage;

@@ -58,7 +58,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       if (response?.error) {
         const t = await getT(locale, 'auth');
 
-        throw new Error(t('auth:errors.invalid-credentials'));
+        throw new Error(t('auth:errors.invalid_credentials'));
       }
     },
     signup: ({ email, password, confirmPassword }: Signup) =>
