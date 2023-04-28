@@ -21,10 +21,7 @@ export const EmailVerify: FC = () => {
     verifyEmail(
       { token, user },
       {
-        onSuccess: () => {
-          replace(generateUrl(routes.account.profile.index));
-        },
-        onError: () => {
+        onSettled: () => {
           replace(generateUrl(routes.home));
         },
       }

@@ -6,14 +6,13 @@ import { generateUrl, getJsonBody, loadersFactory, api } from 'tools/services';
 
 import { Session, User } from './users.types';
 
-interface Signin {
+interface SigninWithCredentials {
   email: string;
   password: string;
 }
 
-interface SigninWithCredentials {
-  email: string;
-  password: string;
+interface SigninWithToken {
+  token: string;
 }
 
 interface Signup {
@@ -45,11 +44,6 @@ interface VerifyEmail {
 
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
   loaders: {
-    signin: ({ email, password }: Signin) =>
-      api('post')<Session>(endpoints.users.signin, {
-        body: getJsonBody({ email, password }),
-        locale,
-      }),
     signinWithCredentials: async ({
       email,
       password,
@@ -58,6 +52,18 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         redirect: false,
         email,
         password,
+      });
+
+      if (response?.error) {
+        const t = await getT(locale, 'auth');
+
+        throw new Error(t('auth:errors.invalid_credentials'));
+      }
+    },
+    signinWithToken: async ({ token }: SigninWithToken) => {
+      const response = await signIn<'credentials'>('token', {
+        redirect: false,
+        token,
       });
 
       if (response?.error) {

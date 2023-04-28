@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { signIn, useSession } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 
 import { useLoaders } from './users.loaders';
 
@@ -7,6 +7,14 @@ export const useSigninWithCredentials = () => {
   const { loaders } = useLoaders();
 
   const mutation = useMutation({ mutationFn: loaders.signinWithCredentials });
+
+  return mutation;
+};
+
+export const useSigninWithToken = () => {
+  const { loaders } = useLoaders();
+
+  const mutation = useMutation({ mutationFn: loaders.signinWithToken });
 
   return mutation;
 };
@@ -62,15 +70,11 @@ export const useUpdateRole = () => {
 
 export const useVerifyEmail = () => {
   const { loaders } = useLoaders();
-  const { update } = useSession();
+  const { mutate: signinWithToken } = useSigninWithToken();
 
   const mutation = useMutation({
     mutationFn: loaders.verifyEmail,
-    onSuccess: ({ data }) =>
-      update({
-        user: data.user,
-        token: data.token,
-      }),
+    onSuccess: ({ data }) => signinWithToken({ token: data.token }),
   });
 
   return mutation;

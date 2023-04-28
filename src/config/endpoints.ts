@@ -1,7 +1,10 @@
 export const endpoints = {
   users: {
     signup: 'users/signup',
-    signin: 'users/signin',
+    signin: {
+      credentials: 'users/signin',
+      token: 'users/signin-with-token',
+    },
     me: 'users/me',
     password: {
       update: 'users/update-password',
