@@ -36,7 +36,7 @@ export const Footer: FC = () => {
                 url: generateUrl(routes.auth.signin),
               },
             ]
-          : session.user.role === 'user'
+          : ['user', 'pending'].includes(session.user.role)
           ? [
               {
                 label: t('common:layout.menu.profile'),

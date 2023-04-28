@@ -38,6 +38,11 @@ interface ResetPassword {
   password: string;
 }
 
+interface VerifyEmail {
+  user: string;
+  token: string;
+}
+
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
   loaders: {
     signin: ({ email, password }: Signin) =>
@@ -106,6 +111,17 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         {
           locale,
           auth: true,
+        }
+      ),
+    verifyEmail: ({ token, user }: VerifyEmail) =>
+      api('patch')<{ user: string; token: string }>(
+        generateUrl(endpoints.users.email.verify),
+        {
+          body: getJsonBody({
+            token,
+            user,
+          }),
+          locale,
         }
       ),
   },

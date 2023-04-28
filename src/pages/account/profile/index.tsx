@@ -12,7 +12,7 @@ import { generateUrl, authOptions } from 'tools/services';
 const ProfilePage: NextPage = () => {
   const { t } = useTranslation();
 
-  useProtectedPage(['user', 'manager', 'admin']);
+  useProtectedPage(['pending', 'user', 'manager', 'admin']);
 
   return (
     <>

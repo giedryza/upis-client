@@ -8,6 +8,9 @@ export const endpoints = {
       forgot: 'users/forgot-password',
       reset: 'users/reset-password',
     },
+    email: {
+      verify: 'users/verify-email',
+    },
     role: 'users/become-provider',
   },
   providers: {

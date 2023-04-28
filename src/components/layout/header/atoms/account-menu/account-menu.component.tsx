@@ -90,6 +90,33 @@ export const AccountMenu: FC = () => {
                 ],
               },
             ]
+          : session.user.role === 'pending'
+          ? [
+              {
+                id: 'account',
+                label: t('common:layout.menu.account'),
+                items: [
+                  {
+                    id: 'profile',
+                    label: t('common:layout.menu.profile'),
+                    icon: 'user',
+                    onClick: () =>
+                      push(generateUrl(routes.account.profile.index)),
+                  },
+                ],
+              },
+              {
+                id: 'signout',
+                items: [
+                  {
+                    id: 'signout',
+                    label: t('common:layout.menu.signout'),
+                    icon: 'exit',
+                    onClick: signout,
+                  },
+                ],
+              },
+            ]
           : session.user.role === 'manager'
           ? [
               {
