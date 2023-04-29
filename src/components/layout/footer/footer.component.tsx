@@ -93,7 +93,7 @@ export const Footer: FC = () => {
               <ul className={styles.groups}>
                 {NAVIGATION.map((group, index) => (
                   <li className={styles.group} key={index}>
-                    <h5 className={styles.title}>{group.title}</h5>
+                    <h4 className={styles.title}>{group.title}</h4>
                     <ul className={styles.links}>
                       {group.links.map((link, i) => (
                         <li className={styles.link} key={i}>
