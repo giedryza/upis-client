@@ -2,6 +2,9 @@
   "title": "Paskyra",
   "profile": {
     "title": "Profilis",
+    "alerts": {
+      "verify_email": "Norėdami pradėti naudotis paskyra, turite patvirtinti el. pašto adresą. Instrukcijos kaip tai padaryti buvo atsiųstos jūsų nurodytu el. pašto adresu. Norėdami iš naujo gauti instrukcijas, <0>spauskite čia</0>."
+    },
     "general": {
       "title": "Asmens duomenys",
       "form": {

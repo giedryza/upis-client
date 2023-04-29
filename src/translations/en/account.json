@@ -2,6 +2,9 @@
   "title": "Account",
   "profile": {
     "title": "Profile",
+    "alerts": {
+      "verify_email": "In order to start using your account, you need to verify your email address. Check email for instructions or <0>click here</0> to get instructions again."
+    },
     "general": {
       "title": "General",
       "form": {
