@@ -130,5 +130,10 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
           locale,
         }
       ),
+    sendVerifyEmail: () =>
+      api('post')(generateUrl(endpoints.users.email.sendVerifyEmail), {
+        locale,
+        auth: true,
+      }),
   },
 }));

@@ -12,6 +12,7 @@ export const endpoints = {
       reset: 'users/reset-password',
     },
     email: {
+      sendVerifyEmail: 'users/send-verify-email',
       verify: 'users/verify-email',
     },
     role: 'users/become-provider',

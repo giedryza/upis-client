@@ -1,5 +1,9 @@
 import { useMutation } from '@tanstack/react-query';
 import { signIn } from 'next-auth/react';
+import useTranslation from 'next-translate/useTranslation';
+
+import { useAppDispatch } from 'tools/services';
+import { alerts } from 'domain/alerts';
 
 import { useLoaders } from './users.loaders';
 
@@ -75,6 +79,26 @@ export const useVerifyEmail = () => {
   const mutation = useMutation({
     mutationFn: loaders.verifyEmail,
     onSuccess: ({ data }) => signinWithToken({ token: data.token }),
+  });
+
+  return mutation;
+};
+
+export const useSendVerifyEmail = () => {
+  const { loaders } = useLoaders();
+  const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+
+  const mutation = useMutation({
+    mutationFn: loaders.sendVerifyEmail,
+    onSuccess: () => {
+      dispatch(
+        alerts.actions.open({
+          type: 'success',
+          message: t('account:profile.verify_email.success'),
+        })
+      );
+    },
   });
 
   return mutation;
