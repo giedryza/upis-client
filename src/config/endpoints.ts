@@ -1,14 +1,21 @@
 export const endpoints = {
   users: {
     signup: 'users/signup',
-    signin: 'users/signin',
+    signin: {
+      credentials: 'users/signin',
+      token: 'users/signin-with-token',
+    },
     me: 'users/me',
     password: {
       update: 'users/update-password',
       forgot: 'users/forgot-password',
       reset: 'users/reset-password',
     },
-    role: 'users/role',
+    email: {
+      sendVerifyEmail: 'users/send-verify-email',
+      verify: 'users/verify-email',
+    },
+    role: 'users/become-provider',
   },
   providers: {
     index: 'providers',

@@ -6,6 +6,9 @@ const REDIRECT_LOCATIONS: Record<string, { route: string }> = {
   'password-reset': {
     route: routes.auth.password.reset,
   },
+  'verify-email': {
+    route: routes.auth.email.verify,
+  },
 };
 
 const REDIRECT_KEY = 'location' as const;

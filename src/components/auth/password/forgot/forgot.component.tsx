@@ -54,10 +54,10 @@ export const PasswordForgot: FC = () => {
     <Container size="xs">
       <Card>
         <div className={styles.content}>
-          <h1 className={styles.title}>{t('auth:passwordForgot.title')}</h1>
+          <h1 className={styles.title}>{t('auth:password_forgot.title')}</h1>
 
           <p className={styles.text}>
-            {t('auth:passwordForgot.texts.instructions')}
+            {t('auth:password_forgot.texts.instructions')}
           </p>
 
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -66,11 +66,11 @@ export const PasswordForgot: FC = () => {
                 {...register('email', {
                   required: {
                     value: true,
-                    message: t('auth:passwordForgot.form.email.errors.empty'),
+                    message: t('auth:password_forgot.form.email.errors.empty'),
                   },
                 })}
-                label={t('auth:passwordForgot.form.email.label')}
-                placeholder={t('auth:passwordForgot.form.email.placeholder')}
+                label={t('auth:password_forgot.form.email.label')}
+                placeholder={t('auth:password_forgot.form.email.placeholder')}
                 type="email"
                 error={errors.email?.message}
               />
@@ -87,7 +87,7 @@ export const PasswordForgot: FC = () => {
           </form>
 
           <div className={styles.footer}>
-            <span>{t('auth:signin.texts.not-have-account')}</span>
+            <span>{t('auth:signin.texts.no_account')}</span>
             <Button
               as="link"
               label={t('auth:actions.signup')}

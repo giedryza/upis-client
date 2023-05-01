@@ -2,12 +2,19 @@
   "title": "Account",
   "profile": {
     "title": "Profile",
+    "verify_email": {
+      "message": "In order to start using your account, you need to verify your email address. Check email for instructions or <0>click here</0> to get instructions again.",
+      "success": "Instructions how to verify email address has been sent to your email."
+    },
     "general": {
       "title": "General",
       "form": {
         "email": {
           "label": "Email"
         }
+      },
+      "actions": {
+        "verify_email": "Verify email"
       }
     },
     "security": {

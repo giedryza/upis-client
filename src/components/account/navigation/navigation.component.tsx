@@ -19,7 +19,7 @@ export const AccountNavigation: FC = () => {
   const links: { label: string; icon: IconName; url: string }[] =
     status !== 'authenticated'
       ? []
-      : session.user.role === 'user'
+      : ['user', 'pending'].includes(session.user.role)
       ? [
           {
             label: t('account:profile.title'),

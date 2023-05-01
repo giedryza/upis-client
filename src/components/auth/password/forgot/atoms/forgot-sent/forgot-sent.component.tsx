@@ -17,17 +17,17 @@ export const PasswordForgotSent: FC<Props> = ({ onRetry }) => {
       <Card>
         <div className={styles.content}>
           <h1 className={styles.title}>
-            {t('auth:passwordForgot.sent.title')}
+            {t('auth:password_forgot.sent.title')}
           </h1>
 
           <p className={styles.text}>
             <Trans
-              i18nKey="auth:passwordForgot.sent.instructions"
+              i18nKey="auth:password_forgot.sent.instructions"
               components={[
                 <Button
                   as="button"
                   label={t(
-                    'auth:passwordForgot.sent.actions.retry'
+                    'auth:password_forgot.sent.actions.retry'
                   ).toLowerCase()}
                   size="sm"
                   variant="link"
@@ -39,7 +39,7 @@ export const PasswordForgotSent: FC<Props> = ({ onRetry }) => {
           </p>
 
           <div className={styles.footer}>
-            <span>{t('auth:signin.texts.not-have-account')}</span>
+            <span>{t('auth:signin.texts.no_account')}</span>
             <Button
               as="link"
               label={t('auth:actions.signup')}

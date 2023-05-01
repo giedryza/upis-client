@@ -1,0 +1,10 @@
+.action {
+  text-decoration: underline;
+
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

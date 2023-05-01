@@ -1,6 +1,6 @@
 import { BaseEntity } from 'types/common';
 
-const roles = ['user', 'manager', 'admin'] as const;
+const roles = ['pending', 'user', 'manager', 'admin'] as const;
 
 export type Role = (typeof roles)[number];
 

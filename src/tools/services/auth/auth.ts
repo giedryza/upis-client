@@ -12,6 +12,7 @@ export const authOptions: NextAuthOptions = {
   },
   providers: [
     CredentialsProvider({
+      id: 'credentials',
       credentials: {
         email: {},
         password: {},
@@ -22,9 +23,36 @@ export const authOptions: NextAuthOptions = {
         const { email, password } = credentials;
 
         try {
-          const { data } = await api('post')<Session>(endpoints.users.signin, {
-            body: getJsonBody({ email, password }),
-          });
+          const { data } = await api('post')<Session>(
+            endpoints.users.signin.credentials,
+            { body: getJsonBody({ email, password }) }
+          );
+
+          return {
+            ...data.user,
+            id: data.user._id,
+            token: data.token,
+          };
+        } catch (error) {
+          return null;
+        }
+      },
+    }),
+    CredentialsProvider({
+      id: 'token',
+      credentials: {
+        token: {},
+      },
+      authorize: async (credentials, _req) => {
+        if (!credentials) return null;
+
+        const { token } = credentials;
+
+        try {
+          const { data } = await api('post')<Session>(
+            endpoints.users.signin.token,
+            { body: getJsonBody({ token }) }
+          );
 
           return {
             ...data.user,

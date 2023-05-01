@@ -7,7 +7,7 @@ const utils = {
   query: {},
   route: {
     id: z.object({
-      id: z.coerce.string().catch(''),
+      id: z.string().catch(''),
     }),
   },
 } as const;
@@ -19,7 +19,7 @@ export const paginationFilters = z.object({
 
 export const providersFilters = z
   .object({
-    user: z.coerce.string(),
+    user: z.string(),
     select: z.preprocess(toArray, z.array(z.enum(PROVIDERS.select))).catch([]),
   })
   .merge(paginationFilters)
@@ -40,8 +40,8 @@ export const toursFilters = z
     daysTo: z.coerce.number().finite().int().min(1).catch(1),
     difficultyFrom: z.coerce.number().finite().min(0).max(5).catch(0),
     difficultyTo: z.coerce.number().finite().min(0).max(5).catch(5),
-    user: z.coerce.string(),
-    providers: z.preprocess(toArray, z.array(z.coerce.string())).catch([]),
+    user: z.string(),
+    providers: z.preprocess(toArray, z.array(z.string())).catch([]),
     bounds: z
       .preprocess(
         toArray,
@@ -65,12 +65,16 @@ export const parameters = {
     [routes.home]: z.object({}).merge(toursFilters),
     [routes.account.tours.index]: z.object({}).merge(toursFilters),
     [routes.account.providers.index]: z.object({}).merge(providersFilters),
+    [routes.auth.email.verify]: z.object({
+      token: z.string().catch(''),
+      user: z.string().catch(''),
+    }),
   },
   route: {
     ...utils.route,
     [routes.tours.one.index]: z
       .object({
-        slug: z.coerce.string().catch(''),
+        slug: z.string().catch(''),
       })
       .merge(utils.route.id),
     [routes.account.providers.one.index]: z.object({}).merge(utils.route.id),
@@ -79,7 +83,7 @@ export const parameters = {
       .merge(utils.route.id),
     [routes.account.providers.one.amenities.one]: z
       .object({
-        amenityId: z.coerce.string().catch(''),
+        amenityId: z.string().catch(''),
       })
       .merge(utils.route.id),
     [routes.account.providers.one.socials.add]: z
@@ -87,7 +91,7 @@ export const parameters = {
       .merge(utils.route.id),
     [routes.account.providers.one.socials.one]: z
       .object({
-        socialId: z.coerce.string().catch(''),
+        socialId: z.string().catch(''),
       })
       .merge(utils.route.id),
     [routes.account.providers.one.about]: z.object({}).merge(utils.route.id),
@@ -97,7 +101,7 @@ export const parameters = {
     [routes.account.tours.one.index]: z.object({}).merge(utils.route.id),
     [routes.account.tours.one.gallery.one]: z
       .object({
-        imageId: z.coerce.string().catch(''),
+        imageId: z.string().catch(''),
       })
       .merge(utils.route.id),
     [routes.account.tours.one.gallery.add]: z.object({}).merge(utils.route.id),

@@ -64,20 +64,44 @@ export const AccountMenu: FC = () => {
                       );
 
                       if (confirmed) {
-                        updateRole(
-                          { role: 'manager' },
-                          {
-                            onSuccess: async ({ data }) => {
-                              await update({
-                                user: data.user,
-                                token: data.token,
-                              });
-                              push(generateUrl(routes.account.providers.index));
-                            },
-                          }
-                        );
+                        updateRole(undefined, {
+                          onSuccess: async ({ data }) => {
+                            await update({
+                              user: data.user,
+                              token: data.token,
+                            });
+                            push(generateUrl(routes.account.providers.index));
+                          },
+                        });
                       }
                     },
+                  },
+                ],
+              },
+              {
+                id: 'signout',
+                items: [
+                  {
+                    id: 'signout',
+                    label: t('common:layout.menu.signout'),
+                    icon: 'exit',
+                    onClick: signout,
+                  },
+                ],
+              },
+            ]
+          : session.user.role === 'pending'
+          ? [
+              {
+                id: 'account',
+                label: t('common:layout.menu.account'),
+                items: [
+                  {
+                    id: 'profile',
+                    label: t('common:layout.menu.profile'),
+                    icon: 'user',
+                    onClick: () =>
+                      push(generateUrl(routes.account.profile.index)),
                   },
                 ],
               },

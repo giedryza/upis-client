@@ -4,16 +4,15 @@ import getT from 'next-translate/getT';
 import { endpoints } from 'config';
 import { generateUrl, getJsonBody, loadersFactory, api } from 'tools/services';
 
-import { Role, Session, User } from './users.types';
-
-interface Signin {
-  email: string;
-  password: string;
-}
+import { Session, User } from './users.types';
 
 interface SigninWithCredentials {
   email: string;
   password: string;
+}
+
+interface SigninWithToken {
+  token: string;
 }
 
 interface Signup {
@@ -33,22 +32,18 @@ interface ForgotPassword {
 }
 
 interface ResetPassword {
-  userId: string;
+  user: string;
   token: string;
   password: string;
 }
 
-interface UpdateRole {
-  role: Role;
+interface VerifyEmail {
+  user: string;
+  token: string;
 }
 
 export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
   loaders: {
-    signin: ({ email, password }: Signin) =>
-      api('post')<Session>(endpoints.users.signin, {
-        body: getJsonBody({ email, password }),
-        locale,
-      }),
     signinWithCredentials: async ({
       email,
       password,
@@ -62,7 +57,19 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
       if (response?.error) {
         const t = await getT(locale, 'auth');
 
-        throw new Error(t('auth:errors.invalid-credentials'));
+        throw new Error(t('auth:errors.invalid_credentials'));
+      }
+    },
+    signinWithToken: async ({ token }: SigninWithToken) => {
+      const response = await signIn<'credentials'>('token', {
+        redirect: false,
+        token,
+      });
+
+      if (response?.error) {
+        const t = await getT(locale, 'auth');
+
+        throw new Error(t('auth:errors.invalid_credentials'));
       }
     },
     signup: ({ email, password, confirmPassword }: Signup) =>
@@ -95,25 +102,38 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         }),
         locale,
       }),
-    resetPassword: ({ userId, token, password }: ResetPassword) =>
+    resetPassword: ({ user, token, password }: ResetPassword) =>
       api('post')(generateUrl(endpoints.users.password.reset), {
         body: getJsonBody({
-          userId,
+          user,
           token,
           password,
         }),
         locale,
       }),
-    updateRole: ({ role }: UpdateRole) =>
+    updateRole: () =>
       api('patch')<{ user: User; token: string }>(
         generateUrl(endpoints.users.role),
         {
-          body: getJsonBody({
-            role,
-          }),
           locale,
           auth: true,
         }
       ),
+    verifyEmail: ({ token, user }: VerifyEmail) =>
+      api('patch')<{ user: string; token: string }>(
+        generateUrl(endpoints.users.email.verify),
+        {
+          body: getJsonBody({
+            token,
+            user,
+          }),
+          locale,
+        }
+      ),
+    sendVerifyEmail: () =>
+      api('post')(generateUrl(endpoints.users.email.sendVerifyEmail), {
+        locale,
+        auth: true,
+      }),
   },
 }));
