@@ -4,6 +4,7 @@ export const endpoints = {
     signin: {
       credentials: 'users/signin',
       token: 'users/signin-with-token',
+      google: 'users/signin-with-google',
     },
     me: 'users/me',
     password: {

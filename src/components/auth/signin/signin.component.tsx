@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { routes } from 'config';
 import { generateUrl } from 'tools/services';
 import { Button, Container, Card, Divider, TextInput } from 'ui';
-import { useSigninWithCredentials } from 'domain/users';
+import { useSigninWithCredentials, useSigninWithGoogle } from 'domain/users';
 
 import { Values } from './signin.types';
 import { INITIAL_VALUES } from './signin.constants';
@@ -16,6 +16,7 @@ export const Signin: FC = () => {
 
   const { mutate: signinWithCredentials, isLoading } =
     useSigninWithCredentials();
+  const { mutate: signinWithGoogle } = useSigninWithGoogle();
 
   const onSubmit: SubmitHandler<Values> = ({ email, password }) => {
     signinWithCredentials({ email, password });
@@ -90,6 +91,7 @@ export const Signin: FC = () => {
             icon="logo-google"
             variant="secondary"
             width="full"
+            onClick={() => signinWithGoogle()}
           />
 
           <div className={styles.footer}>

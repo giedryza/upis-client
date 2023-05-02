@@ -9,6 +9,8 @@ const envVariables = z.object({
   NEXTAUTH_URL: z.string(),
   NEXTAUTH_SECRET: z.string(),
   NEXTAUTH_JWT_EXPIRES_IN_DAYS: z.string(),
+  GOOGLE_CLIENT_ID: z.string(),
+  GOOGLE_CLIENT_SECRET: z.string(),
 });
 
 const _env = envVariables.safeParse(process.env);

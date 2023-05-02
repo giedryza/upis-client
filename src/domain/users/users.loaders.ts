@@ -72,6 +72,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         throw new Error(t('auth:errors.invalid_credentials'));
       }
     },
+    signinWithGoogle: async () => signIn('google', { redirect: false }),
     signup: ({ email, password, confirmPassword }: Signup) =>
       api('post')<Session>(generateUrl(endpoints.users.signup), {
         body: getJsonBody({
