@@ -23,6 +23,14 @@ export const useSigninWithToken = () => {
   return mutation;
 };
 
+export const useSigninWithGoogle = () => {
+  const { loaders } = useLoaders();
+
+  const mutation = useMutation({ mutationFn: loaders.signinWithGoogle });
+
+  return mutation;
+};
+
 export const useSignup = () => {
   const { loaders } = useLoaders();
 

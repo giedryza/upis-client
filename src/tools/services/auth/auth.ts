@@ -1,14 +1,18 @@
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import GoogleProvider from 'next-auth/providers/google';
 
-import { endpoints } from 'config';
-import { api, getJsonBody } from 'tools/services';
+import { endpoints, routes } from 'config';
+import { api, generateUrl, getJsonBody } from 'tools/services';
 import { Session } from 'domain/users';
 
 export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt',
     maxAge: 60 * 60 * 24 * Number(process.env.NEXTAUTH_JWT_EXPIRES_IN_DAYS),
+  },
+  pages: {
+    signIn: routes.auth.signin,
   },
   providers: [
     CredentialsProvider({
@@ -24,7 +28,7 @@ export const authOptions: NextAuthOptions = {
 
         try {
           const { data } = await api('post')<Session>(
-            endpoints.users.signin.credentials,
+            generateUrl(endpoints.users.signin.credentials),
             { body: getJsonBody({ email, password }) }
           );
 
@@ -50,7 +54,7 @@ export const authOptions: NextAuthOptions = {
 
         try {
           const { data } = await api('post')<Session>(
-            endpoints.users.signin.token,
+            generateUrl(endpoints.users.signin.token),
             { body: getJsonBody({ token }) }
           );
 
@@ -62,6 +66,26 @@ export const authOptions: NextAuthOptions = {
         } catch (error) {
           return null;
         }
+      },
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      profile: async (_, { id_token }) => {
+        if (!id_token) throw new Error();
+
+        const { data } = await api('post')<Session>(
+          generateUrl(endpoints.users.signin.google),
+          { body: getJsonBody({ token: id_token }) }
+        );
+
+        return {
+          _id: data.user._id,
+          id: data.user._id,
+          email: data.user.email,
+          role: data.user.role,
+          token: data.token,
+        };
       },
     }),
   ],
