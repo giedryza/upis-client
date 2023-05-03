@@ -9,12 +9,15 @@ import { SerpCard } from 'components/serp';
 import { Footer } from 'components/layout';
 import { useInfiniteTours, useToursFilters } from 'domain/tours';
 import { useBreakpoints } from 'tools/hooks';
+import { useAppDispatch } from 'tools/services';
+import { serp } from 'domain/serp';
 
 import { ListEmpty } from './atoms';
 import styles from './list.module.scss';
 
 export const SerpList: FC = () => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
   const { xs } = useBreakpoints();
 
   const { data: session } = useSession();
@@ -40,6 +43,14 @@ export const SerpList: FC = () => {
 
   const onEndReached = (isEndReached: boolean) => {
     if (isEndReached && hasNextPage) fetchNextPage();
+  };
+
+  const onHoverStart = (id: string) => {
+    dispatch(serp.actions.setActive(id));
+  };
+
+  const onHoverEnd = () => {
+    dispatch(serp.actions.setActive(''));
   };
 
   return (
@@ -86,7 +97,15 @@ export const SerpList: FC = () => {
                     focusable
                   />
                 ) : tour ? (
-                  <SerpCard tour={tour} userId={session?.user.id} />
+                  <div
+                    className={styles.card}
+                    onMouseEnter={() => onHoverStart(tour._id)}
+                    onTouchStart={() => onHoverStart(tour._id)}
+                    onMouseLeave={onHoverEnd}
+                    onTouchEnd={onHoverEnd}
+                  >
+                    <SerpCard tour={tour} userId={session?.user.id} />
+                  </div>
                 ) : null}
               </div>
             );

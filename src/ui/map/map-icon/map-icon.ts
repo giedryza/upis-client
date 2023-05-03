@@ -1,6 +1,6 @@
 import { IconOptions } from 'leaflet';
 
-type MapIconName = 'pin' | 'circle';
+type MapIconName = 'pin' | 'circle' | 'circle-dot';
 
 interface Options {
   size: number;

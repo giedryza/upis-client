@@ -3,6 +3,8 @@ import { FC, useMemo, useState } from 'react';
 import { DEFAULT_CENTER, Map, mapIcon } from 'ui';
 import { Infobox } from 'components/serp';
 import { useInfiniteTours, useToursFilters } from 'domain/tours';
+import { useAppSelector } from 'tools/services';
+import { selectSerpState } from 'domain/serp';
 
 import { BoundsOutlet, UpdatesControl } from './atoms';
 import styles from './map.module.scss';
@@ -10,6 +12,8 @@ import styles from './map.module.scss';
 export const SerpMap: FC = () => {
   const [activeInfobox, setActiveInfobox] = useState('');
   const [updateOnMapMove, setUpdateOnMapMove] = useState(true);
+
+  const { active } = useAppSelector(selectSerpState);
 
   const filters = useToursFilters();
   const { data } = useInfiniteTours(filters);
@@ -63,7 +67,12 @@ export const SerpMap: FC = () => {
               return (
                 <Marker
                   position={{ lat, lng }}
-                  icon={icon(mapIcon({ name: 'circle', size: 24 }))}
+                  icon={icon(
+                    mapIcon({
+                      name: tour._id === active ? 'circle-dot' : 'circle',
+                      size: 24,
+                    })
+                  )}
                   eventHandlers={{
                     popupopen: () => setActiveInfobox(tour._id),
                     popupclose: () => setActiveInfobox(''),
