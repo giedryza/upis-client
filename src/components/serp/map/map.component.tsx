@@ -78,7 +78,7 @@ export const SerpMap: FC = () => {
                     popupclose: () => setActiveInfobox(''),
                   }}
                   key={tour._id}
-                  zIndexOffset={tour._id === active ? 1 : 0}
+                  zIndexOffset={tour._id === active ? 1000 : undefined}
                 >
                   <Popup closeButton={false} offset={point(0, 15)}>
                     {activeInfobox === tour._id ? (
