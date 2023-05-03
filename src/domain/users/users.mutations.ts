@@ -48,6 +48,14 @@ export const useSignup = () => {
   return mutation;
 };
 
+export const useSignout = () => {
+  const { loaders } = useLoaders();
+
+  const mutation = useMutation({ mutationFn: loaders.signout });
+
+  return mutation;
+};
+
 export const useUpdatePassword = () => {
   const { loaders } = useLoaders();
 
