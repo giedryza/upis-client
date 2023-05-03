@@ -41,8 +41,10 @@ export const Infobox: FC<Props> = ({
               id: photo._id,
               url: generateImageUrl({
                 id: photo.key,
-                width: APP.serp.card.image.width * 2,
-                height: APP.serp.card.image.height * 2,
+                width:
+                  APP.serp.card.image.width * APP.serp.infobox.image.quality,
+                height:
+                  APP.serp.card.image.height * APP.serp.infobox.image.quality,
               }),
               placeholder: generateImageUrl({
                 id: photo.key,

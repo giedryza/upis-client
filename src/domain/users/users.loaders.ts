@@ -1,4 +1,4 @@
-import { signIn } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 import getT from 'next-translate/getT';
 
 import { endpoints } from 'config';
@@ -72,7 +72,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         throw new Error(t('auth:errors.invalid_credentials'));
       }
     },
-    signinWithGoogle: async () => signIn('google', { redirect: false }),
+    signinWithGoogle: () => signIn('google', { redirect: false }),
     signup: ({ email, password, confirmPassword }: Signup) =>
       api('post')<Session>(generateUrl(endpoints.users.signup), {
         body: getJsonBody({
@@ -82,6 +82,7 @@ export const { getLoaders, useLoaders } = loadersFactory((locale) => ({
         }),
         locale,
       }),
+    signout: () => signOut({ redirect: false }),
     updatePassword: ({
       currentPassword,
       newPassword,

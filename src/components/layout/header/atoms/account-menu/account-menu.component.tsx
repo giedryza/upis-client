@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
-import { useSession, signOut } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 
 import { routes } from 'config';
 import { generateUrl } from 'tools/services';
 import { Menu } from 'ui';
 import { useConfirm } from 'domain/confirm';
-import { useUpdateRole } from 'domain/users';
+import { useSignout, useUpdateRole } from 'domain/users';
 
 export const AccountMenu: FC = () => {
   const { t } = useTranslation();
@@ -15,11 +15,9 @@ export const AccountMenu: FC = () => {
   const { confirmation } = useConfirm();
 
   const { data: session, status, update } = useSession();
-  const { mutate: updateRole } = useUpdateRole();
-
-  const signout = () => {
-    return signOut({ redirect: false });
-  };
+  const { mutate: updateRole, isLoading: isUpdateRoleLoading } =
+    useUpdateRole();
+  const { mutate: signout, isLoading: isSignoutLoading } = useSignout();
 
   return (
     <Menu
@@ -57,6 +55,7 @@ export const AccountMenu: FC = () => {
                     id: 'become_provider',
                     label: t('common:layout.become_provider.action'),
                     icon: 'kayak',
+                    disabled: isUpdateRoleLoading,
                     onClick: async () => {
                       const { confirmed } = await confirmation(
                         t('common:layout.become_provider.prompt'),
@@ -85,6 +84,7 @@ export const AccountMenu: FC = () => {
                     id: 'signout',
                     label: t('common:layout.menu.signout'),
                     icon: 'exit',
+                    disabled: isSignoutLoading,
                     onClick: signout,
                   },
                 ],
@@ -112,6 +112,7 @@ export const AccountMenu: FC = () => {
                     id: 'signout',
                     label: t('common:layout.menu.signout'),
                     icon: 'exit',
+                    disabled: isSignoutLoading,
                     onClick: signout,
                   },
                 ],
@@ -153,6 +154,7 @@ export const AccountMenu: FC = () => {
                     id: 'signout',
                     label: t('common:layout.menu.signout'),
                     icon: 'exit',
+                    disabled: isSignoutLoading,
                     onClick: signout,
                   },
                 ],
@@ -194,6 +196,7 @@ export const AccountMenu: FC = () => {
                     id: 'signout',
                     label: t('common:layout.menu.signout'),
                     icon: 'exit',
+                    disabled: isSignoutLoading,
                     onClick: signout,
                   },
                 ],

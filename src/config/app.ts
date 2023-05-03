@@ -34,6 +34,7 @@ export const APP = {
           (SERP_CONFIG.cardHeight * SERP_CONFIG.cardImageAspectRatio[0]) /
             SERP_CONFIG.cardImageAspectRatio[1]
         ),
+        quality: 3,
       },
     },
     infobox: {
@@ -44,6 +45,7 @@ export const APP = {
           (SERP_CONFIG.infoboxHeight * SERP_CONFIG.infoboxImageAspectRatio[0]) /
             SERP_CONFIG.infoboxImageAspectRatio[1]
         ),
+        quality: 3,
       },
     },
     gridGap: 15,
