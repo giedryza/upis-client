@@ -12,8 +12,6 @@ import { useBreakpoints } from 'tools/hooks';
 import { Props } from './card.types';
 import styles from './card.module.scss';
 
-const IMAGE_QUALITY = 3;
-
 export const SerpCard: FC<Props> = memo(({ tour, userId }) => {
   const { t, lang } = useTranslation();
   const { xs } = useBreakpoints();
@@ -34,8 +32,9 @@ export const SerpCard: FC<Props> = memo(({ tour, userId }) => {
               id: photo._id,
               url: generateImageUrl({
                 id: photo.key,
-                width: APP.serp.card.image.width * IMAGE_QUALITY,
-                height: APP.serp.card.image.height * IMAGE_QUALITY,
+                width: APP.serp.card.image.width * APP.serp.card.image.quality,
+                height:
+                  APP.serp.card.image.height * APP.serp.card.image.quality,
               }),
               placeholder: generateImageUrl({
                 id: photo.key,
