@@ -1,7 +1,13 @@
 .container {
+  --viewport: 100vh;
+
+  @supports (height: 100svh) {
+    --viewport: 100svh;
+  }
+
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - var(--header-height));
+  min-height: calc(var(--viewport) - var(--header-height));
 
   > footer {
     margin-top: auto;
