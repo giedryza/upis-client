@@ -30,6 +30,14 @@
     }
   }
 
+  &:focus {
+    box-shadow: none;
+  }
+
+  &.-focus {
+    box-shadow: var(--outline-button);
+  }
+
   .icon {
     width: 1em;
     height: 1em;

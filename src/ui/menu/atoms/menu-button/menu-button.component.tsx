@@ -27,7 +27,7 @@ export const MenuButton = <T extends object>({
   const { menuTriggerProps, menuProps } = useMenuTrigger<T>({}, state, ref);
 
   const { buttonProps } = useButton(mergeProps(props, menuTriggerProps), ref);
-  const { focusProps } = useFocusRing();
+  const { focusProps, isFocusVisible } = useFocusRing();
 
   return (
     <>
@@ -35,7 +35,11 @@ export const MenuButton = <T extends object>({
         {...mergeProps(buttonProps, focusProps)}
         // prevent weird react-aria behaviour when page gets scrolled down when opening menu with a keyboard
         onKeyDown={undefined}
-        className={clsx(styles.button, styles[`-size-${size}`])}
+        className={clsx(
+          styles.button,
+          styles[`-size-${size}`],
+          isFocusVisible && styles['-focus']
+        )}
         type="button"
         ref={ref}
       >
