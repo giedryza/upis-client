@@ -112,6 +112,6 @@
     "stylelint-order": "^6.0.3",
     "ts-prune": "^0.10.3",
     "typescript": "^5.0.4",
-    "webpack": "^5.78.0"
+    "webpack": "^5.82.0"
   }
 }
