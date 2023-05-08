@@ -5,20 +5,18 @@ import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import { useSession } from 'next-auth/react';
 
-import { Container, Divider, SelectInput } from 'ui';
+import { Container, Divider, Menu } from 'ui';
 import { cookies, generateUrl } from 'tools/services';
 import { capitalize } from 'tools/common';
 import { APP, CookieName, routes } from 'config';
 import { Locale } from 'types/common';
 import { formatLanguage } from 'tools/format';
-import { useIsNavigating } from 'tools/hooks';
 
 import styles from './footer.module.scss';
 
 export const Footer: FC = () => {
   const { t } = useTranslation();
-  const { locale: currentLocale, asPath, pathname, query, push } = useRouter();
-  const { isNavigating } = useIsNavigating();
+  const { locale, asPath, pathname, query, push } = useRouter();
 
   const { status, data: session } = useSession();
 
@@ -105,23 +103,6 @@ export const Footer: FC = () => {
                 ))}
               </ul>
             </nav>
-
-            <div className={styles.language}>
-              <SelectInput
-                label={t('common:layout.footer.language')}
-                name="language"
-                options={Object.values(Locale).map((locale) => ({
-                  label: capitalize(formatLanguage(locale, locale)),
-                  value: locale,
-                }))}
-                value={currentLocale}
-                onChange={({ target }) => {
-                  cookies.set(CookieName.Language, target.value);
-                  push({ pathname, query }, asPath, { locale: target.value });
-                }}
-                disabled={isNavigating}
-              />
-            </div>
           </div>
 
           <Divider />
@@ -132,8 +113,7 @@ export const Footer: FC = () => {
                 year: new Date().getFullYear(),
                 name: APP.name,
               })}
-            </p>
-            <p className={styles.author}>
+              {' | '}
               <Trans
                 i18nKey="common:layout.footer.credentials"
                 components={[
@@ -148,6 +128,31 @@ export const Footer: FC = () => {
                 ]}
               />
             </p>
+
+            <Menu
+              label={
+                locale
+                  ? capitalize(formatLanguage(locale, locale))
+                  : t('common:layout.language.languages')
+              }
+              sections={[
+                {
+                  id: 'languages',
+                  label: t('common:layout.language.languages'),
+                  items: Object.values(Locale).map((code) => ({
+                    id: code,
+                    label: capitalize(formatLanguage(code, code)),
+                    icon: locale === code ? 'tick' : undefined,
+                    onClick: () => {
+                      cookies.set(CookieName.Language, code);
+                      push({ pathname, query }, asPath, { locale: code });
+                    },
+                  })),
+                },
+              ]}
+              icon="language"
+              size="sm"
+            />
           </div>
         </div>
       </Container>
