@@ -66,15 +66,12 @@
     }
   }
 
-  .language {
-    min-width: 15rem;
-  }
-
   .legal {
     display: flex;
     gap: 5rem;
+    align-items: center;
     justify-content: space-between;
-    padding: 1rem 0;
+    padding: 0.25rem 0;
 
     font-weight: 400;
     font-size: 1.2rem;
