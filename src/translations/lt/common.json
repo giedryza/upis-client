@@ -9,6 +9,7 @@
     "add": "Pridėti",
     "create": "Sukurti",
     "edit": "Redaguoti",
+    "remove": "Pašalinti",
     "delete": "Ištrinti",
     "view": "Žiūrėti",
     "apply": "Pritaikyti",
@@ -34,6 +35,9 @@
       "account": {
         "title": "Paskyros navigacija"
       }
+    },
+    "secondary_nav": {
+      "saved": "Išsaugota"
     },
     "menu": {
       "account": "Mano paskyra",
