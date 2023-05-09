@@ -44,7 +44,7 @@
       "profile": "Profilis",
       "providers": "Tiekėjai",
       "tours": "Maršrutai",
-      "favorites": "Išsaugoti",
+      "favorites": "Išsaugoti ({{count}})",
       "signin": "Prisijungti",
       "signout": "Atsijungti"
     },

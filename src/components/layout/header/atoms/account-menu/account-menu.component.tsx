@@ -40,7 +40,9 @@ export const AccountMenu: FC = () => {
                   },
                   {
                     id: 'favorites',
-                    label: t('common:layout.menu.favorites'),
+                    label: t('common:layout.menu.favorites', {
+                      count: favorites.length,
+                    }),
                     icon: 'heart',
                     disabled: !favorites.length,
                     onClick: () =>
@@ -67,7 +69,9 @@ export const AccountMenu: FC = () => {
                   },
                   {
                     id: 'favorites',
-                    label: t('common:layout.menu.favorites'),
+                    label: t('common:layout.menu.favorites', {
+                      count: favorites.length,
+                    }),
                     icon: 'heart',
                     disabled: !favorites.length,
                     onClick: () =>
@@ -130,7 +134,9 @@ export const AccountMenu: FC = () => {
                   },
                   {
                     id: 'favorites',
-                    label: t('common:layout.menu.favorites'),
+                    label: t('common:layout.menu.favorites', {
+                      count: favorites.length,
+                    }),
                     icon: 'heart',
                     disabled: !favorites.length,
                     onClick: () =>
@@ -169,7 +175,9 @@ export const AccountMenu: FC = () => {
                   },
                   {
                     id: 'favorites',
-                    label: t('common:layout.menu.favorites'),
+                    label: t('common:layout.menu.favorites', {
+                      count: favorites.length,
+                    }),
                     icon: 'heart',
                     disabled: !favorites.length,
                     onClick: () =>
@@ -222,7 +230,9 @@ export const AccountMenu: FC = () => {
                   },
                   {
                     id: 'favorites',
-                    label: t('common:layout.menu.favorites'),
+                    label: t('common:layout.menu.favorites', {
+                      count: favorites.length,
+                    }),
                     icon: 'heart',
                     disabled: !favorites.length,
                     onClick: () =>

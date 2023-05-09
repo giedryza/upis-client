@@ -44,7 +44,7 @@
       "profile": "Profile",
       "providers": "Providers",
       "tours": "Tours",
-      "favorites": "Saved",
+      "favorites": "Saved ({{count}})",
       "signin": "Sign in",
       "signout": "Sign out"
     },
