@@ -8,11 +8,14 @@ import { generateUrl } from 'tools/services';
 import { Menu } from 'ui';
 import { useConfirm } from 'domain/confirm';
 import { useSignout, useUpdateRole } from 'domain/users';
+import { useFavoritesContext } from 'domain/favorites';
 
 export const AccountMenu: FC = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
   const { confirmation } = useConfirm();
+
+  const { favorites } = useFavoritesContext();
 
   const { data: session, status, update } = useSession();
   const { mutate: updateRole, isLoading: isUpdateRoleLoading } =
@@ -35,6 +38,17 @@ export const AccountMenu: FC = () => {
                     icon: 'user',
                     onClick: () => push(generateUrl(routes.auth.signin)),
                   },
+                  {
+                    id: 'favorites',
+                    label: t('common:layout.menu.favorites'),
+                    icon: 'heart',
+                    disabled: !favorites.length,
+                    onClick: () =>
+                      push({
+                        pathname: generateUrl(routes.home),
+                        query: { ids: favorites },
+                      }),
+                  },
                 ],
               },
             ]
@@ -50,6 +64,17 @@ export const AccountMenu: FC = () => {
                     icon: 'user',
                     onClick: () =>
                       push(generateUrl(routes.account.profile.index)),
+                  },
+                  {
+                    id: 'favorites',
+                    label: t('common:layout.menu.favorites'),
+                    icon: 'heart',
+                    disabled: !favorites.length,
+                    onClick: () =>
+                      push({
+                        pathname: generateUrl(routes.home),
+                        query: { ids: favorites },
+                      }),
                   },
                   {
                     id: 'become_provider',
@@ -103,6 +128,17 @@ export const AccountMenu: FC = () => {
                     onClick: () =>
                       push(generateUrl(routes.account.profile.index)),
                   },
+                  {
+                    id: 'favorites',
+                    label: t('common:layout.menu.favorites'),
+                    icon: 'heart',
+                    disabled: !favorites.length,
+                    onClick: () =>
+                      push({
+                        pathname: generateUrl(routes.home),
+                        query: { ids: favorites },
+                      }),
+                  },
                 ],
               },
               {
@@ -130,6 +166,17 @@ export const AccountMenu: FC = () => {
                     icon: 'user',
                     onClick: () =>
                       push(generateUrl(routes.account.profile.index)),
+                  },
+                  {
+                    id: 'favorites',
+                    label: t('common:layout.menu.favorites'),
+                    icon: 'heart',
+                    disabled: !favorites.length,
+                    onClick: () =>
+                      push({
+                        pathname: generateUrl(routes.home),
+                        query: { ids: favorites },
+                      }),
                   },
                   {
                     id: 'providers',
@@ -172,6 +219,17 @@ export const AccountMenu: FC = () => {
                     icon: 'user',
                     onClick: () =>
                       push(generateUrl(routes.account.profile.index)),
+                  },
+                  {
+                    id: 'favorites',
+                    label: t('common:layout.menu.favorites'),
+                    icon: 'heart',
+                    disabled: !favorites.length,
+                    onClick: () =>
+                      push({
+                        pathname: generateUrl(routes.home),
+                        query: { ids: favorites },
+                      }),
                   },
                   {
                     id: 'providers',

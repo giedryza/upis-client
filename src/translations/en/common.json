@@ -44,6 +44,7 @@
       "profile": "Profile",
       "providers": "Providers",
       "tours": "Tours",
+      "favorites": "Saved",
       "signin": "Sign in",
       "signout": "Sign out"
     },

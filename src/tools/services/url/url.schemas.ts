@@ -42,6 +42,7 @@ export const toursFilters = z
     difficultyTo: z.coerce.number().finite().min(0).max(5).catch(5),
     user: z.string(),
     providers: z.preprocess(toArray, z.array(z.string())).catch([]),
+    ids: z.preprocess(toArray, z.array(z.string())).catch([]),
     bounds: z
       .preprocess(
         toArray,
