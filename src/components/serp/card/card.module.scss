@@ -1,6 +1,8 @@
 @use 'styles/mixins' as *;
 
 .card {
+  position: relative;
+
   display: flex;
   width: 100%;
   min-width: 0;
@@ -91,9 +93,12 @@
     }
   }
 
-  .actions {
+  .floatingActions {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+
     display: flex;
-    gap: 1rem;
-    align-items: center;
+    gap: 0.5rem;
   }
 }

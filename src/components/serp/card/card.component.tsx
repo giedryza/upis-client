@@ -7,7 +7,8 @@ import { formatCurrency, formatUnit } from 'tools/format';
 import { routes, APP } from 'config';
 import { generateImageUrl, generateUrl } from 'tools/services';
 import { isLast } from 'tools/common';
-import { useBreakpoints } from 'tools/hooks';
+import { useBreakpoints, useQueryNavigation } from 'tools/hooks';
+import { useFavoritesContext } from 'domain/favorites';
 
 import { Props } from './card.types';
 import styles from './card.module.scss';
@@ -15,6 +16,10 @@ import styles from './card.module.scss';
 export const SerpCard: FC<Props> = memo(({ tour, userId }) => {
   const { t, lang } = useTranslation();
   const { xs } = useBreakpoints();
+  const { navigateWithQuery } = useQueryNavigation();
+
+  const { favorites, addToFavorites, removeFromFavorites } =
+    useFavoritesContext();
 
   return (
     <article
@@ -140,32 +145,64 @@ export const SerpCard: FC<Props> = memo(({ tour, userId }) => {
             ) : null}
           </div>
 
-          <div className={styles.actions}>
-            {userId === tour.user ? (
-              <Button
-                as="link"
-                icon="pencil"
-                size="xs"
-                variant="ghost"
-                title={t('common:actions.edit')}
-                href={generateUrl(routes.account.tours.one.index, {
-                  id: tour._id,
-                })}
-              />
-            ) : null}
-            <Button
-              as="link"
-              label={t('common:actions.view')}
-              size="sm"
-              variant="primary"
-              href={generateUrl(routes.tours.one.index, {
-                id: tour._id,
-                slug: tour.slug,
-              })}
-            />
-          </div>
+          <Button
+            as="link"
+            label={t('common:actions.view')}
+            size="sm"
+            variant="primary"
+            href={generateUrl(routes.tours.one.index, {
+              id: tour._id,
+              slug: tour.slug,
+            })}
+          />
         </footer>
       </div>
+
+      <ul className={styles.floatingActions}>
+        <li>
+          {favorites.includes(tour._id) ? (
+            <Button
+              as="button"
+              title={t('common:layout.secondary_nav.saved')}
+              // TODO: replace with filled heart icon
+              icon="heart"
+              size="xs"
+              variant="secondary"
+              onClick={() => {
+                removeFromFavorites(tour._id);
+                navigateWithQuery({
+                  ids: favorites.filter((f) => f !== tour._id),
+                });
+              }}
+            />
+          ) : (
+            <Button
+              as="button"
+              title={t('common:actions.save')}
+              icon="heart"
+              size="xs"
+              variant="secondary"
+              onClick={() => {
+                addToFavorites(tour._id);
+              }}
+            />
+          )}
+        </li>
+        {userId === tour.user ? (
+          <li>
+            <Button
+              as="link"
+              title={t('common:actions.edit')}
+              icon="pencil"
+              size="xs"
+              variant="secondary"
+              href={generateUrl(routes.account.tours.one.index, {
+                id: tour._id,
+              })}
+            />
+          </li>
+        ) : null}
+      </ul>
     </article>
   );
 });
