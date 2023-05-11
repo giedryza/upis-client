@@ -7,12 +7,16 @@ import { Button, Container } from 'ui';
 import { routes } from 'config';
 import { generateUrl } from 'tools/services';
 import { useActiveTour } from 'domain/tours';
+import { useFavoritesContext } from 'domain/favorites';
 
 import styles from './navigation.module.scss';
 
 export const DetailsNavigation: FC = () => {
   const { t } = useTranslation();
   const { back } = useRouter();
+
+  const { favorites, addToFavorites, removeFromFavorites } =
+    useFavoritesContext();
 
   const { data: session } = useSession();
   const { data: tour } = useActiveTour();
@@ -30,22 +34,46 @@ export const DetailsNavigation: FC = () => {
             onClick={back}
           />
 
-          <ul className={styles.actions}>
-            {session && session.user.id === tour?.user ? (
+          {tour ? (
+            <ul className={styles.actions}>
+              {session && session.user.id === tour.user ? (
+                <li>
+                  <Button
+                    as="link"
+                    label={t('common:actions.edit')}
+                    icon="pencil"
+                    size="xs"
+                    variant="ghost"
+                    href={generateUrl(routes.account.tours.one.index, {
+                      id: tour._id,
+                    })}
+                  />
+                </li>
+              ) : null}
               <li>
-                <Button
-                  as="link"
-                  label={t('common:actions.edit')}
-                  icon="pencil"
-                  size="xs"
-                  variant="ghost"
-                  href={generateUrl(routes.account.tours.one.index, {
-                    id: tour._id,
-                  })}
-                />
+                {favorites.includes(tour._id) ? (
+                  <Button
+                    as="button"
+                    label={t('common:layout.secondary_nav.saved')}
+                    // TODO: replace with filled heart icon
+                    icon="heart"
+                    size="xs"
+                    variant="ghost"
+                    onClick={() => removeFromFavorites(tour._id)}
+                  />
+                ) : (
+                  <Button
+                    as="button"
+                    label={t('common:actions.save')}
+                    icon="heart"
+                    size="xs"
+                    variant="ghost"
+                    onClick={() => addToFavorites(tour._id)}
+                  />
+                )}
               </li>
-            ) : null}
-          </ul>
+            </ul>
+          ) : null}
         </div>
       </Container>
     </nav>

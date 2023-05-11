@@ -9,6 +9,7 @@
     "add": "Add",
     "create": "Create",
     "edit": "Edit",
+    "remove": "Remove",
     "delete": "Delete",
     "view": "View",
     "apply": "Apply",
@@ -35,11 +36,15 @@
         "title": "Account navigation"
       }
     },
+    "secondary_nav": {
+      "saved": "Saved"
+    },
     "menu": {
       "account": "My account",
       "profile": "Profile",
       "providers": "Providers",
       "tours": "Tours",
+      "favorites": "Saved ({{count}})",
       "signin": "Sign in",
       "signout": "Sign out"
     },

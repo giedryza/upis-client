@@ -66,4 +66,9 @@ export const APP = {
   google: {
     measurementId: process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID,
   },
+  vercel: {
+    analytics: {
+      debug: false,
+    },
+  },
 } as const;

@@ -19,6 +19,7 @@ import { ProgressBar } from 'components/layout';
 import { Alerts } from 'components/alerts';
 import { LightboxOutlet } from 'components/lightbox-outlet';
 import { ModalProvider } from 'domain/modal';
+import { FavoritesProvider } from 'domain/favorites';
 
 import 'styles/index.scss';
 
@@ -37,37 +38,42 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               <OverlayProvider>
                 <I18nProvider locale={locale}>
                   <ModalProvider>
-                    <AppLayout>
-                      {/* Global site tag (gtag.js) - Google Analytics */}
-                      <Script
-                        src={`https://www.googletagmanager.com/gtag/js?id=${APP.google.measurementId}`}
-                        strategy="afterInteractive"
-                      />
-                      <Script id="google-analytics" strategy="afterInteractive">
-                        {`
+                    <FavoritesProvider>
+                      <AppLayout>
+                        {/* Global site tag (gtag.js) - Google Analytics */}
+                        <Script
+                          src={`https://www.googletagmanager.com/gtag/js?id=${APP.google.measurementId}`}
+                          strategy="afterInteractive"
+                        />
+                        <Script
+                          id="google-analytics"
+                          strategy="afterInteractive"
+                        >
+                          {`
                           window.dataLayer = window.dataLayer || [];
                           function gtag(){dataLayer.push(arguments);}
                           gtag('js', new Date());
-                        
+                          
                           gtag('config', '${APP.google.measurementId}');
-                        `}
-                      </Script>
+                          `}
+                        </Script>
 
-                      <style jsx global>{`
-                        html {
-                          font-family: ${font.style.fontFamily};
-                        }
-                      `}</style>
+                        <style jsx global>{`
+                          html {
+                            font-family: ${font.style.fontFamily};
+                          }
+                        `}</style>
 
-                      <Component {...pageProps} />
+                        <Component {...pageProps} />
 
-                      <ProgressBar />
-                      <Alerts />
+                        <ProgressBar />
+                        <Alerts />
 
-                      <LightboxOutlet />
+                        <LightboxOutlet />
 
-                      <Analytics />
-                    </AppLayout>
+                        <Analytics debug={APP.vercel.analytics.debug} />
+                      </AppLayout>
+                    </FavoritesProvider>
                   </ModalProvider>
                 </I18nProvider>
               </OverlayProvider>

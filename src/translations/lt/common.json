@@ -9,6 +9,7 @@
     "add": "Pridėti",
     "create": "Sukurti",
     "edit": "Redaguoti",
+    "remove": "Pašalinti",
     "delete": "Ištrinti",
     "view": "Žiūrėti",
     "apply": "Pritaikyti",
@@ -35,11 +36,15 @@
         "title": "Paskyros navigacija"
       }
     },
+    "secondary_nav": {
+      "saved": "Išsaugota"
+    },
     "menu": {
       "account": "Mano paskyra",
       "profile": "Profilis",
       "providers": "Tiekėjai",
       "tours": "Maršrutai",
+      "favorites": "Išsaugoti ({{count}})",
       "signin": "Prisijungti",
       "signout": "Atsijungti"
     },
