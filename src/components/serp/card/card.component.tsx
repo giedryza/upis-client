@@ -164,15 +164,11 @@ export const SerpCard: FC<Props> = memo(({ tour, userId }) => {
             <Button
               as="button"
               title={t('common:layout.secondary_nav.saved')}
-              // TODO: replace with filled heart icon
-              icon="heart"
+              icon="heart-f"
               size="xs"
               variant="secondary"
               onClick={() => {
                 removeFromFavorites(tour._id);
-                navigateWithQuery({
-                  ids: favorites.filter((f) => f !== tour._id),
-                });
               }}
             />
           ) : (
