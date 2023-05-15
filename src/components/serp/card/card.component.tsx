@@ -7,7 +7,7 @@ import { formatCurrency, formatUnit } from 'tools/format';
 import { routes, APP } from 'config';
 import { generateImageUrl, generateUrl } from 'tools/services';
 import { isLast } from 'tools/common';
-import { useBreakpoints, useQueryNavigation } from 'tools/hooks';
+import { useBreakpoints } from 'tools/hooks';
 import { useFavoritesContext } from 'domain/favorites';
 
 import { Props } from './card.types';
@@ -16,7 +16,6 @@ import styles from './card.module.scss';
 export const SerpCard: FC<Props> = memo(({ tour, userId }) => {
   const { t, lang } = useTranslation();
   const { xs } = useBreakpoints();
-  const { navigateWithQuery } = useQueryNavigation();
 
   const { favorites, addToFavorites, removeFromFavorites } =
     useFavoritesContext();
@@ -164,15 +163,11 @@ export const SerpCard: FC<Props> = memo(({ tour, userId }) => {
             <Button
               as="button"
               title={t('common:layout.secondary_nav.saved')}
-              // TODO: replace with filled heart icon
-              icon="heart"
+              icon="heart-f"
               size="xs"
               variant="secondary"
               onClick={() => {
                 removeFromFavorites(tour._id);
-                navigateWithQuery({
-                  ids: favorites.filter((f) => f !== tour._id),
-                });
               }}
             />
           ) : (

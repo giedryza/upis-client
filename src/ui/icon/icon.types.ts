@@ -28,6 +28,7 @@ export const baseIcons = [
   'globe',
   'grill',
   'heart',
+  'heart-f',
   'info',
   'kayak',
   'language',

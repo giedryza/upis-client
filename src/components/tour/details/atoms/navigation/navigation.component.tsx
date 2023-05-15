@@ -55,8 +55,7 @@ export const DetailsNavigation: FC = () => {
                   <Button
                     as="button"
                     label={t('common:layout.secondary_nav.saved')}
-                    // TODO: replace with filled heart icon
-                    icon="heart"
+                    icon="heart-f"
                     size="xs"
                     variant="ghost"
                     onClick={() => removeFromFavorites(tour._id)}
