@@ -31,11 +31,12 @@ export const getServerSideProps: GetServerSideProps = async ({
   try {
     const { loaders } = getLoaders(locale);
     // const filters = getQueryParams(routes.home, query);
+    const filters = {};
 
     await Promise.all([
-      // queryClient.prefetchInfiniteQuery(toursKeys.list(filters), () =>
-      //   loaders.getTours({ params: filters })
-      // ),
+      queryClient.prefetchInfiniteQuery(toursKeys.list(filters), () =>
+        loaders.getTours({ params: filters })
+      ),
       queryClient.prefetchQuery(toursKeys.list('filters', 'summary'), () =>
         loaders.getFiltersSummary()
       ),
