@@ -2,8 +2,8 @@ import { GetServerSideProps, NextPage } from 'next';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { getServerSession } from 'next-auth/next';
 
-import { routes } from 'config';
-import { getQueryParams, authOptions } from 'tools/services';
+// import { routes } from 'config';
+import { authOptions } from 'tools/services';
 import { AppHead } from 'ui';
 import { SerpResults } from 'components/serp';
 import { getLoaders, toursKeys } from 'domain/tours';
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
 export const getServerSideProps: GetServerSideProps = async ({
   req,
   res,
-  query,
+  // query,
   locale,
 }) => {
   const session = await getServerSession(req, res, authOptions);
@@ -30,15 +30,15 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   try {
     const { loaders } = getLoaders(locale);
-    const filters = getQueryParams(routes.home, query);
+    // const filters = getQueryParams(routes.home, query);
 
     await Promise.all([
-      queryClient.prefetchInfiniteQuery(toursKeys.list(filters), () =>
-        loaders.getTours({ params: filters })
-      ),
-      // queryClient.prefetchQuery(toursKeys.list('filters', 'summary'), () =>
-      //   loaders.getFiltersSummary()
+      // queryClient.prefetchInfiniteQuery(toursKeys.list(filters), () =>
+      //   loaders.getTours({ params: filters })
       // ),
+      queryClient.prefetchQuery(toursKeys.list('filters', 'summary'), () =>
+        loaders.getFiltersSummary()
+      ),
     ]);
   } catch (error) {
     console.error(error);
