@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Script from 'next/script';
-// import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/react';
 import { Provider } from 'react-redux';
 import {
   Hydrate,
@@ -71,7 +71,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
                         <LightboxOutlet />
 
-                        {/* <Analytics debug={APP.vercel.analytics.debug} /> */}
+                        <Analytics debug={APP.vercel.analytics.debug} />
                       </AppLayout>
                     </FavoritesProvider>
                   </ModalProvider>
