@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   query,
   locale,
 }) => {
-  const session = await getServerSession(req, res, authOptions);
+  // const session = await getServerSession(req, res, authOptions);
 
   const queryClient = new QueryClient();
   const { loaders } = getLoaders(locale);
@@ -41,7 +41,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   return {
     props: {
-      session,
+      // session,
       // TODO: remove when solution is found
       // https://github.com/TanStack/query/issues/1458
       dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
