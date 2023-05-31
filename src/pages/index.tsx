@@ -1,9 +1,9 @@
 import { GetServerSideProps, NextPage } from 'next';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
-import { getServerSession } from 'next-auth/next';
+// import { getServerSession } from 'next-auth/next';
 
 import { routes } from 'config';
-import { getQueryParams, authOptions } from 'tools/services';
+import { getQueryParams } from 'tools/services';
 import { AppHead } from 'ui';
 import { SerpResults } from 'components/serp';
 import { getLoaders, toursKeys } from 'domain/tours';
@@ -19,8 +19,8 @@ const Home: NextPage = () => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({
-  req,
-  res,
+  // req,
+  // res,
   query,
   locale,
 }) => {
