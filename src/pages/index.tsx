@@ -36,9 +36,9 @@ export const getServerSideProps: GetServerSideProps = async ({
       queryClient.prefetchInfiniteQuery(toursKeys.list(filters), () =>
         loaders.getTours({ params: filters })
       ),
-      queryClient.prefetchQuery(toursKeys.list('filters', 'summary'), () =>
-        loaders.getFiltersSummary()
-      ),
+      // queryClient.prefetchQuery(toursKeys.list('filters', 'summary'), () =>
+      //   loaders.getFiltersSummary()
+      // ),
     ]);
   } catch (error) {
     console.error(error);
